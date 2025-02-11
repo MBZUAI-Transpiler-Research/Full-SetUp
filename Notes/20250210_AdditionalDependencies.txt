@@ -1,0 +1,192 @@
+Summary of Today’s Progress
+1. Environment Setup & Verification
+
+    Ran getconda.sh and getdependencies.sh to ensure all necessary dependencies were installed.
+    Encountered an issue with xz-utils missing from Conda but resolved it by installing it via sudo apt install xz-utils.
+
+2. Testing Manual Compilation
+
+    Created a new folder (test_c_files) and copied existing C files into it.
+    Created another folder (assembly_output) to store the compiled assembly files.
+    Manually compiled one test file (problem10.c) to verify the setup:
+
+    riscv64-linux-gnu-gcc -S problem10.c -o problem10.risc.s
+    aarch64-linux-gnu-gcc -S problem10.c -o problem10.arm.s
+
+    Noticed that most files compiled successfully, but some failed due to missing gmp.h.
+
+3. Resolving Missing gmp.h Issue
+
+    Checked for gmp.h using:
+
+find /usr -name gmp.h 2>/dev/null
+
+    It was only found in /usr/include/x86_64-linux-gnu/gmp.h, meaning it wasn't installed for cross-compilers.
+
+Attempted:
+
+sudo apt install libgmp-dev:arm64 libgmp-dev:riscv64
+
+    This failed because Ubuntu doesn’t provide libgmp-dev for cross-compilers.
+
+Solution: Manually compiled GMP for RISC-V and ARM
+
+    Downloaded and extracted GMP:
+
+wget https://gmplib.org/download/gmp/gmp-6.3.0.tar.xz
+tar -xf gmp-6.3.0.tar.xz
+cd gmp-6.3.0
+
+Built and installed GMP for RISC-V:
+
+./configure --prefix=/usr/riscv64-linux-gnu --host=riscv64-linux-gnu
+make -j$(nproc)
+sudo make install
+
+    Verified installation:
+
+    ls /usr/riscv64-linux-gnu/include/gmp.h
+
+Built and installed GMP for ARM:
+
+./configure --prefix=/usr/aarch64-linux-gnu --host=aarch64-linux-gnu
+make -j$(nproc)
+sudo make install
+
+    Verified installation:
+
+            ls /usr/aarch64-linux-gnu/include/gmp.h
+
+4. Successfully Compiling Previously Failing Files
+
+    With GMP now installed for both architectures, recompiled problem13.c, problem15.c, and problem16.c:
+
+riscv64-linux-gnu-gcc -I/usr/riscv64-linux-gnu/include -S problem13.c -o ../assembly_output/problem13.risc.s
+riscv64-linux-gnu-gcc -I/usr/riscv64-linux-gnu/include -S problem15.c -o ../assembly_output/problem15.risc.s
+riscv64-linux-gnu-gcc -I/usr/riscv64-linux-gnu/include -S problem16.c -o ../assembly_output/problem16.risc.s
+
+aarch64-linux-gnu-gcc -I/usr/aarch64-linux-gnu/include -S problem13.c -o ../assembly_output/problem13.arm.s
+aarch64-linux-gnu-gcc -I/usr/aarch64-linux-gnu/include -S problem15.c -o ../assembly_output/problem15.arm.s
+aarch64-linux-gnu-gcc -I/usr/aarch64-linux-gnu/include -S problem16.c -o ../assembly_output/problem16.arm.s
+
+Checked assembly_output, confirming that all missing assembly files were now generated successfully.
+
+Step-by-Step Instructions to Reach This Point
+
+(After running getconda.sh and getdependencies.sh)
+1. Install GMP for Cross-Compilers
+
+    For RISC-V:
+
+wget https://gmplib.org/download/gmp/gmp-6.3.0.tar.xz
+tar -xf gmp-6.3.0.tar.xz
+cd gmp-6.3.0
+./configure --prefix=/usr/riscv64-linux-gnu --host=riscv64-linux-gnu
+make -j$(nproc)
+sudo make install
+cd ..
+
+For ARM:
+
+cd gmp-6.3.0
+./configure --prefix=/usr/aarch64-linux-gnu --host=aarch64-linux-gnu
+make -j$(nproc)
+sudo make install
+cd ..
+
+Verify installation:
+
+    ls /usr/riscv64-linux-gnu/include/gmp.h
+    ls /usr/aarch64-linux-gnu/include/gmp.h
+
+2. Prepare C Files for Compilation
+
+    Create necessary directories:
+
+mkdir -p ~/transpiler_project/test_c_files
+mkdir -p ~/transpiler_project/assembly_output
+
+Copy the C files to test_c_files (assuming they are inside original_c):
+
+    cp ~/transpiler_project/hippo/data/project-euler-c/original_c/*.c ~/transpiler_project/test_c_files/
+
+3. Compile All C Files for RISC-V and ARM
+
+    Run inside test_c_files:
+
+cd ~/transpiler_project/test_c_files
+for file in *.c; do
+    riscv64-linux-gnu-gcc -I/usr/riscv64-linux-gnu/include -S "$file" -o "../assembly_output/${file%.c}.risc.s"
+    aarch64-linux-gnu-gcc -I/usr/aarch64-linux-gnu/include -S "$file" -o "../assembly_output/${file%.c}.arm.s"
+done
+
+Verify all output files are in assembly_output:
+
+    ls ~/transpiler_project/assembly_output
+
+This should get everything set up properly - BUT IT DIDN"T! There were still issues with C vs C++ and missing dependencies. On we go....
+
+Summary of Work Done Since Last Checkpoint
+1. Installing Missing Dependencies
+
+    Issue: Some C programs required the gmp.h library, which was missing from the RISC-V and ARM cross-compilation toolchains.
+    Solution:
+        Downloaded and compiled GMP (GNU Multiple Precision Arithmetic Library) from source.
+        Installed it separately for RISC-V and ARM using:
+
+wget https://gmplib.org/download/gmp/gmp-6.3.0.tar.xz
+tar -xf gmp-6.3.0.tar.xz
+cd gmp-6.3.0
+./configure --prefix=/usr/riscv64-linux-gnu --host=riscv64-linux-gnu
+make -j$(nproc)
+sudo make install
+cd ..
+
+cd gmp-6.3.0
+./configure --prefix=/usr/aarch64-linux-gnu --host=aarch64-linux-gnu
+make -j$(nproc)
+sudo make install
+cd ..
+
+Verification: Ensured the library installed correctly:
+
+        ls /usr/riscv64-linux-gnu/include/gmp.h
+        ls /usr/aarch64-linux-gnu/include/gmp.h
+
+        This allowed us to compile the previously failing C files.
+
+2. Compiling All C and C++ Files for RISC-V and ARM
+
+    Issue: Some files required g++ instead of gcc due to .cc extensions (C++ source files).
+    Solution:
+        Added g++-riscv64-linux-gnu and g++-aarch64-linux-gnu to the getdependencies.sh script.
+        Used different compilers for C and C++:
+
+mkdir -p ~/transpiler_project/test_c_files
+mkdir -p ~/transpiler_project/assembly_output
+
+cp ~/transpiler_project/hippo/data/project-euler-c/original_c/*.c ~/transpiler_project/test_c_files/
+cp ~/transpiler_project/hippo/data/project-euler-c/original_c/*.cc ~/transpiler_project/test_c_files/
+
+cd ~/transpiler_project/test_c_files
+for file in *; do
+    if [[ "$file" == *.c ]]; then
+        riscv64-linux-gnu-gcc -I/usr/riscv64-linux-gnu/include -S "$file" -o "../assembly_output/${file%.c}.risc.s"
+        aarch64-linux-gnu-gcc -I/usr/aarch64-linux-gnu/include -S "$file" -o "../assembly_output/${file%.c}.arm.s"
+    elif [[ "$file" == *.cc ]]; then
+        riscv64-linux-gnu-g++ -I/usr/riscv64-linux-gnu/include -S "$file" -o "../assembly_output/${file%.cc}.risc.s"
+        aarch64-linux-gnu-g++ -I/usr/aarch64-linux-gnu/include -S "$file" -o "../assembly_output/${file%.cc}.arm.s"
+    else
+        echo "Skipping unknown file type: $file"
+    fi
+done
+
+Validation:
+
+        ls ~/transpiler_project/assembly_output
+        find ~/transpiler_project/assembly_output -type f -size 0  # No empty files!
+
+        Final Confirmation:
+            Checked that all .c and .cc files produced corresponding .arm.s and .risc.s outputs.
+
+

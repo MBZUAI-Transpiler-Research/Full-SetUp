@@ -1,0 +1,118 @@
+1. CREATED JSON FILES FROM ASSEMBLY OUTPUTS
+
+    We organized files into a new folder to keep everything structured.
+    Commands run:
+
+mkdir euler
+mv assembly_output test_c_files euler/
+
+    Reason: Moved everything related to Euler problem compilation into euler/ for easier processing.
+
+2. UPDATED parse.py
+
+    Change made:
+        We ensured that C source files and assembly outputs were properly included in the JSON file.
+        Adjusted how the script handled file paths to process multiple input files correctly.
+
+3. RAN parse.py TO GENERATE JSON FILES
+
+    We executed parse.py to process everything inside euler/ and generate proj_euler_functions.jsonl.
+    Command run:
+
+python parse.py
+
+    Result: Successfully created the JSONL file containing C source code and corresponding assembly outputs.
+
+4. COMPARED OUTPUT WITH PROFESSOR’S JSON
+
+    Command run:
+
+diff proj_euler_functions.jsonl NEWproj_euler_functions.jsonl
+
+    Result: Differences were minimal and within expected variance.
+
+5. INVESTIGATED Makefile IN data_creation
+
+    Findings:
+        The Makefile is only responsible for compiling .c files into RISC-V and ARM assembly.
+        We already handle this compilation separately, so this was not essential to modify.
+
+6. ACTIVATED THE CORRECT conda ENVIRONMENT
+
+    Issue:
+        Even though getdependencies.sh creates the environment, it does not keep it activated after the script exits.
+        We needed to manually activate it before running get_data.py.
+
+    Fix:
+
+conda activate crosscompilers
+
+    Result: Ensured that the correct packages (e.g., datasets) were available.
+
+7. HUGGING FACE ACCOUNT & TOKEN SETUP
+
+    Created an account on Hugging Face to access the bigcode/the-stack dataset.
+    Generated a personal access token for authentication.
+    Command to log in:
+
+huggingface-cli login
+
+    Result: Successfully authenticated with Hugging Face.
+
+8. ATTEMPTED TO RUN get_data.py
+
+    Command run:
+
+python get_data.py all_programs
+
+    Errors encountered:
+        sys module was missing in script:
+            Fix: Added import sys at the top of get_data.py.
+        Permission error accessing Hugging Face dataset:
+            Fix: Running huggingface-cli login resolved it.
+        Connection issues (403 Forbidden):
+            Dataset required proper authentication.
+
+9. Illegal instruction (core dumped) ERROR DUE TO AVX/AVX2
+
+    Issue: The script crashed with Illegal instruction (core dumped).
+
+    Diagnosis:
+        Running lscpu revealed no AVX/AVX2 support inside the Virtual Machine.
+        This caused NumPy and OpenBLAS to fail when processing data.
+        Test command to check AVX:
+
+    grep -o 'avx[^ ]*' /proc/cpuinfo
+
+        Output: No AVX/AVX2 detected.
+
+Attempted Fix (FAILED):
+
+    Set OpenBLAS to use a generic CPU:
+
+        export OPENBLAS_CORETYPE=generic
+
+        Result: Did not resolve the issue.
+
+10. DECIDED TO SEPARATE get_data.py INTO TWO SCRIPTS
+
+    Issue: get_data.py does two things at once:
+        Downloads raw C files from Hugging Face
+        Compiles them into assembly (which fails on the VM due to AVX issues)
+
+    Solution: Split it into two separate scripts:
+        download_data.py → Runs on local machine to download raw C files.
+        compile_data.py → Runs on VM to compile the C files into assembly.
+
+    Plan:
+        Run download_data.py locally → Transfer files to VM → Run compile_data.py on VM.
+
+11. FINAL STEPS & NEXT ACTIONS
+
+    Next Steps:
+        Implement download_data.py and compile_data.py.
+        Run download_data.py on the local machine.
+        Transfer downloaded files to VM.
+        Run compile_data.py on the VM.
+
+

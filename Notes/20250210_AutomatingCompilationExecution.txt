@@ -1,0 +1,39 @@
+3. Automating the Compilation Process
+
+    Instead of manually compiling each file, we automated the process to compile all C and C++ files inside test_c_files/ into assembly code for both RISC-V and ARM.
+    Updated compile_assembly.sh to:
+        Detect whether a file is .c (use gcc) or .cc (use g++).
+        Ensure -lgmp is used only when needed by checking for #include <gmp.h> in source files.
+        Ask the user whether to overwrite assembly_output/ if it already exists.
+        Remove unnecessary files like gmp-6.3.0.tar.xz after installation.
+
+4. Linking Assembly Files into Executables
+
+    Created a new script (egsy.sh) to automate linking all .s files into executable binaries (.out files).
+    Handled C vs. C++ properly:
+        Used gcc for .c files.
+        Used g++ for .cc files.
+        Automatically detected if -lgmp was required.
+    Ensured proper linking for math functions: Fixed sqrt issue by adding -lm where needed.
+
+5. Running Executables Using QEMU
+
+    Ran all .out files using:
+
+    qemu-aarch64 -L /usr/aarch64-linux-gnu ./problemX.arm.out
+    qemu-riscv64 -L /usr/riscv64-linux-gnu ./problemX.risc.out
+
+    Verified output correctness for problems 1-49 🎉.
+    Fixed failures due to missing names.txt in problem 22 by searching for it and determining where it should be placed.
+
+6. Cleaning Up & Organizing Files
+
+    Moved outdated scripts into an Archive/ folder.
+    Removed unnecessary files and logs.
+    Ensured the directory structure remained clean and efficient.
+
+Current Status & Next Steps
+
+✅ All files are compiled, linked, and run successfully (except problem22 needing names.txt).
+✅ Automated the process for all future files.
+🔍 Next step: Investigate names.txt and verify that all compiled results match expected outputs.

@@ -1,0 +1,87 @@
+1. File Management and Cloning
+
+Backup Existing Files: You successfully moved the existing files into backup directories (e.g., target_arm, target_risc, verbose_arm, and verbose_risc) to avoid overwriting them when working with the new files.
+
+Git Clone Process: You deleted the problematic project-euler-c directory and cloned the correct folder from the GitHub repository. The files were successfully restored to the correct directory, allowing for a fresh start.
+2. Setting Up for Compilation
+
+Makefile Overview: The Makefile was located in the project-euler-c directory, and it defines rules for compiling both ARM and RISC-V assembly files from the original C source code.
+
+Cross-Compiling for ARM and RISC-V: You proceeded to attempt the cross-compilation of the .c files in the original_c folder into .arm.s and .risc.s files for ARM and RISC-V, respectively. These compilation steps are controlled via the Makefile.
+
+Problem with Compilation (gnueabi issue): You encountered an issue related to missing header files (gnu/stubs-32.h), which prevented the aarch64-linux-gnu-gcc from compiling. The problem stems from the cross-compilers requiring specific dependencies that were not available on the system.
+
+    Solution Attempt: You attempted installing gcc-multilib and other missing dependencies to resolve the issue. This solution worked for most of the problems but did not resolve all errors.
+
+Compilation Failure: When you tried the compilation command, errors occurred due to missing files related to the cross-compilation setup.
+
+    Error:
+
+    fatal error: gnu/stubs-32.h: No such file or directory
+
+    This error was caused by the absence of the required 32-bit system libraries needed for ARM compilation.
+
+3. Solutions and Adjustments
+
+System Dependency Installation:
+
+    gcc-multilib: Installing this package aimed to resolve the issue related to missing 32-bit libraries (stubs-32.h). This didn't completely resolve the issue, but it was a necessary step to ensure that the proper multi-architecture tools were available.
+
+Cross-Compilers (ARM/RISC-V):
+
+    APT-Get Cross-Compilers: You successfully installed the cross-compilers (gcc-aarch64-linux-gnu, gcc-riscv64-linux-gnu) using apt-get, bypassing the need for Conda for these specific tools.
+
+QEMU Installation:
+
+    QEMU Setup: You had QEMU installed (qemu-user, qemu-user-static) via apt-get, enabling the emulation of ARM and RISC-V binaries, which was necessary for executing compiled programs in the respective architectures.
+
+4. Compilation Command Adjustments
+
+Correcting Cross-Compilation Command: You attempted to compile all the C files at once. The command failed because gcc doesn't accept multiple input files with the -o flag, which specifies the output filename. We corrected this with a loop to compile each file individually:
+
+for file in original_c/*.c; do
+    aarch64-linux-gnu-gcc -I/usr/include/ -I/usr/include/x86_64-linux-gnu/ -S "$file" -o "target_arm/$(basename "$file" .c).arm.s"
+done
+
+This loop compiled each file individually for ARM, and you confirmed that it worked after the fix.
+
+Verbose Compilation: You then set up verbose compilation for both ARM and RISC-V, adding -fverbose-asm to the flags. This allowed you to generate verbose assembly files. The verbose assembly helps in debugging and analyzing the assembly code generation process, although the issue with missing libraries continued to appear.
+5. Parsing and Data Generation
+
+Data Creation with get_data.py: The next step involved using get_data.py to parse and generate training data. You successfully moved the project into the right state to run get_data.py, though you encountered some additional issues with parsing that are still to be addressed. Here's what was expected:
+
+    get_data.py all_programs was supposed to generate the necessary .jsonl files for training data.
+    python parse.py all_programs ../data/data.json would process these files into a final output for training.
+
+This part was dependent on correctly generating and compiling the C files, which had some issues due to missing dependencies.
+6. What's Working
+
+What Worked:
+
+    Backup and Cloning: You successfully backed up old files and cloned the correct Git repository.
+    Installing Cross-Compilers: The ARM and RISC-V cross-compilers were successfully installed via apt-get.
+    Compilation for ARM and RISC-V: Compilation of individual .c files into .arm.s and .risc.s worked after adjusting the loop to handle each file individually.
+    Verbose Assembly Generation: Verbose assembly files were successfully generated for both ARM and RISC-V.
+
+What Didn't Work:
+
+    Cross-Compilation Errors: There were still some lingering issues related to missing 32-bit system libraries (e.g., stubs-32.h), although most of the installation steps worked for the ARM and RISC-V cross-compilers.
+    get_data.py and parse.py: These scripts for data generation and parsing couldn't be fully tested yet because some files hadn't been fully compiled or parsed due to the compilation issues.
+
+7. What's Left to Do
+
+Data Generation and Parsing:
+
+    Fix Compilation Issues: We need to fully resolve the compilation issues, especially the missing libraries for ARM and RISC-V, before data generation can proceed.
+    Run get_data.py and parse.py: After ensuring the files are compiled correctly, you'll need to run the data generation and parsing scripts to generate the dataset.
+
+Verbose Assembly and Training Data:
+
+    Once all files are compiled (with both normal and verbose flags), we can move forward with creating training data by parsing the verbose assembly outputs and feeding them into the training pipeline.
+
+In summary:
+
+    We've set up the Conda environment and installed the necessary tools.
+    You ran into issues with missing dependencies for cross-compilation, especially related to ARM and RISC-V.
+    Some compilation was successful after adjusting the commands.
+    The next step is resolving the remaining issues with compilation and data generation, then proceeding with training.

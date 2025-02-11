@@ -1,0 +1,124 @@
+1️⃣ Setting Up & Installing Dependencies
+🔹 Step 1: Restarted the Project from Scratch
+
+    Started fresh by removing previous outputs:
+
+    rm -rf assembly_output hippo test_c_files
+
+        Reason: Ensuring that we start with a clean setup before re-running anything.
+
+🔹 Step 2: Installing Conda & Dependencies
+
+    Verified Miniconda was installed.
+
+    Ran the Conda installation script:
+
+./getconda_01.sh
+
+    This ensured Conda was properly set up.
+
+Updated getdependencies02.sh to include missing Python packages:
+
+    datasets, json5, glob2, re, etc.
+    Modified it to install:
+
+    conda install -y -c conda-forge datasets json5 glob2
+
+Ran the dependencies script:
+
+    ./getdependencies02.sh
+
+        This installed all required system and Python dependencies.
+
+✅ Outcome: Successfully installed all required libraries inside Conda.
+2️⃣ Compilation and Execution of Project Euler Files
+
+After setting up dependencies, we re-ran the pipeline step-by-step.
+🔹 Step 1: Compiling C/C++ Files to Assembly
+
+    Ran the script to generate assembly files:
+
+    ./compile_assembly.sh
+
+        This iterated through all 49 Euler problems and:
+            Used aarch64-linux-gnu-gcc and riscv64-linux-gnu-gcc to generate:
+                ARM Assembly (problemX.arm.s)
+                RISC-V Assembly (problemX.risc.s)
+
+    Confirmed outputs were generated in assembly_output/.
+
+✅ Outcome: Successfully generated non-verbose ARM & RISC-V assembly files.
+🔹 Step 2: Assembling the Assembly Files
+
+    Converted the .s files into executables:
+
+./assemble_binary.sh
+
+    This script used:
+
+        aarch64-linux-gnu-gcc problemX.arm.s -o problemX.arm.out -static
+        riscv64-linux-gnu-gcc problemX.risc.s -o problemX.risc.out -static
+
+        Verified the presence of:
+            problemX.arm.out
+            problemX.risc.out
+
+✅ Outcome: Successfully assembled all 49 Euler problems into executable binaries.
+🔹 Step 3: Running the Executables with QEMU
+
+    Executed the compiled binaries using QEMU:
+
+./qemu_execute_02.sh
+
+    This script iterated through all .out files and ran:
+
+qemu-aarch64 -L /usr/aarch64-linux-gnu ./problemX.arm.out
+qemu-riscv64 -L /usr/riscv64-linux-gnu ./problemX.risc.out
+
+Issue: Encountered missing files (names.txt, words.txt).
+Fix: Added these before execution:
+
+        wget -O names.txt https://raw.githubusercontent.com/eagletmt/project-euler-c/master/20-29/names.txt
+        wget -O words.txt https://raw.githubusercontent.com/eagletmt/project-euler-c/master/40-49/words.txt
+
+        Re-ran QEMU execution successfully.
+
+✅ Outcome: Successfully executed all 49 problems for both architectures.
+🔹 Step 4: Generating Verbose Assembly
+
+    Compiled C files into verbose assembly using:
+
+    ./compile_verbose_assembly.sh
+
+        Used -fverbose-asm to generate:
+            problemX.arm.verbose.s
+            problemX.risc.verbose.s
+        Checked assembly_output/ and confirmed verbose files were created.
+
+✅ Outcome: Successfully generated verbose assembly files.
+3️⃣ Exploring & Preparing get_data.py
+
+After completing the Euler pipeline, we moved on to get_data.py.
+🔹 Step 1: Understanding What get_data.py Does
+
+    Breakdown of what it does:
+        Loads C files from "bigcode/the-stack" dataset.
+        Performs data augmentation (modifies constants in C files).
+        Compiles modified C files into ARM & RISC-V assembly.
+        Saves structured JSONL data with:
+            Source C code
+            ARM & RISC-V assembly (-O0, -O1, -O2, -O3)
+
+🔹 Step 2: Preparing to Run get_data.py
+
+    Encountered missing dependencies (datasets) when trying to run:
+
+python get_data.py all_programs
+
+    Fixed by ensuring:
+
+        conda install -y -c conda-forge datasets json5 glob2
+
+        Verified that datasets was successfully installed.
+
+✅ Outcome: Ready to execute get_data.py.

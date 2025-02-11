@@ -1,0 +1,33 @@
+1. Docker Container Issues
+
+    You were working with Docker containers, specifically the RISC-V and ARM containers, to compile and run code.
+    There were some issues with stopping and starting containers:
+        After running the setup script, the RISC-V container was stopped.
+        You tried to access the stopped container using docker exec but encountered errors since the container was not running.
+        We figured out how to restart the container using docker start -i to reattach to the RISC-V container, allowing it to run the previously set tasks.
+        You needed to access the container for further work, so we used docker exec -it for that.
+
+2. Makefile and Command Adjustments
+
+    You shared a Makefile that builds RISC-V and ARM binaries from C files, and it uses cross-compilation tools like riscv64-linux-gnu-gcc and aarch64-linux-gnu-gcc.
+    We discussed how the Makefile assumes that all tools are in the same environment, but since the tools are separated into different containers (RISC and ARM), some changes would be necessary.
+    The plan was to use the Makefile inside the correct container (RISC for RISC-V tasks and ARM for ARM tasks) so that the correct cross-compilers are available.
+    We ran through the necessary commands that would need to be executed inside the RISC container (for RISC-V tasks).
+
+3. Container Access
+
+    We discussed accessing the containers after running the setup script:
+        ARM container: This container was stopped after the script ran, and you wanted to re-enter it.
+        RISC-V container: This container was still running, but you were confused by the status and could not enter it using docker exec because it was not accessible from the stopped state.
+        I explained how to restart the containers correctly and provided commands to enter the running containers, emphasizing that the prompt inside the container would be different from your host prompt.
+
+4. File Locations and Directory Structure
+
+    You were navigating directories on the host machine and trying to verify if you were inside the container.
+        We clarified the difference in the prompts, and you were able to determine that you were not inside the container when you thought you were.
+
+5. Next Steps
+
+    We planned that once the containers are correctly running, you would use the Makefile to compile code and run further tasks inside the RISC-V container for cross-compilation to RISC-V and the ARM container for ARM-specific tasks.
+
+Would you like to dive into anything from yesterday’s session in more detail or continue where we left off?
