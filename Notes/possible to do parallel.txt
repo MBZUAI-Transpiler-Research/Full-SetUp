@@ -1,0 +1,3 @@
+possible to do parallel symbolic execution with Rosette? theoretically possible or is it sequential? some algorithm. maybe 10-20x speed but does filling in one hole depend on the the priors. can we repeat and switch order so do it 2-3
+
+AST? look this up
