@@ -5,17 +5,17 @@ This README provides step-by-step instructions to set up the transpiler project,
 
 ---
 
-## Step 1: Install Miniconda (`getconda_01.sh`)
+## Step 1: Install Miniconda (`getconda_vl.sh`)
 
-Miniconda is used to manage dependencies within a Conda environment.
+*Miniconda is used to manage dependencies within a Conda environment.*
 
-### Usage:
+### **Usage**
 ```bash
-chmod +x ./getconda_01.sh
-./getconda_01.sh
+chmod +x ./getconda_vl.sh
+./getconda_vl.sh
 ```
 
-### What It Does:
+### **What It Does**
 - Checks if Miniconda is already installed.
 - Prompts the user to remove and reinstall if it exists.
 - Updates the package list and installs `wget`.
@@ -25,58 +25,90 @@ chmod +x ./getconda_01.sh
 
 ---
 
-## Step 2: Install Dependencies (`getdependencies02.sh`)
+## Step 2: Install Dependencies (`getdependencies_vl.sh`)
 
 This script installs required dependencies for cross-compilation and QEMU execution.
 
-### Usage:
+### **Usage**
 ```bash
-chmod +x ./getdependencies02.sh
-./getdependencies02.sh <project_name>
+chmod +x Shell_Scripts/getdependencies_vl.sh
+Shell_Scripts/getdependencies_vl.sh <project_name>
 ```
 
-### What It Does:
+### **What It Does**
 - Initializes Conda and reloads the shell.
 - Creates a Conda environment named `crosscompilers` with Python 3.9.
-- Installs required packages inside Conda (`gcc_linux-64`, `ninja`, `cmake`, `flex`, `bison`, `wget`, `datasets`, `glob2`).
-- Installs system dependencies via `apt` (`vim`, `xz-utils`, `python3-pip`, `python3-virtualenv`, `python3-dev`, `qemu-user`, `gcc-aarch64-linux-gnu`, `gcc-riscv64-linux-gnu`, etc.).
-- Clones the project repository and installs Python dependencies.
+- Installs required Conda packages:
+  - `gcc_linux-64`
+  - `ninja`
+  - `cmake`
+  - `flex`
+  - `bison`
+  - `wget`
+  - `datasets`
+  - `glob2`
+- Installs system dependencies via `apt`:
+  - `vim`
+  - `xz-utils`
+  - `python3-pip`
+  - `python3-virtualenv`
+  - `python3-dev`
+  - `qemu-user`
+  - `gcc-aarch64-linux-gnu`
+  - `gcc-riscv64-linux-gnu`
 - Verifies installed packages.
 
 ---
 
-## Step 3: Compile Assembly (`compile_assembly.sh`)
+## Step 3: Install GMP (`install_gmp.sh`)
 
-This script sets up GMP for RISC-V and ARM, organizes C and C++ files, and compiles them into assembly output.
+This script installs GMP (GNU Multiple Precision Arithmetic Library) for both RISC-V and ARM.
 
-### Usage:
+### **Usage**
 ```bash
-chmod +x ./compile_assembly.sh
-./compile_assembly.sh
+chmod +x Shell_Scripts/install_gmp.sh
+Shell_Scripts/install_gmp.sh
 ```
 
-### What It Does:
-- Downloads and compiles GMP for both RISC-V and ARM architectures if missing.
-- Removes temporary files and directories after installation.
-- Prepares directories for storing C and C++ files.
-- Copies Project Euler C and C++ files into the test directory.
-- Ensures `assembly_output` exists and prompts for overwrite if necessary.
-- Compiles C files with `gcc` and C++ files with `g++` for both RISC-V and ARM.
-- Validates that no empty output files exist.
+### **What It Does**
+- Downloads and compiles GMP for RISC-V and ARM architectures if missing.
+- Installs GMP for both architectures.
+- Removes temporary installation files after completion.
 
 ---
 
-## Step 4: Assemble Binaries (`assemble_binary.sh`)
+## Step 4: Compile Assembly (`compile_assembly_vl.sh`)
+
+This script compiles all C and C++ files into **both standard and verbose assembly output** for both RISC-V and ARM architectures.
+
+### **Usage**
+```bash
+chmod +x Shell_Scripts/compile_assembly_vl.sh
+Shell_Scripts/compile_assembly_vl.sh <source_directory>
+```
+
+### **What It Does**
+- Prepares directories for storing compiled files.
+- Ensures required cross-compilers (`riscv64-linux-gnu-gcc` and `aarch64-linux-gnu-gcc`) are installed.
+- Compiles **C files** with `gcc` and **C++ files** with `g++` for both RISC-V and ARM.
+- Generates **two types of assembly files**:
+  - **Standard assembly** (`problemX.arm.s`, `problemX.risc.s`)
+  - **Verbose assembly** (`problemX.arm.verbose.s`, `problemX.risc.verbose.s`)
+- Validates output files and ensures that no empty assembly files were generated.
+
+---
+
+## Step 5: Assemble Binaries (`assemble_binary_vl.sh`)
 
 This script links the compiled assembly files into executable binaries for both RISC-V and ARM.
 
-### Usage:
+### **Usage**
 ```bash
-chmod +x ./assemble_binary.sh
-./assemble_binary.sh
+chmod +x Shell_Scripts/assemble_binary_vl.sh
+Shell_Scripts/assemble_binary_vl.sh <source_directory>
 ```
 
-### What It Does:
+### **What It Does**
 - Iterates through all compiled `.s` assembly files.
 - Determines whether the source file is C or C++ and selects the appropriate compiler (`gcc` or `g++`).
 - Checks if `gmp.h` or `math.h` is required and links against `-lgmp` or `-lm` accordingly.
@@ -84,49 +116,90 @@ chmod +x ./assemble_binary.sh
 
 ---
 
-## Step 5: Execute Binaries (`qemu_execute.sh`)
+## Step 6: Execute Binaries (`qemu_execute_vl.sh`)
 
 This script runs the compiled executables using QEMU.
 
-### Usage:
+### **Usage**
 ```bash
-chmod +x ./qemu_execute.sh
-./qemu_execute.sh
+chmod +x Shell_Scripts/qemu_execute_vl.sh
+Shell_Scripts/qemu_execute_vl.sh <source_directory>
 ```
 
-### What It Does:
+### **What It Does**
 - Ensures `names.txt` and `words.txt` are available by downloading them if necessary.
 - Iterates over all `.out` files and runs them using the appropriate QEMU emulator.
 - Executes ARM binaries using `qemu-aarch64` and RISC-V binaries using `qemu-riscv64`.
 
 ---
 
-This document will be updated as additional steps are introduced.
+## **Full Automation: Running Everything with One Command**
+
+Instead of manually running each step, you can use `setup_master_vl.sh` to automate the entire pipeline.
+
+### **Usage**
+```bash
+chmod +x setup_master_vl.sh
+./setup_master_vl.sh <project_name>
+```
+
+### **What It Does**
+1. **Checks if Miniconda is installed** (if missing, installs it).
+2. **Installs dependencies** using `getdependencies_vl.sh`.
+3. **Activates the Conda environment**.
+4. **Installs GMP** if necessary.
+5. **Copies C/C++ files** from `<project_name>` to the `euler/` directory.
+6. **Compiles the files into standard and verbose assembly**.
+7. **Assembles the binaries**.
+8. **Runs the compiled programs using QEMU**.
+
+After running this script, all compiled assembly and binary files will be stored in:
+```
+transpiler_project/euler/assembly_output/
+```
+
+---
+
+## **Project Structure**
+After running `setup_master_vl.sh`, your project should look like this:
+
+```
+transpiler_project/
+│── Notes/                   # Describes what we have done one different days
+│── hippo/                   # Cloned from <project_name>
+│── euler/                   # Stores copied C files from hippo
+│   ├── problem1.c
+│   ├── problem2.c
+│   ├── problemX.c ...
+│   ├── assembly_output/
+│   │   ├── problem1.arm.s
+│   │   ├── problem1.arm.verbose.s
+│   │   ├── problem1.risc.s
+│   │   ├── problem1.risc.verbose.s
+│   │   ├── problem1.arm.out
+│   │   ├── problem1.risc.out
+│   │   ├── problem1.risc.out ...
+│── setup_master_vl.sh        # Runs everything automatically
+│── Shell_Scripts/            # Stores all helper scripts
+│   ├── getconda_vl.sh
+│   ├── getdependencies_vl.sh
+│   ├── install_gmp.sh
+│   ├── compile_assembly_vl.sh
+│   ├── assemble_binary_vl.sh
+│   ├── qemu_execute_vl.sh
+│── README.md
+```
 
 
-##Step 6: Generate Verbose Assembly Output (compile_verbose_assembly.sh)
+Archive                 getconda_vl.sh         qemu_execute_vl.sh
+assemble_binary_vl.sh   getdependencies_vl.sh
+compile_assembly_vl.sh  install_gmp.sh
 
-This script compiles all C and C++ files into verbose assembly for both RISC-V and ARM architectures.
+---
 
-##Usage:
+## **Final Notes**
+- The verbose assembly generation is now part of **`compile_assembly_vl.sh`**.
+- The **Euler files are separated** from `hippo/` so `hippo/` can be deleted later.
+- **QEMU execution is modular**, allowing future compilation of different C projects.
 
-chmod +x ./compile_verbose_assembly.sh
-./compile_verbose_assembly.sh
-
-## What It Does:
-
-- Navigates to the test_c_files directory.
-
-- Iterates through all .c and .cc files.
-
-- Compiles each file with -fverbose-asm to generate detailed assembly output.
-
-- Stores the generated assembly files in the assembly_output directory.
-
-- Verifies successful compilation.
-
-## Output Files:
-
-- problemX.arm.verbose.s (ARM verbose assembly)
-
-- problemX.risc.verbose.s (RISC-V verbose assembly)
+---

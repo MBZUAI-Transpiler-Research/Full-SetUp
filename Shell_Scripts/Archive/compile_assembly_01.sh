@@ -40,7 +40,6 @@ rm -rf ~/transpiler_project/gmp-6.3.0
 # Step 3: Prepare directories
 mkdir -p ~/transpiler_project/test_c_files
 
-
 # Step 4: Copy C and C++ files to test_c_files
 cp ~/transpiler_project/hippo/data/project-euler-c/original_c/*.c ~/transpiler_project/test_c_files/
 cp ~/transpiler_project/hippo/data/project-euler-c/original_c/*.cc ~/transpiler_project/test_c_files/
