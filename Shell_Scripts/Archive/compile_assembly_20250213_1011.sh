@@ -31,38 +31,34 @@ fi
 
 # Step 2: Ensure there are C/C++ files to compile
 cd "$SOURCE_FOLDER"
-
-# Check if there are any .c or .cc files before proceeding
-if ! compgen -G "*.c" && ! compgen -G "*.cc"; then
+source_files=(*.c *.cc)
+if [ ${#source_files[@]} -eq 0 ]; then
     echo "❌ No C or C++ files found in $(pwd). Exiting."
     exit 0
 fi
 
 # Step 3: Compile C and C++ files (Standard + Verbose Assembly)
+echo "🏗 Compiling source files in '$SOURCE_FOLDER'..."
+for file in "${source_files[@]}"; do
+    ext="${file##*.}"
+    base_name="${file%.*}"
 
-# Compile `.c` files **only if any exist**
-if ls *.c &>/dev/null; then
-    for file in *.c; do
-        base_name="${file%.*}"
+    if [[ "$ext" == "c" ]]; then
         echo "🔹 Compiling $file for RISC-V and ARM..."
         riscv64-linux-gnu-gcc -I/usr/riscv64-linux-gnu/include -S "$file" -o "$ASSEMBLY_OUTPUT/${base_name}.risc.s"
         riscv64-linux-gnu-gcc -I/usr/riscv64-linux-gnu/include -S -fverbose-asm "$file" -o "$ASSEMBLY_OUTPUT/${base_name}.risc.verbose.s"
         aarch64-linux-gnu-gcc -I/usr/aarch64-linux-gnu/include -S "$file" -o "$ASSEMBLY_OUTPUT/${base_name}.arm.s"
         aarch64-linux-gnu-gcc -I/usr/aarch64-linux-gnu/include -S -fverbose-asm "$file" -o "$ASSEMBLY_OUTPUT/${base_name}.arm.verbose.s"
-    done
-fi
-
-# Compile `.cc` files **only if any exist**
-if ls *.cc &>/dev/null; then
-    for file in *.cc; do
-        base_name="${file%.*}"
+    elif [[ "$ext" == "cc" ]]; then
         echo "🔹 Compiling $file for RISC-V and ARM using g++..."
         riscv64-linux-gnu-g++ -I/usr/riscv64-linux-gnu/include -S "$file" -o "$ASSEMBLY_OUTPUT/${base_name}.risc.s"
         riscv64-linux-gnu-g++ -I/usr/riscv64-linux-gnu/include -S -fverbose-asm "$file" -o "$ASSEMBLY_OUTPUT/${base_name}.risc.verbose.s"
         aarch64-linux-gnu-g++ -I/usr/aarch64-linux-gnu/include -S "$file" -o "$ASSEMBLY_OUTPUT/${base_name}.arm.s"
         aarch64-linux-gnu-g++ -I/usr/aarch64-linux-gnu/include -S -fverbose-asm "$file" -o "$ASSEMBLY_OUTPUT/${base_name}.arm.verbose.s"
-    done 
-fi
+    else
+        echo "⚠️ Skipping unknown file type: $file"
+    fi
+done
 
 echo "✅ Compilation complete! Assembly output is in '$ASSEMBLY_OUTPUT'."
 

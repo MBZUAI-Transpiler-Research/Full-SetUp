@@ -1,0 +1,61 @@
+Detailed Summary of This Morning’s Work (Feb 13, 2025)
+1️⃣ Identified and Fixed Issues in compile_assembly_vl.sh
+
+    Problem: The script failed when no .cc files were present, due to how wildcard expansion works in Bash.
+    Fix:
+        Added shopt -s nullglob before iterating over .cc files to prevent *.cc from being interpreted as a literal string.
+        Also included an explicit check (if ls *.cc &>/dev/null) before running the .cc compilation loop.
+        Ensured .c files don’t trigger an error if no .cc files exist.
+
+2️⃣ Created addingunix_master_vl.sh to Compile Unix Commands
+
+    Instead of modifying setup_master_vl.sh, we created a separate script (addingunix_master_vl.sh) to handle compiling the Basic Unix Commands Implementation separately from Euler.
+    Key Steps in the Script:
+        Clones the GitHub repository if not already present.
+        Activates the Conda environment for cross-compilation.
+        Installs GMP if necessary.
+        Calls compile_assembly_vl.sh to generate assembly files for ARM & RISC-V.
+        Calls assemble_binary_vl.sh to link binaries from the assembly files.
+
+3️⃣ Encountered an Issue: No C or C++ Files Found
+
+    Problem: The script exited early because it incorrectly thought no .c or .cc files existed.
+    Diagnosis:
+        ls *.c *.cc was failing due to *.cc expanding to a literal string when no C++ files were present.
+    Fix:
+        Instead of ls *.c *.cc, we split the check into two separate conditions to correctly identify when only .c files exist.
+
+4️⃣ Successfully Compiled Unix Command Programs
+
+    After fixing the compilation issue, the script successfully:
+        Detected and compiled .c files into assembly.
+        Skipped .cc processing (since there were none).
+        Stored assembly outputs in unix_commands/assembly_output/.
+
+5️⃣ Fixed Assembly Linking Issues in assemble_binary_vl.sh
+
+    Problem: The script was trying to process *.verbose.s files when linking, which are only meant for debugging.
+    Fix:
+        Replaced for file in *.s; do with for file in $(ls *.s | grep -v ".verbose.s"); do to exclude verbose files.
+        This ensured only actual assembly source files were passed to the linker.
+
+6️⃣ Final Test Run: Everything Worked Successfully
+
+    Confirmed Steps Worked:
+        The Unix commands were cloned, compiled into assembly, linked into binaries, and stored in assembly_output/.
+        No missing files, all expected .s and .out files were present.
+    Next Steps: Test execution with QEMU.
+
+✅ Summary of Accomplishments
+
+    Fixed wildcard handling issues in compile_assembly_vl.sh to support both .c and .cc files correctly.
+    Created a separate script to compile the Unix Commands project.
+    Resolved issues causing No C or C++ files found errors.
+    Fixed linker script to ignore verbose.s files.
+    Successfully compiled and linked Unix command programs for ARM & RISC-V.
+
+Next Steps:
+
+    Run the compiled binaries using QEMU to verify execution.
+    Check for missing system headers in Unix programs (fix warnings about read(), write(), execvp(), etc.).
+    Add any additional refinements to error handling or compilation options if needed.

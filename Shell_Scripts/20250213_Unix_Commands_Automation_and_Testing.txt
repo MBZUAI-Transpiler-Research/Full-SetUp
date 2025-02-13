@@ -1,0 +1,35 @@
+Summary of Work (AFTER the Last Summary)
+
+1️⃣ Automated Unix Command Testing
+
+    Created a comprehensive test script (test_unixcmds.sh) to automatically verify compiled binaries.
+    Structured testing for cat, cd, cp, ls, mkdir, ps, rm, rmdir, touch, tee, and xargs.
+    Improved validation by checking file creation, deletion, timestamps, and process listing output.
+
+2️⃣ Fixing tee.c & xargs.c Testing Issues
+
+    Realized both required manual input, making automation difficult.
+    Instead of forcing an automated approach, added instructions to the test script so users can run them interactively.
+
+3️⃣ Finalized touch.c Testing
+
+    Added sleep 3 before modifying timestamps.
+    Ensured timestamp visibility with seconds using ls --full-time.
+
+4️⃣ Refined the Main Setup Script (addingunix_master_vl.sh)
+
+    Linked test_unixcmds.sh into the full pipeline.
+    Improved script modularity and error handling.
+    Made sure Conda properly initializes before activation.
+    Introduced a helper function (make_executable_and_run) to reduce redundant chmod +x calls.
+
+5️⃣ Validated Everything Works End-to-End
+
+    Ran all scripts together to confirm compilation, assembly, and testing.
+    Checked that both ARM and RISC-V binaries execute properly in QEMU.
+    Finalized cleanup procedures to remove test files after execution.
+
+✅ Current Status:
+
+💯 Full Unix command transpilation, cross-compilation, and testing pipeline is operational!
+🔄 Reusable setup for future extensions!

@@ -1,0 +1,104 @@
+Transpiler Project - Progress Update (Feb 12, 2025 - Afternoon Session)
+Summary of Work Completed
+
+Since our last update, we focused on restructuring the repository, improving script flexibility, debugging Git-related issues, and refining the workflow for compiling and executing C programs.
+1. Repository Restructure & Script Organization
+Goal:
+
+Ensure all scripts are properly organized while maintaining correct output locations.
+Changes Made:
+
+    Moved all scripts (except setup_master_vl.sh) into the Shell_Scripts/ directory.
+    Ensured all scripts still output to the expected locations in transpiler_project/.
+    Updated script calls in setup_master_vl.sh to reflect the new file locations.
+    Preserved the hippo directory for cloning repositories while moving the Project Euler files to euler/.
+
+Challenges:
+
+    Initially, the hippo repository was mixed with Project Euler files. This was resolved by maintaining a separate hippo/ directory while using euler/ for the standard C test files.
+    setup_master_vl.sh originally hardcoded hippo/, but this was modified to accept a project name argument while keeping euler/ as the default for Project Euler.
+
+Solution Implemented:
+
+    setup_master_vl.sh now takes a project name argument for custom runs, while keeping euler/ hardcoded for default usage.
+    Any necessary repository clones (e.g., hippo) are managed separately without interfering with euler/.
+
+2. Updating Compilation & Execution Scripts
+Goal:
+
+Ensure all scripts dynamically handle different input sources.
+Changes Made:
+
+    compile_assembly_vl.sh: Now takes an argument for the source directory, rather than hardcoding hippo/.
+    assemble_binary_vl.sh: Modified to accept the source directory as an argument, ensuring it compiles only relevant files.
+    qemu_execute_vl.sh: Updated to accept a source directory argument and execute only files from the specified location.
+
+Challenges:
+
+    The scripts initially referenced hardcoded paths (hippo/), making them inflexible.
+    Some scripts needed additional argument parsing to ensure correct directory handling.
+
+Solution Implemented:
+
+    Added parameter handling to compile_assembly_vl.sh, assemble_binary_vl.sh, and qemu_execute_vl.sh.
+    Ensured that output remains within the assembly_output/ folder inside each source project directory.
+
+3. Resolving Git Issues
+Problem Encountered:
+
+    Files in euler/assembly_output/ did not appear in git status, despite being present on disk.
+    This led to confusion about whether files were missing from the repository.
+
+Diagnosis:
+
+    The files had already been committed and pushed in a previous session.
+    Since they had not changed, Git was not listing them in git status.
+
+Solution Implemented:
+
+    Used git ls-files euler/assembly_output/ to confirm the files were already tracked.
+    Clarified that no action was needed unless forcing an update (e.g., using touch).
+    Verified that Git was working correctly and that files were still version-controlled.
+
+4. README Overhaul
+Goal:
+
+Update the README to reflect the latest project structure and scripts.
+Changes Made:
+
+    Removed outdated references to separate verbose compilation scripts (verbose assembly is now included in compile_assembly_vl.sh).
+    Updated script names to reflect the current versions (getconda_vl.sh, compile_assembly_vl.sh, etc.).
+    Clarified the step-by-step instructions for setting up, compiling, and executing programs.
+    Reformatted the README in proper Markdown syntax to ensure correct rendering.
+
+Challenges:
+
+    Initially, Markdown formatting was inconsistent, which caused readability issues.
+    The document structure needed adjustments to reflect recent script updates.
+
+Solution Implemented:
+
+    Created a properly formatted Markdown README file.
+    Ensured all script names matched the actual files in the repository.
+    Provided clear explanations of each step.
+
+5. Final Testing and Validation
+Goal:
+
+Verify that the full workflow (setup, compilation, linking, execution) runs smoothly.
+Steps Taken:
+
+    Ran setup_master_vl.sh hippo to verify the setup process.
+    Checked that compile_assembly_vl.sh correctly compiles both normal and verbose assembly.
+    Ensured assemble_binary_vl.sh properly linked binaries.
+    Executed qemu_execute_vl.sh to confirm the compiled programs run correctly.
+
+Results:
+
+    Everything executed successfully.
+    The scripts now work dynamically with different input directories.
+    All compiled output remains in the appropriate assembly_output/ directories.
+
+Next Steps
+
+    Test the scripts with different C codebases to ensure full flexibility.

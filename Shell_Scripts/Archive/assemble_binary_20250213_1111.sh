@@ -36,7 +36,7 @@ if [ ${#assembly_files[@]} -eq 0 ]; then
     exit 0
 fi
 
-for file in $(ls *.s | grep -v ".verbose.s"); do
+for file in *.s; do
     base_name=$(basename "$file" .s)  # Extracts "problemXX.arch"
     problem_number="${base_name%.*}"  # Extracts "problemXX"
     arch="${base_name##*.}"           # Extracts "arm" or "risc"
