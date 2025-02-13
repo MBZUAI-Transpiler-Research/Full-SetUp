@@ -10,11 +10,26 @@ conda activate crosscompilers || { echo "❌ Error activating Conda environment"
 PROJECT_NAME="unix_commands"
 PROJECT_SOURCE="$HOME/transpiler_project/$PROJECT_NAME"
 
-# Step 1: Clone the Unix Commands repository if not already present
+# Step 1: Clone the Unix Commands repository into a temporary directory
+TEMP_DIR="$HOME/transpiler_project/unix_commands_temp"
+
 if [ ! -d "$PROJECT_SOURCE" ]; then
-    echo "📥 Cloning Unix Commands repository into '$PROJECT_SOURCE'..."
-    git clone https://github.com/yadu007/Basic-Unix-Commands-Implementation.git "$PROJECT_SOURCE" || { echo "❌ Error cloning repository"; exit 1; }
-    rm -rf unix_commands/.git
+    echo "📥 Cloning Unix Commands repository into temporary directory..."
+    git clone https://github.com/yadu007/Basic-Unix-Commands-Implementation.git "$TEMP_DIR" || { echo "❌ Error cloning repository"; exit 1; }
+    
+    # Remove .git to avoid submodule issues
+    rm -rf "$TEMP_DIR/.git"
+    
+    # Ensure PROJECT_SOURCE exists
+    mkdir -p "$PROJECT_SOURCE"
+
+    # Copy contents instead of moving
+    cp -r "$TEMP_DIR/"* "$PROJECT_SOURCE/"
+
+    # Remove the temporary directory after copying
+    rm -rf "$TEMP_DIR"
+
+    echo "✅ Unix Commands copied to '$PROJECT_SOURCE'."
 else
     echo "✅ Unix Commands repository already exists in '$PROJECT_SOURCE'."
 fi
