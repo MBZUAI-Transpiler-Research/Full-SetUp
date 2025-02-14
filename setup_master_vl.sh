@@ -73,7 +73,15 @@ echo "🚀 Running qemu_execute_vl.sh on '$EULER_DIR'..."
 chmod +x Shell_Scripts/qemu_execute_vl.sh
 Shell_Scripts/qemu_execute_vl.sh "$EULER_DIR" || { echo "❌ Error running qemu_execute_vl.sh"; exit 1; }
 
+# Step 9: Create JSON files for parsed assembly data
+echo "📝 Creating JSON output for Euler problems..."
+mkdir -p json_files # Ensure json_files directory exists
+python parse.py "$EULER_DIR" "json_files/euler.json" || { echo "❌ Error running parse.py"; exit 1; }
+
+echo "✅ JSON file created at 'json_files/euler.json'"
+
 echo "✅ Full setup process completed successfully! 🎉"
 echo "🔎 You can find compiled assembly files in '$EULER_DIR/assembly_output/'"
 echo "🔎 You can find compiled binaries in '$EULER_DIR/assembly_output/'"
+echo "🔎 You can find the json file in json_files/"
 echo "🏁 All executables have been run successfully with QEMU!"

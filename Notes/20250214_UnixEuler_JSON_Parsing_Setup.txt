@@ -1,0 +1,29 @@
+#1. Running and Validating parse.py
+
+    We copied parse.py into the transpiler_project directory, placing it at the same level as euler and unix_commands.
+    Updated the execution commands to match this new structure.
+    Modified the script to look for .risc.s and .arm.s files inside assembly_output/, since they are stored in a different directory than the .c source files.
+    Ensured it skips missing assembly files for better reliability.
+
+Updated Commands Used:
+
+# Run parse.py for Unix Commands
+python parse.py unix_commands json_files/unix_commands.json
+
+# Run parse.py for Euler Problems
+python parse.py euler json_files/euler.json
+
+#2. Verifying JSON Outputs
+
+    Checked the json_files/unix_commands.json output, confirming it had 11 entries for the 11 .c files in unix_commands.
+    Checked the json_files/euler.json output, confirming 45 entries, matching the 45 .c files in euler (since .cc files weren’t included).
+    The format looked correct, with each entry containing:
+        "source" → The original C filename
+        "c" → The C source code
+        "risc" & "arm" → Full assembly files
+        "risc_fns" & "arm_fns" → Extracted functions from the assembly
+        "risc_cloze" & "arm_cloze" → Cloze-formatted assembly
+
+📌 Final Notes
+
+✔ The json_files/ directory now contains organized JSON representations of the Unix commands and Euler problems.

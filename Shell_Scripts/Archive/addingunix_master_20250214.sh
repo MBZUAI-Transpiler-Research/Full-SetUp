@@ -37,32 +37,37 @@ fi
 # Step 2: Prepare directories
 mkdir -p "$PROJECT_SOURCE/assembly_output"
 
-# Step 3: Install GMP (if needed)
+# Step 3: Activate the environment
+echo "🟢 Activating the Conda environment..."
+source $HOME/miniconda3/bin/activate crosscompilers
+echo "✅ Environment activated successfully!"
+
+# Step 4: Install GMP (if needed)
 echo "🛠 Installing GMP if required..."
 chmod +x Shell_Scripts/install_gmp.sh
 Shell_Scripts/install_gmp.sh || { echo "❌ Error installing GMP"; exit 1; }
 
-# Step 4: Add in missing headers
+# Step 5: Add in missing headers
 echo "🔧 Fixing missing headers in '$PROJECT_SOURCE'..."
 chmod +x Shell_Scripts/fix_missing_headers.sh
 Shell_Scripts/fix_missing_headers.sh "$PROJECT_SOURCE"
 
-# Step 5: Compile Unix Commands into Assembly
+# Step 6: Compile Unix Commands into Assembly
 echo "🏗 Running compile_assembly_vl.sh on '$PROJECT_SOURCE'..."
 chmod +x Shell_Scripts/compile_assembly_vl.sh
 Shell_Scripts/compile_assembly_vl.sh "$PROJECT_SOURCE" || { echo "❌ Error during assembly compilation"; exit 1; }
 
-# Step 6: Assemble Binaries
+# Step 7: Assemble Binaries
 echo "🔗 Running assemble_binary_vl.sh on '$PROJECT_SOURCE'..."
 chmod +x Shell_Scripts/assemble_binary_vl.sh
 Shell_Scripts/assemble_binary_vl.sh "$PROJECT_SOURCE" || { echo "❌ Error assembling binaries"; exit 1; }
 
-# Step 7: Test Files
+# Step 8: Test Files
 echo "🔗 Running test_unixcmds_vl.sh on '$PROJECT_SOURCE'..."
 chmod +x Shell_Scripts/test_unixcmds_vl.sh
 Shell_Scripts/test_unixcmds_vl.sh "$PROJECT_SOURCE" || { echo "❌ Error testing files"; exit 1; }
 
-# Step 8: Create JSON files for parsed assembly data
+# Step 9: Create JSON files for parsed assembly data
 echo "📝 Creating JSON output for Unix problems..."
 mkdir -p json_files # Ensure json_files directory exists
 python parse.py "$PROJECT_SOURCE" "json_files/unix_commands.json" || { echo "❌ Error running parse.py"; exit 1; }
