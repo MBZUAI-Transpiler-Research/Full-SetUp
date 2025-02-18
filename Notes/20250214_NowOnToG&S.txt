@@ -1,0 +1,33 @@
+Summary of What We've Done Since the Last Recap
+
+    Finalized the README for Both Euler and Unix Commands
+        Expanded documentation to include the Unix transpilation process.
+        Ensured consistency in structure with detailed step-by-step explanations.
+        Clarified the full pipeline: compilation, execution via QEMU, and JSON extraction.
+
+    Committed All Changes to GitHub
+        Staged and committed all relevant updates, including the new README.
+        Ensured the repository is fully up to date with our completed preprocessing steps.
+
+    Started Preparing for Training the LLM
+        Reviewed the Guess & Sketch approach from the research paper.
+        Identified key components: generative model, alignment extraction, error identification.
+        Examined the training/ directory in the repository (files: train.py, ft_model.py, etc.).
+        Analyzed the provided training command and broke it down into understandable parts.
+        Listed critical questions to answer before proceeding:
+            What are SOURCE_LANG and TARGET_LANG?
+            Are data_train.json and data_dev.json properly structured?
+            Where will the trained model be stored?
+            How are errors handled during training?
+
+    Outlined Steps to Prepare the Training Environment
+        Ensured all required dependencies (PyTorch, Transformers, wandb) are installed.
+        Prepared a modified training command with explicit environment variables.
+        Provided guidelines for monitoring GPU usage and checking logs.
+
+Next Steps: Training the LLM
+
+Before running training, we should:
+✅ Verify data_train.json and data_dev.json – Confirm structure & contents.
+✅ Confirm environment setup – Ensure dependencies are installed.
+✅ Determine appropriate values for SOURCE_LANG and TARGET_LANG.

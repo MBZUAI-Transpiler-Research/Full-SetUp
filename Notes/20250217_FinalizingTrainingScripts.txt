@@ -1,0 +1,65 @@
+✅ Step 1: Understanding the Training Pipeline
+
+    Reviewed the research paper to understand the Guess & Sketch method.
+    Identified key scripts involved in training:
+        train.py → The main script handling training, dataset loading, and evaluation.
+        arguments.py → Defines all the training configurations and parameters.
+        evaluation.py → Handles model evaluation by testing predictions and tracking errors.
+        ft_model.py → Not used in the training process.
+
+✅ Step 2: Dataset Preparation
+
+    Confirmed our training data source:
+        Using JSON files (euler.json, unix_commands.json) from our earlier transpilation process.
+        These contain aligned C code and assembly output for both ARM and RISC-V.
+    Identified that we need both ARM ➝ RISC-V & RISC-V ➝ ARM translations.
+
+✅ Step 3: Understanding Model Loading & Training
+
+    Identified the base model (facebook/bart-large) as the starting point.
+    Confirmed fine-tuning instead of training from scratch.
+    Understood the pipeline:
+        Load the base model.
+        Tokenize input-output pairs.
+        Train with loss minimization.
+        Evaluate using compilation and BLEU scores.
+
+✅ Step 4: Modifications & Improvements
+🔹 Modifications in evaluation.py
+
+✔️ Fixed architecture-specific compilation handling:
+
+    Separated ARM and RISC-V compilations.
+    Avoided overwriting files by appending _arm and _riscv to filenames.
+
+✔️ Tracked errors & successes separately for ARM & RISC-V:
+
+    num_compiled_arm, num_tgt_compiled_arm, num_erroneous_lines_arm
+    num_compiled_riscv, num_tgt_compiled_riscv, num_erroneous_lines_riscv
+    num_em_arm, num_em_riscv for exact match tracking.
+
+✔️ Ensured correct compiler selection:
+
+    Used:
+
+    compilation_cmd = {
+        'arm': 'aarch64-conda-linux-gnu-as',
+        'riscv': 'riscv64-linux-gnu-as'
+    }.get(tgt_lang, None)
+
+✔️ Structured evaluation results for better debugging:
+
+    Stored JSON logs with predicted outputs and compiler errors.
+    Returned all tracked variables using locals() for easier debugging.
+
+✅ Step 5: Next Steps
+
+🔹 Commit finalized changes to GitHub.
+🔹 Run a test training cycle with a small dataset.
+🔹 Verify outputs in ep{epoch}_eval_predictions.jsonl.
+🔹 Tune hyperparameters if necessary before full-scale training.
+🔥 Current Status:
+
+✅ Model training pipeline is understood.
+✅ Evaluation script is finalized & optimized.
+✅ Ready to start small-scale training before full deployment.
