@@ -1,0 +1,131 @@
+Transpiler Project - Progress Update (Feb 19, 2025 - Morning Session)
+Summary of Work Completed
+
+This morning, we focused on debugging script execution, verifying JSON format, correcting paths, ensuring proper model handling, and resolving string and import issues within the transpiler pipeline.
+1. Verifying JSON Format & Data Consistency
+
+Goal:
+Ensure that json_files/euler.json is correctly formatted and consistent with proj_euler_functions.jsonl.
+
+Steps Taken:
+
+    Compared proj_euler_functions.jsonl (provided by the professor) with euler.json to ensure they are structurally similar.
+    Verified file type consistency to confirm that both files were valid JSON formats.
+    Checked for missing or extra functions in euler.json compared to the professor’s file.
+    Reviewed parsing logic in parse.py to ensure it correctly processes euler.json.
+
+Challenges:
+
+    proj_euler_functions.jsonl is line-delimited JSON (JSONL), while euler.json is a standard JSON array.
+    There was a function count mismatch, but we determined a single function difference was not critical.
+    Needed to confirm that parse.py was handling the correct JSON format.
+
+Solutions Suggested:
+
+    Ensure that parse.py correctly loads euler.json as a JSON array rather than expecting JSONL format.
+    Use a script to convert JSONL to standard JSON (or vice versa) if necessary.
+    Confirm that euler.json contains all required function keys expected by main.py.
+
+2. Command and Path Corrections
+
+Goal:
+Ensure that the python main.py command executes correctly by fixing incorrect paths for the input data file and Hugging Face model.
+
+Steps Taken:
+
+    Corrected the data_file path to json_files/euler.json instead of incorrect /mnt/data/euler.json.
+    Set model_name_or_path to celinelee/bartlarge_armtorisc_cloze2048 to ensure the correct model is pulled from Hugging Face.
+
+Challenges:
+
+    The script was initially failing due to incorrect paths being referenced multiple times.
+    The model path needed to be explicitly specified due to multiple available models.
+
+Solutions Suggested:
+
+    Ensure that the data_file and model_name_or_path are correctly passed into the script.
+    Avoid hardcoded /mnt/data/ paths, as they are irrelevant to the project’s structure.
+
+3. Creating Output Directories
+
+Goal:
+Ensure output folders exist before running inference.
+
+Steps Taken:
+
+    Used mkdir -p test_outputs/ to create the required directory for predictions.
+
+Challenges:
+
+    Running python main.py without creating the necessary directory caused failures.
+    mkdir -p ensures the folder exists without errors if it already does.
+
+Solutions Suggested:
+
+    Verify that test_outputs/ exists before execution to prevent runtime issues.
+
+4. Resolving Syntax and Import Errors
+
+Goal:
+Fix issues related to invalid escape sequences in regular expressions and incorrect imports.
+Syntax Errors - Escape Sequences
+
+Problem:
+Several files contained improperly formatted re.compile() calls with invalid escape sequences (\s, \. etc.), leading to warnings and potential runtime issues.
+
+Files Affected:
+
+    hippo/guess_and_sketch/guess_and_sketch.py
+    hippo/solver/sketches_to_rosette.py
+    hippo/solver/global_fixes.py
+    hippo/guess_and_sketch/assembly_regexes.py
+
+Solutions Suggested:
+
+    Update regex patterns by prefixing them with r"..." to prevent Python from interpreting \ as an escape sequence.
+    Check all instances of re.compile("...") and ensure they are properly formatted.
+    Manually review each file and adjust only the necessary expressions.
+
+Import Errors - peft Module
+
+Problem:
+
+    The script failed due to an import error:
+
+    ImportError: cannot import name 'prepare_model_for_int8_training' from 'peft'
+
+    The correct function is now prepare_model_for_kbit_training.
+
+Solutions Suggested:
+
+    Update the import statement in hippo/training/ft_model.py:
+
+    from peft import prepare_model_for_kbit_training
+
+    Verify that the correct function exists in the installed version of peft.
+
+5. Verifying Execution Environment
+
+Goal:
+Ensure the script is run from the correct project directory and references the correct files.
+
+Steps Taken:
+
+    Ensured the command was executed from ~/transpiler_project/.
+    Adjusted python main.py to python hippo/main.py since main.py is inside hippo/.
+
+Challenges:
+
+    Running the script from the wrong directory resulted in ModuleNotFoundError due to incorrect relative imports.
+
+Solutions Suggested:
+
+    Ensure hippo/main.py is referenced correctly in the command.
+    Confirm that all required dependencies are installed in the active environment.
+
+Next Steps
+
+    Manually review re.compile() calls in the affected files and apply the necessary r"" formatting.
+    Re-run the transpiler script after fixing syntax issues.
+    Verify model execution by ensuring predictions are generated in test_outputs/.
+    Test additional inputs to confirm stability.

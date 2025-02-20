@@ -1,0 +1,91 @@
+Summary of Work (Feb 19, 2025)
+1️⃣ Initial Setup & Running the Model
+
+    You initially attempted to run the guess step of the transpiler using:
+
+    python hippo/main.py --guess \
+        --source_lang arm --target_lang risc \
+        --data_file json_files/euler.json \
+        --predictions_folder test_folder \
+        --k 15 \
+        --model_name_or_path "https://huggingface.co/celinelee/bartlarge_armtorisc_cloze2048/tree/main" \
+        --max_length 2048
+
+    Encountered an ImportError related to prepare_model_for_int8_training, which was deprecated in peft. We changed this to prepare_model_for_kbit_training, which allowed the script to progress.
+
+2️⃣ BitsAndBytes & CUDA Issue
+
+    The model required bitsandbytes (bnb) for loading in 8-bit mode, but your system lacks CUDA support.
+    We updated libstdcxx and checked GLIBCXX versions to ensure compatibility.
+    However, bitsandbytes still failed due to missing GLIBCXX_3.4.32 in your system’s standard library.
+    Since your system does not have CUDA, we removed 8-bit loading (load_in_8bit=True) and switched to FP16 (float16).
+
+3️⃣ Model Loading Issue: PeftModel vs. Seq2Seq
+
+    The script attempted to load the model using PeftModel, which is used for LoRA fine-tuned models.
+    However, the Hugging Face model you provided does not contain an adapter_config.json, indicating it’s not LoRA.
+    We adjusted the script to use AutoModelForSeq2SeqLM.from_pretrained instead.
+
+4️⃣ Command Adjustments
+
+    Based on findings, we modified the command:
+
+    python hippo/main.py --guess \
+        --source_lang arm --target_lang risc \
+        --data_file json_files/euler.json \
+        --predictions_folder test_folder \
+        --k 3 \
+        --model_name_or_path "celinelee/bartlarge_armtorisc_cloze2048" \
+        --max_length 2048 \
+        --is_enc_dec
+
+    The key change was adding --is_enc_dec to ensure the script followed the encoder-decoder path.
+
+5️⃣ Script Execution & Performance Issues
+
+    The script ran for an extended period, consuming high CPU (353%) and most of the available memory (6.25GB/7.76GB).
+    We checked:
+        Running processes: ps aux | grep main.py
+        Memory usage: free -h
+        Disk space: df -h
+    The script did not crash but was taking a long time.
+    We killed the process manually using:
+
+    pkill -f main.py
+
+6️⃣ Tensor Shape Mismatch Issue
+
+    We encountered a ValueError due to tensor shape mismatch:
+
+    ValueError: Trying to set a tensor of shape torch.Size([2050, 1024]) in "weight" (which has shape torch.Size([514, 1024])), this looks incorrect.
+
+    This was likely due to a tokenizer vocabulary mismatch between the model and the script.
+    We set config.vocab_size = len(self.tokenizer), ensuring compatibility.
+
+Current Status & Next Steps
+
+✅ Fixed Issues:
+
+    Import errors (prepare_model_for_int8_training ➝ prepare_model_for_kbit_training).
+    BitsAndBytes incompatibility (removed load_in_8bit=True and switched to FP16).
+    Wrong model type (switched from PeftModel to AutoModelForSeq2SeqLM).
+    Added --is_enc_dec to follow the correct execution path.
+
+⚠️ Pending Issues:
+
+    Long execution time & high CPU usage – Need to check if the process is truly running or stuck.
+    Tensor shape mismatch – Ensured vocabulary size is correct; need to confirm this solved the issue.
+    Output directory (test_folder/) still empty – Need to verify that results are being generated.
+
+🔹 Next Steps to Try
+
+    Check test_folder/ for any results:
+
+ls -lh test_folder/
+
+Monitor logs in real-time:
+
+tail -f test_folder/*
+
+If execution is too slow, try reducing max_length further (e.g., --max_length 1024).
+If still stuck, we may need to add print/debug statements in guess_and_sketch.py to track progress.

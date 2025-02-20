@@ -1,0 +1,108 @@
+✅ Step 1: Running the Transpiler
+
+    Goal: Execute the transpiler to translate RISC-V to ARM using the Guess & Sketch method.
+    Command Used:
+
+    python hippo/main.py --guess \
+    --source_lang risc --target_lang arm \
+    --data_file json_files/euler.json \
+    --predictions_folder guess_and_sketch/proj_euler \
+    --model_name_or_path celinelee/bartlarge_armtorisc_cloze2048 \
+    --max_length 2048
+
+    Outcome: The script ran but encountered errors.
+
+⚠️ Step 2: Identifying Errors
+🛑 Issue #1: Regex SyntaxWarnings
+
+    Problem: Multiple invalid escape sequences (\s, \.) in regex patterns.
+    Affected Files:
+        hippo/guess_and_sketch/guess_and_sketch.py
+        hippo/solver/sketches_to_rosette.py
+        hippo/solver/global_fixes.py
+        hippo/guess_and_sketch/assembly_regexes.py
+    Root Cause: Strings like:
+
+re.compile('\s+')  # Incorrect
+
+should be raw strings:
+
+    re.compile(r'\s+')  # Correct
+
+    Plan: Fix every re.compile( instance in the affected files.
+
+⚠️ Step 3: Attempted Fix for Regex Warnings
+✅ What We Did Right
+
+    Identified 55 instances of re.compile( in sketches_to_rosette.py using:
+
+grep -c "re.compile(" hippo/solver/sketches_to_rosette.py
+
+Proposed a bulk find-and-replace solution using sed:
+
+    sed -i 's/re\.compile(/re.compile(r(/g' hippo/solver/sketches_to_rosette.py
+
+    Verified that this approach would apply raw strings to every regex.
+
+❌ What Went Wrong
+
+    The sed command introduced syntax errors:
+        Applied r( incorrectly inside formatted string literals (f"").
+        Affected more than just regex patterns, possibly breaking valid code.
+
+⚠️ Step 4: Dealing with Broken Code
+What We Should Have Done Instead
+
+    Manually Review Before Bulk Replacement
+        Instead of blindly running sed, we should have:
+
+    grep "re.compile(" hippo/solver/sketches_to_rosette.py
+
+    Checked which lines needed fixing and manually adjusted risky ones.
+
+Backup Before Making Changes
+
+    We should have backed up the file before running sed:
+
+    cp hippo/solver/sketches_to_rosette.py hippo/solver/sketches_to_rosette_backup.py
+
+Verify Fixes Before Running Again
+
+    We should have checked the diff:
+
+        git diff hippo/solver/sketches_to_rosette.py
+
+        Then tested syntax before rerunning the transpiler.
+
+🔥 Current Status & Next Steps
+
+✅ What Worked:
+
+    Successfully identified Regex syntax issues.
+    Found all re.compile( instances that needed fixing.
+
+❌ What Went Wrong:
+
+    Bulk replacement introduced new errors, making things worse.
+    Now need to revert and fix the regex manually.
+
+🔜 Next Steps for Tomorrow
+
+1️⃣ Revert changes to sketches_to_rosette.py:
+
+git checkout -- hippo/solver/sketches_to_rosette.py
+
+2️⃣ Manually Fix Regex Issues (Without Breaking Code)
+
+    Go through the grep results and only modify regex patterns.
+    Ensure each re.compile() uses a raw string (r"...").
+
+3️⃣ Run the transpiler again and check errors.
+
+    If new errors appear, debug line by line instead of bulk fixes.
+
+💡 Lessons Learned
+
+    Don’t rush bulk code edits—especially on regex-heavy files.
+    Backup before making major changes.
+    Verify fixes line by line instead of blindly applying global changes.

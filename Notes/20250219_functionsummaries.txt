@@ -1,0 +1,764 @@
+Overview of main.py
+
+This script acts as the entry point for running different functionalities of the transpilation model. It supports:
+
+    Guess – Uses the GuessAndSketch class to predict assembly code snippets.
+    Sketch – Uses GuessAndSketch to refine guesses into a more structured output.
+    Few-Shot Learning Baseline – Runs a few-shot learning approach for comparison.
+    Viewing Uncertain Tokens – Displays uncertain tokens in the predictions.
+
+Detailed Breakdown
+1. Argument Parsing (parse_args())
+
+    Uses argparse to define and parse command-line arguments.
+    Main arguments include:
+        --guess: Runs the guessing phase.
+        --sketch: Runs the sketching phase.
+        --few_shot: Runs a few-shot learning baseline.
+        --data_file: Specifies input data (default: data/proj_euler_functions.jsonl).
+        --model_name_or_path: Path to the trained model (default: "celinelee/bartlarge_risctoarm_cloze2048").
+        --source_lang and --target_lang: Define source and target languages.
+        --predictions_folder: Folder to save results.
+        --verbose: Prints additional debug information.
+
+2. Main Function Execution (main())
+
+    If --view_uncertain is set, it initializes GuessAndSketch and calls view_uncertain_tokens().
+    If --guess is enabled:
+        Loads GuessAndSketch.
+        Reads JSON lines from data_file.
+        Calls guess(datapoint, predictions_folder, overlap_size).
+    If --sketch is enabled:
+        Ensures the Racket language tool (racket) is in PATH.
+        Loads GuessAndSketch and runs sketch() on each prediction file.
+    If --few_shot is enabled:
+        Reads JSON lines from data_file.
+        Calls few_shot() function from baselines/few_shot.py.
+
+Key Dependencies
+
+    GuessAndSketch (guess_and_sketch.py)
+        Core implementation of guessing and sketching (needs to be reviewed next).
+    few_shot (baselines/few_shot.py)
+        Implements a few-shot learning baseline.
+    torch (PyTorch)
+        Likely used for loading the model.
+    json and glob
+        Handles JSON data and retrieves relevant files.
+
+
+
+## Understanding assembly_regexes.py
+
+This script is a collection of regular expressions used for parsing, processing, and filtering ARM and RISC-V assembly instructions. It appears to be used for:
+
+    Extracting function/method names from instructions.
+    Identifying key assembly directives (e.g., .size, .align, .section).
+    Filtering out certain assembly instructions during processing.
+    Mapping and resolving specific instruction patterns between RISC-V and ARM.
+    Extracting constants, immediates, and registers from assembly.
+
+Detailed Breakdown
+1. Extracting Method Names (insns_with_methodnames)
+
+insns_with_methodnames = [
+    (re.compile("((jal|j|call|bne|beq|bl[ste]?|bhi|b)\s+)((?!\.)\S+)"), 3),
+    (re.compile("(adrp\s+[a-z][0-9],\s*)((?!\.)\S+)"), 2),
+    (re.compile("(add\s+[a-z][0-9],\s*[a-z][0-9],\s*:lo12:)((?!\.)\S+)"), 2),
+]
+
+    Identifies jump and branch instructions (jal, j, call, bne, beq, blt, bhi, etc.).
+    Extracts function names from these instructions.
+    adrp and add instructions are also matched for function name resolution.
+
+2. Assembly Directives (directives_regex)
+
+directives_regex = "(\s\.(size|ident|section|align|text|global|type).*|\S+:)"
+
+    Matches assembly directives like .size, .section, .align, .text, etc.
+    Helps identify non-instruction lines in assembly files.
+
+3. Filtering Out Certain Instructions
+
+These lists exclude specific assembly instructions that should not be processed further.
+ARM Instructions to Ignore (arm_cutoff_insns)
+
+arm_cutoff_insns = [
+    re.compile("(st|ld)[rp]?\S*\s+\S+,\s*[^\n]+\s*"),  # Load/store instructions
+    re.compile("\.cfi_[^\n]+\s*"),  # Debugging directives
+    re.compile("[\S\s]+,\s*sp\s*"),  # Anything with the stack pointer (sp)
+    re.compile("adrp\s+[a-z]+\d*,\s*.+\s*"),  # Load address into register
+    re.compile("b(ne|eq|l[ste]?|hi)\s+(\S+)\s*"),  # Branching
+    re.compile("j(|r)\s+(\S+)\s*"),  # Function calls
+    re.compile("cm[np]\s+[a-z]+\d*,\s*\S+\s*"),  # Comparison operators
+    re.compile("csel\s+([a-z]+\d*),\s*([a-z]+\d*),\s*([a-z]+\d*),\s*(eq|lt|gt)\s*"),  # Conditional select
+    re.compile("csetm?\s+([a-z]+\d*),\s*(ne|eq|cs|hs|cc|lo|mi|pl|vs|vc|hi|ls|ge|lt|gt|le|al)\s*"),  # Conditional set
+    re.compile("(sub|add)\s+[a-z]+\d*,\s*sp,\s*\S+\s*"),  # Stack pointer manipulation
+    re.compile(
+        "[ufs]cvt[famnpz][su]?\s+[a-z]+\d*,\s*[a-z]+\d*\s*"
+    ),  # Floating-point conversion
+    re.compile(f"{directives_regex}[\s\S]*"),  # Section boundaries
+]
+
+    Skips load/store operations, branching, stack pointer manipulations, comparisons, and floating-point conversions.
+
+RISC-V Instructions to Ignore (risc_cutoff_insns)
+
+risc_cutoff_insns = [
+    re.compile("f?l(bu?|hu?|wu?|d)\s+\S+,\s*[^\n]+\s*"),  # Load memory into register
+    re.compile("s[dwbh]\s+\S+,\s*[^\n]+\s*"),  # Store register into memory
+    re.compile("[\S\s]+,\s*sp\s*"),  # Stack pointer usage
+    re.compile("b(leu?|eq|gtu?|ltu?|geu?|ls)\s+(\S+),\s*(\S+),\s*(\S+)\s*"),  # Branching
+    re.compile("j(|r)\s+(\S+)\s*"),  # Jump/call functions
+    re.compile("b(|ne|l)\s+(\S+)\s*"),  # Branching
+    re.compile("addi?\s+[a-z]+\d*,\s*sp,\s*\S+\s*"),  # Load address from stack
+    re.compile("call\s+(\S+)\s*"),  # Function calls
+    re.compile(
+        "fcvt\.[a-z]+\.[a-z]+\s+[a-z]+\d*,\s*[a-z]+\d*.*"
+    ),  # Floating-point conversion
+    re.compile('lla\s+([a-z]+\d*),\s*(\S+)\s*'),  # Load label address
+    re.compile('la\s+([a-z]+\d*),\s*([a-z_]+)$'),  # Load address
+    re.compile("s(eq|ne|lt|gt)z\s+([a-z]+\d*),\s*([a-z]+\d*)"),  # Comparisons
+    re.compile("f(eq|le|lt)\.[sd]\s+([a-z]+\d*),\s*([a-z]+\d*),\s*([a-z]+\d*)"),  # Floating-point comparison
+    re.compile("(s[lg]tu?)\s+([a-z]+\d*),\s*([a-z]+\d*),\s*([a-z]+\d*)")  # Signed comparison
+]
+
+    Similar to ARM, it skips memory access, branching, stack manipulations, floating-point operations, and comparisons.
+
+4. Resolving Global Symbols (insn_resolve_global)
+
+This maps constants and function addresses across architectures:
+
+insn_resolve_global = [
+    (re.compile('lla\s+[a-z]+\d*,\s*(\.LC\d+)\s*$'), re.compile('(mov.*|fmov\s+[a-z]+\d*,\s+-?\d+\.\d+e[\+-]\d+|ad.+\.LC\d+)\s*$'), "<<{orig}:{annotation}>>"),
+    (re.compile('fmov\s+[a-z]+\d*,\s*(-?\d+\.\d+e[\+-]\d+)\s*$'), re.compile('lla\s+[a-z]+\d*,\s*(\.LC\d+)\s*$'), "<<{annotation}>>"),
+    (re.compile('\.string\s+(\".*)$'), re.compile('\.string\s+(\".*)$'), "{annotation}"),
+    (re.compile('\.ascii\s+(\".*)$'), re.compile('\.ascii\s+(\".*)$'), "{annotation}"),
+    (re.compile('\.word\s+(\".*)$'), re.compile('\.word\s+(\".*)$'), "{annotation}"),
+]
+
+    Maps function addresses (lla and fmov).
+    Converts string and constant declarations between RISC-V and ARM.
+
+5. Extracting Registers & Immediates
+
+    Immediate Values (imm_regex)
+
+imm_regex = re.compile(",\s*(-?\d+\.\d+e[+|-]\d+|#\d+|-?0x[0-9a-fA-F]+|(-?\d+)(?!\())")
+
+    Captures floating-point numbers, hex values, and immediate integers.
+
+Registers (register_regex)
+
+    register_regex = re.compile("[a-z]+\d+")
+
+        Extracts register names (e.g., x0, x1, w2, s3, etc.).
+
+6. Instruction Extraction Patterns
+
+These regex patterns extract three, two, and four-operand instructions from assembly:
+
+reg3 = re.compile("\s*(\S+)\s+([a-z]+\d+?),\s*([a-z]+\d+?),\s*(.+?)\n")
+reg2 = re.compile("\s*(\S+)\s+([a-z]+\d+?),\s*(.+?)\n")
+reg4_holed = re.compile("\s*(\S+)\s+([a-z]+\d*|\?\?),\s*([a-z]+\d*|\?\?),\s*([a-z]+\d*|\?\?|#?-?\d+),\s*(.+?)\n")
+
+    Identifies different instruction formats with variable operands.
+
+Conclusion
+
+    This script is used to parse assembly files, filter out irrelevant instructions, and map instructions across architectures.
+    It plays a key role in Guess & Sketch preprocessing (i.e., how input assembly is structured before being fed into the model).
+    
+    
+    
+Analysis of guess_and_sketch.py
+
+This script is the core implementation of the Guess & Sketch phase, which is crucial for transpiling assembly code between RISC-V and ARM. I’ve broken it down into major functionalities, detailing how each part works.
+1. Overview
+
+The GuessAndSketch class is responsible for:
+
+    Loading a pretrained model (BART or GPT-based).
+    Generating candidate translations (Guess phase).
+    Filtering and refining outputs to improve translation (Sketch phase).
+    Executing the translated assembly using QEMU for evaluation.
+    Identifying uncertain tokens and aligning them.
+
+2. Key Dependencies
+
+The script imports several modules:
+
+    torch (loads models and handles computations).
+    transformers (loads tokenizers and models from Hugging Face).
+    peft (Handles parameter-efficient fine-tuning models).
+    re and json (Regex processing & JSON parsing).
+    solver/ modules (Handles Rosette solver, QEMU execution, and global fixes).
+    training/ft_model.py (Prepares input text for training).
+
+3. Initialization (__init__)
+
+class GuessAndSketch:
+    def __init__(self, args):
+
+Initialization Tasks
+
+    Loads model and tokenizer from Hugging Face.
+    Initializes the Rosette solver (RosetteSolver).
+    Configures whether to use memory block, math, and string copying.
+    Prepares execution commands (ARM/RISC-V gcc, as, and qemu).
+
+Important Variables
+
+    self.is_enc_dec → Whether the model is encoder-decoder (BART) or decoder-only (GPT).
+    self.lambda_val → Threshold for uncertain token filtering.
+    self.verbose → Enables debugging output.
+
+4. Model Setup (setup_from_args)
+
+def setup_from_args(self, args):
+
+    Loads the tokenizer and model.
+    If using an encoder-decoder (BART):
+        Sets up max_length, num_beams, and generation settings.
+    If using a decoder-only model (GPT):
+        Uses 8-bit loading for efficiency (load_in_8bit=True).
+        Wraps the model with PeftModel for fine-tuning.
+
+Model Output Format
+
+    For BART: Outputs include attention weights (cross_attentions).
+    For GPT: Uses attentions instead.
+
+5. Guess Phase (guess)
+
+def guess(self, datapoint, predictions_folder, num_generations=100):
+
+The guess phase generates a list of candidate translations for a given assembly function.
+Steps
+
+    Reads source (C, RISC-V, ARM) from datapoint JSON.
+    Tokenizes the source assembly:
+
+batch = self.preprocess_text(src_chunk, tgt_chunk)
+
+Generates translations using translate():
+
+pred_output = self.translate(batch, (in_start_idx, in_seq_len), self.gen_kwargs)
+
+Extracts alignments between source and predicted assembly:
+
+    self.get_alignments(pred_output, batch.input_ids[0])
+
+    Stores top k translations in JSON output.
+
+6. Sketch Phase (sketch)
+
+def sketch(self, datapoint, exc_folder):
+
+    Refines the guessed translations by applying heuristics, alignment-based corrections, and QEMU execution testing.
+
+Key Steps
+
+    Loads existing execution results if available.
+    Generates and tests Frankenstein implementations:
+
+frankenstein_impl = {fn_name: self.tokenizer.decode(pred['translation_info'][fn_name][0])}
+
+Executes Frankenstein implementations using QEMU:
+
+(succeeded, stage, pred_execution_output) = run_qemu(translation, progname, ...)
+
+Finds uncertain tokens & replaces them using alignment-based resolutions:
+
+    resolutions = self.resolve_aligned_weaknesses(guess_toked, src_toked, token_alignments)
+
+    Runs multiple sketch refinement passes to improve alignment.
+
+7. Token Alignment & Filtering
+Extracting Token Alignments (get_alignments)
+
+def get_alignments(self, pred_outputs, input_ids, start_idxes_and_lens=None, p_mass=0.99):
+
+    Aligns source and target tokens based on attention weights.
+    Finds the most probable token sequences.
+
+Filtering Low-Confidence Predictions (filter_topk_chunks)
+
+def filter_topk_chunks(self, chunk_pred_output, prev_pred_output, prefix_len, prior_input_len, k):
+
+    Ensures only the top-k most confident sequences are retained.
+    Uses beam search scoring.
+
+8. Execution & Evaluation
+Running QEMU Execution (run_qemu)
+
+(succeeded, stage, pred_execution_output) = run_qemu(translation, progname, ...)
+
+    The script compiles and executes predicted assembly using QEMU.
+    Compares output against the true execution result.
+
+9. Resolving Weaknesses
+
+def resolve_aligned_weaknesses(self, pred_toked, src_toked, token_alignments):
+
+    Detects misaligned code blocks.
+    Uses alignment-based replacement strategies.
+
+Handling Global Fixes
+
+for modder in global_fixes:
+    translation = modder(input_assembly, translation, self.tgt_lang)
+
+    Applies global fixes (e.g., register renaming, constant substitutions).
+
+10. Debugging & Visualization
+View Uncertain Tokens (view_uncertain_tokens)
+
+def view_uncertain_tokens(self, datafile):
+
+    Displays tokens with low confidence.
+    Allows manual inspection of alignments.
+
+Key Takeaways
+
+    Dual-Phase Model
+        Guess Phase → Generates multiple translation candidates.
+        Sketch Phase → Filters and refines translations.
+
+    Alignment-Based Refinements
+        Uses token alignments and probabilities to resolve uncertainty.
+        Punches out uncertain tokens (??) and replaces them.
+
+    QEMU Execution
+        Runs the generated assembly on a virtual machine.
+        Only keeps translations that match ground truth execution.
+
+    Adaptive Filtering
+        Uses attention-based scoring to filter low-confidence translations.
+        Dynamic programming approach to optimize selection.
+
+    Integration with Global Fixes
+        Applies heuristic modifications (e.g., register renaming).
+        Ensures correct execution of constants, labels, and memory addresses.
+
+1. Purpose of sketches_to_rosette.py
+
+This file is responsible for translating assembly instructions into Rosette program sequences. Specifically, it:
+
+    Converts RISC-V and ARM assembly instructions into Rosette SMT expressions.
+    Identifies holes (??) in generated code and attempts to fill them via constraint solving.
+    Uses regular expressions to match assembly patterns and transform them into Rosette-compatible formats.
+    Interacts with Racket (Rosette) solver to refine assembly code.
+
+2. Key Components
+
+The script is structured into three main classes:
+
+    AssemblyToRosette – Base class for processing assembly instructions.
+    RISCVToRosette & ArmToRosette – Child classes that implement RISC-V & ARM-specific translations.
+    RosetteSolver – The core solver that takes assembly translations, executes Rosette synthesis, and resolves uncertain tokens.
+
+3. AssemblyToRosette (Base Class)
+
+class AssemblyToRosette:
+    def __init__(self, block, input_registers, output_register, verbose):
+
+This parent class:
+
+    Stores assembly blocks that need to be converted.
+    Sets up bitvector (BV) templates for different immediate value sizes (e.g., 5-bit, 12-bit).
+    Defines methods for resetting constraints and generating Rosette expressions.
+
+Key Components
+
+    self.hole = "??" → Placeholder for unknown instruction values.
+    self.bv_template = '(bv {number} 64)' → Standard 64-bit bitvector format.
+    self.imm5, self.imm12, self.imm16, etc. → Defines bitwise constraints for various immediate values.
+
+4. RISCVToRosette: Converting RISC-V Assembly
+
+class RISCVToRosette(AssemblyToRosette):
+
+This child class converts RISC-V assembly into Rosette expressions. It:
+
+    Uses regular expressions (regex) to match RISC-V instructions.
+    Maps them to Rosette bitvector operations.
+    Handles shift, arithmetic, and comparison operations.
+
+Example: Converting slli (Shift Left Logical Immediate)
+
+def slli(self, matches):
+    op = matches.group(1)  # Instruction type
+    regt = matches.group(2)  # Target register
+    regs = matches.group(3)  # Source register
+    shift_amt = matches.group(4)  # Shift amount
+
+    if shift_amt == self.hole:
+        shift_amt = f"imm5_{self.sym_const_count}"
+        self.sym_const_count += 1
+        self.sym_consts_to_constraints[shift_amt] = [
+            f"(assert (bvugt {shift_amt} {self.imm5[0]}))",
+            f"(assert (bvult {shift_amt} {self.imm5[1]}))"
+        ]
+
+    Identifies slli instruction and its registers & immediate values.
+    If shift_amt is unknown (??), it introduces a Rosette symbolic variable (imm5_x).
+    Ensures shift_amt is within valid range (0-31) using bitvector constraints.
+
+Other Implemented RISC-V Instructions
+
+    srlai() → Implements srli (shift right logical) & srai (shift right arithmetic).
+    li() → Implements li (load immediate).
+    addi() → Implements addi (add immediate).
+    bop() → Implements add, sub, mul, div, rem, and, or, xor.
+    sext() → Implements sext.w (sign-extend word).
+    mv() → Implements mv (move instruction).
+
+5. ArmToRosette: Converting ARM Assembly
+
+class ArmToRosette(AssemblyToRosette):
+
+This child class converts ARM assembly into Rosette expressions. It:
+
+    Matches ARM-specific instructions using regular expressions.
+    Maps them to bitvector operations in Rosette.
+
+Example: Handling lsl (Logical Shift Left)
+
+def lsl(self, matches):
+    regt = matches.group(1)
+    regs = matches.group(2)
+    shift_amt = matches.group(3)
+
+    if shift_amt == self.hole:
+        shift_amt = f"immshiftl_{self.sym_const_count}"
+        self.sym_const_count += 1
+        self.sym_consts_to_constraints[shift_amt] = [
+            f"(assert (bvsge {shift_amt} (bv 0 {bvsize})))",
+            f"(assert (bvsle {shift_amt} (bv {bvsize - 1} {bvsize})))",
+        ]
+
+    Finds lsl (logical shift left) instructions.
+    If shift_amt is unknown (??), it generates a symbolic variable (immshiftl_x).
+    Applies bitvector constraints to ensure shift_amt is within valid range.
+
+Other Implemented ARM Instructions
+
+    mov() → Implements mov (move).
+    movk() → Implements movk (move with keep).
+    bop() → Implements add, sub, and, or, xor.
+    div() → Implements sdiv, udiv, fdiv (signed, unsigned, and floating-point division).
+    mull() → Implements mul, smull, umull (multiplication variants).
+
+6. RosetteSolver: Filling in Holes (??)
+
+class RosetteSolver:
+    def __init__(self, src_lang, tgt_lang, verbose, hole_tok="??", sketch_name="scratch_sketch.rkt"):
+
+This class:
+
+    Takes partially translated assembly (with ?? holes).
+    Converts it into Rosette constraints.
+    Calls Racket Rosette solver to fill in missing values.
+
+Key Methods
+
+    solve_aligned_block_sketches()
+        Translates both source (RISC-V/ARM) & predicted (ARM/RISC-V) code to Rosette.
+        Generates synthesis constraints.
+        Calls Rosette to find valid replacements for ??.
+        Runs Racket (racket sketches/scratch_sketch.rkt) to execute Rosette synthesis.
+        Extracts the optimized assembly translation.
+
+    translate_to_ass()
+        Converts Rosette solutions back into assembly syntax.
+
+    reconstruct_from_sketch()
+        Replaces ?? with computed values to generate final assembly translation.
+
+7. Execution Process
+
+    RISC-V → Rosette SMT
+        Converts RISC-V assembly into Rosette expressions.
+        Detects uncertain tokens (??) and replaces them with symbolic constraints.
+
+    ARM → Rosette SMT
+        Converts ARM assembly into Rosette expressions.
+        Introduces symbolic placeholders for unknown values.
+
+    Constraint Solving with Rosette
+        Runs Rosette synthesis to infer missing values.
+        Extracts valid solutions.
+
+    Final Assembly Reconstruction
+        Fills in ?? placeholders with computed values.
+        Outputs fully translated assembly code.
+
+8. Key Takeaways
+
+✅ Converts RISC-V & ARM assembly to Rosette SMT expressions.
+✅ Handles missing instructions (??) with constraint solving.
+✅ Uses Rosette to synthesize correct translations.
+✅ Runs racket to execute Rosette synthesis.
+✅ Reconstructs final assembly code from solutions.
+
+
+
+
+Analysis of global_fixes.py
+
+This script provides post-processing fixes for assembly translations, specifically targeting label normalization, memory block updates, floating-point conversions, and header adjustments.
+1. Purpose of global_fixes.py
+
+It applies global transformations to assembly translations to:
+
+    Normalize labels (.LFB, .LFE, .LC) for consistency.
+    Correct floating-point and memory values.
+    Adjust headers to conform to ARM or RISC-V syntax.
+    Ensure consistent formatting of immediate values.
+
+These fixes are crucial for ensuring correctness before verification or execution.
+2. Key Fixes Implemented
+1️⃣ Updating .LFB & .LFE Labels (update_lfbs())
+
+def update_lfbs(input, translation, lang):
+    lfb_counter = 0
+    curr_idx = 0
+    updated_prediction = ""
+    while ".LFB" in translation[curr_idx:]:
+        lfb_idx = re.search(r"\.LFB[0-9]+", translation[curr_idx:]).start() + curr_idx
+        updated_prediction += translation[curr_idx:lfb_idx]
+        updated_prediction += f".LFB{lfb_counter}"  # Renaming labels
+        old_lfb = translation[lfb_idx : translation.index(":\n", lfb_idx)]
+
+        curr_idx = lfb_idx + len(old_lfb)
+
+        leb_idx = re.search(r"\.LFE[0-9]+", translation[curr_idx:]).start() + curr_idx
+        old_leb = translation[leb_idx : translation.index(":\n", leb_idx)]
+        updated_prediction += translation[curr_idx:leb_idx]
+        updated_prediction += f".LFE{lfb_counter}"  # Keeping LFB-LFE mapping
+
+        curr_idx = leb_idx + len(old_leb)
+        lfb_counter += 1  # Increment label counter
+
+    updated_prediction += translation[curr_idx:]
+    return updated_prediction
+
+✅ Fixes
+
+    Ensures .LFBx and .LFEx labels are renumbered consistently.
+    This avoids duplicate/conflicting labels in translated code.
+
+2️⃣ Normalizing Assembly Headers (normalize_header())
+
+def normalize_header(input, translation, lang):
+    if lang == "arm":
+        return re.sub(
+            r"\.arch\s+armv8-a[\s\S]+?\.text",
+            '.arch\tarmv8-a\n\t.file\t"file.c"\n\t.text',
+            translation,
+        )
+    if lang == "risc":
+        return re.sub(
+            r"\.file[\s\S]+?\.text",
+            '.file\t"file.c"\n\t.option pic\n\t.text',
+            translation,
+        )
+    return translation
+
+✅ Fixes
+
+    For ARM, ensures the header starts with .arch armv8-a, .file "file.c", and .text.
+    For RISC-V, ensures .file "file.c", .option pic, and .text are correctly set.
+    Removes incorrect or inconsistent headers.
+
+3️⃣ Fixing Memory Block Values (update_memblock())
+
+def update_memblock(input, translation, lang):
+    curr_idx = 0
+    updated_prediction = ""
+    if lang == 'arm':
+        while "<<.LC" in translation[curr_idx:]:
+            lc_match = re.search(re.compile(r"<<(.+?)>>"), translation[curr_idx:])
+            annotation_idx = lc_match.start() + curr_idx
+            updated_prediction += translation[curr_idx:annotation_idx]
+            mem_label = lc_match.group(1)
+            memblock = re.search(re.compile(f'{mem_label}:([\s\S]+?)(\.ident|\.align|\.section|\.text)'), input).group(1)
+            memval = get_fval_from_mem(memblock.strip())  # Converts memory block to float
+            updated_prediction += memval
+            curr_idx = annotation_idx + len(lc_match.group(0))
+        updated_prediction += translation[curr_idx:]
+
+✅ Fixes
+
+    For ARM, replaces <<.LCX>> placeholders with actual floating-point values from memory blocks.
+    For RISC-V, maps .LCX memory references to their correct memory values.
+
+3. Supporting Functions for Memory Handling
+Extracting Float Values from Memory (get_fval_from_mem())
+
+def get_fval_from_mem(mem_block):
+    if re.search(re.compile('\.word\s+(\d+)\s+\.word\s+(\d+)'), mem_block):
+        word_matches = re.search(re.compile('\.word\s+(\d+)\s+\.word\s+(\d+)'), mem_block)
+        word0 = word_matches.group(1)
+        word1 = word_matches.group(2)
+        full_bin = '{0:032b}'.format(int(word1)) + '{0:032b}'.format(int(word0))
+        sign = (-1) ** int(full_bin[0])
+        exponent = 2**(int(full_bin[1:12], 2) - 1023)
+        significand = 1 + sum(int(full_bin[i])*(2**(11-i)) for i in range(12, len(full_bin)))
+        memval = sign * significand * exponent
+        return f'{memval:e}'
+
+✅ Fixes
+
+    Decodes floating-point values stored in .word memory blocks.
+
+Extracting .dword Values from Memory (get_dval_from_mem())
+
+def get_dval_from_mem(mem_block):
+    if re.search(re.compile('\.dword\s+\d+'), mem_block):
+        dword_matches = re.search(re.compile('\.dword\s+(\d+)'), mem_block)
+        dword = dword_matches.group(1)
+        memval = int(dword)
+        return(str(memval))
+
+✅ Fixes
+
+    Retrieves 64-bit (.dword) values from memory sections.
+
+Extracting Immediate Values from Assembly (get_dval_from_ass())
+
+def get_dval_from_ass(arm_block):
+    dval = None
+    for line in arm_block.split(';'):
+        mov_match = re.search(r'mov\s+[a-z]+\d+,\s*(\d+)', line)
+        movk_match = re.search(r'movk\s+[a-z]+\d+,\s*(0x[a-f\d]+),\s*lsl\s+(\d+)\s*$', line)
+        if mov_match:
+            dval = int(mov_match.group(1))
+        elif movk_match:
+            dval += int(movk_match.group(1), 16) << int(movk_match.group(2))
+    return str(dval)
+
+✅ Fixes
+
+    Extracts immediate values from ARM assembly (mov, movk).
+
+4. Global Fixes List
+
+At the end of the script, all fixes are bundled together:
+
+global_fixes = [update_lfbs, update_labels, update_memblock, normalize_header]
+
+    update_lfbs → Fixes label numbering (.LFBx / .LFEx).
+    update_labels → Placeholder function (not yet implemented).
+    update_memblock → Fixes memory references (.LCX).
+    normalize_header → Corrects assembly headers.
+
+5. Summary of global_fixes.py
+
+✅ Fixes .LFBx & .LFEx labels for consistency.
+✅ Normalizes headers for ARM & RISC-V assembly.
+✅ Resolves .LCx memory references, converting floating-point values.
+✅ Extracts mov & movk immediate values.
+✅ Prepares translations for final execution.
+
+
+
+
+Analysis of docker_evaluate.py
+
+This script is designed for compiling and executing assembly code inside a Docker container. However, since you've explicitly reworked the setup to not use Docker, this script may not be needed in your current workflow.
+1. Purpose of docker_evaluate.py
+
+It runs RISC-V and ARM assembly code inside a Docker-based execution environment using:
+
+    GCC for compilation (riscv64-unknown-linux-gnu-gcc or aarch64-linux-gnu-gcc).
+    QEMU for emulation and execution.
+    Shell commands inside a Docker container (docker exec).
+
+2. Why You Might Not Need This
+
+Since you've removed Docker from your setup, the script no longer serves a purpose unless:
+
+    You still use QEMU for cross-architecture testing.
+    You need to run RISC-V or ARM binaries outside your native system.
+    Some other parts of your codebase rely on calling this script.
+
+3. Key Components of docker_evaluate.py
+1️⃣ Function run_risc_docker()
+
+Runs RISC-V assembly inside a Docker container.
+What It Does
+
+    Writes assembly to a file ({filename}_risc.s).
+    Compiles it using GCC for RISC-V:
+
+    riscv64-unknown-linux-gnu-gcc {write_filename_prefix}.s -o {write_filename_prefix} {gcc_flags}
+
+    Executes the binary inside QEMU within the Docker container.
+
+Example Flow
+
+    Writes assembly to a file in folder.
+    Compiles it using RISC-V GCC.
+    Executes it using QEMU.
+
+Why It’s a Problem
+
+🚨 Relies on Docker (./verification_image/linux-riscv64-verification), which you no longer use.
+2️⃣ Function run_qemu()
+
+Runs ARM or RISC-V assembly using QEMU inside a Docker container.
+What It Does
+
+    Determines the architecture (ARM or RISC-V).
+    Uses docker exec to:
+        Copy the assembly file into the container.
+        Assemble it (as command).
+        Compile it (gcc command).
+        Execute it using QEMU.
+
+Example Execution
+
+For ARM:
+
+docker exec {container_id} aarch64-linux-gnu-as {write_filename_prefix}.s -o {write_filename_prefix}.o
+docker exec {container_id} aarch64-linux-gnu-gcc {write_filename_prefix}.o -o {write_filename_prefix} {gcc_flags}
+docker exec {container_id} qemu-aarch64 ./{write_filename_prefix}
+
+For RISC-V:
+
+    Calls run_risc_docker() (which also relies on Docker).
+
+Why It’s a Problem
+
+🚨 You don’t use Docker → All docker exec commands will fail.
+4. How to Replace docker_evaluate.py Without Docker
+If You Still Need QEMU
+
+If you're still using QEMU for cross-architecture execution, you can replace this script with standalone QEMU commands.
+
+Example Standalone (No Docker)
+
+riscv64-unknown-linux-gnu-gcc input.s -o output
+qemu-riscv64 output
+
+or for ARM:
+
+aarch64-linux-gnu-gcc input.s -o output
+qemu-aarch64 output
+
+If You Don't Need QEMU
+
+Simply delete docker_evaluate.py and replace its calls in your project with direct execution.
+5. Next Steps
+
+1️⃣ Are you using QEMU without Docker?
+
+    Yes → Modify the script to remove Docker but keep QEMU.
+    No → Delete the script entirely.
+
+2️⃣ Where is docker_evaluate.py being used in your project?
+
+    If it's not referenced anywhere, you can safely delete it.
+    If it is referenced, we need to rewrite the calls.

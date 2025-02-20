@@ -15,8 +15,8 @@ EULER_DIR="$HOME/transpiler_project/euler"
 # Step 0: Install Conda if missing
 if [ ! -d "$HOME/miniconda3" ]; then
     echo "📥 Installing Conda..."
-    chmod +x ./getconda_vl.sh
-    ./getconda_vl.sh || { echo "❌ Error installing Conda"; exit 1; }
+    chmod +x Shell_Scripts/getconda_vl.sh
+    Shell_Scripts/getconda_vl.sh || { echo "❌ Error installing Conda"; exit 1; }
     echo "🔄 Restart your terminal OR run: source ~/.bashrc"
     echo "Then you can run this script again, which automatically skips Step 0"
     exit 0  # Stop script execution after installing Conda
