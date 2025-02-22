@@ -1,0 +1,48 @@
+
+Summary of Everything We Did Since the Last Recap
+1. Refining the Dependency Installation Process
+
+    Simplified getdependencies_vl.sh
+        Removed unnecessary dependencies (Vim, cross-compilers, pip, virtualenv).
+        Used Conda for xz, setuptools, and devtools.
+        Retained QEMU (qemu-user & qemu-user-static), as they require sudo installation.
+        Installed Python dependencies via pip using requirements.txt and editable install (-e .).
+
+2. Fixing the Package Structure
+
+    Discovered that hippo/ was incorrectly treated as the package, but the actual package should include:
+        guess_and_sketch/
+        solver/
+        training/
+    Updated setup.py to reflect the correct package structure.
+
+3. Verifying Package Installation
+
+    Uninstalled and reinstalled the package properly:
+
+    bash
+    CopyEdit
+    pip uninstall guesssketch
+    pip install -e hippo/
+
+    Successfully imported and tested:
+
+    bash
+    CopyEdit
+    python -c "import guess_and_sketch; print('GuessSketch Loaded!')"
+    python -c "import solver; print('Solver Loaded!')"
+    python -c "import training; print('Training Loaded!')"
+
+        ✅ Everything loaded correctly.
+
+4. Cleaning Up Unnecessary Scripts
+
+    Removed outdated scripts:
+        getconda_vl.sh (since Conda is already installed).
+        Cross-compilation scripts (assemble_binary_vl.sh, compile_assembly_vl.sh).
+        fix_missing_headers.sh, test_unixcmds_vl.sh, qemu_execute_vl.sh.
+    Kept only:
+        getdependencies_vl.sh (for dependency installation).
+        install_gmp.sh (in case GMP is required).
+
+

@@ -1,0 +1,164 @@
+
+1. Initial Setup and Context:
+
+    Objective: We were working on a project involving the translation of ARM assembly code to RISC code, specifically using a model based on Facebook’s BART architecture. The aim was to generate predictions from a set of problems, saving the output as JSON files.
+
+    Main Script: You were running the guess_and_sketch.py script which handles the actual prediction process and saves results in a JSON format.
+
+2. Problem Encountered:
+
+    Memory Issues: We initially encountered CUDA memory errors while trying to process multiple files with your model. This error happened when trying to allocate more memory than the GPU could handle, which is common when working with large models or datasets.
+
+    Error Example:
+
+    pgsql
+    Copy
+    CUDA out of memory. Tried to allocate 66.00 MiB. GPU 0 has a total capacity of 79.25 GiB of which 64.75 MiB is free.
+
+    Tensor Serialization Issues: Another issue was that the json.dump() function failed to serialize PyTorch tensors, as the JSON format doesn't support them natively. This was resolved by recursively converting tensors into lists.
+
+3. Solution Attempts and Fixes:
+A) Debugging the Memory Issue:
+
+    Emptying the Cache: Initially, we tried freeing up GPU memory by using torch.cuda.empty_cache() and gc.collect() to ensure that no memory was being unnecessarily held.
+
+    Example:
+
+    python
+    Copy
+    import gc
+    import torch
+    torch.cuda.empty_cache()
+    gc.collect()
+
+    Reducing the k Value: We initially tried reducing the value of k from 15 to 3 to see if it helped with the memory error. However, we found that the issue persisted even with k=3, which meant that reducing k wasn’t an adequate solution for the problem.
+
+    Error Message Analysis: We also encountered an issue where the sequence length exceeded the maximum allowed sequence length for the BART model:
+
+    kotlin
+    Copy
+    Token indices sequence length is longer than the specified maximum sequence length for this model (3480 > 2048).
+
+    This error indicated that the inputs were too large to fit within the BART model’s constraints.
+
+B) Handling JSON Serialization:
+
+    Modifying the convert_tensors function: In order to fix the serialization issue with JSON, we updated the convert_tensors function to recursively convert all tensors to lists. We made sure that every tensor inside a dictionary or list was converted to a format that json.dump() could handle.
+
+    Updated convert_tensors function:
+
+    python
+    Copy
+    def convert_tensors(self, obj):
+        """Recursively convert all tensors in obj to lists for JSON compatibility."""
+        if isinstance(obj, torch.Tensor):
+            return obj.tolist()  # Convert tensor to a Python list
+        elif isinstance(obj, list):
+            return [self.convert_tensors(i) for i in obj]  # Process elements in lists
+        elif isinstance(obj, dict):
+            return {k: self.convert_tensors(v) for k, v in obj.items()}  # Process dict values
+        return obj  # Return unchanged if not a tensor
+
+    Changes in the guess_and_sketch.py file: We modified the section of guess_and_sketch.py where the results were written into the JSON file. Specifically, we ensured that before dumping the prediction results into a file, tensors were converted to lists.
+
+    Code Changes:
+
+    python
+    Copy
+    if not os.path.exists(predictions_folder):
+        os.mkdir(predictions_folder)
+
+    problem_prediction[f"pred_{self.tgt_lang}"]["top_k"] = [
+        self.convert_tensors(top_k_info) for top_k_info in problem_prediction[f"pred_{self.tgt_lang}"]["top_k"]
+    ]
+
+    with open(f"{predictions_folder}/guess_{progname}.json", "w") as f:
+        json.dump(problem_prediction, f, indent=4)
+
+    Removed Debugging Prints: In the process of debugging, we added extensive prints to inspect the structure of the data. This was helpful, but after confirming that the data structure was correct, we commented out these debug statements to make the code cleaner and more efficient.
+
+    Removed Debugging Code:
+
+    python
+    Copy
+    # Commented out debugging print statements
+    # for i, entry in enumerate(problem_prediction[f"pred_{self.tgt_lang}"]["top_k"]):
+    #     print(f"DEBUG: Entry {i} in top_k -> Type: {type(entry)}")
+
+C) Fixing Git Issues (Handling Large Files with Git LFS):
+
+    GitHub’s 100MB File Size Limit: When trying to push the output JSON files to GitHub, we encountered an issue with GitHub's 100MB file size limit. Files like guess_problem11.json were over 800MB, causing the push to fail.
+
+    Git Error:
+
+    vbnet
+    Copy
+    remote: error: File test_folder/guess_problem11.json is 808.30 MB; this exceeds GitHub's file size limit of 100.00 MB
+
+    Installing and Using Git LFS: We used Git Large File Storage (LFS) to handle large files by tracking files that exceed GitHub’s size limits. Specifically, we used the following command to track the large .json files inside the test_folder:
+
+    bash
+    Copy
+    git lfs track "test_folder/*.json"
+
+    Updating .gitattributes: After tracking large files with Git LFS, we added the .gitattributes file to the repository to ensure that the large files would be handled by LFS in the future. The .gitattributes file was automatically created in the process.
+
+    Committing and Pushing with LFS: We then committed all the changes, including the .gitattributes file and the files in test_folder, and attempted to push them to GitHub.
+
+    After pushing, we encountered errors because some files were still too large to be handled by Git LFS or GitHub's file size limit.
+
+D) Further Attempts to Push:
+
+We tried several solutions to fix the large file issue:
+
+    Removed files from the history using Git LFS Migrate: We attempted to use git lfs migrate to clean up the Git history and ensure that all large files were tracked by Git LFS, but that didn’t work because there were still very large files exceeding GitHub’s limits.
+
+    Git LFS Migration and Force Push: We used git lfs migrate import to rewrite the history and then forced the push to GitHub using git push origin main --force. However, this was still unsuccessful because of the file size limits on GitHub.
+
+4. Current Status and Remaining Issues:
+
+    Memory Issues: We successfully reduced memory errors by ensuring that tensor data is properly serialized for JSON and made optimizations to reduce memory load. However, some models and inputs are still too large for the current GPU memory.
+
+    Git LFS and File Size: We successfully set up Git LFS and tracked large files, but the push was rejected due to files exceeding GitHub’s file size limit (100MB). We are still facing issues due to extremely large JSON files that exceed the Git LFS capabilities.
+
+Command Summary:
+
+    Running the Script: We used the following command to run the model with different configurations (such as k=3):
+
+    bash
+    Copy
+    CUDA_VISIBLE_DEVICES=0 python hippo/main.py --guess \
+        --source_lang arm --target_lang risc \
+        --data_file json_files/euler.json \
+        --predictions_folder test_folder \
+        --k 3 \
+        --model_name_or_path "celinelee/bartlarge_armtorisc_cloze2048" \
+        --max_length 2048 \
+        --is_enc_dec
+
+    Git LFS Commands:
+        Track files:
+
+        bash
+        Copy
+        git lfs track "test_folder/*.json"
+
+        Add the .gitattributes file:
+
+        bash
+        Copy
+        git add .gitattributes
+
+        Commit changes:
+
+        bash
+        Copy
+        git commit -m "Track large JSON files in test_folder using Git LFS"
+
+        Force push to GitHub:
+
+        bash
+        Copy
+        git push origin main --force
+
+

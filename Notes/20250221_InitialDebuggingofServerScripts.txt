@@ -1,0 +1,94 @@
+
+Context: Running a Transpiler Project Remotely
+
+You are trying to replicate a transpiler project that you successfully set up and compiled locally. However, when running it on a remote server with GPU access, you encountered errors in one of the scripts.
+Key Issues and Debugging Steps
+1️⃣ Initial Issues
+
+    Script failing on the remote server.
+    Mismatch between local and remote environments (e.g., dependencies, Python versions, CUDA).
+    Errors in guess_and_sketch.py related to cross-attention layers.
+
+## ALSO!!!! Worth noting that ft_model.py uses prepare_model_for_int8_training which is deprecated! using prepare_model_for_kbit_training instead
+
+2️⃣ Fixing the Alignment Layer Issue
+
+    Your model has 12 layers (indexed 0-11), but alignment_layer was set to 17, which was out of range.
+    We changed it to:
+
+    python
+    CopyEdit
+    alignment_layer = 10
+    alignment_head = 14
+
+        This fixed the out-of-bounds error and moved execution forward.
+
+3️⃣ Encountered JSON Serialization Error
+
+    The script attempted to save a PyTorch Tensor into a JSON file, which is not supported.
+    Solution: Convert all tensors into lists before saving:
+
+    python
+    CopyEdit
+    def convert_tensors(obj):
+        if isinstance(obj, torch.Tensor):
+            return obj.tolist()
+        elif isinstance(obj, list):
+            return [convert_tensors(i) for i in obj]
+        elif isinstance(obj, dict):
+            return {k: convert_tensors(v) for k, v in obj.items()}
+        return obj
+
+    We modified guess_and_sketch.py to apply convert_tensors(problem_prediction) before saving the JSON.
+
+4️⃣ Encountered NameError: name 'convert_tensors' is not defined
+
+    The function was not defined properly inside the class.
+    Fix: Ensure it is a class method by adding self:
+
+    python
+    CopyEdit
+    class GuessAndSketch:
+        def convert_tensors(self, obj):
+            if isinstance(obj, torch.Tensor):
+                return obj.tolist()
+            elif isinstance(obj, list):
+                return [self.convert_tensors(i) for i in obj]
+            elif isinstance(obj, dict):
+                return {k: self.convert_tensors(v) for k, v in obj.items()}
+            return obj
+
+    Ensure you call it as self.convert_tensors(problem_prediction) instead of just convert_tensors(problem_prediction) inside the class.
+
+5️⃣ Running Again
+
+    After applying the fixes, you ran the script again and it progressed further but hit another issue:
+
+    plaintext
+    CopyEdit
+    BartModel is using BartSdpaAttention, but torch.nn.functional.scaled_dot_product_attention does not support output_attentions=True
+
+    This is a warning, not a blocking error. It suggests that in future versions of transformers, manual attention selection will be required.
+    Execution proceeded but failed again at JSON serialization, which suggests some nested structure still contained tensors.
+
+6️⃣ Possible Final Fix
+
+    Ensure everything in problem_prediction is fully converted before saving:
+
+    python
+    CopyEdit
+    problem_prediction = self.convert_tensors(problem_prediction)
+
+    Run the script again.
+
+Final Thoughts
+
+    Your initial errors were due to misaligned layer selection and Tensor JSON serialization issues.
+    Fixing alignment_layer and adding convert_tensors as a class method helped move things forward.
+    You are now at a final debugging step for serialization—after this, things should work as expected.
+    
+    
+    
+
+
+

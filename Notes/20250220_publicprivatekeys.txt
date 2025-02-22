@@ -1,0 +1,59 @@
+Summary of What We Did (SSH Key Setup & Server Access Fix)
+🔹 The Problem:
+
+    You needed SSH access to a remote server with Nvidia A100 GPUs.
+    Password authentication was disabled, meaning only users with pre-uploaded SSH public keys could log in.
+    You missed the deadline to upload your SSH public key, leaving you locked out.
+    Other people still had access to the server, so we could use them to upload your key.
+
+🔹 The Solution:
+
+    Check if You Already Had an SSH Key
+        We checked for an existing key (id_rsa.pub) in Windows using:
+
+    dir $env:USERPROFILE\.ssh\id_rsa.pub
+
+    It turned out that you only had an SSH key for a virtual machine, not your local Windows system.
+
+Generate a New SSH Key
+
+    Since no key existed on your local machine, we created one using:
+
+    ssh-keygen -t rsa -b 4096 -C "alexander.pretko@mbzuai.ac.ae"
+
+    This generated:
+        id_rsa (private key, used for authentication—never share this).
+        id_rsa.pub (public key, safe to share and used for server access).
+
+Verify & Extract the Public Key
+
+    We confirmed the key was generated correctly and displayed it using:
+
+    Get-Content $env:USERPROFILE\.ssh\id_rsa.pub
+
+    You copied this public key and shared it with someone who already had access.
+
+Upload the Public Key to the Server
+
+    Someone with server access added your public key to the ~/.ssh/authorized_keys file:
+
+echo "your-public-key" >> ~/.ssh/authorized_keys
+
+They also ensured the correct file permissions with:
+
+    chmod 600 ~/.ssh/authorized_keys
+
+Test SSH Access
+
+    Once your key was added, you tested your connection:
+
+        ssh -i ~/.ssh/id_rsa your_username@server_address
+
+        Since the public key was now on the server, you should be able to log in without needing a password.
+
+🔹 The Core Concept (How SSH Keys Work)
+
+    SSH keys work as a pair:
+        Private Key (id_rsa) → Stays on your local machine and is used to authenticate.
+        Public Key (id_rsa.pub) → Stored on the remote server in ~/.ssh/authorized_keys, allowing access.
+    When you attempt to SSH in, the server checks if your private key matches an authorized public key before granting access.

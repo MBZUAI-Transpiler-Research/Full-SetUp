@@ -1,0 +1,48 @@
+Summary of Work Since Last Recap
+1️⃣ Initial Setup on Remote Server
+
+    Miniconda Check & Activation:
+        Attempted to install Miniconda but found it was already installed.
+        Confirmed Conda installation and initialized it.
+        Encountered an issue where conda activate failed due to the wrong shell (/bin/sh).
+        Solved it by manually sourcing:
+
+        bash
+        CopyEdit
+        . /share/miniconda3/etc/profile.d/conda.sh
+        conda activate transpiler_env
+
+2️⃣ Setting Up Environment & Dependencies
+
+    Creating Conda Environment:
+        Successfully created and activated transpiler_env.
+        Encountered a Conda error but resolved it by running conda init.
+
+    Assessing Dependencies:
+        Reviewed the getdependencies_vl.sh script.
+        Identified redundant packages that were not needed:
+            Vim (not essential)
+            Pip & Virtualenv (already present in Conda)
+            Python3-dev & Python3-setuptools (can be installed via Conda)
+            Cross-compilers (only needed for data creation, not necessary for this phase)
+        Confirmed that qemu-user and qemu-user-static are required.
+
+    Verifying QEMU Installation:
+        Learned that dpkg -s qemu-user checks if the package is installed.
+        Learned that qemu-aarch64 --version confirms if the binary is installed and functional.
+
+3️⃣ Adjusting the Installation Process
+
+    Decided to use Conda where possible:
+        Installed Python dev tools (python3-dev) and setuptools using Conda.
+        Found that xz-utils is also available via Conda (conda install -c conda-forge xz).
+
+    Finalizing Installation Requests:
+        Drafted an email to the professor requesting only qemu-user and qemu-user-static be installed via APT.
+        Ensured that the revised package list was minimal and efficient.
+
+4️⃣ Next Steps
+
+    Confirm if QEMU is working after installation.
+    Proceed with running the guess_and_sketch.py script remotely.
+    Validate execution using GPU resources.
