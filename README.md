@@ -383,3 +383,167 @@ transpiler_project/
 - **All commands are compiled and executed for both RISC-V and ARM.**
 - **QEMU execution ensures cross-architecture compatibility.**
 - **JSON files enable structured analysis of assembly and source code.**
+
+
+# **HumanEval Data Automation Guide**
+
+## Overview
+This section details the process for compiling, executing, and generating structured JSON data for the **HumanEval dataset**. Unlike Euler and Unix, each **HumanEval problem consists of two separate C files**:  
+- **`code.c`** - Contains the function implementation.
+- **`test.c`** - Contains test cases and the `main` function.
+
+Since `test.c` is required for execution, **we must concatenate both files before compilation**.
+
+---
+
+## **Step 1: Combining `code.c` and `test.c` (`combine_c_files.py`)**
+
+Before compiling, we merge `code.c` and `test.c` into a **single file** for each problem.
+
+### **Usage**
+```bash
+python combine_c_files.py
+```
+
+### **What It Does**
+- Iterates through all `problem*` directories in `eval/`.
+- Merges `code.c` and `test.c`, adding a **newline separator**.
+- Saves the combined file as `<problem_dir>.code.c` in `eval/`.
+- Preserves the original `code.c` and `test.c` files.
+
+Example output:
+```
+eval/
+├── problem1/
+│   ├── code.c
+│   ├── test.c
+│── problem1.code.c   # Combined file
+...
+```
+
+---
+
+## **Step 2: Compiling and Executing HumanEval Programs (`eval_vl.sh`)**
+
+This script compiles the merged C files into **RISC-V** and **ARM** assembly, executes them using QEMU, and stores the outputs.
+
+### **Usage**
+```bash
+chmod +x eval_vl.sh
+./eval_vl.sh
+```
+
+### **What It Does**
+1. **Ensures combined files exist** (`combine_c_files.py` runs automatically).
+2. **Adds missing headers** (e.g., `string.h`, `stdlib.h`).
+3. **Compiles each problem’s C file** into:
+   - **Standard assembly** (`.risc.s`, `.arm.s`)
+   - **Verbose assembly** (`.risc.verbose.s`, `.arm.verbose.s`)
+   - **Object files** (`.risc.o`, `.arm.o`)
+   - **Executable binaries** (`.risc`, `.arm`)
+4. **Executes compiled binaries** using QEMU:
+   ```bash
+   qemu-riscv64 -L /usr/riscv64-linux-gnu problemX.risc
+   qemu-aarch64 -L /usr/aarch64-linux-gnu problemX.arm
+   ```
+5. **Moves outputs** to `assembly_output/`.
+
+After execution, the project structure looks like this:
+```
+eval/
+├── problem1.code.c
+├── problem2.code.c
+├── assembly_output/
+│   ├── problem1.code.risc.s
+│   ├── problem1.code.arm.s
+│   ├── problem1.code.risc
+│   ├── problem1.code.arm
+...
+```
+
+---
+
+## **Step 3: Generating JSON Output (`parse.py`)**
+
+Once all programs are compiled and executed, we extract the **C source code**, **assembly output**, and **function mappings** into a structured JSON file.
+
+### **Usage**
+```bash
+python parse.py eval/ json_files/eval.json
+```
+
+### **What It Does**
+- **Extracts assembly functions** from `.risc.s` and `.arm.s` files.
+- **Matches assembly functions** to the original C function (`func0`, etc.).
+- **Creates JSON output** with fields:
+  ```json
+  {
+      "source": "problem1.code.c",
+      "c": "<C source code>",
+      "risc": "<RISC-V assembly>",
+      "risc_fns": { "func0": "<RISC-V function assembly>" },
+      "arm": "<ARM assembly>",
+      "arm_fns": { "func0": "<ARM function assembly>" }
+  }
+  ```
+- **Saves results in `json_files/eval.json`**.
+
+After execution:
+```
+json_files/
+├── eval.json   # JSON file containing all extracted data
+```
+
+---
+
+## **Full Automation: Running Everything with One Command**
+
+Instead of executing each step manually, **`eval_vl.sh`** automates the **entire pipeline**.
+
+### **Usage**
+```bash
+chmod +x eval_vl.sh
+./eval_vl.sh
+```
+
+### **What It Does**
+1. **Combines `code.c` and `test.c`**.
+2. **Compiles C programs into assembly and binaries**.
+3. **Executes compiled programs using QEMU**.
+4. **Extracts assembly functions and generates JSON output**.
+
+---
+
+## **Portion of Project Structure After Running Everything**
+
+After executing `eval_vl.sh`, the **HumanEval** dataset will be fully compiled and processed. Below shows an abbreviated structure of the repository:
+
+```
+transpiler_project/
+│── eval/                   # Contains combined C files
+│   ├── problem1.code.c
+│   ├── problem2.code.c
+│   ├── assembly_output/
+│   │   ├── problem1.code.risc.s
+│   │   ├── problem1.code.arm.s
+│   │   ├── problem1.code.risc
+│   │   ├── problem1.code.arm
+│   │   ├── problem1.code.risc.verbose.s
+│   │   ├── problem1.code.arm.verbose.s
+│   │   ├── problem1.code.risc.o
+│   │   ├── problem1.code.arm.o
+│── json_files/             # JSON output
+│   ├── eval.json
+│── Shell_Scripts/          # Automation scripts
+│── eval_vl.sh              # Automates everything
+│── combine_c_files.py      # Combines test and code files
+│── parse.py                # Extracts assembly and creates JSON
+│── README.md
+```
+
+---
+
+## **Final Notes**
+- **HumanEval requires merging two C files per problem** before compilation.
+- **Memory warnings arise when running some of the code with empty inputs but are not incorrect**.
+- **Problem 1 has an error in the return statement, where 0 and 10 are mixed up**.
