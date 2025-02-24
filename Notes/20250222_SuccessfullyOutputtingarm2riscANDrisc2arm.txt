@@ -1,0 +1,75 @@
+1. Getting the Conda Environment Up and Running
+
+    You initially mentioned that you did conda init, but it wasn’t working.
+    We encountered an issue where running conda activate resulted in errors, and I helped you with several troubleshooting steps:
+        Source the Conda Script: We tried running source ~/miniconda3/etc/profile.d/conda.sh, but that didn't work as expected. We finally used . $HOME/miniconda3/etc/profile.d/conda.sh, which helped resolve the issue.
+        Confirming Conda Initialization: After that, you were able to activate your environment using conda activate transpiler_env.
+
+2. Checking for Memory Issues
+
+    You mentioned running into CUDA memory errors while processing the euler.json file, especially with larger programs like problem #11.
+    We explored potential fixes and ways to clear memory, including adding the following lines:
+        torch.cuda.empty_cache() and gc.collect() in relevant places within your code to release memory after processing large chunks.
+    You also encountered reserved but unallocated memory as a possible culprit, and I suggested using the PYTORCH_CUDA_ALLOC_CONF="expandable_segments:True" environment variable to address memory fragmentation.
+
+3. Running ARM to RISC Translation
+
+    Once the environment was properly set up and memory issues were addressed, you ran the ARM to RISC translation using:
+
+    bash
+
+    CUDA_VISIBLE_DEVICES=0 python hippo/main.py --guess \
+        --source_lang arm --target_lang risc \
+        --data_file json_files/euler.json \
+        --predictions_folder test_folder \
+        --k 3 \
+        --model_name_or_path "celinelee/bartlarge_armtorisc_cloze2048" \
+        --max_length 2048 \
+        --is_enc_dec
+
+    This ran successfully and generated the corresponding output files for ARM to RISC translation in the test_folder.
+
+4. Running RISC to ARM Translation
+
+    After successfully processing the ARM to RISC translation, we switched to the RISC to ARM translation.
+    You ran the following command after setting the environment variable and ensuring the output folder was in place:
+
+    bash
+
+    export PYTORCH_CUDA_ALLOC_CONF="expandable_segments:True"
+    mkdir -p test_folder_risc_to_arm
+    CUDA_VISIBLE_DEVICES=0 python hippo/main.py --guess \
+        --source_lang risc --target_lang arm \
+        --data_file json_files/euler.json \
+        --predictions_folder test_folder_risc_to_arm \
+        --k 3 \
+        --model_name_or_path "celinelee/bartlarge_risctoarm_cloze2048" \
+        --max_length 2048 \
+        --is_enc_dec
+
+    The RISC to ARM translation also worked as expected, and the corresponding output files were placed in the test_folder_risc_to_arm.
+
+5. Memory Considerations and Improvements
+
+    Throughout this process, we carefully considered memory management.
+    After noticing significant memory usage, we fine-tuned memory handling by adding torch.cuda.empty_cache() and gc.collect() in strategic places.
+    You experienced a CUDA out of memory error in larger problems (e.g., problem #11), which we handled by adjusting memory configurations and clearing unused memory after certain operations.
+
+6. Confirmation of Working Outputs
+
+    After processing both translations, you successfully generated the JSON output files in both test_folder (ARM to RISC) and test_folder_risc_to_arm (RISC to ARM).
+    The files were listed correctly under both folders, confirming that both translation tasks had completed without significant issues.
+
+Key Actions Taken:
+
+    Fixed Conda Setup: Ensured conda was properly initialized and the environment activated.
+    Memory Management: Added commands to manage GPU memory efficiently (torch.cuda.empty_cache() and gc.collect()).
+    Executed ARM to RISC Translation: Successfully ran the ARM to RISC translation, generating the output JSON files.
+    Executed RISC to ARM Translation: Ran the RISC to ARM translation with the correct model and generated the respective output files.
+    Environment Variable for Memory: We used PYTORCH_CUDA_ALLOC_CONF="expandable_segments:True" to help with memory fragmentation.
+
+Conclusion:
+
+    You now have successfully generated both ARM to RISC and RISC to ARM translation outputs.
+    We carefully handled memory management, avoided overloading the GPU, and ensured that both tasks completed without major issues.
+    The process is looking smooth now, with output files located in the respective folders.

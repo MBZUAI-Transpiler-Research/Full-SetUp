@@ -1,0 +1,245 @@
+🔹 Debugging Steps We Took
+1️⃣ Verified the Function func0() Exists in the Binary
+
+    We checked if func0() was present in the compiled binary:
+
+    riscv64-linux-gnu-objdump -t code | grep func0
+
+    ✅ Result: func0() was found, meaning it was compiled correctly.
+
+2️⃣ Opened gdb and Tried to Set a Breakpoint at func0()
+
+    Started gdb with:
+
+gdb --args qemu-riscv64 -L /usr/riscv64-linux-gnu ./code
+
+Tried to set a breakpoint:
+
+    break func0
+    run
+
+    ❌ Issue: gdb initially did not recognize func0(), so we had to manually load symbols.
+
+3️⃣ Manually Loaded Debugging Symbols
+
+    Forced gdb to load debugging symbols:
+
+    symbol-file code
+
+    ✅ Result: gdb then recognized func0().
+
+4️⃣ Checked the Arguments Passed to func0()
+
+    Tried to print the function call:
+
+print func0(a, 6, 0.05)
+
+❌ Issue: gdb returned:
+
+    Cannot access memory at address 0x556cf1e6
+
+    Meaning a, size, and threshold were not being passed correctly.
+
+5️⃣ Verified a in gdb
+
+    Printed a in gdb:
+
+print a
+
+❌ Issue: Instead of {1.0, 2.0, 3.9, ...}, a contained garbage values:
+
+    $1 = {i = {0, 1045149306}, x = 1.2904777690891933e-08, d = 1.2904777690891933e-08}
+
+    This suggested incorrect memory access.
+
+6️⃣ Checked if a Was Properly Allocated
+
+    Tried to print the memory address:
+
+print &a
+
+❌ Issue: gdb said:
+
+    Can't take address of "a" which isn't an lvalue.
+
+    This suggested a was not properly allocated or was being optimized away.
+
+7️⃣ Checked the Program’s Execution Path
+
+    Ran:
+
+    bt
+
+    ❌ Issue: The backtrace was full of ?? () symbols and did not show main().
+    This meant:
+        The program crashed before main() finished.
+        gdb was struggling to correctly interpret memory.
+
+🔹 The Breakthrough: Running the Test Manually
+
+Since gdb was difficult to use, we added debug print statements to test.c:
+
+float result = func0(a, 6, 0.05);
+printf("DEBUG: func0(a, 6, 0.05) returned: %f\n", result);
+
+Then recompiled and ran:
+
+riscv64-linux-gnu-gcc -g -o code code.c test.c -lm
+qemu-riscv64 -L /usr/riscv64-linux-gnu ./code
+
+✅ Result: The program output:
+
+DEBUG: func0(a, 6, 0.05) returned: 10.000000
+
+🔴 This proved that func0() was returning 10 instead of 0, which did not match the test case expectations.
+🔹 The Root Cause: A Bug in the Original func0()
+
+We then checked the original func0() implementation in code.c:
+
+int func0(float numbers[], int size, float threshold) {
+    int i, j;
+    for (i = 0; i < size; i++) {
+        for (j = i + 1; j < size; j++) {
+            if (fabs(numbers[i] - numbers[j]) < threshold) {
+                return 1;
+            }
+        }
+    }
+    return 10;  // 🚨 Incorrect return value!
+}
+
+🔴 The function was only returning 1 or 10, but the test cases expected 1 or 0.
+
+✅ Correct Fix:
+Change return 10; → return 0;
+
+return 0;
+
+🔹 Final Fix & Successful Test
+
+After fixing func0(), we recompiled and tested again:
+
+riscv64-linux-gnu-gcc -g -o code code.c test.c -lm
+qemu-riscv64 -L /usr/riscv64-linux-gnu ./code
+
+✅ Result: The assertion failure disappeared, and all tests passed!
+🔹 What We Learned
+
+    The issue was not with gdb, QEMU, or compilation—it was a bug in func0() itself.
+    The test cases correctly expected 1 or 0, but func0() was returning 1 or 10.
+    Manually adding debug print statements was the key to finding the issue quickly.
+    The correct fix was to return 0 instead of 10 when no pairs matched.
+
+🔹 Next Steps
+
+✅ Confirm that all tests pass after the fix.
+✅ Apply the same debugging approach if similar issues appear.
+
+
+🔹 Additional Debugging Steps and Fixes
+
+8️⃣ Identified and Fixed Missing Header Issues
+
+While running the tests across multiple problems, we noticed several compilation warnings regarding missing standard library functions like free(), strcmp(), and ceil(). These indicated missing header files in various test files.
+
+✅ Solution:
+
+    We automated the detection of missing headers and modified test.sh to automatically insert #include directives if missing.
+    Updated script: The script now detects missing headers and injects them into test.c and code.c where necessary:
+
+    if ! grep -q "#include <stdlib.h>" "$SRC" && grep -q -E "malloc|free" "$SRC"; then
+        echo "🔹 Adding missing <stdlib.h> to $SRC"
+        sed -i '1i #include <stdlib.h>' "$SRC"
+    fi
+    if ! grep -q "#include <string.h>" "$SRC" && grep -q -E "strcmp\(" "$SRC"; then
+        echo "🔹 Adding missing <string.h> to $SRC"
+        sed -i '1i #include <string.h>' "$SRC"
+    fi
+    if ! grep -q "#include <math.h>" "$SRC" && grep -q -E "ceil|floor|pow|sqrt|fabs" "$SRC"; then
+        echo "🔹 Adding missing <math.h> to $SRC"
+        sed -i '1i #include <math.h>' "$SRC"
+    fi
+    if ! grep -q "#include <stdio.h>" "$SRC" && grep -q "printf" "$SRC"; then
+        echo "🔹 Adding missing <stdio.h> to $SRC"
+        sed -i '1i #include <stdio.h>' "$SRC"
+    fi
+
+✅ Result:
+
+    No more missing header errors!
+    Compilation proceeded smoothly for all test cases.
+
+9️⃣ Fixed the problem75 strcmp() Error
+
+Issue:
+
+    Even though the automated script added #include <string.h> to files that used strcmp(), problem75 still threw a missing strcmp() declaration error.
+    Why? strcmp() was only used inside issame(), and the script originally checked only for explicit strcmp() calls.
+
+✅ Solution:
+
+    Manually added #include <string.h> at the top of test.c for problem75.
+    Later, modified the script to ensure #include <string.h> is always added for problem75.
+
+✅ Result:
+
+    problem75 compiled successfully.
+    strcmp() was properly recognized without errors.
+
+🔟 Addressed Memory Issues in Six Files
+
+Issue:
+
+    Several problems triggered memory-related warnings regarding reading or writing to an empty array ([]).
+    Example:
+
+    test.c:6:12: warning: ‘func0’ accessing 4 bytes in a region of size 0 [-Wstringop-overflow=]
+    assert(func0(case1, 0) == 0);
+
+    Cause:
+        Some test cases were passing empty arrays (int case1[] = {};) to functions expecting valid memory.
+        This can cause undefined behavior or compiler warnings, even if no actual access occurs.
+
+✅ Solution:
+    I chose to ignore this since it's not essential, although it does throw a warning.
+    
+    We COULD modify func0() to explicitly handle size == 0:
+
+int func0(int operations[], int size) {
+    if (size == 0) return 0;  // Handle empty arrays explicitly
+    int num = 0;
+    for (int i = 0; i < size; i++) {
+        num += operations[i];
+        if (num < 0) return 1;
+    }
+    return 0;
+}
+
+
+✅ Result:
+
+    Memory-related warnings remain but are not critical.
+    All test cases passed successfully!
+
+🔹 What We Learned
+
+    GDB Debugging Alone Wasn’t Enough
+        The issue wasn’t just in debugging—it was also in the original function logic.
+        Debug print statements provided faster insights than GDB in this case.
+
+    Automated Fixes for Missing Headers Saved Time
+        The script now automatically detects and fixes missing header issues before compilation.
+
+    Memory Safety Matters, Even in Small Programs
+        Passing empty arrays ([]) can trigger compiler warnings or undefined behavior.
+        Explicitly handling size == 0 is good practice to avoid such issues.
+
+    Automation and Manual Debugging Work Best Together
+        Automating header fixes saved time.
+        Manually inspecting func0() revealed the real issue (returning 10 instead of 0).
+
+🔹 Next Steps
+
+✅ Ensure that all tests now pass across all problems.
+✅ Keep using debug print statements for quick verification.
+✅ Improve automation to detect and prevent similar issues in future test cases.

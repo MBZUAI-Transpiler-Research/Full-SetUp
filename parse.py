@@ -54,7 +54,6 @@ out = open(outfile, "w")
 for f in glob.glob(os.path.join(input_folder, f"*.{extension}")):
     print(f)
     base_name = os.path.splitext(os.path.basename(f))[0]  # Extract filename without extension
-    
     # Instead of looking in the same directory, we look in assembly_output/
     f1 = os.path.join(input_folder, "assembly_output", f"{base_name}.risc.s")
     f2 = os.path.join(input_folder, "assembly_output", f"{base_name}.arm.s")

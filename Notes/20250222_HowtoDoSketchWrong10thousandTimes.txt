@@ -1,0 +1,58 @@
+1. Organizing the Folder Structure:
+
+    We set up the folder structure as you requested:
+        Created test_folder/arm_to_risc for the ARM to RISC output.
+        Created test_folder/risc_to_arm for the RISC to ARM output.
+        Created exc_folder/arm_to_risc and exc_folder/risc_to_arm to store the results of the execution.
+
+2. Running arm_to_risc with the GUESS Command:
+
+    We successfully ran the GUESS process for arm_to_risc with the following command:
+    CUDA_VISIBLE_DEVICES=0 python hippo/main.py --guess \
+        --source_lang arm --target_lang risc \
+        --data_file json_files/euler.json \
+        --predictions_folder test_folder/arm_to_risc \
+        --k 3 \
+        --model_name_or_path "celinelee/bartlarge_armtorisc_cloze2048" \
+        --max_length 2048 \
+        --is_enc_dec
+
+
+3. Running risc_to_arm with the GUESS Command:
+CUDA_VISIBLE_DEVICES=0 python hippo/main.py --guess \
+    --source_lang risc --target_lang arm \
+    --data_file json_files/euler.json \
+    --predictions_folder test_folder/risc_to_arm \
+    --k 3 \
+    --model_name_or_path "celinelee/bartlarge_risctoarm_cloze2048" \
+    --max_length 2048 \
+    --is_enc_dec
+
+
+4. Issues with the SKETCH Command (The Core Problem):
+
+    We encountered issues when trying to run the SKETCH command. Here's a summary of what went wrong:
+        Command Setup: We used the following command to run the sketch operation:
+
+        bash
+
+        CUDA_VISIBLE_DEVICES=0 python hippo/main.py --sketch \
+            --source_lang arm --target_lang risc \
+            --predictions_folder test_folder/arm_to_risc \
+            --executions_folder exc_folder/arm_to_risc
+
+        Issue #1: The executions_folder parameter wasn’t recognized correctly. The error indicated that --executions_folder was not a valid argument.
+        Issue #2: After revisiting the code, we found that exc_folder was used internally in the sketch function and not as an argument. So, it needed to be handled in the function itself, not passed as an argument.
+        Issue #3: We also encountered a KeyError related to gcc_flags inside run_qemu() when trying to execute the sketch. The code was missing the necessary key in the make_run_commands dictionary, leading to the failure.
+
+5. Steps Taken to Debug the SKETCH Command:
+
+    We reviewed the guess_and_sketch.py code to understand how the sketch function is set up. We realized that:
+        Folder name exc_function is hard-coded in the function, not passed as an argument passed to the command.
+        We attempted to set up gcc_flags to fix the KeyError, but it wasn’t clear how to do that since the necessary flags weren’t documented properly.
+    The final result was that we couldn’t run the sketch command successfully, because we couldn’t resolve the issues with gcc_flags and the way the executions_folder was not being passed.
+
+What We Need to Do Next:
+
+    Fix the gcc_flags issue: We need to find the correct way to add the missing gcc_flags key to the make_run_commands dictionary or adjust the logic around this.
+    Correctly Use exc_folder: We need to adjust the way exc_folder is passed to the function and ensure it’s used properly within the sketch function.

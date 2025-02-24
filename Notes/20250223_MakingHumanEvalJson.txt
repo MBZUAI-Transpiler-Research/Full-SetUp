@@ -1,0 +1,101 @@
+📝 Summary of Everything We Did Since the Last Summary
+1️⃣ Identified an Issue in parse.py
+
+    We discovered that parse.py was iterating over C files in the eval/ directory using:
+
+    for f in glob.glob(os.path.join(input_folder, f"*.{extension}"))
+
+    Problem: The eval/ folder contained only subdirectories (problem1/, problem2/, etc.), not any *.c files.
+    Root Cause: parse.py was expecting C files to be directly in eval/, but our actual C files (code.c and test.c) were nested inside problem subdirectories.
+
+2️⃣ Confirmed That Assembly Files Represent a Combination of code.c and test.c
+
+    Observation: The assembly files (.risc.s and .arm.s) in assembly_output/ were generated from both code.c and test.c, not just code.c.
+    This meant that parse.py needed to process both source files together, rather than assuming a single code.c.
+
+3️⃣ Devised a Solution: Combining code.c and test.c
+
+    Since parse.py only works with files directly in eval/, we needed to move the C files out of the problem subdirectories without overwriting anything.
+    We wrote a Python script (combine_c_files.py) that:
+        Iterates over each problemX/ folder.
+        Concatenates code.c and test.c into a single file.
+        Saves the combined file in eval/ as problemX.code.c.
+
+4️⃣ Implemented the combine_c_files.py Script
+
+    Final Version of the Script:
+
+    import os
+
+    eval_dir = "/home/alex-pretko/transpiler_project/eval"
+
+    for problem_dir in sorted(os.listdir(eval_dir)):
+        problem_path = os.path.join(eval_dir, problem_dir)
+        
+        if os.path.isdir(problem_path) and problem_dir.startswith("problem"):
+            code_file = os.path.join(problem_path, "code.c")
+            test_file = os.path.join(problem_path, "test.c")
+            combined_file = os.path.join(eval_dir, f"{problem_dir}.code.c")
+            
+            with open(combined_file, "w") as outfile:
+                if os.path.exists(code_file):
+                    with open(code_file, "r") as infile:
+                        outfile.write(infile.read() + "\n\n")  # Separate with new lines
+                
+                if os.path.exists(test_file):
+                    with open(test_file, "r") as infile:
+                        outfile.write(infile.read())
+
+            print(f"✅ Created {combined_file}")
+
+    What This Does:
+        Reads code.c and test.c for each problem.
+        Writes them into a new combined file named {problem_name}.code.c (e.g., problem1.code.c).
+        Places this new file directly in eval/, where parse.py expects it.
+
+5️⃣ Verified That the Combined Files Were Created Correctly
+
+    We ran:
+
+    ls eval/
+
+        ✅ Confirmed that problemX.code.c files were correctly placed in eval/.
+        ✅ The original problemX/ directories remained untouched.
+        ✅ assembly_output/ still contained the compiled .risc.s and .arm.s files.
+
+    We also checked an actual problemX.code.c file:
+        It correctly contained both code.c and test.c, separated with newlines.
+        ✅ Verified that functions were not missing and tests were included.
+
+6️⃣ Successfully Ran parse.py
+
+    Once problemX.code.c files were in place, we ran:
+
+    python parse.py "/home/alex-pretko/transpiler_project/eval" "json_files/unix_commands.json"
+
+    Results:
+        ✅ parse.py correctly found and processed problemX.code.c files.
+        ✅ The generated JSON contained the full C source, RISC-V assembly, and ARM assembly.
+        ✅ No errors about missing assembly files anymore.
+
+7️⃣ Final Verification: Checking JSON Output
+
+    We checked an example JSON output and confirmed:
+        ✅ The "c" field contained the full C code (both code.c and test.c).
+        ✅ The "risc" field contained correct RISC-V assembly.
+        ✅ The "arm" field contained correct ARM assembly.
+        ✅ The "source" field had the correct filename (problemX.code.c).
+        ✅ Function breakdowns ("risc_fns", "arm_fns") were included.
+
+🎯 Final Outcome
+
+✔ All scripts are now working correctly.
+✔ parse.py correctly processes eval/ and assembly_output/.
+✔ We fully automated the workflow, eliminating the issue of missing or misnamed files.
+✔ JSON output matches the expected format and contains correct C, RISC, and ARM data.
+🔥 Key Fixes & Learnings
+
+    🚀 Identified and fixed parse.py's incorrect file search pattern.
+    🚀 Ensured correct association between combined C files and their compiled assembly.
+    🚀 Kept the original problem folders intact while providing parse.py the expected inputs.
+    🚀 Validated every step to ensure nothing broke existing workflows.
