@@ -1,0 +1,96 @@
+1️⃣ Matching Function Calls and Branch Instructions
+python
+Copy
+Edit
+insns_with_methodnames = [
+    (re.compile("((jal|j|call|bne|beq|bl[ste]?|bhi|b)\s+)((?!\.)\S+)"), 3),
+    (re.compile("(adrp\s+[a-z][0-9],\s*)((?!\.)\S+)"), 2),
+    (re.compile("(add\s+[a-z][0-9],\s*[a-z][0-9],\s*:lo12:)((?!\.)\S+)"), 2),
+]
+These regex patterns match instructions that jump or branch to function calls (jal, call, bne, beq, etc.).
+The second value in each tuple (e.g., 3 or 2) likely refers to the capturing group index that contains the method/function name.
+✅ Key Takeaway: These regexes help identify function/method calls in assembly.
+
+2️⃣ Skipping Unwanted Assembly Directives
+python
+Copy
+Edit
+directives_regex = "(\s\.(size|ident|section|align|text|global|type).*|\S+:)"
+This matches assembly directives (like .section, .text, .global) that aren’t part of actual instructions.
+These must be ignored when analyzing assembly code.
+✅ Key Takeaway: Helps filter out unnecessary directives from assembly code.
+
+3️⃣ ARM Instruction Cutoff List
+python
+Copy
+Edit
+arm_cutoff_insns = [
+    re.compile("(st|ld)[rp]?\S*\s+\S+,\s*[^\n]+\s*"),  # ldr or str mem into reg
+    re.compile("\.cfi_[^\n]+\s*"),  # cfi directives
+    re.compile("[\S\s]+,\s*sp\s*"),  # anything with sp (stack pointer)
+    re.compile("adrp\s+[a-z]+\d*,\s*.+\s*"),  # load addr w offset into reg
+    re.compile("b(ne|eq|l[ste]?|hi)\s+(\S+)\s*"),  # branching
+    re.compile("j(|r)\s+(\S+)\s*"),  # call fn
+    re.compile("cm[np]\s+[a-z]+\d*,\s*\S+\s*"),  # comparison operators
+    re.compile("csel\s+([a-z]+\d*),\s*([a-z]+\d*),\s*([a-z]+\d*),\s*(eq|lt|gt)\s*"),  # conditional select
+    re.compile("csetm?\s+([a-z]+\d*),\s*(ne|eq|cs|hs|cc|lo|mi|pl|vs|vc|hi|ls|ge|lt|gt|le|al)\s*"),  # conditional set
+    re.compile("(sub|add)\s+[a-z]+\d*,\s*sp,\s*\S+\s*"),  # loading addr from stack
+    re.compile("[ufs]cvt[famnpz][su]?\s+[a-z]+\d*,\s*[a-z]+\d*\s*"),  # float conversion
+    re.compile(f"{directives_regex}[\s\S]*"),  # section boundaries
+]
+These regex patterns match and remove specific ARM instructions that should be ignored during processing.
+Covers:
+Memory load/store (ldr, str).
+Branching (bne, beq, j, call).
+Register operations (cmp, csel, cset).
+Stack pointer usage (sp-related operations).
+Directives (.section, .global).
+✅ Key Takeaway: This filters out specific ARM instructions to help focus on core logic.
+
+4️⃣ RISC-V Instruction Cutoff List
+python
+Copy
+Edit
+risc_cutoff_insns = [
+    re.compile("f?l(bu?|hu?|wu?|d)\s+\S+,\s*[^\n]+\s*"),  # ldr mem into reg
+    re.compile("s[dwbh]\s+\S+,\s*[^\n]+\s*"),  # store reg into mem
+    re.compile("[\S\s]+,\s*sp\s*"),  # anything with sp
+    re.compile("b(leu?|eq|gtu?|ltu?|geu?|ls)\s+(\S+),\s*(\S+),\s*(\S+)\s*"),  # branching
+    re.compile("j(|r)\s+(\S+)\s*"),  # call fn
+    re.compile("b(|ne|l)\s+(\S+)\s*"),  # branching
+    re.compile("addi?\s+[a-z]+\d*,\s*sp,\s*\S+\s*"),  # loading addr from stack
+    re.compile("call\s+(\S+)\s*"),  # call function
+    re.compile("fcvt\.[a-z]+\.[a-z]+\s+[a-z]+\d*,\s*[a-z]+\d*.*"),  # float conversion
+    re.compile("s(eq|ne|lt|gt)z\s+([a-z]+\d*),\s*([a-z]+\d*)"),  # comparator
+    re.compile("f(eq|le|lt)\.[sd]\s+([a-z]+\d*),\s*([a-z]+\d*),\s*([a-z]+\d*)"),  # reg comparator
+    re.compile("(s[lg]tu?)\s+([a-z]+\d*),\s*([a-z]+\d*),\s*([a-z]+\d*)")  # signed comparator
+]
+Similar to ARM, this filters out certain RISC-V instructions.
+Covers:
+Memory operations (ldr, s[dwbh]).
+Branching and function calls (bne, call, j).
+Stack pointer operations (sp-related instructions).
+Floating-point conversions.
+Comparison operations.
+✅ Key Takeaway: This filters out specific RISC-V instructions, keeping only relevant ones.
+
+5️⃣ Resolving Global Instructions Between ARM and RISC-V
+python
+Copy
+Edit
+insn_resolve_global = [
+    (re.compile('lla\s+[a-z]+\d*,\s*(\.LC\d+)\s*$'), re.compile('(mov.*|fmov\s+[a-z]+\d*,\s+-?\d+\.\d+e[\+-]\d+|ad.+\.LC\d+)\s*$'), "<<{orig}:{annotation}>>"),  # arm -> risc
+    (re.compile('fmov\s+[a-z]+\d*,\s*(-?\d+\.\d+e[\+-]\d+)\s*$'), re.compile('lla\s+[a-z]+\d*,\s*(\.LC\d+)\s*$'), "<<{annotation}>>"),  # risc -> arm
+    (re.compile('\.string\s+(\".*)$'), re.compile('\.string\s+(\".*)$'), "{annotation}"),  # risc <-> arm
+    (re.compile('\.ascii\s+(\".*)$'), re.compile('\.ascii\s+(\".*)$'), "{annotation}"),  # risc <-> arm
+    (re.compile('\.word\s+(\".*)$'), re.compile('\.word\s+(\".*)$'), "{annotation}"),  # risc <-> arm
+]
+This is mapping equivalent instructions between ARM and RISC-V.
+The <<{orig}:{annotation}>> syntax suggests it's used in annotation for alignment.
+✅ Key Takeaway: Helps align ARM and RISC-V equivalent instructions.
+
+🔎 Final Summary
+assembly_regexes.py provides regex filters for ARM and RISC-V assembly.
+Filters out function calls, stack operations, directives, and unnecessary instructions.
+Allows aligning equivalent ARM and RISC-V instructions.
+Used in other scripts (like guess_and_sketch.py) to process assembly code.

@@ -1,0 +1,103 @@
+Three Types of Transformers:
+Transformers can be grouped into three main architectures, each designed for different tasks:
+
+1️⃣ Encoder-Only Transformers (e.g., BERT)
+What they do: Process input text and generate a fixed representation.
+Use case: Text classification, Named Entity Recognition (NER), Sentiment Analysis.
+How they work:
+Reads the full input at once.
+Uses bidirectional self-attention (looks at the whole context at every word).
+Outputs a fixed-length vector representation of the text.
+Example Models:
+BERT (Bidirectional Encoder Representations from Transformers)
+RoBERTa (Robustly optimized BERT)
+ALBERT (A Lite BERT)
+✅ Used when we need a deep understanding of input text.
+2️⃣ Decoder-Only Transformers (e.g., GPT)
+What they do: Generate text one token at a time (auto-regressive).
+Use case: Chatbots, Text Completion, Code Generation.
+How they work:
+Reads input and predicts the next token step by step.
+Uses causal (unidirectional) attention (can only look at previous words, not future words).
+Outputs a sequence of words rather than a fixed representation.
+Example Models:
+GPT (Generative Pretrained Transformer)
+GPT-2, GPT-3, GPT-4 (more advanced versions)
+Llama (Meta’s version of GPT)
+✅ Used when we need to generate or continue a sequence.
+3️⃣ Encoder-Decoder Transformers (Seq2Seq) (e.g., BART, T5)
+What they do: Take an input sequence and generate a transformed output.
+Use case: Machine Translation, Summarization, Code-to-Code transpilation.
+How they work:
+The Encoder reads the input and compresses it into a latent representation.
+The Decoder generates text based on that representation.
+Uses bidirectional attention in the encoder and causal attention in the decoder.
+Example Models:
+BART (Denoising Transformer)
+T5 (Text-to-Text Transfer Transformer)
+MarianMT (Translation model)
+✅ Used when input and output are different but related, like translation.
+
+Now, Why Do We Use This?
+We are using BART (Enc-Dec) by default, but this part of the code handles the case where we use a Decoder-Only model instead:
+
+python
+Copy
+Edit
+model = AutoModelForCausalLM.from_pretrained(
+    parent_name,
+    load_in_8bit=True,
+    trust_remote_code=True
+)
+self.model = PeftModel.from_pretrained(model, args.model_name_or_path)
+Breaking This Down:
+1️⃣ AutoModelForCausalLM.from_pretrained(...)
+This is for Decoder-Only models like GPT!
+AutoModelForCausalLM loads a causal (decoder-only) Transformer model.
+parent_name is the base model (like GPT or Llama).
+load_in_8bit=True → Loads model in 8-bit precision, making it smaller & faster.
+trust_remote_code=True → Allows loading models from external Hugging Face repositories.
+2️⃣ self.model = PeftModel.from_pretrained(model, args.model_name_or_path)
+PeftModel (Parameter-Efficient Fine-Tuning):
+This wraps a pretrained model with fine-tuned weights.
+It’s used to apply lightweight updates to large models without retraining them fully.
+Why?
+This means we can fine-tune a smaller, task-specific model without modifying the full Transformer.
+✅ Summary
+✔️ Encoder-Only (BERT): Reads & understands text.
+✔️ Decoder-Only (GPT): Generates text one token at a time.
+✔️ Encoder-Decoder (BART): Transforms text input → output (translation, summarization, transpilation).
+
+📌 We default to Encoder-Decoder (BART), but this section allows us to use Decoder-Only models instead (like GPT or Llama) using AutoModelForCausalLM.
+
+Does the Code Handle Encoder-Only Models (Like BERT)?
+No, the current implementation does NOT handle encoder-only models (e.g., BERT, RoBERTa).
+
+Why?
+The Code Only Handles Two Cases:
+
+Encoder-Decoder (BART, T5, etc.) → AutoModelForSeq2SeqLM
+Decoder-Only (GPT, Llama, etc.) → AutoModelForCausalLM
+Missing AutoModelForSequenceClassification (or Similar)
+
+Encoder-only models (like BERT) don't generate text but instead analyze and classify it.
+If we wanted to support BERT, we'd use:
+python
+Copy
+Edit
+AutoModelForSequenceClassification.from_pretrained(args.model_name_or_path)
+However, this wouldn't work for Guess & Sketch since BERT doesn't generate assembly code.
+Guess & Sketch Requires Text Generation
+
+The core tasks in this project involve:
+Guessing missing assembly instructions (needs generation).
+Sketching function structure (needs generation).
+Encoder-only models cannot generate sequences, so they’re not useful here.
+Could We Modify the Code to Handle Encoder-Only Models?
+🔴 Not really useful for this project
+Encoder-only models are great for understanding text, but not for generating it. Since the task requires transforming one language into another (e.g., RISC → ARM), we need Encoder-Decoder or Decoder-Only models.
+
+🚀 TL;DR:
+✔️ BART (Encoder-Decoder) → Good for transpiling RISC to ARM.
+✔️ GPT (Decoder-Only) → Can be adapted for transpilation but less structured.
+❌ BERT (Encoder-Only) → Not useful because it doesn't generate output.

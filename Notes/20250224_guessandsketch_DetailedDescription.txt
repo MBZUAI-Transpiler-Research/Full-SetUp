@@ -1,0 +1,217 @@
+Summary of the First Section of guess_and_sketch.py
+We've analyzed the first part of guess_and_sketch.py, covering imports, environment setup, class definition, initialization, text normalization, and solver setup. Below is a detailed breakdown of everything we discussed, including the key functions, potential pitfalls, and clarifications.
+
+1. Imports & Their Purpose
+The script imports several libraries, primarily for model handling, assembly parsing, and QEMU execution. The important ones include:
+
+Libraries for Model Handling:
+torch: Used for GPU acceleration (cuda if available, else CPU).
+transformers:
+AutoConfig: Loads model configurations.
+AutoModelForSeq2SeqLM: For encoder-decoder models.
+AutoModelForCausalLM: For causal (decoder-only) models.
+AutoTokenizer: Handles tokenization of source and target languages.
+peft.PeftModel: Used only if the model is not an encoder-decoder (more on this below).
+Libraries for Sketching & Execution:
+solver.sketches_to_rosette.RosetteSolver: Used only in Sketching (not in Guess).
+solver.global_fixes: Also only used in Sketching.
+solver.docker_evaluate.run_qemu: Calls QEMU for binary execution.
+training.ft_model.prepare_sample_text: Also only used in Sketching.
+Assembly Parsing Library:
+guess_and_sketch.assembly_regexes: Defines regular expressions for parsing RISC-V and ARM assembly.
+Interestingly, these regexes are not used in Guess (likely used in Sketch).
+Key Takeaways from Imports
+✅ Guess and Sketch have distinct functionalities:
+
+"Guess" focuses on model inference (transformers).
+"Sketch" deals with QEMU execution, assembly regexes, and external solvers.
+✅ assembly_regexes.py is likely only relevant for Sketch, meaning we don’t need to worry about it yet.
+
+✅ PeftModel is only used if the model is not an encoder-decoder.
+
+This suggests that some models in this project are decoder-only.
+2. Setting Up the Environment
+These lines set up key environment variables and device selection:
+
+python
+Copy
+Edit
+os.environ["TOKENIZERS_PARALLELISM"] = "false"
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+alignment_layer = 17
+alignment_head = 19
+Disabling Tokenizer Parallelism:
+"TOKENIZERS_PARALLELISM" = "false" prevents warning messages about tokenizers running in parallel. This is mainly a performance tweak.
+Checking GPU Availability:
+torch.device("cuda" if torch.cuda.is_available() else "cpu")
+Ensures the model runs on GPU (if available), otherwise defaults to CPU.
+Alignment Layer & Head:
+alignment_layer = 17 and alignment_head = 19 are set manually.
+⚠️ Issue: Our model only has 12 layers, so this will need to be adjusted.
+These values are used for extracting alignments between RISC-V & ARM assembly.
+3. Class Definition & Initialization
+The GuessAndSketch class is initialized with:
+
+python
+Copy
+Edit
+class GuessAndSketch:
+    def __init__(self, args):
+        self.setup_from_args(args)
+        self.src_lang = args.source_lang
+        self.tgt_lang = args.target_lang
+        self.verbose = args.verbose
+What self.setup_from_args(args) Does:
+
+It initializes self.args, allowing us to reference arguments throughout the class.
+We initially questioned why not just use self.args.source_lang instead of self.src_lang?
+Answer: Storing self.src_lang as a separate variable avoids repeatedly accessing self.args. It’s cleaner and more efficient.
+Key Takeaways from Initialization:
+
+✅ self.src_lang and self.tgt_lang store the source and target languages.
+✅ self.verbose is a flag for logging more information.
+✅ self.solver = RosetteSolver(...) is set but only used for Sketching.
+✅ self.setup_from_args(args) ensures argument parsing is centralized.
+4. Text Normalization & Solver Setup
+Text Normalization
+python
+Copy
+Edit
+self.text_normalizer = lambda x: re.sub(
+    r"\.LFE[0-9]+:", ".LFE:", re.sub(r"\.LFB[0-9]+:", ".LFB:", x)
+).replace(", ", ",")
+This defines self.text_normalizer as a function (Lambda function).
+Purpose: Cleans up function labels (.LFE###: and .LFB###:) in assembly files.
+Used Later In Guess:
+python
+Copy
+Edit
+pred_seq_str = self.tokenizer.decode(pred_seq, skip_special_tokens=True)
+norm_gen = self.text_normalizer(pred_seq_str)
+This suggests that model-generated assembly predictions need to be normalized before use.
+Delimiters
+python
+Copy
+Edit
+self.delimiters = [" ", "\t", ",", "\n"]
+These characters help separate tokens in assembly code.
+Example Use in Sketch:
+python
+Copy
+Edit
+if replacing[0] in self.delimiters:
+    sketch_line += replacing[0]
+sketch_line += "??"
+if replacing[-1] in self.delimiters:
+    sketch_line += replacing[-1]
+This is part of creating placeholder ("??") holes in Sketching.
+Setting Up the Solver
+python
+Copy
+Edit
+self.solver = RosetteSolver(args.source_lang, args.target_lang, args.verbose, sketch_name=args.sketch_filename)
+Initializes RosetteSolver, which is used only in Sketching.
+args.sketch_filename is the file where the generated Sketch will be saved.
+This led to an important discovery:
+The README incorrectly referenced --executions_folder instead of --sketch_filename.
+Correct command for Sketch should be:
+bash
+Copy
+Edit
+python main.py --sketch \
+    --source_lang SOURCE_LANG --target_lang TARGET_LANG \
+    --predictions_folder TESTSET_FOLDER \
+    --sketch_filename EXECUTION_FILE.rkt
+DO NOT use --executions_folder (it’s outdated).
+Key Takeaways & Action Items
+✅ We now understand the purpose of each major section in the setup of GuessAndSketch. ✅ We identified that alignment_layer needs to be adjusted due to our model’s layer count. ✅ We resolved the outdated argument in the README (--executions_folder → --sketch_filename). ✅ We confirmed that imports like global_fixes, run_qemu, and prepare_sample_text are only used in Sketch. ✅ We determined that assembly_regexes.py is most likely Sketch-related. ✅ We understood why self.text_normalizer exists and how it is used in Guessing. ✅ We identified that self.delimiters are used in Sketching for token separation. ✅ We confirmed that RosetteSolver is only relevant for Sketch.
+
+
+
+Summary of Encoder-Decoder Model Setup (if args.is_enc_dec = True)
+This part of guess_and_sketch.py is executed only if args.guess is True and we are using an encoder-decoder model (like BART).
+
+Step-by-Step Breakdown
+1️⃣ Set Model Token Limit
+python
+Copy
+Edit
+self.tokenizer.model_max_length = args.max_length
+Ensures that the tokenizer does not generate sequences longer than max_length.
+Defaults to 2048 unless overridden in main.py.
+2️⃣ Load Pretrained Model Configuration
+python
+Copy
+Edit
+config = AutoConfig.from_pretrained(args.config_name)
+config.vocab_size = len(self.tokenizer)
+config.max_position_embeddings = args.max_length
+Loads a model configuration (like BART) from config_name.
+Ensures the model's vocabulary size matches the tokenizer's vocabulary.
+Sets max_position_embeddings to match max_length to handle positional encoding.
+3️⃣ Load Model with Config & Move to GPU/CPU
+python
+Copy
+Edit
+self.model = AutoModelForSeq2SeqLM.from_pretrained(
+    args.model_name_or_path,
+    from_tf=bool(".ckpt" in args.model_name_or_path),
+    config=config,
+    device_map='auto',
+).to(device)
+Loads a pretrained encoder-decoder model (e.g., BART).
+Checks if the model was trained in TensorFlow (.ckpt) and converts if needed.
+Automatically assigns it to GPU if available (device_map='auto').
+Moves the model to the selected device (.to(device)).
+4️⃣ Ensure Model Can Handle the Tokenizer’s Vocabulary
+python
+Copy
+Edit
+embedding_size = self.model.get_input_embeddings().weight.shape[0]
+if len(self.tokenizer) > embedding_size:
+    self.model.resize_token_embeddings(len(self.tokenizer))
+Some models do not auto-adjust their vocab size.
+If the tokenizer has more tokens than the model expects, the embedding layer is resized.
+5️⃣ Set Decoder Start Token If Missing
+python
+Copy
+Edit
+if self.model.config.decoder_start_token_id is None:
+    print(f"config.decoder_start_token_id is set to None, so auto setting to to BOS")
+    self.model.config.decoder_start_token_id = self.tokenizer.bos_token_id
+Ensures the decoder knows where to start generating output.
+If decoder_start_token_id is missing, sets it to the "beginning of sequence" (BOS) token.
+6️⃣ Mark Model as Encoder-Decoder
+python
+Copy
+Edit
+self.is_enc_dec = True
+This flag is used later to distinguish encoder-decoder models from decoder-only models.
+7️⃣ Define Generation Parameters
+python
+Copy
+Edit
+self.gen_kwargs = {
+    "return_dict_in_generate": True,
+    "output_attentions": True,
+    "max_length": args.max_length,
+    "num_beams": args.k,
+    "no_repeat_ngram_size": 0,
+    "output_scores": True,
+    "num_return_sequences": args.k,
+}
+These settings control how the model generates assembly code:
+
+return_dict_in_generate=True: Return a structured output instead of raw text.
+output_attentions=True: Store attention weights for analysis.
+max_length=args.max_length: Limit generated output to max_length (2048 by default).
+num_beams=args.k: Use beam search with k hypotheses (default: 20).
+no_repeat_ngram_size=0: Allow repeated phrases (can be adjusted).
+output_scores=True: Keep track of model confidence scores.
+num_return_sequences=args.k: Generate k different output sequences (default: 20).
+🛠 TL;DR - What This Code Does
+✔ Loads a pretrained encoder-decoder model (like BART).
+✔ Ensures tokenizer and model vocab sizes match.
+✔ Moves the model to GPU/CPU.
+✔ Ensures the decoder knows where to start (BOS token).
+✔ Defines settings for text generation (beam search, sequence length, etc.).

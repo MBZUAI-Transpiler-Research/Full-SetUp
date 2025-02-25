@@ -1,0 +1,141 @@
+
+
+🔍 Detailed Summary of main.py
+The main.py script serves as the entry point for running different tasks in the transpilation process. It sets up command-line arguments, processes input data, and calls the appropriate methods based on user-specified options.
+
+📝 Function 1: parse_args()
+Purpose:
+
+Defines and processes command-line arguments using argparse.
+Ensures each argument has a default value and an appropriate data type.
+Returns a namespace object (args) containing all parsed values.
+🚀 Step-by-Step Walkthrough
+Create the argument parser:
+
+python
+Copy
+Edit
+parser = argparse.ArgumentParser(
+    description="Loading and playing with a model for the transpilation task"
+)
+This sets up the argument parser with a description (useful for --help output).
+Define arguments: Each parser.add_argument() call does the following:
+
+Assigns a name (e.g., "--guess").
+Specifies a data type (e.g., type=int, type=str).
+Sets a default value (e.g., default=2048).
+Uses action flags (store_true, store_false).
+✅ Key Arguments
+
+Argument	Type	Default	Purpose
+--guess	bool	False	Run the Guess phase
+--sketch	bool	False	Run the Sketch phase
+--few_shot	bool	False	Run few-shot learning baseline
+--data_file	str	"data/proj_euler_functions.jsonl"	Specifies the input JSON file
+--k	int	20	Number of predictions to generate
+--max_length	int	2048	Maximum sequence length
+--view_uncertain	str	"" (empty string)	If set, enables debugging for uncertain tokens
+Parse arguments and return them:
+
+python
+Copy
+Edit
+args = parser.parse_args()
+return args
+This reads actual command-line input and maps values to args.
+📝 Function 2: main()
+Purpose:
+
+Calls different phases (guess, sketch, few_shot) based on user-provided arguments.
+Reads and processes input data line-by-line.
+Uses object-oriented design (GuessAndSketch class) to handle execution.
+🚀 Step-by-Step Walkthrough
+Parse command-line arguments
+
+python
+Copy
+Edit
+args = parse_args()
+Calls parse_args() to get user inputs.
+🔎 Handle view_uncertain
+
+python
+Copy
+Edit
+if args.view_uncertain:
+    gas = GuessAndSketch(args)
+    gas.view_uncertain_tokens(args.view_uncertain)
+If --view_uncertain is set (non-empty string), it:
+Creates a GuessAndSketch object (gas = GuessAndSketch(args)).
+Calls gas.view_uncertain_tokens(args.view_uncertain).
+If no argument is provided (""), this block is skipped.
+🔮 Handle guess phase
+
+python
+Copy
+Edit
+if args.guess:
+    gas = GuessAndSketch(args)
+    datapoints = []
+    for line in open(args.data_file):
+        datapoint = json.loads(line)
+        gas.guess(datapoint, args.predictions_folder, args.overlap_size)
+Creates GuessAndSketch object if --guess is enabled.
+Processes input JSON file line-by-line:
+Reads one JSON object per line (memory-efficient).
+Converts it to a Python dictionary (json.loads(line)).
+Calls gas.guess(datapoint, args.predictions_folder, args.overlap_size).
+Potential pitfalls:
+
+🚨 If args.data_file is empty or missing, open(args.data_file) will crash.
+🚨 If JSON format is invalid, json.loads(line) will raise an exception.
+✏️ Handle sketch phase
+
+python
+Copy
+Edit
+if args.sketch:
+    gas = GuessAndSketch(args)
+    if "/Applications/Racket v8.8/bin" not in os.environ["PATH"]:
+        os.environ["PATH"] += ":/Applications/Racket v8.8/bin"
+    for datapoint_file in glob.glob(f"{args.predictions_folder}/guess_*.json"):
+        datapoint = json.load(open(datapoint_file))
+        gas.sketch(datapoint, args.predictions_folder)
+Runs the Sketch phase if --sketch is enabled.
+Ensures Racket is in the system PATH (needed for execution).
+Processes previously guessed files (guess_*.json):
+Opens and loads JSON.
+Calls gas.sketch(datapoint, args.predictions_folder).
+Potential pitfalls:
+
+🚨 If guess_*.json files are missing, no sketching occurs.
+🚨 If Racket is not installed, execution may fail.
+🧠 Handle few_shot phase
+
+python
+Copy
+Edit
+if args.few_shot:
+    datapoints = []
+    for line in open(args.data_file):
+        datapoint = json.loads(line)
+        few_shot(
+            datapoint, args.predictions_folder, args.source_lang, args.target_lang
+        )
+Calls few_shot() for each datapoint.
+Potential pitfalls:
+🚨 If args.data_file is missing, the script will crash.
+🚨 If few_shot() is not properly configured, it may fail silently.
+🛠️ Key Takeaways & Pitfalls
+✅ What Works Well?
+✔ Flexible Command-Line Interface: Users can specify only the phases they want.
+✔ Memory-Efficient JSON Handling: Line-by-line processing prevents excessive memory use.
+✔ Modular Execution: Different phases (guess, sketch, few_shot) are separate.
+
+⚠️ Potential Issues
+❌ Invalid Argument Handling: If an unrecognized argument is provided, argparse throws an error.
+❌ File Handling Errors:
+
+Missing data_file → Crash on file open
+Corrupt JSON → Crash on json.loads(line)
+Missing guess_*.json → Sketching silently fails ❌ Path Dependency (Racket): Sketch phase requires Racket in PATH.
