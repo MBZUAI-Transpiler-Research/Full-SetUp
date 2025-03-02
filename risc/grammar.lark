@@ -1,0 +1,40 @@
+// grammar.lark
+start: program
+
+program: (line? NEWLINE)* line?
+
+line: label? (instruction | directive) comment?
+    | comment
+    | label
+
+label: IDENTIFIER ":"
+
+instruction: instruction_token operands?
+
+instruction_token: IDENTIFIER | HOLE
+
+operands: operand ("," operand)*
+
+operand: REG
+       | number
+       | IDENTIFIER
+       | offset "(" REG ")"
+       | HOLE
+
+offset: number?
+
+directive: "." IDENTIFIER (number | STRING | IDENTIFIER)?
+
+comment: /;.*/
+
+REG: /[rRxX][0-9]+|[a-z][0-9]+|[a-z]+/
+IDENTIFIER: /[a-zA-Z_][a-z0-9_\.]*/
+HOLE: "???"
+hex_number: /0x[0-9a-fA-F]+/
+dec_number: /[+-]?\d+/
+number: hex_number | dec_number
+STRING: /"[^"]*"/
+
+%import common.WS
+%import common.NEWLINE
+%ignore WS
