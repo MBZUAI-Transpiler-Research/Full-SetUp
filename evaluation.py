@@ -5,6 +5,7 @@ import torch
 import os
 from Levenshtein import distance as lev_dist
 import wandb
+from risc.verification import verify_equivalence
 
 
 def postprocess_text(preds, labels):
@@ -65,15 +66,30 @@ def compute_intermediate_metrics(metric, inputs, predictions, labels, example_ta
 
                 # Track errors per architecture
                 if tgt_lang == 'arm':
-                    num_erroneous_lines_arm += compilation_output.count('Error:')
+                    num_erroneous_lines_arm += compilation_output.count(
+                        'Error:'
+                    )
                 elif tgt_lang == 'riscv':
-                    num_erroneous_lines_riscv += compilation_output.count('Error:')
+                    num_erroneous_lines_riscv += compilation_output.count(
+                        'Error:'
+                    )
 
                 if not fail:
                     if tgt_lang == 'arm':
                         num_compiled_arm += 1
                     elif tgt_lang == 'riscv':
                         num_compiled_riscv += 1
+
+                    # or should we comapre with source?
+                    rosette_verdict = verify_equivalence(
+                        pred_assembly=pred,
+                        pred_lang=tgt_lang,
+                        target_assembly=tgt,
+                        target_lang=tgt_lang,
+                    )
+                    if rosette_verdict == '(unset)':
+                        # programs are equivalent
+                        ...
 
                 try:
                     subprocess.check_output(
@@ -90,7 +106,8 @@ def compute_intermediate_metrics(metric, inputs, predictions, labels, example_ta
                         num_tgt_compiled_riscv += 1
 
             example_table.add_data(src, pred, tgt, compilation_output)
-            test_predictions = {'src': src, 'tgt': tgt, 'pred': pred, 'pred compile output': compilation_output}
+            test_predictions = {
+                'src': src, 'tgt': tgt, 'pred': pred, 'pred compile output': compilation_output}
             of.write(f"{json.dumps(test_predictions)}\n")
 
     return_dict = {
@@ -115,7 +132,8 @@ def eval_model(args, accelerator, model, tokenizer, dataloader, metric, gen_kwar
 
     eval_loss = 0.0
     num_examples = 0
-    example_table = wandb.Table(columns=['input', 'predicted', 'target', 'pred_compilation'])
+    example_table = wandb.Table(
+        columns=['input', 'predicted', 'target', 'pred_compilation'])
 
     num_compiled_arm, num_tgt_compiled_arm = 0, 0
     num_compiled_riscv, num_tgt_compiled_riscv = 0, 0
@@ -137,13 +155,18 @@ def eval_model(args, accelerator, model, tokenizer, dataloader, metric, gen_kwar
                 **gen_kwargs,
             )
 
-            decoded_preds = tokenizer.batch_decode(generated_tokens, skip_special_tokens=True)
-            decoded_labels = tokenizer.batch_decode(batch["labels"], skip_special_tokens=True)
-            decoded_preds, decoded_labels = postprocess_text(decoded_preds, decoded_labels)
+            decoded_preds = tokenizer.batch_decode(
+                generated_tokens, skip_special_tokens=True)
+            decoded_labels = tokenizer.batch_decode(
+                batch["labels"], skip_special_tokens=True)
+            decoded_preds, decoded_labels = postprocess_text(
+                decoded_preds, decoded_labels)
 
         batch_eval_info = compute_intermediate_metrics(
-            metric, tokenizer.batch_decode(batch["input_ids"], skip_special_tokens=True), decoded_preds,
-            decoded_labels, example_table, os.path.join(args.output_dir, save_results_to), compile_folder,
+            metric, tokenizer.batch_decode(
+                batch["input_ids"], skip_special_tokens=True), decoded_preds,
+            decoded_labels, example_table, os.path.join(
+                args.output_dir, save_results_to), compile_folder,
             num_examples, tgt_lang=args.target_lang
         )
 
@@ -157,4 +180,3 @@ def eval_model(args, accelerator, model, tokenizer, dataloader, metric, gen_kwar
         num_em_riscv += batch_eval_info['num_em_riscv']
 
     return locals()  # Returns all tracked values 🚀
-
