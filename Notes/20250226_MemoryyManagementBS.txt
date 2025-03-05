@@ -1,0 +1,38 @@
+🛑 Issue: Out-of-Memory (OOM) Errors During Model Execution
+🔍 Observations
+You attempted to run Qwen2.5 (1.5B model) on an A100 80GB GPU, but consistently encountered CUDA Out-of-Memory (OOM) errors.
+The model successfully loaded with only ~1.1GB allocated, but it crashed during inference (generate()), consuming nearly all 80GB of VRAM.
+The softmax operation inside the attention mechanism caused the crash, indicating excessive memory usage in attention computation.
+⚠️ Key Symptoms
+✅ Model loads successfully (~1.1GB allocated, ~1.6GB reserved).
+❌ Inference fails (OOM occurs inside the softmax function in attention).
+VRAM explodes to 77.45GB before crashing.
+Reducing max_length (2048 → 1024) didn’t fix the issue.
+CUDA memory was properly cleared, and no rogue Python processes were running.
+GPU was free before running the model (checked with nvidia-smi).
+Multiple settings tried, but inference remained the culprit.
+🛠 What We Tried & The Results
+Attempt #	Solution Tried	Why We Tried It	Result
+1️⃣ Cleared CUDA Cache (torch.cuda.empty_cache())	Ensure VRAM is completely freed before running the model.	✅ Worked, but didn’t prevent OOM during inference.	
+**2️⃣ Checked Python Processes (`ps aux	grep python`)**	Ensure no other Python processes were holding GPU memory.	✅ No rogue processes found.
+3️⃣ Verified Environment (which python, which pip)	Ensure correct Conda environment (transpiler_env) is active.	✅ Correct environment was in use.	
+4️⃣ Applied 4-bit Quantization (BitsAndBytesConfig)	Reduce model size & memory usage by 50-75%.	✅ Model loaded successfully but still crashed during inference.	
+5️⃣ Changed device_map="balanced_low_0"	Optimize VRAM usage by spreading layers across GPU memory.	❌ Still OOM during inference.	
+6️⃣ Moved First Layer to CPU (device_map={"transformer.h.0": "cpu"})	Reduce GPU memory pressure by offloading one layer.	❌ Had minimal effect; still crashed at inference.	
+7️⃣ Reduced --max_length (2048 → 1024)	Reduce memory allocated for the sequence length.	❌ Slight reduction, but OOM still occurred.	
+8️⃣ Forced FP16 (torch_dtype=torch.float16)	bfloat16 might be more memory-intensive in some cases.	❌ No noticeable improvement over bfloat16.	
+9️⃣ Changed device_map="sequential"	More conservative memory allocation strategy.	❌ Still crashed during inference.	
+🔟 Lowered Beam Search (--k 3 → --k 1)	Beam search stores multiple hypotheses, drastically increasing memory usage.	(Testing now – Expected to significantly reduce memory usage).	
+1️⃣1️⃣ Disabled output_attentions=True	Prevent storing massive attention matrices in memory.	(Testing now – Should help prevent softmax OOM errors).	
+1️⃣2️⃣ Enabled attn_implementation="flash_attention_2"	Optimize attention memory usage for large sequences.	(Testing now – Should reduce attention memory usage).	
+1️⃣3️⃣ Lowered --max_length further (1024 → 512)	Reduce attention matrix size, saving exponential memory.	(Testing now – Should lower softmax memory footprint).	
+🔮 Expected Outcome From Final Fixes
+Lowering beam search (--k 1) should prevent excessive sequence duplication in memory.
+Disabling output_attentions=True should prevent large tensor accumulation.
+Enabling attn_implementation="flash_attention_2" should optimize memory use in softmax computation.
+Lowering --max_length (1024 → 512) should prevent massive tensor sizes in attention.
+📌 Final Thoughts
+The main issue isn’t model loading—it’s memory explosion during inference (generate()).
+The culprit is attention computation, particularly beam search and softmax inside scaled dot-product attention.
+By reducing sequence length and using memory-efficient attention mechanisms, we should eliminate OOM errors.
+If all else fails, the next step would be using torch.compile() with memory optimization flags or switching to DeepSpeed inference.

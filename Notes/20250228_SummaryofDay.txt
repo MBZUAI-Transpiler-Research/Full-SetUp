@@ -1,0 +1,69 @@
+✅ 1️⃣ Review of preprocess_text
+We deeply analyzed how input text is preprocessed for different model types.
+
+Encoder-Decoder (is_enc_dec=True):
+
+Tokenizes input & target separately.
+Uses "labels" for supervised learning.
+Standard Decoder-Only (is_enc_dec=False):
+
+Uses prepare_sample_text to structure input-output as a single sequence.
+Tracks indices manually (in_start_idx, out_start_idx).
+Qwen Special Case:
+✅ We confirmed that Qwen is structured more like an encoder-decoder model because:
+
+It requires natural language prompts instead of structured prefixes.
+It assigns "labels" separately, rather than concatenating input-output.
+It skips prepare_sample_text to avoid unnecessary restructuring.
+✅ 2️⃣ Deep Dive into prepare_sample_text
+We examined every step of prepare_sample_text in detail:
+
+Adding input language prefix (<RISC>:)
+Tokenizing the actual input text
+Removing EOS/BOS tokens where necessary
+Adding target language prefix (\n\n<ARM>:)
+Tokenizing the target text separately
+Concatenating everything into a single input tensor
+Tracking sequence indices (in_start_idx, out_start_idx)
+✅ We confirmed that out_start_idx = in_start_idx + in_seq_len + tgt_lang_prefix and understood why indices were necessary.
+
+✅ 3️⃣ Attention Matrices & Model Behavior
+💡 We reviewed how attention scores are used in this project:
+
+Normally, attention helps the model focus on key parts of the input.
+In this research, attention matrices are extracted for analysis.
+We examined:
+How attention is computed (QK^T / sqrt(d_k))
+How cross-attentions track alignment between source & generated text
+Why we store attention scores for later processing (alignment_layer = 10)
+✅ Key Takeaway:
+
+Attention matrices are dynamically updated at each generation step.
+We extract and analyze them to improve alignment in transpilation.
+✅ 4️⃣ Debugging Memory & Chunking Issues
+We identified:
+
+High GPU memory usage (16GB used) from a loaded PyTorch model.
+How to free GPU memory (torch.cuda.empty_cache() or kill PID).
+Why the "Sequence Length Exceeded" warning appears:
+Chunking (translate_in_chunks) might not be triggering correctly.
+Decoder-only models can exceed 2048 if input-output sequences aren’t split early.
+Possible need for truncation in prepare_sample_text.
+✅ Next Debugging Steps:
+
+Check if translate_in_chunks is always applied where needed.
+Consider early truncation to prevent oversized sequences.
+✅ 5️⃣ Code Review for Qwen Addition
+We verified the Qwen-specific changes were correct:
+
+Natural language prompts were correctly formatted.
+Label assignment was handled properly (like is_enc_dec).
+Avoiding prepare_sample_text was the right choice for Qwen.
+🚀 Final verdict: The Qwen addition is well-structured and logically sound!
+
+📌 Next Steps (After Dinner 🍽️)
+Would you like to:
+
+Debug translate_in_chunks and sequence-length issues?
+Move to filter_topk_chunks?
+Check GPU memory usage again after freeing up space?

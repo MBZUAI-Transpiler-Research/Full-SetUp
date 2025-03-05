@@ -1,0 +1,182 @@
+🛠️ Detailed Summary of Confirmed Changes
+Below is an in-depth breakdown of all confirmed changes in your script up to the Guess section and why they were necessary.
+
+✅ 1. Added Support for Qwen2.5 (Decoder-Only, Non-PEFT)
+🔹 What changed?
+Previously, the script assumed that all decoder-only models (such as LLaMA, GPT, etc.) required PEFT adapters. However, Qwen2.5 does not use PEFT—it is a full model that should be loaded directly.
+
+🔹 How we fixed it:
+
+We now check if "qwen" is in args.model_name_or_path.lower() and load it without PEFT:
+python
+Copy
+Edit
+if "qwen" in args.model_name_or_path.lower():
+    self.model = AutoModelForCausalLM.from_pretrained(
+        args.model_name_or_path,
+        torch_dtype="auto",
+        device_map="auto",
+        trust_remote_code=True,
+        load_in_8bit=True
+    )
+For other decoder-only models (e.g., LLaMA, GPT, PEFT-based models), we still use PEFT as before:
+python
+Copy
+Edit
+else:
+    parent_name = args.config_name
+    model = AutoModelForCausalLM.from_pretrained(parent_name, load_in_8bit=True, trust_remote_code=True)
+    self.model = PeftModel.from_pretrained(model, args.model_name_or_path)
+🛠️ Why this matters:
+
+Ensures Qwen2.5 loads properly without errors related to missing PEFT adapters.
+Keeps existing PEFT-based decoder models working as expected.
+✅ 2. Fixed Tensor Conversion Issues for JSON Compatibility
+🔹 What changed?
+
+The script previously stored PyTorch tensors in its outputs, which cannot be directly saved to JSON.
+This caused serialization issues, particularly when storing results.
+🔹 How we fixed it:
+We added a dedicated function, convert_tensors(), which recursively converts:
+
+Tensors → Lists
+Tuples → Lists
+Torch-specific objects → Strings
+python
+Copy
+Edit
+def convert_tensors(self, obj):
+    """Recursively convert all PyTorch objects and tuples to JSON-compatible formats."""
+    if isinstance(obj, torch.Tensor):
+        return obj.tolist()  # Convert Tensor to a Python list
+    elif isinstance(obj, tuple):
+        return [self.convert_tensors(i) for i in obj]  # Convert tuple -> list
+    elif isinstance(obj, list):
+        return [self.convert_tensors(i) for i in obj]  # Process elements in lists
+    elif isinstance(obj, dict):
+        return {k: self.convert_tensors(v) for k, v in obj.items()}  # Process dict values
+    elif isinstance(obj, torch.dtype):
+        return str(obj)  # Convert dtypes -> string
+    elif isinstance(obj, torch.device):
+        return str(obj)  # Convert devices -> string
+    elif isinstance(obj, torch.nn.Parameter):
+        return obj.detach().tolist()  # Convert nn.Parameter -> list
+    return obj  # Return unchanged if not a Tensor
+🛠️ Why this matters:
+
+Prevents runtime errors when writing outputs to JSON.
+Ensures all results are human-readable and can be reloaded without conversion issues.
+Especially useful for storing model-generated predictions.
+✅ 3. Improved Memory Management (Clearing CUDA Cache)
+🔹 What changed?
+
+We added torch.cuda.empty_cache() to help free up GPU memory after every run.
+This prevents CUDA out-of-memory (OOM) errors, especially when running large models like Qwen2.5.
+🔹 How we fixed it:
+Before calling guess(), we clear the cache:
+
+python
+Copy
+Edit
+torch.cuda.empty_cache()
+🛠️ Why this matters:
+
+Helps prevent memory fragmentation.
+Ensures smooth execution of multiple inference calls.
+Prevents crashes due to excessive GPU memory usage.
+✅ 4. Unified is_enc_dec and gen_kwargs Handling
+🔹 What changed?
+
+Previously, is_enc_dec and gen_kwargs were set inconsistently.
+Now, both encoder-decoder and decoder-only models follow a standardized approach.
+🔹 How we fixed it:
+Regardless of model type, we always:
+
+Set self.is_enc_dec = True/False explicitly.
+Define self.gen_kwargs with appropriate generation parameters.
+For encoder-decoder models:
+
+python
+Copy
+Edit
+self.is_enc_dec = True
+self.gen_kwargs = {
+    "return_dict_in_generate": True,
+    "output_attentions": True,
+    "max_length": args.max_length,
+    "num_beams": args.k,
+    "no_repeat_ngram_size": 0,
+    "output_scores": True,
+    "num_return_sequences": args.k,
+}
+For decoder-only models (Qwen, LLaMA, GPT, etc.):
+
+python
+Copy
+Edit
+self.is_enc_dec = False
+self.gen_kwargs = {
+    "return_dict_in_generate": True,
+    "output_attentions": True,
+    "max_new_tokens": args.max_length,
+    "num_beams": args.k,
+    "no_repeat_ngram_size": 0,
+    "output_scores": True,
+    "num_return_sequences": args.k,
+}
+🛠️ Why this matters:
+
+Eliminates redundant checks in later parts of the script.
+Prevents inconsistent generation settings across models.
+✅ 5. Expanded make_run_commands to Include human_eval
+🔹 What changed?
+
+We added support for human_eval (modeled after euler).
+Ensured proper handling of math-related linking (-lm -lgmp).
+🔹 How we fixed it:
+We added:
+
+python
+Copy
+Edit
+elif "human_eval" in args.predictions_folder:
+    self.make_run_commands["gcc_flags"] = "-lm -lgmp" if args.target_lang == 'arm' else "$(pkg-config --libs gmp) -lm"
+    self.make_run_commands["qemu_setup"] = {
+        "problem": {"setup": [], "qemu_args": "", "test": [], "cleanup": []}
+    }
+🛠️ Why this matters:
+
+Allows seamless integration of human_eval problems into the pipeline.
+Ensures math functions (math.h) are linked correctly.
+📝 General Summary of Everything We Did Today
+Here’s a bigger picture summary of everything we worked on:
+
+🔧 Debugged and improved Qwen2.5 integration
+
+Fixed incorrect usage of PEFT for Qwen.
+Ensured device_map and trust_remote_code are properly set.
+💾 Addressed memory and storage issues
+
+Added torch.cuda.empty_cache() to reduce GPU memory fragmentation.
+Implemented convert_tensors() to fix JSON serialization issues.
+📌 Standardized model loading
+
+Unified is_enc_dec flag handling.
+Standardized gen_kwargs across models.
+🏗️ Added support for human_eval dataset
+
+Created a make_run_commands entry modeled after Euler.
+Ensured proper linking of math libraries.
+🔄 Reviewed the entire script up to the Guess section
+
+Verified all changes.
+Checked for any missing logic updates.
+Discussed how self.tokenizer, self.model, and config interact.
+🤔 Discussed tokenizer behavior & chunking
+
+Investigated why sequences over max_length cause warnings.
+Will review translate_in_chunks() in more detail.
+📌 Prepared mental notes for professor discussions
+
+Compiled a detailed list of changes.
+Ensured all modifications were intentional and justified.
