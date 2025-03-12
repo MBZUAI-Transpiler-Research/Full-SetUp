@@ -60,12 +60,12 @@ main:
 	add	x0, x0, :lo12:retvalue
 	ldr	w0, [x0]
 	cmp	w0, 0
-	bne	.L5
+	bne	.L4
 	adrp	x0, .LC2
 	add	x0, x0, :lo12:.LC2
 	bl	puts
-.L5:
-	nop
+.L4:
+	mov	w0, 0
 	ldp	x29, x30, [sp], 32
 	.cfi_restore 30
 	.cfi_restore 29

@@ -39,7 +39,7 @@ int findmax(const char triangle[][N], int row, int col)
 {
   int left, right;
 
-  if (row == N-1) {
+  if (row == N) {
     return triangle[row][col];
   }
   left = findmax(triangle, row+1, col);

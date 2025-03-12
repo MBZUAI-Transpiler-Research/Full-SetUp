@@ -1,6 +1,6 @@
 #include <unistd.h>
 #include<stdio.h>
-void main()
+int main()
 {
 char *cmd = "ps";
 char *args[3];

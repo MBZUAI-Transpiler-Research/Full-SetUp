@@ -1,0 +1,113 @@
+Summary of Today's Discussion (Compilation & Execution Setup in guess_and_sketch.py)
+1️⃣ Overview of make_run_commands Setup
+
+This section initializes commands for assembling, compiling, and executing the transpiled programs. It sets up:
+
+    as_cmd → Assembler command ({prefix}-linux-gnu-as).
+    gcc_cmd → Compiler command ({prefix}-linux-gnu-gcc -pthread).
+    qemu_cmd → Execution command (qemu-{prefix} -L /usr/{prefix}-linux-gnu).
+
+🔹 Key Observations:
+
+    as_cmd is an explicit assembler, but in our earlier scripts, we used architecture specific equivalents of gcc -S to generate assembly instead.
+    gcc_cmd includes -pthread, which allows multithreading support for compilation.
+    qemu_cmd is effectively the same as what we used earlier for executing binaries.
+
+2️⃣ gcc_flags Setup (Dataset-Specific Compilation Flags)
+
+Each dataset requires different compiler flags (gcc_flags):
+
+    Benchmarks:
+
+"-lapr-1 -lm -lgmp"  # ARM
+"$(pkg-config --libs apr-1 gmp) -lm"  # RISC-V
+
+    Links math (-lm) and arbitrary precision (-lgmp) libraries.
+    -lapr-1 is an additional dependency for Apache Portable Runtime (APR).
+
+Euler:
+
+"-lm -lgmp"  # ARM
+"$(pkg-config --libs gmp) -lm"  # RISC-V
+
+    Euler problems only need math (-lm) and arbitrary-precision (-lgmp) libraries.
+
+Unix Commands:
+
+    ""
+
+        No additional compiler flags needed.
+
+3️⃣ qemu_setup (Execution Setup Per Dataset)
+
+This section defines how each dataset is executed in QEMU:
+
+    Benchmarks:
+        Each benchmark runs in QEMU with a numeric argument (e.g., binary-trees gets "qemu_args": "9", pidigits gets "1000").
+        No setup or cleanup required.
+
+    Euler:
+        Runs problems without additional setup.
+
+    Unix Commands:
+        More complex execution logic (e.g., creating temp files, running commands, cleaning up).
+        Example: cp
+
+"cp": {
+    "setup": [
+        "mkdir {folder}/tempfolder",
+        "touch {folder}/tempfolder/testfile.txt",
+        "echo hello " + str(random_num) + " > {folder}/tempfolder/testfile.txt",
+    ],
+    "qemu_args": "{folder}/tempfolder/testfile.txt {folder}/tempfolder/copiedtestfile.txt",
+    "test": [
+        "cat {folder}/tempfolder/copiedtestfile.txt",
+        "ls {folder}/tempfolder",
+    ],
+    "cleanup": ["rm -rf {folder}/tempfolder"],
+}
+
+Creates a temp folder → Copies a file → Verifies the copy → Cleans up.
+
+4️⃣ Key Differences from Our Earlier Scripts
+🔹 Compilation & Assembly Differences
+
+    In our script, we explicitly used architecture-specific commands instead of gcc.
+    We never used gcc by itself. Instead, we used:
+
+riscv64-linux-gnu-gcc -S ${FILE}.c -o ${FILE}.risc.s -O0
+riscv64-linux-gnu-gcc -c ${FILE}.risc.s -o ${FILE}.risc.o
+
+And similarly for ARM:
+
+    aarch64-linux-gnu-gcc -S ${FILE}.c -o ${FILE}.arm.s -O0
+    aarch64-linux-gnu-gcc -c ${FILE}.arm.s -o ${FILE}.arm.o
+
+        We explicitly targeted RISC-V and ARM architectures.
+        Guess & Sketch instead defines a generic {prefix}-linux-gnu-as assembler.
+
+🔹 Linking Differences
+
+    In our script, linking happened with explicit calls to:
+
+riscv64-linux-gnu-gcc ${FILE}.risc.o ${TEST_FILE}.risc.o -o ${FILE}.risc $LINK_FLAG
+aarch64-linux-gnu-gcc ${FILE}.arm.o ${TEST_FILE}.arm.o -o ${FILE}.arm $LINK_FLAG
+
+In guess_and_sketch.py, it uses:
+
+    "gcc_cmd": "{prefix}-linux-gnu-gcc -pthread"
+
+        They use a general gcc_cmd with threading support (-pthread), while we explicitly compile for each architecture.
+
+🔹 Execution Differences
+
+    Both our script and guess_and_sketch.py execute via QEMU, but our script hardcodes architecture:
+
+qemu-riscv64 -L /usr/riscv64-linux-gnu ${FILE}.risc
+qemu-aarch64 -L /usr/aarch64-linux-gnu ${FILE}.arm
+
+    Guess & Sketch abstracts this:
+
+"qemu_cmd": "qemu-{prefix} -L /usr/{prefix}-linux-gnu"
+
+Functionally the same, but their approach is more flexible for different architectures.

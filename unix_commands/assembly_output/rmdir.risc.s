@@ -60,15 +60,17 @@ main:
 	ld	a1,-80(s0)
 	ld	a0,-56(s0)
 	call	execvp@plt
-	nop
+	li	a5,0
+	mv	a4,a5
 	la	a5,__stack_chk_guard
-	ld	a4, -24(s0)
+	ld	a3, -24(s0)
 	ld	a5, 0(a5)
-	xor	a5, a4, a5
-	li	a4, 0
-	beq	a5,zero,.L4
+	xor	a5, a3, a5
+	li	a3, 0
+	beq	a5,zero,.L5
 	call	__stack_chk_fail@plt
-.L4:
+.L5:
+	mv	a0,a4
 	ld	ra,72(sp)
 	.cfi_restore 1
 	ld	s0,64(sp)

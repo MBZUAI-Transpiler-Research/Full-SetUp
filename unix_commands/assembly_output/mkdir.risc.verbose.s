@@ -34,39 +34,39 @@ main:
 	.cfi_offset 8, -16
 	addi	s0,sp,80	#,,
 	.cfi_def_cfa 8, 0
-	mv	a5,a0	# tmp137, argc
+	mv	a5,a0	# tmp139, argc
 	sd	a1,-80(s0)	# argv, argv
-	sw	a5,-68(s0)	# tmp138, argc
-# mkdir.c:12: void main(int argc, char* argv[]){
-	la	a5,__stack_chk_guard		# tmp139,
-	ld	a4, 0(a5)	# tmp151, __stack_chk_guard
-	sd	a4, -24(s0)	# tmp151, D.4485
-	li	a4, 0	# tmp151
+	sw	a5,-68(s0)	# tmp140, argc
+# mkdir.c:12: int main(int argc, char* argv[]){
+	la	a5,__stack_chk_guard		# tmp141,
+	ld	a4, 0(a5)	# tmp154, __stack_chk_guard
+	sd	a4, -24(s0)	# tmp154, D.4487
+	li	a4, 0	# tmp154
 # mkdir.c:15: if(argc!=2 || argv[1]=="--help")
-	lw	a5,-68(s0)		# tmp141, argc
-	sext.w	a4,a5	# tmp142, tmp140
-	li	a5,2		# tmp143,
-	bne	a4,a5,.L2	#, tmp142, tmp143,
+	lw	a5,-68(s0)		# tmp143, argc
+	sext.w	a4,a5	# tmp144, tmp142
+	li	a5,2		# tmp145,
+	bne	a4,a5,.L2	#, tmp144, tmp145,
 # mkdir.c:15: if(argc!=2 || argv[1]=="--help")
-	ld	a5,-80(s0)		# tmp144, argv
-	addi	a5,a5,8	#, _1, tmp144
+	ld	a5,-80(s0)		# tmp146, argv
+	addi	a5,a5,8	#, _1, tmp146
 	ld	a4,0(a5)		# _2, *_1
 # mkdir.c:15: if(argc!=2 || argv[1]=="--help")
-	lla	a5,.LC0	# tmp145,
-	bne	a4,a5,.L3	#, _2, tmp145,
+	lla	a5,.LC0	# tmp147,
+	bne	a4,a5,.L3	#, _2, tmp147,
 .L2:
 # mkdir.c:17:     printf("\nusage: rm FileTodelete\n");
 	lla	a0,.LC1	#,
 	call	puts@plt	#
 .L3:
 # mkdir.c:20: char *cmd = "mkdir";
-	lla	a5,.LC2	# tmp146,
-	sd	a5,-56(s0)	# tmp146, cmd
+	lla	a5,.LC2	# tmp148,
+	sd	a5,-56(s0)	# tmp148, cmd
 # mkdir.c:22: args[0] = "mkdir";
-	lla	a5,.LC2	# tmp147,
-	sd	a5,-48(s0)	# tmp147, args[0]
+	lla	a5,.LC2	# tmp149,
+	sd	a5,-48(s0)	# tmp149, args[0]
 # mkdir.c:23: args[1] = argv[1];
-	ld	a5,-80(s0)		# tmp148, argv
+	ld	a5,-80(s0)		# tmp150, argv
 	ld	a5,8(a5)		# _3, MEM[(char * *)argv_6(D) + 8B]
 	sd	a5,-40(s0)	# _3, args[1]
 # mkdir.c:24: args[2] = NULL;
@@ -75,16 +75,18 @@ main:
 	ld	a1,-80(s0)		#, argv
 	ld	a0,-56(s0)		#, cmd
 	call	execvp@plt	#
+	li	a5,0		# _15,
+	mv	a4,a5	# <retval>, _15
 # mkdir.c:27: }
-	nop	
-	la	a5,__stack_chk_guard		# tmp149,
-	ld	a4, -24(s0)	# tmp152, D.4485
-	ld	a5, 0(a5)	# tmp150, __stack_chk_guard
-	xor	a5, a4, a5	# tmp150, tmp152
-	li	a4, 0	# tmp152
-	beq	a5,zero,.L4	#, tmp150,,
+	la	a5,__stack_chk_guard		# tmp152,
+	ld	a3, -24(s0)	# tmp155, D.4487
+	ld	a5, 0(a5)	# tmp153, __stack_chk_guard
+	xor	a5, a3, a5	# tmp153, tmp155
+	li	a3, 0	# tmp155
+	beq	a5,zero,.L5	#, tmp153,,
 	call	__stack_chk_fail@plt	#
-.L4:
+.L5:
+	mv	a0,a4	#, <retval>
 	ld	ra,72(sp)		#,
 	.cfi_restore 1
 	ld	s0,64(sp)		#,

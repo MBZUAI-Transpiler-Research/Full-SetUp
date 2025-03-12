@@ -64,11 +64,12 @@ main:
 	sw	a4,0(a5)
 	lla	a5,retvalue
 	lw	a5,0(a5)
-	bne	a5,zero,.L5
+	bne	a5,zero,.L4
 	lla	a0,.LC2
 	call	puts@plt
-.L5:
-	nop
+.L4:
+	li	a5,0
+	mv	a0,a5
 	ld	ra,24(sp)
 	.cfi_restore 1
 	ld	s0,16(sp)

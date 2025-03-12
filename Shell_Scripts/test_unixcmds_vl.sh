@@ -1,119 +1,141 @@
+#!/bin/bash
+
+set -e  # Exit on error
+
 cd unix_commands
 
-## cat.c
-echo "Hello, QEMU!" > testfile.txt
-qemu-aarch64 assembly_output/cat.arm.out testfile.txt
-qemu-riscv64 assembly_output/cat.risc.out testfile.txt
-rm -f testfile.txt
+echo "Starting Unix Commands Testing..."
 
-## cd.c
-mkdir testdir
-qemu-aarch64 assembly_output/cd.arm.out testdir
-qemu-aarch64 assembly_output/cd.arm.out testdir
-rm -rf testdir
-
-## cp.c
-echo "If you can read this...." > sourcefilearm.txt
-echo "... you don't need glasses" > sourcefileriscv.txt
-qemu-aarch64 assembly_output/cp.arm.out sourcefilearm.txt destfilearm.txt
-qemu-riscv64 assembly_output/cp.risc.out sourcefileriscv.txt destfileriscv.txt
-cat destfilearm.txt  
-cat destfileriscv.txt
-rm -f sourcefilearm.txt sourcefileriscv.txt destfilearm.txt destfileriscv.txt
-
-
-# ls.c
-echo "🔹 Running ls (basic)"
-qemu-aarch64 assembly_output/ls.arm.out
-qemu-riscv64 assembly_output/ls.risc.out
-echo "🔹 Running ls -R (recursive)"
-qemu-aarch64 assembly_output/ls.arm.out -R
-qemu-riscv64 assembly_output/ls.risc.out -R
-
-# mkdir.c
-qemu-aarch64 assembly_output/mkdir.arm.out armtest
-qemu-riscv64 assembly_output/mkdir.risc.out risctest
-ls -ld armtest risctest
-rm -rf armtest risctest
-
-# ps.c
-echo "🔹 Running ps (process listing)"
-qemu-aarch64 assembly_output/ps.arm.out | head -n 10
-qemu-riscv64 assembly_output/ps.risc.out | head -n 10
-
-# rm.c
-TEST_FILE_ARM="armtest.txt"
-TEST_FILE_RISC="risctest.txt"
-
-echo "🔹 Creating test files"
-touch "$TEST_FILE_ARM" "$TEST_FILE_RISC"
-ls -l "$TEST_FILE_ARM" "$TEST_FILE_RISC"  # Confirm creation
-
-echo "🔹 Running rm (delete files)"
-qemu-aarch64 assembly_output/rm.arm.out "$TEST_FILE_ARM"
-qemu-riscv64 assembly_output/rm.risc.out "$TEST_FILE_RISC"
-
-# Verify files were deleted
-if [[ ! -e "$TEST_FILE_ARM" && ! -e "$TEST_FILE_RISC" ]]; then
-    echo "✅ Test files successfully deleted!"
-else
-    echo "❌ Some test files still exist!"
-    ls -l "$TEST_FILE_ARM" "$TEST_FILE_RISC"
+# Ensure there are executables to run
+if [ ! -d "assembly_output" ]; then
+    echo "Error: Assembly output folder does not exist."
+    exit 1
 fi
 
-# rmdir.c
-mkdir test_arm test_riscv
+# Helper function to run QEMU if the file exists
+run_qemu() {
+    if [ -f "$1" ]; then
+        echo "Running $1..."
+        $2 "$1" "${@:3}"  # Pass additional arguments if needed
+    else
+        echo "Skipping $1 (not found)"
+    fi
+}
+
+# --- cat ---
+echo "Testing cat.c"
+echo "Hello, QEMU!" > testfile.txt
+run_qemu "assembly_output/cat.arm.out" qemu-aarch64 testfile.txt
+run_qemu "assembly_output/cat.risc.out" qemu-riscv64 testfile.txt
+run_qemu "assembly_output/cat.x86.out" qemu-x86_64 testfile.txt
+rm -f testfile.txt
+
+# --- cd ---
+echo "Testing cd.c"
+mkdir testdir
+run_qemu "assembly_output/cd.arm.out" qemu-aarch64 testdir
+run_qemu "assembly_output/cd.risc.out" qemu-riscv64 testdir
+run_qemu "assembly_output/cd.x86.out" qemu-x86_64 testdir
+rm -rf testdir
+
+# --- cp ---
+echo "Testing cp.c"
+echo "If you can read this...." > sourcefilearm.txt
+echo "... you don't need glasses" > sourcefileriscv.txt
+echo "Test file for x86" > sourcefilex86.txt
+run_qemu "assembly_output/cp.arm.out" qemu-aarch64 sourcefilearm.txt destfilearm.txt
+run_qemu "assembly_output/cp.risc.out" qemu-riscv64 sourcefileriscv.txt destfileriscv.txt
+run_qemu "assembly_output/cp.x86.out" qemu-x86_64 sourcefilex86.txt destfilex86.txt
+cat destfilearm.txt  
+cat destfileriscv.txt
+cat destfilex86.txt
+rm -f sourcefilearm.txt sourcefileriscv.txt sourcefilex86.txt destfilearm.txt destfileriscv.txt destfilex86.txt
+
+# --- ls ---
+echo "Testing ls.c"
+run_qemu "assembly_output/ls.arm.out" qemu-aarch64
+run_qemu "assembly_output/ls.risc.out" qemu-riscv64
+run_qemu "assembly_output/ls.x86.out" qemu-x86_64
+
+# --- mkdir ---
+echo "Testing mkdir.c"
+run_qemu "assembly_output/mkdir.arm.out" qemu-aarch64 armtest
+run_qemu "assembly_output/mkdir.risc.out" qemu-riscv64 risctest
+run_qemu "assembly_output/mkdir.x86.out" qemu-x86_64 x86test
+ls -ld armtest risctest x86test
+rm -rf armtest risctest x86test
+
+# --- ps ---
+echo "Testing ps.c"
+run_qemu "assembly_output/ps.arm.out" qemu-aarch64 | head -n 10
+run_qemu "assembly_output/ps.risc.out" qemu-riscv64 | head -n 10
+run_qemu "assembly_output/ps.x86.out" qemu-x86_64 | head -n 10
+
+# --- rm ---
+echo "🔹 Testing rm.c"
+TEST_FILE_ARM="armtest.txt"
+TEST_FILE_RISC="risctest.txt"
+TEST_FILE_X86="x86test.txt"
+
+touch "$TEST_FILE_ARM" "$TEST_FILE_RISC" "$TEST_FILE_X86"
+ls -l "$TEST_FILE_ARM" "$TEST_FILE_RISC" "$TEST_FILE_X86"
+
+run_qemu "assembly_output/rm.arm.out" qemu-aarch64 "$TEST_FILE_ARM"
+run_qemu "assembly_output/rm.risc.out" qemu-riscv64 "$TEST_FILE_RISC"
+run_qemu "assembly_output/rm.x86.out" qemu-x86_64 "$TEST_FILE_X86"
+
+# Verify files were deleted
+if [[ ! -e "$TEST_FILE_ARM" && ! -e "$TEST_FILE_RISC" && ! -e "$TEST_FILE_X86" ]]; then
+    echo "Test files successfully deleted!"
+else
+    echo "Some test files still exist!"
+    ls -l "$TEST_FILE_ARM" "$TEST_FILE_RISC" "$TEST_FILE_X86"
+fi
+
+# --- rmdir ---
+echo "Testing rmdir.c"
+mkdir test_arm test_riscv test_x86
 ls
-qemu-aarch64 assembly_output/rmdir.arm.out test_arm
-ls
-qemu-riscv64 assembly_output/rmdir.risc.out test_riscv
+run_qemu "assembly_output/rmdir.arm.out" qemu-aarch64 test_arm
+run_qemu "assembly_output/rmdir.risc.out" qemu-riscv64 test_riscv
+run_qemu "assembly_output/rmdir.x86.out" qemu-x86_64 test_x86
 ls
 
-# touch.c
-echo "🔹 Creating test file"
+# --- touch ---
+echo "Testing touch.c"
 TEST_FILE_ARM="touch_test_arm.txt"
 TEST_FILE_RISC="touch_test_risc.txt"
-touch "$TEST_FILE_ARM" "$TEST_FILE_RISC"
+TEST_FILE_X86="touch_test_x86.txt"
+touch "$TEST_FILE_ARM" "$TEST_FILE_RISC" "$TEST_FILE_X86"
 
-# Check timestamps before
-echo "🔹 Checking timestamps before modification (with seconds)"
-ls --full-time "$TEST_FILE_ARM" "$TEST_FILE_RISC"
+echo "Checking timestamps before modification"
+ls --full-time "$TEST_FILE_ARM" "$TEST_FILE_RISC" "$TEST_FILE_X86"
 
-# Add a delay to ensure timestamp change is visible
-echo "⏳ Waiting for 3 seconds..."
-sleep 3
+sleep 3  # Ensure timestamp change is visible
 
-# Run the compiled touch binary
-echo "🔹 Running touch to modify timestamps"
-qemu-aarch64 assembly_output/touch.arm.out "$TEST_FILE_ARM"
-qemu-riscv64 assembly_output/touch.risc.out "$TEST_FILE_RISC"
+run_qemu "assembly_output/touch.arm.out" qemu-aarch64 "$TEST_FILE_ARM"
+run_qemu "assembly_output/touch.risc.out" qemu-riscv64 "$TEST_FILE_RISC"
+run_qemu "assembly_output/touch.x86.out" qemu-x86_64 "$TEST_FILE_X86"
 
-# Check timestamps after
-echo "🔹 Checking timestamps after modification (with seconds)"
-ls --full-time "$TEST_FILE_ARM" "$TEST_FILE_RISC"
+echo "🔹 Checking timestamps after modification"
+ls --full-time "$TEST_FILE_ARM"
+ls --full-time "$TEST_FILE_RISC" 
+ls --full-time "$TEST_FILE_X86"
 
-# Cleanup
-rm -f "$TEST_FILE_ARM" "$TEST_FILE_RISC"
+rm -f "$TEST_FILE_ARM" "$TEST_FILE_RISC" "$TEST_FILE_X86"
 
+# --- tee ---
+echo "Skipping automated testing for tee.c"
+echo "Run manually:"
+echo "  qemu-aarch64 assembly_output/tee.arm.out test_output_arm.txt"
+echo "  qemu-riscv64 assembly_output/tee.risc.out test_output_risc.txt"
+echo "  qemu-x86_64 assembly_output/tee.x86.out test_output_x86.txt"
 
-# tee.c
-echo "--------------------------------------------------------------"
-echo "Alas, Poor Yorick! Cannot easily test tee.c within the shell"
-echo "Run the commands below in the shell individually and enter words"
-echo "Then hit ctrl + C to exit and view the files with cat test_output_arm.txt and test_output_risc.txt"
-echo "Lastly don't forget to clean up with rm -f test_output_arm.txt test_output_risc.txt"
-echo "qemu-aarch64 assembly_output/tee.arm.out test_output_arm.txt"
-echo "qemu-riscv64 assembly_output/tee.risc.out test_output_risc.txt"
-echo "rm -f test_output_arm.txt test_output_risc.txt"
+# --- xargs ---
+echo "Skipping automated testing for xargs.c"
+echo "Run manually:"
+echo "  qemu-aarch64 assembly_output/xargs.arm.out"
+echo "  qemu-riscv64 assembly_output/xargs.risc.out"
+echo "  qemu-x86_64 assembly_output/xargs.x86.out"
 
-# xargs.c
-echo "--------------------------------------------------------------"
-echo "Alas, Poor Yorick! Cannot easily test xargs.c within the script"
-echo "Run the commands below in the shell individually and enter words"
-echo "Then hit Ctrl+D to stop and see the contents of lm.txt"
-echo "Lastly, don't forget to clean up with rm -f lm.txt"
-echo ""
-echo "qemu-aarch64 assembly_output/xargs.arm.out"
-echo "qemu-riscv64 assembly_output/xargs.risc.out"
-echo "cat lm.txt"
-echo "rm -f lm.txt"
+echo "Unix Commands Testing Completed!"

@@ -51,39 +51,48 @@ def remove_rawstrings(ass):
 
 import json
 out = open(outfile, "w")
+
 for f in glob.glob(os.path.join(input_folder, f"*.{extension}")):
     print(f)
     base_name = os.path.splitext(os.path.basename(f))[0]  # Extract filename without extension
-    # Instead of looking in the same directory, we look in assembly_output/
+    
+    # Look for assembly files in assembly_output/
     f1 = os.path.join(input_folder, "assembly_output", f"{base_name}.risc.s")
     f2 = os.path.join(input_folder, "assembly_output", f"{base_name}.arm.s")
+    f3 = os.path.join(input_folder, "assembly_output", f"{base_name}.x86.s")  # NEW: Add x86
 
-    if not os.path.exists(f1):
-        if not os.path.exists(f2):
-            print(f"Skipping {f} (Missing both {f1} and {f2})")   
+    # Track missing files
+    missing_files = [arch for arch, path in {"risc": f1, "arm": f2, "x86": f3}.items() if not os.path.exists(path)]
+    if len(missing_files) == 3:
+        print(f"Skipping {f} (Missing risc, arm, and x86)")
+        continue
+
+    if "risc" in missing_files:
         print(f"Skipping {f} (Missing {f1})")
-        continue
-    if not os.path.exists(f2): 
+    if "arm" in missing_files:
         print(f"Skipping {f} (Missing {f2})")
-        continue
-        
-    d1, risc_cloze = extract(f1) #, [remove_extra_space])
-    d2, arm_cloze = extract(f2) #, [remove_extra_space])
+    if "x86" in missing_files:
+        print(f"Skipping {f} (Missing {f3})")
 
-    if len(d1) != len(d2):
-        print("fail", f)
-        print("fail", d1)
-        print("fail", d2)
-        continue
+    # Extract assembly code if file exists
+    d1, risc_cloze = extract(f1) if os.path.exists(f1) else ({}, "")
+    d2, arm_cloze = extract(f2) if os.path.exists(f2) else ({}, "")
+    d3, x86_cloze = extract(f3) if os.path.exists(f3) else ({}, "")  # NEW: Extract x86 assembly
+
+    # Create final JSON entry
     fname = os.path.basename(f)
     d = {
-            "source": fname,
-            "c": remove_comments(open(f).read()),
-            "risc": open(f1).read(),
-            "risc_fns": d1,
-            "risc_cloze": risc_cloze,
-            "arm": open(f2).read(),
-            "arm_fns" : d2,
-            "arm_cloze": arm_cloze
+        "source": fname,
+        "c": remove_comments(open(f).read()),
+        "risc": open(f1).read() if os.path.exists(f1) else "",
+        "risc_fns": d1,
+        "risc_cloze": risc_cloze,
+        "arm": open(f2).read() if os.path.exists(f2) else "",
+        "arm_fns": d2,
+        "arm_cloze": arm_cloze,
+        "x86": open(f3).read() if os.path.exists(f3) else "",  # NEW: Store x86 assembly
+        "x86_fns": d3,  # NEW: Store extracted x86 functions
+        "x86_cloze": x86_cloze,  # NEW: Store processed x86 cloze representation
     }
+
     print(json.dumps(d), file=out)

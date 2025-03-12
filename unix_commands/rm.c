@@ -1,6 +1,6 @@
 #include<stdio.h>
 
-void main(int argc, char* argv[]){
+int main(int argc, char* argv[]){
 if(argc!=2 || argv[1]=="--help")
   {
     printf("\nusage: rm FileTodelete\n");

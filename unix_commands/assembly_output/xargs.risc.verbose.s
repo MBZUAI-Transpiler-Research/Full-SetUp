@@ -37,11 +37,11 @@ main:
 	.cfi_offset 8, -16
 	addi	s0,sp,288	#,,
 	.cfi_def_cfa 8, 0
-# xargs.c:2: void main(){
-	la	a5,__stack_chk_guard		# tmp138,
-	ld	a4, 0(a5)	# tmp148, __stack_chk_guard
-	sd	a4, -24(s0)	# tmp148, D.2718
-	li	a4, 0	# tmp148
+# xargs.c:2: int main(){
+	la	a5,__stack_chk_guard		# tmp139,
+	ld	a4, 0(a5)	# tmp149, __stack_chk_guard
+	sd	a4, -24(s0)	# tmp149, D.2720
+	li	a4, 0	# tmp149
 # xargs.c:5: while(fgets(get,100,stdin)!=NULL)
 	j	.L2		#
 .L3:
@@ -49,11 +49,11 @@ main:
 	lla	a1,.LC0	#,
 	lla	a0,.LC1	#,
 	call	fopen@plt	#
-	mv	a5,a0	# tmp139,
-	sd	a5,-272(s0)	# tmp139, fp
+	mv	a5,a0	# tmp140,
+	sd	a5,-272(s0)	# tmp140, fp
 # xargs.c:9:   fprintf(fp,"%s\n",get);
-	addi	a5,s0,-264	#, tmp140,
-	mv	a2,a5	#, tmp140
+	addi	a5,s0,-264	#, tmp141,
+	mv	a2,a5	#, tmp141
 	lla	a1,.LC2	#,
 	ld	a0,-272(s0)		#, fp
 	call	fprintf@plt	#
@@ -62,12 +62,12 @@ main:
 	call	fclose@plt	#
 .L2:
 # xargs.c:5: while(fgets(get,100,stdin)!=NULL)
-	la	a5,stdin		# tmp141,
+	la	a5,stdin		# tmp142,
 	ld	a4,0(a5)		# stdin.0_1, stdin
-	addi	a5,s0,-264	#, tmp142,
+	addi	a5,s0,-264	#, tmp143,
 	mv	a2,a4	#, stdin.0_1
 	li	a1,100		#,
-	mv	a0,a5	#, tmp142
+	mv	a0,a5	#, tmp143
 	call	fgets@plt	#
 	mv	a5,a0	# _2,
 # xargs.c:5: while(fgets(get,100,stdin)!=NULL)
@@ -76,21 +76,21 @@ main:
 	lla	a1,.LC3	#,
 	lla	a0,.LC1	#,
 	call	fopen@plt	#
-	mv	a5,a0	# tmp143,
-	sd	a5,-272(s0)	# tmp143, fp
+	mv	a5,a0	# tmp144,
+	sd	a5,-272(s0)	# tmp144, fp
 # xargs.c:16:     while((ch=fgetc(fp)) != EOF)
 	j	.L4		#
 .L7:
 # xargs.c:18:          putchar(ch);
-	lbu	a5,-273(s0)	# tmp144, ch
-	sext.w	a5,a5	# _3, tmp144
+	lbu	a5,-273(s0)	# tmp145, ch
+	sext.w	a5,a5	# _3, tmp145
 	mv	a0,a5	#, _3
 	call	putchar@plt	#
 .L4:
 # xargs.c:16:     while((ch=fgetc(fp)) != EOF)
 	ld	a0,-272(s0)		#, fp
 	call	fgetc@plt	#
-	mv	a5,a0	# tmp145,
+	mv	a5,a0	# tmp146,
 # xargs.c:16:     while((ch=fgetc(fp)) != EOF)
 	sb	a5,-273(s0)	# _4, ch
 	j	.L7		#

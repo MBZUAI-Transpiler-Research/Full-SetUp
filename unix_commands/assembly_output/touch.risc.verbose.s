@@ -41,50 +41,51 @@ main:
 	.cfi_offset 8, -16
 	addi	s0,sp,32	#,,
 	.cfi_def_cfa 8, 0
-	mv	a5,a0	# tmp140, argc
+	mv	a5,a0	# tmp142, argc
 	sd	a1,-32(s0)	# argv, argv
-	sw	a5,-20(s0)	# tmp141, argc
+	sw	a5,-20(s0)	# tmp143, argc
 # touch.c:5: if(argc!=2 || argv[1]=="--help"){
-	lw	a5,-20(s0)		# tmp143, argc
-	sext.w	a4,a5	# tmp144, tmp142
-	li	a5,2		# tmp145,
-	bne	a4,a5,.L2	#, tmp144, tmp145,
+	lw	a5,-20(s0)		# tmp145, argc
+	sext.w	a4,a5	# tmp146, tmp144
+	li	a5,2		# tmp147,
+	bne	a4,a5,.L2	#, tmp146, tmp147,
 # touch.c:5: if(argc!=2 || argv[1]=="--help"){
-	ld	a5,-32(s0)		# tmp146, argv
-	addi	a5,a5,8	#, _1, tmp146
+	ld	a5,-32(s0)		# tmp148, argv
+	addi	a5,a5,8	#, _1, tmp148
 	ld	a4,0(a5)		# _2, *_1
 # touch.c:5: if(argc!=2 || argv[1]=="--help"){
-	lla	a5,.LC0	# tmp147,
-	bne	a4,a5,.L3	#, _2, tmp147,
+	lla	a5,.LC0	# tmp149,
+	bne	a4,a5,.L3	#, _2, tmp149,
 .L2:
 # touch.c:6: printf("Usage::touch textfileTomodify\n");
 	lla	a0,.LC1	#,
 	call	puts@plt	#
 .L3:
 # touch.c:8: retvalue=utime(argv[1],NULL);
-	ld	a5,-32(s0)		# tmp148, argv
-	addi	a5,a5,8	#, _3, tmp148
+	ld	a5,-32(s0)		# tmp150, argv
+	addi	a5,a5,8	#, _3, tmp150
 # touch.c:8: retvalue=utime(argv[1],NULL);
 	ld	a5,0(a5)		# _4, *_3
 	li	a1,0		#,
 	mv	a0,a5	#, _4
 	call	utime@plt	#
-	mv	a5,a0	# tmp149,
-	mv	a4,a5	# _5, tmp149
+	mv	a5,a0	# tmp151,
+	mv	a4,a5	# _5, tmp151
 # touch.c:8: retvalue=utime(argv[1],NULL);
-	lla	a5,retvalue	# tmp150,
+	lla	a5,retvalue	# tmp152,
 	sw	a4,0(a5)	# _5, retvalue
 # touch.c:9: if(retvalue==0){
-	lla	a5,retvalue	# tmp151,
+	lla	a5,retvalue	# tmp153,
 	lw	a5,0(a5)		# retvalue.0_6, retvalue
 # touch.c:9: if(retvalue==0){
-	bne	a5,zero,.L5	#, retvalue.0_6,,
+	bne	a5,zero,.L4	#, retvalue.0_6,,
 # touch.c:10: printf("Timestamp modified\n");
 	lla	a0,.LC2	#,
 	call	puts@plt	#
-.L5:
+.L4:
+	li	a5,0		# _16,
 # touch.c:12: }
-	nop	
+	mv	a0,a5	#, <retval>
 	ld	ra,24(sp)		#,
 	.cfi_restore 1
 	ld	s0,16(sp)		#,

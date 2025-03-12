@@ -9,7 +9,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-void main(int argc, char* argv[]){
+int main(int argc, char* argv[]){
 
 
 if(argc!=2 || argv[1]=="--help")

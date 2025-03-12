@@ -54,13 +54,13 @@ main:
 	adrp	x0, .LC2
 	add	x0, x0, :lo12:.LC2
 	bl	puts
-	b	.L6
+	b	.L5
 .L4:
 	adrp	x0, .LC3
 	add	x0, x0, :lo12:.LC3
 	bl	puts
-.L6:
-	nop
+.L5:
+	mov	w0, 0
 	ldp	x29, x30, [sp], 48
 	.cfi_restore 30
 	.cfi_restore 29

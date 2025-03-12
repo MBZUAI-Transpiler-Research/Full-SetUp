@@ -38,50 +38,50 @@ main:
 	str	w0, [sp, 28]	// argc, argc
 	str	x1, [sp, 16]	// argv, argv
 // touch.c:5: if(argc!=2 || argv[1]=="--help"){
-	ldr	w0, [sp, 28]	// tmp98, argc
-	cmp	w0, 2	// tmp98,
+	ldr	w0, [sp, 28]	// tmp100, argc
+	cmp	w0, 2	// tmp100,
 	bne	.L2		//,
 // touch.c:5: if(argc!=2 || argv[1]=="--help"){
-	ldr	x0, [sp, 16]	// tmp99, argv
-	add	x0, x0, 8	// _1, tmp99,
+	ldr	x0, [sp, 16]	// tmp101, argv
+	add	x0, x0, 8	// _1, tmp101,
 	ldr	x1, [x0]	// _2, *_1
 // touch.c:5: if(argc!=2 || argv[1]=="--help"){
-	adrp	x0, .LC0	// tmp101,
-	add	x0, x0, :lo12:.LC0	// tmp100, tmp101,
-	cmp	x1, x0	// _2, tmp100
+	adrp	x0, .LC0	// tmp103,
+	add	x0, x0, :lo12:.LC0	// tmp102, tmp103,
+	cmp	x1, x0	// _2, tmp102
 	bne	.L3		//,
 .L2:
 // touch.c:6: printf("Usage::touch textfileTomodify\n");
-	adrp	x0, .LC1	// tmp102,
-	add	x0, x0, :lo12:.LC1	//, tmp102,
+	adrp	x0, .LC1	// tmp104,
+	add	x0, x0, :lo12:.LC1	//, tmp104,
 	bl	puts		//
 .L3:
 // touch.c:8: retvalue=utime(argv[1],NULL);
-	ldr	x0, [sp, 16]	// tmp103, argv
-	add	x0, x0, 8	// _3, tmp103,
+	ldr	x0, [sp, 16]	// tmp105, argv
+	add	x0, x0, 8	// _3, tmp105,
 // touch.c:8: retvalue=utime(argv[1],NULL);
 	ldr	x0, [x0]	// _4, *_3
 	mov	x1, 0	//,
 	bl	utime		//
 	mov	w1, w0	// _5,
 // touch.c:8: retvalue=utime(argv[1],NULL);
-	adrp	x0, retvalue	// tmp105,
-	add	x0, x0, :lo12:retvalue	// tmp104, tmp105,
-	str	w1, [x0]	// _5, retvalue
-// touch.c:9: if(retvalue==0){
 	adrp	x0, retvalue	// tmp107,
 	add	x0, x0, :lo12:retvalue	// tmp106, tmp107,
+	str	w1, [x0]	// _5, retvalue
+// touch.c:9: if(retvalue==0){
+	adrp	x0, retvalue	// tmp109,
+	add	x0, x0, :lo12:retvalue	// tmp108, tmp109,
 	ldr	w0, [x0]	// retvalue.0_6, retvalue
 // touch.c:9: if(retvalue==0){
 	cmp	w0, 0	// retvalue.0_6,
-	bne	.L5		//,
+	bne	.L4		//,
 // touch.c:10: printf("Timestamp modified\n");
-	adrp	x0, .LC2	// tmp108,
-	add	x0, x0, :lo12:.LC2	//, tmp108,
+	adrp	x0, .LC2	// tmp110,
+	add	x0, x0, :lo12:.LC2	//, tmp110,
 	bl	puts		//
-.L5:
+.L4:
+	mov	w0, 0	// _16,
 // touch.c:12: }
-	nop	
 	ldp	x29, x30, [sp], 32	//,,,
 	.cfi_restore 30
 	.cfi_restore 29

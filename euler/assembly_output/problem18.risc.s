@@ -117,7 +117,7 @@ findmax:
 	sw	a5,-48(s0)
 	lw	a5,-44(s0)
 	sext.w	a4,a5
-	li	a5,14
+	li	a5,15
 	bne	a4,a5,.L5
 	lw	a4,-44(s0)
 	mv	a5,a4

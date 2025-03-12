@@ -117,7 +117,7 @@ findmax:
 	str	w1, [sp, 20]
 	str	w2, [sp, 16]
 	ldr	w0, [sp, 20]
-	cmp	w0, 14
+	cmp	w0, 15
 	bne	.L5
 	ldrsw	x1, [sp, 20]
 	mov	x0, x1

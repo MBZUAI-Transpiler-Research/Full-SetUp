@@ -34,49 +34,48 @@ main:
 	str	w0, [sp, 28]	// argc, argc
 	str	x1, [sp, 16]	// argv, argv
 // rm.c:4: if(argc!=2 || argv[1]=="--help")
-	ldr	w0, [sp, 28]	// tmp96, argc
-	cmp	w0, 2	// tmp96,
+	ldr	w0, [sp, 28]	// tmp98, argc
+	cmp	w0, 2	// tmp98,
 	bne	.L2		//,
 // rm.c:4: if(argc!=2 || argv[1]=="--help")
-	ldr	x0, [sp, 16]	// tmp97, argv
-	add	x0, x0, 8	// _1, tmp97,
+	ldr	x0, [sp, 16]	// tmp99, argv
+	add	x0, x0, 8	// _1, tmp99,
 	ldr	x1, [x0]	// _2, *_1
 // rm.c:4: if(argc!=2 || argv[1]=="--help")
-	adrp	x0, .LC0	// tmp99,
-	add	x0, x0, :lo12:.LC0	// tmp98, tmp99,
-	cmp	x1, x0	// _2, tmp98
+	adrp	x0, .LC0	// tmp101,
+	add	x0, x0, :lo12:.LC0	// tmp100, tmp101,
+	cmp	x1, x0	// _2, tmp100
 	bne	.L3		//,
 .L2:
 // rm.c:6:     printf("\nusage: rm FileTodelete\n");
-	adrp	x0, .LC1	// tmp100,
-	add	x0, x0, :lo12:.LC1	//, tmp100,
+	adrp	x0, .LC1	// tmp102,
+	add	x0, x0, :lo12:.LC1	//, tmp102,
 	bl	puts		//
 .L3:
 // rm.c:9: status=remove(argv[1]);
-	ldr	x0, [sp, 16]	// tmp101, argv
-	add	x0, x0, 8	// _3, tmp101,
+	ldr	x0, [sp, 16]	// tmp103, argv
+	add	x0, x0, 8	// _3, tmp103,
 // rm.c:9: status=remove(argv[1]);
 	ldr	x0, [x0]	// _4, *_3
 	bl	remove		//
 	str	w0, [sp, 44]	//, status
 // rm.c:10: if(status==0)
-	ldr	w0, [sp, 44]	// tmp102, status
-	cmp	w0, 0	// tmp102,
+	ldr	w0, [sp, 44]	// tmp104, status
+	cmp	w0, 0	// tmp104,
 	bne	.L4		//,
 // rm.c:12:     printf("successfull\n");
-	adrp	x0, .LC2	// tmp103,
-	add	x0, x0, :lo12:.LC2	//, tmp103,
+	adrp	x0, .LC2	// tmp105,
+	add	x0, x0, :lo12:.LC2	//, tmp105,
 	bl	puts		//
-// rm.c:18: }
-	b	.L6		//
+	b	.L5		//
 .L4:
 // rm.c:16:     printf("Unsuccessfull\n");
-	adrp	x0, .LC3	// tmp104,
-	add	x0, x0, :lo12:.LC3	//, tmp104,
+	adrp	x0, .LC3	// tmp106,
+	add	x0, x0, :lo12:.LC3	//, tmp106,
 	bl	puts		//
-.L6:
+.L5:
+	mov	w0, 0	// _15,
 // rm.c:18: }
-	nop	
 	ldp	x29, x30, [sp], 48	//,,,
 	.cfi_restore 30
 	.cfi_restore 29

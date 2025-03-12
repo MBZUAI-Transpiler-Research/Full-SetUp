@@ -1,0 +1,78 @@
+ Line 151 shows how to use eval_model with eval_data = eval_model(args, accelerator, model, tokenizer, eval_dataloader, metric, gen_kwargs, epoch)
+ 
+ ## args is parsed from the commandline. The README file has an example of how to run train.py, and args is used to called eval_model. I think you don't need to change much other than the train/test folder split
+ 
+ ORIG_MODEL_NAME_OR_PATH=facebook/bart-large
+MAX_LENGTH=2048
+CHECKPOINTING_STEPS=500
+TRAIN_BATCH_SIZE=8
+python training/train.py \
+    --config_name ORIG_MODEL_NAME_OR_PATH \
+    --tokenizer_name ORIG_MODEL_NAME_OR_PATH \
+    --source_lang SOURCE_LANG --target_lang TARGET_LANG \
+    --train \
+    --train_file data/data_train.json \
+    --num_beams 3 \
+    --window_overlap 150 \
+    --validation_file data/data_dev.json \ 
+    --max_length MAX_LENGTH --report_to wandb --with_tracking --checkpointing_steps CHECKPOINTING_STEPS --clip_gradients \
+    --per_device_train_batch_size TRAIN_BATCH_SIZE \
+    --learning_rate 3e-5 \
+    --num_train_epochs 3 \
+    --output_dir OUTPUT_DIR
+    
+## Accelerator is defined in line 199 of training.py with this:
+
+    accelerator = (
+        Accelerator(log_with=args.report_to, logging_dir=args.output_dir) if args.with_tracking else Accelerator()
+    )
+
+## model is obtained from config, tokenizer, model = load_model(args, accelerator), with the accelerator and args as defined above
+
+## Tokenizer is similarly defined in lines 362 to 374, which takes premade tokenizers as valid inputs but explicitly disallows custom ones
+
+    if args.pretrained_tokenizer:
+        tokenizer =  BartTokenizer.from_pretrained(args.pretrained_tokenizer)
+    elif args.tokenizer_name:
+        tokenizer = AutoTokenizer.from_pretrained(args.tokenizer_name, use_fast=not args.use_slow_tokenizer)
+        if args.tokenizer_name == 'uclanlp/plbart-base':
+            tokenizer.add_token(['<N>'])
+    elif args.model_name_or_path:
+        tokenizer = AutoTokenizer.from_pretrained(args.model_name_or_path, use_fast=not args.use_slow_tokenizer)
+    else:
+        raise ValueError(
+            "You are instantiating a new tokenizer from scratch. This is not supported by this script."
+            "You can do it from another script, save it, and load it from here, using --tokenizer_name."
+        )
+        
+## eval_dataloader = DataLoader(eval_dataset, collate_fn=data_collator, batch_size=args.per_device_eval_batch_size)
+
+Eval_dataset just comes from the train/test split while data_collator is defined here. args is as defined above
+
+    if args.pad_to_max_length:
+        # If padding was already done ot max length, we use the default data collator that will just convert everything
+        # to tensors.
+        data_collator = default_data_collator
+    else:
+        # Otherwise, `DataCollatorWithPadding` will apply dynamic padding for us (by padding to the maximum length of
+        # the samples passed). When using mixed precision, we add `pad_to_multiple_of=8` to pad all tensors to multiple
+        # of 8s, which will enable the use of Tensor Cores on NVIDIA hardware with compute capability >= 7.5 (Volta).
+        data_collator = DataCollatorForSeq2Seq(
+            tokenizer,
+            model=model,
+            label_pad_token_id=label_pad_token_id,
+            pad_to_multiple_of=8 if accelerator.use_fp16 else None,
+        )
+        
+        
+## Metric appears to come from metric = evaluate.load("sacrebleu"). @celine can you comment on this a bit more? I think it is the BLEU scores as described here (https://huggingface.co/spaces/evaluate-metric/sacrebleu/blame/4a93ac4792333de332da2c52a66359d933c06faa/sacrebleu.py)
+
+## gen_kwargs is defined in 445-449 in the script
+
+    gen_kwargs = {
+        "max_length": args.max_length,
+        "num_beams": args.num_beams,
+        "no_repeat_ngram_size": 0
+    }
+    
+## Lastly epoch is an iterated value, as can be seen here "for epoch in range(starting_epoch, args.num_train_epochs):" in line 105 so it should just be a number I think, although between starting_epoch (which defaults to 0) and starting_epoch + args.num_train_epochs

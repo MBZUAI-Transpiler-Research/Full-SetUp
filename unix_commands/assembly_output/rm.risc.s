@@ -60,12 +60,13 @@ main:
 	bne	a5,zero,.L4
 	lla	a0,.LC2
 	call	puts@plt
-	j	.L6
+	j	.L5
 .L4:
 	lla	a0,.LC3
 	call	puts@plt
-.L6:
-	nop
+.L5:
+	li	a5,0
+	mv	a0,a5
 	ld	ra,40(sp)
 	.cfi_restore 1
 	ld	s0,32(sp)

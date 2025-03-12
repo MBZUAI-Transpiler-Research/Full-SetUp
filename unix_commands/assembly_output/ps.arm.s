@@ -40,16 +40,18 @@ main:
 	mov	x1, x0
 	ldr	x0, [sp, 8]
 	bl	execvp
-	nop
+	mov	w0, 0
+	mov	w1, w0
 	adrp	x0, :got:__stack_chk_guard
 	ldr	x0, [x0, :got_lo12:__stack_chk_guard]
-	ldr	x2, [sp, 40]
-	ldr	x1, [x0]
-	subs	x2, x2, x1
-	mov	x1, 0
-	beq	.L2
+	ldr	x3, [sp, 40]
+	ldr	x2, [x0]
+	subs	x3, x3, x2
+	mov	x2, 0
+	beq	.L3
 	bl	__stack_chk_fail
-.L2:
+.L3:
+	mov	w0, w1
 	ldp	x29, x30, [sp, 48]
 	add	sp, sp, 64
 	.cfi_restore 29

@@ -126,10 +126,10 @@ findmax:
 	sw	a5,-44(s0)	# tmp150, row
 	mv	a5,a4	# tmp152, tmp151
 	sw	a5,-48(s0)	# tmp152, col
-# problem18.c:42:   if (row == N-1) {
+# problem18.c:42:   if (row == N) {
 	lw	a5,-44(s0)		# tmp154, row
 	sext.w	a4,a5	# tmp155, tmp153
-	li	a5,14		# tmp156,
+	li	a5,15		# tmp156,
 	bne	a4,a5,.L5	#, tmp155, tmp156,
 # problem18.c:43:     return triangle[row][col];
 	lw	a4,-44(s0)		# _1, row

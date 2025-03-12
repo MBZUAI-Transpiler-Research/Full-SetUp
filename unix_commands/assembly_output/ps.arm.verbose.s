@@ -27,41 +27,43 @@ main:
 	.cfi_offset 30, -8
 	add	x29, sp, 48	//,,
 // ps.c:4: {
-	adrp	x0, :got:__stack_chk_guard	// tmp92,
-	ldr	x0, [x0, :got_lo12:__stack_chk_guard]	// tmp92,
-	ldr	x1, [x0]	// tmp101,
-	str	x1, [sp, 40]	// tmp101, D.5445
-	mov	x1, 0	// tmp101
+	adrp	x0, :got:__stack_chk_guard	// tmp94,
+	ldr	x0, [x0, :got_lo12:__stack_chk_guard]	// tmp94,
+	ldr	x1, [x0]	// tmp104,
+	str	x1, [sp, 40]	// tmp104, D.5447
+	mov	x1, 0	// tmp104
 // ps.c:5: char *cmd = "ps";
-	adrp	x0, .LC0	// tmp94,
-	add	x0, x0, :lo12:.LC0	// tmp93, tmp94,
-	str	x0, [sp, 8]	// tmp93, cmd
-// ps.c:7: args[0] = "ps";
 	adrp	x0, .LC0	// tmp96,
 	add	x0, x0, :lo12:.LC0	// tmp95, tmp96,
-	str	x0, [sp, 16]	// tmp95, args[0]
+	str	x0, [sp, 8]	// tmp95, cmd
+// ps.c:7: args[0] = "ps";
+	adrp	x0, .LC0	// tmp98,
+	add	x0, x0, :lo12:.LC0	// tmp97, tmp98,
+	str	x0, [sp, 16]	// tmp97, args[0]
 // ps.c:8: args[1] = "ax";
-	adrp	x0, .LC1	// tmp98,
-	add	x0, x0, :lo12:.LC1	// tmp97, tmp98,
-	str	x0, [sp, 24]	// tmp97, args[1]
+	adrp	x0, .LC1	// tmp100,
+	add	x0, x0, :lo12:.LC1	// tmp99, tmp100,
+	str	x0, [sp, 24]	// tmp99, args[1]
 // ps.c:9: args[2] = NULL;
 	str	xzr, [sp, 32]	//, args[2]
 // ps.c:10: execvp(cmd,args);
-	add	x0, sp, 16	// tmp99,,
-	mov	x1, x0	//, tmp99
+	add	x0, sp, 16	// tmp101,,
+	mov	x1, x0	//, tmp101
 	ldr	x0, [sp, 8]	//, cmd
 	bl	execvp		//
+	mov	w0, 0	// _8,
+	mov	w1, w0	// <retval>, _8
 // ps.c:12: }
-	nop	
-	adrp	x0, :got:__stack_chk_guard	// tmp100,
-	ldr	x0, [x0, :got_lo12:__stack_chk_guard]	// tmp100,
-	ldr	x2, [sp, 40]	// tmp102, D.5445
-	ldr	x1, [x0]	// tmp103,
-	subs	x2, x2, x1	// tmp102, tmp103
-	mov	x1, 0	// tmp103
-	beq	.L2		//,
+	adrp	x0, :got:__stack_chk_guard	// tmp103,
+	ldr	x0, [x0, :got_lo12:__stack_chk_guard]	// tmp103,
+	ldr	x3, [sp, 40]	// tmp105, D.5447
+	ldr	x2, [x0]	// tmp106,
+	subs	x3, x3, x2	// tmp105, tmp106
+	mov	x2, 0	// tmp106
+	beq	.L3		//,
 	bl	__stack_chk_fail		//
-.L2:
+.L3:
+	mov	w0, w1	//, <retval>
 	ldp	x29, x30, [sp, 48]	//,,
 	add	sp, sp, 64	//,,
 	.cfi_restore 29

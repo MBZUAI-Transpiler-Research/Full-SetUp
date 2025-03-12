@@ -32,36 +32,38 @@ main:
 	addi	s0,sp,64	#,,
 	.cfi_def_cfa 8, 0
 # ps.c:4: {
-	la	a5,__stack_chk_guard		# tmp134,
-	ld	a4, 0(a5)	# tmp141, __stack_chk_guard
-	sd	a4, -24(s0)	# tmp141, D.3324
-	li	a4, 0	# tmp141
+	la	a5,__stack_chk_guard		# tmp136,
+	ld	a4, 0(a5)	# tmp144, __stack_chk_guard
+	sd	a4, -24(s0)	# tmp144, D.3326
+	li	a4, 0	# tmp144
 # ps.c:5: char *cmd = "ps";
-	lla	a5,.LC0	# tmp135,
-	sd	a5,-56(s0)	# tmp135, cmd
+	lla	a5,.LC0	# tmp137,
+	sd	a5,-56(s0)	# tmp137, cmd
 # ps.c:7: args[0] = "ps";
-	lla	a5,.LC0	# tmp136,
-	sd	a5,-48(s0)	# tmp136, args[0]
+	lla	a5,.LC0	# tmp138,
+	sd	a5,-48(s0)	# tmp138, args[0]
 # ps.c:8: args[1] = "ax";
-	lla	a5,.LC1	# tmp137,
-	sd	a5,-40(s0)	# tmp137, args[1]
+	lla	a5,.LC1	# tmp139,
+	sd	a5,-40(s0)	# tmp139, args[1]
 # ps.c:9: args[2] = NULL;
 	sd	zero,-32(s0)	#, args[2]
 # ps.c:10: execvp(cmd,args);
-	addi	a5,s0,-48	#, tmp138,
-	mv	a1,a5	#, tmp138
+	addi	a5,s0,-48	#, tmp140,
+	mv	a1,a5	#, tmp140
 	ld	a0,-56(s0)		#, cmd
 	call	execvp@plt	#
+	li	a5,0		# _8,
+	mv	a4,a5	# <retval>, _8
 # ps.c:12: }
-	nop	
-	la	a5,__stack_chk_guard		# tmp139,
-	ld	a4, -24(s0)	# tmp142, D.3324
-	ld	a5, 0(a5)	# tmp140, __stack_chk_guard
-	xor	a5, a4, a5	# tmp140, tmp142
-	li	a4, 0	# tmp142
-	beq	a5,zero,.L2	#, tmp140,,
+	la	a5,__stack_chk_guard		# tmp142,
+	ld	a3, -24(s0)	# tmp145, D.3326
+	ld	a5, 0(a5)	# tmp143, __stack_chk_guard
+	xor	a5, a3, a5	# tmp143, tmp145
+	li	a3, 0	# tmp145
+	beq	a5,zero,.L3	#, tmp143,,
 	call	__stack_chk_fail@plt	#
-.L2:
+.L3:
+	mv	a0,a4	#, <retval>
 	ld	ra,56(sp)		#,
 	.cfi_restore 1
 	ld	s0,48(sp)		#,

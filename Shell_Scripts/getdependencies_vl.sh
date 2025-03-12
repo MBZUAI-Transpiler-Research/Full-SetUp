@@ -1,24 +1,5 @@
 #!/bin/bash
 
-# Check if project name is provided
-if [ -z "$1" ]; then
-    echo "Usage: $0 <project_name>"
-    exit 1
-fi
-
-PROJECT_NAME=$1
-
-# Check if the directory already exists
-if [ -d "$PROJECT_NAME" ]; then
-    echo "The directory '$PROJECT_NAME' already exists."
-    read -p "Do you want to overwrite it? (y/n): " CONFIRM
-    if [[ "$CONFIRM" != "y" ]]; then
-        echo "Exiting. Please choose a different project name."
-        exit 1
-    fi
-    rm -rf "$PROJECT_NAME"
-fi
-
 # Initialize Conda and set up shell integration
 echo "Initializing Conda..."
 eval "$($HOME/miniconda3/bin/conda shell.bash hook)"
@@ -28,9 +9,13 @@ conda init
 echo "Reloading shell to apply Conda setup..."
 source ~/.bashrc  # or `source ~/.bash_profile` depending on your shell
 
-# Create a Conda environment (e.g., "crosscompilers")
-echo "Creating Conda environment..."
-conda create -n crosscompilers python=3.9 -y
+# Create a Conda environment if it doesn’t exist
+if ! conda env list | grep -q "crosscompilers"; then
+    echo "Creating Conda environment 'crosscompilers'..."
+    conda create -n crosscompilers python=3.9 -y
+else
+    echo "Conda environment 'crosscompilers' already exists. Skipping creation."
+fi
 
 # Activate the Conda environment
 echo "Activating Conda environment..."
@@ -38,7 +23,7 @@ conda activate crosscompilers
 
 # Install general dependencies inside Conda (using Conda wherever possible)
 echo "Installing dependencies into Conda environment..."
-conda install -y \
+conda install -y -c conda-forge \
     gcc_linux-64 \
     ninja \
     cmake \
@@ -46,7 +31,15 @@ conda install -y \
     bison \
     wget \
     datasets \
-    glob2
+    glob2 \
+    levenshtein \
+    evaluate \
+    streamlit \
+    scipy \
+    accelerate \
+    black \
+    openai \
+    orjson
 
 # Install any additional system dependencies that are not in Conda
 echo "Installing additional system dependencies..."
@@ -61,10 +54,11 @@ sudo apt install -y \
     qemu-user \
     qemu-user-static \
     gcc-aarch64-linux-gnu \
-    gcc-arm-linux-gnueabi \
+    gcc-x86-64-linux-gnu \
     gcc-riscv64-linux-gnu \
     g++-riscv64-linux-gnu \
-    g++-aarch64-linux-gnu
+    g++-aarch64-linux-gnu \
+    g++-x86-64-linux-gnu
 
 # Confirm installation of key dependencies
 echo "Verifying installed packages..."
@@ -73,14 +67,19 @@ conda list
 # Notify user of completion
 echo "Conda environment 'crosscompilers' is set up and dependencies are installed!"
 
-# 01. Clone Git Repository and Enter It
-git clone https://github.com/celine-lee/transpile.git "$PROJECT_NAME"
-cd "$PROJECT_NAME" || { echo "Error: Failed to enter project directory"; exit 1; }
-
-# 03. Install Python Dependencies with Pip (if needed)
-echo "Installing Python dependencies with pip..."
-pip install --upgrade pip  # Only if you need pip updated
-pip install -r requirements.txt  # If you have packages in pip format
-pip install -Ue .  # If you need to install the current package in editable mode
+# Install Python dependencies via pip (for those not available in Conda)
+echo "Installing remaining Python dependencies..."
+pip install --upgrade pip  
+pip install \
+    st-annotated-text \
+    htbuilder \
+    wandb \
+    torch \
+    torchvision \
+    torchaudio \
+    transformers \
+    sacrebleu \
+    peft \
+    bitsandbytes
 
 echo "Setup complete!"

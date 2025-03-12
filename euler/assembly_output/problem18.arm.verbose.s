@@ -127,9 +127,9 @@ findmax:
 	str	x0, [sp, 24]	// triangle, triangle
 	str	w1, [sp, 20]	// row, row
 	str	w2, [sp, 16]	// col, col
-// problem18.c:42:   if (row == N-1) {
+// problem18.c:42:   if (row == N) {
 	ldr	w0, [sp, 20]	// tmp107, row
-	cmp	w0, 14	// tmp107,
+	cmp	w0, 15	// tmp107,
 	bne	.L5		//,
 // problem18.c:43:     return triangle[row][col];
 	ldrsw	x1, [sp, 20]	// _1, row

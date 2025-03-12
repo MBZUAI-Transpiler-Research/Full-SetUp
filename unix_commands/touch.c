@@ -1,7 +1,7 @@
 #include <utime.h>
 #include<stdio.h>
 int retvalue;
-void main(int argc,char* argv[]){
+int main(int argc,char* argv[]){
 if(argc!=2 || argv[1]=="--help"){
 printf("Usage::touch textfileTomodify\n");
 }

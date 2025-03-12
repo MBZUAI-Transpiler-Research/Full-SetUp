@@ -1,5 +1,5 @@
 #include<stdio.h>
-void main(int argc,char* argv[]){
+int main(int argc,char* argv[]){
 //int c;
 FILE *fp;
 char input[100];

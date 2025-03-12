@@ -37,51 +37,51 @@ main:
 	.cfi_offset 8, -16
 	addi	s0,sp,48	#,,
 	.cfi_def_cfa 8, 0
-	mv	a5,a0	# tmp138, argc
+	mv	a5,a0	# tmp140, argc
 	sd	a1,-48(s0)	# argv, argv
-	sw	a5,-36(s0)	# tmp139, argc
+	sw	a5,-36(s0)	# tmp141, argc
 # rm.c:4: if(argc!=2 || argv[1]=="--help")
-	lw	a5,-36(s0)		# tmp141, argc
-	sext.w	a4,a5	# tmp142, tmp140
-	li	a5,2		# tmp143,
-	bne	a4,a5,.L2	#, tmp142, tmp143,
+	lw	a5,-36(s0)		# tmp143, argc
+	sext.w	a4,a5	# tmp144, tmp142
+	li	a5,2		# tmp145,
+	bne	a4,a5,.L2	#, tmp144, tmp145,
 # rm.c:4: if(argc!=2 || argv[1]=="--help")
-	ld	a5,-48(s0)		# tmp144, argv
-	addi	a5,a5,8	#, _1, tmp144
+	ld	a5,-48(s0)		# tmp146, argv
+	addi	a5,a5,8	#, _1, tmp146
 	ld	a4,0(a5)		# _2, *_1
 # rm.c:4: if(argc!=2 || argv[1]=="--help")
-	lla	a5,.LC0	# tmp145,
-	bne	a4,a5,.L3	#, _2, tmp145,
+	lla	a5,.LC0	# tmp147,
+	bne	a4,a5,.L3	#, _2, tmp147,
 .L2:
 # rm.c:6:     printf("\nusage: rm FileTodelete\n");
 	lla	a0,.LC1	#,
 	call	puts@plt	#
 .L3:
 # rm.c:9: status=remove(argv[1]);
-	ld	a5,-48(s0)		# tmp146, argv
-	addi	a5,a5,8	#, _3, tmp146
+	ld	a5,-48(s0)		# tmp148, argv
+	addi	a5,a5,8	#, _3, tmp148
 # rm.c:9: status=remove(argv[1]);
 	ld	a5,0(a5)		# _4, *_3
 	mv	a0,a5	#, _4
 	call	remove@plt	#
-	mv	a5,a0	# tmp147,
-	sw	a5,-20(s0)	# tmp147, status
+	mv	a5,a0	# tmp149,
+	sw	a5,-20(s0)	# tmp149, status
 # rm.c:10: if(status==0)
-	lw	a5,-20(s0)		# tmp149, status
-	sext.w	a5,a5	# tmp150, tmp148
-	bne	a5,zero,.L4	#, tmp150,,
+	lw	a5,-20(s0)		# tmp151, status
+	sext.w	a5,a5	# tmp152, tmp150
+	bne	a5,zero,.L4	#, tmp152,,
 # rm.c:12:     printf("successfull\n");
 	lla	a0,.LC2	#,
 	call	puts@plt	#
-# rm.c:18: }
-	j	.L6		#
+	j	.L5		#
 .L4:
 # rm.c:16:     printf("Unsuccessfull\n");
 	lla	a0,.LC3	#,
 	call	puts@plt	#
-.L6:
+.L5:
+	li	a5,0		# _15,
 # rm.c:18: }
-	nop	
+	mv	a0,a5	#, <retval>
 	ld	ra,40(sp)		#,
 	.cfi_restore 1
 	ld	s0,32(sp)		#,

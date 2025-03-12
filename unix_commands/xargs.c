@@ -1,5 +1,5 @@
 #include<stdio.h>
-void main(){
+int main(){
 char get[233];
 FILE *fp;
 while(fgets(get,100,stdin)!=NULL)
