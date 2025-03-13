@@ -72,7 +72,7 @@ run_qemu "assembly_output/ps.risc.out" qemu-riscv64 | head -n 10
 run_qemu "assembly_output/ps.x86.out" qemu-x86_64 | head -n 10
 
 # --- rm ---
-echo "🔹 Testing rm.c"
+echo "Testing rm.c"
 TEST_FILE_ARM="armtest.txt"
 TEST_FILE_RISC="risctest.txt"
 TEST_FILE_X86="x86test.txt"
@@ -117,7 +117,7 @@ run_qemu "assembly_output/touch.arm.out" qemu-aarch64 "$TEST_FILE_ARM"
 run_qemu "assembly_output/touch.risc.out" qemu-riscv64 "$TEST_FILE_RISC"
 run_qemu "assembly_output/touch.x86.out" qemu-x86_64 "$TEST_FILE_X86"
 
-echo "🔹 Checking timestamps after modification"
+echo "Checking timestamps after modification"
 ls --full-time "$TEST_FILE_ARM"
 ls --full-time "$TEST_FILE_RISC" 
 ls --full-time "$TEST_FILE_X86"

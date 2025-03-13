@@ -8,7 +8,7 @@ for problem_dir in sorted(os.listdir(eval_dir)):
     if os.path.isdir(problem_path) and problem_dir.startswith("problem"):
         code_file = os.path.join(problem_path, "code.c")
         test_file = os.path.join(problem_path, "test.c")
-        combined_file = os.path.join(eval_dir, f"{problem_dir}.code.c")
+        combined_file = os.path.join(eval_dir, f"{problem_dir}.c")
         
         with open(combined_file, "w") as outfile:
             if os.path.exists(code_file):

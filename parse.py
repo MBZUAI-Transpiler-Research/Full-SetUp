@@ -59,7 +59,7 @@ for f in glob.glob(os.path.join(input_folder, f"*.{extension}")):
     # Look for assembly files in assembly_output/
     f1 = os.path.join(input_folder, "assembly_output", f"{base_name}.risc.s")
     f2 = os.path.join(input_folder, "assembly_output", f"{base_name}.arm.s")
-    f3 = os.path.join(input_folder, "assembly_output", f"{base_name}.x86.s")  # NEW: Add x86
+    f3 = os.path.join(input_folder, "assembly_output", f"{base_name}.x86.s") 
 
     # Track missing files
     missing_files = [arch for arch, path in {"risc": f1, "arm": f2, "x86": f3}.items() if not os.path.exists(path)]
