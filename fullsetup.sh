@@ -165,6 +165,8 @@ sleep 3
 echo "Try not to get too excited"
 sleep 3
 
+## NOTE: these files are added manually for now, so double check them!!!
+
 # Ensure the combined C files are created before proceeding
 echo "Combining C files..."
 python combine_c_files.py || { echo "Error running combine_c_files.py"; exit 1; }
