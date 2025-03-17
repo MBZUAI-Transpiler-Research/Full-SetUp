@@ -78,17 +78,17 @@ echo "Running qemu_execute_vl.sh on '$EULER_DIR'..."
 chmod +x Shell_Scripts/qemu_execute_vl.sh
 Shell_Scripts/qemu_execute_vl.sh "$EULER_DIR" || { echo "Error running qemu_execute_vl.sh"; exit 1; }
 
-# Step 9: Create JSON files for parsed assembly data
-echo "Creating JSON output for Euler problems..."
-mkdir -p json_files # Ensure json_files directory exists
-python parse.py "$EULER_DIR" "json_files/euler.json" || { echo "Error running parse.py"; exit 1; }
+# Step 9: Create JSONL files for parsed assembly data
+echo "Creating JSONL output for Euler problems..."
+mkdir -p jsonl_files # Ensure jsonl_files directory exists
+python parse.py "$EULER_DIR" "jsonl_files/euler.jsonl" || { echo "Error running parse.py"; exit 1; }
 
-echo "JSON file created at 'json_files/euler.json'"
+echo "JSONL file created at 'jsonl_files/euler.jsonl'"
 
 echo "Full setup process completed successfully!"
 echo "You can find compiled assembly files in '$EULER_DIR/assembly_output/'"
 echo "You can find compiled binaries in '$EULER_DIR/assembly_output/'"
-echo "You can find the json file in json_files/"
+echo "You can find the jsonl file in jsonl_files/"
 echo "All executables have been run successfully with QEMU!"
 sleep 3  
 echo "You didn't think it was over, did you?"
@@ -148,15 +148,15 @@ echo "Running test_unixcmds_vl.sh on '$PROJECT_SOURCE'..."
 chmod +x Shell_Scripts/test_unixcmds_vl.sh
 Shell_Scripts/test_unixcmds_vl.sh "$PROJECT_SOURCE" || { echo "Error testing files"; exit 1; }
 
-# Step 7: Create JSON files for parsed assembly data
-echo "Creating JSON output for Unix problems..."
-mkdir -p json_files # Ensure json_files directory exists
-python parse.py "$PROJECT_SOURCE" "json_files/unix_commands.json" || { echo "Error running parse.py"; exit 1; }
+# Step 7: Create JSONL files for parsed assembly data
+echo "Creating JSONL output for Unix problems..."
+mkdir -p jsonl_files # Ensure jsonl_files directory exists
+python parse.py "$PROJECT_SOURCE" "jsonl_files/unix_commands.jsonl" || { echo "Error running parse.py"; exit 1; }
 
 echo "Unix Commands Compilation and Execution Completed Successfully!"
 echo "Compiled assembly files: '$PROJECT_SOURCE/assembly_output/'"
 echo "Compiled binaries: '$PROJECT_SOURCE/assembly_output/'"
-echo "You can find the json file in json_files/"
+echo "You can find the jsonl file in jsonl_files/"
 
 
 
@@ -264,10 +264,10 @@ PROJECT_SOURCE="$HOME/transpiler_project/eval"
 cd .. # This ensures we are in /home/alex-pretko/transpiler_project
 
 # Run the parsing script from the correct location
-echo "Creating JSON output for HumanEval problems..."
-python "parse.py" "$PROJECT_SOURCE" "json_files/eval.json" || { echo "Error running parse.py"; exit 1; }
+echo "Creating JSONL output for HumanEval problems..."
+python "parse.py" "$PROJECT_SOURCE" "jsonl_files/eval.jsonl" || { echo "Error running parse.py"; exit 1; }
 
-echo "JSON generation complete!"
+echo "JSONL generation complete!"
 
 echo "Now getting rid of old files and folders"
 rm -rf euler unix_commands eval/assembly_output
