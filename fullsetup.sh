@@ -270,5 +270,5 @@ python "parse.py" "$PROJECT_SOURCE" "jsonl_files/eval.jsonl" || { echo "Error ru
 echo "JSONL generation complete!"
 
 echo "Now getting rid of old files and folders"
-rm -rf euler unix_commands eval/assembly_output
+#rm -rf euler unix_commands eval/assembly_outputs
 rm -f eval/*.c
