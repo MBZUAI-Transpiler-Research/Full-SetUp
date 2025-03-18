@@ -400,6 +400,17 @@ for test_executable in eval/qemu_test_output/*; do
     echo "Execution complete for $problem_name."
 done
 
+echo "Copying standalone code.c files to eval/"
+
+for dir in eval/*/; do
+    if [ -f "$dir/code.c" ]; then
+        problem_name=$(basename "$dir")  # Extract problemX
+        cp "$dir/code.c" "eval/${problem_name}.c"
+    fi
+done
+
+echo "Copy complete!"
+
 # Define the project source path correctly
 PROJECT_SOURCE="$HOME/transpiler_project/eval"
 
@@ -408,6 +419,9 @@ echo "Creating JSONL output for HumanEval problems with only code.c..."
 python "parse.py" "$PROJECT_SOURCE" "jsonl_files/eval_standalone.jsonl" || { echo "Error running parse.py"; exit 1; }
 
 echo "Standalone JSONL generation complete!"
+echo "Removing the copied code.c files..."
+rm -f eval/*.c
+echo "Copied code.c files removed!"
 
 # Step 7: Delete compiled test.c executables
 echo "Cleaning up test.c compiled executables and moving assembly files into assembly_output_standalone..."
@@ -422,12 +436,3 @@ echo "Now getting rid of old files and folders"
 sleep 3
 echo ""
 echo "Cleanup complete! A winner is you."
-
-
-
-
-
-
-
-
-
