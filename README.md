@@ -400,15 +400,7 @@ python parse.py "$HOME/transpiler_project/eval" "jsonl_files/eval_standalone.jso
 
 ---
 
-## **Full Automation: Running Everything with One Command**
-
-### **Usage**
-```bash
-chmod +x fullsetup.sh
-./fullsetup.sh
-```
-
-### **What It Does**
+### **Human Eval Section Summary**
 - Runs **all steps in order**, including:
   - **Combining C files**
   - **Fixing missing headers**
@@ -416,3 +408,11 @@ chmod +x fullsetup.sh
   - **Verifying correctness through execution**
   - **Generating JSONL output**
   - **Cleaning up temporary files**
+
+## **Full Automation: Running Everything with One Command**
+
+### **Usage**
+```bash
+chmod +x fullsetup.sh
+./fullsetup.sh
+```
