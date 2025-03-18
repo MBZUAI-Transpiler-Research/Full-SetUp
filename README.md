@@ -247,16 +247,20 @@ python parse.py unix_commands/ json_files/unix_commands.json
 
 # **HumanEval Data Automation Guide**
 
-## Overview
-This section details the process for compiling, executing, and generating structured JSON data for the **HumanEval dataset**. Unlike Euler and Unix, each **HumanEval problem consists of two separate C files**:  
+## **Overview**
+This section details the process for **compiling, executing, and generating structured JSONL data** for the **HumanEval dataset**.
+
+Each **HumanEval problem consists of two separate C files**:
 - **`code.c`** - Contains the function implementation.
 - **`test.c`** - Contains test cases and the `main` function.
 
-Since `test.c` is required for execution, **we must concatenate both files before compilation** to ensure that test cases are correctly included during assembly generation.
+We **process these files in two ways**:
+1. **Combined (`code.c` + `test.c`)** – These files are **merged, compiled, executed, and stored** for later analysis.
+2. **Standalone (`code.c` only)** – These are **compiled separately**, linked with `test.c`, **executed for correctness**, and stored for independent function analysis.
 
 ---
 
-## **Step 16: Prepare HumanEval C Files (`combine_c_files.py`)**
+## **Step 16: Combine `code.c` and `test.c` (`combine_c_files.py`)**
 
 ### **Usage**
 ```bash
@@ -264,9 +268,9 @@ python combine_c_files.py
 ```
 
 ### **What It Does**
-- Combines each `code.c` and `test.c` pair into a **single C file** for compilation.
-- Ensures that **test cases are included** before executing the compiled programs.
-- Verifies that all required HumanEval files exist before proceeding.
+- **Merges `code.c` and `test.c`** into a single file for later analysis.
+- Ensures that **test cases are included** for execution.
+- The resulting combined file is **compiled and executed**.
 
 ---
 
@@ -274,133 +278,141 @@ python combine_c_files.py
 
 ### **What It Does**
 - Automatically checks for **missing standard C headers** and **adds them if necessary**.
-- Ensures compatibility across **different architectures** (ARM, RISC-V, x86).
+- Ensures compatibility across **RISC-V, ARM, and x86** architectures.
 - Headers that are conditionally added:
   - **`stdlib.h`** (if `malloc` or `free` is used)
   - **`string.h`** (if `strcmp` is used)
-  - **`math.h`** (if `ceil`, `floor`, `pow`, `sqrt`, `fabs` are used)
+  - **`math.h`** (if `ceil`, `floor`, `pow`, `sqrt`, `fabs`, `roundf`, `round` are used)
   - **`stdio.h`** (if `printf` is used)
 
 ---
 
-## **Step 18: Compile Assembly (`riscv64-linux-gnu-gcc`, `aarch64-linux-gnu-gcc`, `x86_64-linux-gnu-gcc`)**
+## **Step 18: Compile and Execute the Combined Files (`code.c` + `test.c`)**
+
+### **What It Does**
+- **Compiles the merged files** into assembly and object files.
+- **Executes the compiled programs** for correctness verification.
 
 ### **Usage**
 ```bash
 cd eval
 
-# Generate standard and verbose assembly for each problem
+# Generate assembly files
 riscv64-linux-gnu-gcc -S problemX.c -o assembly_output/problemX.risc.s
-riscv64-linux-gnu-gcc -S -fverbose-asm problemX.c -o assembly_output/problemX.risc.verbose.s
-
 aarch64-linux-gnu-gcc -S problemX.c -o assembly_output/problemX.arm.s
-aarch64-linux-gnu-gcc -S -fverbose-asm problemX.c -o assembly_output/problemX.arm.verbose.s
-
 x86_64-linux-gnu-gcc -S problemX.c -o assembly_output/problemX.x86.s
-x86_64-linux-gnu-gcc -S -fverbose-asm problemX.c -o assembly_output/problemX.x86.verbose.s
-```
 
-### **What It Does**
-- Generates **assembly files** for each HumanEval problem in **RISC-V, ARM, and x86 architectures**.
-- Produces **two types of assembly**:
-  - **Standard assembly** (`problemX.arm.s`, `problemX.risc.s`, `problemX.x86.s`)
-  - **Verbose assembly** (`problemX.arm.verbose.s`, `problemX.risc.verbose.s`, `problemX.x86.verbose.s`)
-- Ensures that each generated assembly file is **not empty** before proceeding.
+# Generate object files
+riscv64-linux-gnu-gcc -c problemX.c -o assembly_output/problemX.risc.o
+aarch64-linux-gnu-gcc -c problemX.c -o assembly_output/problemX.arm.o
+x86_64-linux-gnu-gcc -c problemX.c -o assembly_output/problemX.x86.o
 
----
+# Link and execute
+riscv64-linux-gnu-gcc assembly_output/problemX.risc.o -o assembly_output/problemX.risc
+aarch64-linux-gnu-gcc assembly_output/problemX.arm.o -o assembly_output/problemX.arm
+x86_64-linux-gnu-gcc assembly_output/problemX.x86.o -o assembly_output/problemX.x86
 
-## **Step 19: Assemble Object Files (`gcc -c`)**
-
-### **Usage**
-```bash
-# Convert assembly files into object files
-riscv64-linux-gnu-gcc -c assembly_output/problemX.risc.s -o assembly_output/problemX.risc.o
-aarch64-linux-gnu-gcc -c assembly_output/problemX.arm.s -o assembly_output/problemX.arm.o
-x86_64-linux-gnu-gcc -c assembly_output/problemX.x86.s -o assembly_output/problemX.x86.o
-```
-
-### **What It Does**
-- Converts each assembly file into an **object file** (`.o`).
-- Ensures that compilation **does not fail** before linking.
-
----
-
-## **Step 20: Link Executables (`gcc -o`)**
-
-### **Usage**
-```bash
-# Check if math functions are used, and link with -lm if needed
-LINK_FLAG=""
-
-if grep -q -E "ceil|floor|pow|sqrt|fabs|roundf" problemX.c; then
-    LINK_FLAG="-lm"
-fi
-
-# Link the object files into executables
-riscv64-linux-gnu-gcc assembly_output/problemX.risc.o -o assembly_output/problemX.risc $LINK_FLAG
-aarch64-linux-gnu-gcc assembly_output/problemX.arm.o -o assembly_output/problemX.arm $LINK_FLAG
-x86_64-linux-gnu-gcc assembly_output/problemX.x86.o -o assembly_output/problemX.x86 $LINK_FLAG
-```
-
-### **What It Does**
-- Links the **object files** (`.o`) into **final executable binaries** for **RISC-V, ARM, and x86**.
-- If **math functions** are detected, it **links against `-lm`** to prevent missing symbols.
-
----
-
-## **Step 21: Execute HumanEval Binaries (`qemu`)**
-
-### **Usage**
-```bash
-# Execute compiled HumanEval problems
 qemu-riscv64 -L /usr/riscv64-linux-gnu assembly_output/problemX.risc
 qemu-aarch64 -L /usr/aarch64-linux-gnu assembly_output/problemX.arm
 qemu-x86_64 -L /usr/x86_64-linux-gnu assembly_output/problemX.x86
 ```
 
-### **What It Does**
-- Runs the compiled **HumanEval test cases** in **QEMU** for all three architectures:
-  - **RISC-V** (`qemu-riscv64`)
-  - **ARM** (`qemu-aarch64`)
-  - **x86** (`qemu-x86_64`)
-- Ensures that each problem is **executable** before proceeding.
+### **Key Clarifications**
+- **The combined files are executed.**
+- **Results are stored for later analysis.**
 
 ---
 
-## **Step 22: Generate JSON Output (`parse.py`)**
+## **Step 19: Compile `code.c` Separately**
+
+### **What It Does**
+- **Compiles `code.c` separately**, links it with `test.c`, and **executes it**.
+- If the test cases pass, `code.c` is **stored for later analysis**.
 
 ### **Usage**
 ```bash
-python parse.py "$HOME/transpiler_project/eval" "json_files/eval.json"
-```
+for dir in eval/*/; do
+    if [ -f "$dir/code.c" ] && [ -f "$dir/test.c" ]; then
+        problem_name=$(basename "$dir")
 
-### **What It Does**
-- Extracts **function structures** and **test outputs** from compiled **RISC-V, ARM, and x86 assembly**.
-- Matches the parsed data with the **original C source code**.
-- Stores everything in **JSON format** (`json_files/eval.json`).
+        echo "Compiling and linking test.c for $problem_name..."
+
+        # Check if math functions are used in either file
+        if grep -q -E "ceil|floor|pow|sqrt|fabs|roundf|round" "$dir/code.c" || grep -q -E "ceil|floor|pow|sqrt|fabs|roundf|round" "$dir/test.c"; then
+            LINK_FLAG="-lm"
+        else
+            LINK_FLAG=""
+        fi
+
+        # Link test.c with code.o and include -lm if needed
+        riscv64-linux-gnu-gcc "$dir/test.c" "eval/assembly_output/${problem_name}.risc.o" -o "eval/qemu_test_output/${problem_name}.risc" $LINK_FLAG
+        aarch64-linux-gnu-gcc "$dir/test.c" "eval/assembly_output/${problem_name}.arm.o" -o "eval/qemu_test_output/${problem_name}.arm" $LINK_FLAG
+        x86_64-linux-gnu-gcc "$dir/test.c" "eval/assembly_output/${problem_name}.x86.o" -o "eval/qemu_test_output/${problem_name}.x86" $LINK_FLAG
+    fi
+done
+```
 
 ---
 
-## **Step 23: Cleanup Unused Files**
+## **Step 20: Execute `code.c` with `test.c` in QEMU for Correctness Verification**
+
+### **What It Does**
+- Runs the compiled **HumanEval test cases** in **QEMU** for all three architectures.
+- If execution is successful, the `code.c` file is stored for analysis.
 
 ### **Usage**
 ```bash
-# Remove old directories and temporary files
-rm -rf euler unix_commands eval/assembly_output
-rm -f eval/*.c
+for test_executable in eval/qemu_test_output/*; do
+    problem_name=$(basename "$test_executable")
+
+    echo "Executing ${problem_name} with QEMU..."
+
+    if [[ "$problem_name" == *.risc ]]; then
+        qemu-riscv64 -L /usr/riscv64-linux-gnu "$test_executable"
+    elif [[ "$problem_name" == *.arm ]]; then
+        qemu-aarch64 -L /usr/aarch64-linux-gnu "$test_executable"
+    elif [[ "$problem_name" == *.x86 ]]; then
+        qemu-x86_64 -L /usr/x86_64-linux-gnu "$test_executable"
+    fi
+
+    echo "Execution complete for $problem_name."
+done
 ```
 
+---
+
+## **Step 21: Parse Both Combined and Standalone C Files into JSONL**
+
 ### **What It Does**
-- **Removes temporary files and directories** to keep the workspace clean.
-- Ensures that only the **final JSON output remains**.
+- Converts **compiled assembly and source code** into structured **JSONL files**.
+- **Creates two JSONL files**:
+  1. **Combined (`eval_combined.jsonl`)** – Represents the merged and executed `code.c` and `test.c` files.
+  2. **Standalone (`eval_standalone.jsonl`)** – Represents `code.c` in isolation but verified for correctness.
 
+### **Usage**
+```bash
+# Combined (code.c + test.c)
+python parse.py "$HOME/transpiler_project/eval" "jsonl_files/eval_combined.jsonl"
 
-# **Full Automation: Running Everything with One Command**
+# Standalone (code.c only, but verified)
+python parse.py "$HOME/transpiler_project/eval" "jsonl_files/eval_standalone.jsonl"
+```
 
-Instead of manually running each step, you can use `fullsetup.sh` to automate the entire pipeline.
+---
+
+## **Full Automation: Running Everything with One Command**
 
 ### **Usage**
 ```bash
 chmod +x fullsetup.sh
-./fullsetup.sh 
+./fullsetup.sh
 ```
+
+### **What It Does**
+- Runs **all steps in order**, including:
+  - **Combining C files**
+  - **Fixing missing headers**
+  - **Compiling into assembly and object files**
+  - **Verifying correctness through execution**
+  - **Generating JSONL output**
+  - **Cleaning up temporary files**
