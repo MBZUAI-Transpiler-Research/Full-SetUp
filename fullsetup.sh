@@ -167,19 +167,17 @@ sleep 3
 
 ## NOTE: these files are added manually for now, so double check them!!!
 
-# Ensure the combined C files are created before proceeding
-echo "Combining C files..."
-python combine_c_files.py || { echo "Error running combine_c_files.py"; exit 1; }
-
-cd "$(dirname "$0")/eval" || { echo "Error: Failed to enter eval directory"; exit 1; }
-mkdir -p assembly_output
-
-# **Force add <string.h> for problem75/test.c before anything else**
+# Fix problem75/test.c before combining files
 if [ -f "problem75/test.c" ] && ! grep -q "#include <string.h>" "problem75/test.c"; then
     echo "Force adding <string.h> to problem75/test.c before processing"
     sed -i '1i #include <string.h>' "problem75/test.c"
 fi
 
+# Ensure the combined C files are created before proceeding
+echo "Combining C files..."
+python combine_c_files.py || { echo "Error running combine_c_files.py"; exit 1; }
+
+cd "$(dirname "$0")/eval" || { echo "Error: Failed to enter eval directory"; exit 1; }
 mkdir -p assembly_output
 
 for c_file in problem*.c; do
@@ -255,8 +253,7 @@ for c_file in problem*.c; do
         echo "------------------------"
     fi
 done
-    
-        
+          
 # Define the project source path correctly
 PROJECT_SOURCE="$HOME/transpiler_project/eval"
 
@@ -264,11 +261,173 @@ PROJECT_SOURCE="$HOME/transpiler_project/eval"
 cd .. # This ensures we are in /home/alex-pretko/transpiler_project
 
 # Run the parsing script from the correct location
-echo "Creating JSONL output for HumanEval problems..."
-python "parse.py" "$PROJECT_SOURCE" "jsonl_files/eval.jsonl" || { echo "Error running parse.py"; exit 1; }
+echo "Creating JSONL output for HumanEval problems with test.c and code.c combined..."
+python "parse.py" "$PROJECT_SOURCE" "jsonl_files/eval_combined.jsonl" || { echo "Error running parse.py"; exit 1; }
 
-echo "JSONL generation complete!"
+echo "Combined JSONL generation complete!"
+echo "Moving combined JSONL to assembly_output_combined! Deleting the combined c files as well!"
+
+mkdir -p eval/assembly_output_combined
+mv eval/assembly_output/* eval/assembly_output_combined/
+rm -rf eval/assembly_output
+# rm -f eval/*.c
+
+echo "Moving all combined C files to c_combined..."
+mkdir -p eval/c_combined
+mv eval/*.c eval/c_combined/
+echo "Move complete!"
+
+sleep 3
+echo "And now for the standalone c files...."
+sleep 3
+echo "Starting compilation process of Standalone code.c files..."
+
+# Step 1: Create necessary directories
+mkdir -p eval/assembly_output
+mkdir -p eval/qemu_test_output
+
+# Step 2: Ensure required headers are included in code.c
+for dir in eval/*/; do
+    if [ -f "$dir/code.c" ]; then
+        echo "Checking and adding missing headers in $dir/code.c..."
+
+        if ! grep -q "#include <stdlib.h>" "$dir/code.c" && grep -q -E "malloc|free" "$dir/code.c"; then
+            echo "Adding missing <stdlib.h> to $dir/code.c"
+            sed -i '1i #include <stdlib.h>' "$dir/code.c"
+        fi
+        if ! grep -q "#include <string.h>" "$dir/code.c" && grep -q -E "strcmp\(" "$dir/code.c"; then
+            echo "Adding missing <string.h> to $dir/code.c"
+            sed -i '1i #include <string.h>' "$dir/code.c"
+        fi
+        if ! grep -q "#include <math.h>" "$dir/code.c" && grep -q -E "ceil|floor|pow|sqrt|fabs|roundf|round" "$dir/code.c"; then
+            echo "Adding missing <math.h> to $dir/code.c"
+            sed -i '1i #include <math.h>' "$dir/code.c"
+        fi
+        if ! grep -q "#include <stdio.h>" "$dir/code.c" && grep -q "printf" "$dir/code.c"; then
+            echo "Adding missing <stdio.h> to $dir/code.c"
+            sed -i '1i #include <stdio.h>' "$dir/code.c"
+        fi
+    fi
+done
+
+# Step 3: Compile code.c into object files and full executables
+for dir in eval/*/; do
+    if [ -f "$dir/code.c" ]; then
+        problem_name=$(basename "$dir")
+
+        echo "Compiling code.c for $problem_name..."
+
+        # Generate assembly files
+        riscv64-linux-gnu-gcc -S "$dir/code.c" -o "eval/assembly_output/${problem_name}.risc.s"
+        riscv64-linux-gnu-gcc -S -fverbose-asm "$dir/code.c" -o "eval/assembly_output/${problem_name}.risc.verbose.s"
+
+        aarch64-linux-gnu-gcc -S "$dir/code.c" -o "eval/assembly_output/${problem_name}.arm.s"
+        aarch64-linux-gnu-gcc -S -fverbose-asm "$dir/code.c" -o "eval/assembly_output/${problem_name}.arm.verbose.s"
+
+        x86_64-linux-gnu-gcc -S "$dir/code.c" -o "eval/assembly_output/${problem_name}.x86.s"
+        x86_64-linux-gnu-gcc -S -fverbose-asm "$dir/code.c" -o "eval/assembly_output/${problem_name}.x86.verbose.s"
+
+        # Compile into object files
+        riscv64-linux-gnu-gcc -c "$dir/code.c" -o "eval/assembly_output/${problem_name}.risc.o"
+        aarch64-linux-gnu-gcc -c "$dir/code.c" -o "eval/assembly_output/${problem_name}.arm.o"
+        x86_64-linux-gnu-gcc -c "$dir/code.c" -o "eval/assembly_output/${problem_name}.x86.o"
+    fi
+done
+
+echo "Code.c compilation complete!"
+
+# Step 4: Ensure required headers are included in test.c
+for dir in eval/*/; do
+    if [ -f "$dir/test.c" ]; then
+        echo "Checking and adding missing headers in $dir/test.c..."
+
+        if ! grep -q "#include <stdlib.h>" "$dir/test.c" && grep -q -E "malloc|free" "$dir/test.c"; then
+            echo "Adding missing <stdlib.h> to $dir/test.c"
+            sed -i '1i #include <stdlib.h>' "$dir/test.c"
+        fi
+        if ! grep -q "#include <string.h>" "$dir/test.c" && grep -q -E "strcmp\(" "$dir/test.c"; then
+            echo "Adding missing <string.h> to $dir/test.c"
+            sed -i '1i #include <string.h>' "$dir/test.c"
+        fi
+        if ! grep -q "#include <math.h>" "$dir/test.c" && grep -q -E "ceil|floor|pow|sqrt|fabs|roundf|round" "$dir/test.c"; then
+            echo "Adding missing <math.h> to $dir/test.c"
+            sed -i '1i #include <math.h>' "$dir/test.c"
+        fi
+        if ! grep -q "#include <stdio.h>" "$dir/test.c" && grep -q "printf" "$dir/test.c"; then
+            echo "Adding missing <stdio.h> to $dir/test.c"
+            sed -i '1i #include <stdio.h>' "$dir/test.c"
+        fi
+    fi
+done
+
+# Step 5: Compile and link test.c with code.o for QEMU execution
+for dir in eval/*/; do
+    if [ -f "$dir/test.c" ] && [ -f "$dir/code.c" ]; then
+        problem_name=$(basename "$dir")
+
+        echo "Compiling and linking test.c for $problem_name..."
+
+        # Check if math functions are used in either file
+        if grep -q -E "ceil|floor|pow|sqrt|fabs|roundf|round" "$dir/code.c" || grep -q -E "ceil|floor|pow|sqrt|fabs|roundf|round" "$dir/test.c"; then
+            LINK_FLAG="-lm"
+        else
+            LINK_FLAG=""
+        fi
+
+        # Link test.c with code.o and include -lm if needed
+        riscv64-linux-gnu-gcc "$dir/test.c" "eval/assembly_output/${problem_name}.risc.o" -o "eval/qemu_test_output/${problem_name}.risc" $LINK_FLAG
+        aarch64-linux-gnu-gcc "$dir/test.c" "eval/assembly_output/${problem_name}.arm.o" -o "eval/qemu_test_output/${problem_name}.arm" $LINK_FLAG
+        x86_64-linux-gnu-gcc "$dir/test.c" "eval/assembly_output/${problem_name}.x86.o" -o "eval/qemu_test_output/${problem_name}.x86" $LINK_FLAG
+    fi
+done
+
+echo "Test.c compilation and linking complete!"
+
+# Step 6: Run QEMU to verify execution
+for test_executable in eval/qemu_test_output/*; do
+    problem_name=$(basename "$test_executable")
+
+    echo "Executing ${problem_name} with QEMU..."
+
+    if [[ "$problem_name" == *.risc ]]; then
+        qemu-riscv64 -L /usr/riscv64-linux-gnu "$test_executable"
+    elif [[ "$problem_name" == *.arm ]]; then
+        qemu-aarch64 -L /usr/aarch64-linux-gnu "$test_executable"
+    elif [[ "$problem_name" == *.x86 ]]; then
+        qemu-x86_64 -L /usr/x86_64-linux-gnu "$test_executable"
+    fi
+
+    echo "Execution complete for $problem_name."
+done
+
+# Define the project source path correctly
+PROJECT_SOURCE="$HOME/transpiler_project/eval"
+
+# Run the parsing script from the correct location
+echo "Creating JSONL output for HumanEval problems with only code.c..."
+python "parse.py" "$PROJECT_SOURCE" "jsonl_files/eval_standalone.jsonl" || { echo "Error running parse.py"; exit 1; }
+
+echo "Standalone JSONL generation complete!"
+
+# Step 7: Delete compiled test.c executables
+echo "Cleaning up test.c compiled executables and moving assembly files into assembly_output_standalone..."
+rm -rf eval/qemu_test_output
+mkdir -p eval/assembly_output_standalone/
+mv eval/assembly_output/* eval/assembly_output_standalone/
+rm -rf eval/assembly_output
 
 echo "Now getting rid of old files and folders"
-#rm -rf euler unix_commands eval/assembly_outputs
-rm -f eval/*.c
+#rm -rf euler unix_commands
+
+sleep 3
+echo ""
+echo "Cleanup complete! A winner is you."
+
+
+
+
+
+
+
+
+
