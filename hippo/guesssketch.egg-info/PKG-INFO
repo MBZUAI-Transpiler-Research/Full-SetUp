@@ -1,0 +1,14 @@
+Metadata-Version: 2.2
+Name: guesssketch
+Version: 1.0
+Summary: A useful module
+Author: Celine Lee
+Author-email: cl923@cornell.edu
+Requires-Dist: torch
+Requires-Dist: transformers
+Requires-Dist: peft
+Requires-Dist: accelerate
+Dynamic: author
+Dynamic: author-email
+Dynamic: requires-dist
+Dynamic: summary
