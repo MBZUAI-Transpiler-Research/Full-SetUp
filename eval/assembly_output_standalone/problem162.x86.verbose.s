@@ -1,6 +1,6 @@
 	.file	"code.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -33,16 +33,15 @@ func0:
 .L6:
 # eval/problem162//code.c:9:         if (isalpha((unsigned char)s[i])) {
 	call	__ctype_b_loc@PLT	#
-# eval/problem162//code.c:9:         if (isalpha((unsigned char)s[i])) {
-	movq	(%rax), %rax	# *_2, _3
-	movl	-12(%rbp), %edx	# i, tmp154
-	movslq	%edx, %rcx	# tmp154, _4
-	movq	-40(%rbp), %rdx	# s, tmp155
-	addq	%rcx, %rdx	# _4, _5
-	movzbl	(%rdx), %edx	# *_5, _6
-	movzbl	%dl, %edx	# _7, _8
-	addq	%rdx, %rdx	# _9
-	addq	%rdx, %rax	# _9, _10
+	movq	(%rax), %rdx	# *_2, _3
+	movl	-12(%rbp), %eax	# i, tmp154
+	movslq	%eax, %rcx	# tmp154, _4
+	movq	-40(%rbp), %rax	# s, tmp155
+	addq	%rcx, %rax	# _4, _5
+	movzbl	(%rax), %eax	# *_5, _6
+	movzbl	%al, %eax	# _7, _8
+	addq	%rax, %rax	# _9
+	addq	%rdx, %rax	# _3, _10
 	movzwl	(%rax), %eax	# *_10, _11
 	movzwl	%ax, %eax	# _11, _12
 	andl	$1024, %eax	#, _13
@@ -51,16 +50,15 @@ func0:
 	je	.L3	#,
 # eval/problem162//code.c:10:             if (isupper((unsigned char)s[i])) s[i] = tolower((unsigned char)s[i]);
 	call	__ctype_b_loc@PLT	#
-# eval/problem162//code.c:10:             if (isupper((unsigned char)s[i])) s[i] = tolower((unsigned char)s[i]);
-	movq	(%rax), %rax	# *_14, _15
-	movl	-12(%rbp), %edx	# i, tmp156
-	movslq	%edx, %rcx	# tmp156, _16
-	movq	-40(%rbp), %rdx	# s, tmp157
-	addq	%rcx, %rdx	# _16, _17
-	movzbl	(%rdx), %edx	# *_17, _18
-	movzbl	%dl, %edx	# _19, _20
-	addq	%rdx, %rdx	# _21
-	addq	%rdx, %rax	# _21, _22
+	movq	(%rax), %rdx	# *_14, _15
+	movl	-12(%rbp), %eax	# i, tmp156
+	movslq	%eax, %rcx	# tmp156, _16
+	movq	-40(%rbp), %rax	# s, tmp157
+	addq	%rcx, %rax	# _16, _17
+	movzbl	(%rax), %eax	# *_17, _18
+	movzbl	%al, %eax	# _19, _20
+	addq	%rax, %rax	# _21
+	addq	%rdx, %rax	# _15, _22
 	movzwl	(%rax), %eax	# *_22, _23
 	movzwl	%ax, %eax	# _23, _24
 	andl	$256, %eax	#, _25
@@ -77,29 +75,27 @@ func0:
 	movzbl	%al, %eax	# _29, _30
 	movl	%eax, %edi	# _30,
 	call	tolower@PLT	#
-	movl	%eax, %ecx	#, _31
+	movl	%eax, %edx	#, _31
 # eval/problem162//code.c:10:             if (isupper((unsigned char)s[i])) s[i] = tolower((unsigned char)s[i]);
 	movl	-12(%rbp), %eax	# i, tmp160
-	movslq	%eax, %rdx	# tmp160, _32
+	movslq	%eax, %rcx	# tmp160, _32
 	movq	-40(%rbp), %rax	# s, tmp161
-	addq	%rdx, %rax	# _32, _33
+	addq	%rcx, %rax	# _32, _33
 # eval/problem162//code.c:10:             if (isupper((unsigned char)s[i])) s[i] = tolower((unsigned char)s[i]);
-	movl	%ecx, %edx	# _31, _34
 	movb	%dl, (%rax)	# _34, *_33
 	jmp	.L5	#
 .L4:
 # eval/problem162//code.c:11:             else if (islower((unsigned char)s[i])) s[i] = toupper((unsigned char)s[i]);
 	call	__ctype_b_loc@PLT	#
-# eval/problem162//code.c:11:             else if (islower((unsigned char)s[i])) s[i] = toupper((unsigned char)s[i]);
-	movq	(%rax), %rax	# *_35, _36
-	movl	-12(%rbp), %edx	# i, tmp162
-	movslq	%edx, %rcx	# tmp162, _37
-	movq	-40(%rbp), %rdx	# s, tmp163
-	addq	%rcx, %rdx	# _37, _38
-	movzbl	(%rdx), %edx	# *_38, _39
-	movzbl	%dl, %edx	# _40, _41
-	addq	%rdx, %rdx	# _42
-	addq	%rdx, %rax	# _42, _43
+	movq	(%rax), %rdx	# *_35, _36
+	movl	-12(%rbp), %eax	# i, tmp162
+	movslq	%eax, %rcx	# tmp162, _37
+	movq	-40(%rbp), %rax	# s, tmp163
+	addq	%rcx, %rax	# _37, _38
+	movzbl	(%rax), %eax	# *_38, _39
+	movzbl	%al, %eax	# _40, _41
+	addq	%rax, %rax	# _42
+	addq	%rdx, %rax	# _36, _43
 	movzwl	(%rax), %eax	# *_43, _44
 	movzwl	%ax, %eax	# _44, _45
 	andl	$512, %eax	#, _46
@@ -116,14 +112,13 @@ func0:
 	movzbl	%al, %eax	# _50, _51
 	movl	%eax, %edi	# _51,
 	call	toupper@PLT	#
-	movl	%eax, %ecx	#, _52
+	movl	%eax, %edx	#, _52
 # eval/problem162//code.c:11:             else if (islower((unsigned char)s[i])) s[i] = toupper((unsigned char)s[i]);
 	movl	-12(%rbp), %eax	# i, tmp166
-	movslq	%eax, %rdx	# tmp166, _53
+	movslq	%eax, %rcx	# tmp166, _53
 	movq	-40(%rbp), %rax	# s, tmp167
-	addq	%rdx, %rax	# _53, _54
+	addq	%rcx, %rax	# _53, _54
 # eval/problem162//code.c:11:             else if (islower((unsigned char)s[i])) s[i] = toupper((unsigned char)s[i]);
-	movl	%ecx, %edx	# _52, _55
 	movb	%dl, (%rax)	# _55, *_54
 	jmp	.L5	#
 .L3:
@@ -204,7 +199,7 @@ func0:
 	.cfi_endproc
 .LFE0:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

@@ -24,7 +24,7 @@ func0:
 	mov	w1, 1
 	str	w1, [x0]
 	b	.L2
-.L6:
+.L5:
 	ldr	w0, [sp, 44]
 	cmp	w0, 0
 	and	w0, w0, 1
@@ -73,11 +73,11 @@ func0:
 .L2:
 	ldr	w0, [sp, 44]
 	cmp	w0, 1
-	bne	.L6
+	bne	.L5
 	mov	w0, 1
 	str	w0, [sp, 52]
-	b	.L7
-.L11:
+	b	.L6
+.L10:
 	ldrsw	x0, [sp, 52]
 	lsl	x0, x0, 2
 	ldr	x1, [sp, 32]
@@ -87,8 +87,8 @@ func0:
 	ldr	w0, [sp, 52]
 	sub	w0, w0, #1
 	str	w0, [sp, 56]
-	b	.L8
-.L10:
+	b	.L7
+.L9:
 	ldrsw	x0, [sp, 56]
 	lsl	x0, x0, 2
 	ldr	x1, [sp, 32]
@@ -103,10 +103,10 @@ func0:
 	ldr	w0, [sp, 56]
 	sub	w0, w0, #1
 	str	w0, [sp, 56]
-.L8:
+.L7:
 	ldr	w0, [sp, 56]
 	cmp	w0, 0
-	blt	.L9
+	blt	.L8
 	ldrsw	x0, [sp, 56]
 	lsl	x0, x0, 2
 	ldr	x1, [sp, 32]
@@ -114,8 +114,8 @@ func0:
 	ldr	w0, [x0]
 	ldr	w1, [sp, 60]
 	cmp	w1, w0
-	blt	.L10
-.L9:
+	blt	.L9
+.L8:
 	ldrsw	x0, [sp, 56]
 	add	x0, x0, 1
 	lsl	x0, x0, 2
@@ -126,12 +126,12 @@ func0:
 	ldr	w0, [sp, 52]
 	add	w0, w0, 1
 	str	w0, [sp, 52]
-.L7:
+.L6:
 	ldr	x0, [sp, 24]
 	ldr	w0, [x0]
 	ldr	w1, [sp, 52]
 	cmp	w1, w0
-	blt	.L11
+	blt	.L10
 	nop
 	nop
 	ldp	x29, x30, [sp], 64
@@ -142,5 +142,5 @@ func0:
 	.cfi_endproc
 .LFE6:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

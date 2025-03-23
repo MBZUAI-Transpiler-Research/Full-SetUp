@@ -161,7 +161,6 @@ main:
 	and	w0, w0, 255
 	eor	w0, w0, 1
 	and	w0, w0, 255
-	and	w0, w0, 1
 	cmp	w0, 0
 	bne	.L7
 	adrp	x0, __PRETTY_FUNCTION__.0
@@ -179,7 +178,6 @@ main:
 	add	x0, x0, :lo12:.LC5
 	bl	func0
 	and	w0, w0, 255
-	and	w0, w0, 1
 	cmp	w0, 0
 	bne	.L8
 	adrp	x0, __PRETTY_FUNCTION__.0
@@ -199,7 +197,6 @@ main:
 	and	w0, w0, 255
 	eor	w0, w0, 1
 	and	w0, w0, 255
-	and	w0, w0, 1
 	cmp	w0, 0
 	bne	.L9
 	adrp	x0, __PRETTY_FUNCTION__.0
@@ -217,7 +214,6 @@ main:
 	add	x0, x0, :lo12:.LC11
 	bl	func0
 	and	w0, w0, 255
-	and	w0, w0, 1
 	cmp	w0, 0
 	bne	.L10
 	adrp	x0, __PRETTY_FUNCTION__.0
@@ -237,7 +233,6 @@ main:
 	and	w0, w0, 255
 	eor	w0, w0, 1
 	and	w0, w0, 255
-	and	w0, w0, 1
 	cmp	w0, 0
 	bne	.L11
 	adrp	x0, __PRETTY_FUNCTION__.0
@@ -255,7 +250,6 @@ main:
 	add	x0, x0, :lo12:.LC17
 	bl	func0
 	and	w0, w0, 255
-	and	w0, w0, 1
 	cmp	w0, 0
 	bne	.L12
 	adrp	x0, __PRETTY_FUNCTION__.0
@@ -282,5 +276,5 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

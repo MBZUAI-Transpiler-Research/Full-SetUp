@@ -1,6 +1,6 @@
 	.file	"problem32.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -22,7 +22,6 @@ func0:
 	jg	.L2	#,
 # problem32.c:4:     if (n < 2) return false;
 	movl	$0, %eax	#, _4
-# problem32.c:4:     if (n < 2) return false;
 	jmp	.L3	#
 .L2:
 # problem32.c:5:     for (long long i = 2; i * i <= n; i++)
@@ -40,7 +39,6 @@ func0:
 	jne	.L5	#,
 # problem32.c:6:         if (n % i == 0) return false;
 	movl	$0, %eax	#, _4
-# problem32.c:6:         if (n % i == 0) return false;
 	jmp	.L3	#
 .L5:
 # problem32.c:5:     for (long long i = 2; i * i <= n; i++)
@@ -104,10 +102,10 @@ main:
 # problem32.c:16:     assert(func0(6) == false);
 	movl	$6, %edi	#,
 	call	func0	#
-# problem32.c:16:     assert(func0(6) == false);
 	xorl	$1, %eax	#, _2
 	testb	%al, %al	# _2
 	jne	.L8	#,
+# problem32.c:16:     assert(func0(6) == false);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp103
 	movq	%rax, %rcx	# tmp103,
 	movl	$16, %edx	#,
@@ -120,9 +118,9 @@ main:
 # problem32.c:17:     assert(func0(101) == true);
 	movl	$101, %edi	#,
 	call	func0	#
-# problem32.c:17:     assert(func0(101) == true);
 	testb	%al, %al	# _3
 	jne	.L9	#,
+# problem32.c:17:     assert(func0(101) == true);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp106
 	movq	%rax, %rcx	# tmp106,
 	movl	$17, %edx	#,
@@ -135,9 +133,9 @@ main:
 # problem32.c:18:     assert(func0(11) == true);
 	movl	$11, %edi	#,
 	call	func0	#
-# problem32.c:18:     assert(func0(11) == true);
 	testb	%al, %al	# _4
 	jne	.L10	#,
+# problem32.c:18:     assert(func0(11) == true);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp109
 	movq	%rax, %rcx	# tmp109,
 	movl	$18, %edx	#,
@@ -150,9 +148,9 @@ main:
 # problem32.c:19:     assert(func0(13441) == true);
 	movl	$13441, %edi	#,
 	call	func0	#
-# problem32.c:19:     assert(func0(13441) == true);
 	testb	%al, %al	# _5
 	jne	.L11	#,
+# problem32.c:19:     assert(func0(13441) == true);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp112
 	movq	%rax, %rcx	# tmp112,
 	movl	$19, %edx	#,
@@ -165,9 +163,9 @@ main:
 # problem32.c:20:     assert(func0(61) == true);
 	movl	$61, %edi	#,
 	call	func0	#
-# problem32.c:20:     assert(func0(61) == true);
 	testb	%al, %al	# _6
 	jne	.L12	#,
+# problem32.c:20:     assert(func0(61) == true);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp115
 	movq	%rax, %rcx	# tmp115,
 	movl	$20, %edx	#,
@@ -180,10 +178,10 @@ main:
 # problem32.c:21:     assert(func0(4) == false);
 	movl	$4, %edi	#,
 	call	func0	#
-# problem32.c:21:     assert(func0(4) == false);
 	xorl	$1, %eax	#, _8
 	testb	%al, %al	# _8
 	jne	.L13	#,
+# problem32.c:21:     assert(func0(4) == false);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp118
 	movq	%rax, %rcx	# tmp118,
 	movl	$21, %edx	#,
@@ -196,10 +194,10 @@ main:
 # problem32.c:22:     assert(func0(1) == false);
 	movl	$1, %edi	#,
 	call	func0	#
-# problem32.c:22:     assert(func0(1) == false);
 	xorl	$1, %eax	#, _10
 	testb	%al, %al	# _10
 	jne	.L14	#,
+# problem32.c:22:     assert(func0(1) == false);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp121
 	movq	%rax, %rcx	# tmp121,
 	movl	$22, %edx	#,
@@ -212,9 +210,9 @@ main:
 # problem32.c:23:     assert(func0(5) == true);
 	movl	$5, %edi	#,
 	call	func0	#
-# problem32.c:23:     assert(func0(5) == true);
 	testb	%al, %al	# _11
 	jne	.L15	#,
+# problem32.c:23:     assert(func0(5) == true);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp124
 	movq	%rax, %rcx	# tmp124,
 	movl	$23, %edx	#,
@@ -227,9 +225,9 @@ main:
 # problem32.c:24:     assert(func0(11) == true);
 	movl	$11, %edi	#,
 	call	func0	#
-# problem32.c:24:     assert(func0(11) == true);
 	testb	%al, %al	# _12
 	jne	.L16	#,
+# problem32.c:24:     assert(func0(11) == true);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp127
 	movq	%rax, %rcx	# tmp127,
 	movl	$24, %edx	#,
@@ -242,9 +240,9 @@ main:
 # problem32.c:25:     assert(func0(17) == true);
 	movl	$17, %edi	#,
 	call	func0	#
-# problem32.c:25:     assert(func0(17) == true);
 	testb	%al, %al	# _13
 	jne	.L17	#,
+# problem32.c:25:     assert(func0(17) == true);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp130
 	movq	%rax, %rcx	# tmp130,
 	movl	$25, %edx	#,
@@ -257,10 +255,10 @@ main:
 # problem32.c:26:     assert(func0(5 * 17) == false);
 	movl	$85, %edi	#,
 	call	func0	#
-# problem32.c:26:     assert(func0(5 * 17) == false);
 	xorl	$1, %eax	#, _15
 	testb	%al, %al	# _15
 	jne	.L18	#,
+# problem32.c:26:     assert(func0(5 * 17) == false);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp133
 	movq	%rax, %rcx	# tmp133,
 	movl	$26, %edx	#,
@@ -273,10 +271,10 @@ main:
 # problem32.c:27:     assert(func0(11 * 7) == false);
 	movl	$77, %edi	#,
 	call	func0	#
-# problem32.c:27:     assert(func0(11 * 7) == false);
 	xorl	$1, %eax	#, _17
 	testb	%al, %al	# _17
 	jne	.L19	#,
+# problem32.c:27:     assert(func0(11 * 7) == false);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp136
 	movq	%rax, %rcx	# tmp136,
 	movl	$27, %edx	#,
@@ -289,10 +287,10 @@ main:
 # problem32.c:28:     assert(func0(13441 * 19) == false);
 	movl	$255379, %edi	#,
 	call	func0	#
-# problem32.c:28:     assert(func0(13441 * 19) == false);
 	xorl	$1, %eax	#, _19
 	testb	%al, %al	# _19
 	jne	.L20	#,
+# problem32.c:28:     assert(func0(13441 * 19) == false);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp139
 	movq	%rax, %rcx	# tmp139,
 	movl	$28, %edx	#,
@@ -316,7 +314,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

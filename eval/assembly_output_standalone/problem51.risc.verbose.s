@@ -1,35 +1,26 @@
 	.file	"code.c"
 	.option pic
-	.attribute arch, "rv64i2p1_m2p0_a2p1_f2p2_d2p2_c2p0_zicsr2p0_zifencei2p0"
-	.attribute unaligned_access, 0
-	.attribute stack_align, 16
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (riscv64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (riscv64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-# options passed: -mabi=lp64d -misa-spec=20191213 -march=rv64imafdc_zicsr_zifencei -fstack-protector-strong
+# options passed: -mabi=lp64d -misa-spec=2.2 -march=rv64imafdc -fstack-protector-strong
 	.text
 	.align	1
 	.globl	func0
 	.type	func0, @function
 func0:
-.LFB6:
-	.cfi_startproc
 	addi	sp,sp,-64	#,,
-	.cfi_def_cfa_offset 64
 	sd	ra,56(sp)	#,
 	sd	s0,48(sp)	#,
-	.cfi_offset 1, -8
-	.cfi_offset 8, -16
 	addi	s0,sp,64	#,,
-	.cfi_def_cfa 8, 0
 	sd	a0,-56(s0)	# s, s
-	mv	a5,a1	# tmp143, encode
-	sw	a5,-60(s0)	# tmp144, encode
+	mv	a5,a1	# tmp81, encode
+	sw	a5,-60(s0)	# tmp82, encode
 # eval/problem51//code.c:6:     int shift = encode ? 5 : 21;
-	lw	a5,-60(s0)		# tmp146, encode
-	sext.w	a5,a5	# tmp147, tmp145
-	beq	a5,zero,.L2	#, tmp147,,
+	lw	a5,-60(s0)		# tmp84, encode
+	sext.w	a5,a5	# tmp85, tmp83
+	beq	a5,zero,.L2	#, tmp85,,
 # eval/problem51//code.c:6:     int shift = encode ? 5 : 21;
 	li	a5,5		# iftmp.0_10,
 	j	.L3		#
@@ -49,57 +40,51 @@ func0:
 	j	.L4		#
 .L5:
 # eval/problem51//code.c:9:         int w = ((s[i] - 'a' + shift) % 26) + 'a';
-	ld	a4,-56(s0)		# tmp148, s
-	ld	a5,-32(s0)		# tmp149, i
-	add	a5,a4,a5	# tmp149, _1, tmp148
+	ld	a4,-56(s0)		# tmp86, s
+	ld	a5,-32(s0)		# tmp87, i
+	add	a5,a4,a5	# tmp87, _1, tmp86
 	lbu	a5,0(a5)	# _2, *_1
 	sext.w	a5,a5	# _3, _2
 # eval/problem51//code.c:9:         int w = ((s[i] - 'a' + shift) % 26) + 'a';
-	addiw	a5,a5,-97	#, tmp150, _3
-	sext.w	a5,a5	# _4, tmp150
+	addiw	a5,a5,-97	#, tmp88, _3
+	sext.w	a5,a5	# _4, tmp88
 # eval/problem51//code.c:9:         int w = ((s[i] - 'a' + shift) % 26) + 'a';
-	lw	a4,-40(s0)		# tmp153, shift
-	addw	a5,a4,a5	# _4, tmp151, tmp152
-	sext.w	a5,a5	# _5, tmp151
+	lw	a4,-40(s0)		# tmp91, shift
+	addw	a5,a4,a5	# _4, tmp89, tmp90
+	sext.w	a5,a5	# _5, tmp89
 # eval/problem51//code.c:9:         int w = ((s[i] - 'a' + shift) % 26) + 'a';
-	mv	a4,a5	# tmp155, _5
-	li	a5,26		# tmp157,
-	remw	a5,a4,a5	# tmp157, tmp156, tmp155
-	sext.w	a5,a5	# _6, tmp156
+	mv	a4,a5	# tmp93, _5
+	li	a5,26		# tmp95,
+	remw	a5,a4,a5	# tmp95, tmp94, tmp93
+	sext.w	a5,a5	# _6, tmp94
 # eval/problem51//code.c:9:         int w = ((s[i] - 'a' + shift) % 26) + 'a';
-	addiw	a5,a5,97	#, tmp158, _6
-	sw	a5,-36(s0)	# tmp158, w
+	addiw	a5,a5,97	#, tmp96, _6
+	sw	a5,-36(s0)	# tmp96, w
 # eval/problem51//code.c:10:         s[i] = (char)w;
-	ld	a4,-56(s0)		# tmp159, s
-	ld	a5,-32(s0)		# tmp160, i
-	add	a5,a4,a5	# tmp160, _7, tmp159
+	ld	a4,-56(s0)		# tmp97, s
+	ld	a5,-32(s0)		# tmp98, i
+	add	a5,a4,a5	# tmp98, _7, tmp97
 # eval/problem51//code.c:10:         s[i] = (char)w;
-	lw	a4,-36(s0)		# tmp162, w
-	andi	a4,a4,0xff	# _8, tmp161
+	lw	a4,-36(s0)		# tmp100, w
+	andi	a4,a4,0xff	# _8, tmp99
 # eval/problem51//code.c:10:         s[i] = (char)w;
 	sb	a4,0(a5)	# _8, *_7
 # eval/problem51//code.c:8:     for (size_t i = 0; i < len; i++) {
-	ld	a5,-32(s0)		# tmp164, i
-	addi	a5,a5,1	#, tmp163, tmp164
-	sd	a5,-32(s0)	# tmp163, i
+	ld	a5,-32(s0)		# tmp102, i
+	addi	a5,a5,1	#, tmp101, tmp102
+	sd	a5,-32(s0)	# tmp101, i
 .L4:
 # eval/problem51//code.c:8:     for (size_t i = 0; i < len; i++) {
-	ld	a4,-32(s0)		# tmp165, i
-	ld	a5,-24(s0)		# tmp166, len
-	bltu	a4,a5,.L5	#, tmp165, tmp166,
+	ld	a4,-32(s0)		# tmp103, i
+	ld	a5,-24(s0)		# tmp104, len
+	bltu	a4,a5,.L5	#, tmp103, tmp104,
 # eval/problem51//code.c:12: }
 	nop	
 	nop	
 	ld	ra,56(sp)		#,
-	.cfi_restore 1
 	ld	s0,48(sp)		#,
-	.cfi_restore 8
-	.cfi_def_cfa 2, 64
 	addi	sp,sp,64	#,,
-	.cfi_def_cfa_offset 0
 	jr	ra		#
-	.cfi_endproc
-.LFE6:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

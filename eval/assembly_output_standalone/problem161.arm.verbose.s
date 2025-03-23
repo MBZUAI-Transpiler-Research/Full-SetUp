@@ -1,7 +1,7 @@
 	.arch armv8-a
 	.file	"code.c"
-// GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (aarch64-linux-gnu)
-//	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+// GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (aarch64-linux-gnu)
+//	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 // GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 // options passed: -mlittle-endian -mabi=lp64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection
@@ -445,7 +445,6 @@ func0:
 	lsl	x0, x0, 2	// _193, _192,
 	ldr	x3, [sp, 80]	// tmp504, num
 	add	x0, x3, x0	// _194, tmp504, _193
-// eval/problem161//code.c:26:                 num[posto[i]] *= num[posto[i + 1]];
 	mul	w1, w2, w1	// _195, _178, _187
 	str	w1, [x0]	// _195, *_194
 	b	.L19		//
@@ -486,7 +485,6 @@ func0:
 	lsl	x0, x0, 2	// _218, _217,
 	ldr	x3, [sp, 80]	// tmp510, num
 	add	x0, x3, x0	// _219, tmp510, _218
-// eval/problem161//code.c:28:                 num[posto[i]] /= num[posto[i + 1]];
 	sdiv	w1, w2, w1	// _220, _203, _212
 	str	w1, [x0]	// _220, *_219
 .L19:
@@ -693,7 +691,6 @@ func0:
 	lsl	x0, x0, 2	// _316, _315,
 	ldr	x3, [sp, 80]	// tmp540, num
 	add	x0, x3, x0	// _317, tmp540, _316
-// eval/problem161//code.c:37:                 num[posto[i]] += num[posto[i + 1]];
 	add	w1, w2, w1	// _318, _301, _310
 	str	w1, [x0]	// _318, *_317
 	b	.L29		//
@@ -734,7 +731,6 @@ func0:
 	lsl	x0, x0, 2	// _341, _340,
 	ldr	x3, [sp, 80]	// tmp546, num
 	add	x0, x3, x0	// _342, tmp546, _341
-// eval/problem161//code.c:39:                 num[posto[i]] -= num[posto[i + 1]];
 	sub	w1, w2, w1	// _343, _326, _335
 	str	w1, [x0]	// _343, *_342
 .L29:
@@ -785,5 +781,5 @@ func0:
 	.cfi_endproc
 .LFE6:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

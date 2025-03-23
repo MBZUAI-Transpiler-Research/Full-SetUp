@@ -357,31 +357,31 @@ func0:
 	leaq	0(,%rax,4), %rdx
 	movq	-16(%rbp), %rax
 	addq	%rdx, %rax
-	movl	(%rax), %edx
+	movl	(%rax), %ecx
 	movl	-28(%rbp), %eax
 	cltq
 	addq	$1, %rax
-	leaq	0(,%rax,4), %rcx
+	leaq	0(,%rax,4), %rdx
 	movq	-8(%rbp), %rax
-	addq	%rcx, %rax
+	addq	%rdx, %rax
 	movl	(%rax), %eax
 	cltq
-	leaq	0(,%rax,4), %rcx
+	leaq	0(,%rax,4), %rdx
 	movq	-16(%rbp), %rax
-	addq	%rcx, %rax
+	addq	%rdx, %rax
 	movl	(%rax), %eax
-	movl	-28(%rbp), %ecx
-	movslq	%ecx, %rcx
-	leaq	0(,%rcx,4), %rsi
-	movq	-8(%rbp), %rcx
-	addq	%rsi, %rcx
-	movl	(%rcx), %ecx
-	movslq	%ecx, %rcx
-	leaq	0(,%rcx,4), %rsi
-	movq	-16(%rbp), %rcx
-	addq	%rsi, %rcx
-	imull	%edx, %eax
-	movl	%eax, (%rcx)
+	movl	-28(%rbp), %edx
+	movslq	%edx, %rdx
+	leaq	0(,%rdx,4), %rsi
+	movq	-8(%rbp), %rdx
+	addq	%rsi, %rdx
+	movl	(%rdx), %edx
+	movslq	%edx, %rdx
+	leaq	0(,%rdx,4), %rsi
+	movq	-16(%rbp), %rdx
+	addq	%rsi, %rdx
+	imull	%ecx, %eax
+	movl	%eax, (%rdx)
 	jmp	.L19
 .L18:
 	movl	-28(%rbp), %eax
@@ -608,31 +608,31 @@ func0:
 	leaq	0(,%rax,4), %rdx
 	movq	-16(%rbp), %rax
 	addq	%rdx, %rax
-	movl	(%rax), %ecx
+	movl	(%rax), %edx
 	movl	-24(%rbp), %eax
 	cltq
 	addq	$1, %rax
-	leaq	0(,%rax,4), %rdx
+	leaq	0(,%rax,4), %rcx
 	movq	-8(%rbp), %rax
-	addq	%rdx, %rax
+	addq	%rcx, %rax
 	movl	(%rax), %eax
 	cltq
-	leaq	0(,%rax,4), %rdx
+	leaq	0(,%rax,4), %rcx
 	movq	-16(%rbp), %rax
-	addq	%rdx, %rax
+	addq	%rcx, %rax
+	movl	(%rax), %ecx
+	movl	-24(%rbp), %eax
+	cltq
+	leaq	0(,%rax,4), %rsi
+	movq	-8(%rbp), %rax
+	addq	%rsi, %rax
 	movl	(%rax), %eax
-	movl	-24(%rbp), %edx
-	movslq	%edx, %rdx
-	leaq	0(,%rdx,4), %rsi
-	movq	-8(%rbp), %rdx
-	addq	%rsi, %rdx
-	movl	(%rdx), %edx
-	movslq	%edx, %rdx
-	leaq	0(,%rdx,4), %rsi
-	movq	-16(%rbp), %rdx
-	addq	%rsi, %rdx
-	subl	%eax, %ecx
-	movl	%ecx, (%rdx)
+	cltq
+	leaq	0(,%rax,4), %rsi
+	movq	-16(%rbp), %rax
+	addq	%rsi, %rax
+	subl	%ecx, %edx
+	movl	%edx, (%rax)
 .L29:
 	movl	-24(%rbp), %eax
 	cltq
@@ -669,7 +669,7 @@ func0:
 	.cfi_endproc
 .LFE6:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

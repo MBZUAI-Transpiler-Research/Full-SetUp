@@ -93,7 +93,6 @@ days:
 	cmp	w0, 11
 	cset	w1, hi
 	and	w1, w1, 255
-	and	w1, w1, 1
 	cmp	w1, 0
 	bne	.L9
 	mov	x1, 1
@@ -103,14 +102,12 @@ days:
 	cmp	x1, 0
 	cset	w1, ne
 	and	w1, w1, 255
-	and	w1, w1, 1
 	cmp	w1, 0
 	bne	.L10
 	and	x0, x0, 4
 	cmp	x0, 0
 	cset	w0, ne
 	and	w0, w0, 255
-	and	w0, w0, 1
 	cmp	w0, 0
 	beq	.L9
 	ldr	w0, [sp, 12]
@@ -162,5 +159,5 @@ days:
 	.cfi_endproc
 .LFE1:
 	.size	days, .-days
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

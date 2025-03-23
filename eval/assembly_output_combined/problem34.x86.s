@@ -20,8 +20,10 @@ func0:
 	imulq	$1431655766, %rdx, %rdx
 	shrq	$32, %rdx
 	sarl	$31, %eax
-	subl	%eax, %edx
-	leal	1(%rdx), %eax
+	movl	%eax, %ecx
+	movl	%edx, %eax
+	subl	%ecx, %eax
+	addl	$1, %eax
 	cltq
 	salq	$2, %rax
 	movq	%rax, %rdi
@@ -127,28 +129,29 @@ func0:
 	movl	$0, -28(%rbp)
 	jmp	.L10
 .L13:
-	movl	-28(%rbp), %ecx
-	movslq	%ecx, %rax
+	movl	-28(%rbp), %edx
+	movslq	%edx, %rax
 	imulq	$1431655766, %rax, %rax
 	shrq	$32, %rax
-	movq	%rax, %rdx
-	movl	%ecx, %eax
-	sarl	$31, %eax
-	subl	%eax, %edx
+	movl	%edx, %ecx
+	sarl	$31, %ecx
+	subl	%ecx, %eax
+	movl	%eax, %ecx
+	addl	%ecx, %ecx
+	addl	%eax, %ecx
 	movl	%edx, %eax
-	addl	%eax, %eax
-	addl	%edx, %eax
-	subl	%eax, %ecx
-	movl	%ecx, %edx
-	testl	%edx, %edx
+	subl	%ecx, %eax
+	testl	%eax, %eax
 	jne	.L11
 	movl	-28(%rbp), %eax
 	movslq	%eax, %rdx
 	imulq	$1431655766, %rdx, %rdx
 	shrq	$32, %rdx
 	sarl	$31, %eax
-	subl	%eax, %edx
-	movslq	%edx, %rax
+	movl	%eax, %ecx
+	movl	%edx, %eax
+	subl	%ecx, %eax
+	cltq
 	leaq	0(,%rax,4), %rdx
 	movq	-8(%rbp), %rax
 	addq	%rdx, %rax
@@ -527,7 +530,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

@@ -1,6 +1,6 @@
 	.file	"code.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -20,7 +20,7 @@ func0:
 	movq	%rdi, -56(%rbp)	# date, date
 # eval/problem125//code.c:5: int func0(const char *date) {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp131
-	movq	%rax, -8(%rbp)	# tmp131, D.3958
+	movq	%rax, -8(%rbp)	# tmp131, D.3094
 	xorl	%eax, %eax	# tmp131
 # eval/problem125//code.c:8:     if (strlen(date) != 10) return 0;
 	movq	-56(%rbp), %rax	# date, tmp109
@@ -31,7 +31,6 @@ func0:
 	je	.L2	#,
 # eval/problem125//code.c:8:     if (strlen(date) != 10) return 0;
 	movl	$0, %eax	#, _27
-# eval/problem125//code.c:8:     if (strlen(date) != 10) return 0;
 	jmp	.L18	#
 .L2:
 # eval/problem125//code.c:9:     for (int i = 0; i < 10; i++) {
@@ -57,7 +56,6 @@ func0:
 	je	.L8	#,
 # eval/problem125//code.c:11:             if (date[i] != '-') return 0;
 	movl	$0, %eax	#, _27
-# eval/problem125//code.c:11:             if (date[i] != '-') return 0;
 	jmp	.L18	#
 .L6:
 # eval/problem125//code.c:13:             if (date[i] < '0' || date[i] > '9') return 0;
@@ -81,7 +79,6 @@ func0:
 .L9:
 # eval/problem125//code.c:13:             if (date[i] < '0' || date[i] > '9') return 0;
 	movl	$0, %eax	#, _27
-# eval/problem125//code.c:13:             if (date[i] < '0' || date[i] > '9') return 0;
 	jmp	.L18	#
 .L8:
 # eval/problem125//code.c:9:     for (int i = 0; i < 10; i++) {
@@ -164,7 +161,6 @@ func0:
 .L11:
 # eval/problem125//code.c:25:     if (mm < 1 || mm > 12) return 0;
 	movl	$0, %eax	#, _27
-# eval/problem125//code.c:25:     if (mm < 1 || mm > 12) return 0;
 	jmp	.L18	#
 .L12:
 # eval/problem125//code.c:26:     if (dd < 1 || dd > 31) return 0;
@@ -176,7 +172,6 @@ func0:
 .L13:
 # eval/problem125//code.c:26:     if (dd < 1 || dd > 31) return 0;
 	movl	$0, %eax	#, _27
-# eval/problem125//code.c:26:     if (dd < 1 || dd > 31) return 0;
 	jmp	.L18	#
 .L14:
 # eval/problem125//code.c:27:     if ((mm == 4 || mm == 6 || mm == 9 || mm == 11) && dd == 31) return 0;
@@ -197,7 +192,6 @@ func0:
 	jne	.L16	#,
 # eval/problem125//code.c:27:     if ((mm == 4 || mm == 6 || mm == 9 || mm == 11) && dd == 31) return 0;
 	movl	$0, %eax	#, _27
-# eval/problem125//code.c:27:     if ((mm == 4 || mm == 6 || mm == 9 || mm == 11) && dd == 31) return 0;
 	jmp	.L18	#
 .L16:
 # eval/problem125//code.c:28:     if (mm == 2 && dd > 29) return 0;
@@ -208,16 +202,16 @@ func0:
 	jle	.L17	#,
 # eval/problem125//code.c:28:     if (mm == 2 && dd > 29) return 0;
 	movl	$0, %eax	#, _27
-# eval/problem125//code.c:28:     if (mm == 2 && dd > 29) return 0;
 	jmp	.L18	#
 .L17:
 # eval/problem125//code.c:30:     return 1;
 	movl	$1, %eax	#, _27
 .L18:
 # eval/problem125//code.c:31: }
-	movq	-8(%rbp), %rdx	# D.3958, tmp132
+	movq	-8(%rbp), %rdx	# D.3094, tmp132
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp132
 	je	.L19	#,
+# eval/problem125//code.c:31: }
 	call	__stack_chk_fail@PLT	#
 .L19:
 	leave	
@@ -226,7 +220,7 @@ func0:
 	.cfi_endproc
 .LFE6:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

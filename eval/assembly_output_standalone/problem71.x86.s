@@ -80,7 +80,7 @@ func0:
 	movl	%eax, -12(%rbp)
 	movl	$0, -8(%rbp)
 	jmp	.L7
-.L10:
+.L9:
 	movl	-16(%rbp), %eax
 	cmpl	-12(%rbp), %eax
 	jne	.L8
@@ -137,7 +137,7 @@ func0:
 .L7:
 	movl	-16(%rbp), %eax
 	cmpl	-12(%rbp), %eax
-	jle	.L10
+	jle	.L9
 	nop
 	nop
 	popq	%rbp
@@ -146,7 +146,7 @@ func0:
 	.cfi_endproc
 .LFE6:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

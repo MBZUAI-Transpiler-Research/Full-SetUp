@@ -32,8 +32,8 @@ main:
 	testl	%eax, %eax
 	je	.L4
 	movl	-4(%rbp), %eax
-	cmpl	%eax, -8(%rbp)
-	jnb	.L4
+	cmpl	-8(%rbp), %eax
+	jbe	.L4
 	movl	-4(%rbp), %eax
 	movl	%eax, -8(%rbp)
 .L4:
@@ -115,7 +115,7 @@ is_palindromic:
 	.cfi_endproc
 .LFE1:
 	.size	is_palindromic, .-is_palindromic
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

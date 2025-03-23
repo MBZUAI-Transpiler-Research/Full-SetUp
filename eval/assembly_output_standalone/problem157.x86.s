@@ -115,16 +115,16 @@ func0:
 	nop
 	movq	-8(%rbp), %rax
 	subq	%fs:40, %rax
-	je	.L7
+	je	.L6
 	call	__stack_chk_fail@PLT
-.L7:
+.L6:
 	leave
 	.cfi_def_cfa 7, 8
 	ret
 	.cfi_endproc
 .LFE0:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

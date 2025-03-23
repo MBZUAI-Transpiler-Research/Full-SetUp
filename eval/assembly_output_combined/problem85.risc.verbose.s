@@ -1,13 +1,10 @@
 	.file	"problem85.c"
 	.option pic
-	.attribute arch, "rv64i2p1_m2p0_a2p1_f2p2_d2p2_c2p0_zicsr2p0_zifencei2p0"
-	.attribute unaligned_access, 0
-	.attribute stack_align, 16
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (riscv64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (riscv64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-# options passed: -mabi=lp64d -misa-spec=20191213 -march=rv64imafdc_zicsr_zifencei -fstack-protector-strong
+# options passed: -mabi=lp64d -misa-spec=2.2 -march=rv64imafdc -fstack-protector-strong
 	.text
 	.section	.rodata
 	.align	3
@@ -18,29 +15,23 @@
 	.globl	func0
 	.type	func0, @function
 func0:
-.LFB6:
-	.cfi_startproc
 	addi	sp,sp,-80	#,,
-	.cfi_def_cfa_offset 80
 	sd	ra,72(sp)	#,
 	sd	s0,64(sp)	#,
-	.cfi_offset 1, -8
-	.cfi_offset 8, -16
 	addi	s0,sp,80	#,,
-	.cfi_def_cfa 8, 0
-	mv	a5,a0	# tmp165, N
-	sw	a5,-68(s0)	# tmp166, N
+	mv	a5,a0	# tmp103, N
+	sw	a5,-68(s0)	# tmp104, N
 # problem85.c:4: char* func0(int N) {
-	la	a5,__stack_chk_guard		# tmp167,
-	ld	a4, 0(a5)	# tmp241, __stack_chk_guard
-	sd	a4, -24(s0)	# tmp241, D.3508
-	li	a4, 0	# tmp241
+	la	a5,__stack_chk_guard		# tmp105,
+	ld	a4, 0(a5)	# tmp179, __stack_chk_guard
+	sd	a4, -24(s0)	# tmp179, D.2656
+	li	a4, 0	# tmp179
 # problem85.c:6:     sprintf(str, "%d", N);
-	lw	a4,-68(s0)		# tmp168, N
-	addi	a5,s0,-32	#, tmp169,
-	mv	a2,a4	#, tmp168
+	lw	a4,-68(s0)		# tmp106, N
+	addi	a5,s0,-32	#, tmp107,
+	mv	a2,a4	#, tmp106
 	lla	a1,.LC0	#,
-	mv	a0,a5	#, tmp169
+	mv	a0,a5	#, tmp107
 	call	sprintf@plt	#
 # problem85.c:7:     int sum = 0;
 	sw	zero,-56(s0)	#, sum
@@ -50,94 +41,94 @@ func0:
 	j	.L2		#
 .L3:
 # problem85.c:9:         sum += str[i] - '0';
-	lw	a5,-52(s0)		# tmp170, i
-	addi	a5,a5,-16	#, tmp245, tmp170
-	add	a5,a5,s0	#, tmp171, tmp245
+	lw	a5,-52(s0)		# tmp108, i
+	addi	a5,a5,-16	#, tmp183, tmp108
+	add	a5,a5,s0	#, tmp109, tmp183
 	lbu	a5,-16(a5)	# _1, str[i_32]
 	sext.w	a5,a5	# _2, _1
 # problem85.c:9:         sum += str[i] - '0';
-	addiw	a5,a5,-48	#, tmp172, _2
-	sext.w	a5,a5	# _3, tmp172
+	addiw	a5,a5,-48	#, tmp110, _2
+	sext.w	a5,a5	# _3, tmp110
 # problem85.c:9:         sum += str[i] - '0';
-	lw	a4,-56(s0)		# tmp175, sum
-	addw	a5,a4,a5	# _3, tmp173, tmp174
-	sw	a5,-56(s0)	# tmp173, sum
+	lw	a4,-56(s0)		# tmp113, sum
+	addw	a5,a4,a5	# _3, tmp111, tmp112
+	sw	a5,-56(s0)	# tmp111, sum
 # problem85.c:8:     for (int i = 0; str[i] != '\0'; i++)
-	lw	a5,-52(s0)		# tmp178, i
-	addiw	a5,a5,1	#, tmp176, tmp177
-	sw	a5,-52(s0)	# tmp176, i
+	lw	a5,-52(s0)		# tmp116, i
+	addiw	a5,a5,1	#, tmp114, tmp115
+	sw	a5,-52(s0)	# tmp114, i
 .L2:
 # problem85.c:8:     for (int i = 0; str[i] != '\0'; i++)
-	lw	a5,-52(s0)		# tmp179, i
-	addi	a5,a5,-16	#, tmp246, tmp179
-	add	a5,a5,s0	#, tmp180, tmp246
+	lw	a5,-52(s0)		# tmp117, i
+	addi	a5,a5,-16	#, tmp184, tmp117
+	add	a5,a5,s0	#, tmp118, tmp184
 	lbu	a5,-16(a5)	# _4, str[i_32]
 # problem85.c:8:     for (int i = 0; str[i] != '\0'; i++)
 	bne	a5,zero,.L3	#, _4,,
 # problem85.c:11:     char* bi = malloc(33);
 	li	a0,33		#,
 	call	malloc@plt	#
-	mv	a5,a0	# tmp181,
-	sd	a5,-40(s0)	# tmp181, bi
+	mv	a5,a0	# tmp119,
+	sd	a5,-40(s0)	# tmp119, bi
 # problem85.c:12:     int index = 0;
 	sw	zero,-48(s0)	#, index
 # problem85.c:13:     if (sum == 0) {
-	lw	a5,-56(s0)		# tmp183, sum
-	sext.w	a5,a5	# tmp184, tmp182
-	bne	a5,zero,.L6	#, tmp184,,
+	lw	a5,-56(s0)		# tmp121, sum
+	sext.w	a5,a5	# tmp122, tmp120
+	bne	a5,zero,.L6	#, tmp122,,
 # problem85.c:14:         bi[index++] = '0';
 	lw	a5,-48(s0)		# index.0_5, index
-	addiw	a4,a5,1	#, tmp185, index.0_5
-	sw	a4,-48(s0)	# tmp185, index
+	addiw	a4,a5,1	#, tmp123, index.0_5
+	sw	a4,-48(s0)	# tmp123, index
 	mv	a4,a5	# _6, index.0_5
 # problem85.c:14:         bi[index++] = '0';
-	ld	a5,-40(s0)		# tmp186, bi
-	add	a5,a5,a4	# _6, _7, tmp186
+	ld	a5,-40(s0)		# tmp124, bi
+	add	a5,a5,a4	# _6, _7, tmp124
 # problem85.c:14:         bi[index++] = '0';
-	li	a4,48		# tmp187,
-	sb	a4,0(a5)	# tmp187, *_7
+	li	a4,48		# tmp125,
+	sb	a4,0(a5)	# tmp125, *_7
 	j	.L5		#
 .L7:
 # problem85.c:17:             bi[index++] = (sum % 2) + '0';
-	lw	a5,-56(s0)		# tmp190, sum
-	mv	a4,a5	# tmp189, tmp190
-	sraiw	a5,a4,31	#, tmp191, tmp189
-	srliw	a5,a5,31	#, tmp192, tmp191
-	addw	a4,a4,a5	# tmp192, tmp193, tmp189
-	andi	a4,a4,1	#, tmp194, tmp193
-	subw	a5,a4,a5	# tmp195, tmp194, tmp192
-	sext.w	a5,a5	# _8, tmp195
+	lw	a5,-56(s0)		# tmp128, sum
+	mv	a4,a5	# tmp127, tmp128
+	sraiw	a5,a4,31	#, tmp129, tmp127
+	srliw	a5,a5,31	#, tmp130, tmp129
+	addw	a4,a4,a5	# tmp130, tmp131, tmp127
+	andi	a4,a4,1	#, tmp132, tmp131
+	subw	a5,a4,a5	# tmp133, tmp132, tmp130
+	sext.w	a5,a5	# _8, tmp133
 # problem85.c:17:             bi[index++] = (sum % 2) + '0';
 	andi	a4,a5,0xff	# _9, _8
 # problem85.c:17:             bi[index++] = (sum % 2) + '0';
 	lw	a5,-48(s0)		# index.1_10, index
-	addiw	a3,a5,1	#, tmp196, index.1_10
-	sw	a3,-48(s0)	# tmp196, index
+	addiw	a3,a5,1	#, tmp134, index.1_10
+	sw	a3,-48(s0)	# tmp134, index
 	mv	a3,a5	# _11, index.1_10
 # problem85.c:17:             bi[index++] = (sum % 2) + '0';
-	ld	a5,-40(s0)		# tmp197, bi
-	add	a5,a5,a3	# _11, _12, tmp197
+	ld	a5,-40(s0)		# tmp135, bi
+	add	a5,a5,a3	# _11, _12, tmp135
 # problem85.c:17:             bi[index++] = (sum % 2) + '0';
-	addiw	a4,a4,48	#, tmp198, _9
-	andi	a4,a4,0xff	# _13, tmp198
+	addiw	a4,a4,48	#, tmp136, _9
+	andi	a4,a4,0xff	# _13, tmp136
 # problem85.c:17:             bi[index++] = (sum % 2) + '0';
 	sb	a4,0(a5)	# _13, *_12
 # problem85.c:18:             sum /= 2;
-	lw	a5,-56(s0)		# tmp201, sum
-	srliw	a4,a5,31	#, tmp202, tmp200
-	addw	a5,a4,a5	# tmp200, tmp203, tmp202
-	sraiw	a5,a5,1	#, tmp204, tmp203
-	sw	a5,-56(s0)	# tmp204, sum
+	lw	a5,-56(s0)		# tmp139, sum
+	srliw	a4,a5,31	#, tmp140, tmp138
+	addw	a5,a4,a5	# tmp138, tmp141, tmp140
+	sraiw	a5,a5,1	#, tmp142, tmp141
+	sw	a5,-56(s0)	# tmp142, sum
 .L6:
 # problem85.c:16:         while (sum > 0) {
-	lw	a5,-56(s0)		# tmp206, sum
-	sext.w	a5,a5	# tmp207, tmp205
-	bgt	a5,zero,.L7	#, tmp207,,
+	lw	a5,-56(s0)		# tmp144, sum
+	sext.w	a5,a5	# tmp145, tmp143
+	bgt	a5,zero,.L7	#, tmp145,,
 .L5:
 # problem85.c:21:     bi[index] = '\0';
 	lw	a5,-48(s0)		# _14, index
-	ld	a4,-40(s0)		# tmp208, bi
-	add	a5,a4,a5	# _14, _15, tmp208
+	ld	a4,-40(s0)		# tmp146, bi
+	add	a5,a4,a5	# _14, _15, tmp146
 # problem85.c:21:     bi[index] = '\0';
 	sb	zero,0(a5)	#, *_15
 # problem85.c:23:     for (int i = 0; i < index / 2; i++) {
@@ -147,80 +138,74 @@ func0:
 .L9:
 # problem85.c:24:         char temp = bi[i];
 	lw	a5,-44(s0)		# _16, i
-	ld	a4,-40(s0)		# tmp209, bi
-	add	a5,a4,a5	# _16, _17, tmp209
+	ld	a4,-40(s0)		# tmp147, bi
+	add	a5,a4,a5	# _16, _17, tmp147
 # problem85.c:24:         char temp = bi[i];
-	lbu	a5,0(a5)	# tmp210, *_17
-	sb	a5,-57(s0)	# tmp210, temp
+	lbu	a5,0(a5)	# tmp148, *_17
+	sb	a5,-57(s0)	# tmp148, temp
 # problem85.c:25:         bi[i] = bi[index - i - 1];
-	lw	a5,-48(s0)		# tmp213, index
-	mv	a4,a5	# tmp212, tmp213
-	lw	a5,-44(s0)		# tmp215, i
-	subw	a5,a4,a5	# tmp211, tmp212, tmp214
-	sext.w	a5,a5	# _18, tmp211
+	lw	a5,-48(s0)		# tmp151, index
+	mv	a4,a5	# tmp150, tmp151
+	lw	a5,-44(s0)		# tmp153, i
+	subw	a5,a4,a5	# tmp149, tmp150, tmp152
+	sext.w	a5,a5	# _18, tmp149
 # problem85.c:25:         bi[i] = bi[index - i - 1];
 	addi	a5,a5,-1	#, _20, _19
-	ld	a4,-40(s0)		# tmp216, bi
-	add	a4,a4,a5	# _20, _21, tmp216
+	ld	a4,-40(s0)		# tmp154, bi
+	add	a4,a4,a5	# _20, _21, tmp154
 # problem85.c:25:         bi[i] = bi[index - i - 1];
 	lw	a5,-44(s0)		# _22, i
-	ld	a3,-40(s0)		# tmp217, bi
-	add	a5,a3,a5	# _22, _23, tmp217
+	ld	a3,-40(s0)		# tmp155, bi
+	add	a5,a3,a5	# _22, _23, tmp155
 # problem85.c:25:         bi[i] = bi[index - i - 1];
 	lbu	a4,0(a4)	# _24, *_21
 # problem85.c:25:         bi[i] = bi[index - i - 1];
 	sb	a4,0(a5)	# _24, *_23
 # problem85.c:26:         bi[index - i - 1] = temp;
-	lw	a5,-48(s0)		# tmp220, index
-	mv	a4,a5	# tmp219, tmp220
-	lw	a5,-44(s0)		# tmp222, i
-	subw	a5,a4,a5	# tmp218, tmp219, tmp221
-	sext.w	a5,a5	# _25, tmp218
+	lw	a5,-48(s0)		# tmp158, index
+	mv	a4,a5	# tmp157, tmp158
+	lw	a5,-44(s0)		# tmp160, i
+	subw	a5,a4,a5	# tmp156, tmp157, tmp159
+	sext.w	a5,a5	# _25, tmp156
 # problem85.c:26:         bi[index - i - 1] = temp;
 	addi	a5,a5,-1	#, _27, _26
-	ld	a4,-40(s0)		# tmp223, bi
-	add	a5,a4,a5	# _27, _28, tmp223
+	ld	a4,-40(s0)		# tmp161, bi
+	add	a5,a4,a5	# _27, _28, tmp161
 # problem85.c:26:         bi[index - i - 1] = temp;
-	lbu	a4,-57(s0)	# tmp224, temp
-	sb	a4,0(a5)	# tmp224, *_28
+	lbu	a4,-57(s0)	# tmp162, temp
+	sb	a4,0(a5)	# tmp162, *_28
 # problem85.c:23:     for (int i = 0; i < index / 2; i++) {
-	lw	a5,-44(s0)		# tmp227, i
-	addiw	a5,a5,1	#, tmp225, tmp226
-	sw	a5,-44(s0)	# tmp225, i
+	lw	a5,-44(s0)		# tmp165, i
+	addiw	a5,a5,1	#, tmp163, tmp164
+	sw	a5,-44(s0)	# tmp163, i
 .L8:
 # problem85.c:23:     for (int i = 0; i < index / 2; i++) {
-	lw	a5,-48(s0)		# tmp230, index
-	srliw	a4,a5,31	#, tmp231, tmp229
-	addw	a5,a4,a5	# tmp229, tmp232, tmp231
-	sraiw	a5,a5,1	#, tmp233, tmp232
-	sext.w	a4,a5	# _29, tmp233
+	lw	a5,-48(s0)		# tmp168, index
+	srliw	a4,a5,31	#, tmp169, tmp167
+	addw	a5,a4,a5	# tmp167, tmp170, tmp169
+	sraiw	a5,a5,1	#, tmp171, tmp170
+	sext.w	a4,a5	# _29, tmp171
 # problem85.c:23:     for (int i = 0; i < index / 2; i++) {
-	lw	a5,-44(s0)		# tmp235, i
-	sext.w	a5,a5	# tmp236, tmp234
-	blt	a5,a4,.L9	#, tmp236, tmp237,
+	lw	a5,-44(s0)		# tmp173, i
+	sext.w	a5,a5	# tmp174, tmp172
+	blt	a5,a4,.L9	#, tmp174, tmp175,
 # problem85.c:29:     return bi;
 	ld	a5,-40(s0)		# _54, bi
 	mv	a4,a5	# <retval>, _54
 # problem85.c:30: }
-	la	a5,__stack_chk_guard		# tmp239,
-	ld	a3, -24(s0)	# tmp242, D.3508
-	ld	a5, 0(a5)	# tmp240, __stack_chk_guard
-	xor	a5, a3, a5	# tmp240, tmp242
-	li	a3, 0	# tmp242
-	beq	a5,zero,.L11	#, tmp240,,
+	la	a5,__stack_chk_guard		# tmp177,
+	ld	a3, -24(s0)	# tmp180, D.2656
+	ld	a5, 0(a5)	# tmp178, __stack_chk_guard
+	xor	a5, a3, a5	# tmp178, tmp180
+	li	a3, 0	# tmp180
+	beq	a5,zero,.L11	#, tmp178,,
 	call	__stack_chk_fail@plt	#
 .L11:
 	mv	a0,a4	#, <retval>
 	ld	ra,72(sp)		#,
-	.cfi_restore 1
 	ld	s0,64(sp)		#,
-	.cfi_restore 8
-	.cfi_def_cfa 2, 80
 	addi	sp,sp,80	#,,
-	.cfi_def_cfa_offset 0
 	jr	ra		#
-	.cfi_endproc
-.LFE6:
 	.size	func0, .-func0
 	.section	.rodata
 	.align	3
@@ -261,16 +246,10 @@ func0:
 	.globl	main
 	.type	main, @function
 main:
-.LFB7:
-	.cfi_startproc
 	addi	sp,sp,-32	#,,
-	.cfi_def_cfa_offset 32
 	sd	ra,24(sp)	#,
 	sd	s0,16(sp)	#,
-	.cfi_offset 1, -8
-	.cfi_offset 8, -16
 	addi	s0,sp,32	#,,
-	.cfi_def_cfa 8, 0
 # problem85.c:41:     result = func0(1000);
 	li	a0,1000		#,
 	call	func0		#
@@ -279,9 +258,9 @@ main:
 	lla	a1,.LC1	#,
 	ld	a0,-24(s0)		#, result
 	call	strcmp@plt	#
-	mv	a5,a0	# tmp141,
-# problem85.c:42:     assert(strcmp(result, "1") == 0);
+	mv	a5,a0	# tmp79,
 	beq	a5,zero,.L13	#, _1,,
+# problem85.c:42:     assert(strcmp(result, "1") == 0);
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,42		#,
 	lla	a1,.LC2	#,
@@ -299,9 +278,9 @@ main:
 	lla	a1,.LC4	#,
 	ld	a0,-24(s0)		#, result
 	call	strcmp@plt	#
-	mv	a5,a0	# tmp142,
-# problem85.c:46:     assert(strcmp(result, "110") == 0);
+	mv	a5,a0	# tmp80,
 	beq	a5,zero,.L14	#, _2,,
+# problem85.c:46:     assert(strcmp(result, "110") == 0);
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,46		#,
 	lla	a1,.LC2	#,
@@ -319,9 +298,9 @@ main:
 	lla	a1,.LC6	#,
 	ld	a0,-24(s0)		#, result
 	call	strcmp@plt	#
-	mv	a5,a0	# tmp143,
-# problem85.c:50:     assert(strcmp(result, "1100") == 0);
+	mv	a5,a0	# tmp81,
 	beq	a5,zero,.L15	#, _3,,
+# problem85.c:50:     assert(strcmp(result, "1100") == 0);
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,50		#,
 	lla	a1,.LC2	#,
@@ -339,9 +318,9 @@ main:
 	lla	a1,.LC8	#,
 	ld	a0,-24(s0)		#, result
 	call	strcmp@plt	#
-	mv	a5,a0	# tmp144,
-# problem85.c:54:     assert(strcmp(result, "1001") == 0);
+	mv	a5,a0	# tmp82,
 	beq	a5,zero,.L16	#, _4,,
+# problem85.c:54:     assert(strcmp(result, "1001") == 0);
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,54		#,
 	lla	a1,.LC2	#,
@@ -359,9 +338,9 @@ main:
 	lla	a1,.LC10	#,
 	ld	a0,-24(s0)		#, result
 	call	strcmp@plt	#
-	mv	a5,a0	# tmp145,
-# problem85.c:58:     assert(strcmp(result, "10010") == 0);
+	mv	a5,a0	# tmp83,
 	beq	a5,zero,.L17	#, _5,,
+# problem85.c:58:     assert(strcmp(result, "10010") == 0);
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,58		#,
 	lla	a1,.LC2	#,
@@ -376,15 +355,9 @@ main:
 # problem85.c:62: }
 	mv	a0,a5	#, <retval>
 	ld	ra,24(sp)		#,
-	.cfi_restore 1
 	ld	s0,16(sp)		#,
-	.cfi_restore 8
-	.cfi_def_cfa 2, 32
 	addi	sp,sp,32	#,,
-	.cfi_def_cfa_offset 0
 	jr	ra		#
-	.cfi_endproc
-.LFE7:
 	.size	main, .-main
 	.section	.rodata
 	.align	3
@@ -392,5 +365,5 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

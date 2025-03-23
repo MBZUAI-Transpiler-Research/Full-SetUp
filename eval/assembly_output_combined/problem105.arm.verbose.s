@@ -1,7 +1,7 @@
 	.arch armv8-a
 	.file	"problem105.c"
-// GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (aarch64-linux-gnu)
-//	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+// GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (aarch64-linux-gnu)
+//	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 // GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 // options passed: -mlittle-endian -mabi=lp64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection
@@ -87,28 +87,26 @@ func0:
 	eor	w0, w0, 1	// tmp165, tmp164,
 	and	w0, w0, 255	// _9, tmp165
 // problem105.c:14:         while (num > 0 && !has_even_digit) {
-	and	w0, w0, 1	// tmp166, _9,
-	cmp	w0, 0	// tmp166,
+	cmp	w0, 0	// _9,
 	bne	.L7		//,
 .L6:
 // problem105.c:19:         if (!has_even_digit) {
-	ldrb	w0, [sp, 59]	// tmp167, has_even_digit
-	eor	w0, w0, 1	// tmp168, tmp167,
-	and	w0, w0, 255	// _10, tmp168
+	ldrb	w0, [sp, 59]	// tmp166, has_even_digit
+	eor	w0, w0, 1	// tmp167, tmp166,
+	and	w0, w0, 255	// _10, tmp167
 // problem105.c:19:         if (!has_even_digit) {
-	and	w0, w0, 1	// tmp169, _10,
-	cmp	w0, 0	// tmp169,
+	cmp	w0, 0	// _10,
 	beq	.L8		//,
 // problem105.c:20:             (*out)[*out_size] = x[i];
 	ldrsw	x0, [sp, 60]	// _11, i
 	lsl	x0, x0, 2	// _12, _11,
-	ldr	x1, [sp, 40]	// tmp170, x
-	add	x1, x1, x0	// _13, tmp170, _12
+	ldr	x1, [sp, 40]	// tmp168, x
+	add	x1, x1, x0	// _13, tmp168, _12
 // problem105.c:20:             (*out)[*out_size] = x[i];
-	ldr	x0, [sp, 24]	// tmp171, out
+	ldr	x0, [sp, 24]	// tmp169, out
 	ldr	x2, [x0]	// _14, *out_72(D)
 // problem105.c:20:             (*out)[*out_size] = x[i];
-	ldr	x0, [sp, 16]	// tmp172, out_size
+	ldr	x0, [sp, 16]	// tmp170, out_size
 	ldr	w0, [x0]	// _15, *out_size_74(D)
 	sxtw	x0, w0	// _16, _15
 // problem105.c:20:             (*out)[*out_size] = x[i];
@@ -119,22 +117,22 @@ func0:
 // problem105.c:20:             (*out)[*out_size] = x[i];
 	str	w1, [x0]	// _19, *_18
 // problem105.c:21:             (*out_size)++;
-	ldr	x0, [sp, 16]	// tmp173, out_size
+	ldr	x0, [sp, 16]	// tmp171, out_size
 	ldr	w0, [x0]	// _20, *out_size_74(D)
 // problem105.c:21:             (*out_size)++;
 	add	w1, w0, 1	// _21, _20,
-	ldr	x0, [sp, 16]	// tmp174, out_size
+	ldr	x0, [sp, 16]	// tmp172, out_size
 	str	w1, [x0]	// _21, *out_size_74(D)
 .L8:
 // problem105.c:9:     for (int i = 0; i < size; i++) {
-	ldr	w0, [sp, 60]	// tmp176, i
-	add	w0, w0, 1	// tmp175, tmp176,
-	str	w0, [sp, 60]	// tmp175, i
+	ldr	w0, [sp, 60]	// tmp174, i
+	add	w0, w0, 1	// tmp173, tmp174,
+	str	w0, [sp, 60]	// tmp173, i
 .L2:
 // problem105.c:9:     for (int i = 0; i < size; i++) {
-	ldr	w1, [sp, 60]	// tmp177, i
-	ldr	w0, [sp, 36]	// tmp178, size
-	cmp	w1, w0	// tmp177, tmp178
+	ldr	w1, [sp, 60]	// tmp175, i
+	ldr	w0, [sp, 36]	// tmp176, size
+	cmp	w1, w0	// tmp175, tmp176
 	blt	.L9		//,
 // problem105.c:25:     for (int i = 0; i < *out_size - 1; i++) {
 	str	wzr, [sp, 68]	//, i
@@ -147,7 +145,7 @@ func0:
 	b	.L11		//
 .L13:
 // problem105.c:27:             if ((*out)[j] > (*out)[j + 1]) {
-	ldr	x0, [sp, 24]	// tmp179, out
+	ldr	x0, [sp, 24]	// tmp177, out
 	ldr	x1, [x0]	// _22, *out_72(D)
 // problem105.c:27:             if ((*out)[j] > (*out)[j + 1]) {
 	ldrsw	x0, [sp, 72]	// _23, j
@@ -155,7 +153,7 @@ func0:
 	add	x0, x1, x0	// _25, _22, _24
 	ldr	w1, [x0]	// _26, *_25
 // problem105.c:27:             if ((*out)[j] > (*out)[j + 1]) {
-	ldr	x0, [sp, 24]	// tmp180, out
+	ldr	x0, [sp, 24]	// tmp178, out
 	ldr	x2, [x0]	// _27, *out_72(D)
 // problem105.c:27:             if ((*out)[j] > (*out)[j + 1]) {
 	ldrsw	x0, [sp, 72]	// _28, j
@@ -167,17 +165,17 @@ func0:
 	cmp	w1, w0	// _26, _32
 	ble	.L12		//,
 // problem105.c:28:                 int temp = (*out)[j];
-	ldr	x0, [sp, 24]	// tmp181, out
+	ldr	x0, [sp, 24]	// tmp179, out
 	ldr	x1, [x0]	// _33, *out_72(D)
 // problem105.c:28:                 int temp = (*out)[j];
 	ldrsw	x0, [sp, 72]	// _34, j
 	lsl	x0, x0, 2	// _35, _34,
 	add	x0, x1, x0	// _36, _33, _35
 // problem105.c:28:                 int temp = (*out)[j];
-	ldr	w0, [x0]	// tmp182, *_36
-	str	w0, [sp, 76]	// tmp182, temp
+	ldr	w0, [x0]	// tmp180, *_36
+	str	w0, [sp, 76]	// tmp180, temp
 // problem105.c:29:                 (*out)[j] = (*out)[j + 1];
-	ldr	x0, [sp, 24]	// tmp183, out
+	ldr	x0, [sp, 24]	// tmp181, out
 	ldr	x1, [x0]	// _37, *out_72(D)
 // problem105.c:29:                 (*out)[j] = (*out)[j + 1];
 	ldrsw	x0, [sp, 72]	// _38, j
@@ -185,7 +183,7 @@ func0:
 	lsl	x0, x0, 2	// _40, _39,
 	add	x1, x1, x0	// _41, _37, _40
 // problem105.c:29:                 (*out)[j] = (*out)[j + 1];
-	ldr	x0, [sp, 24]	// tmp184, out
+	ldr	x0, [sp, 24]	// tmp182, out
 	ldr	x2, [x0]	// _42, *out_72(D)
 // problem105.c:29:                 (*out)[j] = (*out)[j + 1];
 	ldrsw	x0, [sp, 72]	// _43, j
@@ -196,7 +194,7 @@ func0:
 // problem105.c:29:                 (*out)[j] = (*out)[j + 1];
 	str	w1, [x0]	// _46, *_45
 // problem105.c:30:                 (*out)[j + 1] = temp;
-	ldr	x0, [sp, 24]	// tmp185, out
+	ldr	x0, [sp, 24]	// tmp183, out
 	ldr	x1, [x0]	// _47, *out_72(D)
 // problem105.c:30:                 (*out)[j + 1] = temp;
 	ldrsw	x0, [sp, 72]	// _48, j
@@ -204,39 +202,39 @@ func0:
 	lsl	x0, x0, 2	// _50, _49,
 	add	x0, x1, x0	// _51, _47, _50
 // problem105.c:30:                 (*out)[j + 1] = temp;
-	ldr	w1, [sp, 76]	// tmp186, temp
-	str	w1, [x0]	// tmp186, *_51
+	ldr	w1, [sp, 76]	// tmp184, temp
+	str	w1, [x0]	// tmp184, *_51
 .L12:
 // problem105.c:26:         for (int j = 0; j < *out_size - i - 1; j++) {
-	ldr	w0, [sp, 72]	// tmp188, j
-	add	w0, w0, 1	// tmp187, tmp188,
-	str	w0, [sp, 72]	// tmp187, j
+	ldr	w0, [sp, 72]	// tmp186, j
+	add	w0, w0, 1	// tmp185, tmp186,
+	str	w0, [sp, 72]	// tmp185, j
 .L11:
 // problem105.c:26:         for (int j = 0; j < *out_size - i - 1; j++) {
-	ldr	x0, [sp, 16]	// tmp189, out_size
+	ldr	x0, [sp, 16]	// tmp187, out_size
 	ldr	w1, [x0]	// _52, *out_size_74(D)
 // problem105.c:26:         for (int j = 0; j < *out_size - i - 1; j++) {
-	ldr	w0, [sp, 68]	// tmp190, i
-	sub	w0, w1, w0	// _53, _52, tmp190
+	ldr	w0, [sp, 68]	// tmp188, i
+	sub	w0, w1, w0	// _53, _52, tmp188
 // problem105.c:26:         for (int j = 0; j < *out_size - i - 1; j++) {
 	sub	w0, w0, #1	// _54, _53,
 // problem105.c:26:         for (int j = 0; j < *out_size - i - 1; j++) {
-	ldr	w1, [sp, 72]	// tmp191, j
-	cmp	w1, w0	// tmp191, _54
+	ldr	w1, [sp, 72]	// tmp189, j
+	cmp	w1, w0	// tmp189, _54
 	blt	.L13		//,
 // problem105.c:25:     for (int i = 0; i < *out_size - 1; i++) {
-	ldr	w0, [sp, 68]	// tmp193, i
-	add	w0, w0, 1	// tmp192, tmp193,
-	str	w0, [sp, 68]	// tmp192, i
+	ldr	w0, [sp, 68]	// tmp191, i
+	add	w0, w0, 1	// tmp190, tmp191,
+	str	w0, [sp, 68]	// tmp190, i
 .L10:
 // problem105.c:25:     for (int i = 0; i < *out_size - 1; i++) {
-	ldr	x0, [sp, 16]	// tmp194, out_size
+	ldr	x0, [sp, 16]	// tmp192, out_size
 	ldr	w0, [x0]	// _55, *out_size_74(D)
 // problem105.c:25:     for (int i = 0; i < *out_size - 1; i++) {
 	sub	w0, w0, #1	// _56, _55,
 // problem105.c:25:     for (int i = 0; i < *out_size - 1; i++) {
-	ldr	w1, [sp, 68]	// tmp195, i
-	cmp	w1, w0	// tmp195, _56
+	ldr	w1, [sp, 68]	// tmp193, i
+	cmp	w1, w0	// tmp193, _56
 	blt	.L14		//,
 // problem105.c:34: }
 	nop	
@@ -268,7 +266,6 @@ issame:
 	beq	.L16		//,
 // problem105.c:44:     if (a_size != b_size) return false;
 	mov	w0, 0	// _10,
-// problem105.c:44:     if (a_size != b_size) return false;
 	b	.L17		//
 .L16:
 // problem105.c:45:     for (int i = 0; i < a_size; i++) {
@@ -293,7 +290,6 @@ issame:
 	beq	.L19		//,
 // problem105.c:46:         if (a[i] != b[i]) return false;
 	mov	w0, 0	// _10,
-// problem105.c:46:         if (a[i] != b[i]) return false;
 	b	.L17		//
 .L19:
 // problem105.c:45:     for (int i = 0; i < a_size; i++) {
@@ -339,54 +335,52 @@ issame:
 main:
 .LFB8:
 	.cfi_startproc
-	sub	sp, sp, #176	//,,
+	stp	x29, x30, [sp, -176]!	//,,,
 	.cfi_def_cfa_offset 176
-	stp	x29, x30, [sp, 160]	//,,
-	.cfi_offset 29, -16
-	.cfi_offset 30, -8
-	add	x29, sp, 160	//,,
+	.cfi_offset 29, -176
+	.cfi_offset 30, -168
+	mov	x29, sp	//,
 // problem105.c:51: int main() {
-	adrp	x0, :got:__stack_chk_guard	// tmp110,
-	ldr	x0, [x0, :got_lo12:__stack_chk_guard]	// tmp110,
-	ldr	x1, [x0]	// tmp176,
-	str	x1, [sp, 152]	// tmp176, D.5465
-	mov	x1, 0	// tmp176
+	adrp	x0, :got:__stack_chk_guard	// tmp111,
+	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]	// tmp110, tmp111,
+	ldr	x1, [x0]	// tmp174,
+	str	x1, [sp, 168]	// tmp174, D.4876
+	mov	x1, 0	// tmp174
 // problem105.c:53:     int test1[] = {15, 33, 1422, 1};
-	mov	w0, 15	// tmp111,
-	str	w0, [sp, 104]	// tmp111, test1[0]
-	mov	w0, 33	// tmp112,
-	str	w0, [sp, 108]	// tmp112, test1[1]
-	mov	w0, 1422	// tmp113,
-	str	w0, [sp, 112]	// tmp113, test1[2]
-	mov	w0, 1	// tmp114,
-	str	w0, [sp, 116]	// tmp114, test1[3]
+	mov	w0, 15	// tmp112,
+	str	w0, [sp, 120]	// tmp112, test1[0]
+	mov	w0, 33	// tmp113,
+	str	w0, [sp, 124]	// tmp113, test1[1]
+	mov	w0, 1422	// tmp114,
+	str	w0, [sp, 128]	// tmp114, test1[2]
+	mov	w0, 1	// tmp115,
+	str	w0, [sp, 132]	// tmp115, test1[3]
 // problem105.c:54:     int expected1[] = {1, 15, 33};
-	adrp	x0, .LC0	// tmp116,
-	add	x1, x0, :lo12:.LC0	// tmp115, tmp116,
-	add	x0, sp, 72	// tmp117,,
-	ldr	x2, [x1]	// tmp119,
-	str	x2, [x0]	// tmp119, expected1
-	ldr	w1, [x1, 8]	// tmp120,
-	str	w1, [x0, 8]	// tmp120, expected1
+	adrp	x0, .LC0	// tmp117,
+	add	x1, x0, :lo12:.LC0	// tmp116, tmp117,
+	add	x0, sp, 88	// tmp118,,
+	ldr	x2, [x1]	// tmp120,
+	str	x2, [x0]	// tmp120, expected1
+	ldr	w1, [x1, 8]	// tmp121,
+	str	w1, [x0, 8]	// tmp121, expected1
 // problem105.c:57:     func0(test1, 4, &out1, &out1_size);
-	add	x2, sp, 8	// tmp121,,
-	add	x1, sp, 24	// tmp122,,
-	add	x0, sp, 104	// tmp123,,
-	mov	x3, x2	//, tmp121
-	mov	x2, x1	//, tmp122
+	add	x2, sp, 24	// tmp122,,
+	add	x1, sp, 40	// tmp123,,
+	add	x0, sp, 120	// tmp124,,
+	mov	x3, x2	//, tmp122
+	mov	x2, x1	//, tmp123
 	mov	w1, 4	//,
 	bl	func0		//
 // problem105.c:58:     assert(issame(out1, out1_size, expected1, 3));
-	ldr	x0, [sp, 24]	// out1.1_1, out1
-	ldr	w1, [sp, 8]	// out1_size.2_2, out1_size
-	add	x2, sp, 72	// tmp124,,
+	ldr	x0, [sp, 40]	// out1.1_1, out1
+	ldr	w1, [sp, 24]	// out1_size.2_2, out1_size
+	add	x2, sp, 88	// tmp125,,
 	mov	w3, 3	//,
 	bl	issame		//
-	and	w0, w0, 255	// _3, tmp125
-// problem105.c:58:     assert(issame(out1, out1_size, expected1, 3));
-	and	w0, w0, 1	// tmp126, _3,
-	cmp	w0, 0	// tmp126,
+	and	w0, w0, 255	// _3, tmp126
+	cmp	w0, 0	// _3,
 	bne	.L22		//,
+// problem105.c:58:     assert(issame(out1, out1_size, expected1, 3));
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp127,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp127,
 	mov	w2, 58	//,
@@ -397,155 +391,151 @@ main:
 	bl	__assert_fail		//
 .L22:
 // problem105.c:59:     free(out1);
-	ldr	x0, [sp, 24]	// out1.3_4, out1
+	ldr	x0, [sp, 40]	// out1.3_4, out1
 	bl	free		//
 // problem105.c:61:     int test2[] = {152, 323, 1422, 10};
 	mov	w0, 152	// tmp130,
-	str	w0, [sp, 120]	// tmp130, test2[0]
+	str	w0, [sp, 136]	// tmp130, test2[0]
 	mov	w0, 323	// tmp131,
-	str	w0, [sp, 124]	// tmp131, test2[1]
+	str	w0, [sp, 140]	// tmp131, test2[1]
 	mov	w0, 1422	// tmp132,
-	str	w0, [sp, 128]	// tmp132, test2[2]
+	str	w0, [sp, 144]	// tmp132, test2[2]
 	mov	w0, 10	// tmp133,
-	str	w0, [sp, 132]	// tmp133, test2[3]
+	str	w0, [sp, 148]	// tmp133, test2[3]
 // problem105.c:64:     func0(test2, 4, &out2, &out2_size);
-	add	x2, sp, 12	// tmp134,,
-	add	x1, sp, 32	// tmp135,,
-	add	x0, sp, 120	// tmp136,,
+	add	x2, sp, 28	// tmp134,,
+	add	x1, sp, 48	// tmp135,,
+	add	x0, sp, 136	// tmp136,,
 	mov	x3, x2	//, tmp134
 	mov	x2, x1	//, tmp135
 	mov	w1, 4	//,
 	bl	func0		//
 // problem105.c:65:     assert(issame(out2, out2_size, NULL, 0));
-	ldr	x0, [sp, 32]	// out2.4_5, out2
-	ldr	w1, [sp, 12]	// out2_size.5_6, out2_size
+	ldr	x0, [sp, 48]	// out2.4_5, out2
+	ldr	w1, [sp, 28]	// out2_size.5_6, out2_size
 	mov	w3, 0	//,
 	mov	x2, 0	//,
 	bl	issame		//
 	and	w0, w0, 255	// _7, tmp137
-// problem105.c:65:     assert(issame(out2, out2_size, NULL, 0));
-	and	w0, w0, 1	// tmp138, _7,
-	cmp	w0, 0	// tmp138,
+	cmp	w0, 0	// _7,
 	bne	.L23		//,
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp139,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp139,
+// problem105.c:65:     assert(issame(out2, out2_size, NULL, 0));
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp138,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp138,
 	mov	w2, 65	//,
-	adrp	x0, .LC2	// tmp140,
-	add	x1, x0, :lo12:.LC2	//, tmp140,
-	adrp	x0, .LC4	// tmp141,
-	add	x0, x0, :lo12:.LC4	//, tmp141,
+	adrp	x0, .LC2	// tmp139,
+	add	x1, x0, :lo12:.LC2	//, tmp139,
+	adrp	x0, .LC4	// tmp140,
+	add	x0, x0, :lo12:.LC4	//, tmp140,
 	bl	__assert_fail		//
 .L23:
 // problem105.c:66:     free(out2);
-	ldr	x0, [sp, 32]	// out2.6_8, out2
+	ldr	x0, [sp, 48]	// out2.6_8, out2
 	bl	free		//
 // problem105.c:68:     int test3[] = {12345, 2033, 111, 151};
-	mov	w0, 12345	// tmp142,
-	str	w0, [sp, 136]	// tmp142, test3[0]
-	mov	w0, 2033	// tmp143,
-	str	w0, [sp, 140]	// tmp143, test3[1]
-	mov	w0, 111	// tmp144,
-	str	w0, [sp, 144]	// tmp144, test3[2]
-	mov	w0, 151	// tmp145,
-	str	w0, [sp, 148]	// tmp145, test3[3]
+	mov	w0, 12345	// tmp141,
+	str	w0, [sp, 152]	// tmp141, test3[0]
+	mov	w0, 2033	// tmp142,
+	str	w0, [sp, 156]	// tmp142, test3[1]
+	mov	w0, 111	// tmp143,
+	str	w0, [sp, 160]	// tmp143, test3[2]
+	mov	w0, 151	// tmp144,
+	str	w0, [sp, 164]	// tmp144, test3[3]
 // problem105.c:69:     int expected3[] = {111, 151};
-	mov	w0, 111	// tmp146,
-	str	w0, [sp, 56]	// tmp146, expected3[0]
-	mov	w0, 151	// tmp147,
-	str	w0, [sp, 60]	// tmp147, expected3[1]
+	mov	w0, 111	// tmp145,
+	str	w0, [sp, 72]	// tmp145, expected3[0]
+	mov	w0, 151	// tmp146,
+	str	w0, [sp, 76]	// tmp146, expected3[1]
 // problem105.c:72:     func0(test3, 4, &out3, &out3_size);
-	add	x2, sp, 16	// tmp148,,
-	add	x1, sp, 40	// tmp149,,
-	add	x0, sp, 136	// tmp150,,
-	mov	x3, x2	//, tmp148
-	mov	x2, x1	//, tmp149
+	add	x2, sp, 32	// tmp147,,
+	add	x1, sp, 56	// tmp148,,
+	add	x0, sp, 152	// tmp149,,
+	mov	x3, x2	//, tmp147
+	mov	x2, x1	//, tmp148
 	mov	w1, 4	//,
 	bl	func0		//
 // problem105.c:73:     assert(issame(out3, out3_size, expected3, 2));
-	ldr	x0, [sp, 40]	// out3.7_9, out3
-	ldr	w1, [sp, 16]	// out3_size.8_10, out3_size
-	add	x2, sp, 56	// tmp151,,
+	ldr	x0, [sp, 56]	// out3.7_9, out3
+	ldr	w1, [sp, 32]	// out3_size.8_10, out3_size
+	add	x2, sp, 72	// tmp150,,
 	mov	w3, 2	//,
 	bl	issame		//
-	and	w0, w0, 255	// _11, tmp152
-// problem105.c:73:     assert(issame(out3, out3_size, expected3, 2));
-	and	w0, w0, 1	// tmp153, _11,
-	cmp	w0, 0	// tmp153,
+	and	w0, w0, 255	// _11, tmp151
+	cmp	w0, 0	// _11,
 	bne	.L24		//,
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp154,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp154,
+// problem105.c:73:     assert(issame(out3, out3_size, expected3, 2));
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp152,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp152,
 	mov	w2, 73	//,
-	adrp	x0, .LC2	// tmp155,
-	add	x1, x0, :lo12:.LC2	//, tmp155,
-	adrp	x0, .LC5	// tmp156,
-	add	x0, x0, :lo12:.LC5	//, tmp156,
+	adrp	x0, .LC2	// tmp153,
+	add	x1, x0, :lo12:.LC2	//, tmp153,
+	adrp	x0, .LC5	// tmp154,
+	add	x0, x0, :lo12:.LC5	//, tmp154,
 	bl	__assert_fail		//
 .L24:
 // problem105.c:74:     free(out3);
-	ldr	x0, [sp, 40]	// out3.9_12, out3
+	ldr	x0, [sp, 56]	// out3.9_12, out3
 	bl	free		//
 // problem105.c:76:     int test4[] = {135, 103, 31};
-	adrp	x0, .LC1	// tmp158,
-	add	x1, x0, :lo12:.LC1	// tmp157, tmp158,
-	add	x0, sp, 88	// tmp159,,
-	ldr	x2, [x1]	// tmp161,
-	str	x2, [x0]	// tmp161, test4
-	ldr	w1, [x1, 8]	// tmp162,
-	str	w1, [x0, 8]	// tmp162, test4
+	adrp	x0, .LC1	// tmp156,
+	add	x1, x0, :lo12:.LC1	// tmp155, tmp156,
+	add	x0, sp, 104	// tmp157,,
+	ldr	x2, [x1]	// tmp159,
+	str	x2, [x0]	// tmp159, test4
+	ldr	w1, [x1, 8]	// tmp160,
+	str	w1, [x0, 8]	// tmp160, test4
 // problem105.c:77:     int expected4[] = {31, 135};
-	mov	w0, 31	// tmp163,
-	str	w0, [sp, 64]	// tmp163, expected4[0]
-	mov	w0, 135	// tmp164,
-	str	w0, [sp, 68]	// tmp164, expected4[1]
+	mov	w0, 31	// tmp161,
+	str	w0, [sp, 80]	// tmp161, expected4[0]
+	mov	w0, 135	// tmp162,
+	str	w0, [sp, 84]	// tmp162, expected4[1]
 // problem105.c:80:     func0(test4, 3, &out4, &out4_size);
-	add	x2, sp, 20	// tmp165,,
-	add	x1, sp, 48	// tmp166,,
-	add	x0, sp, 88	// tmp167,,
-	mov	x3, x2	//, tmp165
-	mov	x2, x1	//, tmp166
+	add	x2, sp, 36	// tmp163,,
+	add	x1, sp, 64	// tmp164,,
+	add	x0, sp, 104	// tmp165,,
+	mov	x3, x2	//, tmp163
+	mov	x2, x1	//, tmp164
 	mov	w1, 3	//,
 	bl	func0		//
 // problem105.c:81:     assert(issame(out4, out4_size, expected4, 2));
-	ldr	x0, [sp, 48]	// out4.10_13, out4
-	ldr	w1, [sp, 20]	// out4_size.11_14, out4_size
-	add	x2, sp, 64	// tmp168,,
+	ldr	x0, [sp, 64]	// out4.10_13, out4
+	ldr	w1, [sp, 36]	// out4_size.11_14, out4_size
+	add	x2, sp, 80	// tmp166,,
 	mov	w3, 2	//,
 	bl	issame		//
-	and	w0, w0, 255	// _15, tmp169
-// problem105.c:81:     assert(issame(out4, out4_size, expected4, 2));
-	and	w0, w0, 1	// tmp170, _15,
-	cmp	w0, 0	// tmp170,
+	and	w0, w0, 255	// _15, tmp167
+	cmp	w0, 0	// _15,
 	bne	.L25		//,
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp171,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp171,
+// problem105.c:81:     assert(issame(out4, out4_size, expected4, 2));
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp168,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp168,
 	mov	w2, 81	//,
-	adrp	x0, .LC2	// tmp172,
-	add	x1, x0, :lo12:.LC2	//, tmp172,
-	adrp	x0, .LC6	// tmp173,
-	add	x0, x0, :lo12:.LC6	//, tmp173,
+	adrp	x0, .LC2	// tmp169,
+	add	x1, x0, :lo12:.LC2	//, tmp169,
+	adrp	x0, .LC6	// tmp170,
+	add	x0, x0, :lo12:.LC6	//, tmp170,
 	bl	__assert_fail		//
 .L25:
 // problem105.c:82:     free(out4);
-	ldr	x0, [sp, 48]	// out4.12_16, out4
+	ldr	x0, [sp, 64]	// out4.12_16, out4
 	bl	free		//
 // problem105.c:84:     return 0;
 	mov	w0, 0	// _52,
 // problem105.c:85: }
 	mov	w1, w0	// <retval>, _52
-	adrp	x0, :got:__stack_chk_guard	// tmp175,
-	ldr	x0, [x0, :got_lo12:__stack_chk_guard]	// tmp175,
-	ldr	x3, [sp, 152]	// tmp177, D.5465
-	ldr	x2, [x0]	// tmp178,
-	subs	x3, x3, x2	// tmp177, tmp178
-	mov	x2, 0	// tmp178
+	adrp	x0, :got:__stack_chk_guard	// tmp173,
+	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]	// tmp172, tmp173,
+	ldr	x3, [sp, 168]	// tmp175, D.4876
+	ldr	x2, [x0]	// tmp176,
+	subs	x3, x3, x2	// tmp175, tmp176
+	mov	x2, 0	// tmp176
 	beq	.L27		//,
 	bl	__stack_chk_fail		//
 .L27:
 	mov	w0, w1	//, <retval>
-	ldp	x29, x30, [sp, 160]	//,,
-	add	sp, sp, 176	//,,
-	.cfi_restore 29
+	ldp	x29, x30, [sp], 176	//,,,
 	.cfi_restore 30
+	.cfi_restore 29
 	.cfi_def_cfa_offset 0
 	ret	
 	.cfi_endproc
@@ -569,5 +559,5 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

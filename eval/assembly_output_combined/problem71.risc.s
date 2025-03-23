@@ -1,21 +1,13 @@
 	.file	"problem71.c"
 	.option pic
-	.attribute arch, "rv64i2p1_m2p0_a2p1_f2p2_d2p2_c2p0_zicsr2p0_zifencei2p0"
-	.attribute unaligned_access, 0
-	.attribute stack_align, 16
 	.text
 	.align	1
 	.globl	func0
 	.type	func0, @function
 func0:
-.LFB6:
-	.cfi_startproc
 	addi	sp,sp,-80
-	.cfi_def_cfa_offset 80
 	sd	s0,72(sp)
-	.cfi_offset 8, -8
 	addi	s0,sp,80
-	.cfi_def_cfa 8, 0
 	sd	a0,-56(s0)
 	mv	a5,a1
 	sd	a2,-72(s0)
@@ -89,7 +81,7 @@ func0:
 	sw	a5,-28(s0)
 	sw	zero,-24(s0)
 	j	.L7
-.L10:
+.L9:
 	lw	a5,-32(s0)
 	mv	a4,a5
 	lw	a5,-28(s0)
@@ -146,37 +138,27 @@ func0:
 	lw	a5,-28(s0)
 	sext.w	a4,a4
 	sext.w	a5,a5
-	ble	a4,a5,.L10
+	ble	a4,a5,.L9
 	nop
 	nop
 	ld	s0,72(sp)
-	.cfi_restore 8
-	.cfi_def_cfa 2, 80
 	addi	sp,sp,80
-	.cfi_def_cfa_offset 0
 	jr	ra
-	.cfi_endproc
-.LFE6:
 	.size	func0, .-func0
 	.align	1
 	.globl	issame
 	.type	issame, @function
 issame:
-.LFB7:
-	.cfi_startproc
 	addi	sp,sp,-64
-	.cfi_def_cfa_offset 64
 	sd	s0,56(sp)
-	.cfi_offset 8, -8
 	addi	s0,sp,64
-	.cfi_def_cfa 8, 0
 	sd	a0,-40(s0)
 	sd	a1,-48(s0)
 	mv	a5,a2
 	sw	a5,-52(s0)
 	sw	zero,-20(s0)
-	j	.L12
-.L15:
+	j	.L11
+.L14:
 	lw	a5,-20(s0)
 	slli	a5,a5,2
 	ld	a4,-40(s0)
@@ -188,31 +170,26 @@ issame:
 	add	a5,a4,a5
 	lw	a5,0(a5)
 	mv	a4,a3
-	beq	a4,a5,.L13
+	beq	a4,a5,.L12
 	li	a5,0
-	j	.L14
-.L13:
+	j	.L13
+.L12:
 	lw	a5,-20(s0)
 	addiw	a5,a5,1
 	sw	a5,-20(s0)
-.L12:
+.L11:
 	lw	a5,-20(s0)
 	mv	a4,a5
 	lw	a5,-52(s0)
 	sext.w	a4,a4
 	sext.w	a5,a5
-	blt	a4,a5,.L15
+	blt	a4,a5,.L14
 	li	a5,1
-.L14:
+.L13:
 	mv	a0,a5
 	ld	s0,56(sp)
-	.cfi_restore 8
-	.cfi_def_cfa 2, 64
 	addi	sp,sp,64
-	.cfi_def_cfa_offset 0
 	jr	ra
-	.cfi_endproc
-.LFE7:
 	.size	issame, .-issame
 	.section	.rodata
 	.align	3
@@ -352,16 +329,10 @@ issame:
 	.globl	main
 	.type	main, @function
 main:
-.LFB8:
-	.cfi_startproc
 	addi	sp,sp,-576
-	.cfi_def_cfa_offset 576
 	sd	ra,568(sp)
 	sd	s0,560(sp)
-	.cfi_offset 1, -8
-	.cfi_offset 8, -16
 	addi	s0,sp,576
-	.cfi_def_cfa 8, 0
 	la	a5,__stack_chk_guard
 	ld	a4, 0(a5)
 	sd	a4, -24(s0)
@@ -389,13 +360,13 @@ main:
 	mv	a0,a5
 	call	issame
 	mv	a5,a0
-	bne	a5,zero,.L17
+	bne	a5,zero,.L16
 	lla	a3,__PRETTY_FUNCTION__.0
 	li	a2,45
 	lla	a1,.LC13
 	lla	a0,.LC14
 	call	__assert_fail@plt
-.L17:
+.L16:
 	lla	a5,.LC2
 	ld	a4,0(a5)
 	sd	a4,-432(s0)
@@ -423,13 +394,13 @@ main:
 	mv	a0,a5
 	call	issame
 	mv	a5,a0
-	bne	a5,zero,.L18
+	bne	a5,zero,.L17
 	lla	a3,__PRETTY_FUNCTION__.0
 	li	a2,51
 	lla	a1,.LC13
 	lla	a0,.LC15
 	call	__assert_fail@plt
-.L18:
+.L17:
 	lla	a5,.LC4
 	ld	a4,0(a5)
 	sd	a4,-360(s0)
@@ -457,13 +428,13 @@ main:
 	mv	a0,a5
 	call	issame
 	mv	a5,a0
-	bne	a5,zero,.L19
+	bne	a5,zero,.L18
 	lla	a3,__PRETTY_FUNCTION__.0
 	li	a2,57
 	lla	a1,.LC13
 	lla	a0,.LC16
 	call	__assert_fail@plt
-.L19:
+.L18:
 	lla	a5,.LC6
 	ld	a4,0(a5)
 	sd	a4,-288(s0)
@@ -491,13 +462,13 @@ main:
 	mv	a0,a5
 	call	issame
 	mv	a5,a0
-	bne	a5,zero,.L20
+	bne	a5,zero,.L19
 	lla	a3,__PRETTY_FUNCTION__.0
 	li	a2,63
 	lla	a1,.LC13
 	lla	a0,.LC17
 	call	__assert_fail@plt
-.L20:
+.L19:
 	lla	a5,.LC8
 	ld	a4,0(a5)
 	sd	a4,-480(s0)
@@ -521,13 +492,13 @@ main:
 	mv	a0,a5
 	call	issame
 	mv	a5,a0
-	bne	a5,zero,.L21
+	bne	a5,zero,.L20
 	lla	a3,__PRETTY_FUNCTION__.0
 	li	a2,69
 	lla	a1,.LC13
 	lla	a0,.LC18
 	call	__assert_fail@plt
-.L21:
+.L20:
 	addi	a4,s0,-560
 	addi	a5,s0,-576
 	mv	a2,a4
@@ -541,13 +512,13 @@ main:
 	mv	a0,a5
 	call	issame
 	mv	a5,a0
-	bne	a5,zero,.L22
+	bne	a5,zero,.L21
 	lla	a3,__PRETTY_FUNCTION__.0
 	li	a2,75
 	lla	a1,.LC13
 	lla	a0,.LC19
 	call	__assert_fail@plt
-.L22:
+.L21:
 	lla	a5,.LC9
 	ld	a2,0(a5)
 	ld	a3,8(a5)
@@ -579,13 +550,13 @@ main:
 	mv	a0,a5
 	call	issame
 	mv	a5,a0
-	bne	a5,zero,.L23
+	bne	a5,zero,.L22
 	lla	a3,__PRETTY_FUNCTION__.0
 	li	a2,81
 	lla	a1,.LC13
 	lla	a0,.LC20
 	call	__assert_fail@plt
-.L23:
+.L22:
 	lla	a5,.LC11
 	ld	a2,0(a5)
 	ld	a3,8(a5)
@@ -617,13 +588,13 @@ main:
 	mv	a0,a5
 	call	issame
 	mv	a5,a0
-	bne	a5,zero,.L24
+	bne	a5,zero,.L23
 	lla	a3,__PRETTY_FUNCTION__.0
 	li	a2,87
 	lla	a1,.LC13
 	lla	a0,.LC21
 	call	__assert_fail@plt
-.L24:
+.L23:
 	li	a5,110592
 	addi	a5,a5,519
 	sw	a5,-552(s0)
@@ -643,13 +614,13 @@ main:
 	mv	a0,a5
 	call	issame
 	mv	a5,a0
-	bne	a5,zero,.L25
+	bne	a5,zero,.L24
 	lla	a3,__PRETTY_FUNCTION__.0
 	li	a2,93
 	lla	a1,.LC13
 	lla	a0,.LC22
 	call	__assert_fail@plt
-.L25:
+.L24:
 	li	a5,0
 	mv	a4,a5
 	la	a5,__stack_chk_guard
@@ -657,20 +628,14 @@ main:
 	ld	a5, 0(a5)
 	xor	a5, a3, a5
 	li	a3, 0
-	beq	a5,zero,.L27
+	beq	a5,zero,.L26
 	call	__stack_chk_fail@plt
-.L27:
+.L26:
 	mv	a0,a4
 	ld	ra,568(sp)
-	.cfi_restore 1
 	ld	s0,560(sp)
-	.cfi_restore 8
-	.cfi_def_cfa 2, 576
 	addi	sp,sp,576
-	.cfi_def_cfa_offset 0
 	jr	ra
-	.cfi_endproc
-.LFE8:
 	.size	main, .-main
 	.section	.rodata
 	.align	3
@@ -678,5 +643,5 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

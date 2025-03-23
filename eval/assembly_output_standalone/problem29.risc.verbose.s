@@ -1,31 +1,22 @@
 	.file	"code.c"
 	.option pic
-	.attribute arch, "rv64i2p1_m2p0_a2p1_f2p2_d2p2_c2p0_zicsr2p0_zifencei2p0"
-	.attribute unaligned_access, 0
-	.attribute stack_align, 16
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (riscv64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (riscv64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-# options passed: -mabi=lp64d -misa-spec=20191213 -march=rv64imafdc_zicsr_zifencei -fstack-protector-strong
+# options passed: -mabi=lp64d -misa-spec=2.2 -march=rv64imafdc -fstack-protector-strong
 	.text
 	.align	1
 	.globl	func0
 	.type	func0, @function
 func0:
-.LFB6:
-	.cfi_startproc
 	addi	sp,sp,-64	#,,
-	.cfi_def_cfa_offset 64
 	sd	ra,56(sp)	#,
 	sd	s0,48(sp)	#,
-	.cfi_offset 1, -8
-	.cfi_offset 8, -16
 	addi	s0,sp,64	#,,
-	.cfi_def_cfa 8, 0
 	sd	a0,-56(s0)	# strings, strings
-	mv	a5,a1	# tmp150, count
-	sw	a5,-60(s0)	# tmp151, count
+	mv	a5,a1	# tmp88, count
+	sw	a5,-60(s0)	# tmp89, count
 # eval/problem29//code.c:6:     int length = 0;
 	sw	zero,-36(s0)	#, length
 # eval/problem29//code.c:7:     for (int i = 0; i < count; i++) {
@@ -36,8 +27,8 @@ func0:
 # eval/problem29//code.c:8:         length += strlen(strings[i]);
 	lw	a5,-32(s0)		# _1, i
 	slli	a5,a5,3	#, _2, _1
-	ld	a4,-56(s0)		# tmp152, strings
-	add	a5,a4,a5	# _2, _3, tmp152
+	ld	a4,-56(s0)		# tmp90, strings
+	add	a5,a4,a5	# _2, _3, tmp90
 # eval/problem29//code.c:8:         length += strlen(strings[i]);
 	ld	a5,0(a5)		# _4, *_3
 	mv	a0,a5	#, _4
@@ -46,39 +37,39 @@ func0:
 # eval/problem29//code.c:8:         length += strlen(strings[i]);
 	sext.w	a4,a5	# _6, _5
 	lw	a5,-36(s0)		# length.0_7, length
-	addw	a5,a4,a5	# length.0_7, tmp153, _6
-	sext.w	a5,a5	# _8, tmp153
+	addw	a5,a4,a5	# length.0_7, tmp91, _6
+	sext.w	a5,a5	# _8, tmp91
 	sw	a5,-36(s0)	# _8, length
 # eval/problem29//code.c:7:     for (int i = 0; i < count; i++) {
-	lw	a5,-32(s0)		# tmp156, i
-	addiw	a5,a5,1	#, tmp154, tmp155
-	sw	a5,-32(s0)	# tmp154, i
+	lw	a5,-32(s0)		# tmp94, i
+	addiw	a5,a5,1	#, tmp92, tmp93
+	sw	a5,-32(s0)	# tmp92, i
 .L2:
 # eval/problem29//code.c:7:     for (int i = 0; i < count; i++) {
-	lw	a5,-32(s0)		# tmp158, i
-	mv	a4,a5	# tmp157, tmp158
-	lw	a5,-60(s0)		# tmp160, count
-	sext.w	a4,a4	# tmp161, tmp157
-	sext.w	a5,a5	# tmp162, tmp159
-	blt	a4,a5,.L3	#, tmp161, tmp162,
+	lw	a5,-32(s0)		# tmp96, i
+	mv	a4,a5	# tmp95, tmp96
+	lw	a5,-60(s0)		# tmp98, count
+	sext.w	a4,a4	# tmp99, tmp95
+	sext.w	a5,a5	# tmp100, tmp97
+	blt	a4,a5,.L3	#, tmp99, tmp100,
 # eval/problem29//code.c:11:     char* out = (char*)malloc(length + 1);
-	lw	a5,-36(s0)		# tmp165, length
-	addiw	a5,a5,1	#, tmp163, tmp164
-	sext.w	a5,a5	# _9, tmp163
+	lw	a5,-36(s0)		# tmp103, length
+	addiw	a5,a5,1	#, tmp101, tmp102
+	sext.w	a5,a5	# _9, tmp101
 # eval/problem29//code.c:11:     char* out = (char*)malloc(length + 1);
 	mv	a0,a5	#, _10
 	call	malloc@plt	#
-	mv	a5,a0	# tmp166,
-	sd	a5,-24(s0)	# tmp166, out
+	mv	a5,a0	# tmp104,
+	sd	a5,-24(s0)	# tmp104, out
 # eval/problem29//code.c:12:     if (!out) {
-	ld	a5,-24(s0)		# tmp167, out
-	bne	a5,zero,.L4	#, tmp167,,
+	ld	a5,-24(s0)		# tmp105, out
+	bne	a5,zero,.L4	#, tmp105,,
 # eval/problem29//code.c:13:         return NULL; 
 	li	a5,0		# _18,
 	j	.L5		#
 .L4:
 # eval/problem29//code.c:16:     out[0] = '\0';
-	ld	a5,-24(s0)		# tmp168, out
+	ld	a5,-24(s0)		# tmp106, out
 	sb	zero,0(a5)	#, *out_26
 # eval/problem29//code.c:18:     for (int i = 0; i < count; i++) {
 	sw	zero,-28(s0)	#, i
@@ -88,40 +79,34 @@ func0:
 # eval/problem29//code.c:19:         strcat(out, strings[i]);
 	lw	a5,-28(s0)		# _11, i
 	slli	a5,a5,3	#, _12, _11
-	ld	a4,-56(s0)		# tmp169, strings
-	add	a5,a4,a5	# _12, _13, tmp169
+	ld	a4,-56(s0)		# tmp107, strings
+	add	a5,a4,a5	# _12, _13, tmp107
 # eval/problem29//code.c:19:         strcat(out, strings[i]);
 	ld	a5,0(a5)		# _14, *_13
 	mv	a1,a5	#, _14
 	ld	a0,-24(s0)		#, out
 	call	strcat@plt	#
 # eval/problem29//code.c:18:     for (int i = 0; i < count; i++) {
-	lw	a5,-28(s0)		# tmp172, i
-	addiw	a5,a5,1	#, tmp170, tmp171
-	sw	a5,-28(s0)	# tmp170, i
+	lw	a5,-28(s0)		# tmp110, i
+	addiw	a5,a5,1	#, tmp108, tmp109
+	sw	a5,-28(s0)	# tmp108, i
 .L6:
 # eval/problem29//code.c:18:     for (int i = 0; i < count; i++) {
-	lw	a5,-28(s0)		# tmp174, i
-	mv	a4,a5	# tmp173, tmp174
-	lw	a5,-60(s0)		# tmp176, count
-	sext.w	a4,a4	# tmp177, tmp173
-	sext.w	a5,a5	# tmp178, tmp175
-	blt	a4,a5,.L7	#, tmp177, tmp178,
+	lw	a5,-28(s0)		# tmp112, i
+	mv	a4,a5	# tmp111, tmp112
+	lw	a5,-60(s0)		# tmp114, count
+	sext.w	a4,a4	# tmp115, tmp111
+	sext.w	a5,a5	# tmp116, tmp113
+	blt	a4,a5,.L7	#, tmp115, tmp116,
 # eval/problem29//code.c:22:     return out;
 	ld	a5,-24(s0)		# _18, out
 .L5:
 # eval/problem29//code.c:23: }
 	mv	a0,a5	#, <retval>
 	ld	ra,56(sp)		#,
-	.cfi_restore 1
 	ld	s0,48(sp)		#,
-	.cfi_restore 8
-	.cfi_def_cfa 2, 64
 	addi	sp,sp,64	#,,
-	.cfi_def_cfa_offset 0
 	jr	ra		#
-	.cfi_endproc
-.LFE6:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

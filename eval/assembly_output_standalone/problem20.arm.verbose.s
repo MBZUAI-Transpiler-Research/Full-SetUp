@@ -1,7 +1,7 @@
 	.arch armv8-a
 	.file	"code.c"
-// GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (aarch64-linux-gnu)
-//	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+// GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (aarch64-linux-gnu)
+//	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 // GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 // options passed: -mlittle-endian -mabi=lp64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection
@@ -12,256 +12,254 @@
 func0:
 .LFB0:
 	.cfi_startproc
-	sub	sp, sp, #192	//,,
+	stp	x29, x30, [sp, -192]!	//,,,
 	.cfi_def_cfa_offset 192
-	stp	x29, x30, [sp, 176]	//,,
-	.cfi_offset 29, -16
-	.cfi_offset 30, -8
-	add	x29, sp, 176	//,,
-	str	x0, [sp, 8]	// numbers, numbers
+	.cfi_offset 29, -192
+	.cfi_offset 30, -184
+	mov	x29, sp	//,
+	str	x0, [sp, 24]	// numbers, numbers
 // eval/problem20//code.c:4: const char* func0(const char* numbers) {
-	adrp	x0, :got:__stack_chk_guard	// tmp123,
-	ldr	x0, [x0, :got_lo12:__stack_chk_guard]	// tmp123,
-	ldr	x1, [x0]	// tmp198,
-	str	x1, [sp, 168]	// tmp198, D.5095
-	mov	x1, 0	// tmp198
+	adrp	x0, :got:__stack_chk_guard	// tmp124,
+	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]	// tmp123, tmp124,
+	ldr	x1, [x0]	// tmp200,
+	str	x1, [sp, 184]	// tmp200, D.4486
+	mov	x1, 0	// tmp200
 // eval/problem20//code.c:5:     int count[10] = {0};
-	stp	xzr, xzr, [sp, 40]	// count
 	stp	xzr, xzr, [sp, 56]	// count
-	str	xzr, [sp, 72]	//, count
+	stp	xzr, xzr, [sp, 72]	// count
+	str	xzr, [sp, 88]	//, count
 // eval/problem20//code.c:6:     const char* numto[10] = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
-	adrp	x0, .LC11	// tmp125,
-	add	x1, x0, :lo12:.LC11	// tmp124, tmp125,
-	add	x0, sp, 80	// tmp126,,
-	ldp	q0, q1, [x1]	// tmp128, tmp129,
-	stp	q0, q1, [x0]	// tmp128, tmp129, numto
-	ldp	q0, q1, [x1, 32]	// tmp130, tmp131,
-	stp	q0, q1, [x0, 32]	// tmp130, tmp131, numto
-	ldr	q0, [x1, 64]	// tmp132,
-	str	q0, [x0, 64]	// tmp132, numto
+	adrp	x0, .LC11	// tmp126,
+	add	x1, x0, :lo12:.LC11	// tmp125, tmp126,
+	add	x0, sp, 96	// tmp127,,
+	ldp	q0, q1, [x1]	// tmp129, tmp130,
+	stp	q0, q1, [x0]	// tmp129, tmp130, numto
+	ldp	q0, q1, [x1, 32]	// tmp131, tmp132,
+	stp	q0, q1, [x0, 32]	// tmp131, tmp132, numto
+	ldr	q0, [x1, 64]	// tmp133,
+	str	q0, [x0, 64]	// tmp133, numto
 // eval/problem20//code.c:11:     index = 0;
-	str	wzr, [sp, 24]	//, index
+	str	wzr, [sp, 40]	//, index
 // eval/problem20//code.c:12:     if (*numbers) {
-	ldr	x0, [sp, 8]	// tmp133, numbers
+	ldr	x0, [sp, 24]	// tmp134, numbers
 	ldrb	w0, [x0]	// _1, *numbers_51(D)
 // eval/problem20//code.c:12:     if (*numbers) {
 	cmp	w0, 0	// _1,
 	beq	.L2		//,
 .L10:
 // eval/problem20//code.c:14:             for (i = 0; numbers[i] != ' ' && numbers[i] != '\0'; ++i) {
-	str	wzr, [sp, 28]	//, i
+	str	wzr, [sp, 44]	//, i
 // eval/problem20//code.c:14:             for (i = 0; numbers[i] != ' ' && numbers[i] != '\0'; ++i) {
 	b	.L3		//
 .L5:
 // eval/problem20//code.c:15:                 current[i] = numbers[i];
-	ldrsw	x0, [sp, 28]	// _2, i
-	ldr	x1, [sp, 8]	// tmp134, numbers
-	add	x0, x1, x0	// _3, tmp134, _2
+	ldrsw	x0, [sp, 44]	// _2, i
+	ldr	x1, [sp, 24]	// tmp135, numbers
+	add	x0, x1, x0	// _3, tmp135, _2
 	ldrb	w2, [x0]	// _4, *_3
 // eval/problem20//code.c:15:                 current[i] = numbers[i];
-	ldrsw	x0, [sp, 28]	// tmp135, i
-	add	x1, sp, 160	// tmp136,,
-	strb	w2, [x1, x0]	// tmp137, current[i_34]
+	ldrsw	x0, [sp, 44]	// tmp136, i
+	add	x1, sp, 176	// tmp137,,
+	strb	w2, [x1, x0]	// tmp138, current[i_34]
 // eval/problem20//code.c:14:             for (i = 0; numbers[i] != ' ' && numbers[i] != '\0'; ++i) {
-	ldr	w0, [sp, 28]	// tmp139, i
-	add	w0, w0, 1	// tmp138, tmp139,
-	str	w0, [sp, 28]	// tmp138, i
+	ldr	w0, [sp, 44]	// tmp140, i
+	add	w0, w0, 1	// tmp139, tmp140,
+	str	w0, [sp, 44]	// tmp139, i
 .L3:
 // eval/problem20//code.c:14:             for (i = 0; numbers[i] != ' ' && numbers[i] != '\0'; ++i) {
-	ldrsw	x0, [sp, 28]	// _5, i
-	ldr	x1, [sp, 8]	// tmp140, numbers
-	add	x0, x1, x0	// _6, tmp140, _5
+	ldrsw	x0, [sp, 44]	// _5, i
+	ldr	x1, [sp, 24]	// tmp141, numbers
+	add	x0, x1, x0	// _6, tmp141, _5
 	ldrb	w0, [x0]	// _7, *_6
 // eval/problem20//code.c:14:             for (i = 0; numbers[i] != ' ' && numbers[i] != '\0'; ++i) {
 	cmp	w0, 32	// _7,
 	beq	.L4		//,
 // eval/problem20//code.c:14:             for (i = 0; numbers[i] != ' ' && numbers[i] != '\0'; ++i) {
-	ldrsw	x0, [sp, 28]	// _8, i
-	ldr	x1, [sp, 8]	// tmp141, numbers
-	add	x0, x1, x0	// _9, tmp141, _8
+	ldrsw	x0, [sp, 44]	// _8, i
+	ldr	x1, [sp, 24]	// tmp142, numbers
+	add	x0, x1, x0	// _9, tmp142, _8
 	ldrb	w0, [x0]	// _10, *_9
 // eval/problem20//code.c:14:             for (i = 0; numbers[i] != ' ' && numbers[i] != '\0'; ++i) {
 	cmp	w0, 0	// _10,
 	bne	.L5		//,
 .L4:
 // eval/problem20//code.c:17:             current[i] = '\0';
-	ldrsw	x0, [sp, 28]	// tmp142, i
-	add	x1, sp, 160	// tmp143,,
+	ldrsw	x0, [sp, 44]	// tmp143, i
+	add	x1, sp, 176	// tmp144,,
 	strb	wzr, [x1, x0]	//, current[i_34]
 // eval/problem20//code.c:18:             for (j = 0; j < 10; ++j) {
-	str	wzr, [sp, 32]	//, j
+	str	wzr, [sp, 48]	//, j
 // eval/problem20//code.c:18:             for (j = 0; j < 10; ++j) {
 	b	.L6		//
 .L9:
 // eval/problem20//code.c:19:                 if (strcmp(current, numto[j]) == 0) {
-	ldrsw	x0, [sp, 32]	// tmp144, j
-	lsl	x0, x0, 3	// tmp145, tmp144,
-	add	x1, sp, 80	// tmp146,,
+	ldrsw	x0, [sp, 48]	// tmp145, j
+	lsl	x0, x0, 3	// tmp146, tmp145,
+	add	x1, sp, 96	// tmp147,,
 	ldr	x1, [x1, x0]	// _11, numto[j_36]
-	add	x0, sp, 160	// tmp147,,
+	add	x0, sp, 176	// tmp148,,
 	bl	strcmp		//
 // eval/problem20//code.c:19:                 if (strcmp(current, numto[j]) == 0) {
 	cmp	w0, 0	// _12,
 	bne	.L7		//,
 // eval/problem20//code.c:20:                     count[j]++;
-	ldrsw	x0, [sp, 32]	// tmp148, j
-	lsl	x0, x0, 2	// tmp149, tmp148,
-	add	x1, sp, 40	// tmp150,,
+	ldrsw	x0, [sp, 48]	// tmp149, j
+	lsl	x0, x0, 2	// tmp150, tmp149,
+	add	x1, sp, 56	// tmp151,,
 	ldr	w0, [x1, x0]	// _13, count[j_36]
 // eval/problem20//code.c:20:                     count[j]++;
 	add	w2, w0, 1	// _14, _13,
-	ldrsw	x0, [sp, 32]	// tmp151, j
-	lsl	x0, x0, 2	// tmp152, tmp151,
-	add	x1, sp, 40	// tmp153,,
+	ldrsw	x0, [sp, 48]	// tmp152, j
+	lsl	x0, x0, 2	// tmp153, tmp152,
+	add	x1, sp, 56	// tmp154,,
 	str	w2, [x1, x0]	// _14, count[j_36]
 // eval/problem20//code.c:21:                     break;
 	b	.L8		//
 .L7:
 // eval/problem20//code.c:18:             for (j = 0; j < 10; ++j) {
-	ldr	w0, [sp, 32]	// tmp155, j
-	add	w0, w0, 1	// tmp154, tmp155,
-	str	w0, [sp, 32]	// tmp154, j
+	ldr	w0, [sp, 48]	// tmp156, j
+	add	w0, w0, 1	// tmp155, tmp156,
+	str	w0, [sp, 48]	// tmp155, j
 .L6:
 // eval/problem20//code.c:18:             for (j = 0; j < 10; ++j) {
-	ldr	w0, [sp, 32]	// tmp156, j
-	cmp	w0, 9	// tmp156,
+	ldr	w0, [sp, 48]	// tmp157, j
+	cmp	w0, 9	// tmp157,
 	ble	.L9		//,
 .L8:
 // eval/problem20//code.c:24:             numbers += i + 1;
-	ldrsw	x0, [sp, 28]	// _15, i
+	ldrsw	x0, [sp, 44]	// _15, i
 	add	x0, x0, 1	// _16, _15,
-	ldr	x1, [sp, 8]	// tmp158, numbers
-	add	x0, x1, x0	// tmp157, tmp158, _16
-	str	x0, [sp, 8]	// tmp157, numbers
+	ldr	x1, [sp, 24]	// tmp159, numbers
+	add	x0, x1, x0	// tmp158, tmp159, _16
+	str	x0, [sp, 24]	// tmp158, numbers
 // eval/problem20//code.c:25:         } while (numbers[-1]);
-	ldr	x0, [sp, 8]	// tmp159, numbers
-	sub	x0, x0, #1	// _17, tmp159,
+	ldr	x0, [sp, 24]	// tmp160, numbers
+	sub	x0, x0, #1	// _17, tmp160,
 	ldrb	w0, [x0]	// _18, *_17
 // eval/problem20//code.c:25:         } while (numbers[-1]);
 	cmp	w0, 0	// _18,
 	bne	.L10		//,
 .L2:
 // eval/problem20//code.c:28:     for (i = 0; i < 10; ++i) {
-	str	wzr, [sp, 28]	//, i
+	str	wzr, [sp, 44]	//, i
 // eval/problem20//code.c:28:     for (i = 0; i < 10; ++i) {
 	b	.L11		//
 .L16:
 // eval/problem20//code.c:29:         for (j = 0; j < count[i]; ++j) {
-	str	wzr, [sp, 32]	//, j
+	str	wzr, [sp, 48]	//, j
 // eval/problem20//code.c:29:         for (j = 0; j < count[i]; ++j) {
 	b	.L12		//
 .L15:
 // eval/problem20//code.c:30:             for (k = 0; numto[i][k] != '\0'; ++k, ++index) {
-	str	wzr, [sp, 36]	//, k
+	str	wzr, [sp, 52]	//, k
 // eval/problem20//code.c:30:             for (k = 0; numto[i][k] != '\0'; ++k, ++index) {
 	b	.L13		//
 .L14:
 // eval/problem20//code.c:31:                 out[index] = numto[i][k];
-	ldrsw	x0, [sp, 28]	// tmp160, i
-	lsl	x0, x0, 3	// tmp161, tmp160,
-	add	x1, sp, 80	// tmp162,,
+	ldrsw	x0, [sp, 44]	// tmp161, i
+	lsl	x0, x0, 3	// tmp162, tmp161,
+	add	x1, sp, 96	// tmp163,,
 	ldr	x1, [x1, x0]	// _19, numto[i_35]
 // eval/problem20//code.c:31:                 out[index] = numto[i][k];
-	ldrsw	x0, [sp, 36]	// _20, k
+	ldrsw	x0, [sp, 52]	// _20, k
 	add	x0, x1, x0	// _21, _19, _20
 	ldrb	w2, [x0]	// _22, *_21
 // eval/problem20//code.c:31:                 out[index] = numto[i][k];
-	adrp	x0, out.0	// tmp164,
-	add	x1, x0, :lo12:out.0	// tmp163, tmp164,
-	ldrsw	x0, [sp, 24]	// tmp165, index
-	strb	w2, [x1, x0]	// tmp166, out[index_31]
+	adrp	x0, out.0	// tmp165,
+	add	x1, x0, :lo12:out.0	// tmp164, tmp165,
+	ldrsw	x0, [sp, 40]	// tmp166, index
+	strb	w2, [x1, x0]	// tmp167, out[index_31]
 // eval/problem20//code.c:30:             for (k = 0; numto[i][k] != '\0'; ++k, ++index) {
-	ldr	w0, [sp, 36]	// tmp168, k
-	add	w0, w0, 1	// tmp167, tmp168,
-	str	w0, [sp, 36]	// tmp167, k
+	ldr	w0, [sp, 52]	// tmp169, k
+	add	w0, w0, 1	// tmp168, tmp169,
+	str	w0, [sp, 52]	// tmp168, k
 // eval/problem20//code.c:30:             for (k = 0; numto[i][k] != '\0'; ++k, ++index) {
-	ldr	w0, [sp, 24]	// tmp170, index
-	add	w0, w0, 1	// tmp169, tmp170,
-	str	w0, [sp, 24]	// tmp169, index
+	ldr	w0, [sp, 40]	// tmp171, index
+	add	w0, w0, 1	// tmp170, tmp171,
+	str	w0, [sp, 40]	// tmp170, index
 .L13:
 // eval/problem20//code.c:30:             for (k = 0; numto[i][k] != '\0'; ++k, ++index) {
-	ldrsw	x0, [sp, 28]	// tmp171, i
-	lsl	x0, x0, 3	// tmp172, tmp171,
-	add	x1, sp, 80	// tmp173,,
+	ldrsw	x0, [sp, 44]	// tmp172, i
+	lsl	x0, x0, 3	// tmp173, tmp172,
+	add	x1, sp, 96	// tmp174,,
 	ldr	x1, [x1, x0]	// _23, numto[i_35]
 // eval/problem20//code.c:30:             for (k = 0; numto[i][k] != '\0'; ++k, ++index) {
-	ldrsw	x0, [sp, 36]	// _24, k
+	ldrsw	x0, [sp, 52]	// _24, k
 	add	x0, x1, x0	// _25, _23, _24
 	ldrb	w0, [x0]	// _26, *_25
 // eval/problem20//code.c:30:             for (k = 0; numto[i][k] != '\0'; ++k, ++index) {
 	cmp	w0, 0	// _26,
 	bne	.L14		//,
 // eval/problem20//code.c:33:             out[index++] = ' '; 
-	ldr	w0, [sp, 24]	// index.0_27, index
-	add	w1, w0, 1	// tmp174, index.0_27,
-	str	w1, [sp, 24]	// tmp174, index
+	ldr	w0, [sp, 40]	// index.0_27, index
+	add	w1, w0, 1	// tmp175, index.0_27,
+	str	w1, [sp, 40]	// tmp175, index
 // eval/problem20//code.c:33:             out[index++] = ' '; 
-	adrp	x1, out.0	// tmp176,
-	add	x1, x1, :lo12:out.0	// tmp175, tmp176,
-	sxtw	x0, w0	// tmp177, index.0_27
-	mov	w2, 32	// tmp178,
-	strb	w2, [x1, x0]	// tmp178, out[index.0_27]
+	adrp	x1, out.0	// tmp177,
+	add	x1, x1, :lo12:out.0	// tmp176, tmp177,
+	sxtw	x0, w0	// tmp178, index.0_27
+	mov	w2, 32	// tmp179,
+	strb	w2, [x1, x0]	// tmp179, out[index.0_27]
 // eval/problem20//code.c:29:         for (j = 0; j < count[i]; ++j) {
-	ldr	w0, [sp, 32]	// tmp180, j
-	add	w0, w0, 1	// tmp179, tmp180,
-	str	w0, [sp, 32]	// tmp179, j
+	ldr	w0, [sp, 48]	// tmp181, j
+	add	w0, w0, 1	// tmp180, tmp181,
+	str	w0, [sp, 48]	// tmp180, j
 .L12:
 // eval/problem20//code.c:29:         for (j = 0; j < count[i]; ++j) {
-	ldrsw	x0, [sp, 28]	// tmp181, i
-	lsl	x0, x0, 2	// tmp182, tmp181,
-	add	x1, sp, 40	// tmp183,,
+	ldrsw	x0, [sp, 44]	// tmp182, i
+	lsl	x0, x0, 2	// tmp183, tmp182,
+	add	x1, sp, 56	// tmp184,,
 	ldr	w0, [x1, x0]	// _28, count[i_35]
 // eval/problem20//code.c:29:         for (j = 0; j < count[i]; ++j) {
-	ldr	w1, [sp, 32]	// tmp184, j
-	cmp	w1, w0	// tmp184, _28
+	ldr	w1, [sp, 48]	// tmp185, j
+	cmp	w1, w0	// tmp185, _28
 	blt	.L15		//,
 // eval/problem20//code.c:28:     for (i = 0; i < 10; ++i) {
-	ldr	w0, [sp, 28]	// tmp186, i
-	add	w0, w0, 1	// tmp185, tmp186,
-	str	w0, [sp, 28]	// tmp185, i
+	ldr	w0, [sp, 44]	// tmp187, i
+	add	w0, w0, 1	// tmp186, tmp187,
+	str	w0, [sp, 44]	// tmp186, i
 .L11:
 // eval/problem20//code.c:28:     for (i = 0; i < 10; ++i) {
-	ldr	w0, [sp, 28]	// tmp187, i
-	cmp	w0, 9	// tmp187,
+	ldr	w0, [sp, 44]	// tmp188, i
+	cmp	w0, 9	// tmp188,
 	ble	.L16		//,
 // eval/problem20//code.c:37:     if (index > 0) {
-	ldr	w0, [sp, 24]	// tmp188, index
-	cmp	w0, 0	// tmp188,
+	ldr	w0, [sp, 40]	// tmp189, index
+	cmp	w0, 0	// tmp189,
 	ble	.L17		//,
 // eval/problem20//code.c:38:         out[index - 1] = '\0'; 
-	ldr	w0, [sp, 24]	// tmp189, index
-	sub	w2, w0, #1	// _29, tmp189,
+	ldr	w0, [sp, 40]	// tmp190, index
+	sub	w2, w0, #1	// _29, tmp190,
 // eval/problem20//code.c:38:         out[index - 1] = '\0'; 
-	adrp	x0, out.0	// tmp191,
-	add	x1, x0, :lo12:out.0	// tmp190, tmp191,
-	sxtw	x0, w2	// tmp192, _29
+	adrp	x0, out.0	// tmp192,
+	add	x1, x0, :lo12:out.0	// tmp191, tmp192,
+	sxtw	x0, w2	// tmp193, _29
 	strb	wzr, [x1, x0]	//, out[_29]
 	b	.L18		//
 .L17:
 // eval/problem20//code.c:40:         out[0] = '\0';
-	adrp	x0, out.0	// tmp194,
-	add	x0, x0, :lo12:out.0	// tmp193, tmp194,
+	adrp	x0, out.0	// tmp195,
+	add	x0, x0, :lo12:out.0	// tmp194, tmp195,
 	strb	wzr, [x0]	//, out[0]
 .L18:
 // eval/problem20//code.c:43:     return out;
-	adrp	x0, out.0	// tmp195,
-	add	x0, x0, :lo12:out.0	// _63, tmp195,
+	adrp	x0, out.0	// tmp196,
+	add	x0, x0, :lo12:out.0	// _63, tmp196,
 	mov	x1, x0	// <retval>, _63
 // eval/problem20//code.c:44: }
-	adrp	x0, :got:__stack_chk_guard	// tmp197,
-	ldr	x0, [x0, :got_lo12:__stack_chk_guard]	// tmp197,
-	ldr	x3, [sp, 168]	// tmp199, D.5095
-	ldr	x2, [x0]	// tmp200,
-	subs	x3, x3, x2	// tmp199, tmp200
-	mov	x2, 0	// tmp200
+	adrp	x0, :got:__stack_chk_guard	// tmp199,
+	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]	// tmp198, tmp199,
+	ldr	x3, [sp, 184]	// tmp201, D.4486
+	ldr	x2, [x0]	// tmp202,
+	subs	x3, x3, x2	// tmp201, tmp202
+	mov	x2, 0	// tmp202
 	beq	.L20		//,
 	bl	__stack_chk_fail		//
 .L20:
 	mov	x0, x1	//, <retval>
-	ldp	x29, x30, [sp, 176]	//,,
-	add	sp, sp, 192	//,,
-	.cfi_restore 29
+	ldp	x29, x30, [sp], 192	//,,,
 	.cfi_restore 30
+	.cfi_restore 29
 	.cfi_def_cfa_offset 0
 	ret	
 	.cfi_endproc
@@ -314,5 +312,5 @@ func0:
 	.text
 	.local	out.0
 	.comm	out.0,1000,8
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

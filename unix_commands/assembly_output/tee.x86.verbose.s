@@ -1,6 +1,6 @@
 	.file	"tee.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -29,7 +29,7 @@ main:
 	movq	%rsi, -144(%rbp)	# argv, argv
 # tee.c:2: int main(int argc,char* argv[]){
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp96
-	movq	%rax, -8(%rbp)	# tmp96, D.3188
+	movq	%rax, -8(%rbp)	# tmp96, D.2358
 	xorl	%eax, %eax	# tmp96
 .L2:
 # tee.c:9: fp=fopen(argv[1],"a+");
@@ -69,12 +69,11 @@ main:
 	movq	%rax, %rdi	# tmp95,
 	call	fclose@PLT	#
 # tee.c:9: fp=fopen(argv[1],"a+");
-	nop	
 	jmp	.L2	#
 	.cfi_endproc
 .LFE0:
 	.size	main, .-main
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

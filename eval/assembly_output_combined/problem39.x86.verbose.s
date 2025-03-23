@@ -1,6 +1,6 @@
 	.file	"problem39.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -21,7 +21,7 @@ func0:
 	movl	%esi, -44(%rbp)	# encode, encode
 # problem39.c:4: void func0(char *s, int encode) {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp130
-	movq	%rax, -8(%rbp)	# tmp130, D.4089
+	movq	%rax, -8(%rbp)	# tmp130, D.3225
 	xorl	%eax, %eax	# tmp130
 # problem39.c:5:     int l = strlen(s);
 	movq	-40(%rbp), %rax	# s, tmp100
@@ -35,11 +35,11 @@ func0:
 # problem39.c:6:     int num = (l + 2) / 3;
 	movslq	%eax, %rdx	# _2, tmp102
 	imulq	$1431655766, %rdx, %rdx	#, tmp102, tmp103
-	movq	%rdx, %rcx	# tmp103, tmp103
-	shrq	$32, %rcx	#, tmp103
-	cltd
-	movl	%ecx, %eax	# tmp104, tmp106
-	subl	%edx, %eax	# tmp105, tmp106
+	shrq	$32, %rdx	#, tmp104
+	sarl	$31, %eax	#, _2
+	movl	%eax, %ecx	# _2, tmp105
+	movl	%edx, %eax	# tmp104, tmp106
+	subl	%ecx, %eax	# tmp105, tmp106
 	movl	%eax, -20(%rbp)	# tmp106, num
 # problem39.c:9:     for (int i = 0; i < num; ++i) {
 	movl	$0, -28(%rbp)	#, i
@@ -72,19 +72,19 @@ func0:
 	movl	%eax, -16(%rbp)	# iftmp.0_19, len
 # problem39.c:11:         strncpy(x, s + i * 3, len);
 	movl	-16(%rbp), %eax	# len, tmp113
-	movslq	%eax, %rcx	# tmp113, _6
+	movslq	%eax, %rdx	# tmp113, _6
 # problem39.c:11:         strncpy(x, s + i * 3, len);
-	movl	-28(%rbp), %edx	# i, tmp114
-	movl	%edx, %eax	# tmp114, tmp115
+	movl	-28(%rbp), %ecx	# i, tmp114
+	movl	%ecx, %eax	# tmp114, tmp115
 	addl	%eax, %eax	# tmp115
-	addl	%edx, %eax	# tmp114, _7
-	movslq	%eax, %rdx	# _7, _8
+	addl	%ecx, %eax	# tmp114, _7
+	movslq	%eax, %rcx	# _7, _8
 # problem39.c:11:         strncpy(x, s + i * 3, len);
 	movq	-40(%rbp), %rax	# s, tmp116
-	leaq	(%rdx,%rax), %rsi	#, _9
+	addq	%rax, %rcx	# tmp116, _9
 # problem39.c:11:         strncpy(x, s + i * 3, len);
 	leaq	-12(%rbp), %rax	#, tmp117
-	movq	%rcx, %rdx	# _6,
+	movq	%rcx, %rsi	# _9,
 	movq	%rax, %rdi	# tmp117,
 	call	strncpy@PLT	#
 # problem39.c:12:         x[len] = '\0';
@@ -130,19 +130,19 @@ func0:
 .L5:
 # problem39.c:27:         strncpy(s + i * 3, x, len);
 	movl	-16(%rbp), %eax	# len, tmp124
-	movslq	%eax, %rcx	# tmp124, _14
+	movslq	%eax, %rdx	# tmp124, _14
 # problem39.c:27:         strncpy(s + i * 3, x, len);
-	movl	-28(%rbp), %edx	# i, tmp125
-	movl	%edx, %eax	# tmp125, tmp126
+	movl	-28(%rbp), %ecx	# i, tmp125
+	movl	%ecx, %eax	# tmp125, tmp126
 	addl	%eax, %eax	# tmp126
-	addl	%edx, %eax	# tmp125, _15
-	movslq	%eax, %rdx	# _15, _16
+	addl	%ecx, %eax	# tmp125, _15
+	movslq	%eax, %rcx	# _15, _16
 # problem39.c:27:         strncpy(s + i * 3, x, len);
 	movq	-40(%rbp), %rax	# s, tmp127
-	leaq	(%rdx,%rax), %rdi	#, _17
+	addq	%rax, %rcx	# tmp127, _17
 	leaq	-12(%rbp), %rax	#, tmp128
-	movq	%rcx, %rdx	# _14,
 	movq	%rax, %rsi	# tmp128,
+	movq	%rcx, %rdi	# _17,
 	call	strncpy@PLT	#
 # problem39.c:9:     for (int i = 0; i < num; ++i) {
 	addl	$1, -28(%rbp)	#, i
@@ -153,7 +153,7 @@ func0:
 	jl	.L7	#,
 # problem39.c:29: }
 	nop	
-	movq	-8(%rbp), %rax	# D.4089, tmp131
+	movq	-8(%rbp), %rax	# D.3225, tmp131
 	subq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp131
 	je	.L8	#,
 	call	__stack_chk_fail@PLT	#
@@ -184,7 +184,7 @@ main:
 	subq	$112, %rsp	#,
 # problem39.c:39: int main(){
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp124
-	movq	%rax, -8(%rbp)	# tmp124, D.4091
+	movq	%rax, -8(%rbp)	# tmp124, D.3227
 	xorl	%eax, %eax	# tmp124
 # problem39.c:40:     srand((unsigned int)time(NULL));
 	movl	$0, %edi	#,
@@ -204,11 +204,11 @@ main:
 	movslq	%ecx, %rax	# _3, tmp94
 	imulq	$780903145, %rax, %rax	#, tmp94, tmp95
 	shrq	$32, %rax	#, tmp96
-	movl	%eax, %edx	# tmp96, tmp97
-	sarl	%edx	# tmp97
-	movl	%ecx, %eax	# _3, tmp98
-	sarl	$31, %eax	#, tmp98
-	subl	%eax, %edx	# tmp98, _4
+	sarl	%eax	# tmp97
+	movl	%ecx, %esi	# _3, tmp98
+	sarl	$31, %esi	#, tmp98
+	subl	%esi, %eax	# tmp98, tmp97
+	movl	%eax, %edx	# tmp97, _4
 	movl	%edx, %eax	# _4, tmp99
 	sall	$2, %eax	#, tmp99
 	addl	%edx, %eax	# _4, tmp99
@@ -284,9 +284,9 @@ main:
 	movq	%rdx, %rsi	# tmp118,
 	movq	%rax, %rdi	# tmp119,
 	call	strcmp@PLT	#
-# problem39.c:55:         assert(strcmp(decoded_str, str) == 0);
 	testl	%eax, %eax	# _10
 	je	.L13	#,
+# problem39.c:55:         assert(strcmp(decoded_str, str) == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp120
 	movq	%rax, %rcx	# tmp120,
 	movl	$55, %edx	#,
@@ -305,7 +305,7 @@ main:
 # problem39.c:58:     return 0;
 	movl	$0, %eax	#, _19
 # problem39.c:59: }
-	movq	-8(%rbp), %rdx	# D.4091, tmp125
+	movq	-8(%rbp), %rdx	# D.3227, tmp125
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp125
 	je	.L16	#,
 	call	__stack_chk_fail@PLT	#
@@ -321,7 +321,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

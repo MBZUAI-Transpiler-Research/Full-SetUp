@@ -1,6 +1,6 @@
 	.file	"problem67.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -125,9 +125,9 @@ main:
 	leaq	.LC0(%rip), %rax	#, tmp92
 	movq	%rax, %rdi	# tmp92,
 	call	func0	#
-# problem67.c:17:     assert(func0("") == 0);
 	testl	%eax, %eax	# _1
 	je	.L7	#,
+# problem67.c:17:     assert(func0("") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp93
 	movq	%rax, %rcx	# tmp93,
 	movl	$17, %edx	#,
@@ -141,9 +141,9 @@ main:
 	leaq	.LC3(%rip), %rax	#, tmp96
 	movq	%rax, %rdi	# tmp96,
 	call	func0	#
-# problem67.c:18:     assert(func0("abAB") == 131);
 	cmpl	$131, %eax	#, _2
 	je	.L8	#,
+# problem67.c:18:     assert(func0("abAB") == 131);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp97
 	movq	%rax, %rcx	# tmp97,
 	movl	$18, %edx	#,
@@ -157,9 +157,9 @@ main:
 	leaq	.LC5(%rip), %rax	#, tmp100
 	movq	%rax, %rdi	# tmp100,
 	call	func0	#
-# problem67.c:19:     assert(func0("abcCd") == 67);
 	cmpl	$67, %eax	#, _3
 	je	.L9	#,
+# problem67.c:19:     assert(func0("abcCd") == 67);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp101
 	movq	%rax, %rcx	# tmp101,
 	movl	$19, %edx	#,
@@ -173,9 +173,9 @@ main:
 	leaq	.LC7(%rip), %rax	#, tmp104
 	movq	%rax, %rdi	# tmp104,
 	call	func0	#
-# problem67.c:20:     assert(func0("helloE") == 69);
 	cmpl	$69, %eax	#, _4
 	je	.L10	#,
+# problem67.c:20:     assert(func0("helloE") == 69);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp105
 	movq	%rax, %rcx	# tmp105,
 	movl	$20, %edx	#,
@@ -189,9 +189,9 @@ main:
 	leaq	.LC9(%rip), %rax	#, tmp108
 	movq	%rax, %rdi	# tmp108,
 	call	func0	#
-# problem67.c:21:     assert(func0("woArBld") == 131);
 	cmpl	$131, %eax	#, _5
 	je	.L11	#,
+# problem67.c:21:     assert(func0("woArBld") == 131);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp109
 	movq	%rax, %rcx	# tmp109,
 	movl	$21, %edx	#,
@@ -205,9 +205,9 @@ main:
 	leaq	.LC11(%rip), %rax	#, tmp112
 	movq	%rax, %rdi	# tmp112,
 	call	func0	#
-# problem67.c:22:     assert(func0("aAaaaXa") == 153);
 	cmpl	$153, %eax	#, _6
 	je	.L12	#,
+# problem67.c:22:     assert(func0("aAaaaXa") == 153);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp113
 	movq	%rax, %rcx	# tmp113,
 	movl	$22, %edx	#,
@@ -221,9 +221,9 @@ main:
 	leaq	.LC13(%rip), %rax	#, tmp116
 	movq	%rax, %rdi	# tmp116,
 	call	func0	#
-# problem67.c:23:     assert(func0(" How are yOu?") == 151);
 	cmpl	$151, %eax	#, _7
 	je	.L13	#,
+# problem67.c:23:     assert(func0(" How are yOu?") == 151);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp117
 	movq	%rax, %rcx	# tmp117,
 	movl	$23, %edx	#,
@@ -237,9 +237,9 @@ main:
 	leaq	.LC15(%rip), %rax	#, tmp120
 	movq	%rax, %rdi	# tmp120,
 	call	func0	#
-# problem67.c:24:     assert(func0("You arE Very Smart") == 327);
 	cmpl	$327, %eax	#, _8
 	je	.L14	#,
+# problem67.c:24:     assert(func0("You arE Very Smart") == 327);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp121
 	movq	%rax, %rcx	# tmp121,
 	movl	$24, %edx	#,
@@ -263,7 +263,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

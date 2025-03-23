@@ -1,6 +1,6 @@
 	.file	"code.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -29,7 +29,7 @@ func0:
 	movq	%rsi, -80(%rbp)	# count, count
 # eval/problem18//code.c:5: int *func0(const char *music_string, int *count) {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp174
-	movq	%rax, -8(%rbp)	# tmp174, D.3963
+	movq	%rax, -8(%rbp)	# tmp174, D.3099
 	xorl	%eax, %eax	# tmp174
 # eval/problem18//code.c:6:     int *out = NULL;
 	movq	$0, -40(%rbp)	#, out
@@ -67,7 +67,6 @@ func0:
 	movq	%rax, %rdi	# tmp128,
 	call	strlen@PLT	#
 	movq	%rax, %rdx	# tmp130, _77
-# eval/problem18//code.c:14:     strcat(temp_music_string, " ");
 	movq	-32(%rbp), %rax	# temp_music_string, tmp131
 	addq	%rdx, %rax	# _77, _78
 	movw	$32, (%rax)	#, MEM <char[1:2]> [(void *)_78]
@@ -276,7 +275,7 @@ func0:
 # eval/problem18//code.c:50:     return out;
 	movq	-40(%rbp), %rax	# out, _84
 # eval/problem18//code.c:51: }
-	movq	-8(%rbp), %rdx	# D.3963, tmp175
+	movq	-8(%rbp), %rdx	# D.3099, tmp175
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp175
 	je	.L19	#,
 	call	__stack_chk_fail@PLT	#
@@ -287,7 +286,7 @@ func0:
 	.cfi_endproc
 .LFE6:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

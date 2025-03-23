@@ -62,14 +62,12 @@ func0:
 	sarl	%eax
 	cmpl	%eax, -4(%rbp)
 	jl	.L5
-	movl	-28(%rbp), %edx
-	movl	%edx, %eax
-	sarl	$31, %eax
-	shrl	$31, %eax
-	addl	%eax, %edx
-	andl	$1, %edx
-	subl	%eax, %edx
-	movl	%edx, %eax
+	movl	-28(%rbp), %eax
+	cltd
+	shrl	$31, %edx
+	addl	%edx, %eax
+	andl	$1, %eax
+	subl	%edx, %eax
 	cmpl	$1, %eax
 	jne	.L6
 	movl	-28(%rbp), %eax
@@ -259,7 +257,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

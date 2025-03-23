@@ -1,6 +1,6 @@
 	.file	"problem8.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -39,7 +39,7 @@ main:
 	subq	$1056, %rsp	#,
 # problem8.c:9: {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp104
-	movq	%rax, -8(%rbp)	# tmp104, D.3198
+	movq	%rax, -8(%rbp)	# tmp104, D.2368
 	xorl	%eax, %eax	# tmp104
 # problem8.c:10:   char str[] =
 	leaq	-1024(%rbp), %rax	#, tmp90
@@ -91,8 +91,8 @@ main:
 	jbe	.L4	#,
 # problem8.c:42:     if (p > max) {
 	movl	-1052(%rbp), %eax	# p, tmp98
-	cmpl	%eax, -1056(%rbp)	# tmp98, max
-	jnb	.L5	#,
+	cmpl	-1056(%rbp), %eax	# max, tmp98
+	jbe	.L5	#,
 # problem8.c:43:       max = p;
 	movl	-1052(%rbp), %eax	# p, tmp99
 	movl	%eax, -1056(%rbp)	# tmp99, max
@@ -116,7 +116,7 @@ main:
 # problem8.c:47:   return 0;
 	movl	$0, %eax	#, _18
 # problem8.c:48: }
-	movq	-8(%rbp), %rdx	# D.3198, tmp105
+	movq	-8(%rbp), %rdx	# D.2368, tmp105
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp105
 	je	.L8	#,
 	call	__stack_chk_fail@PLT	#
@@ -127,7 +127,7 @@ main:
 	.cfi_endproc
 .LFE0:
 	.size	main, .-main
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

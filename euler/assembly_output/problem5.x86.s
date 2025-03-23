@@ -56,8 +56,8 @@ gcd:
 	movq	%rdi, -24(%rbp)
 	movq	%rsi, -32(%rbp)
 	movq	-24(%rbp), %rax
-	cmpq	%rax, -32(%rbp)
-	jnb	.L7
+	cmpq	-32(%rbp), %rax
+	jbe	.L7
 	movq	-24(%rbp), %rax
 	movq	%rax, -16(%rbp)
 	movq	-32(%rbp), %rax
@@ -114,7 +114,7 @@ lcm:
 	.cfi_endproc
 .LFE2:
 	.size	lcm, .-lcm
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

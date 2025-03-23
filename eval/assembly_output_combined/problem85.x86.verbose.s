@@ -1,6 +1,6 @@
 	.file	"problem85.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -24,7 +24,7 @@ func0:
 	movl	%edi, -52(%rbp)	# N, N
 # problem85.c:4: char* func0(int N) {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp154
-	movq	%rax, -8(%rbp)	# tmp154, D.3979
+	movq	%rax, -8(%rbp)	# tmp154, D.3115
 	xorl	%eax, %eax	# tmp154
 # problem85.c:6:     sprintf(str, "%d", N);
 	movl	-52(%rbp), %edx	# N, tmp114
@@ -82,14 +82,12 @@ func0:
 	jmp	.L5	#
 .L7:
 # problem85.c:17:             bi[index++] = (sum % 2) + '0';
-	movl	-40(%rbp), %edx	# sum, tmp124
-	movl	%edx, %eax	# tmp124, tmp125
-	sarl	$31, %eax	#, tmp125
-	shrl	$31, %eax	#, tmp126
-	addl	%eax, %edx	# tmp126, tmp127
-	andl	$1, %edx	#, tmp128
-	subl	%eax, %edx	# tmp126, tmp129
-	movl	%edx, %eax	# tmp129, _8
+	movl	-40(%rbp), %eax	# sum, tmp124
+	cltd
+	shrl	$31, %edx	#, tmp126
+	addl	%edx, %eax	# tmp126, tmp127
+	andl	$1, %eax	#, tmp128
+	subl	%edx, %eax	# tmp126, tmp129
 # problem85.c:17:             bi[index++] = (sum % 2) + '0';
 	leal	48(%rax), %ecx	#, _10
 # problem85.c:17:             bi[index++] = (sum % 2) + '0';
@@ -179,7 +177,7 @@ func0:
 # problem85.c:29:     return bi;
 	movq	-24(%rbp), %rax	# bi, _55
 # problem85.c:30: }
-	movq	-8(%rbp), %rdx	# D.3979, tmp155
+	movq	-8(%rbp), %rdx	# D.3115, tmp155
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp155
 	je	.L11	#,
 	call	__stack_chk_fail@PLT	#
@@ -236,9 +234,9 @@ main:
 	movq	%rdx, %rsi	# tmp91,
 	movq	%rax, %rdi	# tmp90,
 	call	strcmp@PLT	#
-# problem85.c:42:     assert(strcmp(result, "1") == 0);
 	testl	%eax, %eax	# _1
 	je	.L13	#,
+# problem85.c:42:     assert(strcmp(result, "1") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp92
 	movq	%rax, %rcx	# tmp92,
 	movl	$42, %edx	#,
@@ -262,9 +260,9 @@ main:
 	movq	%rdx, %rsi	# tmp98,
 	movq	%rax, %rdi	# tmp97,
 	call	strcmp@PLT	#
-# problem85.c:46:     assert(strcmp(result, "110") == 0);
 	testl	%eax, %eax	# _2
 	je	.L14	#,
+# problem85.c:46:     assert(strcmp(result, "110") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp99
 	movq	%rax, %rcx	# tmp99,
 	movl	$46, %edx	#,
@@ -288,9 +286,9 @@ main:
 	movq	%rdx, %rsi	# tmp105,
 	movq	%rax, %rdi	# tmp104,
 	call	strcmp@PLT	#
-# problem85.c:50:     assert(strcmp(result, "1100") == 0);
 	testl	%eax, %eax	# _3
 	je	.L15	#,
+# problem85.c:50:     assert(strcmp(result, "1100") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp106
 	movq	%rax, %rcx	# tmp106,
 	movl	$50, %edx	#,
@@ -314,9 +312,9 @@ main:
 	movq	%rdx, %rsi	# tmp112,
 	movq	%rax, %rdi	# tmp111,
 	call	strcmp@PLT	#
-# problem85.c:54:     assert(strcmp(result, "1001") == 0);
 	testl	%eax, %eax	# _4
 	je	.L16	#,
+# problem85.c:54:     assert(strcmp(result, "1001") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp113
 	movq	%rax, %rcx	# tmp113,
 	movl	$54, %edx	#,
@@ -340,9 +338,9 @@ main:
 	movq	%rdx, %rsi	# tmp119,
 	movq	%rax, %rdi	# tmp118,
 	call	strcmp@PLT	#
-# problem85.c:58:     assert(strcmp(result, "10010") == 0);
 	testl	%eax, %eax	# _5
 	je	.L17	#,
+# problem85.c:58:     assert(strcmp(result, "10010") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp120
 	movq	%rax, %rcx	# tmp120,
 	movl	$58, %edx	#,
@@ -370,7 +368,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

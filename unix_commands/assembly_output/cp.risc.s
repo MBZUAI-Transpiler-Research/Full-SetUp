@@ -1,8 +1,5 @@
 	.file	"cp.c"
 	.option pic
-	.attribute arch, "rv64i2p1_m2p0_a2p1_f2p2_d2p2_c2p0_zicsr2p0_zifencei2p0"
-	.attribute unaligned_access, 0
-	.attribute stack_align, 16
 	.text
 	.section	.rodata
 	.align	3
@@ -25,18 +22,11 @@
 	.globl	main
 	.type	main, @function
 main:
-.LFB6:
-	.cfi_startproc
 	addi	sp,sp,-80
-	.cfi_def_cfa_offset 80
 	sd	ra,72(sp)
 	sd	s0,64(sp)
 	sd	s1,56(sp)
-	.cfi_offset 1, -8
-	.cfi_offset 8, -16
-	.cfi_offset 9, -24
 	addi	s0,sp,80
-	.cfi_def_cfa 8, 0
 	li	t0,-8192
 	add	sp,sp,t0
 	mv	a4,a0
@@ -131,7 +121,7 @@ main:
 	lw	a5,-16(a5)
 	sext.w	a4,a5
 	li	a5,-1
-	bne	a4,a5,.L7
+	bne	a4,a5,.L6
 	li	a5,-8192
 	addi	a5,a5,-32
 	add	a5,a5,s0
@@ -147,7 +137,7 @@ main:
 	call	printf@plt
 	li	a0,1
 	call	exit@plt
-.L8:
+.L7:
 	li	a5,-8192
 	addi	a5,a5,-32
 	add	a5,a5,s0
@@ -169,10 +159,10 @@ main:
 	addi	a5,a5,-32
 	add	a5,a5,s0
 	lw	a5,-12(a5)
-	beq	a4,a5,.L7
+	beq	a4,a5,.L6
 	lla	a0,.LC3
 	call	puts@plt
-.L7:
+.L6:
 	li	a5,-8192
 	addi	a5,a5,-8
 	addi	a5,a5,-32
@@ -195,7 +185,7 @@ main:
 	add	a5,a5,s0
 	lw	a5,-12(a5)
 	sext.w	a5,a5
-	bgt	a5,zero,.L8
+	bgt	a5,zero,.L7
 	li	a5,-8192
 	addi	a5,a5,-32
 	add	a5,a5,s0
@@ -205,10 +195,10 @@ main:
 	mv	a5,a0
 	mv	a4,a5
 	li	a5,-1
-	bne	a4,a5,.L9
+	bne	a4,a5,.L8
 	lla	a0,.LC4
 	call	puts@plt
-.L9:
+.L8:
 	li	a5,-8192
 	addi	a5,a5,-32
 	add	a5,a5,s0
@@ -218,10 +208,10 @@ main:
 	mv	a5,a0
 	mv	a4,a5
 	li	a5,-1
-	bne	a4,a5,.L10
+	bne	a4,a5,.L9
 	lla	a0,.LC4
 	call	puts@plt
-.L10:
+.L9:
 	li	a5,0
 	mv	a4,a5
 	la	a5,__stack_chk_guard
@@ -229,24 +219,17 @@ main:
 	ld	a5, 0(a5)
 	xor	a5, a3, a5
 	li	a3, 0
-	beq	a5,zero,.L12
+	beq	a5,zero,.L11
 	call	__stack_chk_fail@plt
-.L12:
+.L11:
 	mv	a0,a4
 	li	t0,8192
 	add	sp,sp,t0
-	.cfi_def_cfa 2, 80
 	ld	ra,72(sp)
-	.cfi_restore 1
 	ld	s0,64(sp)
-	.cfi_restore 8
 	ld	s1,56(sp)
-	.cfi_restore 9
 	addi	sp,sp,80
-	.cfi_def_cfa_offset 0
 	jr	ra
-	.cfi_endproc
-.LFE6:
 	.size	main, .-main
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

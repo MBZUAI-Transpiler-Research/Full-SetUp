@@ -88,8 +88,8 @@ main:
 	call	strtoul@PLT
 	movl	%eax, -48(%rbp)
 	movl	-48(%rbp), %eax
-	cmpl	%eax, -60(%rbp)
-	jnb	.L5
+	cmpl	-60(%rbp), %eax
+	jbe	.L5
 	movl	-48(%rbp), %eax
 	movl	%eax, -60(%rbp)
 .L5:
@@ -133,9 +133,9 @@ compare:
 	movsbl	%al, %edx
 	movq	-16(%rbp), %rax
 	movzbl	(%rax), %eax
-	movsbl	%al, %eax
-	subl	%eax, %edx
+	movsbl	%al, %ecx
 	movl	%edx, %eax
+	subl	%ecx, %eax
 	popq	%rbp
 	.cfi_def_cfa 7, 8
 	ret
@@ -186,10 +186,10 @@ is_pandigital:
 	movq	-40(%rbp), %rax
 	addq	%rdx, %rax
 	movzbl	(%rax), %eax
-	movsbq	%al, %rdx
-	movq	-40(%rbp), %rax
-	addq	$49, %rax
-	cmpq	%rax, %rdx
+	movsbq	%al, %rax
+	movq	-40(%rbp), %rdx
+	addq	$49, %rdx
+	cmpq	%rdx, %rax
 	je	.L16
 	movl	$0, %eax
 	jmp	.L18
@@ -212,7 +212,7 @@ is_pandigital:
 	.cfi_endproc
 .LFE8:
 	.size	is_pandigital, .-is_pandigital
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

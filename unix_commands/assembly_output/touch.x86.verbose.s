@@ -1,6 +1,6 @@
 	.file	"touch.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -40,10 +40,10 @@ main:
 # touch.c:5: if(argc!=2 || argv[1]=="--help"){
 	movq	-16(%rbp), %rax	# argv, tmp90
 	addq	$8, %rax	#, _1
-	movq	(%rax), %rdx	# *_1, _2
+	movq	(%rax), %rax	# *_1, _2
 # touch.c:5: if(argc!=2 || argv[1]=="--help"){
-	leaq	.LC0(%rip), %rax	#, tmp91
-	cmpq	%rax, %rdx	# tmp91, _2
+	leaq	.LC0(%rip), %rdx	#, tmp91
+	cmpq	%rdx, %rax	# tmp91, _2
 	jne	.L3	#,
 .L2:
 # touch.c:6: printf("Usage::touch textfileTomodify\n");
@@ -79,7 +79,7 @@ main:
 	.cfi_endproc
 .LFE0:
 	.size	main, .-main
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

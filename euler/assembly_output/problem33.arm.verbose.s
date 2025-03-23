@@ -1,7 +1,7 @@
 	.arch armv8-a
 	.file	"problem33.c"
-// GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (aarch64-linux-gnu)
-//	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+// GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (aarch64-linux-gnu)
+//	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 // GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 // options passed: -mlittle-endian -mabi=lp64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection
@@ -17,133 +17,132 @@
 main:
 .LFB0:
 	.cfi_startproc
-	sub	sp, sp, #64	//,,
+	stp	x29, x30, [sp, -64]!	//,,,
 	.cfi_def_cfa_offset 64
-	stp	x29, x30, [sp, 48]	//,,
-	.cfi_offset 29, -16
-	.cfi_offset 30, -8
-	add	x29, sp, 48	//,,
+	.cfi_offset 29, -64
+	.cfi_offset 30, -56
+	mov	x29, sp	//,
 // problem33.c:13: {
-	adrp	x0, :got:__stack_chk_guard	// tmp107,
-	ldr	x0, [x0, :got_lo12:__stack_chk_guard]	// tmp107,
-	ldr	x1, [x0]	// tmp158,
-	str	x1, [sp, 40]	// tmp158, D.6098
-	mov	x1, 0	// tmp158
-// problem33.c:14:   unsigned ans_n = 1, ans_d = 1;
-	mov	w0, 1	// tmp108,
-	str	w0, [sp, 8]	// tmp108, ans_n
+	adrp	x0, :got:__stack_chk_guard	// tmp108,
+	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]	// tmp107, tmp108,
+	ldr	x1, [x0]	// tmp160,
+	str	x1, [sp, 56]	// tmp160, D.5357
+	mov	x1, 0	// tmp160
 // problem33.c:14:   unsigned ans_n = 1, ans_d = 1;
 	mov	w0, 1	// tmp109,
-	str	w0, [sp, 12]	// tmp109, ans_d
+	str	w0, [sp, 24]	// tmp109, ans_n
+// problem33.c:14:   unsigned ans_n = 1, ans_d = 1;
+	mov	w0, 1	// tmp110,
+	str	w0, [sp, 28]	// tmp110, ans_d
 // problem33.c:16:   for (i = 11; i < 100; i++) {
-	mov	w0, 11	// tmp110,
-	str	w0, [sp, 16]	// tmp110, i
+	mov	w0, 11	// tmp111,
+	str	w0, [sp, 32]	// tmp111, i
 // problem33.c:16:   for (i = 11; i < 100; i++) {
 	b	.L2		//
 .L12:
 // problem33.c:19:     if (i % 10 == 0) {
-	ldr	w2, [sp, 16]	// tmp111, i
-	mov	w0, 52429	// tmp113,
-	movk	w0, 0xcccc, lsl 16	// tmp113,,
-	umull	x0, w2, w0	// tmp112, tmp111, tmp113
-	lsr	x0, x0, 32	// tmp114, tmp112,
-	lsr	w1, w0, 3	// _1, tmp114,
-	mov	w0, w1	// tmp115, _1
-	lsl	w0, w0, 2	// tmp116, tmp115,
-	add	w0, w0, w1	// tmp115, tmp115, _1
-	lsl	w0, w0, 1	// tmp117, tmp115,
-	sub	w1, w2, w0	// _1, tmp111, tmp115
+	ldr	w2, [sp, 32]	// tmp112, i
+	mov	w0, 52429	// tmp114,
+	movk	w0, 0xcccc, lsl 16	// tmp114,,
+	umull	x0, w2, w0	// tmp113, tmp112, tmp114
+	lsr	x0, x0, 32	// tmp115, tmp113,
+	lsr	w1, w0, 3	// _1, tmp115,
+	mov	w0, w1	// tmp116, _1
+	lsl	w0, w0, 2	// tmp117, tmp116,
+	add	w0, w0, w1	// tmp116, tmp116, _1
+	lsl	w0, w0, 1	// tmp118, tmp116,
+	sub	w1, w2, w0	// _1, tmp112, tmp116
 // problem33.c:19:     if (i % 10 == 0) {
 	cmp	w1, 0	// _1,
 	beq	.L15		//,
 // problem33.c:23:     for (j = 11; j < i; j++) {
-	mov	w0, 11	// tmp118,
-	str	w0, [sp, 20]	// tmp118, j
+	mov	w0, 11	// tmp119,
+	str	w0, [sp, 36]	// tmp119, j
 // problem33.c:23:     for (j = 11; j < i; j++) {
 	b	.L5		//
 .L11:
 // problem33.c:27:       if (j % 10 == 0) {
-	ldr	w2, [sp, 20]	// tmp119, j
-	mov	w0, 52429	// tmp121,
-	movk	w0, 0xcccc, lsl 16	// tmp121,,
-	umull	x0, w2, w0	// tmp120, tmp119, tmp121
-	lsr	x0, x0, 32	// tmp122, tmp120,
-	lsr	w1, w0, 3	// _2, tmp122,
-	mov	w0, w1	// tmp123, _2
-	lsl	w0, w0, 2	// tmp124, tmp123,
-	add	w0, w0, w1	// tmp123, tmp123, _2
-	lsl	w0, w0, 1	// tmp125, tmp123,
-	sub	w1, w2, w0	// _2, tmp119, tmp123
+	ldr	w2, [sp, 36]	// tmp120, j
+	mov	w0, 52429	// tmp122,
+	movk	w0, 0xcccc, lsl 16	// tmp122,,
+	umull	x0, w2, w0	// tmp121, tmp120, tmp122
+	lsr	x0, x0, 32	// tmp123, tmp121,
+	lsr	w1, w0, 3	// _2, tmp123,
+	mov	w0, w1	// tmp124, _2
+	lsl	w0, w0, 2	// tmp125, tmp124,
+	add	w0, w0, w1	// tmp124, tmp124, _2
+	lsl	w0, w0, 1	// tmp126, tmp124,
+	sub	w1, w2, w0	// _2, tmp120, tmp124
 // problem33.c:27:       if (j % 10 == 0) {
 	cmp	w1, 0	// _2,
 	beq	.L16		//,
 // problem33.c:31:       if ((g = gcd(i, j)) == 1) {
-	ldr	w1, [sp, 20]	//, j
-	ldr	w0, [sp, 16]	//, i
+	ldr	w1, [sp, 36]	//, j
+	ldr	w0, [sp, 32]	//, i
 	bl	gcd		//
-	str	w0, [sp, 24]	//, g
+	str	w0, [sp, 40]	//, g
 // problem33.c:31:       if ((g = gcd(i, j)) == 1) {
-	ldr	w0, [sp, 24]	// tmp126, g
-	cmp	w0, 1	// tmp126,
+	ldr	w0, [sp, 40]	// tmp127, g
+	cmp	w0, 1	// tmp127,
 	beq	.L17		//,
 // problem33.c:35:       n = j/g;
-	ldr	w1, [sp, 20]	// tmp129, j
-	ldr	w0, [sp, 24]	// tmp130, g
-	udiv	w0, w1, w0	// tmp128, tmp129, tmp130
-	str	w0, [sp, 28]	// tmp128, n
+	ldr	w1, [sp, 36]	// tmp130, j
+	ldr	w0, [sp, 40]	// tmp131, g
+	udiv	w0, w1, w0	// tmp129, tmp130, tmp131
+	str	w0, [sp, 44]	// tmp129, n
 // problem33.c:36:       d = i/g;
-	ldr	w1, [sp, 16]	// tmp133, i
-	ldr	w0, [sp, 24]	// tmp134, g
-	udiv	w0, w1, w0	// tmp132, tmp133, tmp134
-	str	w0, [sp, 32]	// tmp132, d
+	ldr	w1, [sp, 32]	// tmp134, i
+	ldr	w0, [sp, 40]	// tmp135, g
+	udiv	w0, w1, w0	// tmp133, tmp134, tmp135
+	str	w0, [sp, 48]	// tmp133, d
 // problem33.c:39:       if (cancel(j, i, &n2, &d2)) {
-	add	x1, sp, 4	// tmp135,,
-	mov	x0, sp	// tmp136,
-	mov	x3, x1	//, tmp135
-	mov	x2, x0	//, tmp136
-	ldr	w1, [sp, 16]	//, i
-	ldr	w0, [sp, 20]	//, j
+	add	x1, sp, 20	// tmp136,,
+	add	x0, sp, 16	// tmp137,,
+	mov	x3, x1	//, tmp136
+	mov	x2, x0	//, tmp137
+	ldr	w1, [sp, 32]	//, i
+	ldr	w0, [sp, 36]	//, j
 	bl	cancel		//
 // problem33.c:39:       if (cancel(j, i, &n2, &d2)) {
 	cmp	w0, 0	// _3,
 	beq	.L10		//,
 // problem33.c:40:         unsigned g2 = gcd(n2, d2);
-	ldr	w0, [sp]	// n2.0_4, n2
-	ldr	w1, [sp, 4]	// d2.1_5, d2
+	ldr	w0, [sp, 16]	// n2.0_4, n2
+	ldr	w1, [sp, 20]	// d2.1_5, d2
 	bl	gcd		//
-	str	w0, [sp, 36]	//, g2
+	str	w0, [sp, 52]	//, g2
 // problem33.c:41:         n2 /= g2; d2 /= g2;
-	ldr	w1, [sp]	// n2.2_6, n2
-	ldr	w0, [sp, 36]	// tmp137, g2
-	udiv	w0, w1, w0	// _7, n2.2_6, tmp137
-	str	w0, [sp]	// _7, n2
+	ldr	w1, [sp, 16]	// n2.2_6, n2
+	ldr	w0, [sp, 52]	// tmp138, g2
+	udiv	w0, w1, w0	// _7, n2.2_6, tmp138
+	str	w0, [sp, 16]	// _7, n2
 // problem33.c:41:         n2 /= g2; d2 /= g2;
-	ldr	w1, [sp, 4]	// d2.3_8, d2
-	ldr	w0, [sp, 36]	// tmp138, g2
-	udiv	w0, w1, w0	// _9, d2.3_8, tmp138
-	str	w0, [sp, 4]	// _9, d2
+	ldr	w1, [sp, 20]	// d2.3_8, d2
+	ldr	w0, [sp, 52]	// tmp139, g2
+	udiv	w0, w1, w0	// _9, d2.3_8, tmp139
+	str	w0, [sp, 20]	// _9, d2
 // problem33.c:42:         if (n == n2 && d == d2) {
-	ldr	w0, [sp]	// n2.4_10, n2
+	ldr	w0, [sp, 16]	// n2.4_10, n2
 // problem33.c:42:         if (n == n2 && d == d2) {
-	ldr	w1, [sp, 28]	// tmp139, n
-	cmp	w1, w0	// tmp139, n2.4_10
+	ldr	w1, [sp, 44]	// tmp140, n
+	cmp	w1, w0	// tmp140, n2.4_10
 	bne	.L10		//,
 // problem33.c:42:         if (n == n2 && d == d2) {
-	ldr	w0, [sp, 4]	// d2.5_11, d2
+	ldr	w0, [sp, 20]	// d2.5_11, d2
 // problem33.c:42:         if (n == n2 && d == d2) {
-	ldr	w1, [sp, 32]	// tmp140, d
-	cmp	w1, w0	// tmp140, d2.5_11
+	ldr	w1, [sp, 48]	// tmp141, d
+	cmp	w1, w0	// tmp141, d2.5_11
 	bne	.L10		//,
 // problem33.c:43:           ans_n *= n;
-	ldr	w1, [sp, 8]	// tmp142, ans_n
-	ldr	w0, [sp, 28]	// tmp143, n
-	mul	w0, w1, w0	// tmp141, tmp142, tmp143
-	str	w0, [sp, 8]	// tmp141, ans_n
+	ldr	w1, [sp, 24]	// tmp143, ans_n
+	ldr	w0, [sp, 44]	// tmp144, n
+	mul	w0, w1, w0	// tmp142, tmp143, tmp144
+	str	w0, [sp, 24]	// tmp142, ans_n
 // problem33.c:44:           ans_d *= d;
-	ldr	w1, [sp, 12]	// tmp145, ans_d
-	ldr	w0, [sp, 32]	// tmp146, d
-	mul	w0, w1, w0	// tmp144, tmp145, tmp146
-	str	w0, [sp, 12]	// tmp144, ans_d
+	ldr	w1, [sp, 28]	// tmp146, ans_d
+	ldr	w0, [sp, 48]	// tmp147, d
+	mul	w0, w1, w0	// tmp145, tmp146, tmp147
+	str	w0, [sp, 28]	// tmp145, ans_d
 	b	.L10		//
 .L16:
 // problem33.c:28:         continue;
@@ -154,14 +153,14 @@ main:
 	nop	
 .L10:
 // problem33.c:23:     for (j = 11; j < i; j++) {
-	ldr	w0, [sp, 20]	// tmp148, j
-	add	w0, w0, 1	// tmp147, tmp148,
-	str	w0, [sp, 20]	// tmp147, j
+	ldr	w0, [sp, 36]	// tmp149, j
+	add	w0, w0, 1	// tmp148, tmp149,
+	str	w0, [sp, 36]	// tmp148, j
 .L5:
 // problem33.c:23:     for (j = 11; j < i; j++) {
-	ldr	w1, [sp, 20]	// tmp149, j
-	ldr	w0, [sp, 16]	// tmp150, i
-	cmp	w1, w0	// tmp149, tmp150
+	ldr	w1, [sp, 36]	// tmp150, j
+	ldr	w0, [sp, 32]	// tmp151, i
+	cmp	w1, w0	// tmp150, tmp151
 	bcc	.L11		//,
 	b	.L4		//
 .L15:
@@ -169,44 +168,43 @@ main:
 	nop	
 .L4:
 // problem33.c:16:   for (i = 11; i < 100; i++) {
-	ldr	w0, [sp, 16]	// tmp152, i
-	add	w0, w0, 1	// tmp151, tmp152,
-	str	w0, [sp, 16]	// tmp151, i
+	ldr	w0, [sp, 32]	// tmp153, i
+	add	w0, w0, 1	// tmp152, tmp153,
+	str	w0, [sp, 32]	// tmp152, i
 .L2:
 // problem33.c:16:   for (i = 11; i < 100; i++) {
-	ldr	w0, [sp, 16]	// tmp153, i
-	cmp	w0, 99	// tmp153,
+	ldr	w0, [sp, 32]	// tmp154, i
+	cmp	w0, 99	// tmp154,
 	bls	.L12		//,
 // problem33.c:49:   printf("%u\n", ans_d / gcd(ans_n, ans_d));
-	ldr	w1, [sp, 12]	//, ans_d
-	ldr	w0, [sp, 8]	//, ans_n
+	ldr	w1, [sp, 28]	//, ans_d
+	ldr	w0, [sp, 24]	//, ans_n
 	bl	gcd		//
 	mov	w1, w0	// _12,
 // problem33.c:49:   printf("%u\n", ans_d / gcd(ans_n, ans_d));
-	ldr	w0, [sp, 12]	// tmp154, ans_d
-	udiv	w0, w0, w1	// _13, tmp154, _12
+	ldr	w0, [sp, 28]	// tmp155, ans_d
+	udiv	w0, w0, w1	// _13, tmp155, _12
 	mov	w1, w0	//, _13
-	adrp	x0, .LC0	// tmp155,
-	add	x0, x0, :lo12:.LC0	//, tmp155,
+	adrp	x0, .LC0	// tmp156,
+	add	x0, x0, :lo12:.LC0	//, tmp156,
 	bl	printf		//
 // problem33.c:50:   return 0;
 	mov	w0, 0	// _38,
 // problem33.c:51: }
 	mov	w1, w0	// <retval>, _38
-	adrp	x0, :got:__stack_chk_guard	// tmp157,
-	ldr	x0, [x0, :got_lo12:__stack_chk_guard]	// tmp157,
-	ldr	x3, [sp, 40]	// tmp159, D.6098
-	ldr	x2, [x0]	// tmp160,
-	subs	x3, x3, x2	// tmp159, tmp160
-	mov	x2, 0	// tmp160
+	adrp	x0, :got:__stack_chk_guard	// tmp159,
+	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]	// tmp158, tmp159,
+	ldr	x3, [sp, 56]	// tmp161, D.5357
+	ldr	x2, [x0]	// tmp162,
+	subs	x3, x3, x2	// tmp161, tmp162
+	mov	x2, 0	// tmp162
 	beq	.L14		//,
 	bl	__stack_chk_fail		//
 .L14:
 	mov	w0, w1	//, <retval>
-	ldp	x29, x30, [sp, 48]	//,,
-	add	sp, sp, 64	//,,
-	.cfi_restore 29
+	ldp	x29, x30, [sp], 64	//,,,
 	.cfi_restore 30
+	.cfi_restore 29
 	.cfi_def_cfa_offset 0
 	ret	
 	.cfi_endproc
@@ -485,5 +483,5 @@ cancel:
 	.cfi_endproc
 .LFE2:
 	.size	cancel, .-cancel
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

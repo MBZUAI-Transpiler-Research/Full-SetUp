@@ -1,6 +1,6 @@
 	.file	"problem150.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -111,8 +111,8 @@ func0:
 	movq	%rax, -16(%rbp)	# tmp165, len_j1
 # problem150.c:21:             if (len_j > len_j1 || (len_j == len_j1 && strcmp(lst[j], lst[j + 1]) > 0)) {
 	movq	-24(%rbp), %rax	# len_j, tmp166
-	cmpq	%rax, -16(%rbp)	# tmp166, len_j1
-	jb	.L7	#,
+	cmpq	-16(%rbp), %rax	# len_j1, tmp166
+	ja	.L7	#,
 # problem150.c:21:             if (len_j > len_j1 || (len_j == len_j1 && strcmp(lst[j], lst[j + 1]) > 0)) {
 	movq	-24(%rbp), %rax	# len_j, tmp167
 	cmpq	-16(%rbp), %rax	# len_j1, tmp167
@@ -272,7 +272,6 @@ issame:
 	je	.L15	#,
 # problem150.c:45:     if (a_size != b_size) return 0;
 	movl	$0, %eax	#, _11
-# problem150.c:45:     if (a_size != b_size) return 0;
 	jmp	.L16	#
 .L15:
 # problem150.c:46:     for (int i = 0; i < a_size; i++) {
@@ -304,7 +303,6 @@ issame:
 	je	.L18	#,
 # problem150.c:47:         if (strcmp(a[i], b[i]) != 0) return 0;
 	movl	$0, %eax	#, _11
-# problem150.c:47:         if (strcmp(a[i], b[i]) != 0) return 0;
 	jmp	.L16	#
 .L18:
 # problem150.c:46:     for (int i = 0; i < a_size; i++) {
@@ -395,7 +393,7 @@ main:
 	subq	$400, %rsp	#,
 # problem150.c:52: int main() {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp198
-	movq	%rax, -8(%rbp)	# tmp198, D.4029
+	movq	%rax, -8(%rbp)	# tmp198, D.3165
 	xorl	%eax, %eax	# tmp198
 # problem150.c:56:     char *test1[] = {"aa", "a", "aaa"};
 	leaq	.LC0(%rip), %rax	#, tmp96
@@ -421,9 +419,9 @@ main:
 	movl	$1, %ecx	#,
 	movq	%rax, %rdi	# tmp104,
 	call	issame	#
-# problem150.c:59:     assert(issame(result, expected1, size, 1));
 	testl	%eax, %eax	# _2
 	jne	.L21	#,
+# problem150.c:59:     assert(issame(result, expected1, size, 1));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp105
 	movq	%rax, %rcx	# tmp105,
 	movl	$59, %edx	#,
@@ -467,9 +465,9 @@ main:
 	movl	$3, %ecx	#,
 	movq	%rax, %rdi	# tmp120,
 	call	issame	#
-# problem150.c:65:     assert(issame(result, expected2, size, 3));
 	testl	%eax, %eax	# _4
 	jne	.L22	#,
+# problem150.c:65:     assert(issame(result, expected2, size, 3));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp121
 	movq	%rax, %rcx	# tmp121,
 	movl	$65, %edx	#,
@@ -545,9 +543,9 @@ main:
 	movl	$2, %ecx	#,
 	movq	%rax, %rdi	# tmp146,
 	call	issame	#
-# problem150.c:76:     assert(issame(result, expected4, size, 2));
 	testl	%eax, %eax	# _7
 	jne	.L24	#,
+# problem150.c:76:     assert(issame(result, expected4, size, 2));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp147
 	movq	%rax, %rcx	# tmp147,
 	movl	$76, %edx	#,
@@ -589,9 +587,9 @@ main:
 	movl	$3, %ecx	#,
 	movq	%rax, %rdi	# tmp161,
 	call	issame	#
-# problem150.c:82:     assert(issame(result, expected5, size, 3));
 	testl	%eax, %eax	# _9
 	jne	.L25	#,
+# problem150.c:82:     assert(issame(result, expected5, size, 3));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp162
 	movq	%rax, %rcx	# tmp162,
 	movl	$82, %edx	#,
@@ -675,9 +673,9 @@ main:
 	movl	$4, %ecx	#,
 	movq	%rax, %rdi	# tmp191,
 	call	issame	#
-# problem150.c:93:     assert(issame(result, expected7, size, 4));
 	testl	%eax, %eax	# _12
 	jne	.L27	#,
+# problem150.c:93:     assert(issame(result, expected7, size, 4));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp192
 	movq	%rax, %rcx	# tmp192,
 	movl	$93, %edx	#,
@@ -698,7 +696,7 @@ main:
 # problem150.c:98:     return 0;
 	movl	$0, %eax	#, _89
 # problem150.c:99: }
-	movq	-8(%rbp), %rdx	# D.4029, tmp199
+	movq	-8(%rbp), %rdx	# D.3165, tmp199
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp199
 	je	.L29	#,
 	call	__stack_chk_fail@PLT	#
@@ -714,7 +712,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

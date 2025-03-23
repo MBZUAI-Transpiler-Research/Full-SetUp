@@ -1,6 +1,6 @@
 	.file	"problem28.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -128,7 +128,7 @@ main:
 	subq	$112, %rsp	#,
 # problem28.c:23: int main() {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp108
-	movq	%rax, -8(%rbp)	# tmp108, D.3443
+	movq	%rax, -8(%rbp)	# tmp108, D.2586
 	xorl	%eax, %eax	# tmp108
 # problem28.c:26:     func0("", result);
 	leaq	-112(%rbp), %rax	#, tmp88
@@ -163,9 +163,9 @@ main:
 	movq	%rdx, %rsi	# tmp96,
 	movq	%rax, %rdi	# tmp95,
 	call	strcmp@PLT	#
-# problem28.c:30:     assert(strcmp(result, "hELLO!") == 0);
 	testl	%eax, %eax	# _2
 	je	.L8	#,
+# problem28.c:30:     assert(strcmp(result, "hELLO!") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp97
 	movq	%rax, %rcx	# tmp97,
 	movl	$30, %edx	#,
@@ -187,9 +187,9 @@ main:
 	movq	%rdx, %rsi	# tmp103,
 	movq	%rax, %rdi	# tmp102,
 	call	strcmp@PLT	#
-# problem28.c:33:     assert(strcmp(result, "tHESE VIOLENT DELIGHTS HAVE VIOLENT ENDS") == 0);
 	testl	%eax, %eax	# _3
 	je	.L9	#,
+# problem28.c:33:     assert(strcmp(result, "tHESE VIOLENT DELIGHTS HAVE VIOLENT ENDS") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp104
 	movq	%rax, %rcx	# tmp104,
 	movl	$33, %edx	#,
@@ -202,7 +202,7 @@ main:
 # problem28.c:35:     return 0;
 	movl	$0, %eax	#, _12
 # problem28.c:36: }
-	movq	-8(%rbp), %rdx	# D.3443, tmp109
+	movq	-8(%rbp), %rdx	# D.2586, tmp109
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp109
 	je	.L11	#,
 	call	__stack_chk_fail@PLT	#
@@ -218,7 +218,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

@@ -1,6 +1,6 @@
 	.file	"problem33.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -190,7 +190,9 @@ func0:
 	ja	.L15	#,
 # problem33.c:39:     return ans;
 	movsd	-32(%rbp), %xmm0	# ans, _40
+	movq	%xmm0, %rax	# _40, <retval>
 # problem33.c:40: }
+	movq	%rax, %xmm0	# <retval>,
 	popq	%rbp	#
 	.cfi_def_cfa 7, 8
 	ret	
@@ -252,7 +254,9 @@ evaluate_polynomial:
 	jl	.L20	#,
 # problem33.c:58:     return result;
 	movsd	-16(%rbp), %xmm0	# result, _14
+	movq	%xmm0, %rax	# _14, <retval>
 # problem33.c:59: }
+	movq	%rax, %xmm0	# <retval>,
 	popq	%rbp	#
 	.cfi_def_cfa 7, 8
 	ret	
@@ -277,15 +281,23 @@ main:
 	.cfi_offset 6, -16
 	movq	%rsp, %rbp	#,
 	.cfi_def_cfa_register 6
+	pushq	%r15	#
+	pushq	%r14	#
+	pushq	%r13	#
+	pushq	%r12	#
 	pushq	%rbx	#
 	subq	$72, %rsp	#,
-	.cfi_offset 3, -24
+	.cfi_offset 15, -24
+	.cfi_offset 14, -32
+	.cfi_offset 13, -40
+	.cfi_offset 12, -48
+	.cfi_offset 3, -56
 # problem33.c:61: int main() {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp159
-	movq	%rax, -24(%rbp)	# tmp159, D.4865
+	movq	%rax, -56(%rbp)	# tmp159, D.4028
 	xorl	%eax, %eax	# tmp159
 # problem33.c:65:     for (int i = 0; i < 100; i++) {
-	movl	$0, -68(%rbp)	#, i
+	movl	$0, -100(%rbp)	#, i
 # problem33.c:65:     for (int i = 0; i < 100; i++) {
 	jmp	.L23	#
 .L32:
@@ -294,34 +306,37 @@ main:
 	movq	%rax, %rbx	# tmp107, saved_stack.2_31
 # problem33.c:66:         ncoeff = 2 * (1 + rand() % 4);
 	call	rand@PLT	#
-	movl	%eax, %edx	#, _1
 # problem33.c:66:         ncoeff = 2 * (1 + rand() % 4);
-	movl	%edx, %eax	# _1, tmp108
-	sarl	$31, %eax	#, tmp108
-	shrl	$30, %eax	#, tmp109
-	addl	%eax, %edx	# tmp109, tmp110
-	andl	$3, %edx	#, tmp111
-	subl	%eax, %edx	# tmp109, tmp112
-	movl	%edx, %eax	# tmp112, _2
+	cltd
+	shrl	$30, %edx	#, tmp109
+	addl	%edx, %eax	# tmp109, tmp110
+	andl	$3, %eax	#, tmp111
+	subl	%edx, %eax	# tmp109, tmp112
 # problem33.c:66:         ncoeff = 2 * (1 + rand() % 4);
 	addl	$1, %eax	#, _3
 # problem33.c:66:         ncoeff = 2 * (1 + rand() % 4);
 	addl	%eax, %eax	# tmp113
-	movl	%eax, -60(%rbp)	# tmp113, ncoeff
+	movl	%eax, -92(%rbp)	# tmp113, ncoeff
 # problem33.c:67:         double coeffs[ncoeff];
-	movl	-60(%rbp), %eax	# ncoeff, ncoeff.0_34
+	movl	-92(%rbp), %eax	# ncoeff, ncoeff.0_34
 # problem33.c:67:         double coeffs[ncoeff];
 	movslq	%eax, %rdx	# ncoeff.0_34, _4
 	subq	$1, %rdx	#, _5
-	movq	%rdx, -48(%rbp)	# _6, D.4848
+	movq	%rdx, -80(%rbp)	# _6, D.4011
+	movslq	%eax, %rdx	# ncoeff.0_34, _7
+	movq	%rdx, %r12	# _7, _8
+	movl	$0, %r13d	#, _8
+	movslq	%eax, %rdx	# ncoeff.0_34, _12
+	movq	%rdx, %r14	# _12, _13
+	movl	$0, %r15d	#, _13
 	cltq
 	leaq	0(,%rax,8), %rdx	#, _16
 	movl	$16, %eax	#, tmp157
 	subq	$1, %rax	#, tmp114
 	addq	%rdx, %rax	# _16, tmp115
-	movl	$16, %esi	#, tmp158
+	movl	$16, %edi	#, tmp158
 	movl	$0, %edx	#, tmp118
-	divq	%rsi	# tmp158
+	divq	%rdi	# tmp158
 	imulq	$16, %rax, %rax	#, tmp117, tmp119
 	movq	%rax, %rcx	# tmp119, tmp121
 	andq	$-4096, %rcx	#, tmp121
@@ -350,9 +365,9 @@ main:
 	addq	$7, %rax	#, tmp127
 	shrq	$3, %rax	#, tmp128
 	salq	$3, %rax	#, tmp129
-	movq	%rax, -40(%rbp)	# tmp129, coeffs.1
+	movq	%rax, -72(%rbp)	# tmp129, coeffs.1
 # problem33.c:68:         for (int j = 0; j < ncoeff; j++) {
-	movl	$0, -64(%rbp)	#, j
+	movl	$0, -96(%rbp)	#, j
 # problem33.c:68:         for (int j = 0; j < ncoeff; j++) {
 	jmp	.L27	#
 .L30:
@@ -363,11 +378,11 @@ main:
 	movslq	%ecx, %rax	# _17, tmp130
 	imulq	$818089009, %rax, %rax	#, tmp130, tmp131
 	shrq	$32, %rax	#, tmp132
-	movl	%eax, %edx	# tmp132, tmp133
-	sarl	$2, %edx	#, tmp133
-	movl	%ecx, %eax	# _17, tmp134
-	sarl	$31, %eax	#, tmp134
-	subl	%eax, %edx	# tmp134, _18
+	sarl	$2, %eax	#, tmp133
+	movl	%ecx, %esi	# _17, tmp134
+	sarl	$31, %esi	#, tmp134
+	subl	%esi, %eax	# tmp134, tmp133
+	movl	%eax, %edx	# tmp133, _18
 	movl	%edx, %eax	# _18, tmp135
 	sall	$2, %eax	#, tmp135
 	addl	%edx, %eax	# _18, tmp135
@@ -380,55 +395,55 @@ main:
 # problem33.c:69:             double coeff = -10 + rand() % 21;
 	pxor	%xmm0, %xmm0	# tmp136
 	cvtsi2sdl	%eax, %xmm0	# _19, tmp136
-	movsd	%xmm0, -56(%rbp)	# tmp136, coeff
+	movsd	%xmm0, -88(%rbp)	# tmp136, coeff
 # problem33.c:70:             if (coeff == 0) coeff = 1;
 	pxor	%xmm0, %xmm0	# tmp137
-	ucomisd	-56(%rbp), %xmm0	# coeff, tmp137
+	ucomisd	-88(%rbp), %xmm0	# coeff, tmp137
 	jp	.L28	#,
 	pxor	%xmm0, %xmm0	# tmp138
-	ucomisd	-56(%rbp), %xmm0	# coeff, tmp138
+	ucomisd	-88(%rbp), %xmm0	# coeff, tmp138
 	jne	.L28	#,
 # problem33.c:70:             if (coeff == 0) coeff = 1;
 	movsd	.LC1(%rip), %xmm0	#, tmp139
-	movsd	%xmm0, -56(%rbp)	# tmp139, coeff
+	movsd	%xmm0, -88(%rbp)	# tmp139, coeff
 .L28:
 # problem33.c:71:             coeffs[j] = coeff;
-	movq	-40(%rbp), %rax	# coeffs.1, tmp140
-	movl	-64(%rbp), %edx	# j, tmp142
+	movq	-72(%rbp), %rax	# coeffs.1, tmp140
+	movl	-96(%rbp), %edx	# j, tmp142
 	movslq	%edx, %rdx	# tmp142, tmp141
-	movsd	-56(%rbp), %xmm0	# coeff, tmp143
+	movsd	-88(%rbp), %xmm0	# coeff, tmp143
 	movsd	%xmm0, (%rax,%rdx,8)	# tmp143, (*coeffs.1_41)[j_23]
 # problem33.c:68:         for (int j = 0; j < ncoeff; j++) {
-	addl	$1, -64(%rbp)	#, j
+	addl	$1, -96(%rbp)	#, j
 .L27:
 # problem33.c:68:         for (int j = 0; j < ncoeff; j++) {
-	movl	-64(%rbp), %eax	# j, tmp144
-	cmpl	-60(%rbp), %eax	# ncoeff, tmp144
+	movl	-96(%rbp), %eax	# j, tmp144
+	cmpl	-92(%rbp), %eax	# ncoeff, tmp144
 	jl	.L30	#,
 # problem33.c:74:         solution = func0(coeffs, ncoeff);
-	movl	-60(%rbp), %edx	# ncoeff, tmp145
-	movq	-40(%rbp), %rax	# coeffs.1, tmp146
+	movl	-92(%rbp), %edx	# ncoeff, tmp145
+	movq	-72(%rbp), %rax	# coeffs.1, tmp146
 	movl	%edx, %esi	# tmp145,
 	movq	%rax, %rdi	# tmp146,
 	call	func0	#
 	movq	%xmm0, %rax	#, tmp147
-	movq	%rax, -32(%rbp)	# tmp147, solution
+	movq	%rax, -64(%rbp)	# tmp147, solution
 # problem33.c:76:         assert(fabs(evaluate_polynomial(coeffs, ncoeff, solution)) < 1e-3);
-	movq	-32(%rbp), %rcx	# solution, tmp148
-	movl	-60(%rbp), %edx	# ncoeff, tmp149
-	movq	-40(%rbp), %rax	# coeffs.1, tmp150
+	movq	-64(%rbp), %rcx	# solution, tmp148
+	movl	-92(%rbp), %edx	# ncoeff, tmp149
+	movq	-72(%rbp), %rax	# coeffs.1, tmp150
 	movq	%rcx, %xmm0	# tmp148,
 	movl	%edx, %esi	# tmp149,
 	movq	%rax, %rdi	# tmp150,
 	call	evaluate_polynomial	#
 	movq	%xmm0, %rax	#, _20
-# problem33.c:76:         assert(fabs(evaluate_polynomial(coeffs, ncoeff, solution)) < 1e-3);
 	movq	.LC2(%rip), %xmm0	#, tmp151
 	movq	%rax, %xmm1	# _20, _20
 	andpd	%xmm0, %xmm1	# tmp151, _20
 	movsd	.LC4(%rip), %xmm0	#, tmp152
 	comisd	%xmm1, %xmm0	# _21, tmp152
 	ja	.L31	#,
+# problem33.c:76:         assert(fabs(evaluate_polynomial(coeffs, ncoeff, solution)) < 1e-3);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp153
 	movq	%rax, %rcx	# tmp153,
 	movl	$76, %edx	#,
@@ -440,21 +455,26 @@ main:
 .L31:
 	movq	%rbx, %rsp	# saved_stack.2_31,
 # problem33.c:65:     for (int i = 0; i < 100; i++) {
-	addl	$1, -68(%rbp)	#, i
+	addl	$1, -100(%rbp)	#, i
 .L23:
 # problem33.c:65:     for (int i = 0; i < 100; i++) {
-	cmpl	$99, -68(%rbp)	#, i
+	cmpl	$99, -100(%rbp)	#, i
 	jle	.L32	#,
 # problem33.c:79:     return 0;
 	movl	$0, %eax	#, _29
 # problem33.c:80: }
-	movq	-24(%rbp), %rdx	# D.4865, tmp160
+	movq	-56(%rbp), %rdx	# D.4028, tmp160
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp160
 	je	.L34	#,
 	call	__stack_chk_fail@PLT	#
 .L34:
-	movq	-8(%rbp), %rbx	#,
-	leave	
+	leaq	-40(%rbp), %rsp	#,
+	popq	%rbx	#
+	popq	%r12	#
+	popq	%r13	#
+	popq	%r14	#
+	popq	%r15	#
+	popq	%rbp	#
 	.cfi_def_cfa 7, 8
 	ret	
 	.cfi_endproc
@@ -483,7 +503,7 @@ __PRETTY_FUNCTION__.0:
 .LC4:
 	.long	-755914244
 	.long	1062232653
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

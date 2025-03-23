@@ -1,6 +1,6 @@
 	.file	"problem144.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -102,12 +102,13 @@ func0:
 	cltq
 # problem144.c:31:                 memcpy(out + out_index, sentence + i - word_len, word_len);
 	movl	-12(%rbp), %edx	# i, tmp123
-	movslq	%edx, %rcx	# tmp123, _10
-	movl	-20(%rbp), %edx	# word_len, tmp124
-	movslq	%edx, %rdx	# tmp124, _11
-	subq	%rdx, %rcx	# _11, _12
+	movslq	%edx, %rdx	# tmp123, _10
+	movl	-20(%rbp), %ecx	# word_len, tmp124
+	movslq	%ecx, %rcx	# tmp124, _11
+	movq	%rdx, %rsi	# _10, _10
+	subq	%rcx, %rsi	# _11, _10
 	movq	-40(%rbp), %rdx	# sentence, tmp125
-	leaq	(%rcx,%rdx), %rsi	#, _13
+	addq	%rdx, %rsi	# tmp125, _13
 # problem144.c:31:                 memcpy(out + out_index, sentence + i - word_len, word_len);
 	movl	-16(%rbp), %edx	# out_index, tmp126
 	movslq	%edx, %rcx	# tmp126, _14
@@ -196,12 +197,13 @@ func0:
 	cltq
 # problem144.c:54:         memcpy(out + out_index, sentence + i - word_len, word_len);
 	movl	-12(%rbp), %edx	# i, tmp138
-	movslq	%edx, %rcx	# tmp138, _25
-	movl	-20(%rbp), %edx	# word_len, tmp139
-	movslq	%edx, %rdx	# tmp139, _26
-	subq	%rdx, %rcx	# _26, _27
+	movslq	%edx, %rdx	# tmp138, _25
+	movl	-20(%rbp), %ecx	# word_len, tmp139
+	movslq	%ecx, %rcx	# tmp139, _26
+	movq	%rdx, %rsi	# _25, _25
+	subq	%rcx, %rsi	# _26, _25
 	movq	-40(%rbp), %rdx	# sentence, tmp140
-	leaq	(%rcx,%rdx), %rsi	#, _28
+	addq	%rdx, %rsi	# tmp140, _28
 # problem144.c:54:         memcpy(out + out_index, sentence + i - word_len, word_len);
 	movl	-16(%rbp), %edx	# out_index, tmp141
 	movslq	%edx, %rcx	# tmp141, _29
@@ -287,7 +289,7 @@ main:
 	subq	$112, %rsp	#,
 # problem144.c:66: int main() {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp140
-	movq	%rax, -8(%rbp)	# tmp140, D.3479
+	movq	%rax, -8(%rbp)	# tmp140, D.2622
 	xorl	%eax, %eax	# tmp140
 # problem144.c:69:     func0("This is a test", output);
 	leaq	-112(%rbp), %rax	#, tmp92
@@ -301,9 +303,9 @@ main:
 	movq	%rdx, %rsi	# tmp95,
 	movq	%rax, %rdi	# tmp94,
 	call	strcmp@PLT	#
-# problem144.c:70:     assert(strcmp(output, "is") == 0);
 	testl	%eax, %eax	# _1
 	je	.L23	#,
+# problem144.c:70:     assert(strcmp(output, "is") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp96
 	movq	%rax, %rcx	# tmp96,
 	movl	$70, %edx	#,
@@ -325,9 +327,9 @@ main:
 	movq	%rdx, %rsi	# tmp102,
 	movq	%rax, %rdi	# tmp101,
 	call	strcmp@PLT	#
-# problem144.c:73:     assert(strcmp(output, "go for") == 0);
 	testl	%eax, %eax	# _2
 	je	.L24	#,
+# problem144.c:73:     assert(strcmp(output, "go for") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp103
 	movq	%rax, %rcx	# tmp103,
 	movl	$73, %edx	#,
@@ -349,9 +351,9 @@ main:
 	movq	%rdx, %rsi	# tmp109,
 	movq	%rax, %rdi	# tmp108,
 	call	strcmp@PLT	#
-# problem144.c:76:     assert(strcmp(output, "there is no place") == 0);
 	testl	%eax, %eax	# _3
 	je	.L25	#,
+# problem144.c:76:     assert(strcmp(output, "there is no place") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp110
 	movq	%rax, %rcx	# tmp110,
 	movl	$76, %edx	#,
@@ -373,9 +375,9 @@ main:
 	movq	%rdx, %rsi	# tmp116,
 	movq	%rax, %rdi	# tmp115,
 	call	strcmp@PLT	#
-# problem144.c:79:     assert(strcmp(output, "Hi am Hussein") == 0);
 	testl	%eax, %eax	# _4
 	je	.L26	#,
+# problem144.c:79:     assert(strcmp(output, "Hi am Hussein") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp117
 	movq	%rax, %rcx	# tmp117,
 	movl	$79, %edx	#,
@@ -397,9 +399,9 @@ main:
 	movq	%rdx, %rsi	# tmp123,
 	movq	%rax, %rdi	# tmp122,
 	call	strcmp@PLT	#
-# problem144.c:82:     assert(strcmp(output, "go for it") == 0);
 	testl	%eax, %eax	# _5
 	je	.L27	#,
+# problem144.c:82:     assert(strcmp(output, "go for it") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp124
 	movq	%rax, %rcx	# tmp124,
 	movl	$82, %edx	#,
@@ -442,9 +444,9 @@ main:
 	movq	%rdx, %rsi	# tmp135,
 	movq	%rax, %rdi	# tmp134,
 	call	strcmp@PLT	#
-# problem144.c:88:     assert(strcmp(output, "is") == 0);
 	testl	%eax, %eax	# _7
 	je	.L29	#,
+# problem144.c:88:     assert(strcmp(output, "is") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp136
 	movq	%rax, %rcx	# tmp136,
 	movl	$88, %edx	#,
@@ -457,7 +459,7 @@ main:
 # problem144.c:90:     return 0;
 	movl	$0, %eax	#, _24
 # problem144.c:91: }
-	movq	-8(%rbp), %rdx	# D.3479, tmp141
+	movq	-8(%rbp), %rdx	# D.2622, tmp141
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp141
 	je	.L31	#,
 	call	__stack_chk_fail@PLT	#
@@ -473,7 +475,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

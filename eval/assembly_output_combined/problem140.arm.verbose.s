@@ -1,7 +1,7 @@
 	.arch armv8-a
 	.file	"problem140.c"
-// GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (aarch64-linux-gnu)
-//	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+// GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (aarch64-linux-gnu)
+//	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 // GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 // options passed: -mlittle-endian -mabi=lp64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection
@@ -88,9 +88,9 @@ main:
 // problem140.c:17:     assert(func0(4) == 288);
 	mov	w0, 4	//,
 	bl	func0		//
-// problem140.c:17:     assert(func0(4) == 288);
 	cmp	x0, 288	// _1,
 	beq	.L6		//,
+// problem140.c:17:     assert(func0(4) == 288);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp98,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp98,
 	mov	w2, 17	//,
@@ -104,10 +104,10 @@ main:
 	mov	w0, 5	//,
 	bl	func0		//
 	mov	x1, x0	// _2,
-// problem140.c:18:     assert(func0(5) == 34560);
 	mov	x0, 34560	// tmp101,
 	cmp	x1, x0	// _2, tmp101
 	beq	.L7		//,
+// problem140.c:18:     assert(func0(5) == 34560);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp102,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp102,
 	mov	w2, 18	//,
@@ -121,11 +121,11 @@ main:
 	mov	w0, 7	//,
 	bl	func0		//
 	mov	x1, x0	// _3,
-// problem140.c:19:     assert(func0(7) == 125411328000);
 	mov	x0, 857276416	// tmp105,
 	movk	x0, 0x1d, lsl 32	// tmp105,,
 	cmp	x1, x0	// _3, tmp105
 	beq	.L8		//,
+// problem140.c:19:     assert(func0(7) == 125411328000);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp106,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp106,
 	mov	w2, 19	//,
@@ -138,9 +138,9 @@ main:
 // problem140.c:20:     assert(func0(1) == 1);
 	mov	w0, 1	//,
 	bl	func0		//
-// problem140.c:20:     assert(func0(1) == 1);
 	cmp	x0, 1	// _4,
 	beq	.L9		//,
+// problem140.c:20:     assert(func0(1) == 1);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp109,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp109,
 	mov	w2, 20	//,
@@ -167,5 +167,5 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

@@ -27,10 +27,10 @@ func0:
 	leaq	0(,%rax,8), %rdx
 	movq	-40(%rbp), %rax
 	addq	%rdx, %rax
-	movq	(%rax), %rax
-	movl	-24(%rbp), %edx
-	movslq	%edx, %rdx
-	salq	$2, %rdx
+	movq	(%rax), %rdx
+	movl	-24(%rbp), %eax
+	cltq
+	salq	$2, %rax
 	addq	%rdx, %rax
 	movl	(%rax), %eax
 	cmpl	$1, %eax
@@ -61,10 +61,10 @@ func0:
 	leaq	-8(%rax), %rdx
 	movq	-40(%rbp), %rax
 	addq	%rdx, %rax
-	movq	(%rax), %rax
-	movl	-16(%rbp), %edx
-	movslq	%edx, %rdx
-	salq	$2, %rdx
+	movq	(%rax), %rdx
+	movl	-16(%rbp), %eax
+	cltq
+	salq	$2, %rax
 	addq	%rdx, %rax
 	movl	(%rax), %eax
 	cmpl	%eax, -12(%rbp)
@@ -75,10 +75,10 @@ func0:
 	leaq	-8(%rax), %rdx
 	movq	-40(%rbp), %rax
 	addq	%rdx, %rax
-	movq	(%rax), %rax
-	movl	-16(%rbp), %edx
-	movslq	%edx, %rdx
-	salq	$2, %rdx
+	movq	(%rax), %rdx
+	movl	-16(%rbp), %eax
+	cltq
+	salq	$2, %rax
 	addq	%rdx, %rax
 	movl	(%rax), %eax
 	movl	%eax, -12(%rbp)
@@ -93,10 +93,10 @@ func0:
 	leaq	0(,%rax,8), %rdx
 	movq	-40(%rbp), %rax
 	addq	%rdx, %rax
-	movq	(%rax), %rax
-	movl	-16(%rbp), %edx
-	movslq	%edx, %rdx
-	salq	$2, %rdx
+	movq	(%rax), %rdx
+	movl	-16(%rbp), %eax
+	cltq
+	salq	$2, %rax
 	addq	%rdx, %rax
 	movl	(%rax), %eax
 	cmpl	%eax, -12(%rbp)
@@ -107,10 +107,10 @@ func0:
 	leaq	0(,%rax,8), %rdx
 	movq	-40(%rbp), %rax
 	addq	%rdx, %rax
-	movq	(%rax), %rax
-	movl	-16(%rbp), %edx
-	movslq	%edx, %rdx
-	salq	$2, %rdx
+	movq	(%rax), %rdx
+	movl	-16(%rbp), %eax
+	cltq
+	salq	$2, %rax
 	addq	%rdx, %rax
 	movl	(%rax), %eax
 	movl	%eax, -12(%rbp)
@@ -122,11 +122,11 @@ func0:
 	leaq	0(,%rax,8), %rdx
 	movq	-40(%rbp), %rax
 	addq	%rdx, %rax
-	movq	(%rax), %rax
-	movl	-16(%rbp), %edx
-	movslq	%edx, %rdx
-	salq	$2, %rdx
-	subq	$4, %rdx
+	movq	(%rax), %rdx
+	movl	-16(%rbp), %eax
+	cltq
+	salq	$2, %rax
+	subq	$4, %rax
 	addq	%rdx, %rax
 	movl	(%rax), %eax
 	cmpl	%eax, -12(%rbp)
@@ -136,11 +136,11 @@ func0:
 	leaq	0(,%rax,8), %rdx
 	movq	-40(%rbp), %rax
 	addq	%rdx, %rax
-	movq	(%rax), %rax
-	movl	-16(%rbp), %edx
-	movslq	%edx, %rdx
-	salq	$2, %rdx
-	subq	$4, %rdx
+	movq	(%rax), %rdx
+	movl	-16(%rbp), %eax
+	cltq
+	salq	$2, %rax
+	subq	$4, %rax
 	addq	%rdx, %rax
 	movl	(%rax), %eax
 	movl	%eax, -12(%rbp)
@@ -154,11 +154,11 @@ func0:
 	leaq	0(,%rax,8), %rdx
 	movq	-40(%rbp), %rax
 	addq	%rdx, %rax
-	movq	(%rax), %rax
-	movl	-16(%rbp), %edx
-	movslq	%edx, %rdx
-	addq	$1, %rdx
-	salq	$2, %rdx
+	movq	(%rax), %rdx
+	movl	-16(%rbp), %eax
+	cltq
+	addq	$1, %rax
+	salq	$2, %rax
 	addq	%rdx, %rax
 	movl	(%rax), %eax
 	cmpl	%eax, -12(%rbp)
@@ -168,11 +168,11 @@ func0:
 	leaq	0(,%rax,8), %rdx
 	movq	-40(%rbp), %rax
 	addq	%rdx, %rax
-	movq	(%rax), %rax
-	movl	-16(%rbp), %edx
-	movslq	%edx, %rdx
-	addq	$1, %rdx
-	salq	$2, %rdx
+	movq	(%rax), %rdx
+	movl	-16(%rbp), %eax
+	cltq
+	addq	$1, %rax
+	salq	$2, %rax
 	addq	%rdx, %rax
 	movl	(%rax), %eax
 	movl	%eax, -12(%rbp)
@@ -221,7 +221,7 @@ func0:
 	.cfi_endproc
 .LFE6:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

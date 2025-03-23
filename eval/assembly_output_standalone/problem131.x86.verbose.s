@@ -1,6 +1,6 @@
 	.file	"code.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -35,7 +35,6 @@ func0:
 	jne	.L2	#,
 # eval/problem131//code.c:7:     if (n == 0) return out;
 	movq	-8(%rbp), %rax	# out, _31
-# eval/problem131//code.c:7:     if (n == 0) return out;
 	jmp	.L3	#
 .L2:
 # eval/problem131//code.c:8:     out[1] = 3;
@@ -60,15 +59,15 @@ func0:
 	shrl	$31, %edx	#, tmp118
 	addl	%edx, %eax	# tmp118, tmp119
 	sarl	%eax	# tmp120
-	movl	%eax, %ecx	# tmp120, _7
+	movl	%eax, %edx	# tmp120, _7
 # eval/problem131//code.c:10:         if (i % 2 == 0) out[i] = 1 + i / 2;
 	movl	-12(%rbp), %eax	# i, tmp121
 	cltq
-	leaq	0(,%rax,4), %rdx	#, _9
+	leaq	0(,%rax,4), %rcx	#, _9
 	movq	-8(%rbp), %rax	# out, tmp122
-	addq	%rdx, %rax	# _9, _10
+	addq	%rcx, %rax	# _9, _10
 # eval/problem131//code.c:10:         if (i % 2 == 0) out[i] = 1 + i / 2;
-	leal	1(%rcx), %edx	#, _11
+	addl	$1, %edx	#, _11
 # eval/problem131//code.c:10:         if (i % 2 == 0) out[i] = 1 + i / 2;
 	movl	%edx, (%rax)	# _11, *_10
 	jmp	.L6	#
@@ -130,7 +129,7 @@ func0:
 	.cfi_endproc
 .LFE6:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

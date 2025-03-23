@@ -1,7 +1,7 @@
 	.arch armv8-a
 	.file	"problem135.c"
-// GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (aarch64-linux-gnu)
-//	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+// GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (aarch64-linux-gnu)
+//	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 // GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 // options passed: -mlittle-endian -mabi=lp64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection
@@ -29,7 +29,6 @@ func0:
 	bne	.L2		//,
 // problem135.c:7:     if (len == 0) return 0;
 	mov	w0, 0	// _24,
-// problem135.c:7:     if (len == 0) return 0;
 	b	.L3		//
 .L2:
 // problem135.c:8:     char last_char = txt[len - 1];
@@ -42,7 +41,6 @@ func0:
 	strb	w0, [sp, 42]	// tmp120, last_char
 // problem135.c:9:     if (!isalpha((unsigned char)last_char)) return 0;
 	bl	__ctype_b_loc		//
-// problem135.c:9:     if (!isalpha((unsigned char)last_char)) return 0;
 	ldr	x1, [x0]	// _6, *_5
 	ldrb	w0, [sp, 42]	// _7, last_char
 	lsl	x0, x0, 1	// _8, _7,
@@ -54,7 +52,6 @@ func0:
 	bne	.L4		//,
 // problem135.c:9:     if (!isalpha((unsigned char)last_char)) return 0;
 	mov	w0, 0	// _24,
-// problem135.c:9:     if (!isalpha((unsigned char)last_char)) return 0;
 	b	.L3		//
 .L4:
 // problem135.c:10:     if (len == 1) return 1;
@@ -63,7 +60,6 @@ func0:
 	bne	.L5		//,
 // problem135.c:10:     if (len == 1) return 1;
 	mov	w0, 1	// _24,
-// problem135.c:10:     if (len == 1) return 1;
 	b	.L3		//
 .L5:
 // problem135.c:11:     char second_last_char = txt[len - 2];
@@ -76,7 +72,6 @@ func0:
 	strb	w0, [sp, 43]	// tmp123, second_last_char
 // problem135.c:12:     if (isalpha((unsigned char)second_last_char)) return 0;
 	bl	__ctype_b_loc		//
-// problem135.c:12:     if (isalpha((unsigned char)second_last_char)) return 0;
 	ldr	x1, [x0]	// _17, *_16
 	ldrb	w0, [sp, 43]	// _18, second_last_char
 	lsl	x0, x0, 1	// _19, _18,
@@ -88,7 +83,6 @@ func0:
 	beq	.L6		//,
 // problem135.c:12:     if (isalpha((unsigned char)second_last_char)) return 0;
 	mov	w0, 0	// _24,
-// problem135.c:12:     if (isalpha((unsigned char)second_last_char)) return 0;
 	b	.L3		//
 .L6:
 // problem135.c:13:     return 1;
@@ -183,9 +177,9 @@ main:
 	adrp	x0, .LC0	// tmp104,
 	add	x0, x0, :lo12:.LC0	//, tmp104,
 	bl	func0		//
-// problem135.c:21:     assert(func0("apple") == 0);
 	cmp	w0, 0	// _1,
 	beq	.L8		//,
+// problem135.c:21:     assert(func0("apple") == 0);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp105,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp105,
 	mov	w2, 21	//,
@@ -199,9 +193,9 @@ main:
 	adrp	x0, .LC3	// tmp108,
 	add	x0, x0, :lo12:.LC3	//, tmp108,
 	bl	func0		//
-// problem135.c:22:     assert(func0("apple pi e") == 1);
 	cmp	w0, 1	// _2,
 	beq	.L9		//,
+// problem135.c:22:     assert(func0("apple pi e") == 1);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp109,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp109,
 	mov	w2, 22	//,
@@ -215,9 +209,9 @@ main:
 	adrp	x0, .LC5	// tmp112,
 	add	x0, x0, :lo12:.LC5	//, tmp112,
 	bl	func0		//
-// problem135.c:23:     assert(func0("eeeee") == 0);
 	cmp	w0, 0	// _3,
 	beq	.L10		//,
+// problem135.c:23:     assert(func0("eeeee") == 0);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp113,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp113,
 	mov	w2, 23	//,
@@ -231,9 +225,9 @@ main:
 	adrp	x0, .LC7	// tmp116,
 	add	x0, x0, :lo12:.LC7	//, tmp116,
 	bl	func0		//
-// problem135.c:24:     assert(func0("A") == 1);
 	cmp	w0, 1	// _4,
 	beq	.L11		//,
+// problem135.c:24:     assert(func0("A") == 1);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp117,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp117,
 	mov	w2, 24	//,
@@ -247,9 +241,9 @@ main:
 	adrp	x0, .LC9	// tmp120,
 	add	x0, x0, :lo12:.LC9	//, tmp120,
 	bl	func0		//
-// problem135.c:25:     assert(func0("Pumpkin pie ") == 0);
 	cmp	w0, 0	// _5,
 	beq	.L12		//,
+// problem135.c:25:     assert(func0("Pumpkin pie ") == 0);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp121,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp121,
 	mov	w2, 25	//,
@@ -263,9 +257,9 @@ main:
 	adrp	x0, .LC11	// tmp124,
 	add	x0, x0, :lo12:.LC11	//, tmp124,
 	bl	func0		//
-// problem135.c:26:     assert(func0("Pumpkin pie 1") == 0);
 	cmp	w0, 0	// _6,
 	beq	.L13		//,
+// problem135.c:26:     assert(func0("Pumpkin pie 1") == 0);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp125,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp125,
 	mov	w2, 26	//,
@@ -279,9 +273,9 @@ main:
 	adrp	x0, .LC13	// tmp128,
 	add	x0, x0, :lo12:.LC13	//, tmp128,
 	bl	func0		//
-// problem135.c:27:     assert(func0("") == 0);
 	cmp	w0, 0	// _7,
 	beq	.L14		//,
+// problem135.c:27:     assert(func0("") == 0);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp129,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp129,
 	mov	w2, 27	//,
@@ -295,9 +289,9 @@ main:
 	adrp	x0, .LC15	// tmp132,
 	add	x0, x0, :lo12:.LC15	//, tmp132,
 	bl	func0		//
-// problem135.c:28:     assert(func0("eeeee e ") == 0);
 	cmp	w0, 0	// _8,
 	beq	.L15		//,
+// problem135.c:28:     assert(func0("eeeee e ") == 0);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp133,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp133,
 	mov	w2, 28	//,
@@ -311,9 +305,9 @@ main:
 	adrp	x0, .LC17	// tmp136,
 	add	x0, x0, :lo12:.LC17	//, tmp136,
 	bl	func0		//
-// problem135.c:29:     assert(func0("apple pie") == 0);
 	cmp	w0, 0	// _9,
 	beq	.L16		//,
+// problem135.c:29:     assert(func0("apple pie") == 0);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp137,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp137,
 	mov	w2, 29	//,
@@ -327,9 +321,9 @@ main:
 	adrp	x0, .LC19	// tmp140,
 	add	x0, x0, :lo12:.LC19	//, tmp140,
 	bl	func0		//
-// problem135.c:30:     assert(func0("apple pi e ") == 0);
 	cmp	w0, 0	// _10,
 	beq	.L17		//,
+// problem135.c:30:     assert(func0("apple pi e ") == 0);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp141,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp141,
 	mov	w2, 30	//,
@@ -356,5 +350,5 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

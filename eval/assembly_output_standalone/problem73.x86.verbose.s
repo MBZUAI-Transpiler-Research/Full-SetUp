@@ -1,6 +1,6 @@
 	.file	"code.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -49,7 +49,6 @@ func0:
 	je	.L3	#,
 # eval/problem73//code.c:7:         if (q[i] != q[size - 1 - i]) return false;
 	movl	$0, %eax	#, _32
-# eval/problem73//code.c:7:         if (q[i] != q[size - 1 - i]) return false;
 	jmp	.L4	#
 .L3:
 # eval/problem73//code.c:8:         sum += q[i] + q[size - 1 - i];
@@ -87,14 +86,12 @@ func0:
 	cmpl	%eax, -4(%rbp)	# _22, i
 	jl	.L5	#,
 # eval/problem73//code.c:10:     if (size % 2 == 1) sum += q[size / 2];
-	movl	-28(%rbp), %edx	# size, tmp124
-	movl	%edx, %eax	# tmp124, tmp125
-	sarl	$31, %eax	#, tmp125
-	shrl	$31, %eax	#, tmp126
-	addl	%eax, %edx	# tmp126, tmp127
-	andl	$1, %edx	#, tmp128
-	subl	%eax, %edx	# tmp126, tmp129
-	movl	%edx, %eax	# tmp129, _23
+	movl	-28(%rbp), %eax	# size, tmp124
+	cltd
+	shrl	$31, %edx	#, tmp126
+	addl	%edx, %eax	# tmp126, tmp127
+	andl	$1, %eax	#, tmp128
+	subl	%edx, %eax	# tmp126, tmp129
 # eval/problem73//code.c:10:     if (size % 2 == 1) sum += q[size / 2];
 	cmpl	$1, %eax	#, _23
 	jne	.L6	#,
@@ -125,7 +122,7 @@ func0:
 	.cfi_endproc
 .LFE0:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

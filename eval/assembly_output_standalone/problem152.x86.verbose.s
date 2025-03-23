@@ -1,6 +1,6 @@
 	.file	"code.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -87,15 +87,13 @@ func0:
 	movq	%rax, %xmm0	# _22,
 	call	round@PLT	#
 # eval/problem152//code.c:8:             if (lst[i] > 0 && (int)(round(lst[i])) % 2 == 1) {
-	cvttsd2sil	%xmm0, %edx	# _23, _24
+	cvttsd2sil	%xmm0, %eax	# _23, _24
 # eval/problem152//code.c:8:             if (lst[i] > 0 && (int)(round(lst[i])) % 2 == 1) {
-	movl	%edx, %eax	# _24, tmp136
-	sarl	$31, %eax	#, tmp136
-	shrl	$31, %eax	#, tmp137
-	addl	%eax, %edx	# tmp137, tmp138
-	andl	$1, %edx	#, tmp139
-	subl	%eax, %edx	# tmp137, tmp140
-	movl	%edx, %eax	# tmp140, _25
+	cltd
+	shrl	$31, %edx	#, tmp137
+	addl	%edx, %eax	# tmp137, tmp138
+	andl	$1, %eax	#, tmp139
+	subl	%edx, %eax	# tmp137, tmp140
 # eval/problem152//code.c:8:             if (lst[i] > 0 && (int)(round(lst[i])) % 2 == 1) {
 	cmpl	$1, %eax	#, _25
 	jne	.L3	#,
@@ -163,7 +161,7 @@ func0:
 .LC1:
 	.long	-350469331
 	.long	1058682594
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

@@ -1,6 +1,6 @@
 	.file	"problem130.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -37,12 +37,12 @@ func0:
 	leaq	0(,%rax,8), %rdx	#, _2
 	movq	-40(%rbp), %rax	# grid, tmp173
 	addq	%rdx, %rax	# _2, _3
-	movq	(%rax), %rax	# *_3, _4
+	movq	(%rax), %rdx	# *_3, _4
 # problem130.c:8:             if (grid[i][j] == 1) {
-	movl	-24(%rbp), %edx	# j, tmp174
-	movslq	%edx, %rdx	# tmp174, _5
-	salq	$2, %rdx	#, _6
-	addq	%rdx, %rax	# _6, _7
+	movl	-24(%rbp), %eax	# j, tmp174
+	cltq
+	salq	$2, %rax	#, _6
+	addq	%rdx, %rax	# _4, _7
 	movl	(%rax), %eax	# *_7, _8
 # problem130.c:8:             if (grid[i][j] == 1) {
 	cmpl	$1, %eax	#, _8
@@ -82,12 +82,12 @@ func0:
 	leaq	-8(%rax), %rdx	#, _11
 	movq	-40(%rbp), %rax	# grid, tmp182
 	addq	%rdx, %rax	# _11, _12
-	movq	(%rax), %rax	# *_12, _13
+	movq	(%rax), %rdx	# *_12, _13
 # problem130.c:13:     if (x > 0 && grid[x - 1][y] < min) min = grid[x - 1][y];
-	movl	-16(%rbp), %edx	# y, tmp183
-	movslq	%edx, %rdx	# tmp183, _14
-	salq	$2, %rdx	#, _15
-	addq	%rdx, %rax	# _15, _16
+	movl	-16(%rbp), %eax	# y, tmp183
+	cltq
+	salq	$2, %rax	#, _15
+	addq	%rdx, %rax	# _13, _16
 	movl	(%rax), %eax	# *_16, _17
 # problem130.c:13:     if (x > 0 && grid[x - 1][y] < min) min = grid[x - 1][y];
 	cmpl	%eax, -12(%rbp)	# _17, min
@@ -99,12 +99,12 @@ func0:
 	leaq	-8(%rax), %rdx	#, _20
 	movq	-40(%rbp), %rax	# grid, tmp185
 	addq	%rdx, %rax	# _20, _21
-	movq	(%rax), %rax	# *_21, _22
+	movq	(%rax), %rdx	# *_21, _22
 # problem130.c:13:     if (x > 0 && grid[x - 1][y] < min) min = grid[x - 1][y];
-	movl	-16(%rbp), %edx	# y, tmp186
-	movslq	%edx, %rdx	# tmp186, _23
-	salq	$2, %rdx	#, _24
-	addq	%rdx, %rax	# _24, _25
+	movl	-16(%rbp), %eax	# y, tmp186
+	cltq
+	salq	$2, %rax	#, _24
+	addq	%rdx, %rax	# _22, _25
 # problem130.c:13:     if (x > 0 && grid[x - 1][y] < min) min = grid[x - 1][y];
 	movl	(%rax), %eax	# *_25, tmp187
 	movl	%eax, -12(%rbp)	# tmp187, min
@@ -122,12 +122,12 @@ func0:
 	leaq	0(,%rax,8), %rdx	#, _29
 	movq	-40(%rbp), %rax	# grid, tmp190
 	addq	%rdx, %rax	# _29, _30
-	movq	(%rax), %rax	# *_30, _31
+	movq	(%rax), %rdx	# *_30, _31
 # problem130.c:14:     if (x < N - 1 && grid[x + 1][y] < min) min = grid[x + 1][y];
-	movl	-16(%rbp), %edx	# y, tmp191
-	movslq	%edx, %rdx	# tmp191, _32
-	salq	$2, %rdx	#, _33
-	addq	%rdx, %rax	# _33, _34
+	movl	-16(%rbp), %eax	# y, tmp191
+	cltq
+	salq	$2, %rax	#, _33
+	addq	%rdx, %rax	# _31, _34
 	movl	(%rax), %eax	# *_34, _35
 # problem130.c:14:     if (x < N - 1 && grid[x + 1][y] < min) min = grid[x + 1][y];
 	cmpl	%eax, -12(%rbp)	# _35, min
@@ -139,12 +139,12 @@ func0:
 	leaq	0(,%rax,8), %rdx	#, _38
 	movq	-40(%rbp), %rax	# grid, tmp193
 	addq	%rdx, %rax	# _38, _39
-	movq	(%rax), %rax	# *_39, _40
+	movq	(%rax), %rdx	# *_39, _40
 # problem130.c:14:     if (x < N - 1 && grid[x + 1][y] < min) min = grid[x + 1][y];
-	movl	-16(%rbp), %edx	# y, tmp194
-	movslq	%edx, %rdx	# tmp194, _41
-	salq	$2, %rdx	#, _42
-	addq	%rdx, %rax	# _42, _43
+	movl	-16(%rbp), %eax	# y, tmp194
+	cltq
+	salq	$2, %rax	#, _42
+	addq	%rdx, %rax	# _40, _43
 # problem130.c:14:     if (x < N - 1 && grid[x + 1][y] < min) min = grid[x + 1][y];
 	movl	(%rax), %eax	# *_43, tmp195
 	movl	%eax, -12(%rbp)	# tmp195, min
@@ -158,13 +158,13 @@ func0:
 	leaq	0(,%rax,8), %rdx	#, _45
 	movq	-40(%rbp), %rax	# grid, tmp197
 	addq	%rdx, %rax	# _45, _46
-	movq	(%rax), %rax	# *_46, _47
+	movq	(%rax), %rdx	# *_46, _47
 # problem130.c:15:     if (y > 0 && grid[x][y - 1] < min) min = grid[x][y - 1];
-	movl	-16(%rbp), %edx	# y, tmp198
-	movslq	%edx, %rdx	# tmp198, _48
-	salq	$2, %rdx	#, _49
-	subq	$4, %rdx	#, _50
-	addq	%rdx, %rax	# _50, _51
+	movl	-16(%rbp), %eax	# y, tmp198
+	cltq
+	salq	$2, %rax	#, _49
+	subq	$4, %rax	#, _50
+	addq	%rdx, %rax	# _47, _51
 	movl	(%rax), %eax	# *_51, _52
 # problem130.c:15:     if (y > 0 && grid[x][y - 1] < min) min = grid[x][y - 1];
 	cmpl	%eax, -12(%rbp)	# _52, min
@@ -175,13 +175,13 @@ func0:
 	leaq	0(,%rax,8), %rdx	#, _54
 	movq	-40(%rbp), %rax	# grid, tmp200
 	addq	%rdx, %rax	# _54, _55
-	movq	(%rax), %rax	# *_55, _56
+	movq	(%rax), %rdx	# *_55, _56
 # problem130.c:15:     if (y > 0 && grid[x][y - 1] < min) min = grid[x][y - 1];
-	movl	-16(%rbp), %edx	# y, tmp201
-	movslq	%edx, %rdx	# tmp201, _57
-	salq	$2, %rdx	#, _58
-	subq	$4, %rdx	#, _59
-	addq	%rdx, %rax	# _59, _60
+	movl	-16(%rbp), %eax	# y, tmp201
+	cltq
+	salq	$2, %rax	#, _58
+	subq	$4, %rax	#, _59
+	addq	%rdx, %rax	# _56, _60
 # problem130.c:15:     if (y > 0 && grid[x][y - 1] < min) min = grid[x][y - 1];
 	movl	(%rax), %eax	# *_60, tmp202
 	movl	%eax, -12(%rbp)	# tmp202, min
@@ -198,13 +198,13 @@ func0:
 	leaq	0(,%rax,8), %rdx	#, _63
 	movq	-40(%rbp), %rax	# grid, tmp205
 	addq	%rdx, %rax	# _63, _64
-	movq	(%rax), %rax	# *_64, _65
+	movq	(%rax), %rdx	# *_64, _65
 # problem130.c:16:     if (y < N - 1 && grid[x][y + 1] < min) min = grid[x][y + 1];
-	movl	-16(%rbp), %edx	# y, tmp206
-	movslq	%edx, %rdx	# tmp206, _66
-	addq	$1, %rdx	#, _67
-	salq	$2, %rdx	#, _68
-	addq	%rdx, %rax	# _68, _69
+	movl	-16(%rbp), %eax	# y, tmp206
+	cltq
+	addq	$1, %rax	#, _67
+	salq	$2, %rax	#, _68
+	addq	%rdx, %rax	# _65, _69
 	movl	(%rax), %eax	# *_69, _70
 # problem130.c:16:     if (y < N - 1 && grid[x][y + 1] < min) min = grid[x][y + 1];
 	cmpl	%eax, -12(%rbp)	# _70, min
@@ -215,13 +215,13 @@ func0:
 	leaq	0(,%rax,8), %rdx	#, _72
 	movq	-40(%rbp), %rax	# grid, tmp208
 	addq	%rdx, %rax	# _72, _73
-	movq	(%rax), %rax	# *_73, _74
+	movq	(%rax), %rdx	# *_73, _74
 # problem130.c:16:     if (y < N - 1 && grid[x][y + 1] < min) min = grid[x][y + 1];
-	movl	-16(%rbp), %edx	# y, tmp209
-	movslq	%edx, %rdx	# tmp209, _75
-	addq	$1, %rdx	#, _76
-	salq	$2, %rdx	#, _77
-	addq	%rdx, %rax	# _77, _78
+	movl	-16(%rbp), %eax	# y, tmp209
+	cltq
+	addq	$1, %rax	#, _76
+	salq	$2, %rax	#, _77
+	addq	%rdx, %rax	# _74, _78
 # problem130.c:16:     if (y < N - 1 && grid[x][y + 1] < min) min = grid[x][y + 1];
 	movl	(%rax), %eax	# *_78, tmp210
 	movl	%eax, -12(%rbp)	# tmp210, min
@@ -322,7 +322,6 @@ issame:
 	je	.L18	#,
 # problem130.c:34:         if (a[i] != b[i]) return 0;
 	movl	$0, %eax	#, _10
-# problem130.c:34:         if (a[i] != b[i]) return 0;
 	jmp	.L19	#
 .L18:
 # problem130.c:33:     for (int i = 0; i < size; i++) {
@@ -370,7 +369,7 @@ main:
 	subq	$608, %rsp	#,
 # problem130.c:39: int main() {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp171
-	movq	%rax, -8(%rbp)	# tmp171, D.3830
+	movq	%rax, -8(%rbp)	# tmp171, D.2993
 	xorl	%eax, %eax	# tmp171
 # problem130.c:43:     int grid1[3][3] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
 	movl	$1, -304(%rbp)	#, grid1[0][0]
@@ -411,9 +410,9 @@ main:
 	movq	%rcx, %rsi	# tmp102,
 	movq	%rax, %rdi	# tmp103,
 	call	issame	#
-# problem130.c:47:     assert(issame(out1, result1, size));
 	testl	%eax, %eax	# _2
 	jne	.L22	#,
+# problem130.c:47:     assert(issame(out1, result1, size));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp104
 	movq	%rax, %rcx	# tmp104,
 	movl	$47, %edx	#,
@@ -464,9 +463,9 @@ main:
 	movq	%rcx, %rsi	# tmp116,
 	movq	%rax, %rdi	# tmp117,
 	call	issame	#
-# problem130.c:55:     assert(issame(out2, result2, size));
 	testl	%eax, %eax	# _4
 	jne	.L23	#,
+# problem130.c:55:     assert(issame(out2, result2, size));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp118
 	movq	%rax, %rcx	# tmp118,
 	movl	$55, %edx	#,
@@ -530,9 +529,9 @@ main:
 	movq	%rcx, %rsi	# tmp132,
 	movq	%rax, %rdi	# tmp133,
 	call	issame	#
-# problem130.c:63:     assert(issame(out3, result3, size));
 	testl	%eax, %eax	# _6
 	jne	.L24	#,
+# problem130.c:63:     assert(issame(out3, result3, size));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp134
 	movq	%rax, %rcx	# tmp134,
 	movl	$63, %edx	#,
@@ -599,9 +598,9 @@ main:
 	movq	%rcx, %rsi	# tmp148,
 	movq	%rax, %rdi	# tmp149,
 	call	issame	#
-# problem130.c:71:     assert(issame(out4, result4, size));
 	testl	%eax, %eax	# _8
 	jne	.L25	#,
+# problem130.c:71:     assert(issame(out4, result4, size));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp150
 	movq	%rax, %rcx	# tmp150,
 	movl	$71, %edx	#,
@@ -666,9 +665,9 @@ main:
 	movq	%rcx, %rsi	# tmp164,
 	movq	%rax, %rdi	# tmp165,
 	call	issame	#
-# problem130.c:79:     assert(issame(out5, result5, size));
 	testl	%eax, %eax	# _10
 	jne	.L26	#,
+# problem130.c:79:     assert(issame(out5, result5, size));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp166
 	movq	%rax, %rcx	# tmp166,
 	movl	$79, %edx	#,
@@ -685,7 +684,7 @@ main:
 # problem130.c:82:     return 0;
 	movl	$0, %eax	#, _141
 # problem130.c:83: }
-	movq	-8(%rbp), %rdx	# D.3830, tmp172
+	movq	-8(%rbp), %rdx	# D.2993, tmp172
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp172
 	je	.L28	#,
 	call	__stack_chk_fail@PLT	#
@@ -701,7 +700,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

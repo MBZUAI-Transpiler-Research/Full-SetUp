@@ -1,6 +1,6 @@
 	.file	"problem68.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -23,7 +23,7 @@ func0:
 	movl	%esi, -76(%rbp)	# n, n
 # problem68.c:5: int func0(const char *s, int n) {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp125
-	movq	%rax, -24(%rbp)	# tmp125, D.3886
+	movq	%rax, -24(%rbp)	# tmp125, D.3049
 	xorl	%eax, %eax	# tmp125
 # problem68.c:6:     char num1[10] = "";
 	movq	$0, -44(%rbp)	#, num1
@@ -42,16 +42,15 @@ func0:
 .L6:
 # problem68.c:11:         if (isdigit(s[i])) {
 	call	__ctype_b_loc@PLT	#
-# problem68.c:11:         if (isdigit(s[i])) {
-	movq	(%rax), %rax	# *_1, _2
-	movl	-48(%rbp), %edx	# i, tmp109
-	movslq	%edx, %rcx	# tmp109, _3
-	movq	-72(%rbp), %rdx	# s, tmp110
-	addq	%rcx, %rdx	# _3, _4
-	movzbl	(%rdx), %edx	# *_4, _5
-	movsbq	%dl, %rdx	# _5, _6
-	addq	%rdx, %rdx	# _7
-	addq	%rdx, %rax	# _7, _8
+	movq	(%rax), %rdx	# *_1, _2
+	movl	-48(%rbp), %eax	# i, tmp109
+	movslq	%eax, %rcx	# tmp109, _3
+	movq	-72(%rbp), %rax	# s, tmp110
+	addq	%rcx, %rax	# _3, _4
+	movzbl	(%rax), %eax	# *_4, _5
+	movsbq	%al, %rax	# _5, _6
+	addq	%rax, %rax	# _7
+	addq	%rdx, %rax	# _2, _8
 	movzwl	(%rax), %eax	# *_8, _9
 	movzwl	%ax, %eax	# _9, _10
 	andl	$2048, %eax	#, _11
@@ -120,21 +119,21 @@ func0:
 	leaq	-44(%rbp), %rax	#, tmp121
 	movq	%rax, %rdi	# tmp121,
 	call	atoi@PLT	#
+	movl	%eax, %edx	#, _23
 # problem68.c:24:     return n - atoi(num1) - atoi(num2);
-	movl	-76(%rbp), %edx	# n, tmp122
-	movl	%edx, %ebx	# tmp122, tmp122
-	subl	%eax, %ebx	# _23, tmp122
+	movl	-76(%rbp), %eax	# n, tmp122
+	subl	%edx, %eax	# _23, tmp122
+	movl	%eax, %ebx	# tmp122, _24
 # problem68.c:24:     return n - atoi(num1) - atoi(num2);
 	leaq	-34(%rbp), %rax	#, tmp123
 	movq	%rax, %rdi	# tmp123,
 	call	atoi@PLT	#
+	movl	%eax, %edx	#, _25
 # problem68.c:24:     return n - atoi(num1) - atoi(num2);
-	subl	%eax, %ebx	# _25, _24
-	movl	%ebx, %edx	# _24, _41
-# problem68.c:24:     return n - atoi(num1) - atoi(num2);
-	movl	%edx, %eax	# _41, <retval>
+	movl	%ebx, %eax	# _24, _24
+	subl	%edx, %eax	# _25, _24
 # problem68.c:25: }
-	movq	-24(%rbp), %rdx	# D.3886, tmp126
+	movq	-24(%rbp), %rdx	# D.3049, tmp126
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp126
 	je	.L8	#,
 	call	__stack_chk_fail@PLT	#
@@ -197,9 +196,9 @@ main:
 	leaq	.LC0(%rip), %rax	#, tmp91
 	movq	%rax, %rdi	# tmp91,
 	call	func0	#
-# problem68.c:32:     assert(func0("5 apples and 6 oranges", 19) == 8);
 	cmpl	$8, %eax	#, _1
 	je	.L10	#,
+# problem68.c:32:     assert(func0("5 apples and 6 oranges", 19) == 8);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp92
 	movq	%rax, %rcx	# tmp92,
 	movl	$32, %edx	#,
@@ -214,9 +213,9 @@ main:
 	leaq	.LC0(%rip), %rax	#, tmp95
 	movq	%rax, %rdi	# tmp95,
 	call	func0	#
-# problem68.c:33:     assert(func0("5 apples and 6 oranges", 21) == 10);
 	cmpl	$10, %eax	#, _2
 	je	.L11	#,
+# problem68.c:33:     assert(func0("5 apples and 6 oranges", 21) == 10);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp96
 	movq	%rax, %rcx	# tmp96,
 	movl	$33, %edx	#,
@@ -231,9 +230,9 @@ main:
 	leaq	.LC4(%rip), %rax	#, tmp99
 	movq	%rax, %rdi	# tmp99,
 	call	func0	#
-# problem68.c:34:     assert(func0("0 apples and 1 oranges", 3) == 2);
 	cmpl	$2, %eax	#, _3
 	je	.L12	#,
+# problem68.c:34:     assert(func0("0 apples and 1 oranges", 3) == 2);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp100
 	movq	%rax, %rcx	# tmp100,
 	movl	$34, %edx	#,
@@ -248,9 +247,9 @@ main:
 	leaq	.LC6(%rip), %rax	#, tmp103
 	movq	%rax, %rdi	# tmp103,
 	call	func0	#
-# problem68.c:35:     assert(func0("1 apples and 0 oranges", 3) == 2);
 	cmpl	$2, %eax	#, _4
 	je	.L13	#,
+# problem68.c:35:     assert(func0("1 apples and 0 oranges", 3) == 2);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp104
 	movq	%rax, %rcx	# tmp104,
 	movl	$35, %edx	#,
@@ -265,9 +264,9 @@ main:
 	leaq	.LC8(%rip), %rax	#, tmp107
 	movq	%rax, %rdi	# tmp107,
 	call	func0	#
-# problem68.c:36:     assert(func0("2 apples and 3 oranges", 100) == 95);
 	cmpl	$95, %eax	#, _5
 	je	.L14	#,
+# problem68.c:36:     assert(func0("2 apples and 3 oranges", 100) == 95);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp108
 	movq	%rax, %rcx	# tmp108,
 	movl	$36, %edx	#,
@@ -282,9 +281,9 @@ main:
 	leaq	.LC8(%rip), %rax	#, tmp111
 	movq	%rax, %rdi	# tmp111,
 	call	func0	#
-# problem68.c:37:     assert(func0("2 apples and 3 oranges", 5) == 0);
 	testl	%eax, %eax	# _6
 	je	.L15	#,
+# problem68.c:37:     assert(func0("2 apples and 3 oranges", 5) == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp112
 	movq	%rax, %rcx	# tmp112,
 	movl	$37, %edx	#,
@@ -299,9 +298,9 @@ main:
 	leaq	.LC11(%rip), %rax	#, tmp115
 	movq	%rax, %rdi	# tmp115,
 	call	func0	#
-# problem68.c:38:     assert(func0("1 apples and 100 oranges", 120) == 19);
 	cmpl	$19, %eax	#, _7
 	je	.L16	#,
+# problem68.c:38:     assert(func0("1 apples and 100 oranges", 120) == 19);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp116
 	movq	%rax, %rcx	# tmp116,
 	movl	$38, %edx	#,
@@ -325,7 +324,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

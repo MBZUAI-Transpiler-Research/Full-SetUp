@@ -1,6 +1,6 @@
 	.file	"problem66.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -25,7 +25,7 @@ func0:
 	movl	%esi, -88(%rbp)	# shift, shift
 # problem66.c:5: char* func0(int x, int shift) {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp132
-	movq	%rax, -8(%rbp)	# tmp132, D.3971
+	movq	%rax, -8(%rbp)	# tmp132, D.3107
 	xorl	%eax, %eax	# tmp132
 # problem66.c:7:     sprintf(xs, "%d", x);
 	movl	-84(%rbp), %eax	# x, tmp97
@@ -97,13 +97,14 @@ func0:
 .L2:
 # problem66.c:18:         strcpy(temp, xs + len - shift);
 	movl	-68(%rbp), %eax	# len, tmp120
-	movslq	%eax, %rdx	# tmp120, _8
-	movl	-88(%rbp), %eax	# shift, tmp121
 	cltq
-	subq	%rax, %rdx	# _9, _10
+	movl	-88(%rbp), %edx	# shift, tmp121
+	movslq	%edx, %rdx	# tmp121, _9
+	subq	%rdx, %rax	# _9, _8
+	movq	%rax, %rcx	# _8, _10
 # problem66.c:18:         strcpy(temp, xs + len - shift);
 	leaq	xs.1(%rip), %rax	#, tmp122
-	addq	%rax, %rdx	# tmp122, _11
+	leaq	(%rcx,%rax), %rdx	#, _11
 	leaq	-64(%rbp), %rax	#, tmp123
 	movq	%rdx, %rsi	# _11,
 	movq	%rax, %rdi	# tmp123,
@@ -132,7 +133,7 @@ func0:
 # problem66.c:24:     return xs;
 	leaq	xs.1(%rip), %rax	#, _32
 # problem66.c:25: }
-	movq	-8(%rbp), %rdx	# D.3971, tmp133
+	movq	-8(%rbp), %rdx	# D.3107, tmp133
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp133
 	je	.L7	#,
 	call	__stack_chk_fail@PLT	#
@@ -188,12 +189,10 @@ main:
 	movl	$100, %edi	#,
 	call	func0	#
 	movq	%rax, %rdx	#, _1
-# problem66.c:33:     assert(strcmp(func0(100, 2), "001") == 0);
 	leaq	.LC1(%rip), %rax	#, tmp94
 	movq	%rax, %rsi	# tmp94,
 	movq	%rdx, %rdi	# _1,
 	call	strcmp@PLT	#
-# problem66.c:33:     assert(strcmp(func0(100, 2), "001") == 0);
 	testl	%eax, %eax	# _2
 	je	.L9	#,
 # problem66.c:33:     assert(strcmp(func0(100, 2), "001") == 0);
@@ -211,12 +210,10 @@ main:
 	movl	$12, %edi	#,
 	call	func0	#
 	movq	%rax, %rdx	#, _3
-# problem66.c:34:     assert(strcmp(func0(12, 2), "12") == 0);
 	leaq	.LC4(%rip), %rax	#, tmp98
 	movq	%rax, %rsi	# tmp98,
 	movq	%rdx, %rdi	# _3,
 	call	strcmp@PLT	#
-# problem66.c:34:     assert(strcmp(func0(12, 2), "12") == 0);
 	testl	%eax, %eax	# _4
 	je	.L10	#,
 # problem66.c:34:     assert(strcmp(func0(12, 2), "12") == 0);
@@ -234,12 +231,10 @@ main:
 	movl	$97, %edi	#,
 	call	func0	#
 	movq	%rax, %rdx	#, _5
-# problem66.c:35:     assert(strcmp(func0(97, 8), "79") == 0);
 	leaq	.LC6(%rip), %rax	#, tmp102
 	movq	%rax, %rsi	# tmp102,
 	movq	%rdx, %rdi	# _5,
 	call	strcmp@PLT	#
-# problem66.c:35:     assert(strcmp(func0(97, 8), "79") == 0);
 	testl	%eax, %eax	# _6
 	je	.L11	#,
 # problem66.c:35:     assert(strcmp(func0(97, 8), "79") == 0);
@@ -257,12 +252,10 @@ main:
 	movl	$12, %edi	#,
 	call	func0	#
 	movq	%rax, %rdx	#, _7
-# problem66.c:36:     assert(strcmp(func0(12, 1), "21") == 0);
 	leaq	.LC8(%rip), %rax	#, tmp106
 	movq	%rax, %rsi	# tmp106,
 	movq	%rdx, %rdi	# _7,
 	call	strcmp@PLT	#
-# problem66.c:36:     assert(strcmp(func0(12, 1), "21") == 0);
 	testl	%eax, %eax	# _8
 	je	.L12	#,
 # problem66.c:36:     assert(strcmp(func0(12, 1), "21") == 0);
@@ -280,12 +273,10 @@ main:
 	movl	$11, %edi	#,
 	call	func0	#
 	movq	%rax, %rdx	#, _9
-# problem66.c:37:     assert(strcmp(func0(11, 101), "11") == 0);
 	leaq	.LC10(%rip), %rax	#, tmp110
 	movq	%rax, %rsi	# tmp110,
 	movq	%rdx, %rdi	# _9,
 	call	strcmp@PLT	#
-# problem66.c:37:     assert(strcmp(func0(11, 101), "11") == 0);
 	testl	%eax, %eax	# _10
 	je	.L13	#,
 # problem66.c:37:     assert(strcmp(func0(11, 101), "11") == 0);
@@ -314,7 +305,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

@@ -1,7 +1,7 @@
 	.arch armv8-a
 	.file	"code.c"
-// GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (aarch64-linux-gnu)
-//	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+// GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (aarch64-linux-gnu)
+//	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 // GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 // options passed: -mlittle-endian -mabi=lp64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection
@@ -31,7 +31,6 @@ func0:
 	lsl	x0, x0, 2	// _6, _5,
 	ldr	x2, [sp, 8]	// tmp101, l
 	add	x0, x2, x0	// _7, tmp101, _6
-// eval/problem43//code.c:5:         l[i] += 1;
 	add	w1, w1, 1	// _8, _4,
 	str	w1, [x0]	// _8, *_7
 // eval/problem43//code.c:4:     for (int i = 0; i < size; i++)
@@ -53,5 +52,5 @@ func0:
 	.cfi_endproc
 .LFE0:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

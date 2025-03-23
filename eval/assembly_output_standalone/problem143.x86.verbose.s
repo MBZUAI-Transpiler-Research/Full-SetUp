@@ -1,6 +1,6 @@
 	.file	"code.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -26,21 +26,20 @@ func0:
 	jmp	.L2	#
 .L6:
 # eval/problem143//code.c:6:         if (i % 3 == 0) sum += lst[i] * lst[i];
-	movl	-4(%rbp), %ecx	# i, tmp114
-	movslq	%ecx, %rax	# tmp114, tmp115
+	movl	-4(%rbp), %edx	# i, tmp114
+	movslq	%edx, %rax	# tmp114, tmp115
 	imulq	$1431655766, %rax, %rax	#, tmp115, tmp116
-	shrq	$32, %rax	#, tmp116
-	movq	%rax, %rdx	# tmp116, tmp117
-	movl	%ecx, %eax	# tmp114, tmp118
-	sarl	$31, %eax	#, tmp118
-	subl	%eax, %edx	# tmp118, _1
-	movl	%edx, %eax	# _1, tmp119
-	addl	%eax, %eax	# tmp119
-	addl	%edx, %eax	# _1, tmp119
-	subl	%eax, %ecx	# tmp119, tmp114
-	movl	%ecx, %edx	# tmp114, _1
+	shrq	$32, %rax	#, tmp117
+	movl	%edx, %ecx	# tmp114, tmp118
+	sarl	$31, %ecx	#, tmp118
+	subl	%ecx, %eax	# tmp118, _1
+	movl	%eax, %ecx	# _1, tmp119
+	addl	%ecx, %ecx	# tmp119
+	addl	%eax, %ecx	# _1, tmp119
+	movl	%edx, %eax	# tmp114, tmp114
+	subl	%ecx, %eax	# tmp119, tmp114
 # eval/problem143//code.c:6:         if (i % 3 == 0) sum += lst[i] * lst[i];
-	testl	%edx, %edx	# _1
+	testl	%eax, %eax	# _1
 	jne	.L3	#,
 # eval/problem143//code.c:6:         if (i % 3 == 0) sum += lst[i] * lst[i];
 	movl	-4(%rbp), %eax	# i, tmp120
@@ -123,7 +122,7 @@ func0:
 	.cfi_endproc
 .LFE0:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

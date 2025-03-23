@@ -1,7 +1,7 @@
 	.arch armv8-a
 	.file	"problem46.c"
-// GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (aarch64-linux-gnu)
-//	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+// GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (aarch64-linux-gnu)
+//	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 // GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 // options passed: -mlittle-endian -mabi=lp64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection
@@ -59,7 +59,6 @@ main:
 	fmov	s1, 3.0e+0	//,
 	fmov	s0, 5.0e+0	//,
 	bl	func0		//
-// problem46.c:15:     assert(fabs(func0(5, 3) - 7.5) < 1e-4);
 	fcvt	d1, s0	// _2, _1
 	fmov	d0, 7.5e+0	// tmp106,
 	fsub	d0, d1, d0	// _3, _2, tmp106
@@ -68,6 +67,7 @@ main:
 	ldr	d1, [x0, #:lo12:.LC4]	// tmp107,
 	fcmpe	d0, d1	// _4, tmp107
 	bmi	.L4		//,
+// problem46.c:15:     assert(fabs(func0(5, 3) - 7.5) < 1e-4);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp108,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp108,
 	mov	w2, 15	//,
@@ -81,7 +81,6 @@ main:
 	fmov	s1, 2.0e+0	//,
 	fmov	s0, 2.0e+0	//,
 	bl	func0		//
-// problem46.c:16:     assert(fabs(func0(2, 2) - 2.0) < 1e-4);
 	fcvt	d1, s0	// _6, _5
 	fmov	d0, 2.0e+0	// tmp111,
 	fsub	d0, d1, d0	// _7, _6, tmp111
@@ -90,6 +89,7 @@ main:
 	ldr	d1, [x0, #:lo12:.LC4]	// tmp112,
 	fcmpe	d0, d1	// _8, tmp112
 	bmi	.L5		//,
+// problem46.c:16:     assert(fabs(func0(2, 2) - 2.0) < 1e-4);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp113,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp113,
 	mov	w2, 16	//,
@@ -103,7 +103,6 @@ main:
 	fmov	s1, 8.0e+0	//,
 	fmov	s0, 1.0e+1	//,
 	bl	func0		//
-// problem46.c:17:     assert(fabs(func0(10, 8) - 40.0) < 1e-4);
 	fcvt	d0, s0	// _10, _9
 	mov	x0, 4630826316843712512	// tmp122,
 	fmov	d1, x0	// tmp116, tmp122
@@ -113,6 +112,7 @@ main:
 	ldr	d1, [x0, #:lo12:.LC4]	// tmp117,
 	fcmpe	d0, d1	// _12, tmp117
 	bmi	.L6		//,
+// problem46.c:17:     assert(fabs(func0(10, 8) - 40.0) < 1e-4);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp118,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp118,
 	mov	w2, 17	//,
@@ -143,5 +143,5 @@ __PRETTY_FUNCTION__.0:
 .LC4:
 	.word	-350469331
 	.word	1058682594
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

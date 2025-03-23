@@ -29,14 +29,14 @@ func0:
 	jmp	.L2
 .L6:
 	call	__ctype_b_loc@PLT
-	movq	(%rax), %rax
-	movl	-48(%rbp), %edx
-	movslq	%edx, %rcx
-	movq	-72(%rbp), %rdx
-	addq	%rcx, %rdx
-	movzbl	(%rdx), %edx
-	movsbq	%dl, %rdx
-	addq	%rdx, %rdx
+	movq	(%rax), %rdx
+	movl	-48(%rbp), %eax
+	movslq	%eax, %rcx
+	movq	-72(%rbp), %rax
+	addq	%rcx, %rax
+	movzbl	(%rax), %eax
+	movsbq	%al, %rax
+	addq	%rax, %rax
 	addq	%rdx, %rax
 	movzwl	(%rax), %eax
 	movzwl	%ax, %eax
@@ -88,15 +88,16 @@ func0:
 	leaq	-44(%rbp), %rax
 	movq	%rax, %rdi
 	call	atoi@PLT
-	movl	-76(%rbp), %edx
-	movl	%edx, %ebx
-	subl	%eax, %ebx
+	movl	%eax, %edx
+	movl	-76(%rbp), %eax
+	subl	%edx, %eax
+	movl	%eax, %ebx
 	leaq	-34(%rbp), %rax
 	movq	%rax, %rdi
 	call	atoi@PLT
-	subl	%eax, %ebx
-	movl	%ebx, %edx
-	movl	%edx, %eax
+	movl	%eax, %edx
+	movl	%ebx, %eax
+	subl	%edx, %eax
 	movq	-24(%rbp), %rdx
 	subq	%fs:40, %rdx
 	je	.L8
@@ -109,7 +110,7 @@ func0:
 	.cfi_endproc
 .LFE6:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

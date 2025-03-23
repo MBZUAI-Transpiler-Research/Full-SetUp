@@ -80,8 +80,8 @@ divisor_count:
 	addq	$1, -8(%rbp)
 .L6:
 	movq	-8(%rbp), %rax
-	cmpq	%rax, -24(%rbp)
-	jnb	.L9
+	cmpq	-24(%rbp), %rax
+	jbe	.L9
 	movl	-16(%rbp), %eax
 	popq	%rbp
 	.cfi_def_cfa 7, 8
@@ -89,7 +89,7 @@ divisor_count:
 	.cfi_endproc
 .LFE1:
 	.size	divisor_count, .-divisor_count
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

@@ -1,6 +1,6 @@
 import os
 
-eval_dir = "/home/alex-pretko/transpiler_project/eval"
+eval_dir = os.path.join(os.getcwd(), "eval")
 
 for problem_dir in sorted(os.listdir(eval_dir)):
     problem_path = os.path.join(eval_dir, problem_dir)

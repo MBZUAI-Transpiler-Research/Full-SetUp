@@ -1,77 +1,63 @@
 	.file	"problem25.c"
 	.option pic
-	.attribute arch, "rv64i2p1_m2p0_a2p1_f2p2_d2p2_c2p0_zicsr2p0_zifencei2p0"
-	.attribute unaligned_access, 0
-	.attribute stack_align, 16
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (riscv64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (riscv64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-# options passed: -mabi=lp64d -misa-spec=20191213 -march=rv64imafdc_zicsr_zifencei -fstack-protector-strong
+# options passed: -mabi=lp64d -misa-spec=2.2 -march=rv64imafdc -fstack-protector-strong
 	.text
 	.align	1
 	.globl	func0
 	.type	func0, @function
 func0:
-.LFB0:
-	.cfi_startproc
 	addi	sp,sp,-48	#,,
-	.cfi_def_cfa_offset 48
 	sd	s0,40(sp)	#,
-	.cfi_offset 8, -8
 	addi	s0,sp,48	#,,
-	.cfi_def_cfa 8, 0
-	mv	a5,a0	# tmp138, n
-	sw	a5,-36(s0)	# tmp139, n
+	mv	a5,a0	# tmp76, n
+	sw	a5,-36(s0)	# tmp77, n
 # problem25.c:4:     for (int i = 2; i * i <= n; i++)
-	li	a5,2		# tmp140,
-	sw	a5,-20(s0)	# tmp140, i
+	li	a5,2		# tmp78,
+	sw	a5,-20(s0)	# tmp78, i
 # problem25.c:4:     for (int i = 2; i * i <= n; i++)
 	j	.L2		#
 .L5:
 # problem25.c:5:         if (n % i == 0) return n / i;
-	lw	a5,-36(s0)		# tmp143, n
-	mv	a4,a5	# tmp142, tmp143
-	lw	a5,-20(s0)		# tmp146, i
-	remw	a5,a4,a5	# tmp145, tmp144, tmp142
-	sext.w	a5,a5	# _1, tmp144
+	lw	a5,-36(s0)		# tmp81, n
+	mv	a4,a5	# tmp80, tmp81
+	lw	a5,-20(s0)		# tmp84, i
+	remw	a5,a4,a5	# tmp83, tmp82, tmp80
+	sext.w	a5,a5	# _1, tmp82
 # problem25.c:5:         if (n % i == 0) return n / i;
 	bne	a5,zero,.L3	#, _1,,
 # problem25.c:5:         if (n % i == 0) return n / i;
-	lw	a5,-36(s0)		# tmp150, n
-	mv	a4,a5	# tmp149, tmp150
-	lw	a5,-20(s0)		# tmp152, i
-	divw	a5,a4,a5	# tmp151, tmp148, tmp149
-	sext.w	a5,a5	# _4, tmp148
-# problem25.c:5:         if (n % i == 0) return n / i;
+	lw	a5,-36(s0)		# tmp88, n
+	mv	a4,a5	# tmp87, tmp88
+	lw	a5,-20(s0)		# tmp90, i
+	divw	a5,a4,a5	# tmp89, tmp86, tmp87
+	sext.w	a5,a5	# _4, tmp86
 	j	.L4		#
 .L3:
 # problem25.c:4:     for (int i = 2; i * i <= n; i++)
-	lw	a5,-20(s0)		# tmp155, i
-	addiw	a5,a5,1	#, tmp153, tmp154
-	sw	a5,-20(s0)	# tmp153, i
+	lw	a5,-20(s0)		# tmp93, i
+	addiw	a5,a5,1	#, tmp91, tmp92
+	sw	a5,-20(s0)	# tmp91, i
 .L2:
 # problem25.c:4:     for (int i = 2; i * i <= n; i++)
-	lw	a5,-20(s0)		# tmp158, i
-	mulw	a5,a5,a5	# tmp156, tmp157, tmp157
-	sext.w	a4,a5	# _2, tmp156
+	lw	a5,-20(s0)		# tmp96, i
+	mulw	a5,a5,a5	# tmp94, tmp95, tmp95
+	sext.w	a4,a5	# _2, tmp94
 # problem25.c:4:     for (int i = 2; i * i <= n; i++)
-	lw	a5,-36(s0)		# tmp160, n
-	sext.w	a5,a5	# tmp161, tmp159
-	bge	a5,a4,.L5	#, tmp161, tmp162,
+	lw	a5,-36(s0)		# tmp98, n
+	sext.w	a5,a5	# tmp99, tmp97
+	bge	a5,a4,.L5	#, tmp99, tmp100,
 # problem25.c:6:     return 1;
 	li	a5,1		# _4,
 .L4:
 # problem25.c:7: }
 	mv	a0,a5	#, <retval>
 	ld	s0,40(sp)		#,
-	.cfi_restore 8
-	.cfi_def_cfa 2, 48
 	addi	sp,sp,48	#,,
-	.cfi_def_cfa_offset 0
 	jr	ra		#
-	.cfi_endproc
-.LFE0:
 	.size	func0, .-func0
 	.section	.rodata
 	.align	3
@@ -97,24 +83,18 @@ func0:
 	.globl	main
 	.type	main, @function
 main:
-.LFB1:
-	.cfi_startproc
 	addi	sp,sp,-16	#,,
-	.cfi_def_cfa_offset 16
 	sd	ra,8(sp)	#,
 	sd	s0,0(sp)	#,
-	.cfi_offset 1, -8
-	.cfi_offset 8, -16
 	addi	s0,sp,16	#,,
-	.cfi_def_cfa 8, 0
 # problem25.c:14:     assert(func0(3) == 1);
 	li	a0,3		#,
 	call	func0		#
-	mv	a5,a0	# tmp141,
+	mv	a5,a0	# tmp79,
+	mv	a4,a5	# tmp80, _1
+	li	a5,1		# tmp81,
+	beq	a4,a5,.L7	#, tmp80, tmp81,
 # problem25.c:14:     assert(func0(3) == 1);
-	mv	a4,a5	# tmp142, _1
-	li	a5,1		# tmp143,
-	beq	a4,a5,.L7	#, tmp142, tmp143,
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,14		#,
 	lla	a1,.LC0	#,
@@ -124,11 +104,11 @@ main:
 # problem25.c:15:     assert(func0(7) == 1);
 	li	a0,7		#,
 	call	func0		#
-	mv	a5,a0	# tmp144,
+	mv	a5,a0	# tmp82,
+	mv	a4,a5	# tmp83, _2
+	li	a5,1		# tmp84,
+	beq	a4,a5,.L8	#, tmp83, tmp84,
 # problem25.c:15:     assert(func0(7) == 1);
-	mv	a4,a5	# tmp145, _2
-	li	a5,1		# tmp146,
-	beq	a4,a5,.L8	#, tmp145, tmp146,
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,15		#,
 	lla	a1,.LC0	#,
@@ -138,11 +118,11 @@ main:
 # problem25.c:16:     assert(func0(10) == 5);
 	li	a0,10		#,
 	call	func0		#
-	mv	a5,a0	# tmp147,
+	mv	a5,a0	# tmp85,
+	mv	a4,a5	# tmp86, _3
+	li	a5,5		# tmp87,
+	beq	a4,a5,.L9	#, tmp86, tmp87,
 # problem25.c:16:     assert(func0(10) == 5);
-	mv	a4,a5	# tmp148, _3
-	li	a5,5		# tmp149,
-	beq	a4,a5,.L9	#, tmp148, tmp149,
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,16		#,
 	lla	a1,.LC0	#,
@@ -152,11 +132,11 @@ main:
 # problem25.c:17:     assert(func0(100) == 50);
 	li	a0,100		#,
 	call	func0		#
-	mv	a5,a0	# tmp150,
+	mv	a5,a0	# tmp88,
+	mv	a4,a5	# tmp89, _4
+	li	a5,50		# tmp90,
+	beq	a4,a5,.L10	#, tmp89, tmp90,
 # problem25.c:17:     assert(func0(100) == 50);
-	mv	a4,a5	# tmp151, _4
-	li	a5,50		# tmp152,
-	beq	a4,a5,.L10	#, tmp151, tmp152,
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,17		#,
 	lla	a1,.LC0	#,
@@ -166,11 +146,11 @@ main:
 # problem25.c:18:     assert(func0(49) == 7);
 	li	a0,49		#,
 	call	func0		#
-	mv	a5,a0	# tmp153,
+	mv	a5,a0	# tmp91,
+	mv	a4,a5	# tmp92, _5
+	li	a5,7		# tmp93,
+	beq	a4,a5,.L11	#, tmp92, tmp93,
 # problem25.c:18:     assert(func0(49) == 7);
-	mv	a4,a5	# tmp154, _5
-	li	a5,7		# tmp155,
-	beq	a4,a5,.L11	#, tmp154, tmp155,
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,18		#,
 	lla	a1,.LC0	#,
@@ -182,15 +162,9 @@ main:
 # problem25.c:21: }
 	mv	a0,a5	#, <retval>
 	ld	ra,8(sp)		#,
-	.cfi_restore 1
 	ld	s0,0(sp)		#,
-	.cfi_restore 8
-	.cfi_def_cfa 2, 16
 	addi	sp,sp,16	#,,
-	.cfi_def_cfa_offset 0
 	jr	ra		#
-	.cfi_endproc
-.LFE1:
 	.size	main, .-main
 	.section	.rodata
 	.align	3
@@ -198,5 +172,5 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

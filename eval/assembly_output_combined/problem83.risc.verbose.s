@@ -1,28 +1,19 @@
 	.file	"problem83.c"
 	.option pic
-	.attribute arch, "rv64i2p1_m2p0_a2p1_f2p2_d2p2_c2p0_zicsr2p0_zifencei2p0"
-	.attribute unaligned_access, 0
-	.attribute stack_align, 16
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (riscv64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (riscv64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-# options passed: -mabi=lp64d -misa-spec=20191213 -march=rv64imafdc_zicsr_zifencei -fstack-protector-strong
+# options passed: -mabi=lp64d -misa-spec=2.2 -march=rv64imafdc -fstack-protector-strong
 	.text
 	.align	1
 	.globl	func0
 	.type	func0, @function
 func0:
-.LFB0:
-	.cfi_startproc
 	addi	sp,sp,-48	#,,
-	.cfi_def_cfa_offset 48
 	sd	ra,40(sp)	#,
 	sd	s0,32(sp)	#,
-	.cfi_offset 1, -8
-	.cfi_offset 8, -16
 	addi	s0,sp,48	#,,
-	.cfi_def_cfa 8, 0
 	sd	a0,-40(s0)	# str, str
 # problem83.c:6:     int l = strlen(str);
 	ld	a0,-40(s0)		#, str
@@ -31,62 +22,54 @@ func0:
 # problem83.c:6:     int l = strlen(str);
 	sw	a5,-20(s0)	# _1, l
 # problem83.c:7:     if (l < 2) return false;
-	lw	a5,-20(s0)		# tmp140, l
-	sext.w	a4,a5	# tmp141, tmp139
-	li	a5,1		# tmp142,
-	bgt	a4,a5,.L2	#, tmp141, tmp142,
+	lw	a5,-20(s0)		# tmp78, l
+	sext.w	a4,a5	# tmp79, tmp77
+	li	a5,1		# tmp80,
+	bgt	a4,a5,.L2	#, tmp79, tmp80,
 # problem83.c:7:     if (l < 2) return false;
 	li	a5,0		# _5,
-# problem83.c:7:     if (l < 2) return false;
 	j	.L3		#
 .L2:
 # problem83.c:8:     for (int i = 2; i * i <= l; i++) {
-	li	a5,2		# tmp143,
-	sw	a5,-24(s0)	# tmp143, i
+	li	a5,2		# tmp81,
+	sw	a5,-24(s0)	# tmp81, i
 # problem83.c:8:     for (int i = 2; i * i <= l; i++) {
 	j	.L4		#
 .L6:
 # problem83.c:9:         if (l % i == 0) return false;
-	lw	a5,-20(s0)		# tmp146, l
-	mv	a4,a5	# tmp145, tmp146
-	lw	a5,-24(s0)		# tmp149, i
-	remw	a5,a4,a5	# tmp148, tmp147, tmp145
-	sext.w	a5,a5	# _2, tmp147
+	lw	a5,-20(s0)		# tmp84, l
+	mv	a4,a5	# tmp83, tmp84
+	lw	a5,-24(s0)		# tmp87, i
+	remw	a5,a4,a5	# tmp86, tmp85, tmp83
+	sext.w	a5,a5	# _2, tmp85
 # problem83.c:9:         if (l % i == 0) return false;
 	bne	a5,zero,.L5	#, _2,,
 # problem83.c:9:         if (l % i == 0) return false;
 	li	a5,0		# _5,
-# problem83.c:9:         if (l % i == 0) return false;
 	j	.L3		#
 .L5:
 # problem83.c:8:     for (int i = 2; i * i <= l; i++) {
-	lw	a5,-24(s0)		# tmp152, i
-	addiw	a5,a5,1	#, tmp150, tmp151
-	sw	a5,-24(s0)	# tmp150, i
+	lw	a5,-24(s0)		# tmp90, i
+	addiw	a5,a5,1	#, tmp88, tmp89
+	sw	a5,-24(s0)	# tmp88, i
 .L4:
 # problem83.c:8:     for (int i = 2; i * i <= l; i++) {
-	lw	a5,-24(s0)		# tmp155, i
-	mulw	a5,a5,a5	# tmp153, tmp154, tmp154
-	sext.w	a4,a5	# _3, tmp153
+	lw	a5,-24(s0)		# tmp93, i
+	mulw	a5,a5,a5	# tmp91, tmp92, tmp92
+	sext.w	a4,a5	# _3, tmp91
 # problem83.c:8:     for (int i = 2; i * i <= l; i++) {
-	lw	a5,-20(s0)		# tmp157, l
-	sext.w	a5,a5	# tmp158, tmp156
-	bge	a5,a4,.L6	#, tmp158, tmp159,
+	lw	a5,-20(s0)		# tmp95, l
+	sext.w	a5,a5	# tmp96, tmp94
+	bge	a5,a4,.L6	#, tmp96, tmp97,
 # problem83.c:11:     return true;
 	li	a5,1		# _5,
 .L3:
 # problem83.c:12: }
 	mv	a0,a5	#, <retval>
 	ld	ra,40(sp)		#,
-	.cfi_restore 1
 	ld	s0,32(sp)		#,
-	.cfi_restore 8
-	.cfi_def_cfa 2, 48
 	addi	sp,sp,48	#,,
-	.cfi_def_cfa_offset 0
 	jr	ra		#
-	.cfi_endproc
-.LFE0:
 	.size	func0, .-func0
 	.section	.rodata
 	.align	3
@@ -193,22 +176,16 @@ func0:
 	.globl	main
 	.type	main, @function
 main:
-.LFB1:
-	.cfi_startproc
 	addi	sp,sp,-16	#,,
-	.cfi_def_cfa_offset 16
 	sd	ra,8(sp)	#,
 	sd	s0,0(sp)	#,
-	.cfi_offset 1, -8
-	.cfi_offset 8, -16
 	addi	s0,sp,16	#,,
-	.cfi_def_cfa 8, 0
 # problem83.c:20:     assert(func0("Hello") == true);
 	lla	a0,.LC0	#,
 	call	func0		#
-	mv	a5,a0	# tmp158,
-# problem83.c:20:     assert(func0("Hello") == true);
+	mv	a5,a0	# tmp96,
 	bne	a5,zero,.L8	#, _1,,
+# problem83.c:20:     assert(func0("Hello") == true);
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,20		#,
 	lla	a1,.LC1	#,
@@ -218,9 +195,9 @@ main:
 # problem83.c:21:     assert(func0("abcdcba") == true);
 	lla	a0,.LC3	#,
 	call	func0		#
-	mv	a5,a0	# tmp159,
-# problem83.c:21:     assert(func0("abcdcba") == true);
+	mv	a5,a0	# tmp97,
 	bne	a5,zero,.L9	#, _2,,
+# problem83.c:21:     assert(func0("abcdcba") == true);
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,21		#,
 	lla	a1,.LC1	#,
@@ -230,9 +207,9 @@ main:
 # problem83.c:22:     assert(func0("kittens") == true);
 	lla	a0,.LC5	#,
 	call	func0		#
-	mv	a5,a0	# tmp160,
-# problem83.c:22:     assert(func0("kittens") == true);
+	mv	a5,a0	# tmp98,
 	bne	a5,zero,.L10	#, _3,,
+# problem83.c:22:     assert(func0("kittens") == true);
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,22		#,
 	lla	a1,.LC1	#,
@@ -242,11 +219,11 @@ main:
 # problem83.c:23:     assert(func0("orange") == false);
 	lla	a0,.LC7	#,
 	call	func0		#
-	mv	a5,a0	# tmp161,
-# problem83.c:23:     assert(func0("orange") == false);
-	xori	a5,a5,1	#, tmp162, _4
-	andi	a5,a5,0xff	# _5, tmp162
+	mv	a5,a0	# tmp99,
+	xori	a5,a5,1	#, tmp100, _4
+	andi	a5,a5,0xff	# _5, tmp100
 	bne	a5,zero,.L11	#, _5,,
+# problem83.c:23:     assert(func0("orange") == false);
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,23		#,
 	lla	a1,.LC1	#,
@@ -256,9 +233,9 @@ main:
 # problem83.c:24:     assert(func0("wow") == true);
 	lla	a0,.LC9	#,
 	call	func0		#
-	mv	a5,a0	# tmp163,
-# problem83.c:24:     assert(func0("wow") == true);
+	mv	a5,a0	# tmp101,
 	bne	a5,zero,.L12	#, _6,,
+# problem83.c:24:     assert(func0("wow") == true);
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,24		#,
 	lla	a1,.LC1	#,
@@ -268,9 +245,9 @@ main:
 # problem83.c:25:     assert(func0("world") == true);
 	lla	a0,.LC11	#,
 	call	func0		#
-	mv	a5,a0	# tmp164,
-# problem83.c:25:     assert(func0("world") == true);
+	mv	a5,a0	# tmp102,
 	bne	a5,zero,.L13	#, _7,,
+# problem83.c:25:     assert(func0("world") == true);
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,25		#,
 	lla	a1,.LC1	#,
@@ -280,9 +257,9 @@ main:
 # problem83.c:26:     assert(func0("MadaM") == true);
 	lla	a0,.LC13	#,
 	call	func0		#
-	mv	a5,a0	# tmp165,
-# problem83.c:26:     assert(func0("MadaM") == true);
+	mv	a5,a0	# tmp103,
 	bne	a5,zero,.L14	#, _8,,
+# problem83.c:26:     assert(func0("MadaM") == true);
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,26		#,
 	lla	a1,.LC1	#,
@@ -292,9 +269,9 @@ main:
 # problem83.c:27:     assert(func0("Wow") == true);
 	lla	a0,.LC15	#,
 	call	func0		#
-	mv	a5,a0	# tmp166,
-# problem83.c:27:     assert(func0("Wow") == true);
+	mv	a5,a0	# tmp104,
 	bne	a5,zero,.L15	#, _9,,
+# problem83.c:27:     assert(func0("Wow") == true);
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,27		#,
 	lla	a1,.LC1	#,
@@ -304,11 +281,11 @@ main:
 # problem83.c:28:     assert(func0("") == false);
 	lla	a0,.LC17	#,
 	call	func0		#
-	mv	a5,a0	# tmp167,
-# problem83.c:28:     assert(func0("") == false);
-	xori	a5,a5,1	#, tmp168, _10
-	andi	a5,a5,0xff	# _11, tmp168
+	mv	a5,a0	# tmp105,
+	xori	a5,a5,1	#, tmp106, _10
+	andi	a5,a5,0xff	# _11, tmp106
 	bne	a5,zero,.L16	#, _11,,
+# problem83.c:28:     assert(func0("") == false);
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,28		#,
 	lla	a1,.LC1	#,
@@ -318,9 +295,9 @@ main:
 # problem83.c:29:     assert(func0("HI") == true);
 	lla	a0,.LC19	#,
 	call	func0		#
-	mv	a5,a0	# tmp169,
-# problem83.c:29:     assert(func0("HI") == true);
+	mv	a5,a0	# tmp107,
 	bne	a5,zero,.L17	#, _12,,
+# problem83.c:29:     assert(func0("HI") == true);
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,29		#,
 	lla	a1,.LC1	#,
@@ -330,9 +307,9 @@ main:
 # problem83.c:30:     assert(func0("go") == true);
 	lla	a0,.LC21	#,
 	call	func0		#
-	mv	a5,a0	# tmp170,
-# problem83.c:30:     assert(func0("go") == true);
+	mv	a5,a0	# tmp108,
 	bne	a5,zero,.L18	#, _13,,
+# problem83.c:30:     assert(func0("go") == true);
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,30		#,
 	lla	a1,.LC1	#,
@@ -342,11 +319,11 @@ main:
 # problem83.c:31:     assert(func0("gogo") == false);
 	lla	a0,.LC23	#,
 	call	func0		#
-	mv	a5,a0	# tmp171,
-# problem83.c:31:     assert(func0("gogo") == false);
-	xori	a5,a5,1	#, tmp172, _14
-	andi	a5,a5,0xff	# _15, tmp172
+	mv	a5,a0	# tmp109,
+	xori	a5,a5,1	#, tmp110, _14
+	andi	a5,a5,0xff	# _15, tmp110
 	bne	a5,zero,.L19	#, _15,,
+# problem83.c:31:     assert(func0("gogo") == false);
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,31		#,
 	lla	a1,.LC1	#,
@@ -356,11 +333,11 @@ main:
 # problem83.c:32:     assert(func0("aaaaaaaaaaaaaaa") == false);
 	lla	a0,.LC25	#,
 	call	func0		#
-	mv	a5,a0	# tmp173,
-# problem83.c:32:     assert(func0("aaaaaaaaaaaaaaa") == false);
-	xori	a5,a5,1	#, tmp174, _16
-	andi	a5,a5,0xff	# _17, tmp174
+	mv	a5,a0	# tmp111,
+	xori	a5,a5,1	#, tmp112, _16
+	andi	a5,a5,0xff	# _17, tmp112
 	bne	a5,zero,.L20	#, _17,,
+# problem83.c:32:     assert(func0("aaaaaaaaaaaaaaa") == false);
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,32		#,
 	lla	a1,.LC1	#,
@@ -370,9 +347,9 @@ main:
 # problem83.c:33:     assert(func0("Madam") == true);
 	lla	a0,.LC27	#,
 	call	func0		#
-	mv	a5,a0	# tmp175,
-# problem83.c:33:     assert(func0("Madam") == true);
+	mv	a5,a0	# tmp113,
 	bne	a5,zero,.L21	#, _18,,
+# problem83.c:33:     assert(func0("Madam") == true);
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,33		#,
 	lla	a1,.LC1	#,
@@ -382,11 +359,11 @@ main:
 # problem83.c:34:     assert(func0("M") == false);
 	lla	a0,.LC29	#,
 	call	func0		#
-	mv	a5,a0	# tmp176,
-# problem83.c:34:     assert(func0("M") == false);
-	xori	a5,a5,1	#, tmp177, _19
-	andi	a5,a5,0xff	# _20, tmp177
+	mv	a5,a0	# tmp114,
+	xori	a5,a5,1	#, tmp115, _19
+	andi	a5,a5,0xff	# _20, tmp115
 	bne	a5,zero,.L22	#, _20,,
+# problem83.c:34:     assert(func0("M") == false);
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,34		#,
 	lla	a1,.LC1	#,
@@ -396,11 +373,11 @@ main:
 # problem83.c:35:     assert(func0("0") == false);
 	lla	a0,.LC31	#,
 	call	func0		#
-	mv	a5,a0	# tmp178,
-# problem83.c:35:     assert(func0("0") == false);
-	xori	a5,a5,1	#, tmp179, _21
-	andi	a5,a5,0xff	# _22, tmp179
+	mv	a5,a0	# tmp116,
+	xori	a5,a5,1	#, tmp117, _21
+	andi	a5,a5,0xff	# _22, tmp117
 	bne	a5,zero,.L23	#, _22,,
+# problem83.c:35:     assert(func0("0") == false);
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,35		#,
 	lla	a1,.LC1	#,
@@ -412,15 +389,9 @@ main:
 # problem83.c:38: }
 	mv	a0,a5	#, <retval>
 	ld	ra,8(sp)		#,
-	.cfi_restore 1
 	ld	s0,0(sp)		#,
-	.cfi_restore 8
-	.cfi_def_cfa 2, 16
 	addi	sp,sp,16	#,,
-	.cfi_def_cfa_offset 0
 	jr	ra		#
-	.cfi_endproc
-.LFE1:
 	.size	main, .-main
 	.section	.rodata
 	.align	3
@@ -428,5 +399,5 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

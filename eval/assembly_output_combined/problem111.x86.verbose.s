@@ -1,6 +1,6 @@
 	.file	"problem111.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -88,7 +88,6 @@ func0:
 	jl	.L8	#,
 # problem111.c:9:     if (num >= size1) return "YES";
 	leaq	.LC0(%rip), %rax	#, _19
-# problem111.c:9:     if (num >= size1) return "YES";
 	jmp	.L9	#
 .L8:
 # problem111.c:10:     return "NO";
@@ -140,7 +139,7 @@ main:
 	subq	$64, %rsp	#,
 # problem111.c:18: int main() {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp141
-	movq	%rax, -8(%rbp)	# tmp141, D.3494
+	movq	%rax, -8(%rbp)	# tmp141, D.2637
 	xorl	%eax, %eax	# tmp141
 # problem111.c:19:     assert(strcmp(func0((int[]){1, 2, 3, 4}, 4, (int[]){1, 2, 3, 4}, 4), "YES") == 0);
 	movl	$1, -32(%rbp)	#, MEM[(int[4] *)_113][0]
@@ -158,12 +157,10 @@ main:
 	movq	%rax, %rdi	# tmp99,
 	call	func0	#
 	movq	%rax, %rdx	#, _1
-# problem111.c:19:     assert(strcmp(func0((int[]){1, 2, 3, 4}, 4, (int[]){1, 2, 3, 4}, 4), "YES") == 0);
 	leaq	.LC0(%rip), %rax	#, tmp100
 	movq	%rax, %rsi	# tmp100,
 	movq	%rdx, %rdi	# _1,
 	call	strcmp@PLT	#
-# problem111.c:19:     assert(strcmp(func0((int[]){1, 2, 3, 4}, 4, (int[]){1, 2, 3, 4}, 4), "YES") == 0);
 	testl	%eax, %eax	# _2
 	je	.L11	#,
 # problem111.c:19:     assert(strcmp(func0((int[]){1, 2, 3, 4}, 4, (int[]){1, 2, 3, 4}, 4), "YES") == 0);
@@ -192,15 +189,12 @@ main:
 	movq	%rax, %rdi	# tmp105,
 	call	func0	#
 	movq	%rax, %rdx	#, _3
-# problem111.c:20:     assert(strcmp(func0((int[]){1, 2, 3, 4}, 4, (int[]){1, 5, 3, 4}, 4), "NO") == 0);
 	leaq	.LC1(%rip), %rax	#, tmp106
 	movq	%rax, %rsi	# tmp106,
 	movq	%rdx, %rdi	# _3,
 	call	strcmp@PLT	#
-# problem111.c:20:     assert(strcmp(func0((int[]){1, 2, 3, 4}, 4, (int[]){1, 5, 3, 4}, 4), "NO") == 0);
 	testl	%eax, %eax	# _4
 	je	.L12	#,
-# problem111.c:20:     assert(strcmp(func0((int[]){1, 2, 3, 4}, 4, (int[]){1, 5, 3, 4}, 4), "NO") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp107
 	movq	%rax, %rcx	# tmp107,
 	movl	$20, %edx	#,
@@ -226,12 +220,10 @@ main:
 	movq	%rax, %rdi	# tmp111,
 	call	func0	#
 	movq	%rax, %rdx	#, _5
-# problem111.c:21:     assert(strcmp(func0((int[]){1, 2, 3, 4}, 4, (int[]){2, 1, 4, 3}, 4), "YES") == 0);
 	leaq	.LC0(%rip), %rax	#, tmp112
 	movq	%rax, %rsi	# tmp112,
 	movq	%rdx, %rdi	# _5,
 	call	strcmp@PLT	#
-# problem111.c:21:     assert(strcmp(func0((int[]){1, 2, 3, 4}, 4, (int[]){2, 1, 4, 3}, 4), "YES") == 0);
 	testl	%eax, %eax	# _6
 	je	.L13	#,
 # problem111.c:21:     assert(strcmp(func0((int[]){1, 2, 3, 4}, 4, (int[]){2, 1, 4, 3}, 4), "YES") == 0);
@@ -258,12 +250,10 @@ main:
 	movq	%rax, %rdi	# tmp117,
 	call	func0	#
 	movq	%rax, %rdx	#, _7
-# problem111.c:22:     assert(strcmp(func0((int[]){5, 7, 3}, 3, (int[]){2, 6, 4}, 3), "YES") == 0);
 	leaq	.LC0(%rip), %rax	#, tmp118
 	movq	%rax, %rsi	# tmp118,
 	movq	%rdx, %rdi	# _7,
 	call	strcmp@PLT	#
-# problem111.c:22:     assert(strcmp(func0((int[]){5, 7, 3}, 3, (int[]){2, 6, 4}, 3), "YES") == 0);
 	testl	%eax, %eax	# _8
 	je	.L14	#,
 # problem111.c:22:     assert(strcmp(func0((int[]){5, 7, 3}, 3, (int[]){2, 6, 4}, 3), "YES") == 0);
@@ -290,12 +280,10 @@ main:
 	movq	%rax, %rdi	# tmp123,
 	call	func0	#
 	movq	%rax, %rdx	#, _9
-# problem111.c:23:     assert(strcmp(func0((int[]){5, 7, 3}, 3, (int[]){2, 6, 3}, 3), "NO") == 0);
 	leaq	.LC1(%rip), %rax	#, tmp124
 	movq	%rax, %rsi	# tmp124,
 	movq	%rdx, %rdi	# _9,
 	call	strcmp@PLT	#
-# problem111.c:23:     assert(strcmp(func0((int[]){5, 7, 3}, 3, (int[]){2, 6, 3}, 3), "NO") == 0);
 	testl	%eax, %eax	# _10
 	je	.L15	#,
 # problem111.c:23:     assert(strcmp(func0((int[]){5, 7, 3}, 3, (int[]){2, 6, 3}, 3), "NO") == 0);
@@ -328,12 +316,10 @@ main:
 	movq	%rax, %rdi	# tmp129,
 	call	func0	#
 	movq	%rax, %rdx	#, _11
-# problem111.c:24:     assert(strcmp(func0((int[]){3, 2, 6, 1, 8, 9}, 6, (int[]){3, 5, 5, 1, 1, 1}, 6), "NO") == 0);
 	leaq	.LC1(%rip), %rax	#, tmp130
 	movq	%rax, %rsi	# tmp130,
 	movq	%rdx, %rdi	# _11,
 	call	strcmp@PLT	#
-# problem111.c:24:     assert(strcmp(func0((int[]){3, 2, 6, 1, 8, 9}, 6, (int[]){3, 5, 5, 1, 1, 1}, 6), "NO") == 0);
 	testl	%eax, %eax	# _12
 	je	.L16	#,
 # problem111.c:24:     assert(strcmp(func0((int[]){3, 2, 6, 1, 8, 9}, 6, (int[]){3, 5, 5, 1, 1, 1}, 6), "NO") == 0);
@@ -358,12 +344,10 @@ main:
 	movq	%rax, %rdi	# tmp135,
 	call	func0	#
 	movq	%rax, %rdx	#, _13
-# problem111.c:25:     assert(strcmp(func0((int[]){100, 200}, 2, (int[]){200, 200}, 2), "YES") == 0);
 	leaq	.LC0(%rip), %rax	#, tmp136
 	movq	%rax, %rsi	# tmp136,
 	movq	%rdx, %rdi	# _13,
 	call	strcmp@PLT	#
-# problem111.c:25:     assert(strcmp(func0((int[]){100, 200}, 2, (int[]){200, 200}, 2), "YES") == 0);
 	testl	%eax, %eax	# _14
 	je	.L17	#,
 # problem111.c:25:     assert(strcmp(func0((int[]){100, 200}, 2, (int[]){200, 200}, 2), "YES") == 0);
@@ -379,9 +363,10 @@ main:
 # problem111.c:27:     return 0;
 	movl	$0, %eax	#, _96
 # problem111.c:28: }
-	movq	-8(%rbp), %rdx	# D.3494, tmp142
+	movq	-8(%rbp), %rdx	# D.2637, tmp142
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp142
 	je	.L19	#,
+# problem111.c:28: }
 	call	__stack_chk_fail@PLT	#
 .L19:
 	leave	
@@ -395,7 +380,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

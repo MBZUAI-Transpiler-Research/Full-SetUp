@@ -47,8 +47,8 @@ main:
 	je	.L4
 	movl	-4(%rbp), %eax
 	subl	-8(%rbp), %eax
-	cmpl	-12(%rbp), %eax
-	jnb	.L4
+	cmpl	%eax, -12(%rbp)
+	jbe	.L4
 	movl	-4(%rbp), %eax
 	subl	-8(%rbp), %eax
 	movl	%eax, -12(%rbp)
@@ -175,7 +175,7 @@ is_pentagonal:
 	.cfi_endproc
 .LFE2:
 	.size	is_pentagonal, .-is_pentagonal
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

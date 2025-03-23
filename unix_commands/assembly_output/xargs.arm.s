@@ -21,16 +21,15 @@
 main:
 .LFB0:
 	.cfi_startproc
-	sub	sp, sp, #288
+	stp	x29, x30, [sp, -288]!
 	.cfi_def_cfa_offset 288
-	stp	x29, x30, [sp, 272]
-	.cfi_offset 29, -16
-	.cfi_offset 30, -8
-	add	x29, sp, 272
+	.cfi_offset 29, -288
+	.cfi_offset 30, -280
+	mov	x29, sp
 	adrp	x0, :got:__stack_chk_guard
-	ldr	x0, [x0, :got_lo12:__stack_chk_guard]
+	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]
 	ldr	x1, [x0]
-	str	x1, [sp, 264]
+	str	x1, [sp, 280]
 	mov	x1, 0
 	b	.L2
 .L3:
@@ -39,20 +38,20 @@ main:
 	adrp	x0, .LC1
 	add	x0, x0, :lo12:.LC1
 	bl	fopen
-	str	x0, [sp, 16]
-	add	x0, sp, 24
+	str	x0, [sp, 32]
+	add	x0, sp, 40
 	mov	x2, x0
 	adrp	x0, .LC2
 	add	x1, x0, :lo12:.LC2
-	ldr	x0, [sp, 16]
+	ldr	x0, [sp, 32]
 	bl	fprintf
-	ldr	x0, [sp, 16]
+	ldr	x0, [sp, 32]
 	bl	fclose
 .L2:
 	adrp	x0, :got:stdin
-	ldr	x0, [x0, :got_lo12:stdin]
+	ldr	x0, [x0, #:got_lo12:stdin]
 	ldr	x1, [x0]
-	add	x0, sp, 24
+	add	x0, sp, 40
 	mov	x2, x1
 	mov	w1, 100
 	bl	fgets
@@ -63,18 +62,18 @@ main:
 	adrp	x0, .LC1
 	add	x0, x0, :lo12:.LC1
 	bl	fopen
-	str	x0, [sp, 16]
+	str	x0, [sp, 32]
 	b	.L4
 .L7:
-	ldrb	w0, [sp, 15]
+	ldrb	w0, [sp, 31]
 	bl	putchar
 .L4:
-	ldr	x0, [sp, 16]
+	ldr	x0, [sp, 32]
 	bl	fgetc
-	strb	w0, [sp, 15]
+	strb	w0, [sp, 31]
 	b	.L7
 	.cfi_endproc
 .LFE0:
 	.size	main, .-main
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

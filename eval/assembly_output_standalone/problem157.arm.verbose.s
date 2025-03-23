@@ -1,7 +1,7 @@
 	.arch armv8-a
 	.file	"code.c"
-// GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (aarch64-linux-gnu)
-//	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+// GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (aarch64-linux-gnu)
+//	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 // GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 // options passed: -mlittle-endian -mabi=lp64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection
@@ -12,105 +12,103 @@
 func0:
 .LFB0:
 	.cfi_startproc
-	sub	sp, sp, #208	//,,
+	stp	x29, x30, [sp, -208]!	//,,,
 	.cfi_def_cfa_offset 208
-	stp	x29, x30, [sp, 192]	//,,
-	.cfi_offset 29, -16
-	.cfi_offset 30, -8
-	add	x29, sp, 192	//,,
-	str	w0, [sp, 12]	// number, number
-	str	x1, [sp]	// result, result
+	.cfi_offset 29, -208
+	.cfi_offset 30, -200
+	mov	x29, sp	//,
+	str	w0, [sp, 28]	// number, number
+	str	x1, [sp, 16]	// result, result
 // eval/problem157//code.c:4: void func0(int number, char *result) {
-	adrp	x0, :got:__stack_chk_guard	// tmp95,
-	ldr	x0, [x0, :got_lo12:__stack_chk_guard]	// tmp95,
-	ldr	x1, [x0]	// tmp133,
-	str	x1, [sp, 184]	// tmp133, D.5069
-	mov	x1, 0	// tmp133
+	adrp	x0, :got:__stack_chk_guard	// tmp96,
+	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]	// tmp95, tmp96,
+	ldr	x1, [x0]	// tmp135,
+	str	x1, [sp, 200]	// tmp135, D.4460
+	mov	x1, 0	// tmp135
 // eval/problem157//code.c:5:     const char *rep[] = {"m", "cm", "d", "cd", "c", "xc", "l", "xl", "x", "ix", "v", "iv", "i"};
-	adrp	x0, .LC15	// tmp97,
-	add	x1, x0, :lo12:.LC15	// tmp96, tmp97,
-	add	x0, sp, 80	// tmp98,,
-	ldp	q0, q1, [x1]	// tmp100, tmp101,
-	stp	q0, q1, [x0]	// tmp100, tmp101, rep
-	ldp	q0, q1, [x1, 32]	// tmp102, tmp103,
-	stp	q0, q1, [x0, 32]	// tmp102, tmp103, rep
-	ldp	q0, q1, [x1, 64]	// tmp104, tmp105,
-	stp	q0, q1, [x0, 64]	// tmp104, tmp105, rep
-	ldr	x1, [x1, 96]	// tmp106,
-	str	x1, [x0, 96]	// tmp106, rep
+	adrp	x0, .LC15	// tmp98,
+	add	x1, x0, :lo12:.LC15	// tmp97, tmp98,
+	add	x0, sp, 96	// tmp99,,
+	ldp	q0, q1, [x1]	// tmp101, tmp102,
+	stp	q0, q1, [x0]	// tmp101, tmp102, rep
+	ldp	q0, q1, [x1, 32]	// tmp103, tmp104,
+	stp	q0, q1, [x0, 32]	// tmp103, tmp104, rep
+	ldp	q0, q1, [x1, 64]	// tmp105, tmp106,
+	stp	q0, q1, [x0, 64]	// tmp105, tmp106, rep
+	ldr	x1, [x1, 96]	// tmp107,
+	str	x1, [x0, 96]	// tmp107, rep
 // eval/problem157//code.c:6:     const int num[] = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
-	adrp	x0, .LC14	// tmp108,
-	add	x1, x0, :lo12:.LC14	// tmp107, tmp108,
-	add	x0, sp, 24	// tmp109,,
-	ldp	q0, q1, [x1]	// tmp111, tmp112,
-	stp	q0, q1, [x0]	// tmp111, tmp112, num
-	ldr	q0, [x1, 32]	// tmp113,
-	str	q0, [x0, 32]	// tmp113, num
-	ldr	w1, [x1, 48]	// tmp114,
-	str	w1, [x0, 48]	// tmp114, num
+	adrp	x0, .LC14	// tmp109,
+	add	x1, x0, :lo12:.LC14	// tmp108, tmp109,
+	add	x0, sp, 40	// tmp110,,
+	ldp	q0, q1, [x1]	// tmp112, tmp113,
+	stp	q0, q1, [x0]	// tmp112, tmp113, num
+	ldr	q0, [x1, 32]	// tmp114,
+	str	q0, [x0, 32]	// tmp114, num
+	ldr	w1, [x1, 48]	// tmp115,
+	str	w1, [x0, 48]	// tmp115, num
 // eval/problem157//code.c:7:     int pos = 0;
-	str	wzr, [sp, 20]	//, pos
+	str	wzr, [sp, 36]	//, pos
 // eval/problem157//code.c:8:     result[0] = '\0';
-	ldr	x0, [sp]	// tmp115, result
+	ldr	x0, [sp, 16]	// tmp116, result
 	strb	wzr, [x0]	//, *result_13(D)
 // eval/problem157//code.c:10:     while(number > 0) {
 	b	.L2		//
 .L4:
 // eval/problem157//code.c:12:             strcat(result, rep[pos]);
-	ldrsw	x0, [sp, 20]	// tmp116, pos
-	lsl	x0, x0, 3	// tmp117, tmp116,
-	add	x1, sp, 80	// tmp118,,
+	ldrsw	x0, [sp, 36]	// tmp117, pos
+	lsl	x0, x0, 3	// tmp118, tmp117,
+	add	x1, sp, 96	// tmp119,,
 	ldr	x0, [x1, x0]	// _1, rep[pos_6]
 	mov	x1, x0	//, _1
-	ldr	x0, [sp]	//, result
+	ldr	x0, [sp, 16]	//, result
 	bl	strcat		//
 // eval/problem157//code.c:13:             number -= num[pos];
-	ldrsw	x0, [sp, 20]	// tmp119, pos
-	lsl	x0, x0, 2	// tmp120, tmp119,
-	add	x1, sp, 24	// tmp121,,
+	ldrsw	x0, [sp, 36]	// tmp120, pos
+	lsl	x0, x0, 2	// tmp121, tmp120,
+	add	x1, sp, 40	// tmp122,,
 	ldr	w0, [x1, x0]	// _2, num[pos_6]
 // eval/problem157//code.c:13:             number -= num[pos];
-	ldr	w1, [sp, 12]	// tmp123, number
-	sub	w0, w1, w0	// tmp122, tmp123, _2
-	str	w0, [sp, 12]	// tmp122, number
+	ldr	w1, [sp, 28]	// tmp124, number
+	sub	w0, w1, w0	// tmp123, tmp124, _2
+	str	w0, [sp, 28]	// tmp123, number
 .L3:
 // eval/problem157//code.c:11:         while (number >= num[pos]) {
-	ldrsw	x0, [sp, 20]	// tmp124, pos
-	lsl	x0, x0, 2	// tmp125, tmp124,
-	add	x1, sp, 24	// tmp126,,
+	ldrsw	x0, [sp, 36]	// tmp125, pos
+	lsl	x0, x0, 2	// tmp126, tmp125,
+	add	x1, sp, 40	// tmp127,,
 	ldr	w0, [x1, x0]	// _3, num[pos_6]
 // eval/problem157//code.c:11:         while (number >= num[pos]) {
-	ldr	w1, [sp, 12]	// tmp127, number
-	cmp	w1, w0	// tmp127, _3
+	ldr	w1, [sp, 28]	// tmp128, number
+	cmp	w1, w0	// tmp128, _3
 	bge	.L4		//,
 // eval/problem157//code.c:15:         if (number > 0) pos++;
-	ldr	w0, [sp, 12]	// tmp128, number
-	cmp	w0, 0	// tmp128,
+	ldr	w0, [sp, 28]	// tmp129, number
+	cmp	w0, 0	// tmp129,
 	ble	.L2		//,
 // eval/problem157//code.c:15:         if (number > 0) pos++;
-	ldr	w0, [sp, 20]	// tmp130, pos
-	add	w0, w0, 1	// tmp129, tmp130,
-	str	w0, [sp, 20]	// tmp129, pos
+	ldr	w0, [sp, 36]	// tmp131, pos
+	add	w0, w0, 1	// tmp130, tmp131,
+	str	w0, [sp, 36]	// tmp130, pos
 .L2:
 // eval/problem157//code.c:10:     while(number > 0) {
-	ldr	w0, [sp, 12]	// tmp131, number
-	cmp	w0, 0	// tmp131,
+	ldr	w0, [sp, 28]	// tmp132, number
+	cmp	w0, 0	// tmp132,
 	bgt	.L3		//,
 // eval/problem157//code.c:17: }
 	nop	
-	adrp	x0, :got:__stack_chk_guard	// tmp132,
-	ldr	x0, [x0, :got_lo12:__stack_chk_guard]	// tmp132,
-	ldr	x2, [sp, 184]	// tmp134, D.5069
-	ldr	x1, [x0]	// tmp135,
-	subs	x2, x2, x1	// tmp134, tmp135
-	mov	x1, 0	// tmp135
-	beq	.L7		//,
+	adrp	x0, :got:__stack_chk_guard	// tmp134,
+	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]	// tmp133, tmp134,
+	ldr	x2, [sp, 200]	// tmp136, D.4460
+	ldr	x1, [x0]	// tmp137,
+	subs	x2, x2, x1	// tmp136, tmp137
+	mov	x1, 0	// tmp137
+	beq	.L6		//,
 	bl	__stack_chk_fail		//
-.L7:
-	ldp	x29, x30, [sp, 192]	//,,
-	add	sp, sp, 208	//,,
-	.cfi_restore 29
+.L6:
+	ldp	x29, x30, [sp], 208	//,,,
 	.cfi_restore 30
+	.cfi_restore 29
 	.cfi_def_cfa_offset 0
 	ret	
 	.cfi_endproc
@@ -189,5 +187,5 @@ func0:
 	.word	4
 	.word	1
 	.text
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

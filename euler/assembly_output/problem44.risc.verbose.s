@@ -1,13 +1,10 @@
 	.file	"problem44.c"
 	.option pic
-	.attribute arch, "rv64i2p1_m2p0_a2p1_f2p2_d2p2_c2p0_zicsr2p0_zifencei2p0"
-	.attribute unaligned_access, 0
-	.attribute stack_align, 16
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (riscv64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (riscv64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-# options passed: -mabi=lp64d -misa-spec=20191213 -march=rv64imafdc_zicsr_zifencei -fstack-protector-strong
+# options passed: -mabi=lp64d -misa-spec=2.2 -march=rv64imafdc -fstack-protector-strong
 	.text
 	.section	.rodata
 	.align	3
@@ -18,107 +15,101 @@
 	.globl	main
 	.type	main, @function
 main:
-.LFB0:
-	.cfi_startproc
 	addi	sp,sp,-48	#,,
-	.cfi_def_cfa_offset 48
 	sd	ra,40(sp)	#,
 	sd	s0,32(sp)	#,
-	.cfi_offset 1, -8
-	.cfi_offset 8, -16
 	addi	s0,sp,48	#,,
-	.cfi_def_cfa 8, 0
 # problem44.c:19:   unsigned min = UINT_MAX;
-	li	a5,-1		# tmp141,
-	sw	a5,-28(s0)	# tmp141, min
+	li	a5,-1		# tmp79,
+	sw	a5,-28(s0)	# tmp79, min
 # problem44.c:20:   for (i = 1; i < N; i++) {
-	li	a5,1		# tmp142,
-	sw	a5,-36(s0)	# tmp142, i
+	li	a5,1		# tmp80,
+	sw	a5,-36(s0)	# tmp80, i
 # problem44.c:20:   for (i = 1; i < N; i++) {
 	j	.L2		#
 .L6:
 # problem44.c:21:     for (j = i; j < N; j++) {
-	lw	a5,-36(s0)		# tmp143, i
-	sw	a5,-32(s0)	# tmp143, j
+	lw	a5,-36(s0)		# tmp81, i
+	sw	a5,-32(s0)	# tmp81, j
 # problem44.c:21:     for (j = i; j < N; j++) {
 	j	.L3		#
 .L5:
 # problem44.c:22:       unsigned k = pentagonal(i);
-	lw	a5,-36(s0)		# tmp144, i
-	mv	a0,a5	#, tmp144
+	lw	a5,-36(s0)		# tmp82, i
+	mv	a0,a5	#, tmp82
 	call	pentagonal		#
-	mv	a5,a0	# tmp145,
-	sw	a5,-24(s0)	# tmp145, k
+	mv	a5,a0	# tmp83,
+	sw	a5,-24(s0)	# tmp83, k
 # problem44.c:23:       unsigned l = pentagonal(j);
-	lw	a5,-32(s0)		# tmp146, j
-	mv	a0,a5	#, tmp146
+	lw	a5,-32(s0)		# tmp84, j
+	mv	a0,a5	#, tmp84
 	call	pentagonal		#
-	mv	a5,a0	# tmp147,
-	sw	a5,-20(s0)	# tmp147, l
+	mv	a5,a0	# tmp85,
+	sw	a5,-20(s0)	# tmp85, l
 # problem44.c:24:       if (is_pentagonal(k+l) && is_pentagonal(l-k)) {
-	lw	a5,-24(s0)		# tmp150, k
-	mv	a4,a5	# tmp149, tmp150
-	lw	a5,-20(s0)		# tmp152, l
-	addw	a5,a4,a5	# tmp151, tmp148, tmp149
-	sext.w	a5,a5	# _1, tmp148
+	lw	a5,-24(s0)		# tmp88, k
+	mv	a4,a5	# tmp87, tmp88
+	lw	a5,-20(s0)		# tmp90, l
+	addw	a5,a4,a5	# tmp89, tmp86, tmp87
+	sext.w	a5,a5	# _1, tmp86
 	mv	a0,a5	#, _1
 	call	is_pentagonal		#
-	mv	a5,a0	# tmp153,
+	mv	a5,a0	# tmp91,
 # problem44.c:24:       if (is_pentagonal(k+l) && is_pentagonal(l-k)) {
 	beq	a5,zero,.L4	#, _2,,
 # problem44.c:24:       if (is_pentagonal(k+l) && is_pentagonal(l-k)) {
-	lw	a5,-20(s0)		# tmp156, l
-	mv	a4,a5	# tmp155, tmp156
-	lw	a5,-24(s0)		# tmp158, k
-	subw	a5,a4,a5	# tmp154, tmp155, tmp157
-	sext.w	a5,a5	# _3, tmp154
+	lw	a5,-20(s0)		# tmp94, l
+	mv	a4,a5	# tmp93, tmp94
+	lw	a5,-24(s0)		# tmp96, k
+	subw	a5,a4,a5	# tmp92, tmp93, tmp95
+	sext.w	a5,a5	# _3, tmp92
 	mv	a0,a5	#, _3
 	call	is_pentagonal		#
-	mv	a5,a0	# tmp159,
+	mv	a5,a0	# tmp97,
 # problem44.c:24:       if (is_pentagonal(k+l) && is_pentagonal(l-k)) {
 	beq	a5,zero,.L4	#, _4,,
 # problem44.c:25:         if (l-k < min) {
-	lw	a5,-20(s0)		# tmp162, l
-	mv	a4,a5	# tmp161, tmp162
-	lw	a5,-24(s0)		# tmp164, k
-	subw	a5,a4,a5	# tmp160, tmp161, tmp163
-	sext.w	a4,a5	# _5, tmp160
+	lw	a5,-20(s0)		# tmp100, l
+	mv	a4,a5	# tmp99, tmp100
+	lw	a5,-24(s0)		# tmp102, k
+	subw	a5,a4,a5	# tmp98, tmp99, tmp101
+	sext.w	a4,a5	# _5, tmp98
 # problem44.c:25:         if (l-k < min) {
-	lw	a5,-28(s0)		# tmp166, min
-	sext.w	a5,a5	# tmp167, tmp165
-	bleu	a5,a4,.L4	#, tmp167, tmp168,
+	lw	a5,-28(s0)		# tmp104, min
+	sext.w	a5,a5	# tmp105, tmp103
+	bleu	a5,a4,.L4	#, tmp105, tmp106,
 # problem44.c:26:           min = l-k;
-	lw	a5,-20(s0)		# tmp171, l
-	mv	a4,a5	# tmp170, tmp171
-	lw	a5,-24(s0)		# tmp173, k
-	subw	a5,a4,a5	# tmp169, tmp170, tmp172
-	sw	a5,-28(s0)	# tmp169, min
+	lw	a5,-20(s0)		# tmp109, l
+	mv	a4,a5	# tmp108, tmp109
+	lw	a5,-24(s0)		# tmp111, k
+	subw	a5,a4,a5	# tmp107, tmp108, tmp110
+	sw	a5,-28(s0)	# tmp107, min
 .L4:
 # problem44.c:21:     for (j = i; j < N; j++) {
-	lw	a5,-32(s0)		# tmp176, j
-	addiw	a5,a5,1	#, tmp174, tmp175
-	sw	a5,-32(s0)	# tmp174, j
+	lw	a5,-32(s0)		# tmp114, j
+	addiw	a5,a5,1	#, tmp112, tmp113
+	sw	a5,-32(s0)	# tmp112, j
 .L3:
 # problem44.c:21:     for (j = i; j < N; j++) {
-	lw	a5,-32(s0)		# tmp180, j
-	sext.w	a4,a5	# tmp181, tmp179
-	li	a5,8192		# tmp183,
-	addi	a5,a5,1807	#, tmp182, tmp183
-	bleu	a4,a5,.L5	#, tmp181, tmp182,
+	lw	a5,-32(s0)		# tmp118, j
+	sext.w	a4,a5	# tmp119, tmp117
+	li	a5,8192		# tmp121,
+	addi	a5,a5,1807	#, tmp120, tmp121
+	bleu	a4,a5,.L5	#, tmp119, tmp120,
 # problem44.c:20:   for (i = 1; i < N; i++) {
-	lw	a5,-36(s0)		# tmp186, i
-	addiw	a5,a5,1	#, tmp184, tmp185
-	sw	a5,-36(s0)	# tmp184, i
+	lw	a5,-36(s0)		# tmp124, i
+	addiw	a5,a5,1	#, tmp122, tmp123
+	sw	a5,-36(s0)	# tmp122, i
 .L2:
 # problem44.c:20:   for (i = 1; i < N; i++) {
-	lw	a5,-36(s0)		# tmp190, i
-	sext.w	a4,a5	# tmp191, tmp189
-	li	a5,8192		# tmp193,
-	addi	a5,a5,1807	#, tmp192, tmp193
-	bleu	a4,a5,.L6	#, tmp191, tmp192,
+	lw	a5,-36(s0)		# tmp128, i
+	sext.w	a4,a5	# tmp129, tmp127
+	li	a5,8192		# tmp131,
+	addi	a5,a5,1807	#, tmp130, tmp131
+	bleu	a4,a5,.L6	#, tmp129, tmp130,
 # problem44.c:31:   printf("%u\n", min);
-	lw	a5,-28(s0)		# tmp194, min
-	mv	a1,a5	#, tmp194
+	lw	a5,-28(s0)		# tmp132, min
+	mv	a1,a5	#, tmp132
 	lla	a0,.LC0	#,
 	call	printf@plt	#
 # problem44.c:33:   return 0;
@@ -126,123 +117,100 @@ main:
 # problem44.c:34: }
 	mv	a0,a5	#, <retval>
 	ld	ra,40(sp)		#,
-	.cfi_restore 1
 	ld	s0,32(sp)		#,
-	.cfi_restore 8
-	.cfi_def_cfa 2, 48
 	addi	sp,sp,48	#,,
-	.cfi_def_cfa_offset 0
 	jr	ra		#
-	.cfi_endproc
-.LFE0:
 	.size	main, .-main
 	.align	1
 	.type	pentagonal, @function
 pentagonal:
-.LFB1:
-	.cfi_startproc
 	addi	sp,sp,-32	#,,
-	.cfi_def_cfa_offset 32
 	sd	s0,24(sp)	#,
-	.cfi_offset 8, -8
 	addi	s0,sp,32	#,,
-	.cfi_def_cfa 8, 0
-	mv	a5,a0	# tmp139, n
-	sw	a5,-20(s0)	# tmp140, n
+	mv	a5,a0	# tmp77, n
+	sw	a5,-20(s0)	# tmp78, n
 # problem44.c:38:   return n*(3*n-1)/2;
-	lw	a5,-20(s0)		# tmp142, n
-	mv	a4,a5	# tmp141, tmp142
-	mv	a5,a4	# tmp143, tmp141
-	slliw	a5,a5,1	#, tmp144, tmp143
-	addw	a5,a5,a4	# tmp141, tmp143, tmp143
-	sext.w	a5,a5	# _1, tmp143
+	lw	a5,-20(s0)		# tmp80, n
+	mv	a4,a5	# tmp79, tmp80
+	mv	a5,a4	# tmp81, tmp79
+	slliw	a5,a5,1	#, tmp82, tmp81
+	addw	a5,a5,a4	# tmp79, tmp81, tmp81
+	sext.w	a5,a5	# _1, tmp81
 # problem44.c:38:   return n*(3*n-1)/2;
-	addiw	a5,a5,-1	#, tmp145, _1
-	sext.w	a5,a5	# _2, tmp145
+	addiw	a5,a5,-1	#, tmp83, _1
+	sext.w	a5,a5	# _2, tmp83
 # problem44.c:38:   return n*(3*n-1)/2;
-	lw	a4,-20(s0)		# tmp148, n
-	mulw	a5,a4,a5	# tmp146, tmp147, _2
-	sext.w	a5,a5	# _3, tmp146
+	lw	a4,-20(s0)		# tmp86, n
+	mulw	a5,a4,a5	# tmp84, tmp85, _2
+	sext.w	a5,a5	# _3, tmp84
 # problem44.c:38:   return n*(3*n-1)/2;
-	srliw	a5,a5,1	#, tmp149, tmp150
-	sext.w	a5,a5	# _5, tmp149
+	srliw	a5,a5,1	#, tmp87, tmp88
+	sext.w	a5,a5	# _5, tmp87
 # problem44.c:39: }
 	mv	a0,a5	#, <retval>
 	ld	s0,24(sp)		#,
-	.cfi_restore 8
-	.cfi_def_cfa 2, 32
 	addi	sp,sp,32	#,,
-	.cfi_def_cfa_offset 0
 	jr	ra		#
-	.cfi_endproc
-.LFE1:
 	.size	pentagonal, .-pentagonal
 	.align	1
 	.type	is_pentagonal, @function
 is_pentagonal:
-.LFB2:
-	.cfi_startproc
 	addi	sp,sp,-48	#,,
-	.cfi_def_cfa_offset 48
 	sd	ra,40(sp)	#,
 	sd	s0,32(sp)	#,
-	.cfi_offset 1, -8
-	.cfi_offset 8, -16
 	addi	s0,sp,48	#,,
-	.cfi_def_cfa 8, 0
-	mv	a5,a0	# tmp145, n
-	sw	a5,-36(s0)	# tmp146, n
+	mv	a5,a0	# tmp83, n
+	sw	a5,-36(s0)	# tmp84, n
 # problem44.c:43:   unsigned sq = sqrt(1+24*n);
-	lw	a5,-36(s0)		# tmp148, n
-	mv	a4,a5	# tmp147, tmp148
-	mv	a5,a4	# tmp149, tmp147
-	slliw	a5,a5,1	#, tmp150, tmp149
-	addw	a5,a5,a4	# tmp147, tmp149, tmp149
-	slliw	a5,a5,3	#, tmp151, tmp149
-	sext.w	a5,a5	# _1, tmp149
+	lw	a5,-36(s0)		# tmp86, n
+	mv	a4,a5	# tmp85, tmp86
+	mv	a5,a4	# tmp87, tmp85
+	slliw	a5,a5,1	#, tmp88, tmp87
+	addw	a5,a5,a4	# tmp85, tmp87, tmp87
+	slliw	a5,a5,3	#, tmp89, tmp87
+	sext.w	a5,a5	# _1, tmp87
 # problem44.c:43:   unsigned sq = sqrt(1+24*n);
-	addiw	a5,a5,1	#, tmp152, _1
-	sext.w	a5,a5	# _2, tmp152
+	addiw	a5,a5,1	#, tmp90, _1
+	sext.w	a5,a5	# _2, tmp90
 # problem44.c:43:   unsigned sq = sqrt(1+24*n);
 	fcvt.d.wu	fa5,a5	# _3, _2
 	fmv.d	fa0,fa5	#, _3
 	call	sqrt@plt	#
 	fmv.d	fa5,fa0	# _4,
 # problem44.c:43:   unsigned sq = sqrt(1+24*n);
-	fcvt.wu.d a5,fa5,rtz	# tmp153, _4
-	sw	a5,-20(s0)	# tmp153, sq
+	fcvt.wu.d a5,fa5,rtz	# tmp91, _4
+	sw	a5,-20(s0)	# tmp91, sq
 # problem44.c:44:   return sq*sq == 1+24*n && (1+sq) % 6 == 0;
-	lw	a5,-20(s0)		# tmp156, sq
-	mulw	a5,a5,a5	# tmp154, tmp155, tmp155
-	sext.w	a3,a5	# _5, tmp154
+	lw	a5,-20(s0)		# tmp94, sq
+	mulw	a5,a5,a5	# tmp92, tmp93, tmp93
+	sext.w	a3,a5	# _5, tmp92
 # problem44.c:44:   return sq*sq == 1+24*n && (1+sq) % 6 == 0;
-	lw	a5,-36(s0)		# tmp158, n
-	mv	a4,a5	# tmp157, tmp158
-	mv	a5,a4	# tmp159, tmp157
-	slliw	a5,a5,1	#, tmp160, tmp159
-	addw	a5,a5,a4	# tmp157, tmp159, tmp159
-	slliw	a5,a5,3	#, tmp161, tmp159
-	sext.w	a5,a5	# _6, tmp159
+	lw	a5,-36(s0)		# tmp96, n
+	mv	a4,a5	# tmp95, tmp96
+	mv	a5,a4	# tmp97, tmp95
+	slliw	a5,a5,1	#, tmp98, tmp97
+	addw	a5,a5,a4	# tmp95, tmp97, tmp97
+	slliw	a5,a5,3	#, tmp99, tmp97
+	sext.w	a5,a5	# _6, tmp97
 # problem44.c:44:   return sq*sq == 1+24*n && (1+sq) % 6 == 0;
-	addiw	a5,a5,1	#, tmp162, _6
-	sext.w	a5,a5	# _7, tmp162
+	addiw	a5,a5,1	#, tmp100, _6
+	sext.w	a5,a5	# _7, tmp100
 # problem44.c:44:   return sq*sq == 1+24*n && (1+sq) % 6 == 0;
-	mv	a4,a3	# tmp163, _5
-	bne	a4,a5,.L11	#, tmp163, tmp164,
+	mv	a4,a3	# tmp101, _5
+	bne	a4,a5,.L11	#, tmp101, tmp102,
 # problem44.c:44:   return sq*sq == 1+24*n && (1+sq) % 6 == 0;
-	lw	a5,-20(s0)		# tmp167, sq
-	addiw	a5,a5,1	#, tmp165, tmp166
-	sext.w	a5,a5	# _8, tmp165
+	lw	a5,-20(s0)		# tmp105, sq
+	addiw	a5,a5,1	#, tmp103, tmp104
+	sext.w	a5,a5	# _8, tmp103
 # problem44.c:44:   return sq*sq == 1+24*n && (1+sq) % 6 == 0;
-	mv	a4,a5	# tmp169, _8
-	li	a5,6		# tmp171,
-	remuw	a5,a4,a5	# tmp171, tmp170, tmp169
-	sext.w	a5,a5	# _9, tmp170
+	mv	a4,a5	# tmp107, _8
+	li	a5,6		# tmp109,
+	remuw	a5,a4,a5	# tmp109, tmp108, tmp107
+	sext.w	a5,a5	# _9, tmp108
 # problem44.c:44:   return sq*sq == 1+24*n && (1+sq) % 6 == 0;
 	bne	a5,zero,.L11	#, _9,,
 # problem44.c:44:   return sq*sq == 1+24*n && (1+sq) % 6 == 0;
 	li	a5,1		# iftmp.0_10,
-# problem44.c:44:   return sq*sq == 1+24*n && (1+sq) % 6 == 0;
 	j	.L12		#
 .L11:
 # problem44.c:44:   return sq*sq == 1+24*n && (1+sq) % 6 == 0;
@@ -251,15 +219,9 @@ is_pentagonal:
 # problem44.c:45: }
 	mv	a0,a5	#, <retval>
 	ld	ra,40(sp)		#,
-	.cfi_restore 1
 	ld	s0,32(sp)		#,
-	.cfi_restore 8
-	.cfi_def_cfa 2, 48
 	addi	sp,sp,48	#,,
-	.cfi_def_cfa_offset 0
 	jr	ra		#
-	.cfi_endproc
-.LFE2:
 	.size	is_pentagonal, .-is_pentagonal
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

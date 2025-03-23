@@ -1,6 +1,6 @@
 	.file	"problem13.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -121,7 +121,7 @@ main:
 	subq	$112, %rsp	#,
 # problem13.c:23: int main() {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp116
-	movq	%rax, -8(%rbp)	# tmp116, D.3443
+	movq	%rax, -8(%rbp)	# tmp116, D.2586
 	xorl	%eax, %eax	# tmp116
 # problem13.c:24:     char *empty_array[] = {""};
 	leaq	.LC0(%rip), %rax	#, tmp91
@@ -151,11 +151,11 @@ main:
 	movl	$0, %esi	#,
 	movq	%rax, %rdi	# tmp101,
 	call	func0	#
-# problem13.c:28:     assert(strcmp(func0(empty_array, 0), "") == 0);
 	movzbl	(%rax), %eax	# MEM[(const unsigned char * {ref-all})_1], _19
 	movzbl	%al, %eax	# _19, _2
 	testl	%eax, %eax	# _2
 	je	.L7	#,
+# problem13.c:28:     assert(strcmp(func0(empty_array, 0), "") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp102
 	movq	%rax, %rcx	# tmp102,
 	movl	$28, %edx	#,
@@ -171,12 +171,10 @@ main:
 	movq	%rax, %rdi	# tmp105,
 	call	func0	#
 	movq	%rax, %rdx	#, _3
-# problem13.c:29:     assert(strcmp(func0(array1, 3), "x") == 0);
 	leaq	.LC1(%rip), %rax	#, tmp106
 	movq	%rax, %rsi	# tmp106,
 	movq	%rdx, %rdi	# _3,
 	call	strcmp@PLT	#
-# problem13.c:29:     assert(strcmp(func0(array1, 3), "x") == 0);
 	testl	%eax, %eax	# _4
 	je	.L8	#,
 # problem13.c:29:     assert(strcmp(func0(array1, 3), "x") == 0);
@@ -195,12 +193,10 @@ main:
 	movq	%rax, %rdi	# tmp110,
 	call	func0	#
 	movq	%rax, %rdx	#, _5
-# problem13.c:30:     assert(strcmp(func0(array2, 6), "zzzz") == 0);
 	leaq	.LC5(%rip), %rax	#, tmp111
 	movq	%rax, %rsi	# tmp111,
 	movq	%rdx, %rdi	# _5,
 	call	strcmp@PLT	#
-# problem13.c:30:     assert(strcmp(func0(array2, 6), "zzzz") == 0);
 	testl	%eax, %eax	# _6
 	je	.L9	#,
 # problem13.c:30:     assert(strcmp(func0(array2, 6), "zzzz") == 0);
@@ -216,7 +212,7 @@ main:
 # problem13.c:32:     return 0;
 	movl	$0, %eax	#, _25
 # problem13.c:33: }
-	movq	-8(%rbp), %rdx	# D.3443, tmp117
+	movq	-8(%rbp), %rdx	# D.2586, tmp117
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp117
 	je	.L11	#,
 	call	__stack_chk_fail@PLT	#
@@ -232,7 +228,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

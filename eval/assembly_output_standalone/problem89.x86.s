@@ -49,10 +49,10 @@ func0:
 	movq	-40(%rbp), %rax
 	leaq	(%rdx,%rax), %rcx
 	movq	-56(%rbp), %rax
-	movq	(%rax), %rax
-	movl	-24(%rbp), %edx
-	movslq	%edx, %rdx
-	salq	$2, %rdx
+	movq	(%rax), %rdx
+	movl	-24(%rbp), %eax
+	cltq
+	salq	$2, %rax
 	addq	%rax, %rdx
 	movl	(%rcx), %eax
 	movl	%eax, (%rdx)
@@ -70,14 +70,12 @@ func0:
 	movq	-40(%rbp), %rax
 	addq	%rcx, %rax
 	movl	(%rax), %eax
-	addl	%eax, %edx
-	movl	%edx, %eax
-	sarl	$31, %eax
-	shrl	$31, %eax
-	addl	%eax, %edx
-	andl	$1, %edx
-	subl	%eax, %edx
-	movl	%edx, %eax
+	addl	%edx, %eax
+	cltd
+	shrl	$31, %edx
+	addl	%edx, %eax
+	andl	$1, %eax
+	subl	%edx, %eax
 	cmpl	$1, %eax
 	sete	%al
 	movzbl	%al, %eax
@@ -93,96 +91,96 @@ func0:
 	cmpl	$0, -12(%rbp)
 	je	.L9
 	movq	-56(%rbp), %rax
-	movq	(%rax), %rax
-	movl	-20(%rbp), %edx
-	movslq	%edx, %rdx
-	salq	$2, %rdx
+	movq	(%rax), %rdx
+	movl	-20(%rbp), %eax
+	cltq
+	salq	$2, %rax
 	addq	%rdx, %rax
 	movl	(%rax), %edx
 	movq	-56(%rbp), %rax
-	movq	(%rax), %rax
-	movl	-16(%rbp), %ecx
-	movslq	%ecx, %rcx
-	salq	$2, %rcx
+	movq	(%rax), %rcx
+	movl	-16(%rbp), %eax
+	cltq
+	salq	$2, %rax
 	addq	%rcx, %rax
 	movl	(%rax), %eax
 	cmpl	%eax, %edx
 	jle	.L10
 	movq	-56(%rbp), %rax
-	movq	(%rax), %rax
-	movl	-20(%rbp), %edx
-	movslq	%edx, %rdx
-	salq	$2, %rdx
+	movq	(%rax), %rdx
+	movl	-20(%rbp), %eax
+	cltq
+	salq	$2, %rax
 	addq	%rdx, %rax
 	movl	(%rax), %eax
 	movl	%eax, -4(%rbp)
 	movq	-56(%rbp), %rax
-	movq	(%rax), %rax
-	movl	-16(%rbp), %edx
-	movslq	%edx, %rdx
-	salq	$2, %rdx
-	leaq	(%rax,%rdx), %rcx
+	movq	(%rax), %rdx
+	movl	-16(%rbp), %eax
+	cltq
+	salq	$2, %rax
+	leaq	(%rdx,%rax), %rcx
 	movq	-56(%rbp), %rax
-	movq	(%rax), %rax
-	movl	-20(%rbp), %edx
-	movslq	%edx, %rdx
-	salq	$2, %rdx
+	movq	(%rax), %rdx
+	movl	-20(%rbp), %eax
+	cltq
+	salq	$2, %rax
 	addq	%rax, %rdx
 	movl	(%rcx), %eax
 	movl	%eax, (%rdx)
 	movq	-56(%rbp), %rax
-	movq	(%rax), %rax
-	movl	-16(%rbp), %edx
-	movslq	%edx, %rdx
-	salq	$2, %rdx
+	movq	(%rax), %rdx
+	movl	-16(%rbp), %eax
+	cltq
+	salq	$2, %rax
 	addq	%rax, %rdx
 	movl	-4(%rbp), %eax
 	movl	%eax, (%rdx)
 	jmp	.L10
 .L9:
 	movq	-56(%rbp), %rax
-	movq	(%rax), %rax
-	movl	-20(%rbp), %edx
-	movslq	%edx, %rdx
-	salq	$2, %rdx
+	movq	(%rax), %rdx
+	movl	-20(%rbp), %eax
+	cltq
+	salq	$2, %rax
 	addq	%rdx, %rax
 	movl	(%rax), %edx
 	movq	-56(%rbp), %rax
-	movq	(%rax), %rax
-	movl	-16(%rbp), %ecx
-	movslq	%ecx, %rcx
-	salq	$2, %rcx
+	movq	(%rax), %rcx
+	movl	-16(%rbp), %eax
+	cltq
+	salq	$2, %rax
 	addq	%rcx, %rax
 	movl	(%rax), %eax
 	cmpl	%eax, %edx
 	jge	.L10
 	movq	-56(%rbp), %rax
-	movq	(%rax), %rax
-	movl	-20(%rbp), %edx
-	movslq	%edx, %rdx
-	salq	$2, %rdx
+	movq	(%rax), %rdx
+	movl	-20(%rbp), %eax
+	cltq
+	salq	$2, %rax
 	addq	%rdx, %rax
 	movl	(%rax), %eax
 	movl	%eax, -8(%rbp)
 	movq	-56(%rbp), %rax
-	movq	(%rax), %rax
-	movl	-16(%rbp), %edx
-	movslq	%edx, %rdx
-	salq	$2, %rdx
-	leaq	(%rax,%rdx), %rcx
+	movq	(%rax), %rdx
+	movl	-16(%rbp), %eax
+	cltq
+	salq	$2, %rax
+	leaq	(%rdx,%rax), %rcx
 	movq	-56(%rbp), %rax
-	movq	(%rax), %rax
-	movl	-20(%rbp), %edx
-	movslq	%edx, %rdx
-	salq	$2, %rdx
+	movq	(%rax), %rdx
+	movl	-20(%rbp), %eax
+	cltq
+	salq	$2, %rax
 	addq	%rax, %rdx
 	movl	(%rcx), %eax
 	movl	%eax, (%rdx)
 	movq	-56(%rbp), %rax
-	movq	(%rax), %rax
-	movl	-16(%rbp), %edx
-	movslq	%edx, %rdx
-	salq	$2, %rdx
+	movq	(%rax), %rdx
+	movl	-16(%rbp), %eax
+	cltq
+	salq	$2, %rax
 	addq	%rax, %rdx
 	movl	-8(%rbp), %eax
 	movl	%eax, (%rdx)
@@ -205,7 +203,7 @@ func0:
 	.cfi_endproc
 .LFE6:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

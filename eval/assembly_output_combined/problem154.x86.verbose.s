@@ -1,6 +1,6 @@
 	.file	"problem154.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -265,15 +265,15 @@ main:
 	subq	$352, %rsp	#,
 # problem154.c:28: int main() {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp200
-	movq	%rax, -8(%rbp)	# tmp200, D.3486
+	movq	%rax, -8(%rbp)	# tmp200, D.2629
 	xorl	%eax, %eax	# tmp200
 # problem154.c:31:     func0("Watashi", (const char* []){"tEN", "niNE", "eIGHt8OKe"}, 3, result);
 	leaq	.LC1(%rip), %rax	#, tmp93
-	movq	%rax, -320(%rbp)	# tmp93, D.3432[0]
+	movq	%rax, -320(%rbp)	# tmp93, D.2575[0]
 	leaq	.LC2(%rip), %rax	#, tmp94
-	movq	%rax, -312(%rbp)	# tmp94, D.3432[1]
+	movq	%rax, -312(%rbp)	# tmp94, D.2575[1]
 	leaq	.LC3(%rip), %rax	#, tmp95
-	movq	%rax, -304(%rbp)	# tmp95, D.3432[2]
+	movq	%rax, -304(%rbp)	# tmp95, D.2575[2]
 # problem154.c:31:     func0("Watashi", (const char* []){"tEN", "niNE", "eIGHt8OKe"}, 3, result);
 	leaq	-64(%rbp), %rdx	#, tmp96
 	leaq	-320(%rbp), %rax	#, tmp97
@@ -289,9 +289,9 @@ main:
 	movq	%rdx, %rsi	# tmp100,
 	movq	%rax, %rdi	# tmp99,
 	call	strcmp@PLT	#
-# problem154.c:32:     assert(strcmp(result, "Watashi.eIGHt8OKe") == 0);
 	testl	%eax, %eax	# _1
 	je	.L10	#,
+# problem154.c:32:     assert(strcmp(result, "Watashi.eIGHt8OKe") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp101
 	movq	%rax, %rcx	# tmp101,
 	movl	$32, %edx	#,
@@ -303,13 +303,13 @@ main:
 .L10:
 # problem154.c:34:     func0("Boku123", (const char* []){"nani", "NazeDa", "YEs.WeCaNe", "32145tggg"}, 4, result);
 	leaq	.LC8(%rip), %rax	#, tmp104
-	movq	%rax, -288(%rbp)	# tmp104, D.3434[0]
+	movq	%rax, -288(%rbp)	# tmp104, D.2577[0]
 	leaq	.LC9(%rip), %rax	#, tmp105
-	movq	%rax, -280(%rbp)	# tmp105, D.3434[1]
+	movq	%rax, -280(%rbp)	# tmp105, D.2577[1]
 	leaq	.LC10(%rip), %rax	#, tmp106
-	movq	%rax, -272(%rbp)	# tmp106, D.3434[2]
+	movq	%rax, -272(%rbp)	# tmp106, D.2577[2]
 	leaq	.LC11(%rip), %rax	#, tmp107
-	movq	%rax, -264(%rbp)	# tmp107, D.3434[3]
+	movq	%rax, -264(%rbp)	# tmp107, D.2577[3]
 # problem154.c:34:     func0("Boku123", (const char* []){"nani", "NazeDa", "YEs.WeCaNe", "32145tggg"}, 4, result);
 	leaq	-64(%rbp), %rdx	#, tmp108
 	leaq	-288(%rbp), %rax	#, tmp109
@@ -325,9 +325,9 @@ main:
 	movq	%rdx, %rsi	# tmp112,
 	movq	%rax, %rdi	# tmp111,
 	call	strcmp@PLT	#
-# problem154.c:35:     assert(strcmp(result, "Boku123.YEs.WeCaNe") == 0);
 	testl	%eax, %eax	# _2
 	je	.L11	#,
+# problem154.c:35:     assert(strcmp(result, "Boku123.YEs.WeCaNe") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp113
 	movq	%rax, %rcx	# tmp113,
 	movl	$35, %edx	#,
@@ -339,17 +339,17 @@ main:
 .L11:
 # problem154.c:37:     func0("__YESIMHERE", (const char* []){"t", "eMptY", "(nothing", "zeR00", "NuLl__", "123NoooneB321"}, 6, result);
 	leaq	.LC15(%rip), %rax	#, tmp116
-	movq	%rax, -112(%rbp)	# tmp116, D.3435[0]
+	movq	%rax, -112(%rbp)	# tmp116, D.2578[0]
 	leaq	.LC16(%rip), %rax	#, tmp117
-	movq	%rax, -104(%rbp)	# tmp117, D.3435[1]
+	movq	%rax, -104(%rbp)	# tmp117, D.2578[1]
 	leaq	.LC17(%rip), %rax	#, tmp118
-	movq	%rax, -96(%rbp)	# tmp118, D.3435[2]
+	movq	%rax, -96(%rbp)	# tmp118, D.2578[2]
 	leaq	.LC18(%rip), %rax	#, tmp119
-	movq	%rax, -88(%rbp)	# tmp119, D.3435[3]
+	movq	%rax, -88(%rbp)	# tmp119, D.2578[3]
 	leaq	.LC19(%rip), %rax	#, tmp120
-	movq	%rax, -80(%rbp)	# tmp120, D.3435[4]
+	movq	%rax, -80(%rbp)	# tmp120, D.2578[4]
 	leaq	.LC20(%rip), %rax	#, tmp121
-	movq	%rax, -72(%rbp)	# tmp121, D.3435[5]
+	movq	%rax, -72(%rbp)	# tmp121, D.2578[5]
 # problem154.c:37:     func0("__YESIMHERE", (const char* []){"t", "eMptY", "(nothing", "zeR00", "NuLl__", "123NoooneB321"}, 6, result);
 	leaq	-64(%rbp), %rdx	#, tmp122
 	leaq	-112(%rbp), %rax	#, tmp123
@@ -365,9 +365,9 @@ main:
 	movq	%rdx, %rsi	# tmp126,
 	movq	%rax, %rdi	# tmp125,
 	call	strcmp@PLT	#
-# problem154.c:38:     assert(strcmp(result, "__YESIMHERE.NuLl__") == 0);
 	testl	%eax, %eax	# _3
 	je	.L12	#,
+# problem154.c:38:     assert(strcmp(result, "__YESIMHERE.NuLl__") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp127
 	movq	%rax, %rcx	# tmp127,
 	movl	$38, %edx	#,
@@ -379,13 +379,13 @@ main:
 .L12:
 # problem154.c:40:     func0("K", (const char* []){"Ta", "TAR", "t234An", "cosSo"}, 4, result);
 	leaq	.LC24(%rip), %rax	#, tmp130
-	movq	%rax, -256(%rbp)	# tmp130, D.3436[0]
+	movq	%rax, -256(%rbp)	# tmp130, D.2579[0]
 	leaq	.LC25(%rip), %rax	#, tmp131
-	movq	%rax, -248(%rbp)	# tmp131, D.3436[1]
+	movq	%rax, -248(%rbp)	# tmp131, D.2579[1]
 	leaq	.LC26(%rip), %rax	#, tmp132
-	movq	%rax, -240(%rbp)	# tmp132, D.3436[2]
+	movq	%rax, -240(%rbp)	# tmp132, D.2579[2]
 	leaq	.LC27(%rip), %rax	#, tmp133
-	movq	%rax, -232(%rbp)	# tmp133, D.3436[3]
+	movq	%rax, -232(%rbp)	# tmp133, D.2579[3]
 # problem154.c:40:     func0("K", (const char* []){"Ta", "TAR", "t234An", "cosSo"}, 4, result);
 	leaq	-64(%rbp), %rdx	#, tmp134
 	leaq	-256(%rbp), %rax	#, tmp135
@@ -401,9 +401,9 @@ main:
 	movq	%rdx, %rsi	# tmp138,
 	movq	%rax, %rdi	# tmp137,
 	call	strcmp@PLT	#
-# problem154.c:41:     assert(strcmp(result, "K.TAR") == 0);
 	testl	%eax, %eax	# _4
 	je	.L13	#,
+# problem154.c:41:     assert(strcmp(result, "K.TAR") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp139
 	movq	%rax, %rcx	# tmp139,
 	movl	$41, %edx	#,
@@ -415,13 +415,13 @@ main:
 .L13:
 # problem154.c:43:     func0("__HAHA", (const char* []){"Tab", "123", "781345", "-_-"}, 4, result);
 	leaq	.LC31(%rip), %rax	#, tmp142
-	movq	%rax, -224(%rbp)	# tmp142, D.3437[0]
+	movq	%rax, -224(%rbp)	# tmp142, D.2580[0]
 	leaq	.LC32(%rip), %rax	#, tmp143
-	movq	%rax, -216(%rbp)	# tmp143, D.3437[1]
+	movq	%rax, -216(%rbp)	# tmp143, D.2580[1]
 	leaq	.LC33(%rip), %rax	#, tmp144
-	movq	%rax, -208(%rbp)	# tmp144, D.3437[2]
+	movq	%rax, -208(%rbp)	# tmp144, D.2580[2]
 	leaq	.LC34(%rip), %rax	#, tmp145
-	movq	%rax, -200(%rbp)	# tmp145, D.3437[3]
+	movq	%rax, -200(%rbp)	# tmp145, D.2580[3]
 # problem154.c:43:     func0("__HAHA", (const char* []){"Tab", "123", "781345", "-_-"}, 4, result);
 	leaq	-64(%rbp), %rdx	#, tmp146
 	leaq	-224(%rbp), %rax	#, tmp147
@@ -437,9 +437,9 @@ main:
 	movq	%rdx, %rsi	# tmp150,
 	movq	%rax, %rdi	# tmp149,
 	call	strcmp@PLT	#
-# problem154.c:44:     assert(strcmp(result, "__HAHA.123") == 0);
 	testl	%eax, %eax	# _5
 	je	.L14	#,
+# problem154.c:44:     assert(strcmp(result, "__HAHA.123") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp151
 	movq	%rax, %rcx	# tmp151,
 	movl	$44, %edx	#,
@@ -451,15 +451,15 @@ main:
 .L14:
 # problem154.c:46:     func0("YameRore", (const char* []){"HhAas", "okIWILL123", "WorkOut", "Fails", "-_-"}, 5, result);
 	leaq	.LC38(%rip), %rax	#, tmp154
-	movq	%rax, -160(%rbp)	# tmp154, D.3438[0]
+	movq	%rax, -160(%rbp)	# tmp154, D.2581[0]
 	leaq	.LC39(%rip), %rax	#, tmp155
-	movq	%rax, -152(%rbp)	# tmp155, D.3438[1]
+	movq	%rax, -152(%rbp)	# tmp155, D.2581[1]
 	leaq	.LC40(%rip), %rax	#, tmp156
-	movq	%rax, -144(%rbp)	# tmp156, D.3438[2]
+	movq	%rax, -144(%rbp)	# tmp156, D.2581[2]
 	leaq	.LC41(%rip), %rax	#, tmp157
-	movq	%rax, -136(%rbp)	# tmp157, D.3438[3]
+	movq	%rax, -136(%rbp)	# tmp157, D.2581[3]
 	leaq	.LC34(%rip), %rax	#, tmp158
-	movq	%rax, -128(%rbp)	# tmp158, D.3438[4]
+	movq	%rax, -128(%rbp)	# tmp158, D.2581[4]
 # problem154.c:46:     func0("YameRore", (const char* []){"HhAas", "okIWILL123", "WorkOut", "Fails", "-_-"}, 5, result);
 	leaq	-64(%rbp), %rdx	#, tmp159
 	leaq	-160(%rbp), %rax	#, tmp160
@@ -475,9 +475,9 @@ main:
 	movq	%rdx, %rsi	# tmp163,
 	movq	%rax, %rdi	# tmp162,
 	call	strcmp@PLT	#
-# problem154.c:47:     assert(strcmp(result, "YameRore.okIWILL123") == 0);
 	testl	%eax, %eax	# _6
 	je	.L15	#,
+# problem154.c:47:     assert(strcmp(result, "YameRore.okIWILL123") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp164
 	movq	%rax, %rcx	# tmp164,
 	movl	$47, %edx	#,
@@ -489,13 +489,13 @@ main:
 .L15:
 # problem154.c:49:     func0("finNNalLLly", (const char* []){"Die", "NowW", "Wow", "WoW"}, 4, result);
 	leaq	.LC45(%rip), %rax	#, tmp167
-	movq	%rax, -192(%rbp)	# tmp167, D.3439[0]
+	movq	%rax, -192(%rbp)	# tmp167, D.2582[0]
 	leaq	.LC46(%rip), %rax	#, tmp168
-	movq	%rax, -184(%rbp)	# tmp168, D.3439[1]
+	movq	%rax, -184(%rbp)	# tmp168, D.2582[1]
 	leaq	.LC47(%rip), %rax	#, tmp169
-	movq	%rax, -176(%rbp)	# tmp169, D.3439[2]
+	movq	%rax, -176(%rbp)	# tmp169, D.2582[2]
 	leaq	.LC48(%rip), %rax	#, tmp170
-	movq	%rax, -168(%rbp)	# tmp170, D.3439[3]
+	movq	%rax, -168(%rbp)	# tmp170, D.2582[3]
 # problem154.c:49:     func0("finNNalLLly", (const char* []){"Die", "NowW", "Wow", "WoW"}, 4, result);
 	leaq	-64(%rbp), %rdx	#, tmp171
 	leaq	-192(%rbp), %rax	#, tmp172
@@ -511,9 +511,9 @@ main:
 	movq	%rdx, %rsi	# tmp175,
 	movq	%rax, %rdi	# tmp174,
 	call	strcmp@PLT	#
-# problem154.c:50:     assert(strcmp(result, "finNNalLLly.WoW") == 0);
 	testl	%eax, %eax	# _7
 	je	.L16	#,
+# problem154.c:50:     assert(strcmp(result, "finNNalLLly.WoW") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp176
 	movq	%rax, %rcx	# tmp176,
 	movl	$50, %edx	#,
@@ -525,9 +525,9 @@ main:
 .L16:
 # problem154.c:52:     func0("_", (const char* []){"Bb", "91245"}, 2, result);
 	leaq	.LC52(%rip), %rax	#, tmp179
-	movq	%rax, -352(%rbp)	# tmp179, D.3440[0]
+	movq	%rax, -352(%rbp)	# tmp179, D.2583[0]
 	leaq	.LC53(%rip), %rax	#, tmp180
-	movq	%rax, -344(%rbp)	# tmp180, D.3440[1]
+	movq	%rax, -344(%rbp)	# tmp180, D.2583[1]
 # problem154.c:52:     func0("_", (const char* []){"Bb", "91245"}, 2, result);
 	leaq	-64(%rbp), %rdx	#, tmp181
 	leaq	-352(%rbp), %rax	#, tmp182
@@ -543,9 +543,9 @@ main:
 	movq	%rdx, %rsi	# tmp185,
 	movq	%rax, %rdi	# tmp184,
 	call	strcmp@PLT	#
-# problem154.c:53:     assert(strcmp(result, "_.Bb") == 0);
 	testl	%eax, %eax	# _8
 	je	.L17	#,
+# problem154.c:53:     assert(strcmp(result, "_.Bb") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp186
 	movq	%rax, %rcx	# tmp186,
 	movl	$53, %edx	#,
@@ -557,9 +557,9 @@ main:
 .L17:
 # problem154.c:55:     func0("Sp", (const char* []){"671235", "Bb"}, 2, result);
 	leaq	.LC57(%rip), %rax	#, tmp189
-	movq	%rax, -336(%rbp)	# tmp189, D.3441[0]
+	movq	%rax, -336(%rbp)	# tmp189, D.2584[0]
 	leaq	.LC52(%rip), %rax	#, tmp190
-	movq	%rax, -328(%rbp)	# tmp190, D.3441[1]
+	movq	%rax, -328(%rbp)	# tmp190, D.2584[1]
 # problem154.c:55:     func0("Sp", (const char* []){"671235", "Bb"}, 2, result);
 	leaq	-64(%rbp), %rdx	#, tmp191
 	leaq	-336(%rbp), %rax	#, tmp192
@@ -575,9 +575,9 @@ main:
 	movq	%rdx, %rsi	# tmp195,
 	movq	%rax, %rdi	# tmp194,
 	call	strcmp@PLT	#
-# problem154.c:56:     assert(strcmp(result, "Sp.671235") == 0);
 	testl	%eax, %eax	# _9
 	je	.L18	#,
+# problem154.c:56:     assert(strcmp(result, "Sp.671235") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp196
 	movq	%rax, %rcx	# tmp196,
 	movl	$56, %edx	#,
@@ -590,7 +590,7 @@ main:
 # problem154.c:58:     return 0;
 	movl	$0, %eax	#, _63
 # problem154.c:59: }
-	movq	-8(%rbp), %rdx	# D.3486, tmp201
+	movq	-8(%rbp), %rdx	# D.2629, tmp201
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp201
 	je	.L20	#,
 	call	__stack_chk_fail@PLT	#
@@ -606,7 +606,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

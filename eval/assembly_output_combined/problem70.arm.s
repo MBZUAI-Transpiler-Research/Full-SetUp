@@ -94,22 +94,20 @@ func0:
 main:
 .LFB7:
 	.cfi_startproc
-	stp	x29, x30, [sp, -16]!
-	.cfi_def_cfa_offset 16
-	.cfi_offset 29, -16
-	.cfi_offset 30, -8
-	mov	x29, sp
-	sub	sp, sp, #1360
+	sub	sp, sp, #1376
 	.cfi_def_cfa_offset 1376
-	str	xzr, [sp, 1024]
+	stp	x29, x30, [sp]
+	.cfi_offset 29, -1376
+	.cfi_offset 30, -1368
+	mov	x29, sp
 	adrp	x0, :got:__stack_chk_guard
-	ldr	x0, [x0, :got_lo12:__stack_chk_guard]
+	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]
 	ldr	x1, [x0]
-	str	x1, [sp, 1352]
+	str	x1, [sp, 1368]
 	mov	x1, 0
 	adrp	x0, .LC0
 	add	x0, x0, :lo12:.LC0
-	add	x2, sp, 48
+	add	x2, sp, 64
 	mov	x3, x0
 	ldp	x0, x1, [x3]
 	stp	x0, x1, [x2]
@@ -117,24 +115,24 @@ main:
 	str	w0, [x2, 16]
 	adrp	x0, .LC1
 	add	x0, x0, :lo12:.LC1
-	add	x2, sp, 144
+	add	x2, sp, 160
 	mov	x3, x0
 	ldp	x0, x1, [x3]
 	stp	x0, x1, [x2]
 	ldr	x0, [x3, 16]
 	str	x0, [x2, 16]
 	mov	w0, 3
-	str	w0, [sp, 24]
+	str	w0, [sp, 40]
 	mov	w0, 3
-	str	w0, [sp, 28]
+	str	w0, [sp, 44]
 	adrp	x0, .LC2
 	add	x1, x0, :lo12:.LC2
-	add	x0, sp, 200
+	add	x0, sp, 216
 	ldp	q0, q1, [x1]
 	stp	q0, q1, [x0]
 	adrp	x0, .LC3
 	add	x0, x0, :lo12:.LC3
-	add	x2, sp, 72
+	add	x2, sp, 88
 	mov	x3, x0
 	ldp	x0, x1, [x3]
 	stp	x0, x1, [x2]
@@ -142,7 +140,7 @@ main:
 	str	w0, [x2, 16]
 	adrp	x0, .LC4
 	add	x1, x0, :lo12:.LC4
-	add	x0, sp, 664
+	add	x0, sp, 680
 	ldp	q0, q1, [x1]
 	stp	q0, q1, [x0]
 	ldp	q0, q1, [x1, 32]
@@ -152,30 +150,30 @@ main:
 	ldr	x1, [x1, 80]
 	str	x1, [x0, 80]
 	mov	w0, 3
-	str	w0, [sp, 32]
+	str	w0, [sp, 48]
 	mov	w0, 2
-	str	w0, [sp, 36]
+	str	w0, [sp, 52]
 	mov	w0, 8
-	str	w0, [sp, 40]
+	str	w0, [sp, 56]
 	mov	w0, 2
-	str	w0, [sp, 44]
+	str	w0, [sp, 60]
 	adrp	x0, .LC5
 	add	x1, x0, :lo12:.LC5
-	add	x0, sp, 232
+	add	x0, sp, 248
 	ldp	q0, q1, [x1]
 	stp	q0, q1, [x0]
 	ldr	q0, [x1, 28]
 	str	q0, [x0, 28]
 	adrp	x0, .LC6
 	add	x1, x0, :lo12:.LC6
-	add	x0, sp, 168
+	add	x0, sp, 184
 	ldr	q0, [x1]
 	str	q0, [x0]
 	ldr	q0, [x1, 12]
 	str	q0, [x0, 12]
 	adrp	x0, .LC7
 	add	x1, x0, :lo12:.LC7
-	add	x0, sp, 1128
+	add	x0, sp, 1144
 	ldp	q0, q1, [x1]
 	stp	q0, q1, [x0]
 	ldp	q0, q1, [x1, 32]
@@ -186,7 +184,7 @@ main:
 	str	w1, [x0, 96]
 	adrp	x0, .LC8
 	add	x0, x0, :lo12:.LC8
-	add	x2, sp, 96
+	add	x2, sp, 112
 	mov	x3, x0
 	ldp	x0, x1, [x3]
 	stp	x0, x1, [x2]
@@ -194,7 +192,7 @@ main:
 	str	w0, [x2, 16]
 	adrp	x0, .LC9
 	add	x1, x0, :lo12:.LC9
-	add	x0, sp, 1032
+	add	x0, sp, 1048
 	ldp	q0, q1, [x1]
 	stp	q0, q1, [x0]
 	ldp	q0, q1, [x1, 32]
@@ -202,10 +200,10 @@ main:
 	ldp	q0, q1, [x1, 64]
 	stp	q0, q1, [x0, 64]
 	mov	w0, 1
-	str	w0, [sp, 8]
+	str	w0, [sp, 24]
 	adrp	x0, .LC10
 	add	x1, x0, :lo12:.LC10
-	add	x0, sp, 840
+	add	x0, sp, 856
 	ldp	q0, q1, [x1]
 	stp	q0, q1, [x0]
 	ldp	q0, q1, [x1, 32]
@@ -216,7 +214,7 @@ main:
 	str	q0, [x0, 76]
 	adrp	x0, .LC11
 	add	x1, x0, :lo12:.LC11
-	add	x0, sp, 432
+	add	x0, sp, 448
 	ldp	q0, q1, [x1]
 	stp	q0, q1, [x0]
 	ldp	q0, q1, [x1, 32]
@@ -225,14 +223,14 @@ main:
 	str	x1, [x0, 64]
 	adrp	x0, .LC12
 	add	x1, x0, :lo12:.LC12
-	add	x0, sp, 328
+	add	x0, sp, 344
 	ldp	q0, q1, [x1]
 	stp	q0, q1, [x0]
 	ldr	q0, [x1, 32]
 	str	q0, [x0, 32]
 	adrp	x0, .LC13
 	add	x1, x0, :lo12:.LC13
-	add	x0, sp, 1232
+	add	x0, sp, 1248
 	ldp	q0, q1, [x1]
 	stp	q0, q1, [x0]
 	ldp	q0, q1, [x1, 32]
@@ -245,7 +243,7 @@ main:
 	str	x1, [x0, 112]
 	adrp	x0, .LC14
 	add	x1, x0, :lo12:.LC14
-	add	x0, sp, 936
+	add	x0, sp, 952
 	ldp	q0, q1, [x1]
 	stp	q0, q1, [x0]
 	ldp	q0, q1, [x1, 32]
@@ -256,7 +254,7 @@ main:
 	str	q0, [x0, 76]
 	adrp	x0, .LC15
 	add	x1, x0, :lo12:.LC15
-	add	x0, sp, 504
+	add	x0, sp, 520
 	ldp	q0, q1, [x1]
 	stp	q0, q1, [x0]
 	ldp	q0, q1, [x1, 32]
@@ -265,7 +263,7 @@ main:
 	str	x1, [x0, 64]
 	adrp	x0, .LC16
 	add	x1, x0, :lo12:.LC16
-	add	x0, sp, 576
+	add	x0, sp, 592
 	ldp	q0, q1, [x1]
 	stp	q0, q1, [x0]
 	ldp	q0, q1, [x1, 32]
@@ -275,10 +273,10 @@ main:
 	ldr	w1, [x1, 80]
 	str	w1, [x0, 80]
 	mov	w0, 10
-	str	w0, [sp, 16]
+	str	w0, [sp, 32]
 	adrp	x0, .LC17
 	add	x1, x0, :lo12:.LC17
-	add	x0, sp, 376
+	add	x0, sp, 392
 	ldp	q0, q1, [x1]
 	stp	q0, q1, [x0]
 	ldr	q0, [x1, 32]
@@ -287,14 +285,14 @@ main:
 	str	w1, [x0, 48]
 	adrp	x0, .LC18
 	add	x1, x0, :lo12:.LC18
-	add	x0, sp, 280
+	add	x0, sp, 296
 	ldp	q0, q1, [x1]
 	stp	q0, q1, [x0]
 	ldr	q0, [x1, 28]
 	str	q0, [x0, 28]
 	adrp	x0, .LC19
 	add	x1, x0, :lo12:.LC19
-	add	x0, sp, 752
+	add	x0, sp, 768
 	ldp	q0, q1, [x1]
 	stp	q0, q1, [x0]
 	ldp	q0, q1, [x1, 32]
@@ -305,7 +303,7 @@ main:
 	str	x1, [x0, 80]
 	adrp	x0, .LC20
 	add	x0, x0, :lo12:.LC20
-	add	x2, sp, 120
+	add	x2, sp, 136
 	mov	x3, x0
 	ldp	x0, x1, [x3]
 	stp	x0, x1, [x2]
@@ -314,8 +312,8 @@ main:
 	mov	w0, 0
 	mov	w1, w0
 	adrp	x0, :got:__stack_chk_guard
-	ldr	x0, [x0, :got_lo12:__stack_chk_guard]
-	ldr	x3, [sp, 1352]
+	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]
+	ldr	x3, [sp, 1368]
 	ldr	x2, [x0]
 	subs	x3, x3, x2
 	mov	x2, 0
@@ -323,11 +321,10 @@ main:
 	bl	__stack_chk_fail
 .L8:
 	mov	w0, w1
-	add	sp, sp, 1360
-	.cfi_def_cfa_offset 16
-	ldp	x29, x30, [sp], 16
-	.cfi_restore 30
+	ldp	x29, x30, [sp]
+	add	sp, sp, 1376
 	.cfi_restore 29
+	.cfi_restore 30
 	.cfi_def_cfa_offset 0
 	ret
 	.cfi_endproc
@@ -691,5 +688,5 @@ main:
 	.word	9
 	.word	2
 	.text
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

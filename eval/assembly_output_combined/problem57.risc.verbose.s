@@ -1,26 +1,18 @@
 	.file	"problem57.c"
 	.option pic
-	.attribute arch, "rv64i2p1_m2p0_a2p1_f2p2_d2p2_c2p0_zicsr2p0_zifencei2p0"
-	.attribute unaligned_access, 0
-	.attribute stack_align, 16
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (riscv64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (riscv64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-# options passed: -mabi=lp64d -misa-spec=20191213 -march=rv64imafdc_zicsr_zifencei -fstack-protector-strong
+# options passed: -mabi=lp64d -misa-spec=2.2 -march=rv64imafdc -fstack-protector-strong
 	.text
 	.align	1
 	.globl	func0
 	.type	func0, @function
 func0:
-.LFB0:
-	.cfi_startproc
 	addi	sp,sp,-48	#,,
-	.cfi_def_cfa_offset 48
 	sd	s0,40(sp)	#,
-	.cfi_offset 8, -8
 	addi	s0,sp,48	#,,
-	.cfi_def_cfa 8, 0
 	sd	a0,-40(s0)	# brackets, brackets
 # problem57.c:6:     int level = 0;
 	sw	zero,-24(s0)	#, level
@@ -31,60 +23,58 @@ func0:
 .L7:
 # problem57.c:9:         if (brackets[i] == '<') level++;
 	lw	a5,-20(s0)		# _1, i
-	ld	a4,-40(s0)		# tmp145, brackets
-	add	a5,a4,a5	# _1, _2, tmp145
+	ld	a4,-40(s0)		# tmp83, brackets
+	add	a5,a4,a5	# _1, _2, tmp83
 	lbu	a5,0(a5)	# _3, *_2
 # problem57.c:9:         if (brackets[i] == '<') level++;
-	mv	a4,a5	# tmp146, _3
-	li	a5,60		# tmp147,
-	bne	a4,a5,.L3	#, tmp146, tmp147,
+	mv	a4,a5	# tmp84, _3
+	li	a5,60		# tmp85,
+	bne	a4,a5,.L3	#, tmp84, tmp85,
 # problem57.c:9:         if (brackets[i] == '<') level++;
-	lw	a5,-24(s0)		# tmp150, level
-	addiw	a5,a5,1	#, tmp148, tmp149
-	sw	a5,-24(s0)	# tmp148, level
+	lw	a5,-24(s0)		# tmp88, level
+	addiw	a5,a5,1	#, tmp86, tmp87
+	sw	a5,-24(s0)	# tmp86, level
 .L3:
 # problem57.c:10:         if (brackets[i] == '>') level--;
 	lw	a5,-20(s0)		# _4, i
-	ld	a4,-40(s0)		# tmp151, brackets
-	add	a5,a4,a5	# _4, _5, tmp151
+	ld	a4,-40(s0)		# tmp89, brackets
+	add	a5,a4,a5	# _4, _5, tmp89
 	lbu	a5,0(a5)	# _6, *_5
 # problem57.c:10:         if (brackets[i] == '>') level--;
-	mv	a4,a5	# tmp152, _6
-	li	a5,62		# tmp153,
-	bne	a4,a5,.L4	#, tmp152, tmp153,
+	mv	a4,a5	# tmp90, _6
+	li	a5,62		# tmp91,
+	bne	a4,a5,.L4	#, tmp90, tmp91,
 # problem57.c:10:         if (brackets[i] == '>') level--;
-	lw	a5,-24(s0)		# tmp156, level
-	addiw	a5,a5,-1	#, tmp154, tmp155
-	sw	a5,-24(s0)	# tmp154, level
+	lw	a5,-24(s0)		# tmp94, level
+	addiw	a5,a5,-1	#, tmp92, tmp93
+	sw	a5,-24(s0)	# tmp92, level
 .L4:
 # problem57.c:11:         if (level < 0) return false;
-	lw	a5,-24(s0)		# tmp158, level
-	sext.w	a5,a5	# tmp159, tmp157
-	bge	a5,zero,.L5	#, tmp159,,
+	lw	a5,-24(s0)		# tmp96, level
+	sext.w	a5,a5	# tmp97, tmp95
+	bge	a5,zero,.L5	#, tmp97,,
 # problem57.c:11:         if (level < 0) return false;
 	li	a5,0		# _14,
-# problem57.c:11:         if (level < 0) return false;
 	j	.L6		#
 .L5:
 # problem57.c:12:         i++;
-	lw	a5,-20(s0)		# tmp162, i
-	addiw	a5,a5,1	#, tmp160, tmp161
-	sw	a5,-20(s0)	# tmp160, i
+	lw	a5,-20(s0)		# tmp100, i
+	addiw	a5,a5,1	#, tmp98, tmp99
+	sw	a5,-20(s0)	# tmp98, i
 .L2:
 # problem57.c:8:     while (brackets[i]) {
 	lw	a5,-20(s0)		# _7, i
-	ld	a4,-40(s0)		# tmp163, brackets
-	add	a5,a4,a5	# _7, _8, tmp163
+	ld	a4,-40(s0)		# tmp101, brackets
+	add	a5,a4,a5	# _7, _8, tmp101
 	lbu	a5,0(a5)	# _9, *_8
 # problem57.c:8:     while (brackets[i]) {
 	bne	a5,zero,.L7	#, _9,,
 # problem57.c:14:     if (level != 0) return false;
-	lw	a5,-24(s0)		# tmp165, level
-	sext.w	a5,a5	# tmp166, tmp164
-	beq	a5,zero,.L8	#, tmp166,,
+	lw	a5,-24(s0)		# tmp103, level
+	sext.w	a5,a5	# tmp104, tmp102
+	beq	a5,zero,.L8	#, tmp104,,
 # problem57.c:14:     if (level != 0) return false;
 	li	a5,0		# _14,
-# problem57.c:14:     if (level != 0) return false;
 	j	.L6		#
 .L8:
 # problem57.c:15:     return true;
@@ -93,13 +83,8 @@ func0:
 # problem57.c:16: }
 	mv	a0,a5	#, <retval>
 	ld	s0,40(sp)		#,
-	.cfi_restore 8
-	.cfi_def_cfa 2, 48
 	addi	sp,sp,48	#,,
-	.cfi_def_cfa_offset 0
 	jr	ra		#
-	.cfi_endproc
-.LFE0:
 	.size	func0, .-func0
 	.section	.rodata
 	.align	3
@@ -182,22 +167,16 @@ func0:
 	.globl	main
 	.type	main, @function
 main:
-.LFB1:
-	.cfi_startproc
 	addi	sp,sp,-16	#,,
-	.cfi_def_cfa_offset 16
 	sd	ra,8(sp)	#,
 	sd	s0,0(sp)	#,
-	.cfi_offset 1, -8
-	.cfi_offset 8, -16
 	addi	s0,sp,16	#,,
-	.cfi_def_cfa 8, 0
 # problem57.c:24:     assert(func0("<>"));
 	lla	a0,.LC0	#,
 	call	func0		#
-	mv	a5,a0	# tmp156,
-# problem57.c:24:     assert(func0("<>"));
+	mv	a5,a0	# tmp94,
 	bne	a5,zero,.L10	#, _1,,
+# problem57.c:24:     assert(func0("<>"));
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,24		#,
 	lla	a1,.LC1	#,
@@ -207,9 +186,9 @@ main:
 # problem57.c:25:     assert(func0("<<><>>"));
 	lla	a0,.LC3	#,
 	call	func0		#
-	mv	a5,a0	# tmp157,
-# problem57.c:25:     assert(func0("<<><>>"));
+	mv	a5,a0	# tmp95,
 	bne	a5,zero,.L11	#, _2,,
+# problem57.c:25:     assert(func0("<<><>>"));
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,25		#,
 	lla	a1,.LC1	#,
@@ -219,9 +198,9 @@ main:
 # problem57.c:26:     assert(func0("<><><<><>><>"));
 	lla	a0,.LC5	#,
 	call	func0		#
-	mv	a5,a0	# tmp158,
-# problem57.c:26:     assert(func0("<><><<><>><>"));
+	mv	a5,a0	# tmp96,
 	bne	a5,zero,.L12	#, _3,,
+# problem57.c:26:     assert(func0("<><><<><>><>"));
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,26		#,
 	lla	a1,.LC1	#,
@@ -231,9 +210,9 @@ main:
 # problem57.c:27:     assert(func0("<><><<<><><>><>><<><><<>>>"));
 	lla	a0,.LC7	#,
 	call	func0		#
-	mv	a5,a0	# tmp159,
-# problem57.c:27:     assert(func0("<><><<<><><>><>><<><><<>>>"));
+	mv	a5,a0	# tmp97,
 	bne	a5,zero,.L13	#, _4,,
+# problem57.c:27:     assert(func0("<><><<<><><>><>><<><><<>>>"));
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,27		#,
 	lla	a1,.LC1	#,
@@ -243,11 +222,11 @@ main:
 # problem57.c:28:     assert(!func0("<<<><>>>>"));
 	lla	a0,.LC9	#,
 	call	func0		#
-	mv	a5,a0	# tmp160,
-# problem57.c:28:     assert(!func0("<<<><>>>>"));
-	xori	a5,a5,1	#, tmp161, _5
-	andi	a5,a5,0xff	# _6, tmp161
+	mv	a5,a0	# tmp98,
+	xori	a5,a5,1	#, tmp99, _5
+	andi	a5,a5,0xff	# _6, tmp99
 	bne	a5,zero,.L14	#, _6,,
+# problem57.c:28:     assert(!func0("<<<><>>>>"));
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,28		#,
 	lla	a1,.LC1	#,
@@ -257,11 +236,11 @@ main:
 # problem57.c:29:     assert(!func0("><<>"));
 	lla	a0,.LC11	#,
 	call	func0		#
-	mv	a5,a0	# tmp162,
-# problem57.c:29:     assert(!func0("><<>"));
-	xori	a5,a5,1	#, tmp163, _7
-	andi	a5,a5,0xff	# _8, tmp163
+	mv	a5,a0	# tmp100,
+	xori	a5,a5,1	#, tmp101, _7
+	andi	a5,a5,0xff	# _8, tmp101
 	bne	a5,zero,.L15	#, _8,,
+# problem57.c:29:     assert(!func0("><<>"));
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,29		#,
 	lla	a1,.LC1	#,
@@ -271,11 +250,11 @@ main:
 # problem57.c:30:     assert(!func0("<"));
 	lla	a0,.LC13	#,
 	call	func0		#
-	mv	a5,a0	# tmp164,
-# problem57.c:30:     assert(!func0("<"));
-	xori	a5,a5,1	#, tmp165, _9
-	andi	a5,a5,0xff	# _10, tmp165
+	mv	a5,a0	# tmp102,
+	xori	a5,a5,1	#, tmp103, _9
+	andi	a5,a5,0xff	# _10, tmp103
 	bne	a5,zero,.L16	#, _10,,
+# problem57.c:30:     assert(!func0("<"));
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,30		#,
 	lla	a1,.LC1	#,
@@ -285,11 +264,11 @@ main:
 # problem57.c:31:     assert(!func0("<<<<"));
 	lla	a0,.LC15	#,
 	call	func0		#
-	mv	a5,a0	# tmp166,
-# problem57.c:31:     assert(!func0("<<<<"));
-	xori	a5,a5,1	#, tmp167, _11
-	andi	a5,a5,0xff	# _12, tmp167
+	mv	a5,a0	# tmp104,
+	xori	a5,a5,1	#, tmp105, _11
+	andi	a5,a5,0xff	# _12, tmp105
 	bne	a5,zero,.L17	#, _12,,
+# problem57.c:31:     assert(!func0("<<<<"));
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,31		#,
 	lla	a1,.LC1	#,
@@ -299,11 +278,11 @@ main:
 # problem57.c:32:     assert(!func0(">"));
 	lla	a0,.LC17	#,
 	call	func0		#
-	mv	a5,a0	# tmp168,
-# problem57.c:32:     assert(!func0(">"));
-	xori	a5,a5,1	#, tmp169, _13
-	andi	a5,a5,0xff	# _14, tmp169
+	mv	a5,a0	# tmp106,
+	xori	a5,a5,1	#, tmp107, _13
+	andi	a5,a5,0xff	# _14, tmp107
 	bne	a5,zero,.L18	#, _14,,
+# problem57.c:32:     assert(!func0(">"));
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,32		#,
 	lla	a1,.LC1	#,
@@ -313,11 +292,11 @@ main:
 # problem57.c:33:     assert(!func0("<<>"));
 	lla	a0,.LC19	#,
 	call	func0		#
-	mv	a5,a0	# tmp170,
-# problem57.c:33:     assert(!func0("<<>"));
-	xori	a5,a5,1	#, tmp171, _15
-	andi	a5,a5,0xff	# _16, tmp171
+	mv	a5,a0	# tmp108,
+	xori	a5,a5,1	#, tmp109, _15
+	andi	a5,a5,0xff	# _16, tmp109
 	bne	a5,zero,.L19	#, _16,,
+# problem57.c:33:     assert(!func0("<<>"));
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,33		#,
 	lla	a1,.LC1	#,
@@ -327,11 +306,11 @@ main:
 # problem57.c:34:     assert(!func0("<><><<><>><>><<>"));
 	lla	a0,.LC21	#,
 	call	func0		#
-	mv	a5,a0	# tmp172,
-# problem57.c:34:     assert(!func0("<><><<><>><>><<>"));
-	xori	a5,a5,1	#, tmp173, _17
-	andi	a5,a5,0xff	# _18, tmp173
+	mv	a5,a0	# tmp110,
+	xori	a5,a5,1	#, tmp111, _17
+	andi	a5,a5,0xff	# _18, tmp111
 	bne	a5,zero,.L20	#, _18,,
+# problem57.c:34:     assert(!func0("<><><<><>><>><<>"));
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,34		#,
 	lla	a1,.LC1	#,
@@ -341,11 +320,11 @@ main:
 # problem57.c:35:     assert(!func0("<><><<><>><>>><>"));
 	lla	a0,.LC23	#,
 	call	func0		#
-	mv	a5,a0	# tmp174,
-# problem57.c:35:     assert(!func0("<><><<><>><>>><>"));
-	xori	a5,a5,1	#, tmp175, _19
-	andi	a5,a5,0xff	# _20, tmp175
+	mv	a5,a0	# tmp112,
+	xori	a5,a5,1	#, tmp113, _19
+	andi	a5,a5,0xff	# _20, tmp113
 	bne	a5,zero,.L21	#, _20,,
+# problem57.c:35:     assert(!func0("<><><<><>><>>><>"));
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,35		#,
 	lla	a1,.LC1	#,
@@ -357,15 +336,9 @@ main:
 # problem57.c:38: }
 	mv	a0,a5	#, <retval>
 	ld	ra,8(sp)		#,
-	.cfi_restore 1
 	ld	s0,0(sp)		#,
-	.cfi_restore 8
-	.cfi_def_cfa 2, 16
 	addi	sp,sp,16	#,,
-	.cfi_def_cfa_offset 0
 	jr	ra		#
-	.cfi_endproc
-.LFE1:
 	.size	main, .-main
 	.section	.rodata
 	.align	3
@@ -373,5 +346,5 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

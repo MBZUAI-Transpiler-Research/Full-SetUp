@@ -1,7 +1,7 @@
 	.arch armv8-a
 	.file	"code.c"
-// GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (aarch64-linux-gnu)
-//	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+// GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (aarch64-linux-gnu)
+//	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 // GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 // options passed: -mlittle-endian -mabi=lp64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection
@@ -231,7 +231,6 @@ func0:
 	sxtw	x0, w0	// _77, _76
 	lsl	x0, x0, 2	// _78, _77,
 	add	x0, x2, x0	// _79, _71, _78
-// eval/problem148//code.c:19:         sum[i][a[i - 1]] += 1;
 	add	w1, w1, 1	// _80, _67,
 	str	w1, [x0]	// _80, *_79
 // eval/problem148//code.c:14:     for (int i = 1; i <= n; i++) {
@@ -358,7 +357,6 @@ func0:
 	sxtw	x0, w2	// _124, _219
 	lsl	x0, x0, 2	// _125, _124,
 	add	x0, x4, x0	// _126, _123, _125
-// eval/problem148//code.c:28:                     sum2[i][(a[i - 1] + j) % 3] += sum[i - 1][j];
 	add	w1, w3, w1	// _127, _110, _119
 	str	w1, [x0]	// _127, *_126
 // eval/problem148//code.c:27:                 for (int j = 0; j <= 2; j++) {
@@ -517,5 +515,5 @@ func0:
 	.cfi_endproc
 .LFE6:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

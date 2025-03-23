@@ -20,50 +20,76 @@ main:
 	movq	%rax, -8(%rbp)
 	xorl	%eax, %eax
 	movq	$75, -240(%rbp)
-	movq	$0, -233(%rbp)
+	movl	$0, -232(%rbp)
+	movw	$0, -228(%rbp)
+	movb	$0, -226(%rbp)
 	movq	$16479, -225(%rbp)
-	movq	$0, -218(%rbp)
+	movl	$0, -217(%rbp)
+	movw	$0, -213(%rbp)
+	movb	$0, -211(%rbp)
 	movq	$5386001, -210(%rbp)
-	movq	$0, -203(%rbp)
+	movl	$0, -202(%rbp)
+	movw	$0, -198(%rbp)
+	movb	$0, -196(%rbp)
 	movq	$173482770, -195(%rbp)
-	movq	$0, -188(%rbp)
+	movl	$0, -187(%rbp)
+	movw	$0, -183(%rbp)
+	movb	$0, -181(%rbp)
 	movabsq	$279966778388, %rax
 	movq	%rax, -180(%rbp)
-	movq	$0, -173(%rbp)
+	movl	$0, -172(%rbp)
+	movw	$0, -168(%rbp)
+	movb	$0, -166(%rbp)
 	movabsq	$37397540045075, %rax
 	movq	%rax, -165(%rbp)
-	movq	$0, -158(%rbp)
+	movl	$0, -157(%rbp)
+	movw	$0, -153(%rbp)
+	movb	$0, -151(%rbp)
 	movabsq	$18928123966718552, %rax
 	movq	%rax, -150(%rbp)
-	movq	$0, -143(%rbp)
+	movl	$0, -142(%rbp)
+	movw	$0, -138(%rbp)
+	movb	$0, -136(%rbp)
 	movabsq	$6649019518285005155, %rax
 	movq	%rax, -135(%rbp)
-	movq	$92, -128(%rbp)
+	movl	$0, -127(%rbp)
+	movw	$0, -123(%rbp)
+	movb	$0, -121(%rbp)
 	movabsq	$5066593918680443177, %rax
 	movq	%rax, -120(%rbp)
-	movq	$8518, -113(%rbp)
+	movl	$33, -112(%rbp)
+	movw	$0, -108(%rbp)
+	movb	$0, -106(%rbp)
 	movabsq	$1163371465539072041, %rax
 	movq	%rax, -105(%rbp)
-	movq	$1924624, -98(%rbp)
+	movl	$7518, -97(%rbp)
+	movw	$0, -93(%rbp)
+	movb	$0, -91(%rbp)
 	movabsq	$3772656500320519989, %rax
 	movq	%rax, -90(%rbp)
-	movq	$238248244, -83(%rbp)
+	movl	$930657, -82(%rbp)
+	movw	$0, -78(%rbp)
+	movb	$0, -76(%rbp)
 	movabsq	$5625358005095697222, %rax
 	movq	%rax, -75(%rbp)
-	movabsq	$245102815054, %rax
-	movq	%rax, -68(%rbp)
+	movl	$957432871, -67(%rbp)
+	movw	$0, -63(%rbp)
+	movb	$0, -61(%rbp)
 	movabsq	$3124106233329764187, %rax
 	movq	%rax, -60(%rbp)
-	movabsq	$52901568461355, %rax
-	movq	%rax, -53(%rbp)
+	movl	$488321594, -52(%rbp)
+	movw	$48, -48(%rbp)
+	movb	$0, -46(%rbp)
 	movabsq	$2180645302086943295, %rax
 	movq	%rax, -45(%rbp)
-	movabsq	$8770079563991326, %rax
-	movq	%rax, -38(%rbp)
+	movl	$1464143945, -37(%rbp)
+	movw	$7976, -33(%rbp)
+	movb	$0, -31(%rbp)
 	movabsq	$7081357458935004676, %rax
 	movq	%rax, -30(%rbp)
-	movabsq	$1658516761753766242, %rax
-	movq	%rax, -23(%rbp)
+	movl	$891706697, -22(%rbp)
+	movw	$1084, -18(%rbp)
+	movb	$23, -16(%rbp)
 	leaq	-240(%rbp), %rax
 	movl	$0, %edx
 	movl	$0, %esi
@@ -157,7 +183,7 @@ findmax:
 	.cfi_endproc
 .LFE1:
 	.size	findmax, .-findmax
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

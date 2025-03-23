@@ -1,6 +1,6 @@
 	.file	"problem28.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -31,14 +31,15 @@ main:
 # problem28.c:14:     sum += 2*(2*i*i - 3*i + 3);
 	movl	-4(%rbp), %eax	# i, tmp90
 	imull	%eax, %eax	# tmp90, _1
-	leal	(%rax,%rax), %ecx	#, _2
+	leal	(%rax,%rax), %edx	#, _2
 # problem28.c:14:     sum += 2*(2*i*i - 3*i + 3);
 	movl	-4(%rbp), %eax	# i, tmp91
-	movl	%eax, %edx	# tmp91, tmp92
-	sall	$2, %eax	#, tmp93
-	subl	%eax, %edx	# tmp93, _3
+	movl	%eax, %esi	# tmp91, tmp92
+	leal	0(,%rax,4), %ecx	#, tmp93
+	movl	%esi, %eax	# tmp92, tmp92
+	subl	%ecx, %eax	# tmp93, tmp92
 # problem28.c:14:     sum += 2*(2*i*i - 3*i + 3);
-	leal	(%rcx,%rdx), %eax	#, _4
+	addl	%edx, %eax	# _2, _4
 # problem28.c:14:     sum += 2*(2*i*i - 3*i + 3);
 	addl	$3, %eax	#, _5
 # problem28.c:14:     sum += 2*(2*i*i - 3*i + 3);
@@ -67,7 +68,7 @@ main:
 	.cfi_endproc
 .LFE0:
 	.size	main, .-main
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

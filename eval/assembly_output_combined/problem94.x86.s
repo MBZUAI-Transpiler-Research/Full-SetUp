@@ -30,9 +30,9 @@ func0:
 	movzbl	(%rax), %eax
 	movb	%al, -17(%rbp)
 	call	__ctype_b_loc@PLT
-	movq	(%rax), %rax
-	movsbq	-17(%rbp), %rdx
-	addq	%rdx, %rdx
+	movq	(%rax), %rdx
+	movsbq	-17(%rbp), %rax
+	addq	%rax, %rax
 	addq	%rdx, %rax
 	movzwl	(%rax), %eax
 	movzwl	%ax, %eax
@@ -46,9 +46,9 @@ func0:
 	jmp	.L4
 .L3:
 	call	__ctype_b_loc@PLT
-	movq	(%rax), %rax
-	movsbq	-17(%rbp), %rdx
-	addq	%rdx, %rdx
+	movq	(%rax), %rdx
+	movsbq	-17(%rbp), %rax
+	addq	%rax, %rax
 	addq	%rdx, %rax
 	movzwl	(%rax), %eax
 	movzwl	%ax, %eax
@@ -291,7 +291,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

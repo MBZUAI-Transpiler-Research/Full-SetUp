@@ -1,7 +1,7 @@
 	.arch armv8-a
 	.file	"problem18.c"
-// GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (aarch64-linux-gnu)
-//	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+// GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (aarch64-linux-gnu)
+//	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 // GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 // options passed: -mlittle-endian -mabi=lp64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection
@@ -17,66 +17,63 @@
 main:
 .LFB0:
 	.cfi_startproc
-	sub	sp, sp, #256	//,,
+	stp	x29, x30, [sp, -256]!	//,,,
 	.cfi_def_cfa_offset 256
-	stp	x29, x30, [sp, 240]	//,,
-	.cfi_offset 29, -16
-	.cfi_offset 30, -8
-	add	x29, sp, 240	//,,
+	.cfi_offset 29, -256
+	.cfi_offset 30, -248
+	mov	x29, sp	//,
 // problem18.c:13: {
-	adrp	x0, :got:__stack_chk_guard	// tmp95,
-	ldr	x0, [x0, :got_lo12:__stack_chk_guard]	// tmp95,
-	ldr	x1, [x0]	// tmp119,
-	str	x1, [sp, 232]	// tmp119, D.4852
-	mov	x1, 0	// tmp119
+	adrp	x0, :got:__stack_chk_guard	// tmp96,
+	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]	// tmp95, tmp96,
+	ldr	x1, [x0]	// tmp121,
+	str	x1, [sp, 248]	// tmp121, D.4270
+	mov	x1, 0	// tmp121
 // problem18.c:14:   const char triangle[N][N] = {
-	adrp	x0, .LC0	// tmp97,
-	add	x1, x0, :lo12:.LC0	// tmp96, tmp97,
-	mov	x0, sp	// tmp98,
-	ldp	q0, q1, [x1]	// tmp100, tmp101,
-	stp	q0, q1, [x0]	// tmp100, tmp101, triangle
-	ldp	q0, q1, [x1, 32]	// tmp102, tmp103,
-	stp	q0, q1, [x0, 32]	// tmp102, tmp103, triangle
-	ldp	q0, q1, [x1, 64]	// tmp104, tmp105,
-	stp	q0, q1, [x0, 64]	// tmp104, tmp105, triangle
-	ldp	q0, q1, [x1, 96]	// tmp106, tmp107,
-	stp	q0, q1, [x0, 96]	// tmp106, tmp107, triangle
-	ldp	q0, q1, [x1, 128]	// tmp108, tmp109,
-	stp	q0, q1, [x0, 128]	// tmp108, tmp109, triangle
-	ldp	q0, q1, [x1, 160]	// tmp110, tmp111,
-	stp	q0, q1, [x0, 160]	// tmp110, tmp111, triangle
-	ldp	q0, q1, [x1, 192]	// tmp112, tmp113,
-	stp	q0, q1, [x0, 192]	// tmp112, tmp113, triangle
-	ldrb	w1, [x1, 224]	// tmp114,
-	strb	w1, [x0, 224]	// tmp114, triangle
+	adrp	x0, .LC0	// tmp98,
+	add	x1, x0, :lo12:.LC0	// tmp97, tmp98,
+	add	x0, sp, 16	// tmp99,,
+	ldp	q0, q1, [x1]	// tmp101, tmp102,
+	stp	q0, q1, [x0]	// tmp101, tmp102, triangle
+	ldp	q0, q1, [x1, 32]	// tmp103, tmp104,
+	stp	q0, q1, [x0, 32]	// tmp103, tmp104, triangle
+	ldp	q0, q1, [x1, 64]	// tmp105, tmp106,
+	stp	q0, q1, [x0, 64]	// tmp105, tmp106, triangle
+	ldp	q0, q1, [x1, 96]	// tmp107, tmp108,
+	stp	q0, q1, [x0, 96]	// tmp107, tmp108, triangle
+	ldp	q0, q1, [x1, 128]	// tmp109, tmp110,
+	stp	q0, q1, [x0, 128]	// tmp109, tmp110, triangle
+	ldp	q0, q1, [x1, 160]	// tmp111, tmp112,
+	stp	q0, q1, [x0, 160]	// tmp111, tmp112, triangle
+	ldp	q0, q1, [x1, 192]	// tmp113, tmp114,
+	stp	q0, q1, [x0, 192]	// tmp113, tmp114, triangle
+	ldrb	w1, [x1, 224]	// tmp115,
+	strb	w1, [x0, 224]	// tmp115, triangle
 // problem18.c:32:   printf("%d\n", findmax(triangle, 0, 0));
-	mov	x0, sp	// tmp115,
+	add	x0, sp, 16	// tmp116,,
 	mov	w2, 0	//,
 	mov	w1, 0	//,
 	bl	findmax		//
-// problem18.c:32:   printf("%d\n", findmax(triangle, 0, 0));
 	mov	w1, w0	//, _1
-	adrp	x0, .LC1	// tmp116,
-	add	x0, x0, :lo12:.LC1	//, tmp116,
+	adrp	x0, .LC1	// tmp117,
+	add	x0, x0, :lo12:.LC1	//, tmp117,
 	bl	printf		//
 // problem18.c:34:   return 0;
 	mov	w0, 0	// _6,
 // problem18.c:35: }
 	mov	w1, w0	// <retval>, _6
-	adrp	x0, :got:__stack_chk_guard	// tmp118,
-	ldr	x0, [x0, :got_lo12:__stack_chk_guard]	// tmp118,
-	ldr	x3, [sp, 232]	// tmp120, D.4852
-	ldr	x2, [x0]	// tmp121,
-	subs	x3, x3, x2	// tmp120, tmp121
-	mov	x2, 0	// tmp121
+	adrp	x0, :got:__stack_chk_guard	// tmp120,
+	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]	// tmp119, tmp120,
+	ldr	x3, [sp, 248]	// tmp122, D.4270
+	ldr	x2, [x0]	// tmp123,
+	subs	x3, x3, x2	// tmp122, tmp123
+	mov	x2, 0	// tmp123
 	beq	.L3		//,
 	bl	__stack_chk_fail		//
 .L3:
 	mov	w0, w1	//, <retval>
-	ldp	x29, x30, [sp, 240]	//,,
-	add	sp, sp, 256	//,,
-	.cfi_restore 29
+	ldp	x29, x30, [sp], 256	//,,,
 	.cfi_restore 30
+	.cfi_restore 29
 	.cfi_def_cfa_offset 0
 	ret	
 	.cfi_endproc
@@ -189,5 +186,5 @@ findmax:
 	.cfi_endproc
 .LFE1:
 	.size	findmax, .-findmax
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

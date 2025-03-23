@@ -156,7 +156,6 @@ main:
 	add	x0, x0, :lo12:.LC0
 	bl	func0
 	and	w0, w0, 255
-	and	w0, w0, 1
 	cmp	w0, 0
 	bne	.L10
 	adrp	x0, __PRETTY_FUNCTION__.0
@@ -172,7 +171,6 @@ main:
 	add	x0, x0, :lo12:.LC3
 	bl	func0
 	and	w0, w0, 255
-	and	w0, w0, 1
 	cmp	w0, 0
 	bne	.L11
 	adrp	x0, __PRETTY_FUNCTION__.0
@@ -188,7 +186,6 @@ main:
 	add	x0, x0, :lo12:.LC5
 	bl	func0
 	and	w0, w0, 255
-	and	w0, w0, 1
 	cmp	w0, 0
 	bne	.L12
 	adrp	x0, __PRETTY_FUNCTION__.0
@@ -204,7 +201,6 @@ main:
 	add	x0, x0, :lo12:.LC7
 	bl	func0
 	and	w0, w0, 255
-	and	w0, w0, 1
 	cmp	w0, 0
 	bne	.L13
 	adrp	x0, __PRETTY_FUNCTION__.0
@@ -222,7 +218,6 @@ main:
 	and	w0, w0, 255
 	eor	w0, w0, 1
 	and	w0, w0, 255
-	and	w0, w0, 1
 	cmp	w0, 0
 	bne	.L14
 	adrp	x0, __PRETTY_FUNCTION__.0
@@ -240,7 +235,6 @@ main:
 	and	w0, w0, 255
 	eor	w0, w0, 1
 	and	w0, w0, 255
-	and	w0, w0, 1
 	cmp	w0, 0
 	bne	.L15
 	adrp	x0, __PRETTY_FUNCTION__.0
@@ -258,7 +252,6 @@ main:
 	and	w0, w0, 255
 	eor	w0, w0, 1
 	and	w0, w0, 255
-	and	w0, w0, 1
 	cmp	w0, 0
 	bne	.L16
 	adrp	x0, __PRETTY_FUNCTION__.0
@@ -276,7 +269,6 @@ main:
 	and	w0, w0, 255
 	eor	w0, w0, 1
 	and	w0, w0, 255
-	and	w0, w0, 1
 	cmp	w0, 0
 	bne	.L17
 	adrp	x0, __PRETTY_FUNCTION__.0
@@ -294,7 +286,6 @@ main:
 	and	w0, w0, 255
 	eor	w0, w0, 1
 	and	w0, w0, 255
-	and	w0, w0, 1
 	cmp	w0, 0
 	bne	.L18
 	adrp	x0, __PRETTY_FUNCTION__.0
@@ -312,7 +303,6 @@ main:
 	and	w0, w0, 255
 	eor	w0, w0, 1
 	and	w0, w0, 255
-	and	w0, w0, 1
 	cmp	w0, 0
 	bne	.L19
 	adrp	x0, __PRETTY_FUNCTION__.0
@@ -330,7 +320,6 @@ main:
 	and	w0, w0, 255
 	eor	w0, w0, 1
 	and	w0, w0, 255
-	and	w0, w0, 1
 	cmp	w0, 0
 	bne	.L20
 	adrp	x0, __PRETTY_FUNCTION__.0
@@ -348,7 +337,6 @@ main:
 	and	w0, w0, 255
 	eor	w0, w0, 1
 	and	w0, w0, 255
-	and	w0, w0, 1
 	cmp	w0, 0
 	bne	.L21
 	adrp	x0, __PRETTY_FUNCTION__.0
@@ -375,5 +363,5 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

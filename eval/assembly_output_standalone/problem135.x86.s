@@ -30,10 +30,10 @@ func0:
 	movzbl	(%rax), %eax
 	movb	%al, -6(%rbp)
 	call	__ctype_b_loc@PLT
-	movq	(%rax), %rax
-	movzbl	-6(%rbp), %edx
-	movzbl	%dl, %edx
-	addq	%rdx, %rdx
+	movq	(%rax), %rdx
+	movzbl	-6(%rbp), %eax
+	movzbl	%al, %eax
+	addq	%rax, %rax
 	addq	%rdx, %rax
 	movzwl	(%rax), %eax
 	movzwl	%ax, %eax
@@ -56,10 +56,10 @@ func0:
 	movzbl	(%rax), %eax
 	movb	%al, -5(%rbp)
 	call	__ctype_b_loc@PLT
-	movq	(%rax), %rax
-	movzbl	-5(%rbp), %edx
-	movzbl	%dl, %edx
-	addq	%rdx, %rdx
+	movq	(%rax), %rdx
+	movzbl	-5(%rbp), %eax
+	movzbl	%al, %eax
+	addq	%rax, %rax
 	addq	%rdx, %rax
 	movzwl	(%rax), %eax
 	movzwl	%ax, %eax
@@ -77,7 +77,7 @@ func0:
 	.cfi_endproc
 .LFE0:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

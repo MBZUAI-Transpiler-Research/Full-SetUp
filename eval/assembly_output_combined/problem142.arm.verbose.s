@@ -1,7 +1,7 @@
 	.arch armv8-a
 	.file	"problem142.c"
-// GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (aarch64-linux-gnu)
-//	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+// GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (aarch64-linux-gnu)
+//	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 // GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 // options passed: -mlittle-endian -mabi=lp64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection
@@ -51,7 +51,6 @@ func0:
 // problem142.c:7:     if (length < 5) return "No";
 	adrp	x0, .LC0	// tmp111,
 	add	x0, x0, :lo12:.LC0	// _21, tmp111,
-// problem142.c:7:     if (length < 5) return "No";
 	b	.L3		//
 .L2:
 // problem142.c:8:     char w = file_name[0];
@@ -79,7 +78,6 @@ func0:
 // problem142.c:9:     if (w < 'A' || (w > 'Z' && w < 'a') || w > 'z') return "No";
 	adrp	x0, .LC0	// tmp118,
 	add	x0, x0, :lo12:.LC0	// _21, tmp118,
-// problem142.c:9:     if (w < 'A' || (w > 'Z' && w < 'a') || w > 'z') return "No";
 	b	.L3		//
 .L6:
 // problem142.c:10:     const char* last = file_name + length - 4;
@@ -116,7 +114,6 @@ func0:
 // problem142.c:11:     if (strcmp(last, ".txt") != 0 && strcmp(last, ".exe") != 0 && strcmp(last, ".dll") != 0) return "No";
 	adrp	x0, .LC0	// tmp124,
 	add	x0, x0, :lo12:.LC0	// _21, tmp124,
-// problem142.c:11:     if (strcmp(last, ".txt") != 0 && strcmp(last, ".exe") != 0 && strcmp(last, ".dll") != 0) return "No";
 	b	.L3		//
 .L7:
 // problem142.c:12:     for (int i = 0; i < length; i++) {
@@ -180,7 +177,6 @@ func0:
 // problem142.c:16:     if (num_digit > 3 || num_dot != 1) return "No";
 	adrp	x0, .LC0	// tmp138,
 	add	x0, x0, :lo12:.LC0	// _21, tmp138,
-// problem142.c:16:     if (num_digit > 3 || num_dot != 1) return "No";
 	b	.L3		//
 .L13:
 // problem142.c:17:     return "Yes";
@@ -370,12 +366,10 @@ main:
 	add	x0, x0, :lo12:.LC5	//, tmp146,
 	bl	func0		//
 	mov	x2, x0	// _1,
-// problem142.c:26:     assert(strcmp(func0("example.txt"), "Yes") == 0);
 	adrp	x0, .LC4	// tmp147,
 	add	x1, x0, :lo12:.LC4	//, tmp147,
 	mov	x0, x2	//, _1
 	bl	strcmp		//
-// problem142.c:26:     assert(strcmp(func0("example.txt"), "Yes") == 0);
 	cmp	w0, 0	// _2,
 	beq	.L15		//,
 // problem142.c:26:     assert(strcmp(func0("example.txt"), "Yes") == 0);
@@ -393,12 +387,10 @@ main:
 	add	x0, x0, :lo12:.LC8	//, tmp151,
 	bl	func0		//
 	mov	x2, x0	// _3,
-// problem142.c:27:     assert(strcmp(func0("1example.dll"), "No") == 0);
 	adrp	x0, .LC0	// tmp152,
 	add	x1, x0, :lo12:.LC0	//, tmp152,
 	mov	x0, x2	//, _3
 	bl	strcmp		//
-// problem142.c:27:     assert(strcmp(func0("1example.dll"), "No") == 0);
 	cmp	w0, 0	// _4,
 	beq	.L16		//,
 // problem142.c:27:     assert(strcmp(func0("1example.dll"), "No") == 0);
@@ -416,12 +408,10 @@ main:
 	add	x0, x0, :lo12:.LC10	//, tmp156,
 	bl	func0		//
 	mov	x2, x0	// _5,
-// problem142.c:28:     assert(strcmp(func0("s1sdf3.asd"), "No") == 0);
 	adrp	x0, .LC0	// tmp157,
 	add	x1, x0, :lo12:.LC0	//, tmp157,
 	mov	x0, x2	//, _5
 	bl	strcmp		//
-// problem142.c:28:     assert(strcmp(func0("s1sdf3.asd"), "No") == 0);
 	cmp	w0, 0	// _6,
 	beq	.L17		//,
 // problem142.c:28:     assert(strcmp(func0("s1sdf3.asd"), "No") == 0);
@@ -439,12 +429,10 @@ main:
 	add	x0, x0, :lo12:.LC12	//, tmp161,
 	bl	func0		//
 	mov	x2, x0	// _7,
-// problem142.c:29:     assert(strcmp(func0("K.dll"), "Yes") == 0);
 	adrp	x0, .LC4	// tmp162,
 	add	x1, x0, :lo12:.LC4	//, tmp162,
 	mov	x0, x2	//, _7
 	bl	strcmp		//
-// problem142.c:29:     assert(strcmp(func0("K.dll"), "Yes") == 0);
 	cmp	w0, 0	// _8,
 	beq	.L18		//,
 // problem142.c:29:     assert(strcmp(func0("K.dll"), "Yes") == 0);
@@ -462,12 +450,10 @@ main:
 	add	x0, x0, :lo12:.LC14	//, tmp166,
 	bl	func0		//
 	mov	x2, x0	// _9,
-// problem142.c:30:     assert(strcmp(func0("MY16FILE3.exe"), "Yes") == 0);
 	adrp	x0, .LC4	// tmp167,
 	add	x1, x0, :lo12:.LC4	//, tmp167,
 	mov	x0, x2	//, _9
 	bl	strcmp		//
-// problem142.c:30:     assert(strcmp(func0("MY16FILE3.exe"), "Yes") == 0);
 	cmp	w0, 0	// _10,
 	beq	.L19		//,
 // problem142.c:30:     assert(strcmp(func0("MY16FILE3.exe"), "Yes") == 0);
@@ -485,12 +471,10 @@ main:
 	add	x0, x0, :lo12:.LC16	//, tmp171,
 	bl	func0		//
 	mov	x2, x0	// _11,
-// problem142.c:31:     assert(strcmp(func0("His12FILE94.exe"), "No") == 0);
 	adrp	x0, .LC0	// tmp172,
 	add	x1, x0, :lo12:.LC0	//, tmp172,
 	mov	x0, x2	//, _11
 	bl	strcmp		//
-// problem142.c:31:     assert(strcmp(func0("His12FILE94.exe"), "No") == 0);
 	cmp	w0, 0	// _12,
 	beq	.L20		//,
 // problem142.c:31:     assert(strcmp(func0("His12FILE94.exe"), "No") == 0);
@@ -508,12 +492,10 @@ main:
 	add	x0, x0, :lo12:.LC18	//, tmp176,
 	bl	func0		//
 	mov	x2, x0	// _13,
-// problem142.c:32:     assert(strcmp(func0("_Y.txt"), "No") == 0);
 	adrp	x0, .LC0	// tmp177,
 	add	x1, x0, :lo12:.LC0	//, tmp177,
 	mov	x0, x2	//, _13
 	bl	strcmp		//
-// problem142.c:32:     assert(strcmp(func0("_Y.txt"), "No") == 0);
 	cmp	w0, 0	// _14,
 	beq	.L21		//,
 // problem142.c:32:     assert(strcmp(func0("_Y.txt"), "No") == 0);
@@ -531,12 +513,10 @@ main:
 	add	x0, x0, :lo12:.LC20	//, tmp181,
 	bl	func0		//
 	mov	x2, x0	// _15,
-// problem142.c:33:     assert(strcmp(func0("?aREYA.exe"), "No") == 0);
 	adrp	x0, .LC0	// tmp182,
 	add	x1, x0, :lo12:.LC0	//, tmp182,
 	mov	x0, x2	//, _15
 	bl	strcmp		//
-// problem142.c:33:     assert(strcmp(func0("?aREYA.exe"), "No") == 0);
 	cmp	w0, 0	// _16,
 	beq	.L22		//,
 // problem142.c:33:     assert(strcmp(func0("?aREYA.exe"), "No") == 0);
@@ -554,12 +534,10 @@ main:
 	add	x0, x0, :lo12:.LC22	//, tmp186,
 	bl	func0		//
 	mov	x2, x0	// _17,
-// problem142.c:34:     assert(strcmp(func0("/this_is_valid.dll"), "No") == 0);
 	adrp	x0, .LC0	// tmp187,
 	add	x1, x0, :lo12:.LC0	//, tmp187,
 	mov	x0, x2	//, _17
 	bl	strcmp		//
-// problem142.c:34:     assert(strcmp(func0("/this_is_valid.dll"), "No") == 0);
 	cmp	w0, 0	// _18,
 	beq	.L23		//,
 // problem142.c:34:     assert(strcmp(func0("/this_is_valid.dll"), "No") == 0);
@@ -577,12 +555,10 @@ main:
 	add	x0, x0, :lo12:.LC24	//, tmp191,
 	bl	func0		//
 	mov	x2, x0	// _19,
-// problem142.c:35:     assert(strcmp(func0("this_is_valid.wow"), "No") == 0);
 	adrp	x0, .LC0	// tmp192,
 	add	x1, x0, :lo12:.LC0	//, tmp192,
 	mov	x0, x2	//, _19
 	bl	strcmp		//
-// problem142.c:35:     assert(strcmp(func0("this_is_valid.wow"), "No") == 0);
 	cmp	w0, 0	// _20,
 	beq	.L24		//,
 // problem142.c:35:     assert(strcmp(func0("this_is_valid.wow"), "No") == 0);
@@ -600,12 +576,10 @@ main:
 	add	x0, x0, :lo12:.LC26	//, tmp196,
 	bl	func0		//
 	mov	x2, x0	// _21,
-// problem142.c:36:     assert(strcmp(func0("this_is_valid.txt"), "Yes") == 0);
 	adrp	x0, .LC4	// tmp197,
 	add	x1, x0, :lo12:.LC4	//, tmp197,
 	mov	x0, x2	//, _21
 	bl	strcmp		//
-// problem142.c:36:     assert(strcmp(func0("this_is_valid.txt"), "Yes") == 0);
 	cmp	w0, 0	// _22,
 	beq	.L25		//,
 // problem142.c:36:     assert(strcmp(func0("this_is_valid.txt"), "Yes") == 0);
@@ -623,12 +597,10 @@ main:
 	add	x0, x0, :lo12:.LC28	//, tmp201,
 	bl	func0		//
 	mov	x2, x0	// _23,
-// problem142.c:37:     assert(strcmp(func0("this_is_valid.txtexe"), "No") == 0);
 	adrp	x0, .LC0	// tmp202,
 	add	x1, x0, :lo12:.LC0	//, tmp202,
 	mov	x0, x2	//, _23
 	bl	strcmp		//
-// problem142.c:37:     assert(strcmp(func0("this_is_valid.txtexe"), "No") == 0);
 	cmp	w0, 0	// _24,
 	beq	.L26		//,
 // problem142.c:37:     assert(strcmp(func0("this_is_valid.txtexe"), "No") == 0);
@@ -646,12 +618,10 @@ main:
 	add	x0, x0, :lo12:.LC30	//, tmp206,
 	bl	func0		//
 	mov	x2, x0	// _25,
-// problem142.c:38:     assert(strcmp(func0("#this2_i4s_5valid.ten"), "No") == 0);
 	adrp	x0, .LC0	// tmp207,
 	add	x1, x0, :lo12:.LC0	//, tmp207,
 	mov	x0, x2	//, _25
 	bl	strcmp		//
-// problem142.c:38:     assert(strcmp(func0("#this2_i4s_5valid.ten"), "No") == 0);
 	cmp	w0, 0	// _26,
 	beq	.L27		//,
 // problem142.c:38:     assert(strcmp(func0("#this2_i4s_5valid.ten"), "No") == 0);
@@ -669,12 +639,10 @@ main:
 	add	x0, x0, :lo12:.LC32	//, tmp211,
 	bl	func0		//
 	mov	x2, x0	// _27,
-// problem142.c:39:     assert(strcmp(func0("@this1_is6_valid.exe"), "No") == 0);
 	adrp	x0, .LC0	// tmp212,
 	add	x1, x0, :lo12:.LC0	//, tmp212,
 	mov	x0, x2	//, _27
 	bl	strcmp		//
-// problem142.c:39:     assert(strcmp(func0("@this1_is6_valid.exe"), "No") == 0);
 	cmp	w0, 0	// _28,
 	beq	.L28		//,
 // problem142.c:39:     assert(strcmp(func0("@this1_is6_valid.exe"), "No") == 0);
@@ -692,12 +660,10 @@ main:
 	add	x0, x0, :lo12:.LC34	//, tmp216,
 	bl	func0		//
 	mov	x2, x0	// _29,
-// problem142.c:40:     assert(strcmp(func0("this_is_12valid.6exe4.txt"), "No") == 0);
 	adrp	x0, .LC0	// tmp217,
 	add	x1, x0, :lo12:.LC0	//, tmp217,
 	mov	x0, x2	//, _29
 	bl	strcmp		//
-// problem142.c:40:     assert(strcmp(func0("this_is_12valid.6exe4.txt"), "No") == 0);
 	cmp	w0, 0	// _30,
 	beq	.L29		//,
 // problem142.c:40:     assert(strcmp(func0("this_is_12valid.6exe4.txt"), "No") == 0);
@@ -715,12 +681,10 @@ main:
 	add	x0, x0, :lo12:.LC36	//, tmp221,
 	bl	func0		//
 	mov	x2, x0	// _31,
-// problem142.c:41:     assert(strcmp(func0("all.exe.txt"), "No") == 0);
 	adrp	x0, .LC0	// tmp222,
 	add	x1, x0, :lo12:.LC0	//, tmp222,
 	mov	x0, x2	//, _31
 	bl	strcmp		//
-// problem142.c:41:     assert(strcmp(func0("all.exe.txt"), "No") == 0);
 	cmp	w0, 0	// _32,
 	beq	.L30		//,
 // problem142.c:41:     assert(strcmp(func0("all.exe.txt"), "No") == 0);
@@ -738,12 +702,10 @@ main:
 	add	x0, x0, :lo12:.LC38	//, tmp226,
 	bl	func0		//
 	mov	x2, x0	// _33,
-// problem142.c:42:     assert(strcmp(func0("I563_No.exe"), "Yes") == 0);
 	adrp	x0, .LC4	// tmp227,
 	add	x1, x0, :lo12:.LC4	//, tmp227,
 	mov	x0, x2	//, _33
 	bl	strcmp		//
-// problem142.c:42:     assert(strcmp(func0("I563_No.exe"), "Yes") == 0);
 	cmp	w0, 0	// _34,
 	beq	.L31		//,
 // problem142.c:42:     assert(strcmp(func0("I563_No.exe"), "Yes") == 0);
@@ -761,12 +723,10 @@ main:
 	add	x0, x0, :lo12:.LC40	//, tmp231,
 	bl	func0		//
 	mov	x2, x0	// _35,
-// problem142.c:43:     assert(strcmp(func0("Is3youfault.txt"), "Yes") == 0);
 	adrp	x0, .LC4	// tmp232,
 	add	x1, x0, :lo12:.LC4	//, tmp232,
 	mov	x0, x2	//, _35
 	bl	strcmp		//
-// problem142.c:43:     assert(strcmp(func0("Is3youfault.txt"), "Yes") == 0);
 	cmp	w0, 0	// _36,
 	beq	.L32		//,
 // problem142.c:43:     assert(strcmp(func0("Is3youfault.txt"), "Yes") == 0);
@@ -784,12 +744,10 @@ main:
 	add	x0, x0, :lo12:.LC42	//, tmp236,
 	bl	func0		//
 	mov	x2, x0	// _37,
-// problem142.c:44:     assert(strcmp(func0("no_one#knows.dll"), "Yes") == 0);
 	adrp	x0, .LC4	// tmp237,
 	add	x1, x0, :lo12:.LC4	//, tmp237,
 	mov	x0, x2	//, _37
 	bl	strcmp		//
-// problem142.c:44:     assert(strcmp(func0("no_one#knows.dll"), "Yes") == 0);
 	cmp	w0, 0	// _38,
 	beq	.L33		//,
 // problem142.c:44:     assert(strcmp(func0("no_one#knows.dll"), "Yes") == 0);
@@ -807,12 +765,10 @@ main:
 	add	x0, x0, :lo12:.LC44	//, tmp241,
 	bl	func0		//
 	mov	x2, x0	// _39,
-// problem142.c:45:     assert(strcmp(func0("1I563_Yes3.exe"), "No") == 0);
 	adrp	x0, .LC0	// tmp242,
 	add	x1, x0, :lo12:.LC0	//, tmp242,
 	mov	x0, x2	//, _39
 	bl	strcmp		//
-// problem142.c:45:     assert(strcmp(func0("1I563_Yes3.exe"), "No") == 0);
 	cmp	w0, 0	// _40,
 	beq	.L34		//,
 // problem142.c:45:     assert(strcmp(func0("1I563_Yes3.exe"), "No") == 0);
@@ -830,12 +786,10 @@ main:
 	add	x0, x0, :lo12:.LC46	//, tmp246,
 	bl	func0		//
 	mov	x2, x0	// _41,
-// problem142.c:46:     assert(strcmp(func0("I563_Yes3.txtt"), "No") == 0);
 	adrp	x0, .LC0	// tmp247,
 	add	x1, x0, :lo12:.LC0	//, tmp247,
 	mov	x0, x2	//, _41
 	bl	strcmp		//
-// problem142.c:46:     assert(strcmp(func0("I563_Yes3.txtt"), "No") == 0);
 	cmp	w0, 0	// _42,
 	beq	.L35		//,
 // problem142.c:46:     assert(strcmp(func0("I563_Yes3.txtt"), "No") == 0);
@@ -853,12 +807,10 @@ main:
 	add	x0, x0, :lo12:.LC48	//, tmp251,
 	bl	func0		//
 	mov	x2, x0	// _43,
-// problem142.c:47:     assert(strcmp(func0("final..txt"), "No") == 0);
 	adrp	x0, .LC0	// tmp252,
 	add	x1, x0, :lo12:.LC0	//, tmp252,
 	mov	x0, x2	//, _43
 	bl	strcmp		//
-// problem142.c:47:     assert(strcmp(func0("final..txt"), "No") == 0);
 	cmp	w0, 0	// _44,
 	beq	.L36		//,
 // problem142.c:47:     assert(strcmp(func0("final..txt"), "No") == 0);
@@ -876,12 +828,10 @@ main:
 	add	x0, x0, :lo12:.LC50	//, tmp256,
 	bl	func0		//
 	mov	x2, x0	// _45,
-// problem142.c:48:     assert(strcmp(func0("final132"), "No") == 0);
 	adrp	x0, .LC0	// tmp257,
 	add	x1, x0, :lo12:.LC0	//, tmp257,
 	mov	x0, x2	//, _45
 	bl	strcmp		//
-// problem142.c:48:     assert(strcmp(func0("final132"), "No") == 0);
 	cmp	w0, 0	// _46,
 	beq	.L37		//,
 // problem142.c:48:     assert(strcmp(func0("final132"), "No") == 0);
@@ -899,12 +849,10 @@ main:
 	add	x0, x0, :lo12:.LC52	//, tmp261,
 	bl	func0		//
 	mov	x2, x0	// _47,
-// problem142.c:49:     assert(strcmp(func0("_f4indsartal132."), "No") == 0);
 	adrp	x0, .LC0	// tmp262,
 	add	x1, x0, :lo12:.LC0	//, tmp262,
 	mov	x0, x2	//, _47
 	bl	strcmp		//
-// problem142.c:49:     assert(strcmp(func0("_f4indsartal132."), "No") == 0);
 	cmp	w0, 0	// _48,
 	beq	.L38		//,
 // problem142.c:49:     assert(strcmp(func0("_f4indsartal132."), "No") == 0);
@@ -922,12 +870,10 @@ main:
 	add	x0, x0, :lo12:.LC1	//, tmp266,
 	bl	func0		//
 	mov	x2, x0	// _49,
-// problem142.c:50:     assert(strcmp(func0(".txt"), "No") == 0);
 	adrp	x0, .LC0	// tmp267,
 	add	x1, x0, :lo12:.LC0	//, tmp267,
 	mov	x0, x2	//, _49
 	bl	strcmp		//
-// problem142.c:50:     assert(strcmp(func0(".txt"), "No") == 0);
 	cmp	w0, 0	// _50,
 	beq	.L39		//,
 // problem142.c:50:     assert(strcmp(func0(".txt"), "No") == 0);
@@ -945,12 +891,10 @@ main:
 	add	x0, x0, :lo12:.LC55	//, tmp271,
 	bl	func0		//
 	mov	x2, x0	// _51,
-// problem142.c:51:     assert(strcmp(func0("s."), "No") == 0);
 	adrp	x0, .LC0	// tmp272,
 	add	x1, x0, :lo12:.LC0	//, tmp272,
 	mov	x0, x2	//, _51
 	bl	strcmp		//
-// problem142.c:51:     assert(strcmp(func0("s."), "No") == 0);
 	cmp	w0, 0	// _52,
 	beq	.L40		//,
 // problem142.c:51:     assert(strcmp(func0("s."), "No") == 0);
@@ -980,5 +924,5 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

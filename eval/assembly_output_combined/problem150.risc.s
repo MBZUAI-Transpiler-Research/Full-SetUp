@@ -1,23 +1,14 @@
 	.file	"problem150.c"
 	.option pic
-	.attribute arch, "rv64i2p1_m2p0_a2p1_f2p2_d2p2_c2p0_zicsr2p0_zifencei2p0"
-	.attribute unaligned_access, 0
-	.attribute stack_align, 16
 	.text
 	.align	1
 	.globl	func0
 	.type	func0, @function
 func0:
-.LFB6:
-	.cfi_startproc
 	addi	sp,sp,-96
-	.cfi_def_cfa_offset 96
 	sd	ra,88(sp)
 	sd	s0,80(sp)
-	.cfi_offset 1, -8
-	.cfi_offset 8, -16
 	addi	s0,sp,96
-	.cfi_def_cfa 8, 0
 	sd	a0,-72(s0)
 	mv	a5,a1
 	sd	a2,-88(s0)
@@ -193,30 +184,18 @@ func0:
 	ld	a5,-48(s0)
 	mv	a0,a5
 	ld	ra,88(sp)
-	.cfi_restore 1
 	ld	s0,80(sp)
-	.cfi_restore 8
-	.cfi_def_cfa 2, 96
 	addi	sp,sp,96
-	.cfi_def_cfa_offset 0
 	jr	ra
-	.cfi_endproc
-.LFE6:
 	.size	func0, .-func0
 	.align	1
 	.globl	issame
 	.type	issame, @function
 issame:
-.LFB7:
-	.cfi_startproc
 	addi	sp,sp,-64
-	.cfi_def_cfa_offset 64
 	sd	ra,56(sp)
 	sd	s0,48(sp)
-	.cfi_offset 1, -8
-	.cfi_offset 8, -16
 	addi	s0,sp,64
-	.cfi_def_cfa 8, 0
 	sd	a0,-40(s0)
 	sd	a1,-48(s0)
 	mv	a5,a2
@@ -268,15 +247,9 @@ issame:
 .L16:
 	mv	a0,a5
 	ld	ra,56(sp)
-	.cfi_restore 1
 	ld	s0,48(sp)
-	.cfi_restore 8
-	.cfi_def_cfa 2, 64
 	addi	sp,sp,64
-	.cfi_def_cfa_offset 0
 	jr	ra
-	.cfi_endproc
-.LFE7:
 	.size	issame, .-issame
 	.section	.rodata
 	.align	3
@@ -402,16 +375,10 @@ issame:
 	.globl	main
 	.type	main, @function
 main:
-.LFB8:
-	.cfi_startproc
 	addi	sp,sp,-368
-	.cfi_def_cfa_offset 368
 	sd	ra,360(sp)
 	sd	s0,352(sp)
-	.cfi_offset 1, -8
-	.cfi_offset 8, -16
 	addi	s0,sp,368
-	.cfi_def_cfa 8, 0
 	la	a5,__stack_chk_guard
 	ld	a4, 0(a5)
 	sd	a4, -24(s0)
@@ -672,15 +639,9 @@ main:
 .L29:
 	mv	a0,a4
 	ld	ra,360(sp)
-	.cfi_restore 1
 	ld	s0,352(sp)
-	.cfi_restore 8
-	.cfi_def_cfa 2, 368
 	addi	sp,sp,368
-	.cfi_def_cfa_offset 0
 	jr	ra
-	.cfi_endproc
-.LFE8:
 	.size	main, .-main
 	.section	.rodata
 	.align	3
@@ -688,5 +649,5 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

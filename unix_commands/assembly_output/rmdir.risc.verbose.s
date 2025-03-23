@@ -1,13 +1,10 @@
 	.file	"rmdir.c"
 	.option pic
-	.attribute arch, "rv64i2p1_m2p0_a2p1_f2p2_d2p2_c2p0_zicsr2p0_zifencei2p0"
-	.attribute unaligned_access, 0
-	.attribute stack_align, 16
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (riscv64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (riscv64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-# options passed: -mabi=lp64d -misa-spec=20191213 -march=rv64imafdc_zicsr_zifencei -fstack-protector-strong
+# options passed: -mabi=lp64d -misa-spec=2.2 -march=rv64imafdc -fstack-protector-strong
 	.text
 	.section	.rodata
 	.align	3
@@ -24,49 +21,43 @@
 	.globl	main
 	.type	main, @function
 main:
-.LFB6:
-	.cfi_startproc
 	addi	sp,sp,-80	#,,
-	.cfi_def_cfa_offset 80
 	sd	ra,72(sp)	#,
 	sd	s0,64(sp)	#,
-	.cfi_offset 1, -8
-	.cfi_offset 8, -16
 	addi	s0,sp,80	#,,
-	.cfi_def_cfa 8, 0
-	mv	a5,a0	# tmp139, argc
+	mv	a5,a0	# tmp77, argc
 	sd	a1,-80(s0)	# argv, argv
-	sw	a5,-68(s0)	# tmp140, argc
+	sw	a5,-68(s0)	# tmp78, argc
 # rmdir.c:12: int main(int argc, char* argv[]){
-	la	a5,__stack_chk_guard		# tmp141,
-	ld	a4, 0(a5)	# tmp154, __stack_chk_guard
-	sd	a4, -24(s0)	# tmp154, D.4487
-	li	a4, 0	# tmp154
+	la	a5,__stack_chk_guard		# tmp79,
+	ld	a4, 0(a5)	# tmp92, __stack_chk_guard
+	sd	a4, -24(s0)	# tmp92, D.3633
+	li	a4, 0	# tmp92
 # rmdir.c:15: if(argc!=2 || argv[1]=="--help")
-	lw	a5,-68(s0)		# tmp143, argc
-	sext.w	a4,a5	# tmp144, tmp142
-	li	a5,2		# tmp145,
-	bne	a4,a5,.L2	#, tmp144, tmp145,
+	lw	a5,-68(s0)		# tmp81, argc
+	sext.w	a4,a5	# tmp82, tmp80
+	li	a5,2		# tmp83,
+	bne	a4,a5,.L2	#, tmp82, tmp83,
 # rmdir.c:15: if(argc!=2 || argv[1]=="--help")
-	ld	a5,-80(s0)		# tmp146, argv
-	addi	a5,a5,8	#, _1, tmp146
+	ld	a5,-80(s0)		# tmp84, argv
+	addi	a5,a5,8	#, _1, tmp84
 	ld	a4,0(a5)		# _2, *_1
 # rmdir.c:15: if(argc!=2 || argv[1]=="--help")
-	lla	a5,.LC0	# tmp147,
-	bne	a4,a5,.L3	#, _2, tmp147,
+	lla	a5,.LC0	# tmp85,
+	bne	a4,a5,.L3	#, _2, tmp85,
 .L2:
 # rmdir.c:17:     printf("\nusage: rm FileTodelete\n");
 	lla	a0,.LC1	#,
 	call	puts@plt	#
 .L3:
 # rmdir.c:20: char *cmd = "rmdir";
-	lla	a5,.LC2	# tmp148,
-	sd	a5,-56(s0)	# tmp148, cmd
+	lla	a5,.LC2	# tmp86,
+	sd	a5,-56(s0)	# tmp86, cmd
 # rmdir.c:22: args[0] = "rmdir";
-	lla	a5,.LC2	# tmp149,
-	sd	a5,-48(s0)	# tmp149, args[0]
+	lla	a5,.LC2	# tmp87,
+	sd	a5,-48(s0)	# tmp87, args[0]
 # rmdir.c:23: args[1] = argv[1];
-	ld	a5,-80(s0)		# tmp150, argv
+	ld	a5,-80(s0)		# tmp88, argv
 	ld	a5,8(a5)		# _3, MEM[(char * *)argv_6(D) + 8B]
 	sd	a5,-40(s0)	# _3, args[1]
 # rmdir.c:24: args[2] = NULL;
@@ -78,25 +69,19 @@ main:
 	li	a5,0		# _15,
 	mv	a4,a5	# <retval>, _15
 # rmdir.c:27: }
-	la	a5,__stack_chk_guard		# tmp152,
-	ld	a3, -24(s0)	# tmp155, D.4487
-	ld	a5, 0(a5)	# tmp153, __stack_chk_guard
-	xor	a5, a3, a5	# tmp153, tmp155
-	li	a3, 0	# tmp155
-	beq	a5,zero,.L5	#, tmp153,,
+	la	a5,__stack_chk_guard		# tmp90,
+	ld	a3, -24(s0)	# tmp93, D.3633
+	ld	a5, 0(a5)	# tmp91, __stack_chk_guard
+	xor	a5, a3, a5	# tmp91, tmp93
+	li	a3, 0	# tmp93
+	beq	a5,zero,.L5	#, tmp91,,
 	call	__stack_chk_fail@plt	#
 .L5:
 	mv	a0,a4	#, <retval>
 	ld	ra,72(sp)		#,
-	.cfi_restore 1
 	ld	s0,64(sp)		#,
-	.cfi_restore 8
-	.cfi_def_cfa 2, 80
 	addi	sp,sp,80	#,,
-	.cfi_def_cfa_offset 0
 	jr	ra		#
-	.cfi_endproc
-.LFE6:
 	.size	main, .-main
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

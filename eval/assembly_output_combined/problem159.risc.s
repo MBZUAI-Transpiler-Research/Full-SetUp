@@ -1,8 +1,5 @@
 	.file	"problem159.c"
 	.option pic
-	.attribute arch, "rv64i2p1_m2p0_a2p1_f2p2_d2p2_c2p0_zicsr2p0_zifencei2p0"
-	.attribute unaligned_access, 0
-	.attribute stack_align, 16
 	.text
 	.section	.rodata
 	.align	3
@@ -13,16 +10,10 @@
 	.globl	func0
 	.type	func0, @function
 func0:
-.LFB0:
-	.cfi_startproc
 	addi	sp,sp,-336
-	.cfi_def_cfa_offset 336
 	sd	ra,328(sp)
 	sd	s0,320(sp)
-	.cfi_offset 1, -8
-	.cfi_offset 8, -16
 	addi	s0,sp,336
-	.cfi_def_cfa 8, 0
 	sd	a0,-328(s0)
 	mv	a5,a1
 	sw	a5,-332(s0)
@@ -36,8 +27,9 @@ func0:
 	sw	zero,-304(s0)
 	j	.L2
 .L8:
-	addi	a5,s0,-280
-	li	a4,256
+	sd	zero,-280(s0)
+	addi	a5,s0,-272
+	li	a4,248
 	mv	a2,a4
 	li	a1,0
 	mv	a0,a5
@@ -155,15 +147,9 @@ func0:
 .L10:
 	mv	a0,a4
 	ld	ra,328(sp)
-	.cfi_restore 1
 	ld	s0,320(sp)
-	.cfi_restore 8
-	.cfi_def_cfa 2, 336
 	addi	sp,sp,336
-	.cfi_def_cfa_offset 0
 	jr	ra
-	.cfi_endproc
-.LFE0:
 	.size	func0, .-func0
 	.section	.rodata
 	.align	3
@@ -306,16 +292,10 @@ func0:
 	.globl	main
 	.type	main, @function
 main:
-.LFB1:
-	.cfi_startproc
 	addi	sp,sp,-288
-	.cfi_def_cfa_offset 288
 	sd	ra,280(sp)
 	sd	s0,272(sp)
-	.cfi_offset 1, -8
-	.cfi_offset 8, -16
 	addi	s0,sp,288
-	.cfi_def_cfa 8, 0
 	la	a5,__stack_chk_guard
 	ld	a4, 0(a5)
 	sd	a4, -24(s0)
@@ -562,15 +542,9 @@ main:
 .L23:
 	mv	a0,a4
 	ld	ra,280(sp)
-	.cfi_restore 1
 	ld	s0,272(sp)
-	.cfi_restore 8
-	.cfi_def_cfa 2, 288
 	addi	sp,sp,288
-	.cfi_def_cfa_offset 0
 	jr	ra
-	.cfi_endproc
-.LFE1:
 	.size	main, .-main
 	.section	.rodata
 	.align	3
@@ -578,5 +552,5 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

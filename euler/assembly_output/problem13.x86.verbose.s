@@ -1,6 +1,6 @@
 	.file	"problem13.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -227,7 +227,7 @@ main:
 	subq	$1872, %rsp	#,
 # problem13.c:13: {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp111
-	movq	%rax, -8(%rbp)	# tmp111, D.5295
+	movq	%rax, -8(%rbp)	# tmp111, D.4458
 	xorl	%eax, %eax	# tmp111
 # problem13.c:14:   char digits[][N] = {
 	leaq	-10016(%rbp), %rax	#, tmp86
@@ -311,7 +311,7 @@ main:
 # problem13.c:136:   return 0;
 	movl	$0, %eax	#, _17
 # problem13.c:137: }
-	movq	-8(%rbp), %rdx	# D.5295, tmp112
+	movq	-8(%rbp), %rdx	# D.4458, tmp112
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp112
 	je	.L5	#,
 	call	__stack_chk_fail@PLT	#
@@ -322,7 +322,7 @@ main:
 	.cfi_endproc
 .LFE26:
 	.size	main, .-main
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

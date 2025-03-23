@@ -1,6 +1,6 @@
 	.file	"problem75.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -127,7 +127,6 @@ issame:
 	je	.L10	#,
 # problem75.c:43:   if(n1 != n2) return 0;
 	movl	$0, %eax	#, _11
-# problem75.c:43:   if(n1 != n2) return 0;
 	jmp	.L11	#
 .L10:
 # problem75.c:45:   for(i=0; i<n1; i++){
@@ -159,7 +158,6 @@ issame:
 	je	.L13	#,
 # problem75.c:46:     if(strcmp(arr1[i], arr2[i]) != 0) return 0;
 	movl	$0, %eax	#, _11
-# problem75.c:46:     if(strcmp(arr1[i], arr2[i]) != 0) return 0;
 	jmp	.L11	#
 .L13:
 # problem75.c:45:   for(i=0; i<n1; i++){
@@ -201,7 +199,7 @@ main:
 	addq	$-128, %rsp	#,
 # problem75.c:59: int main(){
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp119
-	movq	%rax, -8(%rbp)	# tmp119, D.3977
+	movq	%rax, -8(%rbp)	# tmp119, D.3113
 	xorl	%eax, %eax	# tmp119
 # problem75.c:63:   int n1 = 0, n2 = 0;
 	movl	$0, -120(%rbp)	#, n1
@@ -215,7 +213,6 @@ main:
 	movq	%rax, %rdi	# tmp90,
 	call	func0	#
 	movq	%rax, %rdi	#, _1
-# problem75.c:64:   issame(func0(arr1, n1, arr2, n2), n1, arr2, n2);
 	movl	-116(%rbp), %ecx	# n2, tmp91
 	leaq	-104(%rbp), %rdx	#, tmp92
 	movl	-120(%rbp), %eax	# n1, tmp93
@@ -243,7 +240,6 @@ main:
 	movq	%rax, %rdi	# tmp101,
 	call	func0	#
 	movq	%rax, %rdi	#, _2
-# problem75.c:69:   issame(func0(arr3, n1, arr4, n2), n1, arr4, n2);
 	movl	-116(%rbp), %ecx	# n2, tmp102
 	leaq	-80(%rbp), %rdx	#, tmp103
 	movl	-120(%rbp), %eax	# n1, tmp104
@@ -275,16 +271,15 @@ main:
 	movq	%rax, %rdi	# tmp114,
 	call	func0	#
 	movq	%rax, %rdi	#, _3
-# problem75.c:74:   issame(func0(arr5, n1, arr6, n2), n1, arr5, n1);
 	movl	-120(%rbp), %ecx	# n1, tmp115
 	leaq	-64(%rbp), %rdx	#, tmp116
 	movl	-120(%rbp), %eax	# n1, tmp117
 	movl	%eax, %esi	# tmp117,
 	call	issame	#
 # problem75.c:78:   return 0;
-	movl	$0, %eax	#, _27
+	movl	$0, %eax	#, _29
 # problem75.c:79: }
-	movq	-8(%rbp), %rdx	# D.3977, tmp120
+	movq	-8(%rbp), %rdx	# D.3113, tmp120
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp120
 	je	.L17	#,
 	call	__stack_chk_fail@PLT	#
@@ -295,7 +290,7 @@ main:
 	.cfi_endproc
 .LFE8:
 	.size	main, .-main
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

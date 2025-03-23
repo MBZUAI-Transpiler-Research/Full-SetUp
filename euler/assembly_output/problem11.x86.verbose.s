@@ -1,6 +1,6 @@
 	.file	"problem11.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -425,7 +425,7 @@ main:
 	subq	$1648, %rsp	#,
 # problem11.c:13: {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp245
-	movq	%rax, -8(%rbp)	# tmp245, D.3209
+	movq	%rax, -8(%rbp)	# tmp245, D.2379
 	xorl	%eax, %eax	# tmp245
 # problem11.c:14:   unsigned grid[20][20] = {
 	leaq	-1616(%rbp), %rax	#, tmp130
@@ -682,19 +682,16 @@ main:
 	movl	%eax, %edi	# tmp237,
 	call	max	#
 	movl	%eax, %edx	#, _44
-# problem11.c:45:       m = max(m, max(h, max(v, max(d1, d2))));
 	movl	-1628(%rbp), %eax	# v, tmp238
 	movl	%edx, %esi	# _44,
 	movl	%eax, %edi	# tmp238,
 	call	max	#
 	movl	%eax, %edx	#, _45
-# problem11.c:45:       m = max(m, max(h, max(v, max(d1, d2))));
 	movl	-1632(%rbp), %eax	# h, tmp239
 	movl	%edx, %esi	# _45,
 	movl	%eax, %edi	# tmp239,
 	call	max	#
 	movl	%eax, %edx	#, _46
-# problem11.c:45:       m = max(m, max(h, max(v, max(d1, d2))));
 	movl	-1644(%rbp), %eax	# m, tmp240
 	movl	%edx, %esi	# _46,
 	movl	%eax, %edi	# tmp240,
@@ -722,7 +719,7 @@ main:
 # problem11.c:50:   return 0;
 	movl	$0, %eax	#, _58
 # problem11.c:51: }
-	movq	-8(%rbp), %rdx	# D.3209, tmp246
+	movq	-8(%rbp), %rdx	# D.2379, tmp246
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp246
 	je	.L7	#,
 	call	__stack_chk_fail@PLT	#
@@ -756,7 +753,7 @@ max:
 	.cfi_endproc
 .LFE1:
 	.size	max, .-max
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

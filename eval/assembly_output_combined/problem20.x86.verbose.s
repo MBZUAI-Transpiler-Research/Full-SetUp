@@ -1,6 +1,6 @@
 	.file	"problem20.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -41,39 +41,40 @@ func0:
 	subq	$176, %rsp	#,
 	movq	%rdi, -168(%rbp)	# numbers, numbers
 # problem20.c:4: const char* func0(const char* numbers) {
-	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp162
-	movq	%rax, -8(%rbp)	# tmp162, D.3471
-	xorl	%eax, %eax	# tmp162
+	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp161
+	movq	%rax, -8(%rbp)	# tmp161, D.2614
+	xorl	%eax, %eax	# tmp161
 # problem20.c:5:     int count[10] = {0};
-	pxor	%xmm0, %xmm0	# tmp113
-	movaps	%xmm0, -144(%rbp)	# tmp113, count
-	movaps	%xmm0, -128(%rbp)	# tmp113, count
-	movq	%xmm0, -112(%rbp)	# tmp113, count
+	movq	$0, -144(%rbp)	#, count
+	movq	$0, -136(%rbp)	#, count
+	movq	$0, -128(%rbp)	#, count
+	movq	$0, -120(%rbp)	#, count
+	movq	$0, -112(%rbp)	#, count
 # problem20.c:6:     const char* numto[10] = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
-	leaq	.LC0(%rip), %rax	#, tmp114
-	movq	%rax, -96(%rbp)	# tmp114, numto[0]
-	leaq	.LC1(%rip), %rax	#, tmp115
-	movq	%rax, -88(%rbp)	# tmp115, numto[1]
-	leaq	.LC2(%rip), %rax	#, tmp116
-	movq	%rax, -80(%rbp)	# tmp116, numto[2]
-	leaq	.LC3(%rip), %rax	#, tmp117
-	movq	%rax, -72(%rbp)	# tmp117, numto[3]
-	leaq	.LC4(%rip), %rax	#, tmp118
-	movq	%rax, -64(%rbp)	# tmp118, numto[4]
-	leaq	.LC5(%rip), %rax	#, tmp119
-	movq	%rax, -56(%rbp)	# tmp119, numto[5]
-	leaq	.LC6(%rip), %rax	#, tmp120
-	movq	%rax, -48(%rbp)	# tmp120, numto[6]
-	leaq	.LC7(%rip), %rax	#, tmp121
-	movq	%rax, -40(%rbp)	# tmp121, numto[7]
-	leaq	.LC8(%rip), %rax	#, tmp122
-	movq	%rax, -32(%rbp)	# tmp122, numto[8]
-	leaq	.LC9(%rip), %rax	#, tmp123
-	movq	%rax, -24(%rbp)	# tmp123, numto[9]
+	leaq	.LC0(%rip), %rax	#, tmp113
+	movq	%rax, -96(%rbp)	# tmp113, numto[0]
+	leaq	.LC1(%rip), %rax	#, tmp114
+	movq	%rax, -88(%rbp)	# tmp114, numto[1]
+	leaq	.LC2(%rip), %rax	#, tmp115
+	movq	%rax, -80(%rbp)	# tmp115, numto[2]
+	leaq	.LC3(%rip), %rax	#, tmp116
+	movq	%rax, -72(%rbp)	# tmp116, numto[3]
+	leaq	.LC4(%rip), %rax	#, tmp117
+	movq	%rax, -64(%rbp)	# tmp117, numto[4]
+	leaq	.LC5(%rip), %rax	#, tmp118
+	movq	%rax, -56(%rbp)	# tmp118, numto[5]
+	leaq	.LC6(%rip), %rax	#, tmp119
+	movq	%rax, -48(%rbp)	# tmp119, numto[6]
+	leaq	.LC7(%rip), %rax	#, tmp120
+	movq	%rax, -40(%rbp)	# tmp120, numto[7]
+	leaq	.LC8(%rip), %rax	#, tmp121
+	movq	%rax, -32(%rbp)	# tmp121, numto[8]
+	leaq	.LC9(%rip), %rax	#, tmp122
+	movq	%rax, -24(%rbp)	# tmp122, numto[9]
 # problem20.c:11:     index = 0;
 	movl	$0, -160(%rbp)	#, index
 # problem20.c:12:     if (*numbers) {
-	movq	-168(%rbp), %rax	# numbers, tmp124
+	movq	-168(%rbp), %rax	# numbers, tmp123
 	movzbl	(%rax), %eax	# *numbers_60(D), _1
 # problem20.c:12:     if (*numbers) {
 	testb	%al, %al	# _1
@@ -85,31 +86,31 @@ func0:
 	jmp	.L3	#
 .L5:
 # problem20.c:15:                 current[i] = numbers[i];
-	movl	-156(%rbp), %eax	# i, tmp125
-	movslq	%eax, %rdx	# tmp125, _2
-	movq	-168(%rbp), %rax	# numbers, tmp126
+	movl	-156(%rbp), %eax	# i, tmp124
+	movslq	%eax, %rdx	# tmp124, _2
+	movq	-168(%rbp), %rax	# numbers, tmp125
 	addq	%rdx, %rax	# _2, _3
 	movzbl	(%rax), %edx	# *_3, _4
 # problem20.c:15:                 current[i] = numbers[i];
-	movl	-156(%rbp), %eax	# i, tmp128
+	movl	-156(%rbp), %eax	# i, tmp127
 	cltq
 	movb	%dl, -14(%rbp,%rax)	# _4, current[i_34]
 # problem20.c:14:             for (i = 0; numbers[i] != ' ' && numbers[i] != '\0'; ++i) {
 	addl	$1, -156(%rbp)	#, i
 .L3:
 # problem20.c:14:             for (i = 0; numbers[i] != ' ' && numbers[i] != '\0'; ++i) {
-	movl	-156(%rbp), %eax	# i, tmp129
-	movslq	%eax, %rdx	# tmp129, _5
-	movq	-168(%rbp), %rax	# numbers, tmp130
+	movl	-156(%rbp), %eax	# i, tmp128
+	movslq	%eax, %rdx	# tmp128, _5
+	movq	-168(%rbp), %rax	# numbers, tmp129
 	addq	%rdx, %rax	# _5, _6
 	movzbl	(%rax), %eax	# *_6, _7
 # problem20.c:14:             for (i = 0; numbers[i] != ' ' && numbers[i] != '\0'; ++i) {
 	cmpb	$32, %al	#, _7
 	je	.L4	#,
 # problem20.c:14:             for (i = 0; numbers[i] != ' ' && numbers[i] != '\0'; ++i) {
-	movl	-156(%rbp), %eax	# i, tmp131
-	movslq	%eax, %rdx	# tmp131, _8
-	movq	-168(%rbp), %rax	# numbers, tmp132
+	movl	-156(%rbp), %eax	# i, tmp130
+	movslq	%eax, %rdx	# tmp130, _8
+	movq	-168(%rbp), %rax	# numbers, tmp131
 	addq	%rdx, %rax	# _8, _9
 	movzbl	(%rax), %eax	# *_9, _10
 # problem20.c:14:             for (i = 0; numbers[i] != ' ' && numbers[i] != '\0'; ++i) {
@@ -117,7 +118,7 @@ func0:
 	jne	.L5	#,
 .L4:
 # problem20.c:17:             current[i] = '\0';
-	movl	-156(%rbp), %eax	# i, tmp134
+	movl	-156(%rbp), %eax	# i, tmp133
 	cltq
 	movb	$0, -14(%rbp,%rax)	#, current[i_34]
 # problem20.c:18:             for (j = 0; j < 10; ++j) {
@@ -126,23 +127,23 @@ func0:
 	jmp	.L6	#
 .L9:
 # problem20.c:19:                 if (strcmp(current, numto[j]) == 0) {
-	movl	-152(%rbp), %eax	# j, tmp136
+	movl	-152(%rbp), %eax	# j, tmp135
 	cltq
 	movq	-96(%rbp,%rax,8), %rdx	# numto[j_36], _11
-	leaq	-14(%rbp), %rax	#, tmp137
+	leaq	-14(%rbp), %rax	#, tmp136
 	movq	%rdx, %rsi	# _11,
-	movq	%rax, %rdi	# tmp137,
+	movq	%rax, %rdi	# tmp136,
 	call	strcmp@PLT	#
 # problem20.c:19:                 if (strcmp(current, numto[j]) == 0) {
 	testl	%eax, %eax	# _12
 	jne	.L7	#,
 # problem20.c:20:                     count[j]++;
-	movl	-152(%rbp), %eax	# j, tmp139
+	movl	-152(%rbp), %eax	# j, tmp138
 	cltq
 	movl	-144(%rbp,%rax,4), %eax	# count[j_36], _13
 # problem20.c:20:                     count[j]++;
 	leal	1(%rax), %edx	#, _14
-	movl	-152(%rbp), %eax	# j, tmp141
+	movl	-152(%rbp), %eax	# j, tmp140
 	cltq
 	movl	%edx, -144(%rbp,%rax,4)	# _14, count[j_36]
 # problem20.c:21:                     break;
@@ -156,12 +157,12 @@ func0:
 	jle	.L9	#,
 .L8:
 # problem20.c:24:             numbers += i + 1;
-	movl	-156(%rbp), %eax	# i, tmp142
+	movl	-156(%rbp), %eax	# i, tmp141
 	cltq
 	addq	$1, %rax	#, _16
 	addq	%rax, -168(%rbp)	# _16, numbers
 # problem20.c:25:         } while (numbers[-1]);
-	movq	-168(%rbp), %rax	# numbers, tmp143
+	movq	-168(%rbp), %rax	# numbers, tmp142
 	subq	$1, %rax	#, _17
 	movzbl	(%rax), %eax	# *_17, _18
 # problem20.c:25:         } while (numbers[-1]);
@@ -184,18 +185,18 @@ func0:
 	jmp	.L13	#
 .L14:
 # problem20.c:31:                 out[index] = numto[i][k];
-	movl	-156(%rbp), %eax	# i, tmp145
+	movl	-156(%rbp), %eax	# i, tmp144
 	cltq
 	movq	-96(%rbp,%rax,8), %rdx	# numto[i_35], _19
 # problem20.c:31:                 out[index] = numto[i][k];
-	movl	-148(%rbp), %eax	# k, tmp146
+	movl	-148(%rbp), %eax	# k, tmp145
 	cltq
 	addq	%rdx, %rax	# _19, _21
 	movzbl	(%rax), %edx	# *_21, _22
 # problem20.c:31:                 out[index] = numto[i][k];
-	movl	-160(%rbp), %eax	# index, tmp148
+	movl	-160(%rbp), %eax	# index, tmp147
 	cltq
-	leaq	out.1(%rip), %rcx	#, tmp149
+	leaq	out.1(%rip), %rcx	#, tmp148
 	movb	%dl, (%rax,%rcx)	# _22, out[index_31]
 # problem20.c:30:             for (k = 0; numto[i][k] != '\0'; ++k, ++index) {
 	addl	$1, -148(%rbp)	#, k
@@ -203,11 +204,11 @@ func0:
 	addl	$1, -160(%rbp)	#, index
 .L13:
 # problem20.c:30:             for (k = 0; numto[i][k] != '\0'; ++k, ++index) {
-	movl	-156(%rbp), %eax	# i, tmp151
+	movl	-156(%rbp), %eax	# i, tmp150
 	cltq
 	movq	-96(%rbp,%rax,8), %rdx	# numto[i_35], _23
 # problem20.c:30:             for (k = 0; numto[i][k] != '\0'; ++k, ++index) {
-	movl	-148(%rbp), %eax	# k, tmp152
+	movl	-148(%rbp), %eax	# k, tmp151
 	cltq
 	addq	%rdx, %rax	# _23, _25
 	movzbl	(%rax), %eax	# *_25, _26
@@ -216,17 +217,17 @@ func0:
 	jne	.L14	#,
 # problem20.c:33:             out[index++] = ' '; 
 	movl	-160(%rbp), %eax	# index, index.0_27
-	leal	1(%rax), %edx	#, tmp153
-	movl	%edx, -160(%rbp)	# tmp153, index
+	leal	1(%rax), %edx	#, tmp152
+	movl	%edx, -160(%rbp)	# tmp152, index
 # problem20.c:33:             out[index++] = ' '; 
 	cltq
-	leaq	out.1(%rip), %rdx	#, tmp155
+	leaq	out.1(%rip), %rdx	#, tmp154
 	movb	$32, (%rax,%rdx)	#, out[index.0_27]
 # problem20.c:29:         for (j = 0; j < count[i]; ++j) {
 	addl	$1, -152(%rbp)	#, j
 .L12:
 # problem20.c:29:         for (j = 0; j < count[i]; ++j) {
-	movl	-156(%rbp), %eax	# i, tmp157
+	movl	-156(%rbp), %eax	# i, tmp156
 	cltq
 	movl	-144(%rbp,%rax,4), %eax	# count[i_35], _28
 # problem20.c:29:         for (j = 0; j < count[i]; ++j) {
@@ -242,11 +243,11 @@ func0:
 	cmpl	$0, -160(%rbp)	#, index
 	jle	.L17	#,
 # problem20.c:38:         out[index - 1] = '\0'; 
-	movl	-160(%rbp), %eax	# index, tmp158
+	movl	-160(%rbp), %eax	# index, tmp157
 	subl	$1, %eax	#, _29
 # problem20.c:38:         out[index - 1] = '\0'; 
 	cltq
-	leaq	out.1(%rip), %rdx	#, tmp160
+	leaq	out.1(%rip), %rdx	#, tmp159
 	movb	$0, (%rax,%rdx)	#, out[_29]
 	jmp	.L18	#
 .L17:
@@ -256,8 +257,8 @@ func0:
 # problem20.c:43:     return out;
 	leaq	out.1(%rip), %rax	#, _72
 # problem20.c:44: }
-	movq	-8(%rbp), %rdx	# D.3471, tmp163
-	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp163
+	movq	-8(%rbp), %rdx	# D.2614, tmp162
+	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp162
 	je	.L20	#,
 	call	__stack_chk_fail@PLT	#
 .L20:
@@ -316,11 +317,11 @@ main:
 	leaq	.LC10(%rip), %rax	#, tmp95
 	movq	%rax, %rdi	# tmp95,
 	call	func0	#
-# problem20.c:52:     assert(strcmp(func0(""), "") == 0);
 	movzbl	(%rax), %eax	# MEM[(const unsigned char * {ref-all})_1], _13
 	movzbl	%al, %eax	# _13, _2
 	testl	%eax, %eax	# _2
 	je	.L22	#,
+# problem20.c:52:     assert(strcmp(func0(""), "") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp96
 	movq	%rax, %rcx	# tmp96,
 	movl	$52, %edx	#,
@@ -335,12 +336,10 @@ main:
 	movq	%rax, %rdi	# tmp99,
 	call	func0	#
 	movq	%rax, %rdx	#, _3
-# problem20.c:53:     assert(strcmp(func0("three"), "three") == 0);
 	leaq	.LC3(%rip), %rax	#, tmp100
 	movq	%rax, %rsi	# tmp100,
 	movq	%rdx, %rdi	# _3,
 	call	strcmp@PLT	#
-# problem20.c:53:     assert(strcmp(func0("three"), "three") == 0);
 	testl	%eax, %eax	# _4
 	je	.L23	#,
 # problem20.c:53:     assert(strcmp(func0("three"), "three") == 0);
@@ -358,12 +357,10 @@ main:
 	movq	%rax, %rdi	# tmp104,
 	call	func0	#
 	movq	%rax, %rdx	#, _5
-# problem20.c:54:     assert(strcmp(func0("three five nine"), "three five nine") == 0);
 	leaq	.LC14(%rip), %rax	#, tmp105
 	movq	%rax, %rsi	# tmp105,
 	movq	%rdx, %rdi	# _5,
 	call	strcmp@PLT	#
-# problem20.c:54:     assert(strcmp(func0("three five nine"), "three five nine") == 0);
 	testl	%eax, %eax	# _6
 	je	.L24	#,
 # problem20.c:54:     assert(strcmp(func0("three five nine"), "three five nine") == 0);
@@ -381,12 +378,10 @@ main:
 	movq	%rax, %rdi	# tmp109,
 	call	func0	#
 	movq	%rax, %rdx	#, _7
-# problem20.c:55:     assert(strcmp(func0("five zero four seven nine eight"), "zero four five seven eight nine") == 0);
 	leaq	.LC17(%rip), %rax	#, tmp110
 	movq	%rax, %rsi	# tmp110,
 	movq	%rdx, %rdi	# _7,
 	call	strcmp@PLT	#
-# problem20.c:55:     assert(strcmp(func0("five zero four seven nine eight"), "zero four five seven eight nine") == 0);
 	testl	%eax, %eax	# _8
 	je	.L25	#,
 # problem20.c:55:     assert(strcmp(func0("five zero four seven nine eight"), "zero four five seven eight nine") == 0);
@@ -404,12 +399,10 @@ main:
 	movq	%rax, %rdi	# tmp114,
 	call	func0	#
 	movq	%rax, %rdx	#, _9
-# problem20.c:56:     assert(strcmp(func0("six five four three two one zero"), "zero one two three four five six") == 0);
 	leaq	.LC20(%rip), %rax	#, tmp115
 	movq	%rax, %rsi	# tmp115,
 	movq	%rdx, %rdi	# _9,
 	call	strcmp@PLT	#
-# problem20.c:56:     assert(strcmp(func0("six five four three two one zero"), "zero one two three four five six") == 0);
 	testl	%eax, %eax	# _10
 	je	.L26	#,
 # problem20.c:56:     assert(strcmp(func0("six five four three two one zero"), "zero one two three four five six") == 0);
@@ -438,7 +431,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

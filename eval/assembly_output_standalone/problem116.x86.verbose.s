@@ -1,6 +1,6 @@
 	.file	"code.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -40,12 +40,12 @@ func0:
 	leaq	0(,%rax,8), %rdx	#, _2
 	movq	-24(%rbp), %rax	# grid, tmp96
 	addq	%rdx, %rax	# _2, _3
-	movq	(%rax), %rax	# *_3, _4
+	movq	(%rax), %rdx	# *_3, _4
 # eval/problem116//code.c:7:             sum += grid[i][j];
-	movl	-4(%rbp), %edx	# j, tmp97
-	movslq	%edx, %rdx	# tmp97, _5
-	salq	$2, %rdx	#, _6
-	addq	%rdx, %rax	# _6, _7
+	movl	-4(%rbp), %eax	# j, tmp97
+	cltq
+	salq	$2, %rax	#, _6
+	addq	%rdx, %rax	# _4, _7
 	movl	(%rax), %eax	# *_7, _8
 # eval/problem116//code.c:7:             sum += grid[i][j];
 	addl	%eax, -8(%rbp)	# _8, sum
@@ -87,7 +87,7 @@ func0:
 	.cfi_endproc
 .LFE0:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

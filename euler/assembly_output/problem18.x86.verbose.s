@@ -1,6 +1,6 @@
 	.file	"problem18.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -23,61 +23,86 @@ main:
 	subq	$240, %rsp	#,
 # problem18.c:13: {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp88
-	movq	%rax, -8(%rbp)	# tmp88, D.3199
+	movq	%rax, -8(%rbp)	# tmp88, D.2369
 	xorl	%eax, %eax	# tmp88
 # problem18.c:14:   const char triangle[N][N] = {
 	movq	$75, -240(%rbp)	#, triangle[0]
-	movq	$0, -233(%rbp)	#, triangle[0]
+	movl	$0, -232(%rbp)	#, triangle[0]
+	movw	$0, -228(%rbp)	#, triangle[0]
+	movb	$0, -226(%rbp)	#, triangle[0]
 	movq	$16479, -225(%rbp)	#, triangle[1]
-	movq	$0, -218(%rbp)	#, triangle[1]
+	movl	$0, -217(%rbp)	#, triangle[1]
+	movw	$0, -213(%rbp)	#, triangle[1]
+	movb	$0, -211(%rbp)	#, triangle[1]
 	movq	$5386001, -210(%rbp)	#, triangle[2]
-	movq	$0, -203(%rbp)	#, triangle[2]
+	movl	$0, -202(%rbp)	#, triangle[2]
+	movw	$0, -198(%rbp)	#, triangle[2]
+	movb	$0, -196(%rbp)	#, triangle[2]
 	movq	$173482770, -195(%rbp)	#, triangle[3]
-	movq	$0, -188(%rbp)	#, triangle[3]
+	movl	$0, -187(%rbp)	#, triangle[3]
+	movw	$0, -183(%rbp)	#, triangle[3]
+	movb	$0, -181(%rbp)	#, triangle[3]
 	movabsq	$279966778388, %rax	#, tmp91
 	movq	%rax, -180(%rbp)	# tmp91, triangle[4]
-	movq	$0, -173(%rbp)	#, triangle[4]
+	movl	$0, -172(%rbp)	#, triangle[4]
+	movw	$0, -168(%rbp)	#, triangle[4]
+	movb	$0, -166(%rbp)	#, triangle[4]
 	movabsq	$37397540045075, %rax	#, tmp92
 	movq	%rax, -165(%rbp)	# tmp92, triangle[5]
-	movq	$0, -158(%rbp)	#, triangle[5]
+	movl	$0, -157(%rbp)	#, triangle[5]
+	movw	$0, -153(%rbp)	#, triangle[5]
+	movb	$0, -151(%rbp)	#, triangle[5]
 	movabsq	$18928123966718552, %rax	#, tmp93
 	movq	%rax, -150(%rbp)	# tmp93, triangle[6]
-	movq	$0, -143(%rbp)	#, triangle[6]
+	movl	$0, -142(%rbp)	#, triangle[6]
+	movw	$0, -138(%rbp)	#, triangle[6]
+	movb	$0, -136(%rbp)	#, triangle[6]
 	movabsq	$6649019518285005155, %rax	#, tmp94
 	movq	%rax, -135(%rbp)	# tmp94, triangle[7]
-	movq	$92, -128(%rbp)	#, triangle[7]
+	movl	$0, -127(%rbp)	#, triangle[7]
+	movw	$0, -123(%rbp)	#, triangle[7]
+	movb	$0, -121(%rbp)	#, triangle[7]
 	movabsq	$5066593918680443177, %rax	#, tmp95
 	movq	%rax, -120(%rbp)	# tmp95, triangle[8]
-	movq	$8518, -113(%rbp)	#, triangle[8]
+	movl	$33, -112(%rbp)	#, triangle[8]
+	movw	$0, -108(%rbp)	#, triangle[8]
+	movb	$0, -106(%rbp)	#, triangle[8]
 	movabsq	$1163371465539072041, %rax	#, tmp96
 	movq	%rax, -105(%rbp)	# tmp96, triangle[9]
-	movq	$1924624, -98(%rbp)	#, triangle[9]
+	movl	$7518, -97(%rbp)	#, triangle[9]
+	movw	$0, -93(%rbp)	#, triangle[9]
+	movb	$0, -91(%rbp)	#, triangle[9]
 	movabsq	$3772656500320519989, %rax	#, tmp97
 	movq	%rax, -90(%rbp)	# tmp97, triangle[10]
-	movq	$238248244, -83(%rbp)	#, triangle[10]
+	movl	$930657, -82(%rbp)	#, triangle[10]
+	movw	$0, -78(%rbp)	#, triangle[10]
+	movb	$0, -76(%rbp)	#, triangle[10]
 	movabsq	$5625358005095697222, %rax	#, tmp98
 	movq	%rax, -75(%rbp)	# tmp98, triangle[11]
-	movabsq	$245102815054, %rax	#, tmp99
-	movq	%rax, -68(%rbp)	# tmp99, triangle[11]
-	movabsq	$3124106233329764187, %rax	#, tmp100
-	movq	%rax, -60(%rbp)	# tmp100, triangle[12]
-	movabsq	$52901568461355, %rax	#, tmp101
-	movq	%rax, -53(%rbp)	# tmp101, triangle[12]
-	movabsq	$2180645302086943295, %rax	#, tmp102
-	movq	%rax, -45(%rbp)	# tmp102, triangle[13]
-	movabsq	$8770079563991326, %rax	#, tmp103
-	movq	%rax, -38(%rbp)	# tmp103, triangle[13]
-	movabsq	$7081357458935004676, %rax	#, tmp104
-	movq	%rax, -30(%rbp)	# tmp104, triangle[14]
-	movabsq	$1658516761753766242, %rax	#, tmp105
-	movq	%rax, -23(%rbp)	# tmp105, triangle[14]
+	movl	$957432871, -67(%rbp)	#, triangle[11]
+	movw	$0, -63(%rbp)	#, triangle[11]
+	movb	$0, -61(%rbp)	#, triangle[11]
+	movabsq	$3124106233329764187, %rax	#, tmp99
+	movq	%rax, -60(%rbp)	# tmp99, triangle[12]
+	movl	$488321594, -52(%rbp)	#, triangle[12]
+	movw	$48, -48(%rbp)	#, triangle[12]
+	movb	$0, -46(%rbp)	#, triangle[12]
+	movabsq	$2180645302086943295, %rax	#, tmp100
+	movq	%rax, -45(%rbp)	# tmp100, triangle[13]
+	movl	$1464143945, -37(%rbp)	#, triangle[13]
+	movw	$7976, -33(%rbp)	#, triangle[13]
+	movb	$0, -31(%rbp)	#, triangle[13]
+	movabsq	$7081357458935004676, %rax	#, tmp101
+	movq	%rax, -30(%rbp)	# tmp101, triangle[14]
+	movl	$891706697, -22(%rbp)	#, triangle[14]
+	movw	$1084, -18(%rbp)	#, triangle[14]
+	movb	$23, -16(%rbp)	#, triangle[14]
 # problem18.c:32:   printf("%d\n", findmax(triangle, 0, 0));
 	leaq	-240(%rbp), %rax	#, tmp85
 	movl	$0, %edx	#,
 	movl	$0, %esi	#,
 	movq	%rax, %rdi	# tmp85,
 	call	findmax	#
-# problem18.c:32:   printf("%d\n", findmax(triangle, 0, 0));
 	movl	%eax, %esi	# _1,
 	leaq	.LC0(%rip), %rax	#, tmp86
 	movq	%rax, %rdi	# tmp86,
@@ -86,7 +111,7 @@ main:
 # problem18.c:34:   return 0;
 	movl	$0, %eax	#, _20
 # problem18.c:35: }
-	movq	-8(%rbp), %rdx	# D.3199, tmp89
+	movq	-8(%rbp), %rdx	# D.2369, tmp89
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp89
 	je	.L3	#,
 	call	__stack_chk_fail@PLT	#
@@ -178,7 +203,7 @@ findmax:
 	.cfi_endproc
 .LFE1:
 	.size	findmax, .-findmax
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

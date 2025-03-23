@@ -95,7 +95,7 @@ palindromic_base:
 	.cfi_endproc
 .LFE1:
 	.size	palindromic_base, .-palindromic_base
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

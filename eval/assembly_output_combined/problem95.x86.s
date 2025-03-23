@@ -66,11 +66,11 @@ func0:
 	movslq	%ecx, %rax
 	imulq	$1717986919, %rax, %rax
 	shrq	$32, %rax
+	sarl	$2, %eax
+	movl	%ecx, %esi
+	sarl	$31, %esi
+	subl	%esi, %eax
 	movl	%eax, %edx
-	sarl	$2, %edx
-	movl	%ecx, %eax
-	sarl	$31, %eax
-	subl	%eax, %edx
 	movl	%edx, %eax
 	sall	$2, %eax
 	addl	%edx, %eax
@@ -82,11 +82,11 @@ func0:
 	movslq	%eax, %rdx
 	imulq	$1717986919, %rdx, %rdx
 	shrq	$32, %rdx
-	movl	%edx, %ecx
-	sarl	$2, %ecx
-	cltd
-	movl	%ecx, %eax
-	subl	%edx, %eax
+	sarl	$2, %edx
+	sarl	$31, %eax
+	movl	%eax, %ecx
+	movl	%edx, %eax
+	subl	%ecx, %eax
 	movl	%eax, -24(%rbp)
 .L9:
 	cmpl	$0, -24(%rbp)
@@ -386,7 +386,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

@@ -1,6 +1,6 @@
 	.file	"problem116.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -40,12 +40,12 @@ func0:
 	leaq	0(,%rax,8), %rdx	#, _2
 	movq	-24(%rbp), %rax	# grid, tmp96
 	addq	%rdx, %rax	# _2, _3
-	movq	(%rax), %rax	# *_3, _4
+	movq	(%rax), %rdx	# *_3, _4
 # problem116.c:7:             sum += grid[i][j];
-	movl	-4(%rbp), %edx	# j, tmp97
-	movslq	%edx, %rdx	# tmp97, _5
-	salq	$2, %rdx	#, _6
-	addq	%rdx, %rax	# _6, _7
+	movl	-4(%rbp), %eax	# j, tmp97
+	cltq
+	salq	$2, %rax	#, _6
+	addq	%rdx, %rax	# _4, _7
 	movl	(%rax), %eax	# *_7, _8
 # problem116.c:7:             sum += grid[i][j];
 	addl	%eax, -8(%rbp)	# _8, sum
@@ -124,7 +124,7 @@ main:
 	.cfi_offset 3, -24
 # problem116.c:19: int main() {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp331
-	movq	%rax, -24(%rbp)	# tmp331, D.3853
+	movq	%rax, -24(%rbp)	# tmp331, D.3016
 	xorl	%eax, %eax	# tmp331
 # problem116.c:24:     rows = 3; cols = 4; capacity = 1;
 	movl	$3, -260(%rbp)	#, rows
@@ -183,19 +183,19 @@ main:
 	leaq	0(,%rax,8), %rdx	#, _10
 	movq	-248(%rbp), %rax	# grid, tmp196
 	addq	%rdx, %rax	# _10, _11
-	movq	(%rax), %rax	# *_11, _12
+	movq	(%rax), %rdx	# *_11, _12
 # problem116.c:30:             grid[i][j] = grid1_data[i][j];
-	movl	-316(%rbp), %edx	# j, tmp197
-	movslq	%edx, %rdx	# tmp197, _13
-	salq	$2, %rdx	#, _14
-	addq	%rax, %rdx	# _12, _15
+	movl	-316(%rbp), %eax	# j, tmp197
+	cltq
+	salq	$2, %rax	#, _14
+	addq	%rax, %rdx	# _14, _15
 # problem116.c:30:             grid[i][j] = grid1_data[i][j];
 	movl	-316(%rbp), %eax	# j, tmp199
+	movslq	%eax, %rcx	# tmp199, tmp198
+	movl	-320(%rbp), %eax	# i, tmp201
 	cltq
-	movl	-320(%rbp), %ecx	# i, tmp201
-	movslq	%ecx, %rcx	# tmp201, tmp200
-	salq	$2, %rcx	#, tmp202
-	addq	%rcx, %rax	# tmp202, tmp203
+	salq	$2, %rax	#, tmp202
+	addq	%rcx, %rax	# tmp198, tmp203
 	movl	-144(%rbp,%rax,4), %eax	# grid1_data[i_106][j_107], _16
 # problem116.c:30:             grid[i][j] = grid1_data[i][j];
 	movl	%eax, (%rdx)	# _16, *_15
@@ -220,9 +220,9 @@ main:
 	movq	-248(%rbp), %rax	# grid, tmp209
 	movq	%rax, %rdi	# tmp209,
 	call	func0	#
-# problem116.c:33:     assert(func0(grid, rows, cols, capacity) == 6);
 	cmpl	$6, %eax	#, _17
 	je	.L13	#,
+# problem116.c:33:     assert(func0(grid, rows, cols, capacity) == 6);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp210
 	movq	%rax, %rcx	# tmp210,
 	movl	$33, %edx	#,
@@ -319,19 +319,19 @@ main:
 	leaq	0(,%rax,8), %rdx	#, _31
 	movq	-248(%rbp), %rax	# grid, tmp224
 	addq	%rdx, %rax	# _31, _32
-	movq	(%rax), %rax	# *_32, _33
+	movq	(%rax), %rdx	# *_32, _33
 # problem116.c:44:             grid[i][j] = grid2_data[i][j];
-	movl	-304(%rbp), %edx	# j, tmp225
-	movslq	%edx, %rdx	# tmp225, _34
-	salq	$2, %rdx	#, _35
-	addq	%rax, %rdx	# _33, _36
+	movl	-304(%rbp), %eax	# j, tmp225
+	cltq
+	salq	$2, %rax	#, _35
+	addq	%rax, %rdx	# _35, _36
 # problem116.c:44:             grid[i][j] = grid2_data[i][j];
 	movl	-304(%rbp), %eax	# j, tmp227
+	movslq	%eax, %rcx	# tmp227, tmp226
+	movl	-308(%rbp), %eax	# i, tmp229
 	cltq
-	movl	-308(%rbp), %ecx	# i, tmp229
-	movslq	%ecx, %rcx	# tmp229, tmp228
-	salq	$2, %rcx	#, tmp230
-	addq	%rcx, %rax	# tmp230, tmp231
+	salq	$2, %rax	#, tmp230
+	addq	%rcx, %rax	# tmp226, tmp231
 	movl	-96(%rbp,%rax,4), %eax	# grid2_data[i_109][j_110], _37
 # problem116.c:44:             grid[i][j] = grid2_data[i][j];
 	movl	%eax, (%rdx)	# _37, *_36
@@ -356,9 +356,9 @@ main:
 	movq	-248(%rbp), %rax	# grid, tmp237
 	movq	%rax, %rdi	# tmp237,
 	call	func0	#
-# problem116.c:47:     assert(func0(grid, rows, cols, capacity) == 5);
 	cmpl	$5, %eax	#, _38
 	je	.L20	#,
+# problem116.c:47:     assert(func0(grid, rows, cols, capacity) == 5);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp238
 	movq	%rax, %rcx	# tmp238,
 	movl	$47, %edx	#,
@@ -445,12 +445,12 @@ main:
 	leaq	0(,%rax,8), %rdx	#, _52
 	movq	-248(%rbp), %rax	# grid, tmp252
 	addq	%rdx, %rax	# _52, _53
-	movq	(%rax), %rax	# *_53, _54
+	movq	(%rax), %rdx	# *_53, _54
 # problem116.c:58:             grid[i][j] = grid3_data[i][j];
-	movl	-292(%rbp), %edx	# j, tmp253
-	movslq	%edx, %rdx	# tmp253, _55
-	salq	$2, %rdx	#, _56
-	leaq	(%rax,%rdx), %rcx	#, _57
+	movl	-292(%rbp), %eax	# j, tmp253
+	cltq
+	salq	$2, %rax	#, _56
+	leaq	(%rdx,%rax), %rcx	#, _57
 # problem116.c:58:             grid[i][j] = grid3_data[i][j];
 	movl	-292(%rbp), %eax	# j, tmp255
 	movslq	%eax, %rsi	# tmp255, tmp254
@@ -484,9 +484,9 @@ main:
 	movq	-248(%rbp), %rax	# grid, tmp265
 	movq	%rax, %rdi	# tmp265,
 	call	func0	#
-# problem116.c:61:     assert(func0(grid, rows, cols, capacity) == 0);
 	testl	%eax, %eax	# _59
 	je	.L27	#,
+# problem116.c:61:     assert(func0(grid, rows, cols, capacity) == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp266
 	movq	%rax, %rcx	# tmp266,
 	movl	$61, %edx	#,
@@ -575,19 +575,19 @@ main:
 	leaq	0(,%rax,8), %rdx	#, _73
 	movq	-248(%rbp), %rax	# grid, tmp280
 	addq	%rdx, %rax	# _73, _74
-	movq	(%rax), %rax	# *_74, _75
+	movq	(%rax), %rdx	# *_74, _75
 # problem116.c:72:             grid[i][j] = grid4_data[i][j];
-	movl	-280(%rbp), %edx	# j, tmp281
-	movslq	%edx, %rdx	# tmp281, _76
-	salq	$2, %rdx	#, _77
-	addq	%rax, %rdx	# _75, _78
+	movl	-280(%rbp), %eax	# j, tmp281
+	cltq
+	salq	$2, %rax	#, _77
+	addq	%rax, %rdx	# _77, _78
 # problem116.c:72:             grid[i][j] = grid4_data[i][j];
 	movl	-280(%rbp), %eax	# j, tmp283
+	movslq	%eax, %rcx	# tmp283, tmp282
+	movl	-284(%rbp), %eax	# i, tmp285
 	cltq
-	movl	-284(%rbp), %ecx	# i, tmp285
-	movslq	%ecx, %rcx	# tmp285, tmp284
-	salq	$2, %rcx	#, tmp286
-	addq	%rcx, %rax	# tmp286, tmp287
+	salq	$2, %rax	#, tmp286
+	addq	%rcx, %rax	# tmp282, tmp287
 	movl	-208(%rbp,%rax,4), %eax	# grid4_data[i_115][j_116], _79
 # problem116.c:72:             grid[i][j] = grid4_data[i][j];
 	movl	%eax, (%rdx)	# _79, *_78
@@ -612,9 +612,9 @@ main:
 	movq	-248(%rbp), %rax	# grid, tmp293
 	movq	%rax, %rdi	# tmp293,
 	call	func0	#
-# problem116.c:75:     assert(func0(grid, rows, cols, capacity) == 4);
 	cmpl	$4, %eax	#, _80
 	je	.L34	#,
+# problem116.c:75:     assert(func0(grid, rows, cols, capacity) == 4);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp294
 	movq	%rax, %rcx	# tmp294,
 	movl	$75, %edx	#,
@@ -703,19 +703,19 @@ main:
 	leaq	0(,%rax,8), %rdx	#, _94
 	movq	-248(%rbp), %rax	# grid, tmp308
 	addq	%rdx, %rax	# _94, _95
-	movq	(%rax), %rax	# *_95, _96
+	movq	(%rax), %rdx	# *_95, _96
 # problem116.c:86:             grid[i][j] = grid5_data[i][j];
-	movl	-268(%rbp), %edx	# j, tmp309
-	movslq	%edx, %rdx	# tmp309, _97
-	salq	$2, %rdx	#, _98
-	addq	%rax, %rdx	# _96, _99
+	movl	-268(%rbp), %eax	# j, tmp309
+	cltq
+	salq	$2, %rax	#, _98
+	addq	%rax, %rdx	# _98, _99
 # problem116.c:86:             grid[i][j] = grid5_data[i][j];
 	movl	-268(%rbp), %eax	# j, tmp311
+	movslq	%eax, %rcx	# tmp311, tmp310
+	movl	-272(%rbp), %eax	# i, tmp313
 	cltq
-	movl	-272(%rbp), %ecx	# i, tmp313
-	movslq	%ecx, %rcx	# tmp313, tmp312
-	salq	$2, %rcx	#, tmp314
-	addq	%rcx, %rax	# tmp314, tmp315
+	salq	$2, %rax	#, tmp314
+	addq	%rcx, %rax	# tmp310, tmp315
 	movl	-176(%rbp,%rax,4), %eax	# grid5_data[i_118][j_119], _100
 # problem116.c:86:             grid[i][j] = grid5_data[i][j];
 	movl	%eax, (%rdx)	# _100, *_99
@@ -740,9 +740,9 @@ main:
 	movq	-248(%rbp), %rax	# grid, tmp321
 	movq	%rax, %rdi	# tmp321,
 	call	func0	#
-# problem116.c:89:     assert(func0(grid, rows, cols, capacity) == 2);
 	cmpl	$2, %eax	#, _101
 	je	.L41	#,
+# problem116.c:89:     assert(func0(grid, rows, cols, capacity) == 2);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp322
 	movq	%rax, %rcx	# tmp322,
 	movl	$89, %edx	#,
@@ -785,7 +785,7 @@ main:
 # problem116.c:94:     return 0;
 	movl	$0, %eax	#, _238
 # problem116.c:95: }
-	movq	-24(%rbp), %rdx	# D.3853, tmp332
+	movq	-24(%rbp), %rdx	# D.3016, tmp332
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp332
 	je	.L45	#,
 	call	__stack_chk_fail@PLT	#
@@ -802,7 +802,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

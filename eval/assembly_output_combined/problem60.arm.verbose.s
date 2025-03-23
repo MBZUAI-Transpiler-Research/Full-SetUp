@@ -1,7 +1,7 @@
 	.arch armv8-a
 	.file	"problem60.c"
-// GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (aarch64-linux-gnu)
-//	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+// GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (aarch64-linux-gnu)
+//	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 // GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 // options passed: -mlittle-endian -mabi=lp64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection
@@ -98,9 +98,9 @@ main:
 // problem60.c:14:     assert(func0(15) == 5);
 	mov	w0, 15	//,
 	bl	func0		//
-// problem60.c:14:     assert(func0(15) == 5);
 	cmp	w0, 5	// _1,
 	beq	.L9		//,
+// problem60.c:14:     assert(func0(15) == 5);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp99,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp99,
 	mov	w2, 14	//,
@@ -113,9 +113,9 @@ main:
 // problem60.c:15:     assert(func0(27) == 3);
 	mov	w0, 27	//,
 	bl	func0		//
-// problem60.c:15:     assert(func0(27) == 3);
 	cmp	w0, 3	// _2,
 	beq	.L10		//,
+// problem60.c:15:     assert(func0(27) == 3);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp102,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp102,
 	mov	w2, 15	//,
@@ -128,9 +128,9 @@ main:
 // problem60.c:16:     assert(func0(63) == 7);
 	mov	w0, 63	//,
 	bl	func0		//
-// problem60.c:16:     assert(func0(63) == 7);
 	cmp	w0, 7	// _3,
 	beq	.L11		//,
+// problem60.c:16:     assert(func0(63) == 7);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp105,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp105,
 	mov	w2, 16	//,
@@ -143,9 +143,9 @@ main:
 // problem60.c:17:     assert(func0(330) == 11);
 	mov	w0, 330	//,
 	bl	func0		//
-// problem60.c:17:     assert(func0(330) == 11);
 	cmp	w0, 11	// _4,
 	beq	.L12		//,
+// problem60.c:17:     assert(func0(330) == 11);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp108,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp108,
 	mov	w2, 17	//,
@@ -158,9 +158,9 @@ main:
 // problem60.c:18:     assert(func0(13195) == 29);
 	mov	w0, 13195	//,
 	bl	func0		//
-// problem60.c:18:     assert(func0(13195) == 29);
 	cmp	w0, 29	// _5,
 	beq	.L13		//,
+// problem60.c:18:     assert(func0(13195) == 29);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp111,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp111,
 	mov	w2, 18	//,
@@ -187,5 +187,5 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

@@ -1,7 +1,7 @@
 	.arch armv8-a
 	.file	"problem133.c"
-// GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (aarch64-linux-gnu)
-//	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+// GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (aarch64-linux-gnu)
+//	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 // GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 // options passed: -mlittle-endian -mabi=lp64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection
@@ -80,7 +80,6 @@ func0:
 	bge	.L7		//,
 // problem133.c:11:         if (count <= maxcount - 2) return 1;
 	mov	w0, 1	// _17,
-// problem133.c:11:         if (count <= maxcount - 2) return 1;
 	b	.L8		//
 .L7:
 // problem133.c:6:     for (int i = 0; i < strlen(str); i++) {
@@ -214,9 +213,9 @@ main:
 	adrp	x0, .LC0	// tmp108,
 	add	x0, x0, :lo12:.LC0	//, tmp108,
 	bl	func0		//
-// problem133.c:22:     assert(func0("[[]]") == 1);
 	cmp	w0, 1	// _1,
 	beq	.L11		//,
+// problem133.c:22:     assert(func0("[[]]") == 1);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp109,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp109,
 	mov	w2, 22	//,
@@ -230,9 +229,9 @@ main:
 	adrp	x0, .LC3	// tmp112,
 	add	x0, x0, :lo12:.LC3	//, tmp112,
 	bl	func0		//
-// problem133.c:23:     assert(func0("[]]]]]]][[[[[]") == 0);
 	cmp	w0, 0	// _2,
 	beq	.L12		//,
+// problem133.c:23:     assert(func0("[]]]]]]][[[[[]") == 0);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp113,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp113,
 	mov	w2, 23	//,
@@ -246,9 +245,9 @@ main:
 	adrp	x0, .LC5	// tmp116,
 	add	x0, x0, :lo12:.LC5	//, tmp116,
 	bl	func0		//
-// problem133.c:24:     assert(func0("[][]") == 0);
 	cmp	w0, 0	// _3,
 	beq	.L13		//,
+// problem133.c:24:     assert(func0("[][]") == 0);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp117,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp117,
 	mov	w2, 24	//,
@@ -262,9 +261,9 @@ main:
 	adrp	x0, .LC7	// tmp120,
 	add	x0, x0, :lo12:.LC7	//, tmp120,
 	bl	func0		//
-// problem133.c:25:     assert(func0("[]") == 0);
 	cmp	w0, 0	// _4,
 	beq	.L14		//,
+// problem133.c:25:     assert(func0("[]") == 0);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp121,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp121,
 	mov	w2, 25	//,
@@ -278,9 +277,9 @@ main:
 	adrp	x0, .LC9	// tmp124,
 	add	x0, x0, :lo12:.LC9	//, tmp124,
 	bl	func0		//
-// problem133.c:26:     assert(func0("[[[[]]]]") == 1);
 	cmp	w0, 1	// _5,
 	beq	.L15		//,
+// problem133.c:26:     assert(func0("[[[[]]]]") == 1);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp125,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp125,
 	mov	w2, 26	//,
@@ -294,9 +293,9 @@ main:
 	adrp	x0, .LC11	// tmp128,
 	add	x0, x0, :lo12:.LC11	//, tmp128,
 	bl	func0		//
-// problem133.c:27:     assert(func0("[]]]]]]]]]]") == 0);
 	cmp	w0, 0	// _6,
 	beq	.L16		//,
+// problem133.c:27:     assert(func0("[]]]]]]]]]]") == 0);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp129,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp129,
 	mov	w2, 27	//,
@@ -310,9 +309,9 @@ main:
 	adrp	x0, .LC13	// tmp132,
 	add	x0, x0, :lo12:.LC13	//, tmp132,
 	bl	func0		//
-// problem133.c:28:     assert(func0("[][][[]]") == 1);
 	cmp	w0, 1	// _7,
 	beq	.L17		//,
+// problem133.c:28:     assert(func0("[][][[]]") == 1);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp133,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp133,
 	mov	w2, 28	//,
@@ -326,9 +325,9 @@ main:
 	adrp	x0, .LC15	// tmp136,
 	add	x0, x0, :lo12:.LC15	//, tmp136,
 	bl	func0		//
-// problem133.c:29:     assert(func0("[[]") == 0);
 	cmp	w0, 0	// _8,
 	beq	.L18		//,
+// problem133.c:29:     assert(func0("[[]") == 0);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp137,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp137,
 	mov	w2, 29	//,
@@ -342,9 +341,9 @@ main:
 	adrp	x0, .LC17	// tmp140,
 	add	x0, x0, :lo12:.LC17	//, tmp140,
 	bl	func0		//
-// problem133.c:30:     assert(func0("[]]") == 0);
 	cmp	w0, 0	// _9,
 	beq	.L19		//,
+// problem133.c:30:     assert(func0("[]]") == 0);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp141,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp141,
 	mov	w2, 30	//,
@@ -358,9 +357,9 @@ main:
 	adrp	x0, .LC19	// tmp144,
 	add	x0, x0, :lo12:.LC19	//, tmp144,
 	bl	func0		//
-// problem133.c:31:     assert(func0("[[]][[") == 1);
 	cmp	w0, 1	// _10,
 	beq	.L20		//,
+// problem133.c:31:     assert(func0("[[]][[") == 1);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp145,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp145,
 	mov	w2, 31	//,
@@ -374,9 +373,9 @@ main:
 	adrp	x0, .LC21	// tmp148,
 	add	x0, x0, :lo12:.LC21	//, tmp148,
 	bl	func0		//
-// problem133.c:32:     assert(func0("[[][]]") == 1);
 	cmp	w0, 1	// _11,
 	beq	.L21		//,
+// problem133.c:32:     assert(func0("[[][]]") == 1);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp149,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp149,
 	mov	w2, 32	//,
@@ -390,9 +389,9 @@ main:
 	adrp	x0, .LC23	// tmp152,
 	add	x0, x0, :lo12:.LC23	//, tmp152,
 	bl	func0		//
-// problem133.c:33:     assert(func0("") == 0);
 	cmp	w0, 0	// _12,
 	beq	.L22		//,
+// problem133.c:33:     assert(func0("") == 0);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp153,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp153,
 	mov	w2, 33	//,
@@ -406,9 +405,9 @@ main:
 	adrp	x0, .LC25	// tmp156,
 	add	x0, x0, :lo12:.LC25	//, tmp156,
 	bl	func0		//
-// problem133.c:34:     assert(func0("[[[[[[[[") == 0);
 	cmp	w0, 0	// _13,
 	beq	.L23		//,
+// problem133.c:34:     assert(func0("[[[[[[[[") == 0);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp157,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp157,
 	mov	w2, 34	//,
@@ -422,9 +421,9 @@ main:
 	adrp	x0, .LC27	// tmp160,
 	add	x0, x0, :lo12:.LC27	//, tmp160,
 	bl	func0		//
-// problem133.c:35:     assert(func0("]]]]]]]]") == 0);
 	cmp	w0, 0	// _14,
 	beq	.L24		//,
+// problem133.c:35:     assert(func0("]]]]]]]]") == 0);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp161,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp161,
 	mov	w2, 35	//,
@@ -451,5 +450,5 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

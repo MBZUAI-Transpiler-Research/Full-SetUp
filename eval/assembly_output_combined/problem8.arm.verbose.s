@@ -1,7 +1,7 @@
 	.arch armv8-a
 	.file	"problem8.c"
-// GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (aarch64-linux-gnu)
-//	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+// GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (aarch64-linux-gnu)
+//	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 // GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 // options passed: -mlittle-endian -mabi=lp64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection
@@ -118,7 +118,6 @@ issame:
 	beq	.L7		//,
 // problem8.c:27:     if (size_a != size_b) return 0;
 	mov	w0, 0	// _11,
-// problem8.c:27:     if (size_a != size_b) return 0;
 	b	.L8		//
 .L7:
 // problem8.c:28:     for (int i = 0; i < size_a; i++) {
@@ -148,7 +147,6 @@ issame:
 	beq	.L10		//,
 // problem8.c:29:         if (strcmp(a[i], b[i]) != 0) return 0;
 	mov	w0, 0	// _11,
-// problem8.c:29:         if (strcmp(a[i], b[i]) != 0) return 0;
 	b	.L8		//
 .L10:
 // problem8.c:28:     for (int i = 0; i < size_a; i++) {
@@ -214,209 +212,207 @@ issame:
 main:
 .LFB8:
 	.cfi_startproc
-	sub	sp, sp, #240	//,,
+	stp	x29, x30, [sp, -240]!	//,,,
 	.cfi_def_cfa_offset 240
-	stp	x29, x30, [sp, 224]	//,,
-	.cfi_offset 29, -16
-	.cfi_offset 30, -8
-	add	x29, sp, 224	//,,
+	.cfi_offset 29, -240
+	.cfi_offset 30, -232
+	mov	x29, sp	//,
 // problem8.c:34: int main() {
-	adrp	x0, :got:__stack_chk_guard	// tmp101,
-	ldr	x0, [x0, :got_lo12:__stack_chk_guard]	// tmp101,
-	ldr	x1, [x0]	// tmp167,
-	str	x1, [sp, 216]	// tmp167, D.5664
-	mov	x1, 0	// tmp167
+	adrp	x0, :got:__stack_chk_guard	// tmp102,
+	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]	// tmp101, tmp102,
+	ldr	x1, [x0]	// tmp169,
+	str	x1, [sp, 232]	// tmp169, D.5048
+	mov	x1, 0	// tmp169
 // problem8.c:39:     result = func0(NULL, 0, "john", &out_size);
-	add	x0, sp, 4	// tmp102,,
-	mov	x3, x0	//, tmp102
-	adrp	x0, .LC15	// tmp103,
-	add	x2, x0, :lo12:.LC15	//, tmp103,
+	add	x0, sp, 20	// tmp103,,
+	mov	x3, x0	//, tmp103
+	adrp	x0, .LC15	// tmp104,
+	add	x2, x0, :lo12:.LC15	//, tmp104,
 	mov	w1, 0	//,
 	mov	x0, 0	//,
 	bl	func0		//
-	str	x0, [sp, 8]	//, result
+	str	x0, [sp, 24]	//, result
 // problem8.c:40:     assert(out_size == 0 && result == NULL);
-	ldr	w0, [sp, 4]	// out_size.0_1, out_size
+	ldr	w0, [sp, 20]	// out_size.0_1, out_size
 	cmp	w0, 0	// out_size.0_1,
 	bne	.L13		//,
 // problem8.c:40:     assert(out_size == 0 && result == NULL);
-	ldr	x0, [sp, 8]	// tmp104, result
-	cmp	x0, 0	// tmp104,
+	ldr	x0, [sp, 24]	// tmp105, result
+	cmp	x0, 0	// tmp105,
 	beq	.L20		//,
 .L13:
 // problem8.c:40:     assert(out_size == 0 && result == NULL);
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp105,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp105,
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp106,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp106,
 	mov	w2, 40	//,
-	adrp	x0, .LC16	// tmp106,
-	add	x1, x0, :lo12:.LC16	//, tmp106,
-	adrp	x0, .LC17	// tmp107,
-	add	x0, x0, :lo12:.LC17	//, tmp107,
+	adrp	x0, .LC16	// tmp107,
+	add	x1, x0, :lo12:.LC16	//, tmp107,
+	adrp	x0, .LC17	// tmp108,
+	add	x0, x0, :lo12:.LC17	//, tmp108,
 	bl	__assert_fail		//
 .L20:
 // problem8.c:43:     char *strings1[] = {"xxx", "asd", "xxy", "john doe", "xxxAAA", "xxx"};
-	adrp	x0, .LC18	// tmp109,
-	add	x1, x0, :lo12:.LC18	// tmp108, tmp109,
-	add	x0, sp, 120	// tmp110,,
-	ldp	q0, q1, [x1]	// tmp112, tmp113,
-	stp	q0, q1, [x0]	// tmp112, tmp113, strings1
-	ldr	q0, [x1, 32]	// tmp114,
-	str	q0, [x0, 32]	// tmp114, strings1
+	adrp	x0, .LC18	// tmp110,
+	add	x1, x0, :lo12:.LC18	// tmp109, tmp110,
+	add	x0, sp, 136	// tmp111,,
+	ldp	q0, q1, [x1]	// tmp113, tmp114,
+	stp	q0, q1, [x0]	// tmp113, tmp114, strings1
+	ldr	q0, [x1, 32]	// tmp115,
+	str	q0, [x0, 32]	// tmp115, strings1
 // problem8.c:44:     char *expected1[] = {"xxx", "xxxAAA", "xxx"};
-	adrp	x0, .LC19	// tmp116,
-	add	x0, x0, :lo12:.LC19	// tmp115, tmp116,
-	add	x2, sp, 32	// tmp117,,
-	mov	x3, x0	// tmp118, tmp115
-	ldp	x0, x1, [x3]	// tmp119,
-	stp	x0, x1, [x2]	// tmp119, expected1
-	ldr	x0, [x3, 16]	// tmp120,
-	str	x0, [x2, 16]	// tmp120, expected1
+	adrp	x0, .LC19	// tmp117,
+	add	x0, x0, :lo12:.LC19	// tmp116, tmp117,
+	add	x2, sp, 48	// tmp118,,
+	mov	x3, x0	// tmp119, tmp116
+	ldp	x0, x1, [x3]	// tmp120,
+	stp	x0, x1, [x2]	// tmp120, expected1
+	ldr	x0, [x3, 16]	// tmp121,
+	str	x0, [x2, 16]	// tmp121, expected1
 // problem8.c:45:     result = func0(strings1, 6, "xxx", &out_size);
-	add	x0, sp, 4	// tmp121,,
-	add	x4, sp, 120	// tmp122,,
-	mov	x3, x0	//, tmp121
-	adrp	x0, .LC0	// tmp123,
-	add	x2, x0, :lo12:.LC0	//, tmp123,
+	add	x0, sp, 20	// tmp122,,
+	add	x4, sp, 136	// tmp123,,
+	mov	x3, x0	//, tmp122
+	adrp	x0, .LC0	// tmp124,
+	add	x2, x0, :lo12:.LC0	//, tmp124,
 	mov	w1, 6	//,
-	mov	x0, x4	//, tmp122
+	mov	x0, x4	//, tmp123
 	bl	func0		//
-	str	x0, [sp, 8]	//, result
+	str	x0, [sp, 24]	//, result
 // problem8.c:46:     assert(issame(result, expected1, out_size, 3));
-	ldr	w1, [sp, 4]	// out_size.1_2, out_size
-	add	x0, sp, 32	// tmp124,,
+	ldr	w1, [sp, 20]	// out_size.1_2, out_size
+	add	x0, sp, 48	// tmp125,,
 	mov	w3, 3	//,
 	mov	w2, w1	//, out_size.1_2
-	mov	x1, x0	//, tmp124
-	ldr	x0, [sp, 8]	//, result
+	mov	x1, x0	//, tmp125
+	ldr	x0, [sp, 24]	//, result
 	bl	issame		//
-// problem8.c:46:     assert(issame(result, expected1, out_size, 3));
 	cmp	w0, 0	// _3,
 	bne	.L15		//,
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp125,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp125,
+// problem8.c:46:     assert(issame(result, expected1, out_size, 3));
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp126,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp126,
 	mov	w2, 46	//,
-	adrp	x0, .LC16	// tmp126,
-	add	x1, x0, :lo12:.LC16	//, tmp126,
-	adrp	x0, .LC20	// tmp127,
-	add	x0, x0, :lo12:.LC20	//, tmp127,
+	adrp	x0, .LC16	// tmp127,
+	add	x1, x0, :lo12:.LC16	//, tmp127,
+	adrp	x0, .LC20	// tmp128,
+	add	x0, x0, :lo12:.LC20	//, tmp128,
 	bl	__assert_fail		//
 .L15:
 // problem8.c:47:     free(result);
-	ldr	x0, [sp, 8]	//, result
+	ldr	x0, [sp, 24]	//, result
 	bl	free		//
 // problem8.c:50:     char *strings2[] = {"xxx", "asd", "aaaxxy", "john doe", "xxxAAA", "xxx"};
-	adrp	x0, .LC21	// tmp129,
-	add	x1, x0, :lo12:.LC21	// tmp128, tmp129,
-	add	x0, sp, 168	// tmp130,,
-	ldp	q0, q1, [x1]	// tmp132, tmp133,
-	stp	q0, q1, [x0]	// tmp132, tmp133, strings2
-	ldr	q0, [x1, 32]	// tmp134,
-	str	q0, [x0, 32]	// tmp134, strings2
+	adrp	x0, .LC21	// tmp130,
+	add	x1, x0, :lo12:.LC21	// tmp129, tmp130,
+	add	x0, sp, 184	// tmp131,,
+	ldp	q0, q1, [x1]	// tmp133, tmp134,
+	stp	q0, q1, [x0]	// tmp133, tmp134, strings2
+	ldr	q0, [x1, 32]	// tmp135,
+	str	q0, [x0, 32]	// tmp135, strings2
 // problem8.c:51:     char *expected2[] = {"xxx", "aaaxxy", "xxxAAA", "xxx"};
-	add	x0, sp, 232	// tmp135,,
-	sub	x0, x0, #176	// tmp137, tmp135,
-	adrp	x1, .LC22	// tmp139,
-	add	x1, x1, :lo12:.LC22	// tmp138, tmp139,
-	ld1	{v0.16b - v1.16b}, [x1]	// tmp140,
-	st1	{v0.16b - v1.16b}, [x0]	// tmp140, expected2
+	add	x0, sp, 248	// tmp136,,
+	sub	x0, x0, #176	// tmp138, tmp136,
+	adrp	x1, .LC22	// tmp140,
+	add	x1, x1, :lo12:.LC22	// tmp139, tmp140,
+	ld1	{v0.16b - v1.16b}, [x1]	// tmp141,
+	st1	{v0.16b - v1.16b}, [x0]	// tmp141, expected2
 // problem8.c:52:     result = func0(strings2, 6, "xx", &out_size);
-	add	x0, sp, 4	// tmp141,,
-	add	x4, sp, 168	// tmp142,,
-	mov	x3, x0	//, tmp141
-	adrp	x0, .LC23	// tmp143,
-	add	x2, x0, :lo12:.LC23	//, tmp143,
+	add	x0, sp, 20	// tmp142,,
+	add	x4, sp, 184	// tmp143,,
+	mov	x3, x0	//, tmp142
+	adrp	x0, .LC23	// tmp144,
+	add	x2, x0, :lo12:.LC23	//, tmp144,
 	mov	w1, 6	//,
-	mov	x0, x4	//, tmp142
+	mov	x0, x4	//, tmp143
 	bl	func0		//
-	str	x0, [sp, 8]	//, result
+	str	x0, [sp, 24]	//, result
 // problem8.c:53:     assert(issame(result, expected2, out_size, 4));
-	ldr	w1, [sp, 4]	// out_size.2_4, out_size
-	add	x0, sp, 56	// tmp144,,
+	ldr	w1, [sp, 20]	// out_size.2_4, out_size
+	add	x0, sp, 72	// tmp145,,
 	mov	w3, 4	//,
 	mov	w2, w1	//, out_size.2_4
-	mov	x1, x0	//, tmp144
-	ldr	x0, [sp, 8]	//, result
+	mov	x1, x0	//, tmp145
+	ldr	x0, [sp, 24]	//, result
 	bl	issame		//
-// problem8.c:53:     assert(issame(result, expected2, out_size, 4));
 	cmp	w0, 0	// _5,
 	bne	.L16		//,
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp145,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp145,
+// problem8.c:53:     assert(issame(result, expected2, out_size, 4));
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp146,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp146,
 	mov	w2, 53	//,
-	adrp	x0, .LC16	// tmp146,
-	add	x1, x0, :lo12:.LC16	//, tmp146,
-	adrp	x0, .LC24	// tmp147,
-	add	x0, x0, :lo12:.LC24	//, tmp147,
+	adrp	x0, .LC16	// tmp147,
+	add	x1, x0, :lo12:.LC16	//, tmp147,
+	adrp	x0, .LC24	// tmp148,
+	add	x0, x0, :lo12:.LC24	//, tmp148,
 	bl	__assert_fail		//
 .L16:
 // problem8.c:54:     free(result);
-	ldr	x0, [sp, 8]	//, result
+	ldr	x0, [sp, 24]	//, result
 	bl	free		//
 // problem8.c:57:     char *strings3[] = {"grunt", "trumpet", "prune", "gruesome"};
-	add	x0, sp, 232	// tmp148,,
-	sub	x0, x0, #144	// tmp150, tmp148,
-	adrp	x1, .LC25	// tmp152,
-	add	x1, x1, :lo12:.LC25	// tmp151, tmp152,
-	ld1	{v0.16b - v1.16b}, [x1]	// tmp153,
-	st1	{v0.16b - v1.16b}, [x0]	// tmp153, strings3
+	add	x0, sp, 248	// tmp149,,
+	sub	x0, x0, #144	// tmp151, tmp149,
+	adrp	x1, .LC25	// tmp153,
+	add	x1, x1, :lo12:.LC25	// tmp152, tmp153,
+	ld1	{v0.16b - v1.16b}, [x1]	// tmp154,
+	st1	{v0.16b - v1.16b}, [x0]	// tmp154, strings3
 // problem8.c:58:     char *expected3[] = {"grunt", "prune"};
-	adrp	x0, .LC10	// tmp155,
-	add	x0, x0, :lo12:.LC10	// tmp154, tmp155,
-	str	x0, [sp, 16]	// tmp154, expected3[0]
-	adrp	x0, .LC12	// tmp157,
-	add	x0, x0, :lo12:.LC12	// tmp156, tmp157,
-	str	x0, [sp, 24]	// tmp156, expected3[1]
+	adrp	x0, .LC10	// tmp156,
+	add	x0, x0, :lo12:.LC10	// tmp155, tmp156,
+	str	x0, [sp, 32]	// tmp155, expected3[0]
+	adrp	x0, .LC12	// tmp158,
+	add	x0, x0, :lo12:.LC12	// tmp157, tmp158,
+	str	x0, [sp, 40]	// tmp157, expected3[1]
 // problem8.c:59:     result = func0(strings3, 4, "run", &out_size);
-	add	x0, sp, 4	// tmp158,,
-	add	x4, sp, 88	// tmp159,,
-	mov	x3, x0	//, tmp158
-	adrp	x0, .LC26	// tmp160,
-	add	x2, x0, :lo12:.LC26	//, tmp160,
+	add	x0, sp, 20	// tmp159,,
+	add	x4, sp, 104	// tmp160,,
+	mov	x3, x0	//, tmp159
+	adrp	x0, .LC26	// tmp161,
+	add	x2, x0, :lo12:.LC26	//, tmp161,
 	mov	w1, 4	//,
-	mov	x0, x4	//, tmp159
+	mov	x0, x4	//, tmp160
 	bl	func0		//
-	str	x0, [sp, 8]	//, result
+	str	x0, [sp, 24]	//, result
 // problem8.c:60:     assert(issame(result, expected3, out_size, 2));
-	ldr	w1, [sp, 4]	// out_size.3_6, out_size
-	add	x0, sp, 16	// tmp161,,
+	ldr	w1, [sp, 20]	// out_size.3_6, out_size
+	add	x0, sp, 32	// tmp162,,
 	mov	w3, 2	//,
 	mov	w2, w1	//, out_size.3_6
-	mov	x1, x0	//, tmp161
-	ldr	x0, [sp, 8]	//, result
+	mov	x1, x0	//, tmp162
+	ldr	x0, [sp, 24]	//, result
 	bl	issame		//
-// problem8.c:60:     assert(issame(result, expected3, out_size, 2));
 	cmp	w0, 0	// _7,
 	bne	.L17		//,
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp162,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp162,
+// problem8.c:60:     assert(issame(result, expected3, out_size, 2));
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp163,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp163,
 	mov	w2, 60	//,
-	adrp	x0, .LC16	// tmp163,
-	add	x1, x0, :lo12:.LC16	//, tmp163,
-	adrp	x0, .LC27	// tmp164,
-	add	x0, x0, :lo12:.LC27	//, tmp164,
+	adrp	x0, .LC16	// tmp164,
+	add	x1, x0, :lo12:.LC16	//, tmp164,
+	adrp	x0, .LC27	// tmp165,
+	add	x0, x0, :lo12:.LC27	//, tmp165,
 	bl	__assert_fail		//
 .L17:
 // problem8.c:61:     free(result);
-	ldr	x0, [sp, 8]	//, result
+	ldr	x0, [sp, 24]	//, result
 	bl	free		//
 // problem8.c:63:     return 0;
 	mov	w0, 0	// _33,
 // problem8.c:64: }
 	mov	w1, w0	// <retval>, _33
-	adrp	x0, :got:__stack_chk_guard	// tmp166,
-	ldr	x0, [x0, :got_lo12:__stack_chk_guard]	// tmp166,
-	ldr	x3, [sp, 216]	// tmp168, D.5664
-	ldr	x2, [x0]	// tmp169,
-	subs	x3, x3, x2	// tmp168, tmp169
-	mov	x2, 0	// tmp169
+	adrp	x0, :got:__stack_chk_guard	// tmp168,
+	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]	// tmp167, tmp168,
+	ldr	x3, [sp, 232]	// tmp170, D.5048
+	ldr	x2, [x0]	// tmp171,
+	subs	x3, x3, x2	// tmp170, tmp171
+	mov	x2, 0	// tmp171
 	beq	.L19		//,
 	bl	__stack_chk_fail		//
 .L19:
 	mov	w0, w1	//, <retval>
-	ldp	x29, x30, [sp, 224]	//,,
-	add	sp, sp, 240	//,,
-	.cfi_restore 29
+	ldp	x29, x30, [sp], 240	//,,,
 	.cfi_restore 30
+	.cfi_restore 29
 	.cfi_def_cfa_offset 0
 	ret	
 	.cfi_endproc
@@ -489,5 +485,5 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

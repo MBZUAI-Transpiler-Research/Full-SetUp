@@ -1,13 +1,10 @@
 	.file	"problem13.c"
 	.option pic
-	.attribute arch, "rv64i2p1_m2p0_a2p1_f2p2_d2p2_c2p0_zicsr2p0_zifencei2p0"
-	.attribute unaligned_access, 0
-	.attribute stack_align, 16
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (riscv64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (riscv64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-# options passed: -mabi=lp64d -misa-spec=20191213 -march=rv64imafdc_zicsr_zifencei -fstack-protector-strong
+# options passed: -mabi=lp64d -misa-spec=2.2 -march=rv64imafdc -fstack-protector-strong
 	.text
 	.section	.rodata
 	.align	3
@@ -217,191 +214,177 @@
 	.globl	main
 	.type	main, @function
 main:
-.LFB26:
-	.cfi_startproc
 	addi	sp,sp,-1904	#,,
-	.cfi_def_cfa_offset 1904
 	sd	ra,1896(sp)	#,
 	sd	s0,1888(sp)	#,
 	sd	s1,1880(sp)	#,
-	.cfi_offset 1, -8
-	.cfi_offset 8, -16
-	.cfi_offset 9, -24
 	addi	s0,sp,1904	#,,
-	.cfi_def_cfa 8, 0
 	li	t0,-8192		#,
 	add	sp,sp,t0	#,,
 # problem13.c:13: {
-	la	a5,__stack_chk_guard		# tmp138,
-	ld	a4, 0(a5)	# tmp209, __stack_chk_guard
-	sd	a4, -40(s0)	# tmp209, D.4824
-	li	a4, 0	# tmp209
+	la	a5,__stack_chk_guard		# tmp76,
+	ld	a4, 0(a5)	# tmp147, __stack_chk_guard
+	sd	a4, -40(s0)	# tmp147, D.3999
+	li	a4, 0	# tmp147
 # problem13.c:14:   char digits[][N] = {
-	li	a5,-8192		# tmp139,
-	addi	a5,a5,-32	#, tmp213, tmp139
-	add	a5,a5,s0	#, tmp140, tmp213
-	lla	a3,.LC0	# tmp141,
-	addi	a4,a5,-1816	#, tmp142, tmp140
-	li	a5,8192		# tmp145,
-	addi	a5,a5,1808	#, tmp144, tmp145
-	mv	a2,a5	#, tmp144
-	mv	a1,a3	#, tmp143
-	mv	a0,a4	#, tmp142
+	li	a5,-8192		# tmp77,
+	addi	a5,a5,-32	#, tmp151, tmp77
+	add	a5,a5,s0	#, tmp78, tmp151
+	lla	a3,.LC0	# tmp79,
+	addi	a4,a5,-1816	#, tmp80, tmp78
+	li	a5,8192		# tmp83,
+	addi	a5,a5,1808	#, tmp82, tmp83
+	mv	a2,a5	#, tmp82
+	mv	a1,a3	#, tmp81
+	mv	a0,a4	#, tmp80
 	call	memcpy@plt	#
 # problem13.c:121:   mpz_init_set_ui(sum, 0);
-	li	a5,-8192		# tmp149,
-	addi	a5,a5,-1848	#, tmp148, tmp149
-	addi	a5,a5,-32	#, tmp214, tmp148
-	add	a5,a5,s0	#, tmp147, tmp214
+	li	a5,-8192		# tmp87,
+	addi	a5,a5,-1848	#, tmp86, tmp87
+	addi	a5,a5,-32	#, tmp152, tmp86
+	add	a5,a5,s0	#, tmp85, tmp152
 	li	a1,0		#,
-	mv	a0,a5	#, tmp147
+	mv	a0,a5	#, tmp85
 	call	__gmpz_init_set_ui@plt	#
 # problem13.c:122:   mpz_init(t);
-	li	a5,-8192		# tmp152,
-	addi	a5,a5,-1832	#, tmp151, tmp152
-	addi	a5,a5,-32	#, tmp215, tmp151
-	add	a5,a5,s0	#, tmp150, tmp215
-	mv	a0,a5	#, tmp150
+	li	a5,-8192		# tmp90,
+	addi	a5,a5,-1832	#, tmp89, tmp90
+	addi	a5,a5,-32	#, tmp153, tmp89
+	add	a5,a5,s0	#, tmp88, tmp153
+	mv	a0,a5	#, tmp88
 	call	__gmpz_init@plt	#
 # problem13.c:123:   for (i = 0; i < N; i++) {
-	li	a5,-8192		# tmp153,
-	addi	a5,a5,-32	#, tmp216, tmp153
-	add	a5,a5,s0	#, tmp154, tmp216
+	li	a5,-8192		# tmp91,
+	addi	a5,a5,-32	#, tmp154, tmp91
+	add	a5,a5,s0	#, tmp92, tmp154
 	sw	zero,-1860(a5)	#, i
 # problem13.c:123:   for (i = 0; i < N; i++) {
 	j	.L2		#
 .L3:
 # problem13.c:124:     mpz_set_str(t, digits[i], 10);
-	li	a5,-8192		# tmp157,
-	addi	a5,a5,-1816	#, tmp156, tmp157
-	addi	a5,a5,-32	#, tmp217, tmp156
-	add	a4,a5,s0	#, tmp155, tmp217
-	li	a5,-8192		# tmp158,
-	addi	a5,a5,-32	#, tmp218, tmp158
-	add	a5,a5,s0	#, tmp159, tmp218
-	lw	a3,-1860(a5)		# tmp160, i
-	li	a5,100		# tmp162,
-	mul	a5,a3,a5	# tmp161, tmp160, tmp162
-	add	a4,a4,a5	# tmp161, _1, tmp155
+	li	a5,-8192		# tmp95,
+	addi	a5,a5,-1816	#, tmp94, tmp95
+	addi	a5,a5,-32	#, tmp155, tmp94
+	add	a4,a5,s0	#, tmp93, tmp155
+	li	a5,-8192		# tmp96,
+	addi	a5,a5,-32	#, tmp156, tmp96
+	add	a5,a5,s0	#, tmp97, tmp156
+	lw	a3,-1860(a5)		# tmp98, i
+	li	a5,100		# tmp100,
+	mul	a5,a3,a5	# tmp99, tmp98, tmp100
+	add	a4,a4,a5	# tmp99, _1, tmp93
 # problem13.c:124:     mpz_set_str(t, digits[i], 10);
-	li	a5,-8192		# tmp165,
-	addi	a5,a5,-1832	#, tmp164, tmp165
-	addi	a5,a5,-32	#, tmp219, tmp164
-	add	a5,a5,s0	#, tmp163, tmp219
+	li	a5,-8192		# tmp103,
+	addi	a5,a5,-1832	#, tmp102, tmp103
+	addi	a5,a5,-32	#, tmp157, tmp102
+	add	a5,a5,s0	#, tmp101, tmp157
 	li	a2,10		#,
 	mv	a1,a4	#, _1
-	mv	a0,a5	#, tmp163
+	mv	a0,a5	#, tmp101
 	call	__gmpz_set_str@plt	#
 # problem13.c:125:     mpz_add(sum, sum, t);
-	li	a5,-8192		# tmp168,
-	addi	a5,a5,-1832	#, tmp167, tmp168
-	addi	a5,a5,-32	#, tmp220, tmp167
-	add	a3,a5,s0	#, tmp166, tmp220
-	li	a5,-8192		# tmp171,
-	addi	a5,a5,-1848	#, tmp170, tmp171
-	addi	a5,a5,-32	#, tmp221, tmp170
-	add	a4,a5,s0	#, tmp169, tmp221
-	li	a5,-8192		# tmp174,
-	addi	a5,a5,-1848	#, tmp173, tmp174
-	addi	a5,a5,-32	#, tmp222, tmp173
-	add	a5,a5,s0	#, tmp172, tmp222
-	mv	a2,a3	#, tmp166
-	mv	a1,a4	#, tmp169
-	mv	a0,a5	#, tmp172
+	li	a5,-8192		# tmp106,
+	addi	a5,a5,-1832	#, tmp105, tmp106
+	addi	a5,a5,-32	#, tmp158, tmp105
+	add	a3,a5,s0	#, tmp104, tmp158
+	li	a5,-8192		# tmp109,
+	addi	a5,a5,-1848	#, tmp108, tmp109
+	addi	a5,a5,-32	#, tmp159, tmp108
+	add	a4,a5,s0	#, tmp107, tmp159
+	li	a5,-8192		# tmp112,
+	addi	a5,a5,-1848	#, tmp111, tmp112
+	addi	a5,a5,-32	#, tmp160, tmp111
+	add	a5,a5,s0	#, tmp110, tmp160
+	mv	a2,a3	#, tmp104
+	mv	a1,a4	#, tmp107
+	mv	a0,a5	#, tmp110
 	call	__gmpz_add@plt	#
 # problem13.c:123:   for (i = 0; i < N; i++) {
-	li	a5,-8192		# tmp175,
-	addi	a5,a5,-32	#, tmp223, tmp175
-	add	a5,a5,s0	#, tmp176, tmp223
-	li	a4,-8192		# tmp177,
-	addi	a4,a4,-32	#, tmp224, tmp177
-	add	a4,a4,s0	#, tmp178, tmp224
-	lw	a4,-1860(a4)		# tmp181, i
-	addiw	a4,a4,1	#, tmp179, tmp180
-	sw	a4,-1860(a5)	# tmp179, i
+	li	a5,-8192		# tmp113,
+	addi	a5,a5,-32	#, tmp161, tmp113
+	add	a5,a5,s0	#, tmp114, tmp161
+	li	a4,-8192		# tmp115,
+	addi	a4,a4,-32	#, tmp162, tmp115
+	add	a4,a4,s0	#, tmp116, tmp162
+	lw	a4,-1860(a4)		# tmp119, i
+	addiw	a4,a4,1	#, tmp117, tmp118
+	sw	a4,-1860(a5)	# tmp117, i
 .L2:
 # problem13.c:123:   for (i = 0; i < N; i++) {
-	li	a5,-8192		# tmp182,
-	addi	a5,a5,-32	#, tmp225, tmp182
-	add	a5,a5,s0	#, tmp183, tmp225
-	lw	a5,-1860(a5)		# tmp185, i
-	sext.w	a4,a5	# tmp186, tmp184
-	li	a5,99		# tmp187,
-	ble	a4,a5,.L3	#, tmp186, tmp187,
+	li	a5,-8192		# tmp120,
+	addi	a5,a5,-32	#, tmp163, tmp120
+	add	a5,a5,s0	#, tmp121, tmp163
+	lw	a5,-1860(a5)		# tmp123, i
+	sext.w	a4,a5	# tmp124, tmp122
+	li	a5,99		# tmp125,
+	ble	a4,a5,.L3	#, tmp124, tmp125,
 # problem13.c:128:   str = mpz_get_str(NULL, 10, sum);
-	li	a5,-8192		# tmp188,
-	addi	a5,a5,-32	#, tmp226, tmp188
-	add	s1,a5,s0	#, tmp189, tmp226
-	li	a5,-8192		# tmp192,
-	addi	a5,a5,-1848	#, tmp191, tmp192
-	addi	a5,a5,-32	#, tmp227, tmp191
-	add	a5,a5,s0	#, tmp190, tmp227
-	mv	a2,a5	#, tmp190
+	li	a5,-8192		# tmp126,
+	addi	a5,a5,-32	#, tmp164, tmp126
+	add	s1,a5,s0	#, tmp127, tmp164
+	li	a5,-8192		# tmp130,
+	addi	a5,a5,-1848	#, tmp129, tmp130
+	addi	a5,a5,-32	#, tmp165, tmp129
+	add	a5,a5,s0	#, tmp128, tmp165
+	mv	a2,a5	#, tmp128
 	li	a1,10		#,
 	li	a0,0		#,
 	call	__gmpz_get_str@plt	#
 	sd	a0,-1856(s1)	#, str
 # problem13.c:129:   str[10] = 0;
-	li	a5,-8192		# tmp193,
-	addi	a5,a5,-32	#, tmp228, tmp193
-	add	a5,a5,s0	#, tmp194, tmp228
-	ld	a5,-1856(a5)		# tmp195, str
-	addi	a5,a5,10	#, _2, tmp195
+	li	a5,-8192		# tmp131,
+	addi	a5,a5,-32	#, tmp166, tmp131
+	add	a5,a5,s0	#, tmp132, tmp166
+	ld	a5,-1856(a5)		# tmp133, str
+	addi	a5,a5,10	#, _2, tmp133
 # problem13.c:129:   str[10] = 0;
 	sb	zero,0(a5)	#, *_2
 # problem13.c:130:   puts(str);
-	li	a5,-8192		# tmp196,
-	addi	a5,a5,-32	#, tmp229, tmp196
-	add	a5,a5,s0	#, tmp197, tmp229
+	li	a5,-8192		# tmp134,
+	addi	a5,a5,-32	#, tmp167, tmp134
+	add	a5,a5,s0	#, tmp135, tmp167
 	ld	a0,-1856(a5)		#, str
 	call	puts@plt	#
 # problem13.c:132:   free(str);
-	li	a5,-8192		# tmp198,
-	addi	a5,a5,-32	#, tmp230, tmp198
-	add	a5,a5,s0	#, tmp199, tmp230
+	li	a5,-8192		# tmp136,
+	addi	a5,a5,-32	#, tmp168, tmp136
+	add	a5,a5,s0	#, tmp137, tmp168
 	ld	a0,-1856(a5)		#, str
 	call	free@plt	#
 # problem13.c:133:   mpz_clear(sum);
-	li	a5,-8192		# tmp202,
-	addi	a5,a5,-1848	#, tmp201, tmp202
-	addi	a5,a5,-32	#, tmp231, tmp201
-	add	a5,a5,s0	#, tmp200, tmp231
-	mv	a0,a5	#, tmp200
+	li	a5,-8192		# tmp140,
+	addi	a5,a5,-1848	#, tmp139, tmp140
+	addi	a5,a5,-32	#, tmp169, tmp139
+	add	a5,a5,s0	#, tmp138, tmp169
+	mv	a0,a5	#, tmp138
 	call	__gmpz_clear@plt	#
 # problem13.c:134:   mpz_clear(t);
-	li	a5,-8192		# tmp205,
-	addi	a5,a5,-1832	#, tmp204, tmp205
-	addi	a5,a5,-32	#, tmp232, tmp204
-	add	a5,a5,s0	#, tmp203, tmp232
-	mv	a0,a5	#, tmp203
+	li	a5,-8192		# tmp143,
+	addi	a5,a5,-1832	#, tmp142, tmp143
+	addi	a5,a5,-32	#, tmp170, tmp142
+	add	a5,a5,s0	#, tmp141, tmp170
+	mv	a0,a5	#, tmp141
 	call	__gmpz_clear@plt	#
 # problem13.c:136:   return 0;
 	li	a5,0		# _17,
 # problem13.c:137: }
 	mv	a4,a5	# <retval>, _17
-	la	a5,__stack_chk_guard		# tmp207,
-	ld	a3, -40(s0)	# tmp210, D.4824
-	ld	a5, 0(a5)	# tmp208, __stack_chk_guard
-	xor	a5, a3, a5	# tmp208, tmp210
-	li	a3, 0	# tmp210
-	beq	a5,zero,.L5	#, tmp208,,
+	la	a5,__stack_chk_guard		# tmp145,
+	ld	a3, -40(s0)	# tmp148, D.3999
+	ld	a5, 0(a5)	# tmp146, __stack_chk_guard
+	xor	a5, a3, a5	# tmp146, tmp148
+	li	a3, 0	# tmp148
+	beq	a5,zero,.L5	#, tmp146,,
 	call	__stack_chk_fail@plt	#
 .L5:
 	mv	a0,a4	#, <retval>
 	li	t0,8192		#,
 	add	sp,sp,t0	#,,
-	.cfi_def_cfa 2, 1904
 	ld	ra,1896(sp)		#,
-	.cfi_restore 1
 	ld	s0,1888(sp)		#,
-	.cfi_restore 8
 	ld	s1,1880(sp)		#,
-	.cfi_restore 9
 	addi	sp,sp,1904	#,,
-	.cfi_def_cfa_offset 0
 	jr	ra		#
-	.cfi_endproc
-.LFE26:
 	.size	main, .-main
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

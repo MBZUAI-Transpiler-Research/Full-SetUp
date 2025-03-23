@@ -1,7 +1,7 @@
 	.arch armv8-a
 	.file	"problem70.c"
-// GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (aarch64-linux-gnu)
-//	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+// GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (aarch64-linux-gnu)
+//	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 // GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 // options passed: -mlittle-endian -mabi=lp64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection
@@ -120,268 +120,265 @@ func0:
 main:
 .LFB7:
 	.cfi_startproc
-	stp	x29, x30, [sp, -16]!	//,,,
-	.cfi_def_cfa_offset 16
-	.cfi_offset 29, -16
-	.cfi_offset 30, -8
-	mov	x29, sp	//,
-	sub	sp, sp, #1360	//,,
+	sub	sp, sp, #1376	//,,
 	.cfi_def_cfa_offset 1376
-	str	xzr, [sp, 1024]	//,
+	stp	x29, x30, [sp]	//,,
+	.cfi_offset 29, -1376
+	.cfi_offset 30, -1368
+	mov	x29, sp	//,
 // problem70.c:23: int main() {
-	adrp	x0, :got:__stack_chk_guard	// tmp94,
-	ldr	x0, [x0, :got_lo12:__stack_chk_guard]	// tmp94,
-	ldr	x1, [x0]	// tmp277,
-	str	x1, [sp, 1352]	// tmp277, D.5440
-	mov	x1, 0	// tmp277
+	adrp	x0, :got:__stack_chk_guard	// tmp95,
+	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]	// tmp94, tmp95,
+	ldr	x1, [x0]	// tmp279,
+	str	x1, [sp, 1368]	// tmp279, D.4851
+	mov	x1, 0	// tmp279
 // problem70.c:24:     int arr1[] = {5, 5, 5, 5, 1};
-	adrp	x0, .LC0	// tmp96,
-	add	x0, x0, :lo12:.LC0	// tmp95, tmp96,
-	add	x2, sp, 48	// tmp97,,
-	mov	x3, x0	// tmp98, tmp95
-	ldp	x0, x1, [x3]	// tmp99,
-	stp	x0, x1, [x2]	// tmp99, arr1
-	ldr	w0, [x3, 16]	// tmp100,
-	str	w0, [x2, 16]	// tmp100, arr1
+	adrp	x0, .LC0	// tmp97,
+	add	x0, x0, :lo12:.LC0	// tmp96, tmp97,
+	add	x2, sp, 64	// tmp98,,
+	mov	x3, x0	// tmp99, tmp96
+	ldp	x0, x1, [x3]	// tmp100,
+	stp	x0, x1, [x2]	// tmp100, arr1
+	ldr	w0, [x3, 16]	// tmp101,
+	str	w0, [x2, 16]	// tmp101, arr1
 // problem70.c:25:     int arr2[] = {4, 1, 4, 1, 4, 4};
-	adrp	x0, .LC1	// tmp102,
-	add	x0, x0, :lo12:.LC1	// tmp101, tmp102,
-	add	x2, sp, 144	// tmp103,,
-	mov	x3, x0	// tmp104, tmp101
-	ldp	x0, x1, [x3]	// tmp105,
-	stp	x0, x1, [x2]	// tmp105, arr2
-	ldr	x0, [x3, 16]	// tmp106,
-	str	x0, [x2, 16]	// tmp106, arr2
+	adrp	x0, .LC1	// tmp103,
+	add	x0, x0, :lo12:.LC1	// tmp102, tmp103,
+	add	x2, sp, 160	// tmp104,,
+	mov	x3, x0	// tmp105, tmp102
+	ldp	x0, x1, [x3]	// tmp106,
+	stp	x0, x1, [x2]	// tmp106, arr2
+	ldr	x0, [x3, 16]	// tmp107,
+	str	x0, [x2, 16]	// tmp107, arr2
 // problem70.c:26:     int arr3[] = {3, 3};
-	mov	w0, 3	// tmp107,
-	str	w0, [sp, 24]	// tmp107, arr3[0]
 	mov	w0, 3	// tmp108,
-	str	w0, [sp, 28]	// tmp108, arr3[1]
+	str	w0, [sp, 40]	// tmp108, arr3[0]
+	mov	w0, 3	// tmp109,
+	str	w0, [sp, 44]	// tmp109, arr3[1]
 // problem70.c:27:     int arr4[] = {8, 8, 8, 8, 8, 8, 8, 8};
-	adrp	x0, .LC2	// tmp110,
-	add	x1, x0, :lo12:.LC2	// tmp109, tmp110,
-	add	x0, sp, 200	// tmp111,,
-	ldp	q0, q1, [x1]	// tmp113, tmp114,
-	stp	q0, q1, [x0]	// tmp113, tmp114, arr4
+	adrp	x0, .LC2	// tmp111,
+	add	x1, x0, :lo12:.LC2	// tmp110, tmp111,
+	add	x0, sp, 216	// tmp112,,
+	ldp	q0, q1, [x1]	// tmp114, tmp115,
+	stp	q0, q1, [x0]	// tmp114, tmp115, arr4
 // problem70.c:28:     int arr5[] = {2, 3, 3, 2, 2};
-	adrp	x0, .LC3	// tmp116,
-	add	x0, x0, :lo12:.LC3	// tmp115, tmp116,
-	add	x2, sp, 72	// tmp117,,
-	mov	x3, x0	// tmp118, tmp115
-	ldp	x0, x1, [x3]	// tmp119,
-	stp	x0, x1, [x2]	// tmp119, arr5
-	ldr	w0, [x3, 16]	// tmp120,
-	str	w0, [x2, 16]	// tmp120, arr5
+	adrp	x0, .LC3	// tmp117,
+	add	x0, x0, :lo12:.LC3	// tmp116, tmp117,
+	add	x2, sp, 88	// tmp118,,
+	mov	x3, x0	// tmp119, tmp116
+	ldp	x0, x1, [x3]	// tmp120,
+	stp	x0, x1, [x2]	// tmp120, arr5
+	ldr	w0, [x3, 16]	// tmp121,
+	str	w0, [x2, 16]	// tmp121, arr5
 // problem70.c:29:     int arr6[] = {2, 7, 8, 8, 4, 8, 7, 3, 9, 6, 5, 10, 4, 3, 6, 7, 1, 7, 4, 10, 8, 1};
-	adrp	x0, .LC4	// tmp122,
-	add	x1, x0, :lo12:.LC4	// tmp121, tmp122,
-	add	x0, sp, 664	// tmp123,,
-	ldp	q0, q1, [x1]	// tmp125, tmp126,
-	stp	q0, q1, [x0]	// tmp125, tmp126, arr6
-	ldp	q0, q1, [x1, 32]	// tmp127, tmp128,
-	stp	q0, q1, [x0, 32]	// tmp127, tmp128, arr6
-	ldr	q0, [x1, 64]	// tmp129,
-	str	q0, [x0, 64]	// tmp129, arr6
-	ldr	x1, [x1, 80]	// tmp130,
-	str	x1, [x0, 80]	// tmp130, arr6
+	adrp	x0, .LC4	// tmp123,
+	add	x1, x0, :lo12:.LC4	// tmp122, tmp123,
+	add	x0, sp, 680	// tmp124,,
+	ldp	q0, q1, [x1]	// tmp126, tmp127,
+	stp	q0, q1, [x0]	// tmp126, tmp127, arr6
+	ldp	q0, q1, [x1, 32]	// tmp128, tmp129,
+	stp	q0, q1, [x0, 32]	// tmp128, tmp129, arr6
+	ldr	q0, [x1, 64]	// tmp130,
+	str	q0, [x0, 64]	// tmp130, arr6
+	ldr	x1, [x1, 80]	// tmp131,
+	str	x1, [x0, 80]	// tmp131, arr6
 // problem70.c:30:     int arr7[] = {3, 2, 8, 2};
-	mov	w0, 3	// tmp131,
-	str	w0, [sp, 32]	// tmp131, arr7[0]
-	mov	w0, 2	// tmp132,
-	str	w0, [sp, 36]	// tmp132, arr7[1]
-	mov	w0, 8	// tmp133,
-	str	w0, [sp, 40]	// tmp133, arr7[2]
-	mov	w0, 2	// tmp134,
-	str	w0, [sp, 44]	// tmp134, arr7[3]
+	mov	w0, 3	// tmp132,
+	str	w0, [sp, 48]	// tmp132, arr7[0]
+	mov	w0, 2	// tmp133,
+	str	w0, [sp, 52]	// tmp133, arr7[1]
+	mov	w0, 8	// tmp134,
+	str	w0, [sp, 56]	// tmp134, arr7[2]
+	mov	w0, 2	// tmp135,
+	str	w0, [sp, 60]	// tmp135, arr7[3]
 // problem70.c:31:     int arr8[] = {6, 7, 1, 8, 8, 10, 5, 8, 5, 3, 10};
-	adrp	x0, .LC5	// tmp136,
-	add	x1, x0, :lo12:.LC5	// tmp135, tmp136,
-	add	x0, sp, 232	// tmp137,,
-	ldp	q0, q1, [x1]	// tmp139, tmp140,
-	stp	q0, q1, [x0]	// tmp139, tmp140, arr8
-	ldr	q0, [x1, 28]	// tmp141,
-	str	q0, [x0, 28]	// tmp141, arr8
+	adrp	x0, .LC5	// tmp137,
+	add	x1, x0, :lo12:.LC5	// tmp136, tmp137,
+	add	x0, sp, 248	// tmp138,,
+	ldp	q0, q1, [x1]	// tmp140, tmp141,
+	stp	q0, q1, [x0]	// tmp140, tmp141, arr8
+	ldr	q0, [x1, 28]	// tmp142,
+	str	q0, [x0, 28]	// tmp142, arr8
 // problem70.c:32:     int arr9[] = {8, 8, 3, 6, 5, 6, 4};
-	adrp	x0, .LC6	// tmp143,
-	add	x1, x0, :lo12:.LC6	// tmp142, tmp143,
-	add	x0, sp, 168	// tmp144,,
-	ldr	q0, [x1]	// tmp146,
-	str	q0, [x0]	// tmp146, arr9
-	ldr	q0, [x1, 12]	// tmp147,
-	str	q0, [x0, 12]	// tmp147, arr9
+	adrp	x0, .LC6	// tmp144,
+	add	x1, x0, :lo12:.LC6	// tmp143, tmp144,
+	add	x0, sp, 184	// tmp145,,
+	ldr	q0, [x1]	// tmp147,
+	str	q0, [x0]	// tmp147, arr9
+	ldr	q0, [x1, 12]	// tmp148,
+	str	q0, [x0, 12]	// tmp148, arr9
 // problem70.c:33:     int arr10[] = {6, 9, 6, 7, 1, 4, 7, 1, 8, 8, 9, 8, 10, 10, 8, 4, 10, 4, 10, 1, 2, 9, 5, 7, 9};
-	adrp	x0, .LC7	// tmp149,
-	add	x1, x0, :lo12:.LC7	// tmp148, tmp149,
-	add	x0, sp, 1128	// tmp150,,
-	ldp	q0, q1, [x1]	// tmp152, tmp153,
-	stp	q0, q1, [x0]	// tmp152, tmp153, arr10
-	ldp	q0, q1, [x1, 32]	// tmp154, tmp155,
-	stp	q0, q1, [x0, 32]	// tmp154, tmp155, arr10
-	ldp	q0, q1, [x1, 64]	// tmp156, tmp157,
-	stp	q0, q1, [x0, 64]	// tmp156, tmp157, arr10
-	ldr	w1, [x1, 96]	// tmp158,
-	str	w1, [x0, 96]	// tmp158, arr10
+	adrp	x0, .LC7	// tmp150,
+	add	x1, x0, :lo12:.LC7	// tmp149, tmp150,
+	add	x0, sp, 1144	// tmp151,,
+	ldp	q0, q1, [x1]	// tmp153, tmp154,
+	stp	q0, q1, [x0]	// tmp153, tmp154, arr10
+	ldp	q0, q1, [x1, 32]	// tmp155, tmp156,
+	stp	q0, q1, [x0, 32]	// tmp155, tmp156, arr10
+	ldp	q0, q1, [x1, 64]	// tmp157, tmp158,
+	stp	q0, q1, [x0, 64]	// tmp157, tmp158, arr10
+	ldr	w1, [x1, 96]	// tmp159,
+	str	w1, [x0, 96]	// tmp159, arr10
 // problem70.c:34:     int arr11[] = {1, 9, 10, 1, 3};
-	adrp	x0, .LC8	// tmp160,
-	add	x0, x0, :lo12:.LC8	// tmp159, tmp160,
-	add	x2, sp, 96	// tmp161,,
-	mov	x3, x0	// tmp162, tmp159
-	ldp	x0, x1, [x3]	// tmp163,
-	stp	x0, x1, [x2]	// tmp163, arr11
-	ldr	w0, [x3, 16]	// tmp164,
-	str	w0, [x2, 16]	// tmp164, arr11
+	adrp	x0, .LC8	// tmp161,
+	add	x0, x0, :lo12:.LC8	// tmp160, tmp161,
+	add	x2, sp, 112	// tmp162,,
+	mov	x3, x0	// tmp163, tmp160
+	ldp	x0, x1, [x3]	// tmp164,
+	stp	x0, x1, [x2]	// tmp164, arr11
+	ldr	w0, [x3, 16]	// tmp165,
+	str	w0, [x2, 16]	// tmp165, arr11
 // problem70.c:35:     int arr12[] = {6, 9, 7, 5, 8, 7, 5, 3, 7, 5, 10, 10, 3, 6, 10, 2, 8, 6, 5, 4, 9, 5, 3, 10};
-	adrp	x0, .LC9	// tmp166,
-	add	x1, x0, :lo12:.LC9	// tmp165, tmp166,
-	add	x0, sp, 1032	// tmp167,,
-	ldp	q0, q1, [x1]	// tmp169, tmp170,
-	stp	q0, q1, [x0]	// tmp169, tmp170, arr12
-	ldp	q0, q1, [x1, 32]	// tmp171, tmp172,
-	stp	q0, q1, [x0, 32]	// tmp171, tmp172, arr12
-	ldp	q0, q1, [x1, 64]	// tmp173, tmp174,
-	stp	q0, q1, [x0, 64]	// tmp173, tmp174, arr12
+	adrp	x0, .LC9	// tmp167,
+	add	x1, x0, :lo12:.LC9	// tmp166, tmp167,
+	add	x0, sp, 1048	// tmp168,,
+	ldp	q0, q1, [x1]	// tmp170, tmp171,
+	stp	q0, q1, [x0]	// tmp170, tmp171, arr12
+	ldp	q0, q1, [x1, 32]	// tmp172, tmp173,
+	stp	q0, q1, [x0, 32]	// tmp172, tmp173, arr12
+	ldp	q0, q1, [x1, 64]	// tmp174, tmp175,
+	stp	q0, q1, [x0, 64]	// tmp174, tmp175, arr12
 // problem70.c:36:     int arr13[] = {1};
-	mov	w0, 1	// tmp175,
-	str	w0, [sp, 8]	// tmp175, arr13[0]
+	mov	w0, 1	// tmp176,
+	str	w0, [sp, 24]	// tmp176, arr13[0]
 // problem70.c:37:     int arr14[] = {8, 8, 10, 6, 4, 3, 5, 8, 2, 4, 2, 8, 4, 6, 10, 4, 2, 1, 10, 2, 1, 1, 5};
-	adrp	x0, .LC10	// tmp177,
-	add	x1, x0, :lo12:.LC10	// tmp176, tmp177,
-	add	x0, sp, 840	// tmp178,,
-	ldp	q0, q1, [x1]	// tmp180, tmp181,
-	stp	q0, q1, [x0]	// tmp180, tmp181, arr14
-	ldp	q0, q1, [x1, 32]	// tmp182, tmp183,
-	stp	q0, q1, [x0, 32]	// tmp182, tmp183, arr14
-	ldr	q0, [x1, 64]	// tmp184,
-	str	q0, [x0, 64]	// tmp184, arr14
-	ldr	q0, [x1, 76]	// tmp185,
-	str	q0, [x0, 76]	// tmp185, arr14
+	adrp	x0, .LC10	// tmp178,
+	add	x1, x0, :lo12:.LC10	// tmp177, tmp178,
+	add	x0, sp, 856	// tmp179,,
+	ldp	q0, q1, [x1]	// tmp181, tmp182,
+	stp	q0, q1, [x0]	// tmp181, tmp182, arr14
+	ldp	q0, q1, [x1, 32]	// tmp183, tmp184,
+	stp	q0, q1, [x0, 32]	// tmp183, tmp184, arr14
+	ldr	q0, [x1, 64]	// tmp185,
+	str	q0, [x0, 64]	// tmp185, arr14
+	ldr	q0, [x1, 76]	// tmp186,
+	str	q0, [x0, 76]	// tmp186, arr14
 // problem70.c:38:     int arr15[] = {2, 10, 4, 8, 2, 10, 5, 1, 2, 9, 5, 5, 6, 3, 8, 6, 4, 10};
-	adrp	x0, .LC11	// tmp187,
-	add	x1, x0, :lo12:.LC11	// tmp186, tmp187,
-	add	x0, sp, 432	// tmp188,,
-	ldp	q0, q1, [x1]	// tmp190, tmp191,
-	stp	q0, q1, [x0]	// tmp190, tmp191, arr15
-	ldp	q0, q1, [x1, 32]	// tmp192, tmp193,
-	stp	q0, q1, [x0, 32]	// tmp192, tmp193, arr15
-	ldr	x1, [x1, 64]	// tmp194,
-	str	x1, [x0, 64]	// tmp194, arr15
+	adrp	x0, .LC11	// tmp188,
+	add	x1, x0, :lo12:.LC11	// tmp187, tmp188,
+	add	x0, sp, 448	// tmp189,,
+	ldp	q0, q1, [x1]	// tmp191, tmp192,
+	stp	q0, q1, [x0]	// tmp191, tmp192, arr15
+	ldp	q0, q1, [x1, 32]	// tmp193, tmp194,
+	stp	q0, q1, [x0, 32]	// tmp193, tmp194, arr15
+	ldr	x1, [x1, 64]	// tmp195,
+	str	x1, [x0, 64]	// tmp195, arr15
 // problem70.c:39:     int arr16[] = {1, 6, 10, 1, 6, 9, 10, 8, 6, 8, 7, 3};
-	adrp	x0, .LC12	// tmp196,
-	add	x1, x0, :lo12:.LC12	// tmp195, tmp196,
-	add	x0, sp, 328	// tmp197,,
-	ldp	q0, q1, [x1]	// tmp199, tmp200,
-	stp	q0, q1, [x0]	// tmp199, tmp200, arr16
-	ldr	q0, [x1, 32]	// tmp201,
-	str	q0, [x0, 32]	// tmp201, arr16
+	adrp	x0, .LC12	// tmp197,
+	add	x1, x0, :lo12:.LC12	// tmp196, tmp197,
+	add	x0, sp, 344	// tmp198,,
+	ldp	q0, q1, [x1]	// tmp200, tmp201,
+	stp	q0, q1, [x0]	// tmp200, tmp201, arr16
+	ldr	q0, [x1, 32]	// tmp202,
+	str	q0, [x0, 32]	// tmp202, arr16
 // problem70.c:40:     int arr17[] = {9, 2, 4, 1, 5, 1, 5, 2, 5, 7, 7, 7, 3, 10, 1, 5, 4, 2, 8, 4, 1, 9, 10, 7, 10, 2, 8, 10, 9, 4};
-	adrp	x0, .LC13	// tmp203,
-	add	x1, x0, :lo12:.LC13	// tmp202, tmp203,
-	add	x0, sp, 1232	// tmp204,,
-	ldp	q0, q1, [x1]	// tmp206, tmp207,
-	stp	q0, q1, [x0]	// tmp206, tmp207, arr17
-	ldp	q0, q1, [x1, 32]	// tmp208, tmp209,
-	stp	q0, q1, [x0, 32]	// tmp208, tmp209, arr17
-	ldp	q0, q1, [x1, 64]	// tmp210, tmp211,
-	stp	q0, q1, [x0, 64]	// tmp210, tmp211, arr17
-	ldr	q0, [x1, 96]	// tmp212,
-	str	q0, [x0, 96]	// tmp212, arr17
-	ldr	x1, [x1, 112]	// tmp213,
-	str	x1, [x0, 112]	// tmp213, arr17
+	adrp	x0, .LC13	// tmp204,
+	add	x1, x0, :lo12:.LC13	// tmp203, tmp204,
+	add	x0, sp, 1248	// tmp205,,
+	ldp	q0, q1, [x1]	// tmp207, tmp208,
+	stp	q0, q1, [x0]	// tmp207, tmp208, arr17
+	ldp	q0, q1, [x1, 32]	// tmp209, tmp210,
+	stp	q0, q1, [x0, 32]	// tmp209, tmp210, arr17
+	ldp	q0, q1, [x1, 64]	// tmp211, tmp212,
+	stp	q0, q1, [x0, 64]	// tmp211, tmp212, arr17
+	ldr	q0, [x1, 96]	// tmp213,
+	str	q0, [x0, 96]	// tmp213, arr17
+	ldr	x1, [x1, 112]	// tmp214,
+	str	x1, [x0, 112]	// tmp214, arr17
 // problem70.c:41:     int arr18[] = {2, 6, 4, 2, 8, 7, 5, 6, 4, 10, 4, 6, 3, 7, 8, 8, 3, 1, 4, 2, 2, 10, 7};
-	adrp	x0, .LC14	// tmp215,
-	add	x1, x0, :lo12:.LC14	// tmp214, tmp215,
-	add	x0, sp, 936	// tmp216,,
-	ldp	q0, q1, [x1]	// tmp218, tmp219,
-	stp	q0, q1, [x0]	// tmp218, tmp219, arr18
-	ldp	q0, q1, [x1, 32]	// tmp220, tmp221,
-	stp	q0, q1, [x0, 32]	// tmp220, tmp221, arr18
-	ldr	q0, [x1, 64]	// tmp222,
-	str	q0, [x0, 64]	// tmp222, arr18
-	ldr	q0, [x1, 76]	// tmp223,
-	str	q0, [x0, 76]	// tmp223, arr18
+	adrp	x0, .LC14	// tmp216,
+	add	x1, x0, :lo12:.LC14	// tmp215, tmp216,
+	add	x0, sp, 952	// tmp217,,
+	ldp	q0, q1, [x1]	// tmp219, tmp220,
+	stp	q0, q1, [x0]	// tmp219, tmp220, arr18
+	ldp	q0, q1, [x1, 32]	// tmp221, tmp222,
+	stp	q0, q1, [x0, 32]	// tmp221, tmp222, arr18
+	ldr	q0, [x1, 64]	// tmp223,
+	str	q0, [x0, 64]	// tmp223, arr18
+	ldr	q0, [x1, 76]	// tmp224,
+	str	q0, [x0, 76]	// tmp224, arr18
 // problem70.c:42:     int arr19[] = {9, 8, 6, 10, 2, 6, 10, 2, 7, 8, 10, 3, 8, 2, 6, 2, 3, 1};
-	adrp	x0, .LC15	// tmp225,
-	add	x1, x0, :lo12:.LC15	// tmp224, tmp225,
-	add	x0, sp, 504	// tmp226,,
-	ldp	q0, q1, [x1]	// tmp228, tmp229,
-	stp	q0, q1, [x0]	// tmp228, tmp229, arr19
-	ldp	q0, q1, [x1, 32]	// tmp230, tmp231,
-	stp	q0, q1, [x0, 32]	// tmp230, tmp231, arr19
-	ldr	x1, [x1, 64]	// tmp232,
-	str	x1, [x0, 64]	// tmp232, arr19
+	adrp	x0, .LC15	// tmp226,
+	add	x1, x0, :lo12:.LC15	// tmp225, tmp226,
+	add	x0, sp, 520	// tmp227,,
+	ldp	q0, q1, [x1]	// tmp229, tmp230,
+	stp	q0, q1, [x0]	// tmp229, tmp230, arr19
+	ldp	q0, q1, [x1, 32]	// tmp231, tmp232,
+	stp	q0, q1, [x0, 32]	// tmp231, tmp232, arr19
+	ldr	x1, [x1, 64]	// tmp233,
+	str	x1, [x0, 64]	// tmp233, arr19
 // problem70.c:43:     int arr20[] = {5, 5, 3, 9, 5, 6, 3, 2, 8, 5, 6, 10, 10, 6, 8, 4, 10, 7, 7, 10, 8};
-	adrp	x0, .LC16	// tmp234,
-	add	x1, x0, :lo12:.LC16	// tmp233, tmp234,
-	add	x0, sp, 576	// tmp235,,
-	ldp	q0, q1, [x1]	// tmp237, tmp238,
-	stp	q0, q1, [x0]	// tmp237, tmp238, arr20
-	ldp	q0, q1, [x1, 32]	// tmp239, tmp240,
-	stp	q0, q1, [x0, 32]	// tmp239, tmp240, arr20
-	ldr	q0, [x1, 64]	// tmp241,
-	str	q0, [x0, 64]	// tmp241, arr20
-	ldr	w1, [x1, 80]	// tmp242,
-	str	w1, [x0, 80]	// tmp242, arr20
+	adrp	x0, .LC16	// tmp235,
+	add	x1, x0, :lo12:.LC16	// tmp234, tmp235,
+	add	x0, sp, 592	// tmp236,,
+	ldp	q0, q1, [x1]	// tmp238, tmp239,
+	stp	q0, q1, [x0]	// tmp238, tmp239, arr20
+	ldp	q0, q1, [x1, 32]	// tmp240, tmp241,
+	stp	q0, q1, [x0, 32]	// tmp240, tmp241, arr20
+	ldr	q0, [x1, 64]	// tmp242,
+	str	q0, [x0, 64]	// tmp242, arr20
+	ldr	w1, [x1, 80]	// tmp243,
+	str	w1, [x0, 80]	// tmp243, arr20
 // problem70.c:44:     int arr21[] = {10};
-	mov	w0, 10	// tmp243,
-	str	w0, [sp, 16]	// tmp243, arr21[0]
+	mov	w0, 10	// tmp244,
+	str	w0, [sp, 32]	// tmp244, arr21[0]
 // problem70.c:45:     int arr22[] = {9, 7, 7, 2, 4,7, 2, 10, 9, 7, 5, 7, 2};
-	adrp	x0, .LC17	// tmp245,
-	add	x1, x0, :lo12:.LC17	// tmp244, tmp245,
-	add	x0, sp, 376	// tmp246,,
-	ldp	q0, q1, [x1]	// tmp248, tmp249,
-	stp	q0, q1, [x0]	// tmp248, tmp249, arr22
-	ldr	q0, [x1, 32]	// tmp250,
-	str	q0, [x0, 32]	// tmp250, arr22
-	ldr	w1, [x1, 48]	// tmp251,
-	str	w1, [x0, 48]	// tmp251, arr22
+	adrp	x0, .LC17	// tmp246,
+	add	x1, x0, :lo12:.LC17	// tmp245, tmp246,
+	add	x0, sp, 392	// tmp247,,
+	ldp	q0, q1, [x1]	// tmp249, tmp250,
+	stp	q0, q1, [x0]	// tmp249, tmp250, arr22
+	ldr	q0, [x1, 32]	// tmp251,
+	str	q0, [x0, 32]	// tmp251, arr22
+	ldr	w1, [x1, 48]	// tmp252,
+	str	w1, [x0, 48]	// tmp252, arr22
 // problem70.c:46:     int arr23[] = {5, 4, 10, 2, 1, 1, 10, 3, 6, 1, 8};
-	adrp	x0, .LC18	// tmp253,
-	add	x1, x0, :lo12:.LC18	// tmp252, tmp253,
-	add	x0, sp, 280	// tmp254,,
-	ldp	q0, q1, [x1]	// tmp256, tmp257,
-	stp	q0, q1, [x0]	// tmp256, tmp257, arr23
-	ldr	q0, [x1, 28]	// tmp258,
-	str	q0, [x0, 28]	// tmp258, arr23
+	adrp	x0, .LC18	// tmp254,
+	add	x1, x0, :lo12:.LC18	// tmp253, tmp254,
+	add	x0, sp, 296	// tmp255,,
+	ldp	q0, q1, [x1]	// tmp257, tmp258,
+	stp	q0, q1, [x0]	// tmp257, tmp258, arr23
+	ldr	q0, [x1, 28]	// tmp259,
+	str	q0, [x0, 28]	// tmp259, arr23
 // problem70.c:47:     int arr24[] = {7, 9, 9, 9, 3, 4, 1, 5, 9, 1, 2, 1, 1, 10, 7, 5, 6, 7, 6, 7, 7, 6};
-	adrp	x0, .LC19	// tmp260,
-	add	x1, x0, :lo12:.LC19	// tmp259, tmp260,
-	add	x0, sp, 752	// tmp261,,
-	ldp	q0, q1, [x1]	// tmp263, tmp264,
-	stp	q0, q1, [x0]	// tmp263, tmp264, arr24
-	ldp	q0, q1, [x1, 32]	// tmp265, tmp266,
-	stp	q0, q1, [x0, 32]	// tmp265, tmp266, arr24
-	ldr	q0, [x1, 64]	// tmp267,
-	str	q0, [x0, 64]	// tmp267, arr24
-	ldr	x1, [x1, 80]	// tmp268,
-	str	x1, [x0, 80]	// tmp268, arr24
+	adrp	x0, .LC19	// tmp261,
+	add	x1, x0, :lo12:.LC19	// tmp260, tmp261,
+	add	x0, sp, 768	// tmp262,,
+	ldp	q0, q1, [x1]	// tmp264, tmp265,
+	stp	q0, q1, [x0]	// tmp264, tmp265, arr24
+	ldp	q0, q1, [x1, 32]	// tmp266, tmp267,
+	stp	q0, q1, [x0, 32]	// tmp266, tmp267, arr24
+	ldr	q0, [x1, 64]	// tmp268,
+	str	q0, [x0, 64]	// tmp268, arr24
+	ldr	x1, [x1, 80]	// tmp269,
+	str	x1, [x0, 80]	// tmp269, arr24
 // problem70.c:48:     int arr25[] = {3, 10, 10, 9, 2};
-	adrp	x0, .LC20	// tmp270,
-	add	x0, x0, :lo12:.LC20	// tmp269, tmp270,
-	add	x2, sp, 120	// tmp271,,
-	mov	x3, x0	// tmp272, tmp269
-	ldp	x0, x1, [x3]	// tmp273,
-	stp	x0, x1, [x2]	// tmp273, arr25
-	ldr	w0, [x3, 16]	// tmp274,
-	str	w0, [x2, 16]	// tmp274, arr25
+	adrp	x0, .LC20	// tmp271,
+	add	x0, x0, :lo12:.LC20	// tmp270, tmp271,
+	add	x2, sp, 136	// tmp272,,
+	mov	x3, x0	// tmp273, tmp270
+	ldp	x0, x1, [x3]	// tmp274,
+	stp	x0, x1, [x2]	// tmp274, arr25
+	ldr	w0, [x3, 16]	// tmp275,
+	str	w0, [x2, 16]	// tmp275, arr25
 // problem70.c:50:     return 0;
 	mov	w0, 0	// _31,
 // problem70.c:51: }
 	mov	w1, w0	// <retval>, _31
-	adrp	x0, :got:__stack_chk_guard	// tmp276,
-	ldr	x0, [x0, :got_lo12:__stack_chk_guard]	// tmp276,
-	ldr	x3, [sp, 1352]	// tmp278, D.5440
-	ldr	x2, [x0]	// tmp279,
-	subs	x3, x3, x2	// tmp278, tmp279
-	mov	x2, 0	// tmp279
+	adrp	x0, :got:__stack_chk_guard	// tmp278,
+	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]	// tmp277, tmp278,
+	ldr	x3, [sp, 1368]	// tmp280, D.4851
+	ldr	x2, [x0]	// tmp281,
+	subs	x3, x3, x2	// tmp280, tmp281
+	mov	x2, 0	// tmp281
 	beq	.L8		//,
 	bl	__stack_chk_fail		//
 .L8:
 	mov	w0, w1	//, <retval>
-	add	sp, sp, 1360	//,,
-	.cfi_def_cfa_offset 16
-	ldp	x29, x30, [sp], 16	//,,,
-	.cfi_restore 30
+	ldp	x29, x30, [sp]	//,,
+	add	sp, sp, 1376	//,,
 	.cfi_restore 29
+	.cfi_restore 30
 	.cfi_def_cfa_offset 0
 	ret	
 	.cfi_endproc
@@ -745,5 +742,5 @@ main:
 	.word	9
 	.word	2
 	.text
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

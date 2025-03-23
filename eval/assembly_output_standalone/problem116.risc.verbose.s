@@ -1,34 +1,26 @@
 	.file	"code.c"
 	.option pic
-	.attribute arch, "rv64i2p1_m2p0_a2p1_f2p2_d2p2_c2p0_zicsr2p0_zifencei2p0"
-	.attribute unaligned_access, 0
-	.attribute stack_align, 16
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (riscv64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (riscv64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-# options passed: -mabi=lp64d -misa-spec=20191213 -march=rv64imafdc_zicsr_zifencei -fstack-protector-strong
+# options passed: -mabi=lp64d -misa-spec=2.2 -march=rv64imafdc -fstack-protector-strong
 	.text
 	.align	1
 	.globl	func0
 	.type	func0, @function
 func0:
-.LFB0:
-	.cfi_startproc
 	addi	sp,sp,-64	#,,
-	.cfi_def_cfa_offset 64
 	sd	s0,56(sp)	#,
-	.cfi_offset 8, -8
 	addi	s0,sp,64	#,,
-	.cfi_def_cfa 8, 0
 	sd	a0,-40(s0)	# grid, grid
-	mv	a5,a1	# tmp147, rows
-	mv	a4,a3	# tmp151, capacity
-	sw	a5,-44(s0)	# tmp148, rows
-	mv	a5,a2	# tmp150, tmp149
-	sw	a5,-48(s0)	# tmp150, cols
-	mv	a5,a4	# tmp152, tmp151
-	sw	a5,-52(s0)	# tmp152, capacity
+	mv	a5,a1	# tmp85, rows
+	mv	a4,a3	# tmp89, capacity
+	sw	a5,-44(s0)	# tmp86, rows
+	mv	a5,a2	# tmp88, tmp87
+	sw	a5,-48(s0)	# tmp88, cols
+	mv	a5,a4	# tmp90, tmp89
+	sw	a5,-52(s0)	# tmp90, capacity
 # eval/problem116//code.c:3:     int out = 0;
 	sw	zero,-32(s0)	#, out
 # eval/problem116//code.c:4:     for (int i = 0; i < rows; i++) {
@@ -46,8 +38,8 @@ func0:
 # eval/problem116//code.c:7:             sum += grid[i][j];
 	lw	a5,-28(s0)		# _1, i
 	slli	a5,a5,3	#, _2, _1
-	ld	a4,-40(s0)		# tmp153, grid
-	add	a5,a4,a5	# _2, _3, tmp153
+	ld	a4,-40(s0)		# tmp91, grid
+	add	a5,a4,a5	# _2, _3, tmp91
 	ld	a4,0(a5)		# _4, *_3
 # eval/problem116//code.c:7:             sum += grid[i][j];
 	lw	a5,-20(s0)		# _5, j
@@ -55,67 +47,62 @@ func0:
 	add	a5,a4,a5	# _6, _7, _4
 	lw	a5,0(a5)		# _8, *_7
 # eval/problem116//code.c:7:             sum += grid[i][j];
-	lw	a4,-24(s0)		# tmp156, sum
-	addw	a5,a4,a5	# _8, tmp154, tmp155
-	sw	a5,-24(s0)	# tmp154, sum
+	lw	a4,-24(s0)		# tmp94, sum
+	addw	a5,a4,a5	# _8, tmp92, tmp93
+	sw	a5,-24(s0)	# tmp92, sum
 # eval/problem116//code.c:6:         for (int j = 0; j < cols; j++)
-	lw	a5,-20(s0)		# tmp159, j
-	addiw	a5,a5,1	#, tmp157, tmp158
-	sw	a5,-20(s0)	# tmp157, j
+	lw	a5,-20(s0)		# tmp97, j
+	addiw	a5,a5,1	#, tmp95, tmp96
+	sw	a5,-20(s0)	# tmp95, j
 .L3:
 # eval/problem116//code.c:6:         for (int j = 0; j < cols; j++)
-	lw	a5,-20(s0)		# tmp161, j
-	mv	a4,a5	# tmp160, tmp161
-	lw	a5,-48(s0)		# tmp163, cols
-	sext.w	a4,a4	# tmp164, tmp160
-	sext.w	a5,a5	# tmp165, tmp162
-	blt	a4,a5,.L4	#, tmp164, tmp165,
+	lw	a5,-20(s0)		# tmp99, j
+	mv	a4,a5	# tmp98, tmp99
+	lw	a5,-48(s0)		# tmp101, cols
+	sext.w	a4,a4	# tmp102, tmp98
+	sext.w	a5,a5	# tmp103, tmp100
+	blt	a4,a5,.L4	#, tmp102, tmp103,
 # eval/problem116//code.c:8:         if (sum > 0) out += (sum + capacity - 1) / capacity;
-	lw	a5,-24(s0)		# tmp167, sum
-	sext.w	a5,a5	# tmp168, tmp166
-	ble	a5,zero,.L5	#, tmp168,,
+	lw	a5,-24(s0)		# tmp105, sum
+	sext.w	a5,a5	# tmp106, tmp104
+	ble	a5,zero,.L5	#, tmp106,,
 # eval/problem116//code.c:8:         if (sum > 0) out += (sum + capacity - 1) / capacity;
-	lw	a5,-24(s0)		# tmp171, sum
-	mv	a4,a5	# tmp170, tmp171
-	lw	a5,-52(s0)		# tmp173, capacity
-	addw	a5,a4,a5	# tmp172, tmp169, tmp170
-	sext.w	a5,a5	# _9, tmp169
+	lw	a5,-24(s0)		# tmp109, sum
+	mv	a4,a5	# tmp108, tmp109
+	lw	a5,-52(s0)		# tmp111, capacity
+	addw	a5,a4,a5	# tmp110, tmp107, tmp108
+	sext.w	a5,a5	# _9, tmp107
 # eval/problem116//code.c:8:         if (sum > 0) out += (sum + capacity - 1) / capacity;
-	addiw	a5,a5,-1	#, tmp174, _9
-	sext.w	a5,a5	# _10, tmp174
+	addiw	a5,a5,-1	#, tmp112, _9
+	sext.w	a5,a5	# _10, tmp112
 # eval/problem116//code.c:8:         if (sum > 0) out += (sum + capacity - 1) / capacity;
-	lw	a4,-52(s0)		# tmp178, capacity
-	divw	a5,a5,a4	# tmp177, tmp176, _10
-	sext.w	a5,a5	# _11, tmp176
+	lw	a4,-52(s0)		# tmp116, capacity
+	divw	a5,a5,a4	# tmp115, tmp114, _10
+	sext.w	a5,a5	# _11, tmp114
 # eval/problem116//code.c:8:         if (sum > 0) out += (sum + capacity - 1) / capacity;
-	lw	a4,-32(s0)		# tmp181, out
-	addw	a5,a4,a5	# _11, tmp179, tmp180
-	sw	a5,-32(s0)	# tmp179, out
+	lw	a4,-32(s0)		# tmp119, out
+	addw	a5,a4,a5	# _11, tmp117, tmp118
+	sw	a5,-32(s0)	# tmp117, out
 .L5:
 # eval/problem116//code.c:4:     for (int i = 0; i < rows; i++) {
-	lw	a5,-28(s0)		# tmp184, i
-	addiw	a5,a5,1	#, tmp182, tmp183
-	sw	a5,-28(s0)	# tmp182, i
+	lw	a5,-28(s0)		# tmp122, i
+	addiw	a5,a5,1	#, tmp120, tmp121
+	sw	a5,-28(s0)	# tmp120, i
 .L2:
 # eval/problem116//code.c:4:     for (int i = 0; i < rows; i++) {
-	lw	a5,-28(s0)		# tmp186, i
-	mv	a4,a5	# tmp185, tmp186
-	lw	a5,-44(s0)		# tmp188, rows
-	sext.w	a4,a4	# tmp189, tmp185
-	sext.w	a5,a5	# tmp190, tmp187
-	blt	a4,a5,.L6	#, tmp189, tmp190,
+	lw	a5,-28(s0)		# tmp124, i
+	mv	a4,a5	# tmp123, tmp124
+	lw	a5,-44(s0)		# tmp126, rows
+	sext.w	a4,a4	# tmp127, tmp123
+	sext.w	a5,a5	# tmp128, tmp125
+	blt	a4,a5,.L6	#, tmp127, tmp128,
 # eval/problem116//code.c:10:     return out;
 	lw	a5,-32(s0)		# _20, out
 # eval/problem116//code.c:11: }
 	mv	a0,a5	#, <retval>
 	ld	s0,56(sp)		#,
-	.cfi_restore 8
-	.cfi_def_cfa 2, 64
 	addi	sp,sp,64	#,,
-	.cfi_def_cfa_offset 0
 	jr	ra		#
-	.cfi_endproc
-.LFE0:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

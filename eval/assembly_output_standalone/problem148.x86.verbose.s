@@ -1,6 +1,6 @@
 	.file	"code.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -138,29 +138,28 @@ func0:
 # eval/problem148//code.c:15:         a[i - 1] = (i * i - i + 1) % 3;
 	subl	-80(%rbp), %eax	# i, _32
 # eval/problem148//code.c:15:         a[i - 1] = (i * i - i + 1) % 3;
-	leal	1(%rax), %ecx	#, _33
+	leal	1(%rax), %edx	#, _33
 # eval/problem148//code.c:15:         a[i - 1] = (i * i - i + 1) % 3;
 	movl	-80(%rbp), %eax	# i, tmp266
 	cltq
 	salq	$2, %rax	#, _35
-	leaq	-4(%rax), %rdx	#, _36
+	leaq	-4(%rax), %rcx	#, _36
 	movq	-40(%rbp), %rax	# a, tmp267
-	leaq	(%rdx,%rax), %rsi	#, _37
+	leaq	(%rcx,%rax), %rsi	#, _37
 # eval/problem148//code.c:15:         a[i - 1] = (i * i - i + 1) % 3;
-	movslq	%ecx, %rax	# _33, tmp268
+	movslq	%edx, %rax	# _33, tmp268
 	imulq	$1431655766, %rax, %rax	#, tmp268, tmp269
-	shrq	$32, %rax	#, tmp269
-	movq	%rax, %rdx	# tmp269, tmp270
-	movl	%ecx, %eax	# _33, tmp271
-	sarl	$31, %eax	#, tmp271
-	subl	%eax, %edx	# tmp271, _38
-	movl	%edx, %eax	# _38, tmp272
-	addl	%eax, %eax	# tmp272
-	addl	%edx, %eax	# _38, tmp272
-	subl	%eax, %ecx	# tmp272, _33
-	movl	%ecx, %edx	# _33, _38
+	shrq	$32, %rax	#, tmp270
+	movl	%edx, %ecx	# _33, tmp271
+	sarl	$31, %ecx	#, tmp271
+	subl	%ecx, %eax	# tmp271, _38
+	movl	%eax, %ecx	# _38, tmp272
+	addl	%ecx, %ecx	# tmp272
+	addl	%eax, %ecx	# _38, tmp272
+	movl	%edx, %eax	# _33, _33
+	subl	%ecx, %eax	# tmp272, _33
 # eval/problem148//code.c:15:         a[i - 1] = (i * i - i + 1) % 3;
-	movl	%edx, (%rsi)	# _38, *_37
+	movl	%eax, (%rsi)	# _38, *_37
 # eval/problem148//code.c:16:         for (int j = 0; j < 3; j++) {
 	movl	$0, -76(%rbp)	#, j
 # eval/problem148//code.c:16:         for (int j = 0; j < 3; j++) {
@@ -173,24 +172,24 @@ func0:
 	leaq	-8(%rax), %rdx	#, _41
 	movq	-32(%rbp), %rax	# sum, tmp274
 	addq	%rdx, %rax	# _41, _42
-	movq	(%rax), %rax	# *_42, _43
+	movq	(%rax), %rdx	# *_42, _43
 # eval/problem148//code.c:17:             sum[i][j] = sum[i - 1][j];
-	movl	-76(%rbp), %edx	# j, tmp275
-	movslq	%edx, %rdx	# tmp275, _44
-	salq	$2, %rdx	#, _45
-	addq	%rdx, %rax	# _45, _46
+	movl	-76(%rbp), %eax	# j, tmp275
+	cltq
+	salq	$2, %rax	#, _45
+	addq	%rdx, %rax	# _43, _46
 # eval/problem148//code.c:17:             sum[i][j] = sum[i - 1][j];
 	movl	-80(%rbp), %edx	# i, tmp276
 	movslq	%edx, %rdx	# tmp276, _47
 	leaq	0(,%rdx,8), %rcx	#, _48
 	movq	-32(%rbp), %rdx	# sum, tmp277
 	addq	%rcx, %rdx	# _48, _49
-	movq	(%rdx), %rdx	# *_49, _50
+	movq	(%rdx), %rcx	# *_49, _50
 # eval/problem148//code.c:17:             sum[i][j] = sum[i - 1][j];
-	movl	-76(%rbp), %ecx	# j, tmp278
-	movslq	%ecx, %rcx	# tmp278, _51
-	salq	$2, %rcx	#, _52
-	addq	%rcx, %rdx	# _52, _53
+	movl	-76(%rbp), %edx	# j, tmp278
+	movslq	%edx, %rdx	# tmp278, _51
+	salq	$2, %rdx	#, _52
+	addq	%rcx, %rdx	# _50, _53
 # eval/problem148//code.c:17:             sum[i][j] = sum[i - 1][j];
 	movl	(%rax), %eax	# *_46, _54
 # eval/problem148//code.c:17:             sum[i][j] = sum[i - 1][j];
@@ -207,19 +206,19 @@ func0:
 	leaq	0(,%rax,8), %rdx	#, _56
 	movq	-32(%rbp), %rax	# sum, tmp280
 	addq	%rdx, %rax	# _56, _57
-	movq	(%rax), %rax	# *_57, _58
+	movq	(%rax), %rdx	# *_57, _58
 # eval/problem148//code.c:19:         sum[i][a[i - 1]] += 1;
-	movl	-80(%rbp), %edx	# i, tmp281
-	movslq	%edx, %rdx	# tmp281, _59
-	salq	$2, %rdx	#, _60
-	leaq	-4(%rdx), %rcx	#, _61
-	movq	-40(%rbp), %rdx	# a, tmp282
-	addq	%rcx, %rdx	# _61, _62
-	movl	(%rdx), %edx	# *_62, _63
+	movl	-80(%rbp), %eax	# i, tmp281
+	cltq
+	salq	$2, %rax	#, _60
+	leaq	-4(%rax), %rcx	#, _61
+	movq	-40(%rbp), %rax	# a, tmp282
+	addq	%rcx, %rax	# _61, _62
+	movl	(%rax), %eax	# *_62, _63
 # eval/problem148//code.c:19:         sum[i][a[i - 1]] += 1;
-	movslq	%edx, %rdx	# _63, _64
-	salq	$2, %rdx	#, _65
-	addq	%rdx, %rax	# _65, _66
+	cltq
+	salq	$2, %rax	#, _65
+	addq	%rdx, %rax	# _58, _66
 	movl	(%rax), %edx	# *_66, _67
 # eval/problem148//code.c:19:         sum[i][a[i - 1]] += 1;
 	movl	-80(%rbp), %eax	# i, tmp283
@@ -227,20 +226,19 @@ func0:
 	leaq	0(,%rax,8), %rcx	#, _69
 	movq	-32(%rbp), %rax	# sum, tmp284
 	addq	%rcx, %rax	# _69, _70
-	movq	(%rax), %rax	# *_70, _71
+	movq	(%rax), %rcx	# *_70, _71
 # eval/problem148//code.c:19:         sum[i][a[i - 1]] += 1;
-	movl	-80(%rbp), %ecx	# i, tmp285
-	movslq	%ecx, %rcx	# tmp285, _72
-	salq	$2, %rcx	#, _73
-	leaq	-4(%rcx), %rsi	#, _74
-	movq	-40(%rbp), %rcx	# a, tmp286
-	addq	%rsi, %rcx	# _74, _75
-	movl	(%rcx), %ecx	# *_75, _76
+	movl	-80(%rbp), %eax	# i, tmp285
+	cltq
+	salq	$2, %rax	#, _73
+	leaq	-4(%rax), %rsi	#, _74
+	movq	-40(%rbp), %rax	# a, tmp286
+	addq	%rsi, %rax	# _74, _75
+	movl	(%rax), %eax	# *_75, _76
 # eval/problem148//code.c:19:         sum[i][a[i - 1]] += 1;
-	movslq	%ecx, %rcx	# _76, _77
-	salq	$2, %rcx	#, _78
-	addq	%rcx, %rax	# _78, _79
-# eval/problem148//code.c:19:         sum[i][a[i - 1]] += 1;
+	cltq
+	salq	$2, %rax	#, _78
+	addq	%rcx, %rax	# _71, _79
 	addl	$1, %edx	#, _80
 	movl	%edx, (%rax)	# _80, *_79
 # eval/problem148//code.c:14:     for (int i = 1; i <= n; i++) {
@@ -272,24 +270,24 @@ func0:
 	leaq	-8(%rax), %rdx	#, _83
 	movq	-24(%rbp), %rax	# sum2, tmp289
 	addq	%rdx, %rax	# _83, _84
-	movq	(%rax), %rax	# *_84, _85
+	movq	(%rax), %rdx	# *_84, _85
 # eval/problem148//code.c:24:                 sum2[i][j] = sum2[i - 1][j];
-	movl	-64(%rbp), %edx	# j, tmp290
-	movslq	%edx, %rdx	# tmp290, _86
-	salq	$2, %rdx	#, _87
-	addq	%rdx, %rax	# _87, _88
+	movl	-64(%rbp), %eax	# j, tmp290
+	cltq
+	salq	$2, %rax	#, _87
+	addq	%rdx, %rax	# _85, _88
 # eval/problem148//code.c:24:                 sum2[i][j] = sum2[i - 1][j];
 	movl	-68(%rbp), %edx	# i, tmp291
 	movslq	%edx, %rdx	# tmp291, _89
 	leaq	0(,%rdx,8), %rcx	#, _90
 	movq	-24(%rbp), %rdx	# sum2, tmp292
 	addq	%rcx, %rdx	# _90, _91
-	movq	(%rdx), %rdx	# *_91, _92
+	movq	(%rdx), %rcx	# *_91, _92
 # eval/problem148//code.c:24:                 sum2[i][j] = sum2[i - 1][j];
-	movl	-64(%rbp), %ecx	# j, tmp293
-	movslq	%ecx, %rcx	# tmp293, _93
-	salq	$2, %rcx	#, _94
-	addq	%rcx, %rdx	# _94, _95
+	movl	-64(%rbp), %edx	# j, tmp293
+	movslq	%edx, %rdx	# tmp293, _93
+	salq	$2, %rdx	#, _94
+	addq	%rcx, %rdx	# _92, _95
 # eval/problem148//code.c:24:                 sum2[i][j] = sum2[i - 1][j];
 	movl	(%rax), %eax	# *_88, _96
 # eval/problem148//code.c:24:                 sum2[i][j] = sum2[i - 1][j];
@@ -325,51 +323,50 @@ func0:
 	movl	(%rax), %edx	# *_104, _105
 # eval/problem148//code.c:28:                     sum2[i][(a[i - 1] + j) % 3] += sum[i - 1][j];
 	movl	-60(%rbp), %eax	# j, tmp298
-	leal	(%rdx,%rax), %ecx	#, _106
+	addl	%eax, %edx	# tmp298, _106
 # eval/problem148//code.c:28:                     sum2[i][(a[i - 1] + j) % 3] += sum[i - 1][j];
-	movslq	%ecx, %rax	# _106, tmp299
+	movslq	%edx, %rax	# _106, tmp299
 	imulq	$1431655766, %rax, %rax	#, tmp299, tmp300
 	shrq	$32, %rax	#, tmp301
-	movl	%ecx, %edx	# _106, tmp302
-	sarl	$31, %edx	#, tmp302
-	subl	%edx, %eax	# tmp302, _219
-	movl	%eax, %edx	# _219, tmp303
-	addl	%edx, %edx	# tmp303
-	addl	%eax, %edx	# _219, tmp303
-	movl	%ecx, %eax	# _106, _106
-	subl	%edx, %eax	# tmp303, _106
+	movl	%edx, %ecx	# _106, tmp302
+	sarl	$31, %ecx	#, tmp302
+	subl	%ecx, %eax	# tmp302, _219
+	movl	%eax, %ecx	# _219, tmp303
+	addl	%ecx, %ecx	# tmp303
+	addl	%eax, %ecx	# _219, tmp303
+	movl	%edx, %eax	# _106, _106
+	subl	%ecx, %eax	# tmp303, _106
 # eval/problem148//code.c:28:                     sum2[i][(a[i - 1] + j) % 3] += sum[i - 1][j];
 	movslq	%eax, %rdx	# _219, _107
 	salq	$2, %rdx	#, _108
 	addq	%rsi, %rdx	# _100, _109
-	movl	(%rdx), %ecx	# *_109, _110
+	movl	(%rdx), %esi	# *_109, _110
 # eval/problem148//code.c:28:                     sum2[i][(a[i - 1] + j) % 3] += sum[i - 1][j];
 	movl	-68(%rbp), %edx	# i, tmp304
 	movslq	%edx, %rdx	# tmp304, _111
 	salq	$3, %rdx	#, _112
-	leaq	-8(%rdx), %rsi	#, _113
+	leaq	-8(%rdx), %rcx	#, _113
 	movq	-32(%rbp), %rdx	# sum, tmp305
-	addq	%rsi, %rdx	# _113, _114
-	movq	(%rdx), %rdx	# *_114, _115
+	addq	%rcx, %rdx	# _113, _114
+	movq	(%rdx), %rcx	# *_114, _115
 # eval/problem148//code.c:28:                     sum2[i][(a[i - 1] + j) % 3] += sum[i - 1][j];
-	movl	-60(%rbp), %esi	# j, tmp306
-	movslq	%esi, %rsi	# tmp306, _116
-	salq	$2, %rsi	#, _117
-	addq	%rsi, %rdx	# _117, _118
-	movl	(%rdx), %edx	# *_118, _119
+	movl	-60(%rbp), %edx	# j, tmp306
+	movslq	%edx, %rdx	# tmp306, _116
+	salq	$2, %rdx	#, _117
+	addq	%rcx, %rdx	# _115, _118
+	movl	(%rdx), %ecx	# *_118, _119
 # eval/problem148//code.c:28:                     sum2[i][(a[i - 1] + j) % 3] += sum[i - 1][j];
-	movl	-68(%rbp), %esi	# i, tmp307
-	movslq	%esi, %rsi	# tmp307, _120
-	leaq	0(,%rsi,8), %rdi	#, _121
-	movq	-24(%rbp), %rsi	# sum2, tmp308
-	addq	%rdi, %rsi	# _121, _122
-	movq	(%rsi), %rsi	# *_122, _123
+	movl	-68(%rbp), %edx	# i, tmp307
+	movslq	%edx, %rdx	# tmp307, _120
+	leaq	0(,%rdx,8), %rdi	#, _121
+	movq	-24(%rbp), %rdx	# sum2, tmp308
+	addq	%rdi, %rdx	# _121, _122
+	movq	(%rdx), %rdx	# *_122, _123
 # eval/problem148//code.c:28:                     sum2[i][(a[i - 1] + j) % 3] += sum[i - 1][j];
 	cltq
 	salq	$2, %rax	#, _125
-	addq	%rsi, %rax	# _123, _126
-# eval/problem148//code.c:28:                     sum2[i][(a[i - 1] + j) % 3] += sum[i - 1][j];
-	addl	%ecx, %edx	# _110, _127
+	addq	%rdx, %rax	# _123, _126
+	leal	(%rsi,%rcx), %edx	#, _127
 	movl	%edx, (%rax)	# _127, *_126
 # eval/problem148//code.c:27:                 for (int j = 0; j <= 2; j++) {
 	addl	$1, -60(%rbp)	#, j
@@ -401,24 +398,24 @@ func0:
 	leaq	0(,%rax,8), %rdx	#, _129
 	movq	-24(%rbp), %rax	# sum2, tmp311
 	addq	%rdx, %rax	# _129, _130
-	movq	(%rax), %rax	# *_130, _131
+	movq	(%rax), %rdx	# *_130, _131
 # eval/problem148//code.c:34:                 sum[i][j] = sum2[i][j];
-	movl	-52(%rbp), %edx	# j, tmp312
-	movslq	%edx, %rdx	# tmp312, _132
-	salq	$2, %rdx	#, _133
-	addq	%rdx, %rax	# _133, _134
+	movl	-52(%rbp), %eax	# j, tmp312
+	cltq
+	salq	$2, %rax	#, _133
+	addq	%rdx, %rax	# _131, _134
 # eval/problem148//code.c:34:                 sum[i][j] = sum2[i][j];
 	movl	-56(%rbp), %edx	# i, tmp313
 	movslq	%edx, %rdx	# tmp313, _135
 	leaq	0(,%rdx,8), %rcx	#, _136
 	movq	-32(%rbp), %rdx	# sum, tmp314
 	addq	%rcx, %rdx	# _136, _137
-	movq	(%rdx), %rdx	# *_137, _138
+	movq	(%rdx), %rcx	# *_137, _138
 # eval/problem148//code.c:34:                 sum[i][j] = sum2[i][j];
-	movl	-52(%rbp), %ecx	# j, tmp315
-	movslq	%ecx, %rcx	# tmp315, _139
-	salq	$2, %rcx	#, _140
-	addq	%rcx, %rdx	# _140, _141
+	movl	-52(%rbp), %edx	# j, tmp315
+	movslq	%edx, %rdx	# tmp315, _139
+	salq	$2, %rdx	#, _140
+	addq	%rcx, %rdx	# _138, _141
 # eval/problem148//code.c:34:                 sum[i][j] = sum2[i][j];
 	movl	(%rax), %eax	# *_134, _142
 # eval/problem148//code.c:34:                 sum[i][j] = sum2[i][j];
@@ -429,12 +426,12 @@ func0:
 	leaq	0(,%rax,8), %rdx	#, _144
 	movq	-24(%rbp), %rax	# sum2, tmp317
 	addq	%rdx, %rax	# _144, _145
-	movq	(%rax), %rax	# *_145, _146
+	movq	(%rax), %rdx	# *_145, _146
 # eval/problem148//code.c:35:                 sum2[i][j] = 0;
-	movl	-52(%rbp), %edx	# j, tmp318
-	movslq	%edx, %rdx	# tmp318, _147
-	salq	$2, %rdx	#, _148
-	addq	%rdx, %rax	# _148, _149
+	movl	-52(%rbp), %eax	# j, tmp318
+	cltq
+	salq	$2, %rax	#, _148
+	addq	%rdx, %rax	# _146, _149
 # eval/problem148//code.c:35:                 sum2[i][j] = 0;
 	movl	$0, (%rax)	#, *_149
 # eval/problem148//code.c:33:             for (int j = 0; j < 3; j++) {
@@ -520,7 +517,7 @@ func0:
 	.cfi_endproc
 .LFE6:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

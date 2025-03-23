@@ -40,14 +40,13 @@ main:
 	movl	$3435973837, %eax
 	imulq	%rdx, %rax
 	shrq	$32, %rax
+	shrl	$2, %eax
 	movl	%eax, %edx
-	shrl	$2, %edx
-	movl	%edx, %eax
-	sall	$2, %eax
-	addl	%edx, %eax
-	subl	%eax, %ecx
-	movl	%ecx, %edx
-	testl	%edx, %edx
+	sall	$2, %edx
+	addl	%eax, %edx
+	movl	%ecx, %eax
+	subl	%edx, %eax
+	testl	%eax, %eax
 	je	.L11
 	leaq	-48(%rbp), %rax
 	movl	$10, %esi
@@ -76,8 +75,8 @@ main:
 	testl	%eax, %eax
 	jne	.L7
 	movl	-52(%rbp), %eax
-	cmpl	%eax, -64(%rbp)
-	jnb	.L5
+	cmpl	-64(%rbp), %eax
+	jbe	.L5
 	movl	-52(%rbp), %eax
 	movl	%eax, -64(%rbp)
 	movl	-56(%rbp), %eax
@@ -114,7 +113,7 @@ main:
 	.cfi_endproc
 .LFE20:
 	.size	main, .-main
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

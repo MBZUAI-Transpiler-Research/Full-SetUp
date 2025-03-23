@@ -1,6 +1,6 @@
 	.file	"problem19.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -38,7 +38,6 @@ func0:
 	jne	.L2	#,
 # problem19.c:8:     if (str_len == 0) return 0;
 	movl	$0, %eax	#, _11
-# problem19.c:8:     if (str_len == 0) return 0;
 	jmp	.L3	#
 .L2:
 # problem19.c:9:     for (int i = 0; i <= str_len - sub_len; i++) {
@@ -127,9 +126,9 @@ main:
 	leaq	.LC1(%rip), %rax	#, tmp89
 	movq	%rax, %rdi	# tmp89,
 	call	func0	#
-# problem19.c:21:     assert(func0("", "x") == 0);
 	testl	%eax, %eax	# _1
 	je	.L8	#,
+# problem19.c:21:     assert(func0("", "x") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp90
 	movq	%rax, %rcx	# tmp90,
 	movl	$21, %edx	#,
@@ -145,9 +144,9 @@ main:
 	leaq	.LC4(%rip), %rax	#, tmp94
 	movq	%rax, %rdi	# tmp94,
 	call	func0	#
-# problem19.c:22:     assert(func0("xyxyxyx", "x") == 4);
 	cmpl	$4, %eax	#, _2
 	je	.L9	#,
+# problem19.c:22:     assert(func0("xyxyxyx", "x") == 4);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp95
 	movq	%rax, %rcx	# tmp95,
 	movl	$22, %edx	#,
@@ -163,9 +162,9 @@ main:
 	leaq	.LC7(%rip), %rax	#, tmp99
 	movq	%rax, %rdi	# tmp99,
 	call	func0	#
-# problem19.c:23:     assert(func0("cacacacac", "cac") == 4);
 	cmpl	$4, %eax	#, _3
 	je	.L10	#,
+# problem19.c:23:     assert(func0("cacacacac", "cac") == 4);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp100
 	movq	%rax, %rcx	# tmp100,
 	movl	$23, %edx	#,
@@ -181,9 +180,9 @@ main:
 	leaq	.LC10(%rip), %rax	#, tmp104
 	movq	%rax, %rdi	# tmp104,
 	call	func0	#
-# problem19.c:24:     assert(func0("john doe", "john") == 1);
 	cmpl	$1, %eax	#, _4
 	je	.L11	#,
+# problem19.c:24:     assert(func0("john doe", "john") == 1);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp105
 	movq	%rax, %rcx	# tmp105,
 	movl	$24, %edx	#,
@@ -207,7 +206,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

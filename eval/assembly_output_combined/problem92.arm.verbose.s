@@ -1,7 +1,7 @@
 	.arch armv8-a
 	.file	"problem92.c"
-// GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (aarch64-linux-gnu)
-//	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+// GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (aarch64-linux-gnu)
+//	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 // GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 // options passed: -mlittle-endian -mabi=lp64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection
@@ -32,7 +32,6 @@ func0:
 .L9:
 // problem92.c:10:         if (isspace(S[i]) && isi) {
 	bl	__ctype_b_loc		//
-// problem92.c:10:         if (isspace(S[i]) && isi) {
 	ldr	x1, [x0]	// _2, *_1
 	ldrsw	x0, [sp, 44]	// _3, i
 	ldr	x2, [sp, 24]	// tmp143, S
@@ -76,7 +75,6 @@ func0:
 .L4:
 // problem92.c:16:         } else if (!isspace(S[i])) {
 	bl	__ctype_b_loc		//
-// problem92.c:16:         } else if (!isspace(S[i])) {
 	ldr	x1, [x0]	// _16, *_15
 	ldrsw	x0, [sp, 44]	// _17, i
 	ldr	x2, [sp, 24]	// tmp150, S
@@ -95,7 +93,6 @@ func0:
 .L5:
 // problem92.c:19:         if (!isspace(S[i])) {
 	bl	__ctype_b_loc		//
-// problem92.c:19:         if (!isspace(S[i])) {
 	ldr	x1, [x0]	// _27, *_26
 	ldrsw	x0, [sp, 44]	// _28, i
 	ldr	x2, [sp, 24]	// tmp151, S
@@ -221,9 +218,9 @@ main:
 	adrp	x0, .LC0	// tmp100,
 	add	x0, x0, :lo12:.LC0	//, tmp100,
 	bl	func0		//
-// problem92.c:34:     assert(func0("Hello world") == 0);
 	cmp	w0, 0	// _1,
 	beq	.L12		//,
+// problem92.c:34:     assert(func0("Hello world") == 0);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp101,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp101,
 	mov	w2, 34	//,
@@ -237,9 +234,9 @@ main:
 	adrp	x0, .LC3	// tmp104,
 	add	x0, x0, :lo12:.LC3	//, tmp104,
 	bl	func0		//
-// problem92.c:35:     assert(func0("Is the sky blue?") == 0);
 	cmp	w0, 0	// _2,
 	beq	.L13		//,
+// problem92.c:35:     assert(func0("Is the sky blue?") == 0);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp105,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp105,
 	mov	w2, 35	//,
@@ -253,9 +250,9 @@ main:
 	adrp	x0, .LC5	// tmp108,
 	add	x0, x0, :lo12:.LC5	//, tmp108,
 	bl	func0		//
-// problem92.c:36:     assert(func0("I love It !") == 1);
 	cmp	w0, 1	// _3,
 	beq	.L14		//,
+// problem92.c:36:     assert(func0("I love It !") == 1);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp109,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp109,
 	mov	w2, 36	//,
@@ -269,9 +266,9 @@ main:
 	adrp	x0, .LC7	// tmp112,
 	add	x0, x0, :lo12:.LC7	//, tmp112,
 	bl	func0		//
-// problem92.c:37:     assert(func0("bIt") == 0);
 	cmp	w0, 0	// _4,
 	beq	.L15		//,
+// problem92.c:37:     assert(func0("bIt") == 0);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp113,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp113,
 	mov	w2, 37	//,
@@ -285,9 +282,9 @@ main:
 	adrp	x0, .LC9	// tmp116,
 	add	x0, x0, :lo12:.LC9	//, tmp116,
 	bl	func0		//
-// problem92.c:38:     assert(func0("I feel good today. I will be productive. will kill It") == 2);
 	cmp	w0, 2	// _5,
 	beq	.L16		//,
+// problem92.c:38:     assert(func0("I feel good today. I will be productive. will kill It") == 2);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp117,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp117,
 	mov	w2, 38	//,
@@ -301,9 +298,9 @@ main:
 	adrp	x0, .LC11	// tmp120,
 	add	x0, x0, :lo12:.LC11	//, tmp120,
 	bl	func0		//
-// problem92.c:39:     assert(func0("You and I are going for a walk") == 0);
 	cmp	w0, 0	// _6,
 	beq	.L17		//,
+// problem92.c:39:     assert(func0("You and I are going for a walk") == 0);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp121,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp121,
 	mov	w2, 39	//,
@@ -330,5 +327,5 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

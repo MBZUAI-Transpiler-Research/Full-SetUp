@@ -1,7 +1,7 @@
 	.arch armv8-a
 	.file	"problem11.c"
-// GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (aarch64-linux-gnu)
-//	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+// GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (aarch64-linux-gnu)
+//	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 // GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 // options passed: -mlittle-endian -mabi=lp64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection
@@ -17,365 +17,359 @@
 main:
 .LFB0:
 	.cfi_startproc
-	stp	x29, x30, [sp, -16]!	//,,,
-	.cfi_def_cfa_offset 16
-	.cfi_offset 29, -16
-	.cfi_offset 30, -8
-	mov	x29, sp	//,
-	sub	sp, sp, #1648	//,,
+	sub	sp, sp, #1664	//,,
 	.cfi_def_cfa_offset 1664
-	str	xzr, [sp, 1024]	//,
+	stp	x29, x30, [sp]	//,,
+	.cfi_offset 29, -1664
+	.cfi_offset 30, -1656
+	mov	x29, sp	//,
 // problem11.c:13: {
-	adrp	x0, :got:__stack_chk_guard	// tmp140,
-	ldr	x0, [x0, :got_lo12:__stack_chk_guard]	// tmp140,
-	ldr	x1, [x0]	// tmp311,
-	str	x1, [sp, 1640]	// tmp311, D.4861
-	mov	x1, 0	// tmp311
+	adrp	x0, :got:__stack_chk_guard	// tmp141,
+	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]	// tmp140, tmp141,
+	ldr	x1, [x0]	// tmp313,
+	str	x1, [sp, 1656]	// tmp313, D.4279
+	mov	x1, 0	// tmp313
 // problem11.c:14:   unsigned grid[20][20] = {
-	adrp	x0, .LC0	// tmp142,
-	add	x1, x0, :lo12:.LC0	// tmp141, tmp142,
-	add	x0, sp, 40	// tmp143,,
-	mov	x3, x1	// tmp144, tmp141
-	mov	x1, 1600	// tmp145,
-	mov	x2, x1	//, tmp145
-	mov	x1, x3	//, tmp144
+	adrp	x0, .LC0	// tmp143,
+	add	x1, x0, :lo12:.LC0	// tmp142, tmp143,
+	add	x0, sp, 56	// tmp144,,
+	mov	x3, x1	// tmp145, tmp142
+	mov	x1, 1600	// tmp146,
+	mov	x2, x1	//, tmp146
+	mov	x1, x3	//, tmp145
 	bl	memcpy		//
 // problem11.c:36:   unsigned m = 0;
-	str	wzr, [sp, 12]	//, m
+	str	wzr, [sp, 28]	//, m
 // problem11.c:39:   for (i = 0; i < N-3; i++) {
-	str	wzr, [sp, 16]	//, i
+	str	wzr, [sp, 32]	//, i
 // problem11.c:39:   for (i = 0; i < N-3; i++) {
 	b	.L2		//
 .L5:
 // problem11.c:40:     for (j = 0; j < N-3; j++) {
-	str	wzr, [sp, 20]	//, j
+	str	wzr, [sp, 36]	//, j
 // problem11.c:40:     for (j = 0; j < N-3; j++) {
 	b	.L3		//
 .L4:
 // problem11.c:41:       unsigned h = grid[i][j] * grid[i][j+1] * grid[i][j+2] * grid[i][j+3];
-	ldr	w2, [sp, 20]	// tmp147, j
-	ldr	w1, [sp, 16]	// tmp148, i
-	mov	x0, x1	// tmp149, tmp148
-	lsl	x0, x0, 2	// tmp150, tmp149,
-	add	x0, x0, x1	// tmp149, tmp149, tmp148
-	lsl	x0, x0, 2	// tmp151, tmp149,
-	add	x0, x0, x2	// tmp152, tmp149, tmp147
-	lsl	x0, x0, 2	// tmp153, tmp152,
-	add	x1, sp, 40	// tmp154,,
+	ldr	w2, [sp, 36]	// tmp148, j
+	ldr	w1, [sp, 32]	// tmp149, i
+	mov	x0, x1	// tmp150, tmp149
+	lsl	x0, x0, 2	// tmp151, tmp150,
+	add	x0, x0, x1	// tmp150, tmp150, tmp149
+	lsl	x0, x0, 2	// tmp152, tmp150,
+	add	x0, x0, x2	// tmp153, tmp150, tmp148
+	lsl	x0, x0, 2	// tmp154, tmp153,
+	add	x1, sp, 56	// tmp155,,
 	ldr	w2, [x1, x0]	// _1, grid[i_49][j_50]
 // problem11.c:41:       unsigned h = grid[i][j] * grid[i][j+1] * grid[i][j+2] * grid[i][j+3];
-	ldr	w0, [sp, 20]	// tmp155, j
-	add	w0, w0, 1	// _2, tmp155,
+	ldr	w0, [sp, 36]	// tmp156, j
+	add	w0, w0, 1	// _2, tmp156,
 // problem11.c:41:       unsigned h = grid[i][j] * grid[i][j+1] * grid[i][j+2] * grid[i][j+3];
-	uxtw	x3, w0	// tmp156, _2
-	ldr	w1, [sp, 16]	// tmp157, i
-	mov	x0, x1	// tmp158, tmp157
-	lsl	x0, x0, 2	// tmp159, tmp158,
-	add	x0, x0, x1	// tmp158, tmp158, tmp157
-	lsl	x0, x0, 2	// tmp160, tmp158,
-	add	x0, x0, x3	// tmp161, tmp158, tmp156
-	lsl	x0, x0, 2	// tmp162, tmp161,
-	add	x1, sp, 40	// tmp163,,
+	uxtw	x3, w0	// tmp157, _2
+	ldr	w1, [sp, 32]	// tmp158, i
+	mov	x0, x1	// tmp159, tmp158
+	lsl	x0, x0, 2	// tmp160, tmp159,
+	add	x0, x0, x1	// tmp159, tmp159, tmp158
+	lsl	x0, x0, 2	// tmp161, tmp159,
+	add	x0, x0, x3	// tmp162, tmp159, tmp157
+	lsl	x0, x0, 2	// tmp163, tmp162,
+	add	x1, sp, 56	// tmp164,,
 	ldr	w0, [x1, x0]	// _3, grid[i_49][_2]
 // problem11.c:41:       unsigned h = grid[i][j] * grid[i][j+1] * grid[i][j+2] * grid[i][j+3];
 	mul	w2, w2, w0	// _4, _1, _3
 // problem11.c:41:       unsigned h = grid[i][j] * grid[i][j+1] * grid[i][j+2] * grid[i][j+3];
-	ldr	w0, [sp, 20]	// tmp164, j
-	add	w0, w0, 2	// _5, tmp164,
+	ldr	w0, [sp, 36]	// tmp165, j
+	add	w0, w0, 2	// _5, tmp165,
 // problem11.c:41:       unsigned h = grid[i][j] * grid[i][j+1] * grid[i][j+2] * grid[i][j+3];
-	uxtw	x3, w0	// tmp165, _5
-	ldr	w1, [sp, 16]	// tmp166, i
-	mov	x0, x1	// tmp167, tmp166
-	lsl	x0, x0, 2	// tmp168, tmp167,
-	add	x0, x0, x1	// tmp167, tmp167, tmp166
-	lsl	x0, x0, 2	// tmp169, tmp167,
-	add	x0, x0, x3	// tmp170, tmp167, tmp165
-	lsl	x0, x0, 2	// tmp171, tmp170,
-	add	x1, sp, 40	// tmp172,,
+	uxtw	x3, w0	// tmp166, _5
+	ldr	w1, [sp, 32]	// tmp167, i
+	mov	x0, x1	// tmp168, tmp167
+	lsl	x0, x0, 2	// tmp169, tmp168,
+	add	x0, x0, x1	// tmp168, tmp168, tmp167
+	lsl	x0, x0, 2	// tmp170, tmp168,
+	add	x0, x0, x3	// tmp171, tmp168, tmp166
+	lsl	x0, x0, 2	// tmp172, tmp171,
+	add	x1, sp, 56	// tmp173,,
 	ldr	w0, [x1, x0]	// _6, grid[i_49][_5]
 // problem11.c:41:       unsigned h = grid[i][j] * grid[i][j+1] * grid[i][j+2] * grid[i][j+3];
 	mul	w2, w2, w0	// _7, _4, _6
 // problem11.c:41:       unsigned h = grid[i][j] * grid[i][j+1] * grid[i][j+2] * grid[i][j+3];
-	ldr	w0, [sp, 20]	// tmp173, j
-	add	w0, w0, 3	// _8, tmp173,
+	ldr	w0, [sp, 36]	// tmp174, j
+	add	w0, w0, 3	// _8, tmp174,
 // problem11.c:41:       unsigned h = grid[i][j] * grid[i][j+1] * grid[i][j+2] * grid[i][j+3];
-	uxtw	x3, w0	// tmp174, _8
-	ldr	w1, [sp, 16]	// tmp175, i
-	mov	x0, x1	// tmp176, tmp175
-	lsl	x0, x0, 2	// tmp177, tmp176,
-	add	x0, x0, x1	// tmp176, tmp176, tmp175
-	lsl	x0, x0, 2	// tmp178, tmp176,
-	add	x0, x0, x3	// tmp179, tmp176, tmp174
-	lsl	x0, x0, 2	// tmp180, tmp179,
-	add	x1, sp, 40	// tmp181,,
+	uxtw	x3, w0	// tmp175, _8
+	ldr	w1, [sp, 32]	// tmp176, i
+	mov	x0, x1	// tmp177, tmp176
+	lsl	x0, x0, 2	// tmp178, tmp177,
+	add	x0, x0, x1	// tmp177, tmp177, tmp176
+	lsl	x0, x0, 2	// tmp179, tmp177,
+	add	x0, x0, x3	// tmp180, tmp177, tmp175
+	lsl	x0, x0, 2	// tmp181, tmp180,
+	add	x1, sp, 56	// tmp182,,
 	ldr	w0, [x1, x0]	// _9, grid[i_49][_8]
 // problem11.c:41:       unsigned h = grid[i][j] * grid[i][j+1] * grid[i][j+2] * grid[i][j+3];
-	mul	w0, w2, w0	// tmp182, _7, _9
-	str	w0, [sp, 24]	// tmp182, h
+	mul	w0, w2, w0	// tmp183, _7, _9
+	str	w0, [sp, 40]	// tmp183, h
 // problem11.c:42:       unsigned v = grid[j][i] * grid[j+1][i] * grid[j+2][i] * grid[j+3][i];
-	ldr	w2, [sp, 16]	// tmp183, i
-	ldr	w1, [sp, 20]	// tmp184, j
-	mov	x0, x1	// tmp185, tmp184
-	lsl	x0, x0, 2	// tmp186, tmp185,
-	add	x0, x0, x1	// tmp185, tmp185, tmp184
-	lsl	x0, x0, 2	// tmp187, tmp185,
-	add	x0, x0, x2	// tmp188, tmp185, tmp183
-	lsl	x0, x0, 2	// tmp189, tmp188,
-	add	x1, sp, 40	// tmp190,,
+	ldr	w2, [sp, 32]	// tmp184, i
+	ldr	w1, [sp, 36]	// tmp185, j
+	mov	x0, x1	// tmp186, tmp185
+	lsl	x0, x0, 2	// tmp187, tmp186,
+	add	x0, x0, x1	// tmp186, tmp186, tmp185
+	lsl	x0, x0, 2	// tmp188, tmp186,
+	add	x0, x0, x2	// tmp189, tmp186, tmp184
+	lsl	x0, x0, 2	// tmp190, tmp189,
+	add	x1, sp, 56	// tmp191,,
 	ldr	w2, [x1, x0]	// _10, grid[j_50][i_49]
 // problem11.c:42:       unsigned v = grid[j][i] * grid[j+1][i] * grid[j+2][i] * grid[j+3][i];
-	ldr	w0, [sp, 20]	// tmp191, j
-	add	w0, w0, 1	// _11, tmp191,
+	ldr	w0, [sp, 36]	// tmp192, j
+	add	w0, w0, 1	// _11, tmp192,
 // problem11.c:42:       unsigned v = grid[j][i] * grid[j+1][i] * grid[j+2][i] * grid[j+3][i];
-	ldr	w3, [sp, 16]	// tmp192, i
-	uxtw	x1, w0	// tmp193, _11
-	mov	x0, x1	// tmp194, tmp193
-	lsl	x0, x0, 2	// tmp195, tmp194,
-	add	x0, x0, x1	// tmp194, tmp194, tmp193
-	lsl	x0, x0, 2	// tmp196, tmp194,
-	add	x0, x0, x3	// tmp197, tmp194, tmp192
-	lsl	x0, x0, 2	// tmp198, tmp197,
-	add	x1, sp, 40	// tmp199,,
+	ldr	w3, [sp, 32]	// tmp193, i
+	uxtw	x1, w0	// tmp194, _11
+	mov	x0, x1	// tmp195, tmp194
+	lsl	x0, x0, 2	// tmp196, tmp195,
+	add	x0, x0, x1	// tmp195, tmp195, tmp194
+	lsl	x0, x0, 2	// tmp197, tmp195,
+	add	x0, x0, x3	// tmp198, tmp195, tmp193
+	lsl	x0, x0, 2	// tmp199, tmp198,
+	add	x1, sp, 56	// tmp200,,
 	ldr	w0, [x1, x0]	// _12, grid[_11][i_49]
 // problem11.c:42:       unsigned v = grid[j][i] * grid[j+1][i] * grid[j+2][i] * grid[j+3][i];
 	mul	w2, w2, w0	// _13, _10, _12
 // problem11.c:42:       unsigned v = grid[j][i] * grid[j+1][i] * grid[j+2][i] * grid[j+3][i];
-	ldr	w0, [sp, 20]	// tmp200, j
-	add	w0, w0, 2	// _14, tmp200,
+	ldr	w0, [sp, 36]	// tmp201, j
+	add	w0, w0, 2	// _14, tmp201,
 // problem11.c:42:       unsigned v = grid[j][i] * grid[j+1][i] * grid[j+2][i] * grid[j+3][i];
-	ldr	w3, [sp, 16]	// tmp201, i
-	uxtw	x1, w0	// tmp202, _14
-	mov	x0, x1	// tmp203, tmp202
-	lsl	x0, x0, 2	// tmp204, tmp203,
-	add	x0, x0, x1	// tmp203, tmp203, tmp202
-	lsl	x0, x0, 2	// tmp205, tmp203,
-	add	x0, x0, x3	// tmp206, tmp203, tmp201
-	lsl	x0, x0, 2	// tmp207, tmp206,
-	add	x1, sp, 40	// tmp208,,
+	ldr	w3, [sp, 32]	// tmp202, i
+	uxtw	x1, w0	// tmp203, _14
+	mov	x0, x1	// tmp204, tmp203
+	lsl	x0, x0, 2	// tmp205, tmp204,
+	add	x0, x0, x1	// tmp204, tmp204, tmp203
+	lsl	x0, x0, 2	// tmp206, tmp204,
+	add	x0, x0, x3	// tmp207, tmp204, tmp202
+	lsl	x0, x0, 2	// tmp208, tmp207,
+	add	x1, sp, 56	// tmp209,,
 	ldr	w0, [x1, x0]	// _15, grid[_14][i_49]
 // problem11.c:42:       unsigned v = grid[j][i] * grid[j+1][i] * grid[j+2][i] * grid[j+3][i];
 	mul	w2, w2, w0	// _16, _13, _15
 // problem11.c:42:       unsigned v = grid[j][i] * grid[j+1][i] * grid[j+2][i] * grid[j+3][i];
-	ldr	w0, [sp, 20]	// tmp209, j
-	add	w0, w0, 3	// _17, tmp209,
+	ldr	w0, [sp, 36]	// tmp210, j
+	add	w0, w0, 3	// _17, tmp210,
 // problem11.c:42:       unsigned v = grid[j][i] * grid[j+1][i] * grid[j+2][i] * grid[j+3][i];
-	ldr	w3, [sp, 16]	// tmp210, i
-	uxtw	x1, w0	// tmp211, _17
-	mov	x0, x1	// tmp212, tmp211
-	lsl	x0, x0, 2	// tmp213, tmp212,
-	add	x0, x0, x1	// tmp212, tmp212, tmp211
-	lsl	x0, x0, 2	// tmp214, tmp212,
-	add	x0, x0, x3	// tmp215, tmp212, tmp210
-	lsl	x0, x0, 2	// tmp216, tmp215,
-	add	x1, sp, 40	// tmp217,,
+	ldr	w3, [sp, 32]	// tmp211, i
+	uxtw	x1, w0	// tmp212, _17
+	mov	x0, x1	// tmp213, tmp212
+	lsl	x0, x0, 2	// tmp214, tmp213,
+	add	x0, x0, x1	// tmp213, tmp213, tmp212
+	lsl	x0, x0, 2	// tmp215, tmp213,
+	add	x0, x0, x3	// tmp216, tmp213, tmp211
+	lsl	x0, x0, 2	// tmp217, tmp216,
+	add	x1, sp, 56	// tmp218,,
 	ldr	w0, [x1, x0]	// _18, grid[_17][i_49]
 // problem11.c:42:       unsigned v = grid[j][i] * grid[j+1][i] * grid[j+2][i] * grid[j+3][i];
-	mul	w0, w2, w0	// tmp218, _16, _18
-	str	w0, [sp, 28]	// tmp218, v
+	mul	w0, w2, w0	// tmp219, _16, _18
+	str	w0, [sp, 44]	// tmp219, v
 // problem11.c:43:       unsigned d1 = grid[i][j] * grid[i+1][j+1] * grid[i+2][j+2] * grid[i+3][j+3];
-	ldr	w2, [sp, 20]	// tmp219, j
-	ldr	w1, [sp, 16]	// tmp220, i
-	mov	x0, x1	// tmp221, tmp220
-	lsl	x0, x0, 2	// tmp222, tmp221,
-	add	x0, x0, x1	// tmp221, tmp221, tmp220
-	lsl	x0, x0, 2	// tmp223, tmp221,
-	add	x0, x0, x2	// tmp224, tmp221, tmp219
-	lsl	x0, x0, 2	// tmp225, tmp224,
-	add	x1, sp, 40	// tmp226,,
+	ldr	w2, [sp, 36]	// tmp220, j
+	ldr	w1, [sp, 32]	// tmp221, i
+	mov	x0, x1	// tmp222, tmp221
+	lsl	x0, x0, 2	// tmp223, tmp222,
+	add	x0, x0, x1	// tmp222, tmp222, tmp221
+	lsl	x0, x0, 2	// tmp224, tmp222,
+	add	x0, x0, x2	// tmp225, tmp222, tmp220
+	lsl	x0, x0, 2	// tmp226, tmp225,
+	add	x1, sp, 56	// tmp227,,
 	ldr	w2, [x1, x0]	// _19, grid[i_49][j_50]
 // problem11.c:43:       unsigned d1 = grid[i][j] * grid[i+1][j+1] * grid[i+2][j+2] * grid[i+3][j+3];
-	ldr	w0, [sp, 16]	// tmp227, i
-	add	w1, w0, 1	// _20, tmp227,
+	ldr	w0, [sp, 32]	// tmp228, i
+	add	w1, w0, 1	// _20, tmp228,
 // problem11.c:43:       unsigned d1 = grid[i][j] * grid[i+1][j+1] * grid[i+2][j+2] * grid[i+3][j+3];
-	ldr	w0, [sp, 20]	// tmp228, j
-	add	w0, w0, 1	// _21, tmp228,
+	ldr	w0, [sp, 36]	// tmp229, j
+	add	w0, w0, 1	// _21, tmp229,
 // problem11.c:43:       unsigned d1 = grid[i][j] * grid[i+1][j+1] * grid[i+2][j+2] * grid[i+3][j+3];
-	uxtw	x3, w0	// tmp229, _21
-	uxtw	x1, w1	// tmp230, _20
-	mov	x0, x1	// tmp231, tmp230
-	lsl	x0, x0, 2	// tmp232, tmp231,
-	add	x0, x0, x1	// tmp231, tmp231, tmp230
-	lsl	x0, x0, 2	// tmp233, tmp231,
-	add	x0, x0, x3	// tmp234, tmp231, tmp229
-	lsl	x0, x0, 2	// tmp235, tmp234,
-	add	x1, sp, 40	// tmp236,,
+	uxtw	x3, w0	// tmp230, _21
+	uxtw	x1, w1	// tmp231, _20
+	mov	x0, x1	// tmp232, tmp231
+	lsl	x0, x0, 2	// tmp233, tmp232,
+	add	x0, x0, x1	// tmp232, tmp232, tmp231
+	lsl	x0, x0, 2	// tmp234, tmp232,
+	add	x0, x0, x3	// tmp235, tmp232, tmp230
+	lsl	x0, x0, 2	// tmp236, tmp235,
+	add	x1, sp, 56	// tmp237,,
 	ldr	w0, [x1, x0]	// _22, grid[_20][_21]
 // problem11.c:43:       unsigned d1 = grid[i][j] * grid[i+1][j+1] * grid[i+2][j+2] * grid[i+3][j+3];
 	mul	w2, w2, w0	// _23, _19, _22
 // problem11.c:43:       unsigned d1 = grid[i][j] * grid[i+1][j+1] * grid[i+2][j+2] * grid[i+3][j+3];
-	ldr	w0, [sp, 16]	// tmp237, i
-	add	w1, w0, 2	// _24, tmp237,
+	ldr	w0, [sp, 32]	// tmp238, i
+	add	w1, w0, 2	// _24, tmp238,
 // problem11.c:43:       unsigned d1 = grid[i][j] * grid[i+1][j+1] * grid[i+2][j+2] * grid[i+3][j+3];
-	ldr	w0, [sp, 20]	// tmp238, j
-	add	w0, w0, 2	// _25, tmp238,
+	ldr	w0, [sp, 36]	// tmp239, j
+	add	w0, w0, 2	// _25, tmp239,
 // problem11.c:43:       unsigned d1 = grid[i][j] * grid[i+1][j+1] * grid[i+2][j+2] * grid[i+3][j+3];
-	uxtw	x3, w0	// tmp239, _25
-	uxtw	x1, w1	// tmp240, _24
-	mov	x0, x1	// tmp241, tmp240
-	lsl	x0, x0, 2	// tmp242, tmp241,
-	add	x0, x0, x1	// tmp241, tmp241, tmp240
-	lsl	x0, x0, 2	// tmp243, tmp241,
-	add	x0, x0, x3	// tmp244, tmp241, tmp239
-	lsl	x0, x0, 2	// tmp245, tmp244,
-	add	x1, sp, 40	// tmp246,,
+	uxtw	x3, w0	// tmp240, _25
+	uxtw	x1, w1	// tmp241, _24
+	mov	x0, x1	// tmp242, tmp241
+	lsl	x0, x0, 2	// tmp243, tmp242,
+	add	x0, x0, x1	// tmp242, tmp242, tmp241
+	lsl	x0, x0, 2	// tmp244, tmp242,
+	add	x0, x0, x3	// tmp245, tmp242, tmp240
+	lsl	x0, x0, 2	// tmp246, tmp245,
+	add	x1, sp, 56	// tmp247,,
 	ldr	w0, [x1, x0]	// _26, grid[_24][_25]
 // problem11.c:43:       unsigned d1 = grid[i][j] * grid[i+1][j+1] * grid[i+2][j+2] * grid[i+3][j+3];
 	mul	w2, w2, w0	// _27, _23, _26
 // problem11.c:43:       unsigned d1 = grid[i][j] * grid[i+1][j+1] * grid[i+2][j+2] * grid[i+3][j+3];
-	ldr	w0, [sp, 16]	// tmp247, i
-	add	w1, w0, 3	// _28, tmp247,
+	ldr	w0, [sp, 32]	// tmp248, i
+	add	w1, w0, 3	// _28, tmp248,
 // problem11.c:43:       unsigned d1 = grid[i][j] * grid[i+1][j+1] * grid[i+2][j+2] * grid[i+3][j+3];
-	ldr	w0, [sp, 20]	// tmp248, j
-	add	w0, w0, 3	// _29, tmp248,
+	ldr	w0, [sp, 36]	// tmp249, j
+	add	w0, w0, 3	// _29, tmp249,
 // problem11.c:43:       unsigned d1 = grid[i][j] * grid[i+1][j+1] * grid[i+2][j+2] * grid[i+3][j+3];
-	uxtw	x3, w0	// tmp249, _29
-	uxtw	x1, w1	// tmp250, _28
-	mov	x0, x1	// tmp251, tmp250
-	lsl	x0, x0, 2	// tmp252, tmp251,
-	add	x0, x0, x1	// tmp251, tmp251, tmp250
-	lsl	x0, x0, 2	// tmp253, tmp251,
-	add	x0, x0, x3	// tmp254, tmp251, tmp249
-	lsl	x0, x0, 2	// tmp255, tmp254,
-	add	x1, sp, 40	// tmp256,,
+	uxtw	x3, w0	// tmp250, _29
+	uxtw	x1, w1	// tmp251, _28
+	mov	x0, x1	// tmp252, tmp251
+	lsl	x0, x0, 2	// tmp253, tmp252,
+	add	x0, x0, x1	// tmp252, tmp252, tmp251
+	lsl	x0, x0, 2	// tmp254, tmp252,
+	add	x0, x0, x3	// tmp255, tmp252, tmp250
+	lsl	x0, x0, 2	// tmp256, tmp255,
+	add	x1, sp, 56	// tmp257,,
 	ldr	w0, [x1, x0]	// _30, grid[_28][_29]
 // problem11.c:43:       unsigned d1 = grid[i][j] * grid[i+1][j+1] * grid[i+2][j+2] * grid[i+3][j+3];
-	mul	w0, w2, w0	// tmp257, _27, _30
-	str	w0, [sp, 32]	// tmp257, d1
+	mul	w0, w2, w0	// tmp258, _27, _30
+	str	w0, [sp, 48]	// tmp258, d1
 // problem11.c:44:       unsigned d2 = grid[i][N-j-1] * grid[i+1][N-j-2] * grid[i+2][N-j-3] * grid[i+3][N-j-4];
-	mov	w1, 19	// tmp258,
-	ldr	w0, [sp, 20]	// tmp259, j
-	sub	w0, w1, w0	// _31, tmp258, tmp259
+	mov	w1, 19	// tmp259,
+	ldr	w0, [sp, 36]	// tmp260, j
+	sub	w0, w1, w0	// _31, tmp259, tmp260
 // problem11.c:44:       unsigned d2 = grid[i][N-j-1] * grid[i+1][N-j-2] * grid[i+2][N-j-3] * grid[i+3][N-j-4];
-	uxtw	x2, w0	// tmp260, _31
-	ldr	w1, [sp, 16]	// tmp261, i
-	mov	x0, x1	// tmp262, tmp261
-	lsl	x0, x0, 2	// tmp263, tmp262,
-	add	x0, x0, x1	// tmp262, tmp262, tmp261
-	lsl	x0, x0, 2	// tmp264, tmp262,
-	add	x0, x0, x2	// tmp265, tmp262, tmp260
-	lsl	x0, x0, 2	// tmp266, tmp265,
-	add	x1, sp, 40	// tmp267,,
+	uxtw	x2, w0	// tmp261, _31
+	ldr	w1, [sp, 32]	// tmp262, i
+	mov	x0, x1	// tmp263, tmp262
+	lsl	x0, x0, 2	// tmp264, tmp263,
+	add	x0, x0, x1	// tmp263, tmp263, tmp262
+	lsl	x0, x0, 2	// tmp265, tmp263,
+	add	x0, x0, x2	// tmp266, tmp263, tmp261
+	lsl	x0, x0, 2	// tmp267, tmp266,
+	add	x1, sp, 56	// tmp268,,
 	ldr	w2, [x1, x0]	// _32, grid[i_49][_31]
 // problem11.c:44:       unsigned d2 = grid[i][N-j-1] * grid[i+1][N-j-2] * grid[i+2][N-j-3] * grid[i+3][N-j-4];
-	ldr	w0, [sp, 16]	// tmp268, i
-	add	w4, w0, 1	// _33, tmp268,
+	ldr	w0, [sp, 32]	// tmp269, i
+	add	w4, w0, 1	// _33, tmp269,
 // problem11.c:44:       unsigned d2 = grid[i][N-j-1] * grid[i+1][N-j-2] * grid[i+2][N-j-3] * grid[i+3][N-j-4];
-	mov	w1, 18	// tmp269,
-	ldr	w0, [sp, 20]	// tmp270, j
-	sub	w0, w1, w0	// _34, tmp269, tmp270
+	mov	w1, 18	// tmp270,
+	ldr	w0, [sp, 36]	// tmp271, j
+	sub	w0, w1, w0	// _34, tmp270, tmp271
 // problem11.c:44:       unsigned d2 = grid[i][N-j-1] * grid[i+1][N-j-2] * grid[i+2][N-j-3] * grid[i+3][N-j-4];
-	uxtw	x3, w0	// tmp271, _34
-	uxtw	x1, w4	// tmp272, _33
-	mov	x0, x1	// tmp273, tmp272
-	lsl	x0, x0, 2	// tmp274, tmp273,
-	add	x0, x0, x1	// tmp273, tmp273, tmp272
-	lsl	x0, x0, 2	// tmp275, tmp273,
-	add	x0, x0, x3	// tmp276, tmp273, tmp271
-	lsl	x0, x0, 2	// tmp277, tmp276,
-	add	x1, sp, 40	// tmp278,,
+	uxtw	x3, w0	// tmp272, _34
+	uxtw	x1, w4	// tmp273, _33
+	mov	x0, x1	// tmp274, tmp273
+	lsl	x0, x0, 2	// tmp275, tmp274,
+	add	x0, x0, x1	// tmp274, tmp274, tmp273
+	lsl	x0, x0, 2	// tmp276, tmp274,
+	add	x0, x0, x3	// tmp277, tmp274, tmp272
+	lsl	x0, x0, 2	// tmp278, tmp277,
+	add	x1, sp, 56	// tmp279,,
 	ldr	w0, [x1, x0]	// _35, grid[_33][_34]
 // problem11.c:44:       unsigned d2 = grid[i][N-j-1] * grid[i+1][N-j-2] * grid[i+2][N-j-3] * grid[i+3][N-j-4];
 	mul	w2, w2, w0	// _36, _32, _35
 // problem11.c:44:       unsigned d2 = grid[i][N-j-1] * grid[i+1][N-j-2] * grid[i+2][N-j-3] * grid[i+3][N-j-4];
-	ldr	w0, [sp, 16]	// tmp279, i
-	add	w4, w0, 2	// _37, tmp279,
+	ldr	w0, [sp, 32]	// tmp280, i
+	add	w4, w0, 2	// _37, tmp280,
 // problem11.c:44:       unsigned d2 = grid[i][N-j-1] * grid[i+1][N-j-2] * grid[i+2][N-j-3] * grid[i+3][N-j-4];
-	mov	w1, 17	// tmp280,
-	ldr	w0, [sp, 20]	// tmp281, j
-	sub	w0, w1, w0	// _38, tmp280, tmp281
+	mov	w1, 17	// tmp281,
+	ldr	w0, [sp, 36]	// tmp282, j
+	sub	w0, w1, w0	// _38, tmp281, tmp282
 // problem11.c:44:       unsigned d2 = grid[i][N-j-1] * grid[i+1][N-j-2] * grid[i+2][N-j-3] * grid[i+3][N-j-4];
-	uxtw	x3, w0	// tmp282, _38
-	uxtw	x1, w4	// tmp283, _37
-	mov	x0, x1	// tmp284, tmp283
-	lsl	x0, x0, 2	// tmp285, tmp284,
-	add	x0, x0, x1	// tmp284, tmp284, tmp283
-	lsl	x0, x0, 2	// tmp286, tmp284,
-	add	x0, x0, x3	// tmp287, tmp284, tmp282
-	lsl	x0, x0, 2	// tmp288, tmp287,
-	add	x1, sp, 40	// tmp289,,
+	uxtw	x3, w0	// tmp283, _38
+	uxtw	x1, w4	// tmp284, _37
+	mov	x0, x1	// tmp285, tmp284
+	lsl	x0, x0, 2	// tmp286, tmp285,
+	add	x0, x0, x1	// tmp285, tmp285, tmp284
+	lsl	x0, x0, 2	// tmp287, tmp285,
+	add	x0, x0, x3	// tmp288, tmp285, tmp283
+	lsl	x0, x0, 2	// tmp289, tmp288,
+	add	x1, sp, 56	// tmp290,,
 	ldr	w0, [x1, x0]	// _39, grid[_37][_38]
 // problem11.c:44:       unsigned d2 = grid[i][N-j-1] * grid[i+1][N-j-2] * grid[i+2][N-j-3] * grid[i+3][N-j-4];
 	mul	w2, w2, w0	// _40, _36, _39
 // problem11.c:44:       unsigned d2 = grid[i][N-j-1] * grid[i+1][N-j-2] * grid[i+2][N-j-3] * grid[i+3][N-j-4];
-	ldr	w0, [sp, 16]	// tmp290, i
-	add	w4, w0, 3	// _41, tmp290,
+	ldr	w0, [sp, 32]	// tmp291, i
+	add	w4, w0, 3	// _41, tmp291,
 // problem11.c:44:       unsigned d2 = grid[i][N-j-1] * grid[i+1][N-j-2] * grid[i+2][N-j-3] * grid[i+3][N-j-4];
-	mov	w1, 16	// tmp291,
-	ldr	w0, [sp, 20]	// tmp292, j
-	sub	w0, w1, w0	// _42, tmp291, tmp292
+	mov	w1, 16	// tmp292,
+	ldr	w0, [sp, 36]	// tmp293, j
+	sub	w0, w1, w0	// _42, tmp292, tmp293
 // problem11.c:44:       unsigned d2 = grid[i][N-j-1] * grid[i+1][N-j-2] * grid[i+2][N-j-3] * grid[i+3][N-j-4];
-	uxtw	x3, w0	// tmp293, _42
-	uxtw	x1, w4	// tmp294, _41
-	mov	x0, x1	// tmp295, tmp294
-	lsl	x0, x0, 2	// tmp296, tmp295,
-	add	x0, x0, x1	// tmp295, tmp295, tmp294
-	lsl	x0, x0, 2	// tmp297, tmp295,
-	add	x0, x0, x3	// tmp298, tmp295, tmp293
-	lsl	x0, x0, 2	// tmp299, tmp298,
-	add	x1, sp, 40	// tmp300,,
+	uxtw	x3, w0	// tmp294, _42
+	uxtw	x1, w4	// tmp295, _41
+	mov	x0, x1	// tmp296, tmp295
+	lsl	x0, x0, 2	// tmp297, tmp296,
+	add	x0, x0, x1	// tmp296, tmp296, tmp295
+	lsl	x0, x0, 2	// tmp298, tmp296,
+	add	x0, x0, x3	// tmp299, tmp296, tmp294
+	lsl	x0, x0, 2	// tmp300, tmp299,
+	add	x1, sp, 56	// tmp301,,
 	ldr	w0, [x1, x0]	// _43, grid[_41][_42]
 // problem11.c:44:       unsigned d2 = grid[i][N-j-1] * grid[i+1][N-j-2] * grid[i+2][N-j-3] * grid[i+3][N-j-4];
-	mul	w0, w2, w0	// tmp301, _40, _43
-	str	w0, [sp, 36]	// tmp301, d2
+	mul	w0, w2, w0	// tmp302, _40, _43
+	str	w0, [sp, 52]	// tmp302, d2
 // problem11.c:45:       m = max(m, max(h, max(v, max(d1, d2))));
-	ldr	w1, [sp, 36]	//, d2
-	ldr	w0, [sp, 32]	//, d1
+	ldr	w1, [sp, 52]	//, d2
+	ldr	w0, [sp, 48]	//, d1
 	bl	max		//
-// problem11.c:45:       m = max(m, max(h, max(v, max(d1, d2))));
 	mov	w1, w0	//, _44
-	ldr	w0, [sp, 28]	//, v
+	ldr	w0, [sp, 44]	//, v
 	bl	max		//
-// problem11.c:45:       m = max(m, max(h, max(v, max(d1, d2))));
 	mov	w1, w0	//, _45
-	ldr	w0, [sp, 24]	//, h
+	ldr	w0, [sp, 40]	//, h
 	bl	max		//
-// problem11.c:45:       m = max(m, max(h, max(v, max(d1, d2))));
 	mov	w1, w0	//, _46
-	ldr	w0, [sp, 12]	//, m
+	ldr	w0, [sp, 28]	//, m
 	bl	max		//
-	str	w0, [sp, 12]	//, m
+	str	w0, [sp, 28]	//, m
 // problem11.c:40:     for (j = 0; j < N-3; j++) {
-	ldr	w0, [sp, 20]	// tmp303, j
-	add	w0, w0, 1	// tmp302, tmp303,
-	str	w0, [sp, 20]	// tmp302, j
+	ldr	w0, [sp, 36]	// tmp304, j
+	add	w0, w0, 1	// tmp303, tmp304,
+	str	w0, [sp, 36]	// tmp303, j
 .L3:
 // problem11.c:40:     for (j = 0; j < N-3; j++) {
-	ldr	w0, [sp, 20]	// tmp304, j
-	cmp	w0, 16	// tmp304,
+	ldr	w0, [sp, 36]	// tmp305, j
+	cmp	w0, 16	// tmp305,
 	bls	.L4		//,
 // problem11.c:39:   for (i = 0; i < N-3; i++) {
-	ldr	w0, [sp, 16]	// tmp306, i
-	add	w0, w0, 1	// tmp305, tmp306,
-	str	w0, [sp, 16]	// tmp305, i
+	ldr	w0, [sp, 32]	// tmp307, i
+	add	w0, w0, 1	// tmp306, tmp307,
+	str	w0, [sp, 32]	// tmp306, i
 .L2:
 // problem11.c:39:   for (i = 0; i < N-3; i++) {
-	ldr	w0, [sp, 16]	// tmp307, i
-	cmp	w0, 16	// tmp307,
+	ldr	w0, [sp, 32]	// tmp308, i
+	cmp	w0, 16	// tmp308,
 	bls	.L5		//,
 // problem11.c:48:   printf("%u\n", m);
-	ldr	w1, [sp, 12]	//, m
-	adrp	x0, .LC1	// tmp308,
-	add	x0, x0, :lo12:.LC1	//, tmp308,
+	ldr	w1, [sp, 28]	//, m
+	adrp	x0, .LC1	// tmp309,
+	add	x0, x0, :lo12:.LC1	//, tmp309,
 	bl	printf		//
 // problem11.c:50:   return 0;
 	mov	w0, 0	// _58,
 // problem11.c:51: }
 	mov	w1, w0	// <retval>, _58
-	adrp	x0, :got:__stack_chk_guard	// tmp310,
-	ldr	x0, [x0, :got_lo12:__stack_chk_guard]	// tmp310,
-	ldr	x3, [sp, 1640]	// tmp312, D.4861
-	ldr	x2, [x0]	// tmp313,
-	subs	x3, x3, x2	// tmp312, tmp313
-	mov	x2, 0	// tmp313
+	adrp	x0, :got:__stack_chk_guard	// tmp312,
+	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]	// tmp311, tmp312,
+	ldr	x3, [sp, 1656]	// tmp314, D.4279
+	ldr	x2, [x0]	// tmp315,
+	subs	x3, x3, x2	// tmp314, tmp315
+	mov	x2, 0	// tmp315
 	beq	.L7		//,
 	bl	__stack_chk_fail		//
 .L7:
 	mov	w0, w1	//, <retval>
-	add	sp, sp, 1648	//,,
-	.cfi_def_cfa_offset 16
-	ldp	x29, x30, [sp], 16	//,,,
-	.cfi_restore 30
+	ldp	x29, x30, [sp]	//,,
+	add	sp, sp, 1664	//,,
 	.cfi_restore 29
+	.cfi_restore 30
 	.cfi_def_cfa_offset 0
 	ret	
 	.cfi_endproc
@@ -807,5 +801,5 @@ max:
 	.cfi_endproc
 .LFE1:
 	.size	max, .-max
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

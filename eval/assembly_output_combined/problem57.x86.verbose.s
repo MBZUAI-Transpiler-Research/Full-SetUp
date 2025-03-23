@@ -1,6 +1,6 @@
 	.file	"problem57.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -53,7 +53,6 @@ func0:
 	jns	.L5	#,
 # problem57.c:11:         if (level < 0) return false;
 	movl	$0, %eax	#, _14
-# problem57.c:11:         if (level < 0) return false;
 	jmp	.L6	#
 .L5:
 # problem57.c:12:         i++;
@@ -73,7 +72,6 @@ func0:
 	je	.L8	#,
 # problem57.c:14:     if (level != 0) return false;
 	movl	$0, %eax	#, _14
-# problem57.c:14:     if (level != 0) return false;
 	jmp	.L6	#
 .L8:
 # problem57.c:15:     return true;
@@ -154,9 +152,9 @@ main:
 	leaq	.LC0(%rip), %rax	#, tmp104
 	movq	%rax, %rdi	# tmp104,
 	call	func0	#
-# problem57.c:24:     assert(func0("<>"));
 	testb	%al, %al	# _1
 	jne	.L10	#,
+# problem57.c:24:     assert(func0("<>"));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp105
 	movq	%rax, %rcx	# tmp105,
 	movl	$24, %edx	#,
@@ -170,9 +168,9 @@ main:
 	leaq	.LC3(%rip), %rax	#, tmp108
 	movq	%rax, %rdi	# tmp108,
 	call	func0	#
-# problem57.c:25:     assert(func0("<<><>>"));
 	testb	%al, %al	# _2
 	jne	.L11	#,
+# problem57.c:25:     assert(func0("<<><>>"));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp109
 	movq	%rax, %rcx	# tmp109,
 	movl	$25, %edx	#,
@@ -186,9 +184,9 @@ main:
 	leaq	.LC5(%rip), %rax	#, tmp112
 	movq	%rax, %rdi	# tmp112,
 	call	func0	#
-# problem57.c:26:     assert(func0("<><><<><>><>"));
 	testb	%al, %al	# _3
 	jne	.L12	#,
+# problem57.c:26:     assert(func0("<><><<><>><>"));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp113
 	movq	%rax, %rcx	# tmp113,
 	movl	$26, %edx	#,
@@ -202,9 +200,9 @@ main:
 	leaq	.LC7(%rip), %rax	#, tmp116
 	movq	%rax, %rdi	# tmp116,
 	call	func0	#
-# problem57.c:27:     assert(func0("<><><<<><><>><>><<><><<>>>"));
 	testb	%al, %al	# _4
 	jne	.L13	#,
+# problem57.c:27:     assert(func0("<><><<<><><>><>><<><><<>>>"));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp117
 	movq	%rax, %rcx	# tmp117,
 	movl	$27, %edx	#,
@@ -218,10 +216,10 @@ main:
 	leaq	.LC9(%rip), %rax	#, tmp120
 	movq	%rax, %rdi	# tmp120,
 	call	func0	#
-# problem57.c:28:     assert(!func0("<<<><>>>>"));
 	xorl	$1, %eax	#, _6
 	testb	%al, %al	# _6
 	jne	.L14	#,
+# problem57.c:28:     assert(!func0("<<<><>>>>"));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp121
 	movq	%rax, %rcx	# tmp121,
 	movl	$28, %edx	#,
@@ -235,10 +233,10 @@ main:
 	leaq	.LC11(%rip), %rax	#, tmp124
 	movq	%rax, %rdi	# tmp124,
 	call	func0	#
-# problem57.c:29:     assert(!func0("><<>"));
 	xorl	$1, %eax	#, _8
 	testb	%al, %al	# _8
 	jne	.L15	#,
+# problem57.c:29:     assert(!func0("><<>"));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp125
 	movq	%rax, %rcx	# tmp125,
 	movl	$29, %edx	#,
@@ -252,10 +250,10 @@ main:
 	leaq	.LC13(%rip), %rax	#, tmp128
 	movq	%rax, %rdi	# tmp128,
 	call	func0	#
-# problem57.c:30:     assert(!func0("<"));
 	xorl	$1, %eax	#, _10
 	testb	%al, %al	# _10
 	jne	.L16	#,
+# problem57.c:30:     assert(!func0("<"));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp129
 	movq	%rax, %rcx	# tmp129,
 	movl	$30, %edx	#,
@@ -269,10 +267,10 @@ main:
 	leaq	.LC15(%rip), %rax	#, tmp132
 	movq	%rax, %rdi	# tmp132,
 	call	func0	#
-# problem57.c:31:     assert(!func0("<<<<"));
 	xorl	$1, %eax	#, _12
 	testb	%al, %al	# _12
 	jne	.L17	#,
+# problem57.c:31:     assert(!func0("<<<<"));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp133
 	movq	%rax, %rcx	# tmp133,
 	movl	$31, %edx	#,
@@ -286,10 +284,10 @@ main:
 	leaq	.LC17(%rip), %rax	#, tmp136
 	movq	%rax, %rdi	# tmp136,
 	call	func0	#
-# problem57.c:32:     assert(!func0(">"));
 	xorl	$1, %eax	#, _14
 	testb	%al, %al	# _14
 	jne	.L18	#,
+# problem57.c:32:     assert(!func0(">"));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp137
 	movq	%rax, %rcx	# tmp137,
 	movl	$32, %edx	#,
@@ -303,10 +301,10 @@ main:
 	leaq	.LC19(%rip), %rax	#, tmp140
 	movq	%rax, %rdi	# tmp140,
 	call	func0	#
-# problem57.c:33:     assert(!func0("<<>"));
 	xorl	$1, %eax	#, _16
 	testb	%al, %al	# _16
 	jne	.L19	#,
+# problem57.c:33:     assert(!func0("<<>"));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp141
 	movq	%rax, %rcx	# tmp141,
 	movl	$33, %edx	#,
@@ -320,10 +318,10 @@ main:
 	leaq	.LC21(%rip), %rax	#, tmp144
 	movq	%rax, %rdi	# tmp144,
 	call	func0	#
-# problem57.c:34:     assert(!func0("<><><<><>><>><<>"));
 	xorl	$1, %eax	#, _18
 	testb	%al, %al	# _18
 	jne	.L20	#,
+# problem57.c:34:     assert(!func0("<><><<><>><>><<>"));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp145
 	movq	%rax, %rcx	# tmp145,
 	movl	$34, %edx	#,
@@ -337,10 +335,10 @@ main:
 	leaq	.LC23(%rip), %rax	#, tmp148
 	movq	%rax, %rdi	# tmp148,
 	call	func0	#
-# problem57.c:35:     assert(!func0("<><><<><>><>>><>"));
 	xorl	$1, %eax	#, _20
 	testb	%al, %al	# _20
 	jne	.L21	#,
+# problem57.c:35:     assert(!func0("<><><<><>><>>><>"));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp149
 	movq	%rax, %rcx	# tmp149,
 	movl	$35, %edx	#,
@@ -364,7 +362,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

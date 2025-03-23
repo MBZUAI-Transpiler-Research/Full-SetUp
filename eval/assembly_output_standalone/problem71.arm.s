@@ -78,7 +78,7 @@ func0:
 	str	w0, [sp, 52]
 	str	wzr, [sp, 56]
 	b	.L7
-.L10:
+.L9:
 	ldr	w1, [sp, 48]
 	ldr	w0, [sp, 52]
 	cmp	w1, w0
@@ -137,7 +137,7 @@ func0:
 	ldr	w1, [sp, 48]
 	ldr	w0, [sp, 52]
 	cmp	w1, w0
-	ble	.L10
+	ble	.L9
 	nop
 	nop
 	add	sp, sp, 64
@@ -146,5 +146,5 @@ func0:
 	.cfi_endproc
 .LFE6:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

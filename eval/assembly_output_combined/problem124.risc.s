@@ -1,23 +1,14 @@
 	.file	"problem124.c"
 	.option pic
-	.attribute arch, "rv64i2p1_m2p0_a2p1_f2p2_d2p2_c2p0_zicsr2p0_zifencei2p0"
-	.attribute unaligned_access, 0
-	.attribute stack_align, 16
 	.text
 	.align	1
 	.globl	func0
 	.type	func0, @function
 func0:
-.LFB6:
-	.cfi_startproc
 	addi	sp,sp,-64
-	.cfi_def_cfa_offset 64
 	sd	ra,56(sp)
 	sd	s0,48(sp)
-	.cfi_offset 1, -8
-	.cfi_offset 8, -16
 	addi	s0,sp,64
-	.cfi_def_cfa 8, 0
 	mv	a5,a0
 	sd	a1,-48(s0)
 	sd	a2,-56(s0)
@@ -31,7 +22,7 @@ func0:
 	li	a4,1
 	sw	a4,0(a5)
 	j	.L2
-.L6:
+.L5:
 	lw	a5,-36(s0)
 	mv	a4,a5
 	sraiw	a5,a4,31
@@ -88,11 +79,11 @@ func0:
 	lw	a5,-36(s0)
 	sext.w	a4,a5
 	li	a5,1
-	bne	a4,a5,.L6
+	bne	a4,a5,.L5
 	li	a5,1
 	sw	a5,-28(s0)
-	j	.L7
-.L11:
+	j	.L6
+.L10:
 	lw	a5,-28(s0)
 	slli	a5,a5,2
 	ld	a4,-48(s0)
@@ -102,8 +93,8 @@ func0:
 	lw	a5,-28(s0)
 	addiw	a5,a5,-1
 	sw	a5,-24(s0)
-	j	.L8
-.L10:
+	j	.L7
+.L9:
 	lw	a5,-24(s0)
 	slli	a5,a5,2
 	ld	a4,-48(s0)
@@ -118,10 +109,10 @@ func0:
 	lw	a5,-24(s0)
 	addiw	a5,a5,-1
 	sw	a5,-24(s0)
-.L8:
+.L7:
 	lw	a5,-24(s0)
 	sext.w	a5,a5
-	blt	a5,zero,.L9
+	blt	a5,zero,.L8
 	lw	a5,-24(s0)
 	slli	a5,a5,2
 	ld	a4,-48(s0)
@@ -129,8 +120,8 @@ func0:
 	lw	a4,0(a5)
 	lw	a5,-20(s0)
 	sext.w	a5,a5
-	blt	a5,a4,.L10
-.L9:
+	blt	a5,a4,.L9
+.L8:
 	lw	a5,-24(s0)
 	addi	a5,a5,1
 	slli	a5,a5,2
@@ -141,37 +132,26 @@ func0:
 	lw	a5,-28(s0)
 	addiw	a5,a5,1
 	sw	a5,-28(s0)
-.L7:
+.L6:
 	ld	a5,-56(s0)
 	lw	a4,0(a5)
 	lw	a5,-28(s0)
 	sext.w	a5,a5
-	blt	a5,a4,.L11
+	blt	a5,a4,.L10
 	nop
 	nop
 	ld	ra,56(sp)
-	.cfi_restore 1
 	ld	s0,48(sp)
-	.cfi_restore 8
-	.cfi_def_cfa 2, 64
 	addi	sp,sp,64
-	.cfi_def_cfa_offset 0
 	jr	ra
-	.cfi_endproc
-.LFE6:
 	.size	func0, .-func0
 	.align	1
 	.globl	issame
 	.type	issame, @function
 issame:
-.LFB7:
-	.cfi_startproc
 	addi	sp,sp,-64
-	.cfi_def_cfa_offset 64
 	sd	s0,56(sp)
-	.cfi_offset 8, -8
 	addi	s0,sp,64
-	.cfi_def_cfa 8, 0
 	sd	a0,-40(s0)
 	mv	a5,a1
 	sd	a2,-56(s0)
@@ -184,13 +164,13 @@ issame:
 	lw	a5,-48(s0)
 	sext.w	a4,a4
 	sext.w	a5,a5
-	beq	a4,a5,.L13
+	beq	a4,a5,.L12
 	li	a5,0
-	j	.L14
-.L13:
+	j	.L13
+.L12:
 	sw	zero,-20(s0)
-	j	.L15
-.L17:
+	j	.L14
+.L16:
 	lw	a5,-20(s0)
 	slli	a5,a5,2
 	ld	a4,-40(s0)
@@ -202,31 +182,26 @@ issame:
 	add	a5,a4,a5
 	lw	a5,0(a5)
 	mv	a4,a3
-	beq	a4,a5,.L16
+	beq	a4,a5,.L15
 	li	a5,0
-	j	.L14
-.L16:
+	j	.L13
+.L15:
 	lw	a5,-20(s0)
 	addiw	a5,a5,1
 	sw	a5,-20(s0)
-.L15:
+.L14:
 	lw	a5,-20(s0)
 	mv	a4,a5
 	lw	a5,-44(s0)
 	sext.w	a4,a4
 	sext.w	a5,a5
-	blt	a4,a5,.L17
+	blt	a4,a5,.L16
 	li	a5,1
-.L14:
+.L13:
 	mv	a0,a5
 	ld	s0,56(sp)
-	.cfi_restore 8
-	.cfi_def_cfa 2, 64
 	addi	sp,sp,64
-	.cfi_def_cfa_offset 0
 	jr	ra
-	.cfi_endproc
-.LFE7:
 	.size	issame, .-issame
 	.section	.rodata
 	.align	3
@@ -257,16 +232,10 @@ issame:
 	.globl	main
 	.type	main, @function
 main:
-.LFB8:
-	.cfi_startproc
 	addi	sp,sp,-96
-	.cfi_def_cfa_offset 96
 	sd	ra,88(sp)
 	sd	s0,80(sp)
-	.cfi_offset 1, -8
-	.cfi_offset 8, -16
 	addi	s0,sp,96
-	.cfi_def_cfa 8, 0
 	la	a5,__stack_chk_guard
 	ld	a4, 0(a5)
 	sd	a4, -24(s0)
@@ -295,13 +264,13 @@ main:
 	ld	a0,-88(s0)
 	call	issame
 	mv	a5,a0
-	bne	a5,zero,.L19
+	bne	a5,zero,.L18
 	lla	a3,__PRETTY_FUNCTION__.0
 	li	a2,55
 	lla	a1,.LC1
 	lla	a0,.LC2
 	call	__assert_fail@plt
-.L19:
+.L18:
 	ld	a0,-88(s0)
 	call	free@plt
 	li	a5,1
@@ -325,13 +294,13 @@ main:
 	ld	a0,-88(s0)
 	call	issame
 	mv	a5,a0
-	bne	a5,zero,.L20
+	bne	a5,zero,.L19
 	lla	a3,__PRETTY_FUNCTION__.0
 	li	a2,62
 	lla	a1,.LC1
 	lla	a0,.LC3
 	call	__assert_fail@plt
-.L20:
+.L19:
 	ld	a0,-88(s0)
 	call	free@plt
 	li	a5,1
@@ -357,13 +326,13 @@ main:
 	ld	a0,-88(s0)
 	call	issame
 	mv	a5,a0
-	bne	a5,zero,.L21
+	bne	a5,zero,.L20
 	lla	a3,__PRETTY_FUNCTION__.0
 	li	a2,69
 	lla	a1,.LC1
 	lla	a0,.LC4
 	call	__assert_fail@plt
-.L21:
+.L20:
 	ld	a0,-88(s0)
 	call	free@plt
 	li	a5,1
@@ -385,13 +354,13 @@ main:
 	ld	a0,-88(s0)
 	call	issame
 	mv	a5,a0
-	bne	a5,zero,.L22
+	bne	a5,zero,.L21
 	lla	a3,__PRETTY_FUNCTION__.0
 	li	a2,76
 	lla	a1,.LC1
 	lla	a0,.LC5
 	call	__assert_fail@plt
-.L22:
+.L21:
 	ld	a0,-88(s0)
 	call	free@plt
 	li	a5,0
@@ -401,20 +370,14 @@ main:
 	ld	a5, 0(a5)
 	xor	a5, a3, a5
 	li	a3, 0
-	beq	a5,zero,.L24
+	beq	a5,zero,.L23
 	call	__stack_chk_fail@plt
-.L24:
+.L23:
 	mv	a0,a4
 	ld	ra,88(sp)
-	.cfi_restore 1
 	ld	s0,80(sp)
-	.cfi_restore 8
-	.cfi_def_cfa 2, 96
 	addi	sp,sp,96
-	.cfi_def_cfa_offset 0
 	jr	ra
-	.cfi_endproc
-.LFE8:
 	.size	main, .-main
 	.section	.rodata
 	.align	3
@@ -422,5 +385,5 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

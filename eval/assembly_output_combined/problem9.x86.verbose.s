@@ -1,6 +1,6 @@
 	.file	"problem9.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -111,7 +111,6 @@ issame:
 	je	.L6	#,
 # problem9.c:19:         if (a[i] != b[i]) return 0;
 	movl	$0, %eax	#, _10
-# problem9.c:19:         if (a[i] != b[i]) return 0;
 	jmp	.L7	#
 .L6:
 # problem9.c:18:     for (int i = 0; i < size; i++) {
@@ -164,7 +163,7 @@ main:
 	subq	$64, %rsp	#,
 # problem9.c:24: int main() {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp125
-	movq	%rax, -8(%rbp)	# tmp125, D.3263
+	movq	%rax, -8(%rbp)	# tmp125, D.2433
 	xorl	%eax, %eax	# tmp125
 # problem9.c:28:     func0((int[]){}, 0, result);
 	leaq	-56(%rbp), %rdx	#, tmp89
@@ -173,17 +172,17 @@ main:
 	movq	%rax, %rdi	# tmp90,
 	call	func0	#
 # problem9.c:29:     assert(issame(result, (const int[]){0, 1}, 2));
-	movl	$0, -20(%rbp)	#, MEM[(int[2] *)_59][0]
-	movl	$1, -16(%rbp)	#, MEM[(int[2] *)_59][1]
+	movl	$0, -20(%rbp)	#, MEM[(int[2] *)_60][0]
+	movl	$1, -16(%rbp)	#, MEM[(int[2] *)_60][1]
 	leaq	-20(%rbp), %rcx	#, tmp91
 	leaq	-56(%rbp), %rax	#, tmp92
 	movl	$2, %edx	#,
 	movq	%rcx, %rsi	# tmp91,
 	movq	%rax, %rdi	# tmp92,
 	call	issame	#
-# problem9.c:29:     assert(issame(result, (const int[]){0, 1}, 2));
 	testl	%eax, %eax	# _1
 	jne	.L10	#,
+# problem9.c:29:     assert(issame(result, (const int[]){0, 1}, 2));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp93
 	movq	%rax, %rcx	# tmp93,
 	movl	$29, %edx	#,
@@ -194,9 +193,9 @@ main:
 	call	__assert_fail@PLT	#
 .L10:
 # problem9.c:32:     func0((int[]){1, 1, 1}, 3, result);
-	movl	$1, -32(%rbp)	#, D.3224[0]
-	movl	$1, -28(%rbp)	#, D.3224[1]
-	movl	$1, -24(%rbp)	#, D.3224[2]
+	movl	$1, -32(%rbp)	#, D.2394[0]
+	movl	$1, -28(%rbp)	#, D.2394[1]
+	movl	$1, -24(%rbp)	#, D.2394[2]
 # problem9.c:32:     func0((int[]){1, 1, 1}, 3, result);
 	leaq	-56(%rbp), %rdx	#, tmp96
 	leaq	-32(%rbp), %rax	#, tmp97
@@ -204,15 +203,14 @@ main:
 	movq	%rax, %rdi	# tmp97,
 	call	func0	#
 # problem9.c:33:     assert(issame(result, (const int[]){3, 1}, 2));
-	movl	$3, -20(%rbp)	#, MEM[(int[2] *)_59][0]
-	movl	$1, -16(%rbp)	#, MEM[(int[2] *)_59][1]
+	movl	$3, -20(%rbp)	#, MEM[(int[2] *)_60][0]
+	movl	$1, -16(%rbp)	#, MEM[(int[2] *)_60][1]
 	leaq	-20(%rbp), %rcx	#, tmp98
 	leaq	-56(%rbp), %rax	#, tmp99
 	movl	$2, %edx	#,
 	movq	%rcx, %rsi	# tmp98,
 	movq	%rax, %rdi	# tmp99,
 	call	issame	#
-# problem9.c:33:     assert(issame(result, (const int[]){3, 1}, 2));
 	testl	%eax, %eax	# _2
 	jne	.L11	#,
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp100
@@ -225,8 +223,8 @@ main:
 	call	__assert_fail@PLT	#
 .L11:
 # problem9.c:36:     func0((int[]){100, 0}, 2, result);
-	movl	$100, -48(%rbp)	#, D.3227[0]
-	movl	$0, -44(%rbp)	#, D.3227[1]
+	movl	$100, -48(%rbp)	#, D.2397[0]
+	movl	$0, -44(%rbp)	#, D.2397[1]
 # problem9.c:36:     func0((int[]){100, 0}, 2, result);
 	leaq	-56(%rbp), %rdx	#, tmp103
 	leaq	-48(%rbp), %rax	#, tmp104
@@ -234,17 +232,17 @@ main:
 	movq	%rax, %rdi	# tmp104,
 	call	func0	#
 # problem9.c:37:     assert(issame(result, (const int[]){100, 0}, 2));
-	movl	$100, -20(%rbp)	#, MEM[(int[2] *)_59][0]
-	movl	$0, -16(%rbp)	#, MEM[(int[2] *)_59][1]
+	movl	$100, -20(%rbp)	#, MEM[(int[2] *)_60][0]
+	movl	$0, -16(%rbp)	#, MEM[(int[2] *)_60][1]
 	leaq	-20(%rbp), %rcx	#, tmp105
 	leaq	-56(%rbp), %rax	#, tmp106
 	movl	$2, %edx	#,
 	movq	%rcx, %rsi	# tmp105,
 	movq	%rax, %rdi	# tmp106,
 	call	issame	#
-# problem9.c:37:     assert(issame(result, (const int[]){100, 0}, 2));
 	testl	%eax, %eax	# _3
 	jne	.L12	#,
+# problem9.c:37:     assert(issame(result, (const int[]){100, 0}, 2));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp107
 	movq	%rax, %rcx	# tmp107,
 	movl	$37, %edx	#,
@@ -255,9 +253,9 @@ main:
 	call	__assert_fail@PLT	#
 .L12:
 # problem9.c:40:     func0((int[]){3, 5, 7}, 3, result);
-	movl	$3, -20(%rbp)	#, MEM[(int[3] *)_59][0]
-	movl	$5, -16(%rbp)	#, MEM[(int[3] *)_59][1]
-	movl	$7, -12(%rbp)	#, MEM[(int[3] *)_59][2]
+	movl	$3, -20(%rbp)	#, MEM[(int[3] *)_60][0]
+	movl	$5, -16(%rbp)	#, MEM[(int[3] *)_60][1]
+	movl	$7, -12(%rbp)	#, MEM[(int[3] *)_60][2]
 # problem9.c:40:     func0((int[]){3, 5, 7}, 3, result);
 	leaq	-56(%rbp), %rdx	#, tmp110
 	leaq	-20(%rbp), %rax	#, tmp111
@@ -265,17 +263,17 @@ main:
 	movq	%rax, %rdi	# tmp111,
 	call	func0	#
 # problem9.c:41:     assert(issame(result, (const int[]){3 + 5 + 7, 3 * 5 * 7}, 2));
-	movl	$15, -40(%rbp)	#, MEM[(int[2] *)_60][0]
-	movl	$105, -36(%rbp)	#, MEM[(int[2] *)_60][1]
+	movl	$15, -40(%rbp)	#, MEM[(int[2] *)_61][0]
+	movl	$105, -36(%rbp)	#, MEM[(int[2] *)_61][1]
 	leaq	-40(%rbp), %rcx	#, tmp112
 	leaq	-56(%rbp), %rax	#, tmp113
 	movl	$2, %edx	#,
 	movq	%rcx, %rsi	# tmp112,
 	movq	%rax, %rdi	# tmp113,
 	call	issame	#
-# problem9.c:41:     assert(issame(result, (const int[]){3 + 5 + 7, 3 * 5 * 7}, 2));
 	testl	%eax, %eax	# _4
 	jne	.L13	#,
+# problem9.c:41:     assert(issame(result, (const int[]){3 + 5 + 7, 3 * 5 * 7}, 2));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp114
 	movq	%rax, %rcx	# tmp114,
 	movl	$41, %edx	#,
@@ -286,7 +284,7 @@ main:
 	call	__assert_fail@PLT	#
 .L13:
 # problem9.c:44:     func0((int[]){10}, 1, result);
-	movl	$10, -60(%rbp)	#, D.3233[0]
+	movl	$10, -60(%rbp)	#, D.2403[0]
 # problem9.c:44:     func0((int[]){10}, 1, result);
 	leaq	-56(%rbp), %rdx	#, tmp117
 	leaq	-60(%rbp), %rax	#, tmp118
@@ -294,17 +292,17 @@ main:
 	movq	%rax, %rdi	# tmp118,
 	call	func0	#
 # problem9.c:45:     assert(issame(result, (const int[]){10, 10}, 2));
-	movl	$10, -40(%rbp)	#, MEM[(int[2] *)_60][0]
-	movl	$10, -36(%rbp)	#, MEM[(int[2] *)_60][1]
+	movl	$10, -40(%rbp)	#, MEM[(int[2] *)_61][0]
+	movl	$10, -36(%rbp)	#, MEM[(int[2] *)_61][1]
 	leaq	-40(%rbp), %rcx	#, tmp119
 	leaq	-56(%rbp), %rax	#, tmp120
 	movl	$2, %edx	#,
 	movq	%rcx, %rsi	# tmp119,
 	movq	%rax, %rdi	# tmp120,
 	call	issame	#
-# problem9.c:45:     assert(issame(result, (const int[]){10, 10}, 2));
 	testl	%eax, %eax	# _5
 	jne	.L14	#,
+# problem9.c:45:     assert(issame(result, (const int[]){10, 10}, 2));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp121
 	movq	%rax, %rcx	# tmp121,
 	movl	$45, %edx	#,
@@ -315,11 +313,12 @@ main:
 	call	__assert_fail@PLT	#
 .L14:
 # problem9.c:47:     return 0;
-	movl	$0, %eax	#, _46
+	movl	$0, %eax	#, _47
 # problem9.c:48: }
-	movq	-8(%rbp), %rdx	# D.3263, tmp126
+	movq	-8(%rbp), %rdx	# D.2433, tmp126
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp126
 	je	.L16	#,
+# problem9.c:48: }
 	call	__stack_chk_fail@PLT	#
 .L16:
 	leave	
@@ -333,7 +332,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

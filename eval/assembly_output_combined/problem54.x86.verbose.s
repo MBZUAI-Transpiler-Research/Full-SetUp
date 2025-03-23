@@ -1,6 +1,6 @@
 	.file	"problem54.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -61,9 +61,9 @@ main:
 	movl	$1, %esi	#,
 	movl	$0, %edi	#,
 	call	func0	#
-# problem54.c:13:     assert(func0(0, 1) == 1);
 	cmpl	$1, %eax	#, _1
 	je	.L4	#,
+# problem54.c:13:     assert(func0(0, 1) == 1);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp93
 	movq	%rax, %rcx	# tmp93,
 	movl	$13, %edx	#,
@@ -77,9 +77,9 @@ main:
 	movl	$0, %esi	#,
 	movl	$1, %edi	#,
 	call	func0	#
-# problem54.c:14:     assert(func0(1, 0) == 1);
 	cmpl	$1, %eax	#, _2
 	je	.L5	#,
+# problem54.c:14:     assert(func0(1, 0) == 1);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp96
 	movq	%rax, %rcx	# tmp96,
 	movl	$14, %edx	#,
@@ -93,9 +93,9 @@ main:
 	movl	$3, %esi	#,
 	movl	$2, %edi	#,
 	call	func0	#
-# problem54.c:15:     assert(func0(2, 3) == 5);
 	cmpl	$5, %eax	#, _3
 	je	.L6	#,
+# problem54.c:15:     assert(func0(2, 3) == 5);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp99
 	movq	%rax, %rcx	# tmp99,
 	movl	$15, %edx	#,
@@ -109,9 +109,9 @@ main:
 	movl	$7, %esi	#,
 	movl	$5, %edi	#,
 	call	func0	#
-# problem54.c:16:     assert(func0(5, 7) == 12);
 	cmpl	$12, %eax	#, _4
 	je	.L7	#,
+# problem54.c:16:     assert(func0(5, 7) == 12);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp102
 	movq	%rax, %rcx	# tmp102,
 	movl	$16, %edx	#,
@@ -125,9 +125,9 @@ main:
 	movl	$5, %esi	#,
 	movl	$7, %edi	#,
 	call	func0	#
-# problem54.c:17:     assert(func0(7, 5) == 12);
 	cmpl	$12, %eax	#, _5
 	je	.L8	#,
+# problem54.c:17:     assert(func0(7, 5) == 12);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp105
 	movq	%rax, %rcx	# tmp105,
 	movl	$17, %edx	#,
@@ -178,12 +178,12 @@ main:
 	movl	%edx, %esi	# tmp126,
 	movl	%eax, %edi	# tmp127,
 	call	func0	#
-# problem54.c:21:         assert(func0(x, y) == x + y);
 	movl	-8(%rbp), %ecx	# x, tmp128
 	movl	-4(%rbp), %edx	# y, tmp129
 	addl	%ecx, %edx	# tmp128, _9
 	cmpl	%edx, %eax	# _9, _8
 	je	.L10	#,
+# problem54.c:21:         assert(func0(x, y) == x + y);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp130
 	movq	%rax, %rcx	# tmp130,
 	movl	$21, %edx	#,
@@ -213,7 +213,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

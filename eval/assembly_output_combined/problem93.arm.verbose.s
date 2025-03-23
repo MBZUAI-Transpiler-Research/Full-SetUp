@@ -1,7 +1,7 @@
 	.arch armv8-a
 	.file	"problem93.c"
-// GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (aarch64-linux-gnu)
-//	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+// GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (aarch64-linux-gnu)
+//	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 // GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 // options passed: -mlittle-endian -mabi=lp64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection
@@ -30,7 +30,6 @@ func0:
 	beq	.L2		//,
 // problem93.c:5:     if (roundf(a) != a) return 0;
 	mov	w0, 0	// _7,
-// problem93.c:5:     if (roundf(a) != a) return 0;
 	b	.L3		//
 .L2:
 // problem93.c:6:     if (roundf(b) != b) return 0;
@@ -43,7 +42,6 @@ func0:
 	beq	.L4		//,
 // problem93.c:6:     if (roundf(b) != b) return 0;
 	mov	w0, 0	// _7,
-// problem93.c:6:     if (roundf(b) != b) return 0;
 	b	.L3		//
 .L4:
 // problem93.c:7:     if (roundf(c) != c) return 0;
@@ -56,7 +54,6 @@ func0:
 	beq	.L5		//,
 // problem93.c:7:     if (roundf(c) != c) return 0;
 	mov	w0, 0	// _7,
-// problem93.c:7:     if (roundf(c) != c) return 0;
 	b	.L3		//
 .L5:
 // problem93.c:8:     if ((a + b == c) || (a + c == b) || (b + c == a)) return 1;
@@ -86,7 +83,6 @@ func0:
 .L6:
 // problem93.c:8:     if ((a + b == c) || (a + c == b) || (b + c == a)) return 1;
 	mov	w0, 1	// _7,
-// problem93.c:8:     if ((a + b == c) || (a + c == b) || (b + c == a)) return 1;
 	b	.L3		//
 .L7:
 // problem93.c:9:     return 0;
@@ -152,9 +148,9 @@ main:
 	fmov	s1, 3.0e+0	//,
 	fmov	s0, 2.0e+0	//,
 	bl	func0		//
-// problem93.c:17:     assert(func0(2, 3, 1) == 1);
 	cmp	w0, 1	// _1,
 	beq	.L9		//,
+// problem93.c:17:     assert(func0(2, 3, 1) == 1);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp104,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp104,
 	mov	w2, 17	//,
@@ -169,9 +165,9 @@ main:
 	fmov	s1, 2.0e+0	//,
 	fmov	s0, 2.5e+0	//,
 	bl	func0		//
-// problem93.c:18:     assert(func0(2.5, 2, 3) == 0);
 	cmp	w0, 0	// _2,
 	beq	.L10		//,
+// problem93.c:18:     assert(func0(2.5, 2, 3) == 0);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp107,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp107,
 	mov	w2, 18	//,
@@ -186,9 +182,9 @@ main:
 	fmov	s1, 5.0e+0	//,
 	fmov	s0, 1.5e+0	//,
 	bl	func0		//
-// problem93.c:19:     assert(func0(1.5, 5, 3.5) == 0);
 	cmp	w0, 0	// _3,
 	beq	.L11		//,
+// problem93.c:19:     assert(func0(1.5, 5, 3.5) == 0);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp110,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp110,
 	mov	w2, 19	//,
@@ -203,9 +199,9 @@ main:
 	fmov	s1, 6.0e+0	//,
 	fmov	s0, 2.0e+0	//,
 	bl	func0		//
-// problem93.c:20:     assert(func0(2, 6, 2) == 0);
 	cmp	w0, 0	// _4,
 	beq	.L12		//,
+// problem93.c:20:     assert(func0(2, 6, 2) == 0);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp113,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp113,
 	mov	w2, 20	//,
@@ -220,9 +216,9 @@ main:
 	fmov	s1, 2.0e+0	//,
 	fmov	s0, 4.0e+0	//,
 	bl	func0		//
-// problem93.c:21:     assert(func0(4, 2, 2) == 1);
 	cmp	w0, 1	// _5,
 	beq	.L13		//,
+// problem93.c:21:     assert(func0(4, 2, 2) == 1);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp116,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp116,
 	mov	w2, 21	//,
@@ -243,9 +239,9 @@ main:
 	movk	w0, 0x400c, lsl 16	// tmp138,,
 	fmov	s0, w0	//, tmp138
 	bl	func0		//
-// problem93.c:22:     assert(func0(2.2, 2.2, 2.2) == 0);
 	cmp	w0, 0	// _6,
 	beq	.L14		//,
+// problem93.c:22:     assert(func0(2.2, 2.2, 2.2) == 0);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp119,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp119,
 	mov	w2, 22	//,
@@ -260,9 +256,9 @@ main:
 	fmov	s1, 6.0e+0	//,
 	fmov	s0, -4.0e+0	//,
 	bl	func0		//
-// problem93.c:23:     assert(func0(-4, 6, 2) == 1);
 	cmp	w0, 1	// _7,
 	beq	.L15		//,
+// problem93.c:23:     assert(func0(-4, 6, 2) == 1);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp122,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp122,
 	mov	w2, 23	//,
@@ -277,9 +273,9 @@ main:
 	fmov	s1, 1.0e+0	//,
 	fmov	s0, 2.0e+0	//,
 	bl	func0		//
-// problem93.c:24:     assert(func0(2, 1, 1) == 1);
 	cmp	w0, 1	// _8,
 	beq	.L16		//,
+// problem93.c:24:     assert(func0(2, 1, 1) == 1);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp125,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp125,
 	mov	w2, 24	//,
@@ -294,9 +290,9 @@ main:
 	fmov	s1, 4.0e+0	//,
 	fmov	s0, 3.0e+0	//,
 	bl	func0		//
-// problem93.c:25:     assert(func0(3, 4, 7) == 1);
 	cmp	w0, 1	// _9,
 	beq	.L17		//,
+// problem93.c:25:     assert(func0(3, 4, 7) == 1);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp128,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp128,
 	mov	w2, 25	//,
@@ -313,9 +309,9 @@ main:
 	movk	w0, 0x4040, lsl 16	// tmp135,,
 	fmov	s0, w0	//, tmp135
 	bl	func0		//
-// problem93.c:26:     assert(func0(3.01, 4, 7) == 0);
 	cmp	w0, 0	// _10,
 	beq	.L18		//,
+// problem93.c:26:     assert(func0(3.01, 4, 7) == 0);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp131,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp131,
 	mov	w2, 26	//,
@@ -342,5 +338,5 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

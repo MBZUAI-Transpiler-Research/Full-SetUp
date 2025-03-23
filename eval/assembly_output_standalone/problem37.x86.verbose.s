@@ -1,6 +1,6 @@
 	.file	"code.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -29,11 +29,11 @@ func0:
 	movslq	%ecx, %rax	# tmp87, tmp88
 	imulq	$780903145, %rax, %rax	#, tmp88, tmp89
 	shrq	$32, %rax	#, tmp90
-	movl	%eax, %edx	# tmp90, tmp91
-	sarl	%edx	# tmp91
-	movl	%ecx, %eax	# tmp87, tmp92
-	sarl	$31, %eax	#, tmp92
-	subl	%eax, %edx	# tmp92, _1
+	sarl	%eax	# tmp91
+	movl	%ecx, %esi	# tmp87, tmp92
+	sarl	$31, %esi	#, tmp92
+	subl	%esi, %eax	# tmp92, tmp91
+	movl	%eax, %edx	# tmp91, _1
 	movl	%edx, %eax	# _1, tmp93
 	sall	$2, %eax	#, tmp93
 	addl	%edx, %eax	# _1, tmp93
@@ -49,11 +49,11 @@ func0:
 	movslq	%ecx, %rax	# tmp94, tmp95
 	imulq	$1321528399, %rax, %rax	#, tmp95, tmp96
 	shrq	$32, %rax	#, tmp97
-	movl	%eax, %edx	# tmp97, tmp98
-	sarl	$2, %edx	#, tmp98
-	movl	%ecx, %eax	# tmp94, tmp99
-	sarl	$31, %eax	#, tmp99
-	subl	%eax, %edx	# tmp99, _2
+	sarl	$2, %eax	#, tmp98
+	movl	%ecx, %esi	# tmp94, tmp99
+	sarl	$31, %esi	#, tmp99
+	subl	%esi, %eax	# tmp99, tmp98
+	movl	%eax, %edx	# tmp98, _2
 	movl	%edx, %eax	# _2, tmp100
 	addl	%eax, %eax	# tmp100
 	addl	%edx, %eax	# _2, tmp100
@@ -76,11 +76,11 @@ func0:
 	movslq	%ecx, %rax	# tmp102, tmp103
 	imulq	$1717986919, %rax, %rax	#, tmp103, tmp104
 	shrq	$32, %rax	#, tmp105
-	movl	%eax, %edx	# tmp105, tmp106
-	sarl	$2, %edx	#, tmp106
-	movl	%ecx, %eax	# tmp102, tmp107
-	sarl	$31, %eax	#, tmp107
-	subl	%eax, %edx	# tmp107, _3
+	sarl	$2, %eax	#, tmp106
+	movl	%ecx, %esi	# tmp102, tmp107
+	sarl	$31, %esi	#, tmp107
+	subl	%esi, %eax	# tmp107, tmp106
+	movl	%eax, %edx	# tmp106, _3
 	movl	%edx, %eax	# _3, tmp108
 	sall	$2, %eax	#, tmp108
 	addl	%edx, %eax	# _3, tmp108
@@ -98,11 +98,11 @@ func0:
 	movslq	%eax, %rdx	# tmp111, tmp112
 	imulq	$1717986919, %rdx, %rdx	#, tmp112, tmp113
 	shrq	$32, %rdx	#, tmp114
-	movl	%edx, %ecx	# tmp114, tmp115
-	sarl	$2, %ecx	#, tmp115
-	cltd
-	movl	%ecx, %eax	# tmp115, tmp115
-	subl	%edx, %eax	# tmp116, tmp115
+	sarl	$2, %edx	#, tmp115
+	sarl	$31, %eax	#, tmp111
+	movl	%eax, %ecx	# tmp111, tmp116
+	movl	%edx, %eax	# tmp115, tmp115
+	subl	%ecx, %eax	# tmp116, tmp115
 	movl	%eax, -4(%rbp)	# tmp110, q
 .L5:
 # eval/problem37//code.c:8:             while (q > 0) {
@@ -125,7 +125,7 @@ func0:
 	.cfi_endproc
 .LFE0:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

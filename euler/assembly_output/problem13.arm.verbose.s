@@ -1,7 +1,7 @@
 	.arch armv8-a
 	.file	"problem13.c"
-// GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (aarch64-linux-gnu)
-//	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+// GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (aarch64-linux-gnu)
+//	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 // GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 // options passed: -mlittle-endian -mabi=lp64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection
@@ -12,114 +12,111 @@
 main:
 .LFB26:
 	.cfi_startproc
-	stp	x29, x30, [sp, -16]!	//,,,
-	.cfi_def_cfa_offset 16
-	.cfi_offset 29, -16
-	.cfi_offset 30, -8
-	mov	x29, sp	//,
-	mov	x13, 10064	//,
-	sub	sp, sp, x13	//,,
+	mov	x12, 10080	//,
+	sub	sp, sp, x12	//,,
 	.cfi_def_cfa_offset 10080
-	str	xzr, [sp, 1024]	//,
+	stp	x29, x30, [sp]	//,,
+	.cfi_offset 29, -10080
+	.cfi_offset 30, -10072
+	mov	x29, sp	//,
 // problem13.c:13: {
-	adrp	x0, :got:__stack_chk_guard	// tmp96,
-	ldr	x0, [x0, :got_lo12:__stack_chk_guard]	// tmp96,
-	ldr	x1, [x0]	// tmp124,
-	str	x1, [sp, 10056]	// tmp124, D.6945
-	mov	x1, 0	// tmp124
+	adrp	x0, :got:__stack_chk_guard	// tmp97,
+	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]	// tmp96, tmp97,
+	ldr	x1, [x0]	// tmp126,
+	str	x1, [sp, 10072]	// tmp126, D.6356
+	mov	x1, 0	// tmp126
 // problem13.c:14:   char digits[][N] = {
-	adrp	x0, .LC0	// tmp98,
-	add	x1, x0, :lo12:.LC0	// tmp97, tmp98,
-	add	x0, sp, 56	// tmp99,,
-	mov	x3, x1	// tmp100, tmp97
-	mov	x1, 10000	// tmp101,
-	mov	x2, x1	//, tmp101
-	mov	x1, x3	//, tmp100
+	adrp	x0, .LC0	// tmp99,
+	add	x1, x0, :lo12:.LC0	// tmp98, tmp99,
+	add	x0, sp, 72	// tmp100,,
+	mov	x3, x1	// tmp101, tmp98
+	mov	x1, 10000	// tmp102,
+	mov	x2, x1	//, tmp102
+	mov	x1, x3	//, tmp101
 	bl	memcpy		//
 // problem13.c:121:   mpz_init_set_ui(sum, 0);
-	add	x0, sp, 24	// tmp103,,
+	add	x0, sp, 40	// tmp104,,
 	mov	x1, 0	//,
 	bl	__gmpz_init_set_ui		//
 // problem13.c:122:   mpz_init(t);
-	add	x0, sp, 40	// tmp104,,
+	add	x0, sp, 56	// tmp105,,
 	bl	__gmpz_init		//
 // problem13.c:123:   for (i = 0; i < N; i++) {
-	str	wzr, [sp, 12]	//, i
+	str	wzr, [sp, 28]	//, i
 // problem13.c:123:   for (i = 0; i < N; i++) {
 	b	.L2		//
 .L3:
 // problem13.c:124:     mpz_set_str(t, digits[i], 10);
-	add	x2, sp, 56	// tmp105,,
-	ldrsw	x1, [sp, 12]	// tmp106, i
-	mov	x0, x1	// tmp107, tmp106
-	lsl	x0, x0, 1	// tmp108, tmp107,
-	add	x0, x0, x1	// tmp107, tmp107, tmp106
-	lsl	x0, x0, 3	// tmp109, tmp107,
-	add	x0, x0, x1	// tmp107, tmp107, tmp106
-	lsl	x0, x0, 2	// tmp110, tmp107,
-	add	x1, x2, x0	// _1, tmp105, tmp107
+	add	x2, sp, 72	// tmp106,,
+	ldrsw	x1, [sp, 28]	// tmp107, i
+	mov	x0, x1	// tmp108, tmp107
+	lsl	x0, x0, 1	// tmp109, tmp108,
+	add	x0, x0, x1	// tmp108, tmp108, tmp107
+	lsl	x0, x0, 3	// tmp110, tmp108,
+	add	x0, x0, x1	// tmp108, tmp108, tmp107
+	lsl	x0, x0, 2	// tmp111, tmp108,
+	add	x1, x2, x0	// _1, tmp106, tmp108
 // problem13.c:124:     mpz_set_str(t, digits[i], 10);
-	add	x0, sp, 40	// tmp111,,
+	add	x0, sp, 56	// tmp112,,
 	mov	w2, 10	//,
 	bl	__gmpz_set_str		//
 // problem13.c:125:     mpz_add(sum, sum, t);
-	add	x2, sp, 40	// tmp112,,
-	add	x1, sp, 24	// tmp113,,
-	add	x0, sp, 24	// tmp114,,
+	add	x2, sp, 56	// tmp113,,
+	add	x1, sp, 40	// tmp114,,
+	add	x0, sp, 40	// tmp115,,
 	bl	__gmpz_add		//
 // problem13.c:123:   for (i = 0; i < N; i++) {
-	ldr	w0, [sp, 12]	// tmp116, i
-	add	w0, w0, 1	// tmp115, tmp116,
-	str	w0, [sp, 12]	// tmp115, i
+	ldr	w0, [sp, 28]	// tmp117, i
+	add	w0, w0, 1	// tmp116, tmp117,
+	str	w0, [sp, 28]	// tmp116, i
 .L2:
 // problem13.c:123:   for (i = 0; i < N; i++) {
-	ldr	w0, [sp, 12]	// tmp117, i
-	cmp	w0, 99	// tmp117,
+	ldr	w0, [sp, 28]	// tmp118, i
+	cmp	w0, 99	// tmp118,
 	ble	.L3		//,
 // problem13.c:128:   str = mpz_get_str(NULL, 10, sum);
-	add	x0, sp, 24	// tmp118,,
-	mov	x2, x0	//, tmp118
+	add	x0, sp, 40	// tmp119,,
+	mov	x2, x0	//, tmp119
 	mov	w1, 10	//,
 	mov	x0, 0	//,
 	bl	__gmpz_get_str		//
-	str	x0, [sp, 16]	//, str
+	str	x0, [sp, 32]	//, str
 // problem13.c:129:   str[10] = 0;
-	ldr	x0, [sp, 16]	// tmp119, str
-	add	x0, x0, 10	// _2, tmp119,
+	ldr	x0, [sp, 32]	// tmp120, str
+	add	x0, x0, 10	// _2, tmp120,
 // problem13.c:129:   str[10] = 0;
 	strb	wzr, [x0]	//, *_2
 // problem13.c:130:   puts(str);
-	ldr	x0, [sp, 16]	//, str
+	ldr	x0, [sp, 32]	//, str
 	bl	puts		//
 // problem13.c:132:   free(str);
-	ldr	x0, [sp, 16]	//, str
+	ldr	x0, [sp, 32]	//, str
 	bl	free		//
 // problem13.c:133:   mpz_clear(sum);
-	add	x0, sp, 24	// tmp120,,
+	add	x0, sp, 40	// tmp121,,
 	bl	__gmpz_clear		//
 // problem13.c:134:   mpz_clear(t);
-	add	x0, sp, 40	// tmp121,,
+	add	x0, sp, 56	// tmp122,,
 	bl	__gmpz_clear		//
 // problem13.c:136:   return 0;
 	mov	w0, 0	// _17,
 // problem13.c:137: }
 	mov	w1, w0	// <retval>, _17
-	adrp	x0, :got:__stack_chk_guard	// tmp123,
-	ldr	x0, [x0, :got_lo12:__stack_chk_guard]	// tmp123,
-	ldr	x3, [sp, 10056]	// tmp125, D.6945
-	ldr	x2, [x0]	// tmp126,
-	subs	x3, x3, x2	// tmp125, tmp126
-	mov	x2, 0	// tmp126
+	adrp	x0, :got:__stack_chk_guard	// tmp125,
+	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]	// tmp124, tmp125,
+	ldr	x3, [sp, 10072]	// tmp127, D.6356
+	ldr	x2, [x0]	// tmp128,
+	subs	x3, x3, x2	// tmp127, tmp128
+	mov	x2, 0	// tmp128
 	beq	.L5		//,
 	bl	__stack_chk_fail		//
 .L5:
 	mov	w0, w1	//, <retval>
-	mov	x13, 10064	//,
-	add	sp, sp, x13	//,,
-	.cfi_def_cfa_offset 16
-	ldp	x29, x30, [sp], 16	//,,,
-	.cfi_restore 30
+	ldp	x29, x30, [sp]	//,,
+	mov	x12, 10080	//,
+	add	sp, sp, x12	//,,
 	.cfi_restore 29
+	.cfi_restore 30
 	.cfi_def_cfa_offset 0
 	ret	
 	.cfi_endproc
@@ -329,5 +326,5 @@ main:
 	.string	"53503534226472524250874054075591789781264330331690"
 	.zero	49
 	.text
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

@@ -1,6 +1,6 @@
 	.file	"problem83.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -29,7 +29,6 @@ func0:
 	jg	.L2	#,
 # problem83.c:7:     if (l < 2) return false;
 	movl	$0, %eax	#, _5
-# problem83.c:7:     if (l < 2) return false;
 	jmp	.L3	#
 .L2:
 # problem83.c:8:     for (int i = 2; i * i <= l; i++) {
@@ -47,7 +46,6 @@ func0:
 	jne	.L5	#,
 # problem83.c:9:         if (l % i == 0) return false;
 	movl	$0, %eax	#, _5
-# problem83.c:9:         if (l % i == 0) return false;
 	jmp	.L3	#
 .L5:
 # problem83.c:8:     for (int i = 2; i * i <= l; i++) {
@@ -153,9 +151,9 @@ main:
 	leaq	.LC0(%rip), %rax	#, tmp106
 	movq	%rax, %rdi	# tmp106,
 	call	func0	#
-# problem83.c:20:     assert(func0("Hello") == true);
 	testb	%al, %al	# _1
 	jne	.L8	#,
+# problem83.c:20:     assert(func0("Hello") == true);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp107
 	movq	%rax, %rcx	# tmp107,
 	movl	$20, %edx	#,
@@ -169,9 +167,9 @@ main:
 	leaq	.LC3(%rip), %rax	#, tmp110
 	movq	%rax, %rdi	# tmp110,
 	call	func0	#
-# problem83.c:21:     assert(func0("abcdcba") == true);
 	testb	%al, %al	# _2
 	jne	.L9	#,
+# problem83.c:21:     assert(func0("abcdcba") == true);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp111
 	movq	%rax, %rcx	# tmp111,
 	movl	$21, %edx	#,
@@ -185,9 +183,9 @@ main:
 	leaq	.LC5(%rip), %rax	#, tmp114
 	movq	%rax, %rdi	# tmp114,
 	call	func0	#
-# problem83.c:22:     assert(func0("kittens") == true);
 	testb	%al, %al	# _3
 	jne	.L10	#,
+# problem83.c:22:     assert(func0("kittens") == true);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp115
 	movq	%rax, %rcx	# tmp115,
 	movl	$22, %edx	#,
@@ -201,10 +199,10 @@ main:
 	leaq	.LC7(%rip), %rax	#, tmp118
 	movq	%rax, %rdi	# tmp118,
 	call	func0	#
-# problem83.c:23:     assert(func0("orange") == false);
 	xorl	$1, %eax	#, _5
 	testb	%al, %al	# _5
 	jne	.L11	#,
+# problem83.c:23:     assert(func0("orange") == false);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp119
 	movq	%rax, %rcx	# tmp119,
 	movl	$23, %edx	#,
@@ -218,9 +216,9 @@ main:
 	leaq	.LC9(%rip), %rax	#, tmp122
 	movq	%rax, %rdi	# tmp122,
 	call	func0	#
-# problem83.c:24:     assert(func0("wow") == true);
 	testb	%al, %al	# _6
 	jne	.L12	#,
+# problem83.c:24:     assert(func0("wow") == true);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp123
 	movq	%rax, %rcx	# tmp123,
 	movl	$24, %edx	#,
@@ -234,9 +232,9 @@ main:
 	leaq	.LC11(%rip), %rax	#, tmp126
 	movq	%rax, %rdi	# tmp126,
 	call	func0	#
-# problem83.c:25:     assert(func0("world") == true);
 	testb	%al, %al	# _7
 	jne	.L13	#,
+# problem83.c:25:     assert(func0("world") == true);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp127
 	movq	%rax, %rcx	# tmp127,
 	movl	$25, %edx	#,
@@ -250,9 +248,9 @@ main:
 	leaq	.LC13(%rip), %rax	#, tmp130
 	movq	%rax, %rdi	# tmp130,
 	call	func0	#
-# problem83.c:26:     assert(func0("MadaM") == true);
 	testb	%al, %al	# _8
 	jne	.L14	#,
+# problem83.c:26:     assert(func0("MadaM") == true);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp131
 	movq	%rax, %rcx	# tmp131,
 	movl	$26, %edx	#,
@@ -266,9 +264,9 @@ main:
 	leaq	.LC15(%rip), %rax	#, tmp134
 	movq	%rax, %rdi	# tmp134,
 	call	func0	#
-# problem83.c:27:     assert(func0("Wow") == true);
 	testb	%al, %al	# _9
 	jne	.L15	#,
+# problem83.c:27:     assert(func0("Wow") == true);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp135
 	movq	%rax, %rcx	# tmp135,
 	movl	$27, %edx	#,
@@ -282,10 +280,10 @@ main:
 	leaq	.LC17(%rip), %rax	#, tmp138
 	movq	%rax, %rdi	# tmp138,
 	call	func0	#
-# problem83.c:28:     assert(func0("") == false);
 	xorl	$1, %eax	#, _11
 	testb	%al, %al	# _11
 	jne	.L16	#,
+# problem83.c:28:     assert(func0("") == false);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp139
 	movq	%rax, %rcx	# tmp139,
 	movl	$28, %edx	#,
@@ -299,9 +297,9 @@ main:
 	leaq	.LC19(%rip), %rax	#, tmp142
 	movq	%rax, %rdi	# tmp142,
 	call	func0	#
-# problem83.c:29:     assert(func0("HI") == true);
 	testb	%al, %al	# _12
 	jne	.L17	#,
+# problem83.c:29:     assert(func0("HI") == true);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp143
 	movq	%rax, %rcx	# tmp143,
 	movl	$29, %edx	#,
@@ -315,9 +313,9 @@ main:
 	leaq	.LC21(%rip), %rax	#, tmp146
 	movq	%rax, %rdi	# tmp146,
 	call	func0	#
-# problem83.c:30:     assert(func0("go") == true);
 	testb	%al, %al	# _13
 	jne	.L18	#,
+# problem83.c:30:     assert(func0("go") == true);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp147
 	movq	%rax, %rcx	# tmp147,
 	movl	$30, %edx	#,
@@ -331,10 +329,10 @@ main:
 	leaq	.LC23(%rip), %rax	#, tmp150
 	movq	%rax, %rdi	# tmp150,
 	call	func0	#
-# problem83.c:31:     assert(func0("gogo") == false);
 	xorl	$1, %eax	#, _15
 	testb	%al, %al	# _15
 	jne	.L19	#,
+# problem83.c:31:     assert(func0("gogo") == false);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp151
 	movq	%rax, %rcx	# tmp151,
 	movl	$31, %edx	#,
@@ -348,10 +346,10 @@ main:
 	leaq	.LC25(%rip), %rax	#, tmp154
 	movq	%rax, %rdi	# tmp154,
 	call	func0	#
-# problem83.c:32:     assert(func0("aaaaaaaaaaaaaaa") == false);
 	xorl	$1, %eax	#, _17
 	testb	%al, %al	# _17
 	jne	.L20	#,
+# problem83.c:32:     assert(func0("aaaaaaaaaaaaaaa") == false);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp155
 	movq	%rax, %rcx	# tmp155,
 	movl	$32, %edx	#,
@@ -365,9 +363,9 @@ main:
 	leaq	.LC27(%rip), %rax	#, tmp158
 	movq	%rax, %rdi	# tmp158,
 	call	func0	#
-# problem83.c:33:     assert(func0("Madam") == true);
 	testb	%al, %al	# _18
 	jne	.L21	#,
+# problem83.c:33:     assert(func0("Madam") == true);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp159
 	movq	%rax, %rcx	# tmp159,
 	movl	$33, %edx	#,
@@ -381,10 +379,10 @@ main:
 	leaq	.LC29(%rip), %rax	#, tmp162
 	movq	%rax, %rdi	# tmp162,
 	call	func0	#
-# problem83.c:34:     assert(func0("M") == false);
 	xorl	$1, %eax	#, _20
 	testb	%al, %al	# _20
 	jne	.L22	#,
+# problem83.c:34:     assert(func0("M") == false);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp163
 	movq	%rax, %rcx	# tmp163,
 	movl	$34, %edx	#,
@@ -398,10 +396,10 @@ main:
 	leaq	.LC31(%rip), %rax	#, tmp166
 	movq	%rax, %rdi	# tmp166,
 	call	func0	#
-# problem83.c:35:     assert(func0("0") == false);
 	xorl	$1, %eax	#, _22
 	testb	%al, %al	# _22
 	jne	.L23	#,
+# problem83.c:35:     assert(func0("0") == false);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp167
 	movq	%rax, %rcx	# tmp167,
 	movl	$35, %edx	#,
@@ -425,7 +423,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

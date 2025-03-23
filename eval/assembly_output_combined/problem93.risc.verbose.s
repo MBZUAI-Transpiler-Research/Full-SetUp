@@ -1,28 +1,19 @@
 	.file	"problem93.c"
 	.option pic
-	.attribute arch, "rv64i2p1_m2p0_a2p1_f2p2_d2p2_c2p0_zicsr2p0_zifencei2p0"
-	.attribute unaligned_access, 0
-	.attribute stack_align, 16
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (riscv64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (riscv64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-# options passed: -mabi=lp64d -misa-spec=20191213 -march=rv64imafdc_zicsr_zifencei -fstack-protector-strong
+# options passed: -mabi=lp64d -misa-spec=2.2 -march=rv64imafdc -fstack-protector-strong
 	.text
 	.align	1
 	.globl	func0
 	.type	func0, @function
 func0:
-.LFB0:
-	.cfi_startproc
 	addi	sp,sp,-32	#,,
-	.cfi_def_cfa_offset 32
 	sd	ra,24(sp)	#,
 	sd	s0,16(sp)	#,
-	.cfi_offset 1, -8
-	.cfi_offset 8, -16
 	addi	s0,sp,32	#,,
-	.cfi_def_cfa 8, 0
 	fsw	fa0,-20(s0)	# a, a
 	fsw	fa1,-24(s0)	# b, b
 	fsw	fa2,-28(s0)	# c, c
@@ -31,12 +22,11 @@ func0:
 	call	roundf@plt	#
 	fmv.s	fa4,fa0	# _1,
 # problem93.c:5:     if (roundf(a) != a) return 0;
-	flw	fa5,-20(s0)	# tmp142, a
-	feq.s	a5,fa5,fa4	#, tmp143, tmp142, _1
-	bne	a5,zero,.L2	#, tmp143,,
+	flw	fa5,-20(s0)	# tmp80, a
+	feq.s	a5,fa5,fa4	#, tmp81, tmp80, _1
+	bne	a5,zero,.L2	#, tmp81,,
 # problem93.c:5:     if (roundf(a) != a) return 0;
 	li	a5,0		# _7,
-# problem93.c:5:     if (roundf(a) != a) return 0;
 	j	.L3		#
 .L2:
 # problem93.c:6:     if (roundf(b) != b) return 0;
@@ -44,12 +34,11 @@ func0:
 	call	roundf@plt	#
 	fmv.s	fa4,fa0	# _2,
 # problem93.c:6:     if (roundf(b) != b) return 0;
-	flw	fa5,-24(s0)	# tmp144, b
-	feq.s	a5,fa5,fa4	#, tmp145, tmp144, _2
-	bne	a5,zero,.L4	#, tmp145,,
+	flw	fa5,-24(s0)	# tmp82, b
+	feq.s	a5,fa5,fa4	#, tmp83, tmp82, _2
+	bne	a5,zero,.L4	#, tmp83,,
 # problem93.c:6:     if (roundf(b) != b) return 0;
 	li	a5,0		# _7,
-# problem93.c:6:     if (roundf(b) != b) return 0;
 	j	.L3		#
 .L4:
 # problem93.c:7:     if (roundf(c) != c) return 0;
@@ -57,42 +46,40 @@ func0:
 	call	roundf@plt	#
 	fmv.s	fa4,fa0	# _3,
 # problem93.c:7:     if (roundf(c) != c) return 0;
-	flw	fa5,-28(s0)	# tmp146, c
-	feq.s	a5,fa5,fa4	#, tmp147, tmp146, _3
-	bne	a5,zero,.L5	#, tmp147,,
+	flw	fa5,-28(s0)	# tmp84, c
+	feq.s	a5,fa5,fa4	#, tmp85, tmp84, _3
+	bne	a5,zero,.L5	#, tmp85,,
 # problem93.c:7:     if (roundf(c) != c) return 0;
 	li	a5,0		# _7,
-# problem93.c:7:     if (roundf(c) != c) return 0;
 	j	.L3		#
 .L5:
 # problem93.c:8:     if ((a + b == c) || (a + c == b) || (b + c == a)) return 1;
-	flw	fa4,-20(s0)	# tmp148, a
-	flw	fa5,-24(s0)	# tmp149, b
-	fadd.s	fa5,fa4,fa5	# _4, tmp148, tmp149
+	flw	fa4,-20(s0)	# tmp86, a
+	flw	fa5,-24(s0)	# tmp87, b
+	fadd.s	fa5,fa4,fa5	# _4, tmp86, tmp87
 # problem93.c:8:     if ((a + b == c) || (a + c == b) || (b + c == a)) return 1;
-	flw	fa4,-28(s0)	# tmp150, c
-	feq.s	a5,fa4,fa5	#, tmp151, tmp150, _4
-	bne	a5,zero,.L6	#, tmp151,,
+	flw	fa4,-28(s0)	# tmp88, c
+	feq.s	a5,fa4,fa5	#, tmp89, tmp88, _4
+	bne	a5,zero,.L6	#, tmp89,,
 # problem93.c:8:     if ((a + b == c) || (a + c == b) || (b + c == a)) return 1;
-	flw	fa4,-20(s0)	# tmp152, a
-	flw	fa5,-28(s0)	# tmp153, c
-	fadd.s	fa5,fa4,fa5	# _5, tmp152, tmp153
+	flw	fa4,-20(s0)	# tmp90, a
+	flw	fa5,-28(s0)	# tmp91, c
+	fadd.s	fa5,fa4,fa5	# _5, tmp90, tmp91
 # problem93.c:8:     if ((a + b == c) || (a + c == b) || (b + c == a)) return 1;
-	flw	fa4,-24(s0)	# tmp154, b
-	feq.s	a5,fa4,fa5	#, tmp155, tmp154, _5
-	bne	a5,zero,.L6	#, tmp155,,
+	flw	fa4,-24(s0)	# tmp92, b
+	feq.s	a5,fa4,fa5	#, tmp93, tmp92, _5
+	bne	a5,zero,.L6	#, tmp93,,
 # problem93.c:8:     if ((a + b == c) || (a + c == b) || (b + c == a)) return 1;
-	flw	fa4,-24(s0)	# tmp156, b
-	flw	fa5,-28(s0)	# tmp157, c
-	fadd.s	fa5,fa4,fa5	# _6, tmp156, tmp157
+	flw	fa4,-24(s0)	# tmp94, b
+	flw	fa5,-28(s0)	# tmp95, c
+	fadd.s	fa5,fa4,fa5	# _6, tmp94, tmp95
 # problem93.c:8:     if ((a + b == c) || (a + c == b) || (b + c == a)) return 1;
-	flw	fa4,-20(s0)	# tmp158, a
-	feq.s	a5,fa4,fa5	#, tmp159, tmp158, _6
-	beq	a5,zero,.L7	#, tmp159,,
+	flw	fa4,-20(s0)	# tmp96, a
+	feq.s	a5,fa4,fa5	#, tmp97, tmp96, _6
+	beq	a5,zero,.L7	#, tmp97,,
 .L6:
 # problem93.c:8:     if ((a + b == c) || (a + c == b) || (b + c == a)) return 1;
 	li	a5,1		# _7,
-# problem93.c:8:     if ((a + b == c) || (a + c == b) || (b + c == a)) return 1;
 	j	.L3		#
 .L7:
 # problem93.c:9:     return 0;
@@ -101,15 +88,9 @@ func0:
 # problem93.c:10: }
 	mv	a0,a5	#, <retval>
 	ld	ra,24(sp)		#,
-	.cfi_restore 1
 	ld	s0,16(sp)		#,
-	.cfi_restore 8
-	.cfi_def_cfa 2, 32
 	addi	sp,sp,32	#,,
-	.cfi_def_cfa_offset 0
 	jr	ra		#
-	.cfi_endproc
-.LFE0:
 	.size	func0, .-func0
 	.section	.rodata
 	.align	3
@@ -150,32 +131,26 @@ func0:
 	.globl	main
 	.type	main, @function
 main:
-.LFB1:
-	.cfi_startproc
 	addi	sp,sp,-16	#,,
-	.cfi_def_cfa_offset 16
 	sd	ra,8(sp)	#,
 	sd	s0,0(sp)	#,
-	.cfi_offset 1, -8
-	.cfi_offset 8, -16
 	addi	s0,sp,16	#,,
-	.cfi_def_cfa 8, 0
 # problem93.c:17:     assert(func0(2, 3, 1) == 1);
-	lla	a5,.LC0	# tmp147,
-	flw	fa3,0(a5)	# tmp146,
-	lla	a5,.LC1	# tmp149,
-	flw	fa4,0(a5)	# tmp148,
-	lla	a5,.LC2	# tmp151,
-	flw	fa5,0(a5)	# tmp150,
-	fmv.s	fa2,fa3	#, tmp146
-	fmv.s	fa1,fa4	#, tmp148
-	fmv.s	fa0,fa5	#, tmp150
+	lla	a5,.LC0	# tmp85,
+	flw	fa3,0(a5)	# tmp84,
+	lla	a5,.LC1	# tmp87,
+	flw	fa4,0(a5)	# tmp86,
+	lla	a5,.LC2	# tmp89,
+	flw	fa5,0(a5)	# tmp88,
+	fmv.s	fa2,fa3	#, tmp84
+	fmv.s	fa1,fa4	#, tmp86
+	fmv.s	fa0,fa5	#, tmp88
 	call	func0		#
-	mv	a5,a0	# tmp152,
+	mv	a5,a0	# tmp90,
+	mv	a4,a5	# tmp91, _1
+	li	a5,1		# tmp92,
+	beq	a4,a5,.L9	#, tmp91, tmp92,
 # problem93.c:17:     assert(func0(2, 3, 1) == 1);
-	mv	a4,a5	# tmp153, _1
-	li	a5,1		# tmp154,
-	beq	a4,a5,.L9	#, tmp153, tmp154,
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,17		#,
 	lla	a1,.LC3	#,
@@ -183,19 +158,19 @@ main:
 	call	__assert_fail@plt	#
 .L9:
 # problem93.c:18:     assert(func0(2.5, 2, 3) == 0);
-	lla	a5,.LC1	# tmp156,
-	flw	fa3,0(a5)	# tmp155,
-	lla	a5,.LC2	# tmp158,
-	flw	fa4,0(a5)	# tmp157,
-	lla	a5,.LC5	# tmp160,
-	flw	fa5,0(a5)	# tmp159,
-	fmv.s	fa2,fa3	#, tmp155
-	fmv.s	fa1,fa4	#, tmp157
-	fmv.s	fa0,fa5	#, tmp159
+	lla	a5,.LC1	# tmp94,
+	flw	fa3,0(a5)	# tmp93,
+	lla	a5,.LC2	# tmp96,
+	flw	fa4,0(a5)	# tmp95,
+	lla	a5,.LC5	# tmp98,
+	flw	fa5,0(a5)	# tmp97,
+	fmv.s	fa2,fa3	#, tmp93
+	fmv.s	fa1,fa4	#, tmp95
+	fmv.s	fa0,fa5	#, tmp97
 	call	func0		#
-	mv	a5,a0	# tmp161,
-# problem93.c:18:     assert(func0(2.5, 2, 3) == 0);
+	mv	a5,a0	# tmp99,
 	beq	a5,zero,.L10	#, _2,,
+# problem93.c:18:     assert(func0(2.5, 2, 3) == 0);
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,18		#,
 	lla	a1,.LC3	#,
@@ -203,19 +178,19 @@ main:
 	call	__assert_fail@plt	#
 .L10:
 # problem93.c:19:     assert(func0(1.5, 5, 3.5) == 0);
-	lla	a5,.LC7	# tmp163,
-	flw	fa3,0(a5)	# tmp162,
-	lla	a5,.LC8	# tmp165,
-	flw	fa4,0(a5)	# tmp164,
-	lla	a5,.LC9	# tmp167,
-	flw	fa5,0(a5)	# tmp166,
-	fmv.s	fa2,fa3	#, tmp162
-	fmv.s	fa1,fa4	#, tmp164
-	fmv.s	fa0,fa5	#, tmp166
+	lla	a5,.LC7	# tmp101,
+	flw	fa3,0(a5)	# tmp100,
+	lla	a5,.LC8	# tmp103,
+	flw	fa4,0(a5)	# tmp102,
+	lla	a5,.LC9	# tmp105,
+	flw	fa5,0(a5)	# tmp104,
+	fmv.s	fa2,fa3	#, tmp100
+	fmv.s	fa1,fa4	#, tmp102
+	fmv.s	fa0,fa5	#, tmp104
 	call	func0		#
-	mv	a5,a0	# tmp168,
-# problem93.c:19:     assert(func0(1.5, 5, 3.5) == 0);
+	mv	a5,a0	# tmp106,
 	beq	a5,zero,.L11	#, _3,,
+# problem93.c:19:     assert(func0(1.5, 5, 3.5) == 0);
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,19		#,
 	lla	a1,.LC3	#,
@@ -223,19 +198,19 @@ main:
 	call	__assert_fail@plt	#
 .L11:
 # problem93.c:20:     assert(func0(2, 6, 2) == 0);
-	lla	a5,.LC2	# tmp170,
-	flw	fa3,0(a5)	# tmp169,
-	lla	a5,.LC11	# tmp172,
-	flw	fa4,0(a5)	# tmp171,
-	lla	a5,.LC2	# tmp174,
-	flw	fa5,0(a5)	# tmp173,
-	fmv.s	fa2,fa3	#, tmp169
-	fmv.s	fa1,fa4	#, tmp171
-	fmv.s	fa0,fa5	#, tmp173
+	lla	a5,.LC2	# tmp108,
+	flw	fa3,0(a5)	# tmp107,
+	lla	a5,.LC11	# tmp110,
+	flw	fa4,0(a5)	# tmp109,
+	lla	a5,.LC2	# tmp112,
+	flw	fa5,0(a5)	# tmp111,
+	fmv.s	fa2,fa3	#, tmp107
+	fmv.s	fa1,fa4	#, tmp109
+	fmv.s	fa0,fa5	#, tmp111
 	call	func0		#
-	mv	a5,a0	# tmp175,
-# problem93.c:20:     assert(func0(2, 6, 2) == 0);
+	mv	a5,a0	# tmp113,
 	beq	a5,zero,.L12	#, _4,,
+# problem93.c:20:     assert(func0(2, 6, 2) == 0);
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,20		#,
 	lla	a1,.LC3	#,
@@ -243,21 +218,21 @@ main:
 	call	__assert_fail@plt	#
 .L12:
 # problem93.c:21:     assert(func0(4, 2, 2) == 1);
-	lla	a5,.LC2	# tmp177,
-	flw	fa3,0(a5)	# tmp176,
-	lla	a5,.LC2	# tmp179,
-	flw	fa4,0(a5)	# tmp178,
-	lla	a5,.LC13	# tmp181,
-	flw	fa5,0(a5)	# tmp180,
-	fmv.s	fa2,fa3	#, tmp176
-	fmv.s	fa1,fa4	#, tmp178
-	fmv.s	fa0,fa5	#, tmp180
+	lla	a5,.LC2	# tmp115,
+	flw	fa3,0(a5)	# tmp114,
+	lla	a5,.LC2	# tmp117,
+	flw	fa4,0(a5)	# tmp116,
+	lla	a5,.LC13	# tmp119,
+	flw	fa5,0(a5)	# tmp118,
+	fmv.s	fa2,fa3	#, tmp114
+	fmv.s	fa1,fa4	#, tmp116
+	fmv.s	fa0,fa5	#, tmp118
 	call	func0		#
-	mv	a5,a0	# tmp182,
+	mv	a5,a0	# tmp120,
+	mv	a4,a5	# tmp121, _5
+	li	a5,1		# tmp122,
+	beq	a4,a5,.L13	#, tmp121, tmp122,
 # problem93.c:21:     assert(func0(4, 2, 2) == 1);
-	mv	a4,a5	# tmp183, _5
-	li	a5,1		# tmp184,
-	beq	a4,a5,.L13	#, tmp183, tmp184,
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,21		#,
 	lla	a1,.LC3	#,
@@ -265,19 +240,19 @@ main:
 	call	__assert_fail@plt	#
 .L13:
 # problem93.c:22:     assert(func0(2.2, 2.2, 2.2) == 0);
-	lla	a5,.LC15	# tmp186,
-	flw	fa3,0(a5)	# tmp185,
-	lla	a5,.LC15	# tmp188,
-	flw	fa4,0(a5)	# tmp187,
-	lla	a5,.LC15	# tmp190,
-	flw	fa5,0(a5)	# tmp189,
-	fmv.s	fa2,fa3	#, tmp185
-	fmv.s	fa1,fa4	#, tmp187
-	fmv.s	fa0,fa5	#, tmp189
+	lla	a5,.LC15	# tmp124,
+	flw	fa3,0(a5)	# tmp123,
+	lla	a5,.LC15	# tmp126,
+	flw	fa4,0(a5)	# tmp125,
+	lla	a5,.LC15	# tmp128,
+	flw	fa5,0(a5)	# tmp127,
+	fmv.s	fa2,fa3	#, tmp123
+	fmv.s	fa1,fa4	#, tmp125
+	fmv.s	fa0,fa5	#, tmp127
 	call	func0		#
-	mv	a5,a0	# tmp191,
-# problem93.c:22:     assert(func0(2.2, 2.2, 2.2) == 0);
+	mv	a5,a0	# tmp129,
 	beq	a5,zero,.L14	#, _6,,
+# problem93.c:22:     assert(func0(2.2, 2.2, 2.2) == 0);
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,22		#,
 	lla	a1,.LC3	#,
@@ -285,21 +260,21 @@ main:
 	call	__assert_fail@plt	#
 .L14:
 # problem93.c:23:     assert(func0(-4, 6, 2) == 1);
-	lla	a5,.LC2	# tmp193,
-	flw	fa3,0(a5)	# tmp192,
-	lla	a5,.LC11	# tmp195,
-	flw	fa4,0(a5)	# tmp194,
-	lla	a5,.LC17	# tmp197,
-	flw	fa5,0(a5)	# tmp196,
-	fmv.s	fa2,fa3	#, tmp192
-	fmv.s	fa1,fa4	#, tmp194
-	fmv.s	fa0,fa5	#, tmp196
+	lla	a5,.LC2	# tmp131,
+	flw	fa3,0(a5)	# tmp130,
+	lla	a5,.LC11	# tmp133,
+	flw	fa4,0(a5)	# tmp132,
+	lla	a5,.LC17	# tmp135,
+	flw	fa5,0(a5)	# tmp134,
+	fmv.s	fa2,fa3	#, tmp130
+	fmv.s	fa1,fa4	#, tmp132
+	fmv.s	fa0,fa5	#, tmp134
 	call	func0		#
-	mv	a5,a0	# tmp198,
+	mv	a5,a0	# tmp136,
+	mv	a4,a5	# tmp137, _7
+	li	a5,1		# tmp138,
+	beq	a4,a5,.L15	#, tmp137, tmp138,
 # problem93.c:23:     assert(func0(-4, 6, 2) == 1);
-	mv	a4,a5	# tmp199, _7
-	li	a5,1		# tmp200,
-	beq	a4,a5,.L15	#, tmp199, tmp200,
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,23		#,
 	lla	a1,.LC3	#,
@@ -307,21 +282,21 @@ main:
 	call	__assert_fail@plt	#
 .L15:
 # problem93.c:24:     assert(func0(2, 1, 1) == 1);
-	lla	a5,.LC0	# tmp202,
-	flw	fa3,0(a5)	# tmp201,
-	lla	a5,.LC0	# tmp204,
-	flw	fa4,0(a5)	# tmp203,
-	lla	a5,.LC2	# tmp206,
-	flw	fa5,0(a5)	# tmp205,
-	fmv.s	fa2,fa3	#, tmp201
-	fmv.s	fa1,fa4	#, tmp203
-	fmv.s	fa0,fa5	#, tmp205
+	lla	a5,.LC0	# tmp140,
+	flw	fa3,0(a5)	# tmp139,
+	lla	a5,.LC0	# tmp142,
+	flw	fa4,0(a5)	# tmp141,
+	lla	a5,.LC2	# tmp144,
+	flw	fa5,0(a5)	# tmp143,
+	fmv.s	fa2,fa3	#, tmp139
+	fmv.s	fa1,fa4	#, tmp141
+	fmv.s	fa0,fa5	#, tmp143
 	call	func0		#
-	mv	a5,a0	# tmp207,
+	mv	a5,a0	# tmp145,
+	mv	a4,a5	# tmp146, _8
+	li	a5,1		# tmp147,
+	beq	a4,a5,.L16	#, tmp146, tmp147,
 # problem93.c:24:     assert(func0(2, 1, 1) == 1);
-	mv	a4,a5	# tmp208, _8
-	li	a5,1		# tmp209,
-	beq	a4,a5,.L16	#, tmp208, tmp209,
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,24		#,
 	lla	a1,.LC3	#,
@@ -329,21 +304,21 @@ main:
 	call	__assert_fail@plt	#
 .L16:
 # problem93.c:25:     assert(func0(3, 4, 7) == 1);
-	lla	a5,.LC20	# tmp211,
-	flw	fa3,0(a5)	# tmp210,
-	lla	a5,.LC13	# tmp213,
-	flw	fa4,0(a5)	# tmp212,
-	lla	a5,.LC1	# tmp215,
-	flw	fa5,0(a5)	# tmp214,
-	fmv.s	fa2,fa3	#, tmp210
-	fmv.s	fa1,fa4	#, tmp212
-	fmv.s	fa0,fa5	#, tmp214
+	lla	a5,.LC20	# tmp149,
+	flw	fa3,0(a5)	# tmp148,
+	lla	a5,.LC13	# tmp151,
+	flw	fa4,0(a5)	# tmp150,
+	lla	a5,.LC1	# tmp153,
+	flw	fa5,0(a5)	# tmp152,
+	fmv.s	fa2,fa3	#, tmp148
+	fmv.s	fa1,fa4	#, tmp150
+	fmv.s	fa0,fa5	#, tmp152
 	call	func0		#
-	mv	a5,a0	# tmp216,
+	mv	a5,a0	# tmp154,
+	mv	a4,a5	# tmp155, _9
+	li	a5,1		# tmp156,
+	beq	a4,a5,.L17	#, tmp155, tmp156,
 # problem93.c:25:     assert(func0(3, 4, 7) == 1);
-	mv	a4,a5	# tmp217, _9
-	li	a5,1		# tmp218,
-	beq	a4,a5,.L17	#, tmp217, tmp218,
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,25		#,
 	lla	a1,.LC3	#,
@@ -351,19 +326,19 @@ main:
 	call	__assert_fail@plt	#
 .L17:
 # problem93.c:26:     assert(func0(3.01, 4, 7) == 0);
-	lla	a5,.LC20	# tmp220,
-	flw	fa3,0(a5)	# tmp219,
-	lla	a5,.LC13	# tmp222,
-	flw	fa4,0(a5)	# tmp221,
-	lla	a5,.LC22	# tmp224,
-	flw	fa5,0(a5)	# tmp223,
-	fmv.s	fa2,fa3	#, tmp219
-	fmv.s	fa1,fa4	#, tmp221
-	fmv.s	fa0,fa5	#, tmp223
+	lla	a5,.LC20	# tmp158,
+	flw	fa3,0(a5)	# tmp157,
+	lla	a5,.LC13	# tmp160,
+	flw	fa4,0(a5)	# tmp159,
+	lla	a5,.LC22	# tmp162,
+	flw	fa5,0(a5)	# tmp161,
+	fmv.s	fa2,fa3	#, tmp157
+	fmv.s	fa1,fa4	#, tmp159
+	fmv.s	fa0,fa5	#, tmp161
 	call	func0		#
-	mv	a5,a0	# tmp225,
-# problem93.c:26:     assert(func0(3.01, 4, 7) == 0);
+	mv	a5,a0	# tmp163,
 	beq	a5,zero,.L18	#, _10,,
+# problem93.c:26:     assert(func0(3.01, 4, 7) == 0);
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,26		#,
 	lla	a1,.LC3	#,
@@ -375,15 +350,9 @@ main:
 # problem93.c:29: }
 	mv	a0,a5	#, <retval>
 	ld	ra,8(sp)		#,
-	.cfi_restore 1
 	ld	s0,0(sp)		#,
-	.cfi_restore 8
-	.cfi_def_cfa 2, 16
 	addi	sp,sp,16	#,,
-	.cfi_def_cfa_offset 0
 	jr	ra		#
-	.cfi_endproc
-.LFE1:
 	.size	main, .-main
 	.section	.rodata
 	.align	3
@@ -430,5 +399,5 @@ __PRETTY_FUNCTION__.0:
 	.align	2
 .LC22:
 	.word	1077978071
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

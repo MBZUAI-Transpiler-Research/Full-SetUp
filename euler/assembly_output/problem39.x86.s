@@ -58,8 +58,8 @@ main:
 	cmpl	%eax, -28(%rbp)
 	jb	.L7
 	movl	-16(%rbp), %eax
-	cmpl	%eax, -12(%rbp)
-	jnb	.L8
+	cmpl	-12(%rbp), %eax
+	jbe	.L8
 	movl	-16(%rbp), %eax
 	movl	%eax, -12(%rbp)
 	movl	-20(%rbp), %eax
@@ -82,7 +82,7 @@ main:
 	.cfi_endproc
 .LFE0:
 	.size	main, .-main
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

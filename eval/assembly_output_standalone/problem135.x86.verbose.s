@@ -1,6 +1,6 @@
 	.file	"code.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -29,7 +29,6 @@ func0:
 	jne	.L2	#,
 # eval/problem135//code.c:7:     if (len == 0) return 0;
 	movl	$0, %eax	#, _26
-# eval/problem135//code.c:7:     if (len == 0) return 0;
 	jmp	.L3	#
 .L2:
 # eval/problem135//code.c:8:     char last_char = txt[len - 1];
@@ -43,12 +42,11 @@ func0:
 	movb	%al, -6(%rbp)	# tmp112, last_char
 # eval/problem135//code.c:9:     if (!isalpha((unsigned char)last_char)) return 0;
 	call	__ctype_b_loc@PLT	#
-# eval/problem135//code.c:9:     if (!isalpha((unsigned char)last_char)) return 0;
-	movq	(%rax), %rax	# *_5, _6
-	movzbl	-6(%rbp), %edx	# last_char, last_char.0_7
-	movzbl	%dl, %edx	# last_char.0_7, _8
-	addq	%rdx, %rdx	# _9
-	addq	%rdx, %rax	# _9, _10
+	movq	(%rax), %rdx	# *_5, _6
+	movzbl	-6(%rbp), %eax	# last_char, last_char.0_7
+	movzbl	%al, %eax	# last_char.0_7, _8
+	addq	%rax, %rax	# _9
+	addq	%rdx, %rax	# _6, _10
 	movzwl	(%rax), %eax	# *_10, _11
 	movzwl	%ax, %eax	# _11, _12
 	andl	$1024, %eax	#, _13
@@ -57,7 +55,6 @@ func0:
 	jne	.L4	#,
 # eval/problem135//code.c:9:     if (!isalpha((unsigned char)last_char)) return 0;
 	movl	$0, %eax	#, _26
-# eval/problem135//code.c:9:     if (!isalpha((unsigned char)last_char)) return 0;
 	jmp	.L3	#
 .L4:
 # eval/problem135//code.c:10:     if (len == 1) return 1;
@@ -65,7 +62,6 @@ func0:
 	jne	.L5	#,
 # eval/problem135//code.c:10:     if (len == 1) return 1;
 	movl	$1, %eax	#, _26
-# eval/problem135//code.c:10:     if (len == 1) return 1;
 	jmp	.L3	#
 .L5:
 # eval/problem135//code.c:11:     char second_last_char = txt[len - 2];
@@ -79,12 +75,11 @@ func0:
 	movb	%al, -5(%rbp)	# tmp115, second_last_char
 # eval/problem135//code.c:12:     if (isalpha((unsigned char)second_last_char)) return 0;
 	call	__ctype_b_loc@PLT	#
-# eval/problem135//code.c:12:     if (isalpha((unsigned char)second_last_char)) return 0;
-	movq	(%rax), %rax	# *_17, _18
-	movzbl	-5(%rbp), %edx	# second_last_char, second_last_char.1_19
-	movzbl	%dl, %edx	# second_last_char.1_19, _20
-	addq	%rdx, %rdx	# _21
-	addq	%rdx, %rax	# _21, _22
+	movq	(%rax), %rdx	# *_17, _18
+	movzbl	-5(%rbp), %eax	# second_last_char, second_last_char.1_19
+	movzbl	%al, %eax	# second_last_char.1_19, _20
+	addq	%rax, %rax	# _21
+	addq	%rdx, %rax	# _18, _22
 	movzwl	(%rax), %eax	# *_22, _23
 	movzwl	%ax, %eax	# _23, _24
 	andl	$1024, %eax	#, _25
@@ -93,7 +88,6 @@ func0:
 	je	.L6	#,
 # eval/problem135//code.c:12:     if (isalpha((unsigned char)second_last_char)) return 0;
 	movl	$0, %eax	#, _26
-# eval/problem135//code.c:12:     if (isalpha((unsigned char)second_last_char)) return 0;
 	jmp	.L3	#
 .L6:
 # eval/problem135//code.c:13:     return 1;
@@ -106,7 +100,7 @@ func0:
 	.cfi_endproc
 .LFE0:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

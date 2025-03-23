@@ -1,6 +1,6 @@
 	.file	"problem17.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -23,7 +23,7 @@ main:
 	subq	$176, %rsp	#,
 # problem17.c:9: {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp165
-	movq	%rax, -8(%rbp)	# tmp165, D.3219
+	movq	%rax, -8(%rbp)	# tmp165, D.2389
 	xorl	%eax, %eax	# tmp165
 # problem17.c:11:   unsigned s1[] = { 0, 3, 3, 5, 4, 4, 3, 5, 5, 4 };
 	movl	$0, -144(%rbp)	#, s1[0]
@@ -229,10 +229,12 @@ main:
 	imulq	$1717986919, %rdx, %rdx	#, tmp146, tmp147
 	shrq	$32, %rdx	#, tmp148
 	sarl	$2, %edx	#, tmp149
-	sarl	$31, %eax	#, tmp150
-	subl	%eax, %edx	# tmp150, _23
+	sarl	$31, %eax	#, tmp145
+	movl	%eax, %esi	# tmp145, tmp150
+	movl	%edx, %eax	# tmp149, tmp149
+	subl	%esi, %eax	# tmp150, tmp149
 # problem17.c:52:       sum += s1[i] + hundred + and + s3[j/10] + s1[j%10];
-	movslq	%edx, %rax	# _23, tmp151
+	cltq
 	movl	-48(%rbp,%rax,4), %eax	# s3[_23], _24
 # problem17.c:52:       sum += s1[i] + hundred + and + s3[j/10] + s1[j%10];
 	leal	(%rcx,%rax), %esi	#, _25
@@ -241,11 +243,11 @@ main:
 	movslq	%ecx, %rax	# tmp152, tmp153
 	imulq	$1717986919, %rax, %rax	#, tmp153, tmp154
 	shrq	$32, %rax	#, tmp155
-	movl	%eax, %edx	# tmp155, tmp156
-	sarl	$2, %edx	#, tmp156
-	movl	%ecx, %eax	# tmp152, tmp157
-	sarl	$31, %eax	#, tmp157
-	subl	%eax, %edx	# tmp157, _26
+	sarl	$2, %eax	#, tmp156
+	movl	%ecx, %edi	# tmp152, tmp157
+	sarl	$31, %edi	#, tmp157
+	subl	%edi, %eax	# tmp157, tmp156
+	movl	%eax, %edx	# tmp156, _26
 	movl	%edx, %eax	# _26, tmp158
 	sall	$2, %eax	#, tmp158
 	addl	%edx, %eax	# _26, tmp158
@@ -288,7 +290,7 @@ main:
 # problem17.c:60:   return 0;
 	movl	$0, %eax	#, _86
 # problem17.c:61: }
-	movq	-8(%rbp), %rdx	# D.3219, tmp166
+	movq	-8(%rbp), %rdx	# D.2389, tmp166
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp166
 	je	.L17	#,
 	call	__stack_chk_fail@PLT	#
@@ -299,7 +301,7 @@ main:
 	.cfi_endproc
 .LFE0:
 	.size	main, .-main
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

@@ -1,6 +1,6 @@
 	.file	"problem127.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -23,7 +23,6 @@ func0:
 	jne	.L2	#,
 # problem127.c:5:     if (lst_size == 0) return true;
 	movl	$1, %eax	#, _29
-# problem127.c:5:     if (lst_size == 0) return true;
 	jmp	.L3	#
 .L2:
 # problem127.c:7:     for (int i = 1; i < lst_size; i++) {
@@ -51,7 +50,6 @@ func0:
 	jge	.L5	#,
 # problem127.c:8:         if (lst[i] < lst[i - 1]) return false;
 	movl	$0, %eax	#, _29
-# problem127.c:8:         if (lst[i] < lst[i - 1]) return false;
 	jmp	.L3	#
 .L5:
 # problem127.c:9:         if (i >= 2 && lst[i] == lst[i - 1] && lst[i] == lst[i - 2]) return false;
@@ -95,7 +93,6 @@ func0:
 	jne	.L6	#,
 # problem127.c:9:         if (i >= 2 && lst[i] == lst[i - 1] && lst[i] == lst[i - 2]) return false;
 	movl	$0, %eax	#, _29
-# problem127.c:9:         if (i >= 2 && lst[i] == lst[i - 1] && lst[i] == lst[i - 2]) return false;
 	jmp	.L3	#
 .L6:
 # problem127.c:7:     for (int i = 1; i < lst_size; i++) {
@@ -159,7 +156,7 @@ main:
 	subq	$320, %rsp	#,
 # problem127.c:20: int main() {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp154
-	movq	%rax, -8(%rbp)	# tmp154, D.3274
+	movq	%rax, -8(%rbp)	# tmp154, D.2444
 	xorl	%eax, %eax	# tmp154
 # problem127.c:21:     int list1[] = {5};
 	movl	$5, -308(%rbp)	#, list1[0]
@@ -168,9 +165,9 @@ main:
 	movl	$1, %esi	#,
 	movq	%rax, %rdi	# tmp102,
 	call	func0	#
-# problem127.c:22:     assert(func0(list1, 1) == true);
 	testb	%al, %al	# _1
 	jne	.L9	#,
+# problem127.c:22:     assert(func0(list1, 1) == true);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp103
 	movq	%rax, %rcx	# tmp103,
 	movl	$22, %edx	#,
@@ -191,9 +188,9 @@ main:
 	movl	$5, %esi	#,
 	movq	%rax, %rdi	# tmp106,
 	call	func0	#
-# problem127.c:25:     assert(func0(list2, 5) == true);
 	testb	%al, %al	# _2
 	jne	.L10	#,
+# problem127.c:25:     assert(func0(list2, 5) == true);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp107
 	movq	%rax, %rcx	# tmp107,
 	movl	$25, %edx	#,
@@ -214,10 +211,10 @@ main:
 	movl	$5, %esi	#,
 	movq	%rax, %rdi	# tmp110,
 	call	func0	#
-# problem127.c:28:     assert(func0(list3, 5) == false);
 	xorl	$1, %eax	#, _4
 	testb	%al, %al	# _4
 	jne	.L11	#,
+# problem127.c:28:     assert(func0(list3, 5) == false);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp111
 	movq	%rax, %rcx	# tmp111,
 	movl	$28, %edx	#,
@@ -239,9 +236,9 @@ main:
 	movl	$6, %esi	#,
 	movq	%rax, %rdi	# tmp114,
 	call	func0	#
-# problem127.c:31:     assert(func0(list4, 6) == true);
 	testb	%al, %al	# _5
 	jne	.L12	#,
+# problem127.c:31:     assert(func0(list4, 6) == true);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp115
 	movq	%rax, %rcx	# tmp115,
 	movl	$31, %edx	#,
@@ -264,9 +261,9 @@ main:
 	movl	$7, %esi	#,
 	movq	%rax, %rdi	# tmp118,
 	call	func0	#
-# problem127.c:34:     assert(func0(list5, 7) == true);
 	testb	%al, %al	# _6
 	jne	.L13	#,
+# problem127.c:34:     assert(func0(list5, 7) == true);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp119
 	movq	%rax, %rcx	# tmp119,
 	movl	$34, %edx	#,
@@ -289,10 +286,10 @@ main:
 	movl	$7, %esi	#,
 	movq	%rax, %rdi	# tmp122,
 	call	func0	#
-# problem127.c:37:     assert(func0(list6, 7) == false);
 	xorl	$1, %eax	#, _8
 	testb	%al, %al	# _8
 	jne	.L14	#,
+# problem127.c:37:     assert(func0(list6, 7) == false);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp123
 	movq	%rax, %rcx	# tmp123,
 	movl	$37, %edx	#,
@@ -306,9 +303,9 @@ main:
 	movl	$0, %esi	#,
 	movl	$0, %edi	#,
 	call	func0	#
-# problem127.c:39:     assert(func0(NULL, 0) == true);
 	testb	%al, %al	# _9
 	jne	.L15	#,
+# problem127.c:39:     assert(func0(NULL, 0) == true);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp126
 	movq	%rax, %rcx	# tmp126,
 	movl	$39, %edx	#,
@@ -325,9 +322,9 @@ main:
 	movl	$1, %esi	#,
 	movq	%rax, %rdi	# tmp129,
 	call	func0	#
-# problem127.c:42:     assert(func0(list7, 1) == true);
 	testb	%al, %al	# _10
 	jne	.L16	#,
+# problem127.c:42:     assert(func0(list7, 1) == true);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp130
 	movq	%rax, %rcx	# tmp130,
 	movl	$42, %edx	#,
@@ -346,10 +343,10 @@ main:
 	movl	$3, %esi	#,
 	movq	%rax, %rdi	# tmp133,
 	call	func0	#
-# problem127.c:45:     assert(func0(list8, 3) == false);
 	xorl	$1, %eax	#, _12
 	testb	%al, %al	# _12
 	jne	.L17	#,
+# problem127.c:45:     assert(func0(list8, 3) == false);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp134
 	movq	%rax, %rcx	# tmp134,
 	movl	$45, %edx	#,
@@ -371,10 +368,10 @@ main:
 	movl	$6, %esi	#,
 	movq	%rax, %rdi	# tmp137,
 	call	func0	#
-# problem127.c:48:     assert(func0(list9, 6) == false);
 	xorl	$1, %eax	#, _14
 	testb	%al, %al	# _14
 	jne	.L18	#,
+# problem127.c:48:     assert(func0(list9, 6) == false);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp138
 	movq	%rax, %rcx	# tmp138,
 	movl	$48, %edx	#,
@@ -396,10 +393,10 @@ main:
 	movl	$6, %esi	#,
 	movq	%rax, %rdi	# tmp141,
 	call	func0	#
-# problem127.c:51:     assert(func0(list10, 6) == false);
 	xorl	$1, %eax	#, _16
 	testb	%al, %al	# _16
 	jne	.L19	#,
+# problem127.c:51:     assert(func0(list10, 6) == false);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp142
 	movq	%rax, %rcx	# tmp142,
 	movl	$51, %edx	#,
@@ -421,9 +418,9 @@ main:
 	movl	$6, %esi	#,
 	movq	%rax, %rdi	# tmp145,
 	call	func0	#
-# problem127.c:54:     assert(func0(list11, 6) == true);
 	testb	%al, %al	# _17
 	jne	.L20	#,
+# problem127.c:54:     assert(func0(list11, 6) == true);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp146
 	movq	%rax, %rcx	# tmp146,
 	movl	$54, %edx	#,
@@ -443,9 +440,9 @@ main:
 	movl	$4, %esi	#,
 	movq	%rax, %rdi	# tmp149,
 	call	func0	#
-# problem127.c:57:     assert(func0(list12, 4) == true);
 	testb	%al, %al	# _18
 	jne	.L21	#,
+# problem127.c:57:     assert(func0(list12, 4) == true);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp150
 	movq	%rax, %rcx	# tmp150,
 	movl	$57, %edx	#,
@@ -458,7 +455,7 @@ main:
 # problem127.c:59:     return 0;
 	movl	$0, %eax	#, _103
 # problem127.c:60: }
-	movq	-8(%rbp), %rdx	# D.3274, tmp155
+	movq	-8(%rbp), %rdx	# D.2444, tmp155
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp155
 	je	.L23	#,
 	call	__stack_chk_fail@PLT	#
@@ -474,7 +471,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

@@ -1,7 +1,7 @@
 	.arch armv8-a
 	.file	"code.c"
-// GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (aarch64-linux-gnu)
-//	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+// GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (aarch64-linux-gnu)
+//	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 // GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 // options passed: -mlittle-endian -mabi=lp64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection
@@ -32,7 +32,6 @@ func0:
 .L6:
 // eval/problem162//code.c:9:         if (isalpha((unsigned char)s[i])) {
 	bl	__ctype_b_loc		//
-// eval/problem162//code.c:9:         if (isalpha((unsigned char)s[i])) {
 	ldr	x1, [x0]	// _3, *_2
 	ldrsw	x0, [sp, 52]	// _4, i
 	ldr	x2, [sp, 24]	// tmp159, s
@@ -48,7 +47,6 @@ func0:
 	beq	.L3		//,
 // eval/problem162//code.c:10:             if (isupper((unsigned char)s[i])) s[i] = tolower((unsigned char)s[i]);
 	bl	__ctype_b_loc		//
-// eval/problem162//code.c:10:             if (isupper((unsigned char)s[i])) s[i] = tolower((unsigned char)s[i]);
 	ldr	x1, [x0]	// _14, *_13
 	ldrsw	x0, [sp, 52]	// _15, i
 	ldr	x2, [sp, 24]	// tmp160, s
@@ -81,7 +79,6 @@ func0:
 .L4:
 // eval/problem162//code.c:11:             else if (islower((unsigned char)s[i])) s[i] = toupper((unsigned char)s[i]);
 	bl	__ctype_b_loc		//
-// eval/problem162//code.c:11:             else if (islower((unsigned char)s[i])) s[i] = toupper((unsigned char)s[i]);
 	ldr	x1, [x0]	// _33, *_32
 	ldrsw	x0, [sp, 52]	// _34, i
 	ldr	x2, [sp, 24]	// tmp164, s
@@ -200,5 +197,5 @@ func0:
 	.cfi_endproc
 .LFE0:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

@@ -1,44 +1,34 @@
 	.file	"problem125.c"
 	.option pic
-	.attribute arch, "rv64i2p1_m2p0_a2p1_f2p2_d2p2_c2p0_zicsr2p0_zifencei2p0"
-	.attribute unaligned_access, 0
-	.attribute stack_align, 16
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (riscv64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (riscv64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-# options passed: -mabi=lp64d -misa-spec=20191213 -march=rv64imafdc_zicsr_zifencei -fstack-protector-strong
+# options passed: -mabi=lp64d -misa-spec=2.2 -march=rv64imafdc -fstack-protector-strong
 	.text
 	.align	1
 	.globl	func0
 	.type	func0, @function
 func0:
-.LFB6:
-	.cfi_startproc
 	addi	sp,sp,-80	#,,
-	.cfi_def_cfa_offset 80
 	sd	ra,72(sp)	#,
 	sd	s0,64(sp)	#,
-	.cfi_offset 1, -8
-	.cfi_offset 8, -16
 	addi	s0,sp,80	#,,
-	.cfi_def_cfa 8, 0
 	sd	a0,-72(s0)	# date, date
 # problem125.c:5: int func0(const char *date) {
-	la	a5,__stack_chk_guard		# tmp161,
-	ld	a4, 0(a5)	# tmp246, __stack_chk_guard
-	sd	a4, -24(s0)	# tmp246, D.3558
-	li	a4, 0	# tmp246
+	la	a5,__stack_chk_guard		# tmp99,
+	ld	a4, 0(a5)	# tmp184, __stack_chk_guard
+	sd	a4, -24(s0)	# tmp184, D.2706
+	li	a4, 0	# tmp184
 # problem125.c:8:     if (strlen(date) != 10) return 0;
 	ld	a0,-72(s0)		#, date
 	call	strlen@plt	#
 	mv	a4,a0	# _1,
 # problem125.c:8:     if (strlen(date) != 10) return 0;
-	li	a5,10		# tmp162,
-	beq	a4,a5,.L2	#, _1, tmp162,
+	li	a5,10		# tmp100,
+	beq	a4,a5,.L2	#, _1, tmp100,
 # problem125.c:8:     if (strlen(date) != 10) return 0;
 	li	a5,0		# _27,
-# problem125.c:8:     if (strlen(date) != 10) return 0;
 	j	.L18		#
 .L2:
 # problem125.c:9:     for (int i = 0; i < 10; i++) {
@@ -47,206 +37,200 @@ func0:
 	j	.L4		#
 .L10:
 # problem125.c:10:         if (i == 2 || i == 5) {
-	lw	a5,-64(s0)		# tmp164, i
-	sext.w	a4,a5	# tmp165, tmp163
-	li	a5,2		# tmp166,
-	beq	a4,a5,.L5	#, tmp165, tmp166,
+	lw	a5,-64(s0)		# tmp102, i
+	sext.w	a4,a5	# tmp103, tmp101
+	li	a5,2		# tmp104,
+	beq	a4,a5,.L5	#, tmp103, tmp104,
 # problem125.c:10:         if (i == 2 || i == 5) {
-	lw	a5,-64(s0)		# tmp168, i
-	sext.w	a4,a5	# tmp169, tmp167
-	li	a5,5		# tmp170,
-	bne	a4,a5,.L6	#, tmp169, tmp170,
+	lw	a5,-64(s0)		# tmp106, i
+	sext.w	a4,a5	# tmp107, tmp105
+	li	a5,5		# tmp108,
+	bne	a4,a5,.L6	#, tmp107, tmp108,
 .L5:
 # problem125.c:11:             if (date[i] != '-') return 0;
 	lw	a5,-64(s0)		# _2, i
-	ld	a4,-72(s0)		# tmp171, date
-	add	a5,a4,a5	# _2, _3, tmp171
+	ld	a4,-72(s0)		# tmp109, date
+	add	a5,a4,a5	# _2, _3, tmp109
 	lbu	a5,0(a5)	# _4, *_3
 # problem125.c:11:             if (date[i] != '-') return 0;
-	mv	a4,a5	# tmp172, _4
-	li	a5,45		# tmp173,
-	beq	a4,a5,.L8	#, tmp172, tmp173,
+	mv	a4,a5	# tmp110, _4
+	li	a5,45		# tmp111,
+	beq	a4,a5,.L8	#, tmp110, tmp111,
 # problem125.c:11:             if (date[i] != '-') return 0;
 	li	a5,0		# _27,
-# problem125.c:11:             if (date[i] != '-') return 0;
 	j	.L18		#
 .L6:
 # problem125.c:13:             if (date[i] < '0' || date[i] > '9') return 0;
 	lw	a5,-64(s0)		# _5, i
-	ld	a4,-72(s0)		# tmp174, date
-	add	a5,a4,a5	# _5, _6, tmp174
+	ld	a4,-72(s0)		# tmp112, date
+	add	a5,a4,a5	# _5, _6, tmp112
 	lbu	a5,0(a5)	# _7, *_6
 # problem125.c:13:             if (date[i] < '0' || date[i] > '9') return 0;
-	mv	a4,a5	# tmp175, _7
-	li	a5,47		# tmp176,
-	bleu	a4,a5,.L9	#, tmp175, tmp176,
+	mv	a4,a5	# tmp113, _7
+	li	a5,47		# tmp114,
+	bleu	a4,a5,.L9	#, tmp113, tmp114,
 # problem125.c:13:             if (date[i] < '0' || date[i] > '9') return 0;
 	lw	a5,-64(s0)		# _8, i
-	ld	a4,-72(s0)		# tmp177, date
-	add	a5,a4,a5	# _8, _9, tmp177
+	ld	a4,-72(s0)		# tmp115, date
+	add	a5,a4,a5	# _8, _9, tmp115
 	lbu	a5,0(a5)	# _10, *_9
 # problem125.c:13:             if (date[i] < '0' || date[i] > '9') return 0;
-	mv	a4,a5	# tmp178, _10
-	li	a5,57		# tmp179,
-	bleu	a4,a5,.L8	#, tmp178, tmp179,
+	mv	a4,a5	# tmp116, _10
+	li	a5,57		# tmp117,
+	bleu	a4,a5,.L8	#, tmp116, tmp117,
 .L9:
 # problem125.c:13:             if (date[i] < '0' || date[i] > '9') return 0;
 	li	a5,0		# _27,
-# problem125.c:13:             if (date[i] < '0' || date[i] > '9') return 0;
 	j	.L18		#
 .L8:
 # problem125.c:9:     for (int i = 0; i < 10; i++) {
-	lw	a5,-64(s0)		# tmp182, i
-	addiw	a5,a5,1	#, tmp180, tmp181
-	sw	a5,-64(s0)	# tmp180, i
+	lw	a5,-64(s0)		# tmp120, i
+	addiw	a5,a5,1	#, tmp118, tmp119
+	sw	a5,-64(s0)	# tmp118, i
 .L4:
 # problem125.c:9:     for (int i = 0; i < 10; i++) {
-	lw	a5,-64(s0)		# tmp184, i
-	sext.w	a4,a5	# tmp185, tmp183
-	li	a5,9		# tmp186,
-	ble	a4,a5,.L10	#, tmp185, tmp186,
+	lw	a5,-64(s0)		# tmp122, i
+	sext.w	a4,a5	# tmp123, tmp121
+	li	a5,9		# tmp124,
+	ble	a4,a5,.L10	#, tmp123, tmp124,
 # problem125.c:17:     char str_month[3] = {date[0], date[1], '\0'};
-	ld	a5,-72(s0)		# tmp187, date
+	ld	a5,-72(s0)		# tmp125, date
 	lbu	a5,0(a5)	# _11, *date_30(D)
 # problem125.c:17:     char str_month[3] = {date[0], date[1], '\0'};
 	sb	a5,-48(s0)	# _11, str_month[0]
 # problem125.c:17:     char str_month[3] = {date[0], date[1], '\0'};
-	ld	a5,-72(s0)		# tmp188, date
-	addi	a5,a5,1	#, _12, tmp188
+	ld	a5,-72(s0)		# tmp126, date
+	addi	a5,a5,1	#, _12, tmp126
 	lbu	a5,0(a5)	# _13, *_12
 # problem125.c:17:     char str_month[3] = {date[0], date[1], '\0'};
 	sb	a5,-47(s0)	# _13, str_month[1]
 	sb	zero,-46(s0)	#, str_month[2]
 # problem125.c:18:     char str_day[3] = {date[3], date[4], '\0'};
-	ld	a5,-72(s0)		# tmp189, date
-	addi	a5,a5,3	#, _14, tmp189
+	ld	a5,-72(s0)		# tmp127, date
+	addi	a5,a5,3	#, _14, tmp127
 	lbu	a5,0(a5)	# _15, *_14
 # problem125.c:18:     char str_day[3] = {date[3], date[4], '\0'};
 	sb	a5,-40(s0)	# _15, str_day[0]
 # problem125.c:18:     char str_day[3] = {date[3], date[4], '\0'};
-	ld	a5,-72(s0)		# tmp190, date
-	addi	a5,a5,4	#, _16, tmp190
+	ld	a5,-72(s0)		# tmp128, date
+	addi	a5,a5,4	#, _16, tmp128
 	lbu	a5,0(a5)	# _17, *_16
 # problem125.c:18:     char str_day[3] = {date[3], date[4], '\0'};
 	sb	a5,-39(s0)	# _17, str_day[1]
 	sb	zero,-38(s0)	#, str_day[2]
 # problem125.c:19:     char str_year[5] = {date[6], date[7], date[8], date[9], '\0'};
-	ld	a5,-72(s0)		# tmp191, date
-	addi	a5,a5,6	#, _18, tmp191
+	ld	a5,-72(s0)		# tmp129, date
+	addi	a5,a5,6	#, _18, tmp129
 	lbu	a5,0(a5)	# _19, *_18
 # problem125.c:19:     char str_year[5] = {date[6], date[7], date[8], date[9], '\0'};
 	sb	a5,-32(s0)	# _19, str_year[0]
 # problem125.c:19:     char str_year[5] = {date[6], date[7], date[8], date[9], '\0'};
-	ld	a5,-72(s0)		# tmp192, date
-	addi	a5,a5,7	#, _20, tmp192
+	ld	a5,-72(s0)		# tmp130, date
+	addi	a5,a5,7	#, _20, tmp130
 	lbu	a5,0(a5)	# _21, *_20
 # problem125.c:19:     char str_year[5] = {date[6], date[7], date[8], date[9], '\0'};
 	sb	a5,-31(s0)	# _21, str_year[1]
 # problem125.c:19:     char str_year[5] = {date[6], date[7], date[8], date[9], '\0'};
-	ld	a5,-72(s0)		# tmp193, date
-	addi	a5,a5,8	#, _22, tmp193
+	ld	a5,-72(s0)		# tmp131, date
+	addi	a5,a5,8	#, _22, tmp131
 	lbu	a5,0(a5)	# _23, *_22
 # problem125.c:19:     char str_year[5] = {date[6], date[7], date[8], date[9], '\0'};
 	sb	a5,-30(s0)	# _23, str_year[2]
 # problem125.c:19:     char str_year[5] = {date[6], date[7], date[8], date[9], '\0'};
-	ld	a5,-72(s0)		# tmp194, date
-	addi	a5,a5,9	#, _24, tmp194
+	ld	a5,-72(s0)		# tmp132, date
+	addi	a5,a5,9	#, _24, tmp132
 	lbu	a5,0(a5)	# _25, *_24
 # problem125.c:19:     char str_year[5] = {date[6], date[7], date[8], date[9], '\0'};
 	sb	a5,-29(s0)	# _25, str_year[3]
 	sb	zero,-28(s0)	#, str_year[4]
 # problem125.c:21:     mm = atoi(str_month);
-	addi	a5,s0,-48	#, tmp195,
-	mv	a0,a5	#, tmp195
+	addi	a5,s0,-48	#, tmp133,
+	mv	a0,a5	#, tmp133
 	call	atoi@plt	#
-	mv	a5,a0	# tmp196,
-	sw	a5,-60(s0)	# tmp196, mm
+	mv	a5,a0	# tmp134,
+	sw	a5,-60(s0)	# tmp134, mm
 # problem125.c:22:     dd = atoi(str_day);
-	addi	a5,s0,-40	#, tmp197,
-	mv	a0,a5	#, tmp197
+	addi	a5,s0,-40	#, tmp135,
+	mv	a0,a5	#, tmp135
 	call	atoi@plt	#
-	mv	a5,a0	# tmp198,
-	sw	a5,-56(s0)	# tmp198, dd
+	mv	a5,a0	# tmp136,
+	sw	a5,-56(s0)	# tmp136, dd
 # problem125.c:23:     yy = atoi(str_year);
-	addi	a5,s0,-32	#, tmp199,
-	mv	a0,a5	#, tmp199
+	addi	a5,s0,-32	#, tmp137,
+	mv	a0,a5	#, tmp137
 	call	atoi@plt	#
-	mv	a5,a0	# tmp200,
-	sw	a5,-52(s0)	# tmp200, yy
+	mv	a5,a0	# tmp138,
+	sw	a5,-52(s0)	# tmp138, yy
 # problem125.c:25:     if (mm < 1 || mm > 12) return 0;
-	lw	a5,-60(s0)		# tmp202, mm
-	sext.w	a5,a5	# tmp203, tmp201
-	ble	a5,zero,.L11	#, tmp203,,
+	lw	a5,-60(s0)		# tmp140, mm
+	sext.w	a5,a5	# tmp141, tmp139
+	ble	a5,zero,.L11	#, tmp141,,
 # problem125.c:25:     if (mm < 1 || mm > 12) return 0;
-	lw	a5,-60(s0)		# tmp205, mm
-	sext.w	a4,a5	# tmp206, tmp204
-	li	a5,12		# tmp207,
-	ble	a4,a5,.L12	#, tmp206, tmp207,
+	lw	a5,-60(s0)		# tmp143, mm
+	sext.w	a4,a5	# tmp144, tmp142
+	li	a5,12		# tmp145,
+	ble	a4,a5,.L12	#, tmp144, tmp145,
 .L11:
 # problem125.c:25:     if (mm < 1 || mm > 12) return 0;
 	li	a5,0		# _27,
-# problem125.c:25:     if (mm < 1 || mm > 12) return 0;
 	j	.L18		#
 .L12:
 # problem125.c:26:     if (dd < 1 || dd > 31) return 0;
-	lw	a5,-56(s0)		# tmp209, dd
-	sext.w	a5,a5	# tmp210, tmp208
-	ble	a5,zero,.L13	#, tmp210,,
+	lw	a5,-56(s0)		# tmp147, dd
+	sext.w	a5,a5	# tmp148, tmp146
+	ble	a5,zero,.L13	#, tmp148,,
 # problem125.c:26:     if (dd < 1 || dd > 31) return 0;
-	lw	a5,-56(s0)		# tmp212, dd
-	sext.w	a4,a5	# tmp213, tmp211
-	li	a5,31		# tmp214,
-	ble	a4,a5,.L14	#, tmp213, tmp214,
+	lw	a5,-56(s0)		# tmp150, dd
+	sext.w	a4,a5	# tmp151, tmp149
+	li	a5,31		# tmp152,
+	ble	a4,a5,.L14	#, tmp151, tmp152,
 .L13:
 # problem125.c:26:     if (dd < 1 || dd > 31) return 0;
 	li	a5,0		# _27,
-# problem125.c:26:     if (dd < 1 || dd > 31) return 0;
 	j	.L18		#
 .L14:
 # problem125.c:27:     if ((mm == 4 || mm == 6 || mm == 9 || mm == 11) && dd == 31) return 0;
-	lw	a5,-60(s0)		# tmp216, mm
-	sext.w	a4,a5	# tmp217, tmp215
-	li	a5,4		# tmp218,
-	beq	a4,a5,.L15	#, tmp217, tmp218,
+	lw	a5,-60(s0)		# tmp154, mm
+	sext.w	a4,a5	# tmp155, tmp153
+	li	a5,4		# tmp156,
+	beq	a4,a5,.L15	#, tmp155, tmp156,
 # problem125.c:27:     if ((mm == 4 || mm == 6 || mm == 9 || mm == 11) && dd == 31) return 0;
-	lw	a5,-60(s0)		# tmp220, mm
-	sext.w	a4,a5	# tmp221, tmp219
-	li	a5,6		# tmp222,
-	beq	a4,a5,.L15	#, tmp221, tmp222,
+	lw	a5,-60(s0)		# tmp158, mm
+	sext.w	a4,a5	# tmp159, tmp157
+	li	a5,6		# tmp160,
+	beq	a4,a5,.L15	#, tmp159, tmp160,
 # problem125.c:27:     if ((mm == 4 || mm == 6 || mm == 9 || mm == 11) && dd == 31) return 0;
-	lw	a5,-60(s0)		# tmp224, mm
-	sext.w	a4,a5	# tmp225, tmp223
-	li	a5,9		# tmp226,
-	beq	a4,a5,.L15	#, tmp225, tmp226,
+	lw	a5,-60(s0)		# tmp162, mm
+	sext.w	a4,a5	# tmp163, tmp161
+	li	a5,9		# tmp164,
+	beq	a4,a5,.L15	#, tmp163, tmp164,
 # problem125.c:27:     if ((mm == 4 || mm == 6 || mm == 9 || mm == 11) && dd == 31) return 0;
-	lw	a5,-60(s0)		# tmp228, mm
-	sext.w	a4,a5	# tmp229, tmp227
-	li	a5,11		# tmp230,
-	bne	a4,a5,.L16	#, tmp229, tmp230,
+	lw	a5,-60(s0)		# tmp166, mm
+	sext.w	a4,a5	# tmp167, tmp165
+	li	a5,11		# tmp168,
+	bne	a4,a5,.L16	#, tmp167, tmp168,
 .L15:
 # problem125.c:27:     if ((mm == 4 || mm == 6 || mm == 9 || mm == 11) && dd == 31) return 0;
-	lw	a5,-56(s0)		# tmp232, dd
-	sext.w	a4,a5	# tmp233, tmp231
-	li	a5,31		# tmp234,
-	bne	a4,a5,.L16	#, tmp233, tmp234,
+	lw	a5,-56(s0)		# tmp170, dd
+	sext.w	a4,a5	# tmp171, tmp169
+	li	a5,31		# tmp172,
+	bne	a4,a5,.L16	#, tmp171, tmp172,
 # problem125.c:27:     if ((mm == 4 || mm == 6 || mm == 9 || mm == 11) && dd == 31) return 0;
 	li	a5,0		# _27,
-# problem125.c:27:     if ((mm == 4 || mm == 6 || mm == 9 || mm == 11) && dd == 31) return 0;
 	j	.L18		#
 .L16:
 # problem125.c:28:     if (mm == 2 && dd > 29) return 0;
-	lw	a5,-60(s0)		# tmp236, mm
-	sext.w	a4,a5	# tmp237, tmp235
-	li	a5,2		# tmp238,
-	bne	a4,a5,.L17	#, tmp237, tmp238,
+	lw	a5,-60(s0)		# tmp174, mm
+	sext.w	a4,a5	# tmp175, tmp173
+	li	a5,2		# tmp176,
+	bne	a4,a5,.L17	#, tmp175, tmp176,
 # problem125.c:28:     if (mm == 2 && dd > 29) return 0;
-	lw	a5,-56(s0)		# tmp240, dd
-	sext.w	a4,a5	# tmp241, tmp239
-	li	a5,29		# tmp242,
-	ble	a4,a5,.L17	#, tmp241, tmp242,
+	lw	a5,-56(s0)		# tmp178, dd
+	sext.w	a4,a5	# tmp179, tmp177
+	li	a5,29		# tmp180,
+	ble	a4,a5,.L17	#, tmp179, tmp180,
 # problem125.c:28:     if (mm == 2 && dd > 29) return 0;
 	li	a5,0		# _27,
-# problem125.c:28:     if (mm == 2 && dd > 29) return 0;
 	j	.L18		#
 .L17:
 # problem125.c:30:     return 1;
@@ -254,25 +238,20 @@ func0:
 .L18:
 # problem125.c:31: }
 	mv	a4,a5	# <retval>, _27
-	la	a5,__stack_chk_guard		# tmp244,
-	ld	a3, -24(s0)	# tmp247, D.3558
-	ld	a5, 0(a5)	# tmp245, __stack_chk_guard
-	xor	a5, a3, a5	# tmp245, tmp247
-	li	a3, 0	# tmp247
-	beq	a5,zero,.L19	#, tmp245,,
+	la	a5,__stack_chk_guard		# tmp182,
+	ld	a3, -24(s0)	# tmp185, D.2706
+	ld	a5, 0(a5)	# tmp183, __stack_chk_guard
+	xor	a5, a3, a5	# tmp183, tmp185
+	li	a3, 0	# tmp185
+	beq	a5,zero,.L19	#, tmp183,,
+# problem125.c:31: }
 	call	__stack_chk_fail@plt	#
 .L19:
 	mv	a0,a4	#, <retval>
 	ld	ra,72(sp)		#,
-	.cfi_restore 1
 	ld	s0,64(sp)		#,
-	.cfi_restore 8
-	.cfi_def_cfa 2, 80
 	addi	sp,sp,80	#,,
-	.cfi_def_cfa_offset 0
 	jr	ra		#
-	.cfi_endproc
-.LFE6:
 	.size	func0, .-func0
 	.section	.rodata
 	.align	3
@@ -379,24 +358,18 @@ func0:
 	.globl	main
 	.type	main, @function
 main:
-.LFB7:
-	.cfi_startproc
 	addi	sp,sp,-16	#,,
-	.cfi_def_cfa_offset 16
 	sd	ra,8(sp)	#,
 	sd	s0,0(sp)	#,
-	.cfi_offset 1, -8
-	.cfi_offset 8, -16
 	addi	s0,sp,16	#,,
-	.cfi_def_cfa 8, 0
 # problem125.c:38:     assert(func0("03-11-2000") == 1);
 	lla	a0,.LC0	#,
 	call	func0		#
-	mv	a5,a0	# tmp152,
+	mv	a5,a0	# tmp90,
+	mv	a4,a5	# tmp91, _1
+	li	a5,1		# tmp92,
+	beq	a4,a5,.L21	#, tmp91, tmp92,
 # problem125.c:38:     assert(func0("03-11-2000") == 1);
-	mv	a4,a5	# tmp153, _1
-	li	a5,1		# tmp154,
-	beq	a4,a5,.L21	#, tmp153, tmp154,
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,38		#,
 	lla	a1,.LC1	#,
@@ -406,9 +379,9 @@ main:
 # problem125.c:39:     assert(func0("15-01-2012") == 0);
 	lla	a0,.LC3	#,
 	call	func0		#
-	mv	a5,a0	# tmp155,
-# problem125.c:39:     assert(func0("15-01-2012") == 0);
+	mv	a5,a0	# tmp93,
 	beq	a5,zero,.L22	#, _2,,
+# problem125.c:39:     assert(func0("15-01-2012") == 0);
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,39		#,
 	lla	a1,.LC1	#,
@@ -418,9 +391,9 @@ main:
 # problem125.c:40:     assert(func0("04-0-2040") == 0);
 	lla	a0,.LC5	#,
 	call	func0		#
-	mv	a5,a0	# tmp156,
-# problem125.c:40:     assert(func0("04-0-2040") == 0);
+	mv	a5,a0	# tmp94,
 	beq	a5,zero,.L23	#, _3,,
+# problem125.c:40:     assert(func0("04-0-2040") == 0);
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,40		#,
 	lla	a1,.LC1	#,
@@ -430,11 +403,11 @@ main:
 # problem125.c:41:     assert(func0("06-04-2020") == 1);
 	lla	a0,.LC7	#,
 	call	func0		#
-	mv	a5,a0	# tmp157,
+	mv	a5,a0	# tmp95,
+	mv	a4,a5	# tmp96, _4
+	li	a5,1		# tmp97,
+	beq	a4,a5,.L24	#, tmp96, tmp97,
 # problem125.c:41:     assert(func0("06-04-2020") == 1);
-	mv	a4,a5	# tmp158, _4
-	li	a5,1		# tmp159,
-	beq	a4,a5,.L24	#, tmp158, tmp159,
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,41		#,
 	lla	a1,.LC1	#,
@@ -444,11 +417,11 @@ main:
 # problem125.c:42:     assert(func0("01-01-2007") == 1);
 	lla	a0,.LC9	#,
 	call	func0		#
-	mv	a5,a0	# tmp160,
+	mv	a5,a0	# tmp98,
+	mv	a4,a5	# tmp99, _5
+	li	a5,1		# tmp100,
+	beq	a4,a5,.L25	#, tmp99, tmp100,
 # problem125.c:42:     assert(func0("01-01-2007") == 1);
-	mv	a4,a5	# tmp161, _5
-	li	a5,1		# tmp162,
-	beq	a4,a5,.L25	#, tmp161, tmp162,
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,42		#,
 	lla	a1,.LC1	#,
@@ -458,9 +431,9 @@ main:
 # problem125.c:43:     assert(func0("03-32-2011") == 0);
 	lla	a0,.LC11	#,
 	call	func0		#
-	mv	a5,a0	# tmp163,
-# problem125.c:43:     assert(func0("03-32-2011") == 0);
+	mv	a5,a0	# tmp101,
 	beq	a5,zero,.L26	#, _6,,
+# problem125.c:43:     assert(func0("03-32-2011") == 0);
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,43		#,
 	lla	a1,.LC1	#,
@@ -470,9 +443,9 @@ main:
 # problem125.c:44:     assert(func0("") == 0);
 	lla	a0,.LC13	#,
 	call	func0		#
-	mv	a5,a0	# tmp164,
-# problem125.c:44:     assert(func0("") == 0);
+	mv	a5,a0	# tmp102,
 	beq	a5,zero,.L27	#, _7,,
+# problem125.c:44:     assert(func0("") == 0);
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,44		#,
 	lla	a1,.LC1	#,
@@ -482,9 +455,9 @@ main:
 # problem125.c:45:     assert(func0("04-31-3000") == 0);
 	lla	a0,.LC15	#,
 	call	func0		#
-	mv	a5,a0	# tmp165,
-# problem125.c:45:     assert(func0("04-31-3000") == 0);
+	mv	a5,a0	# tmp103,
 	beq	a5,zero,.L28	#, _8,,
+# problem125.c:45:     assert(func0("04-31-3000") == 0);
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,45		#,
 	lla	a1,.LC1	#,
@@ -494,11 +467,11 @@ main:
 # problem125.c:46:     assert(func0("06-06-2005") == 1);
 	lla	a0,.LC17	#,
 	call	func0		#
-	mv	a5,a0	# tmp166,
+	mv	a5,a0	# tmp104,
+	mv	a4,a5	# tmp105, _9
+	li	a5,1		# tmp106,
+	beq	a4,a5,.L29	#, tmp105, tmp106,
 # problem125.c:46:     assert(func0("06-06-2005") == 1);
-	mv	a4,a5	# tmp167, _9
-	li	a5,1		# tmp168,
-	beq	a4,a5,.L29	#, tmp167, tmp168,
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,46		#,
 	lla	a1,.LC1	#,
@@ -508,9 +481,9 @@ main:
 # problem125.c:47:     assert(func0("21-31-2000") == 0);
 	lla	a0,.LC19	#,
 	call	func0		#
-	mv	a5,a0	# tmp169,
-# problem125.c:47:     assert(func0("21-31-2000") == 0);
+	mv	a5,a0	# tmp107,
 	beq	a5,zero,.L30	#, _10,,
+# problem125.c:47:     assert(func0("21-31-2000") == 0);
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,47		#,
 	lla	a1,.LC1	#,
@@ -520,11 +493,11 @@ main:
 # problem125.c:48:     assert(func0("04-12-2003") == 1);
 	lla	a0,.LC21	#,
 	call	func0		#
-	mv	a5,a0	# tmp170,
+	mv	a5,a0	# tmp108,
+	mv	a4,a5	# tmp109, _11
+	li	a5,1		# tmp110,
+	beq	a4,a5,.L31	#, tmp109, tmp110,
 # problem125.c:48:     assert(func0("04-12-2003") == 1);
-	mv	a4,a5	# tmp171, _11
-	li	a5,1		# tmp172,
-	beq	a4,a5,.L31	#, tmp171, tmp172,
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,48		#,
 	lla	a1,.LC1	#,
@@ -534,9 +507,9 @@ main:
 # problem125.c:49:     assert(func0("04122003") == 0);
 	lla	a0,.LC23	#,
 	call	func0		#
-	mv	a5,a0	# tmp173,
-# problem125.c:49:     assert(func0("04122003") == 0);
+	mv	a5,a0	# tmp111,
 	beq	a5,zero,.L32	#, _12,,
+# problem125.c:49:     assert(func0("04122003") == 0);
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,49		#,
 	lla	a1,.LC1	#,
@@ -546,9 +519,9 @@ main:
 # problem125.c:50:     assert(func0("20030412") == 0);
 	lla	a0,.LC25	#,
 	call	func0		#
-	mv	a5,a0	# tmp174,
-# problem125.c:50:     assert(func0("20030412") == 0);
+	mv	a5,a0	# tmp112,
 	beq	a5,zero,.L33	#, _13,,
+# problem125.c:50:     assert(func0("20030412") == 0);
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,50		#,
 	lla	a1,.LC1	#,
@@ -558,9 +531,9 @@ main:
 # problem125.c:51:     assert(func0("2003-04") == 0);
 	lla	a0,.LC27	#,
 	call	func0		#
-	mv	a5,a0	# tmp175,
-# problem125.c:51:     assert(func0("2003-04") == 0);
+	mv	a5,a0	# tmp113,
 	beq	a5,zero,.L34	#, _14,,
+# problem125.c:51:     assert(func0("2003-04") == 0);
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,51		#,
 	lla	a1,.LC1	#,
@@ -570,9 +543,9 @@ main:
 # problem125.c:52:     assert(func0("2003-04-12") == 0);
 	lla	a0,.LC29	#,
 	call	func0		#
-	mv	a5,a0	# tmp176,
-# problem125.c:52:     assert(func0("2003-04-12") == 0);
+	mv	a5,a0	# tmp114,
 	beq	a5,zero,.L35	#, _15,,
+# problem125.c:52:     assert(func0("2003-04-12") == 0);
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,52		#,
 	lla	a1,.LC1	#,
@@ -582,9 +555,9 @@ main:
 # problem125.c:53:     assert(func0("04-2003") == 0);
 	lla	a0,.LC31	#,
 	call	func0		#
-	mv	a5,a0	# tmp177,
-# problem125.c:53:     assert(func0("04-2003") == 0);
+	mv	a5,a0	# tmp115,
 	beq	a5,zero,.L36	#, _16,,
+# problem125.c:53:     assert(func0("04-2003") == 0);
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,53		#,
 	lla	a1,.LC1	#,
@@ -596,15 +569,9 @@ main:
 # problem125.c:56: }
 	mv	a0,a5	#, <retval>
 	ld	ra,8(sp)		#,
-	.cfi_restore 1
 	ld	s0,0(sp)		#,
-	.cfi_restore 8
-	.cfi_def_cfa 2, 16
 	addi	sp,sp,16	#,,
-	.cfi_def_cfa_offset 0
 	jr	ra		#
-	.cfi_endproc
-.LFE7:
 	.size	main, .-main
 	.section	.rodata
 	.align	3
@@ -612,5 +579,5 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

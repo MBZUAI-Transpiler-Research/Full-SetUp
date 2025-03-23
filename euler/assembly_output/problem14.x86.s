@@ -26,8 +26,8 @@ main:
 	call	collatz_count
 	movl	%eax, -4(%rbp)
 	movl	-4(%rbp), %eax
-	cmpl	%eax, -12(%rbp)
-	jnb	.L3
+	cmpl	-12(%rbp), %eax
+	jbe	.L3
 	movl	-4(%rbp), %eax
 	movl	%eax, -12(%rbp)
 	movl	-16(%rbp), %eax
@@ -91,7 +91,7 @@ collatz_count:
 	.cfi_endproc
 .LFE1:
 	.size	collatz_count, .-collatz_count
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

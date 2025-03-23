@@ -144,26 +144,25 @@ func0:
 main:
 .LFB7:
 	.cfi_startproc
-	sub	sp, sp, #128
+	stp	x29, x30, [sp, -128]!
 	.cfi_def_cfa_offset 128
-	stp	x29, x30, [sp, 112]
-	.cfi_offset 29, -16
-	.cfi_offset 30, -8
-	add	x29, sp, 112
+	.cfi_offset 29, -128
+	.cfi_offset 30, -120
+	mov	x29, sp
 	adrp	x0, :got:__stack_chk_guard
-	ldr	x0, [x0, :got_lo12:__stack_chk_guard]
+	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]
 	ldr	x1, [x0]
-	str	x1, [sp, 104]
+	str	x1, [sp, 120]
 	mov	x1, 0
 	adrp	x0, .LC0
 	add	x0, x0, :lo12:.LC0
-	add	x2, sp, 24
+	add	x2, sp, 40
 	mov	x3, x0
 	ldp	x0, x1, [x3]
 	stp	x0, x1, [x2]
 	ldr	w0, [x3, 16]
 	str	w0, [x2, 16]
-	add	x0, sp, 24
+	add	x0, sp, 40
 	mov	w1, 5
 	bl	func0
 	fmov	s1, s0
@@ -186,13 +185,13 @@ main:
 .L12:
 	adrp	x0, .LC1
 	add	x0, x0, :lo12:.LC1
-	add	x2, sp, 48
+	add	x2, sp, 64
 	mov	x3, x0
 	ldp	x0, x1, [x3]
 	stp	x0, x1, [x2]
 	ldr	x0, [x3, 16]
 	str	x0, [x2, 16]
-	add	x0, sp, 48
+	add	x0, sp, 64
 	mov	w1, 6
 	bl	func0
 	fcvt	d1, s0
@@ -213,8 +212,8 @@ main:
 	bl	__assert_fail
 .L13:
 	fmov	s0, 5.0e+0
-	str	s0, [sp, 8]
-	add	x0, sp, 8
+	str	s0, [sp, 24]
+	add	x0, sp, 24
 	mov	w1, 1
 	bl	func0
 	fmov	s1, s0
@@ -236,10 +235,10 @@ main:
 	bl	__assert_fail
 .L14:
 	fmov	s0, 6.0e+0
-	str	s0, [sp, 16]
+	str	s0, [sp, 32]
 	fmov	s0, 5.0e+0
-	str	s0, [sp, 20]
-	add	x0, sp, 16
+	str	s0, [sp, 36]
+	add	x0, sp, 32
 	mov	w1, 2
 	bl	func0
 	fcvt	d1, s0
@@ -261,12 +260,12 @@ main:
 .L15:
 	adrp	x0, .LC2
 	add	x1, x0, :lo12:.LC2
-	add	x0, sp, 72
+	add	x0, sp, 88
 	ldr	q0, [x1]
 	str	q0, [x0]
 	ldr	q0, [x1, 12]
 	str	q0, [x0, 12]
-	add	x0, sp, 72
+	add	x0, sp, 88
 	mov	w1, 7
 	bl	func0
 	fmov	s1, s0
@@ -290,8 +289,8 @@ main:
 	mov	w0, 0
 	mov	w1, w0
 	adrp	x0, :got:__stack_chk_guard
-	ldr	x0, [x0, :got_lo12:__stack_chk_guard]
-	ldr	x3, [sp, 104]
+	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]
+	ldr	x3, [sp, 120]
 	ldr	x2, [x0]
 	subs	x3, x3, x2
 	mov	x2, 0
@@ -299,10 +298,9 @@ main:
 	bl	__stack_chk_fail
 .L18:
 	mov	w0, w1
-	ldp	x29, x30, [sp, 112]
-	add	sp, sp, 128
-	.cfi_restore 29
+	ldp	x29, x30, [sp], 128
 	.cfi_restore 30
+	.cfi_restore 29
 	.cfi_def_cfa_offset 0
 	ret
 	.cfi_endproc
@@ -344,5 +342,5 @@ __PRETTY_FUNCTION__.0:
 .LC9:
 	.word	-350469331
 	.word	1058682594
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

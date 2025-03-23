@@ -1,6 +1,6 @@
 	.file	"code.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -45,7 +45,6 @@ func0:
 	jg	.L2	#,
 # eval/problem142//code.c:7:     if (length < 5) return "No";
 	leaq	.LC0(%rip), %rax	#, _21
-# eval/problem142//code.c:7:     if (length < 5) return "No";
 	jmp	.L3	#
 .L2:
 # eval/problem142//code.c:8:     char w = file_name[0];
@@ -68,7 +67,6 @@ func0:
 .L4:
 # eval/problem142//code.c:9:     if (w < 'A' || (w > 'Z' && w < 'a') || w > 'z') return "No";
 	leaq	.LC0(%rip), %rax	#, _21
-# eval/problem142//code.c:9:     if (w < 'A' || (w > 'Z' && w < 'a') || w > 'z') return "No";
 	jmp	.L3	#
 .L6:
 # eval/problem142//code.c:10:     const char* last = file_name + length - 4;
@@ -108,7 +106,6 @@ func0:
 	je	.L7	#,
 # eval/problem142//code.c:11:     if (strcmp(last, ".txt") != 0 && strcmp(last, ".exe") != 0 && strcmp(last, ".dll") != 0) return "No";
 	leaq	.LC0(%rip), %rax	#, _21
-# eval/problem142//code.c:11:     if (strcmp(last, ".txt") != 0 && strcmp(last, ".exe") != 0 && strcmp(last, ".dll") != 0) return "No";
 	jmp	.L3	#
 .L7:
 # eval/problem142//code.c:12:     for (int i = 0; i < length; i++) {
@@ -165,7 +162,6 @@ func0:
 .L12:
 # eval/problem142//code.c:16:     if (num_digit > 3 || num_dot != 1) return "No";
 	leaq	.LC0(%rip), %rax	#, _21
-# eval/problem142//code.c:16:     if (num_digit > 3 || num_dot != 1) return "No";
 	jmp	.L3	#
 .L13:
 # eval/problem142//code.c:17:     return "Yes";
@@ -178,7 +174,7 @@ func0:
 	.cfi_endproc
 .LFE0:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

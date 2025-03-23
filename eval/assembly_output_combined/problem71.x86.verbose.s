@@ -1,6 +1,6 @@
 	.file	"problem71.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -109,7 +109,7 @@ func0:
 	movl	$0, -8(%rbp)	#, index
 # problem71.c:18:     while (l <= r) {
 	jmp	.L7	#
-.L10:
+.L9:
 # problem71.c:19:         if (l == r) {
 	movl	-16(%rbp), %eax	# l, tmp155
 	cmpl	-12(%rbp), %eax	# r, tmp155
@@ -186,7 +186,7 @@ func0:
 # problem71.c:18:     while (l <= r) {
 	movl	-16(%rbp), %eax	# l, tmp168
 	cmpl	-12(%rbp), %eax	# r, tmp168
-	jle	.L10	#,
+	jle	.L9	#,
 # problem71.c:26: }
 	nop	
 	nop	
@@ -213,8 +213,8 @@ issame:
 # problem71.c:34:     for (int i = 0; i < size; i++) {
 	movl	$0, -4(%rbp)	#, i
 # problem71.c:34:     for (int i = 0; i < size; i++) {
-	jmp	.L12	#
-.L15:
+	jmp	.L11	#
+.L14:
 # problem71.c:35:         if (a[i] != b[i]) return 0;
 	movl	-4(%rbp), %eax	# i, tmp92
 	cltq
@@ -231,22 +231,21 @@ issame:
 	movl	(%rax), %eax	# *_7, _8
 # problem71.c:35:         if (a[i] != b[i]) return 0;
 	cmpl	%eax, %edx	# _8, _4
-	je	.L13	#,
+	je	.L12	#,
 # problem71.c:35:         if (a[i] != b[i]) return 0;
 	movl	$0, %eax	#, _10
-# problem71.c:35:         if (a[i] != b[i]) return 0;
-	jmp	.L14	#
-.L13:
+	jmp	.L13	#
+.L12:
 # problem71.c:34:     for (int i = 0; i < size; i++) {
 	addl	$1, -4(%rbp)	#, i
-.L12:
+.L11:
 # problem71.c:34:     for (int i = 0; i < size; i++) {
 	movl	-4(%rbp), %eax	# i, tmp96
 	cmpl	-36(%rbp), %eax	# size, tmp96
-	jl	.L15	#,
+	jl	.L14	#,
 # problem71.c:37:     return 1;
 	movl	$1, %eax	#, _10
-.L14:
+.L13:
 # problem71.c:38: }
 	popq	%rbp	#
 	.cfi_def_cfa 7, 8
@@ -290,7 +289,7 @@ main:
 	subq	$624, %rsp	#,
 # problem71.c:40: int main() {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp157
-	movq	%rax, -8(%rbp)	# tmp157, D.4037
+	movq	%rax, -8(%rbp)	# tmp157, D.3173
 	xorl	%eax, %eax	# tmp157
 # problem71.c:41:     int a1[] = {1, 2, 3, 4};
 	movl	$1, -592(%rbp)	#, a1[0]
@@ -315,9 +314,9 @@ main:
 	movq	%rcx, %rsi	# tmp95,
 	movq	%rax, %rdi	# tmp96,
 	call	issame	#
-# problem71.c:45:     assert(issame(e1, out1, 4));
 	testl	%eax, %eax	# _1
-	jne	.L17	#,
+	jne	.L16	#,
+# problem71.c:45:     assert(issame(e1, out1, 4));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp97
 	movq	%rax, %rcx	# tmp97,
 	movl	$45, %edx	#,
@@ -326,7 +325,7 @@ main:
 	leaq	.LC1(%rip), %rax	#, tmp99
 	movq	%rax, %rdi	# tmp99,
 	call	__assert_fail@PLT	#
-.L17:
+.L16:
 # problem71.c:47:     int a2[] = {5, 6, 7, 8, 9};
 	movl	$5, -496(%rbp)	#, a2[0]
 	movl	$6, -492(%rbp)	#, a2[1]
@@ -352,9 +351,9 @@ main:
 	movq	%rcx, %rsi	# tmp102,
 	movq	%rax, %rdi	# tmp103,
 	call	issame	#
-# problem71.c:51:     assert(issame(e2, out2, 5));
 	testl	%eax, %eax	# _2
-	jne	.L18	#,
+	jne	.L17	#,
+# problem71.c:51:     assert(issame(e2, out2, 5));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp104
 	movq	%rax, %rcx	# tmp104,
 	movl	$51, %edx	#,
@@ -363,7 +362,7 @@ main:
 	leaq	.LC2(%rip), %rax	#, tmp106
 	movq	%rax, %rdi	# tmp106,
 	call	__assert_fail@PLT	#
-.L18:
+.L17:
 # problem71.c:53:     int a3[] = {1, 2, 3, 4, 5};
 	movl	$1, -400(%rbp)	#, a3[0]
 	movl	$2, -396(%rbp)	#, a3[1]
@@ -389,9 +388,9 @@ main:
 	movq	%rcx, %rsi	# tmp109,
 	movq	%rax, %rdi	# tmp110,
 	call	issame	#
-# problem71.c:57:     assert(issame(e3, out3, 5));
 	testl	%eax, %eax	# _3
-	jne	.L19	#,
+	jne	.L18	#,
+# problem71.c:57:     assert(issame(e3, out3, 5));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp111
 	movq	%rax, %rcx	# tmp111,
 	movl	$57, %edx	#,
@@ -400,7 +399,7 @@ main:
 	leaq	.LC3(%rip), %rax	#, tmp113
 	movq	%rax, %rdi	# tmp113,
 	call	__assert_fail@PLT	#
-.L19:
+.L18:
 # problem71.c:59:     int a4[] = {5, 6, 7, 8, 9, 1};
 	movl	$5, -304(%rbp)	#, a4[0]
 	movl	$6, -300(%rbp)	#, a4[1]
@@ -428,9 +427,9 @@ main:
 	movq	%rcx, %rsi	# tmp116,
 	movq	%rax, %rdi	# tmp117,
 	call	issame	#
-# problem71.c:63:     assert(issame(e4, out4, 6));
 	testl	%eax, %eax	# _4
-	jne	.L20	#,
+	jne	.L19	#,
+# problem71.c:63:     assert(issame(e4, out4, 6));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp118
 	movq	%rax, %rcx	# tmp118,
 	movl	$63, %edx	#,
@@ -439,7 +438,7 @@ main:
 	leaq	.LC4(%rip), %rax	#, tmp120
 	movq	%rax, %rdi	# tmp120,
 	call	__assert_fail@PLT	#
-.L20:
+.L19:
 # problem71.c:65:     int a5[] = {5, 5, 5, 5};
 	movl	$5, -544(%rbp)	#, a5[0]
 	movl	$5, -540(%rbp)	#, a5[1]
@@ -463,9 +462,9 @@ main:
 	movq	%rcx, %rsi	# tmp123,
 	movq	%rax, %rdi	# tmp124,
 	call	issame	#
-# problem71.c:69:     assert(issame(e5, out5, 4));
 	testl	%eax, %eax	# _5
-	jne	.L21	#,
+	jne	.L20	#,
+# problem71.c:69:     assert(issame(e5, out5, 4));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp125
 	movq	%rax, %rcx	# tmp125,
 	movl	$69, %edx	#,
@@ -474,7 +473,7 @@ main:
 	leaq	.LC5(%rip), %rax	#, tmp127
 	movq	%rax, %rdi	# tmp127,
 	call	__assert_fail@PLT	#
-.L21:
+.L20:
 # problem71.c:74:     func0(a6, 0, out6);
 	leaq	-608(%rbp), %rdx	#, tmp128
 	leaq	-616(%rbp), %rax	#, tmp129
@@ -488,9 +487,9 @@ main:
 	movq	%rcx, %rsi	# tmp130,
 	movq	%rax, %rdi	# tmp131,
 	call	issame	#
-# problem71.c:75:     assert(issame(e6, out6, 0));
 	testl	%eax, %eax	# _6
-	jne	.L22	#,
+	jne	.L21	#,
+# problem71.c:75:     assert(issame(e6, out6, 0));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp132
 	movq	%rax, %rcx	# tmp132,
 	movl	$75, %edx	#,
@@ -499,7 +498,7 @@ main:
 	leaq	.LC6(%rip), %rax	#, tmp134
 	movq	%rax, %rdi	# tmp134,
 	call	__assert_fail@PLT	#
-.L22:
+.L21:
 # problem71.c:77:     int a7[] = {1, 2, 3, 4, 5, 6, 7, 8};
 	movl	$1, -208(%rbp)	#, a7[0]
 	movl	$2, -204(%rbp)	#, a7[1]
@@ -531,9 +530,9 @@ main:
 	movq	%rcx, %rsi	# tmp137,
 	movq	%rax, %rdi	# tmp138,
 	call	issame	#
-# problem71.c:81:     assert(issame(e7, out7, 8));
 	testl	%eax, %eax	# _7
-	jne	.L23	#,
+	jne	.L22	#,
+# problem71.c:81:     assert(issame(e7, out7, 8));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp139
 	movq	%rax, %rcx	# tmp139,
 	movl	$81, %edx	#,
@@ -542,7 +541,7 @@ main:
 	leaq	.LC7(%rip), %rax	#, tmp141
 	movq	%rax, %rdi	# tmp141,
 	call	__assert_fail@PLT	#
-.L23:
+.L22:
 # problem71.c:83:     int a8[] = {0, 2, 2, 2, 5, 5, -5, -5};
 	movl	$0, -112(%rbp)	#, a8[0]
 	movl	$2, -108(%rbp)	#, a8[1]
@@ -574,9 +573,9 @@ main:
 	movq	%rcx, %rsi	# tmp144,
 	movq	%rax, %rdi	# tmp145,
 	call	issame	#
-# problem71.c:87:     assert(issame(e8, out8, 8));
 	testl	%eax, %eax	# _8
-	jne	.L24	#,
+	jne	.L23	#,
+# problem71.c:87:     assert(issame(e8, out8, 8));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp146
 	movq	%rax, %rcx	# tmp146,
 	movl	$87, %edx	#,
@@ -585,7 +584,7 @@ main:
 	leaq	.LC8(%rip), %rax	#, tmp148
 	movq	%rax, %rdi	# tmp148,
 	call	__assert_fail@PLT	#
-.L24:
+.L23:
 # problem71.c:89:     int a9[] = {111111};
 	movl	$111111, -604(%rbp)	#, a9[0]
 # problem71.c:90:     int e9[] = {111111};
@@ -603,9 +602,9 @@ main:
 	movq	%rcx, %rsi	# tmp151,
 	movq	%rax, %rdi	# tmp152,
 	call	issame	#
-# problem71.c:93:     assert(issame(e9, out9, 1));
 	testl	%eax, %eax	# _9
-	jne	.L25	#,
+	jne	.L24	#,
+# problem71.c:93:     assert(issame(e9, out9, 1));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp153
 	movq	%rax, %rcx	# tmp153,
 	movl	$93, %edx	#,
@@ -614,15 +613,15 @@ main:
 	leaq	.LC9(%rip), %rax	#, tmp155
 	movq	%rax, %rdi	# tmp155,
 	call	__assert_fail@PLT	#
-.L25:
+.L24:
 # problem71.c:95:     return 0;
-	movl	$0, %eax	#, _120
+	movl	$0, %eax	#, _122
 # problem71.c:96: }
-	movq	-8(%rbp), %rdx	# D.4037, tmp158
+	movq	-8(%rbp), %rdx	# D.3173, tmp158
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp158
-	je	.L27	#,
+	je	.L26	#,
 	call	__stack_chk_fail@PLT	#
-.L27:
+.L26:
 	leave	
 	.cfi_def_cfa 7, 8
 	ret	
@@ -634,7 +633,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

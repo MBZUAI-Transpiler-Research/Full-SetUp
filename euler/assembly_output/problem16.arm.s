@@ -12,67 +12,66 @@
 main:
 .LFB26:
 	.cfi_startproc
-	sub	sp, sp, #80
+	stp	x29, x30, [sp, -80]!
 	.cfi_def_cfa_offset 80
-	stp	x29, x30, [sp, 64]
-	.cfi_offset 29, -16
-	.cfi_offset 30, -8
-	add	x29, sp, 64
+	.cfi_offset 29, -80
+	.cfi_offset 30, -72
+	mov	x29, sp
 	adrp	x0, :got:__stack_chk_guard
-	ldr	x0, [x0, :got_lo12:__stack_chk_guard]
+	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]
 	ldr	x1, [x0]
-	str	x1, [sp, 56]
+	str	x1, [sp, 72]
 	mov	x1, 0
-	str	wzr, [sp, 12]
-	add	x0, sp, 40
+	str	wzr, [sp, 28]
+	add	x0, sp, 56
 	bl	__gmpz_init
-	add	x0, sp, 40
+	add	x0, sp, 56
 	mov	x2, 1000
 	mov	x1, 2
 	bl	__gmpz_ui_pow_ui
-	add	x0, sp, 40
+	add	x0, sp, 56
 	mov	x2, x0
 	mov	w1, 10
 	mov	x0, 0
 	bl	__gmpz_get_str
-	str	x0, [sp, 24]
-	add	x0, sp, 40
+	str	x0, [sp, 40]
+	add	x0, sp, 56
 	mov	w1, 10
 	bl	__gmpz_sizeinbase
-	str	x0, [sp, 32]
-	str	xzr, [sp, 16]
+	str	x0, [sp, 48]
+	str	xzr, [sp, 32]
 	b	.L2
 .L3:
-	ldr	x1, [sp, 24]
-	ldr	x0, [sp, 16]
+	ldr	x1, [sp, 40]
+	ldr	x0, [sp, 32]
 	add	x0, x1, x0
 	ldrb	w0, [x0]
 	mov	w1, w0
-	ldr	w0, [sp, 12]
+	ldr	w0, [sp, 28]
 	add	w0, w1, w0
 	sub	w0, w0, #48
-	str	w0, [sp, 12]
-	ldr	x0, [sp, 16]
-	add	x0, x0, 1
-	str	x0, [sp, 16]
-.L2:
-	ldr	x1, [sp, 16]
+	str	w0, [sp, 28]
 	ldr	x0, [sp, 32]
+	add	x0, x0, 1
+	str	x0, [sp, 32]
+.L2:
+	ldr	x1, [sp, 32]
+	ldr	x0, [sp, 48]
 	cmp	x1, x0
 	bcc	.L3
-	ldr	w1, [sp, 12]
+	ldr	w1, [sp, 28]
 	adrp	x0, .LC0
 	add	x0, x0, :lo12:.LC0
 	bl	printf
-	ldr	x0, [sp, 24]
+	ldr	x0, [sp, 40]
 	bl	free
-	add	x0, sp, 40
+	add	x0, sp, 56
 	bl	__gmpz_clear
 	mov	w0, 0
 	mov	w1, w0
 	adrp	x0, :got:__stack_chk_guard
-	ldr	x0, [x0, :got_lo12:__stack_chk_guard]
-	ldr	x3, [sp, 56]
+	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]
+	ldr	x3, [sp, 72]
 	ldr	x2, [x0]
 	subs	x3, x3, x2
 	mov	x2, 0
@@ -80,14 +79,13 @@ main:
 	bl	__stack_chk_fail
 .L5:
 	mov	w0, w1
-	ldp	x29, x30, [sp, 64]
-	add	sp, sp, 80
-	.cfi_restore 29
+	ldp	x29, x30, [sp], 80
 	.cfi_restore 30
+	.cfi_restore 29
 	.cfi_def_cfa_offset 0
 	ret
 	.cfi_endproc
 .LFE26:
 	.size	main, .-main
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

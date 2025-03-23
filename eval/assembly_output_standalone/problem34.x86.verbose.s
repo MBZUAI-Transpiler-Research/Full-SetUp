@@ -1,6 +1,6 @@
 	.file	"code.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -25,10 +25,12 @@ func0:
 	movslq	%eax, %rdx	# tmp133, tmp134
 	imulq	$1431655766, %rdx, %rdx	#, tmp134, tmp135
 	shrq	$32, %rdx	#, tmp136
-	sarl	$31, %eax	#, tmp137
-	subl	%eax, %edx	# tmp137, _1
+	sarl	$31, %eax	#, tmp133
+	movl	%eax, %ecx	# tmp133, tmp137
+	movl	%edx, %eax	# tmp136, _1
+	subl	%ecx, %eax	# tmp137, _1
 # eval/problem34//code.c:5:     int *third = malloc((size / 3 + 1) * sizeof(int));
-	leal	1(%rdx), %eax	#, _2
+	addl	$1, %eax	#, _2
 	cltq
 # eval/problem34//code.c:5:     int *third = malloc((size / 3 + 1) * sizeof(int));
 	salq	$2, %rax	#, _4
@@ -174,30 +176,31 @@ func0:
 	jmp	.L10	#
 .L13:
 # eval/problem34//code.c:27:         if (i % 3 == 0) {
-	movl	-28(%rbp), %ecx	# i, tmp169
-	movslq	%ecx, %rax	# tmp169, tmp170
+	movl	-28(%rbp), %edx	# i, tmp169
+	movslq	%edx, %rax	# tmp169, tmp170
 	imulq	$1431655766, %rax, %rax	#, tmp170, tmp171
-	shrq	$32, %rax	#, tmp171
-	movq	%rax, %rdx	# tmp171, tmp172
-	movl	%ecx, %eax	# tmp169, tmp173
-	sarl	$31, %eax	#, tmp173
-	subl	%eax, %edx	# tmp173, _36
-	movl	%edx, %eax	# _36, tmp174
-	addl	%eax, %eax	# tmp174
-	addl	%edx, %eax	# _36, tmp174
-	subl	%eax, %ecx	# tmp174, tmp169
-	movl	%ecx, %edx	# tmp169, _36
+	shrq	$32, %rax	#, tmp172
+	movl	%edx, %ecx	# tmp169, tmp173
+	sarl	$31, %ecx	#, tmp173
+	subl	%ecx, %eax	# tmp173, _36
+	movl	%eax, %ecx	# _36, tmp174
+	addl	%ecx, %ecx	# tmp174
+	addl	%eax, %ecx	# _36, tmp174
+	movl	%edx, %eax	# tmp169, tmp169
+	subl	%ecx, %eax	# tmp174, tmp169
 # eval/problem34//code.c:27:         if (i % 3 == 0) {
-	testl	%edx, %edx	# _36
+	testl	%eax, %eax	# _36
 	jne	.L11	#,
 # eval/problem34//code.c:28:             out[i] = third[i / 3];
 	movl	-28(%rbp), %eax	# i, tmp175
 	movslq	%eax, %rdx	# tmp175, tmp176
 	imulq	$1431655766, %rdx, %rdx	#, tmp176, tmp177
 	shrq	$32, %rdx	#, tmp178
-	sarl	$31, %eax	#, tmp179
-	subl	%eax, %edx	# tmp179, _37
-	movslq	%edx, %rax	# _37, _38
+	sarl	$31, %eax	#, tmp175
+	movl	%eax, %ecx	# tmp175, tmp179
+	movl	%edx, %eax	# tmp178, _37
+	subl	%ecx, %eax	# tmp179, _37
+	cltq
 # eval/problem34//code.c:28:             out[i] = third[i / 3];
 	leaq	0(,%rax,4), %rdx	#, _39
 	movq	-8(%rbp), %rax	# third, tmp180
@@ -250,7 +253,7 @@ func0:
 	.cfi_endproc
 .LFE6:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

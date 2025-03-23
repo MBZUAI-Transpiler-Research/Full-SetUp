@@ -1,6 +1,6 @@
 	.file	"code.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -30,16 +30,14 @@ func0:
 	movl	$1, (%rax)	#, *out_47(D)
 # eval/problem124//code.c:9:     while (n != 1) {
 	jmp	.L2	#
-.L6:
+.L5:
 # eval/problem124//code.c:10:         if (n % 2 == 1) {
-	movl	-20(%rbp), %edx	# n, tmp114
-	movl	%edx, %eax	# tmp114, tmp115
-	sarl	$31, %eax	#, tmp115
-	shrl	$31, %eax	#, tmp116
-	addl	%eax, %edx	# tmp116, tmp117
-	andl	$1, %edx	#, tmp118
-	subl	%eax, %edx	# tmp116, tmp119
-	movl	%edx, %eax	# tmp119, _1
+	movl	-20(%rbp), %eax	# n, tmp114
+	cltd
+	shrl	$31, %edx	#, tmp116
+	addl	%edx, %eax	# tmp116, tmp117
+	andl	$1, %eax	#, tmp118
+	subl	%edx, %eax	# tmp116, tmp119
 # eval/problem124//code.c:10:         if (n % 2 == 1) {
 	cmpl	$1, %eax	#, _1
 	jne	.L3	#,
@@ -96,12 +94,12 @@ func0:
 .L2:
 # eval/problem124//code.c:9:     while (n != 1) {
 	cmpl	$1, -20(%rbp)	#, n
-	jne	.L6	#,
+	jne	.L5	#,
 # eval/problem124//code.c:22:     for (int i = 1; i < *size; i++) {
 	movl	$1, -12(%rbp)	#, i
 # eval/problem124//code.c:22:     for (int i = 1; i < *size; i++) {
-	jmp	.L7	#
-.L11:
+	jmp	.L6	#
+.L10:
 # eval/problem124//code.c:23:         int key = out[i];
 	movl	-12(%rbp), %eax	# i, tmp136
 	cltq
@@ -116,8 +114,8 @@ func0:
 	subl	$1, %eax	#, tmp141
 	movl	%eax, -8(%rbp)	# tmp141, j
 # eval/problem124//code.c:26:         while (j >= 0 && out[j] > key) {
-	jmp	.L8	#
-.L10:
+	jmp	.L7	#
+.L9:
 # eval/problem124//code.c:27:             out[j + 1] = out[j];
 	movl	-8(%rbp), %eax	# j, tmp143
 	cltq
@@ -137,10 +135,10 @@ func0:
 	movl	%eax, (%rdx)	# _22, *_21
 # eval/problem124//code.c:28:             j = j - 1;
 	subl	$1, -8(%rbp)	#, j
-.L8:
+.L7:
 # eval/problem124//code.c:26:         while (j >= 0 && out[j] > key) {
 	cmpl	$0, -8(%rbp)	#, j
-	js	.L9	#,
+	js	.L8	#,
 # eval/problem124//code.c:26:         while (j >= 0 && out[j] > key) {
 	movl	-8(%rbp), %eax	# j, tmp147
 	cltq
@@ -150,8 +148,8 @@ func0:
 	movl	(%rax), %eax	# *_25, _26
 # eval/problem124//code.c:26:         while (j >= 0 && out[j] > key) {
 	cmpl	%eax, -4(%rbp)	# _26, key
-	jl	.L10	#,
-.L9:
+	jl	.L9	#,
+.L8:
 # eval/problem124//code.c:30:         out[j + 1] = key;
 	movl	-8(%rbp), %eax	# j, tmp149
 	cltq
@@ -164,13 +162,13 @@ func0:
 	movl	%eax, (%rdx)	# tmp151, *_30
 # eval/problem124//code.c:22:     for (int i = 1; i < *size; i++) {
 	addl	$1, -12(%rbp)	#, i
-.L7:
+.L6:
 # eval/problem124//code.c:22:     for (int i = 1; i < *size; i++) {
 	movq	-40(%rbp), %rax	# size, tmp152
 	movl	(%rax), %eax	# *size_45(D), _31
 # eval/problem124//code.c:22:     for (int i = 1; i < *size; i++) {
 	cmpl	%eax, -12(%rbp)	# _31, i
-	jl	.L11	#,
+	jl	.L10	#,
 # eval/problem124//code.c:32: }
 	nop	
 	nop	
@@ -180,7 +178,7 @@ func0:
 	.cfi_endproc
 .LFE6:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

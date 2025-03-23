@@ -1,7 +1,7 @@
 	.arch armv8-a
 	.file	"problem19.c"
-// GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (aarch64-linux-gnu)
-//	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+// GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (aarch64-linux-gnu)
+//	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 // GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 // options passed: -mlittle-endian -mabi=lp64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection
@@ -117,25 +117,22 @@ days:
 	cmp	w0, 11	// _13,
 	cset	w1, hi	// tmp106,
 	and	w1, w1, 255	// _14, tmp105
-	and	w1, w1, 1	// tmp107, _14,
-	cmp	w1, 0	// tmp107,
+	cmp	w1, 0	// _14,
 	bne	.L9		//,
-	mov	x1, 1	// tmp108,
-	lsl	x0, x1, x0	// _15, tmp108, _13
-	mov	x1, 2640	// tmp109,
-	and	x1, x0, x1	// _16, _15, tmp109
+	mov	x1, 1	// tmp107,
+	lsl	x0, x1, x0	// _15, tmp107, _13
+	mov	x1, 2640	// tmp108,
+	and	x1, x0, x1	// _16, _15, tmp108
 	cmp	x1, 0	// _16,
-	cset	w1, ne	// tmp111,
-	and	w1, w1, 255	// _17, tmp110
-	and	w1, w1, 1	// tmp112, _17,
-	cmp	w1, 0	// tmp112,
+	cset	w1, ne	// tmp110,
+	and	w1, w1, 255	// _17, tmp109
+	cmp	w1, 0	// _17,
 	bne	.L10		//,
 	and	x0, x0, 4	// _18, _15,
 	cmp	x0, 0	// _18,
-	cset	w0, ne	// tmp114,
-	and	w0, w0, 255	// _19, tmp113
-	and	w0, w0, 1	// tmp115, _19,
-	cmp	w0, 0	// tmp115,
+	cset	w0, ne	// tmp112,
+	and	w0, w0, 255	// _19, tmp111
+	cmp	w0, 0	// _19,
 	beq	.L9		//,
 // problem19.c:32:       if ((y%4 == 0 && y%100 != 0) || y%400 == 0) {
 	ldr	w0, [sp, 12]	// y.0_1, y
@@ -144,33 +141,33 @@ days:
 	cmp	w0, 0	// _2,
 	bne	.L11		//,
 // problem19.c:32:       if ((y%4 == 0 && y%100 != 0) || y%400 == 0) {
-	ldr	w1, [sp, 12]	// tmp116, y
-	mov	w0, 34079	// tmp118,
-	movk	w0, 0x51eb, lsl 16	// tmp118,,
-	smull	x0, w1, w0	// tmp117, tmp116, tmp118
-	lsr	x0, x0, 32	// tmp119, tmp117,
-	asr	w2, w0, 5	// tmp120, tmp119,
-	asr	w0, w1, 31	// tmp121, tmp116,
-	sub	w0, w2, w0	// _3, tmp120, tmp121
-	mov	w2, 100	// tmp123,
-	mul	w0, w0, w2	// tmp122, _3, tmp123
-	sub	w0, w1, w0	// _3, tmp116, tmp122
+	ldr	w1, [sp, 12]	// tmp113, y
+	mov	w0, 34079	// tmp115,
+	movk	w0, 0x51eb, lsl 16	// tmp115,,
+	smull	x0, w1, w0	// tmp114, tmp113, tmp115
+	lsr	x0, x0, 32	// tmp116, tmp114,
+	asr	w2, w0, 5	// tmp117, tmp116,
+	asr	w0, w1, 31	// tmp118, tmp113,
+	sub	w0, w2, w0	// _3, tmp117, tmp118
+	mov	w2, 100	// tmp120,
+	mul	w0, w0, w2	// tmp119, _3, tmp120
+	sub	w0, w1, w0	// _3, tmp113, tmp119
 // problem19.c:32:       if ((y%4 == 0 && y%100 != 0) || y%400 == 0) {
 	cmp	w0, 0	// _3,
 	bne	.L12		//,
 .L11:
 // problem19.c:32:       if ((y%4 == 0 && y%100 != 0) || y%400 == 0) {
-	ldr	w1, [sp, 12]	// tmp124, y
-	mov	w0, 34079	// tmp126,
-	movk	w0, 0x51eb, lsl 16	// tmp126,,
-	smull	x0, w1, w0	// tmp125, tmp124, tmp126
-	lsr	x0, x0, 32	// tmp127, tmp125,
-	asr	w2, w0, 7	// tmp128, tmp127,
-	asr	w0, w1, 31	// tmp129, tmp124,
-	sub	w0, w2, w0	// _4, tmp128, tmp129
-	mov	w2, 400	// tmp131,
-	mul	w0, w0, w2	// tmp130, _4, tmp131
-	sub	w0, w1, w0	// _4, tmp124, tmp130
+	ldr	w1, [sp, 12]	// tmp121, y
+	mov	w0, 34079	// tmp123,
+	movk	w0, 0x51eb, lsl 16	// tmp123,,
+	smull	x0, w1, w0	// tmp122, tmp121, tmp123
+	lsr	x0, x0, 32	// tmp124, tmp122,
+	asr	w2, w0, 7	// tmp125, tmp124,
+	asr	w0, w1, 31	// tmp126, tmp121,
+	sub	w0, w2, w0	// _4, tmp125, tmp126
+	mov	w2, 400	// tmp128,
+	mul	w0, w0, w2	// tmp127, _4, tmp128
+	sub	w0, w1, w0	// _4, tmp121, tmp127
 // problem19.c:32:       if ((y%4 == 0 && y%100 != 0) || y%400 == 0) {
 	cmp	w0, 0	// _4,
 	bne	.L13		//,
@@ -197,5 +194,5 @@ days:
 	.cfi_endproc
 .LFE1:
 	.size	days, .-days
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

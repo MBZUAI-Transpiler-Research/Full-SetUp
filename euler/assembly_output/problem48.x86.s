@@ -35,10 +35,10 @@ main:
 	movq	%rax, -8(%rbp)
 	movq	-8(%rbp), %rax
 	movabsq	$10000000000, %rdx
-	imulq	%rdx, %rax
-	subq	%rax, %rcx
-	movq	%rcx, %rdx
-	movq	%rdx, -8(%rbp)
+	imulq	%rax, %rdx
+	movq	%rcx, %rax
+	subq	%rdx, %rax
+	movq	%rax, -8(%rbp)
 	addl	$1, -20(%rbp)
 .L3:
 	movl	-20(%rbp), %eax
@@ -55,10 +55,10 @@ main:
 	movq	%rax, -16(%rbp)
 	movq	-16(%rbp), %rax
 	movabsq	$10000000000, %rdx
-	imulq	%rdx, %rax
-	subq	%rax, %rcx
-	movq	%rcx, %rdx
-	movq	%rdx, -16(%rbp)
+	imulq	%rax, %rdx
+	movq	%rcx, %rax
+	subq	%rdx, %rax
+	movq	%rax, -16(%rbp)
 	addl	$1, -24(%rbp)
 .L2:
 	cmpl	$999, -24(%rbp)
@@ -76,7 +76,7 @@ main:
 	.cfi_endproc
 .LFE0:
 	.size	main, .-main
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

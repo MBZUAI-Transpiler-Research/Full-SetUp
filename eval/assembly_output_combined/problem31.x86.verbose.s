@@ -1,6 +1,6 @@
 	.file	"problem31.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -106,7 +106,6 @@ issame:
 	je	.L9	#,
 # problem31.c:25:     if (a_count != b_count) return 0;
 	movl	$0, %eax	#, _13
-# problem31.c:25:     if (a_count != b_count) return 0;
 	jmp	.L10	#
 .L9:
 # problem31.c:26:     for (int i = 0; i < a_count; i++) {
@@ -139,7 +138,6 @@ issame:
 	jbe	.L16	#,
 # problem31.c:27:         if (fabs(a[i] - b[i]) > 1e-4) return 0;
 	movl	$0, %eax	#, _13
-# problem31.c:27:         if (fabs(a[i] - b[i]) > 1e-4) return 0;
 	jmp	.L10	#
 .L16:
 # problem31.c:26:     for (int i = 0; i < a_count; i++) {
@@ -186,19 +184,19 @@ main:
 	subq	$160, %rsp	#,
 # problem31.c:32: int main() {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp158
-	movq	%rax, -8(%rbp)	# tmp158, D.4843
+	movq	%rax, -8(%rbp)	# tmp158, D.4006
 	xorl	%eax, %eax	# tmp158
 # problem31.c:36:     result = func0((float[]){-1, -2, 4, 5, 6}, 5, &count);
 	movss	.LC3(%rip), %xmm0	#, tmp92
-	movss	%xmm0, -128(%rbp)	# tmp92, D.4800[0]
+	movss	%xmm0, -128(%rbp)	# tmp92, D.3963[0]
 	movss	.LC4(%rip), %xmm0	#, tmp93
-	movss	%xmm0, -124(%rbp)	# tmp93, D.4800[1]
+	movss	%xmm0, -124(%rbp)	# tmp93, D.3963[1]
 	movss	.LC5(%rip), %xmm0	#, tmp94
-	movss	%xmm0, -120(%rbp)	# tmp94, D.4800[2]
+	movss	%xmm0, -120(%rbp)	# tmp94, D.3963[2]
 	movss	.LC6(%rip), %xmm0	#, tmp95
-	movss	%xmm0, -116(%rbp)	# tmp95, D.4800[3]
+	movss	%xmm0, -116(%rbp)	# tmp95, D.3963[3]
 	movss	.LC7(%rip), %xmm0	#, tmp96
-	movss	%xmm0, -112(%rbp)	# tmp96, D.4800[4]
+	movss	%xmm0, -112(%rbp)	# tmp96, D.3963[4]
 # problem31.c:36:     result = func0((float[]){-1, -2, 4, 5, 6}, 5, &count);
 	leaq	-148(%rbp), %rdx	#, tmp97
 	leaq	-128(%rbp), %rax	#, tmp98
@@ -208,20 +206,20 @@ main:
 	movq	%rax, -144(%rbp)	# tmp99, result
 # problem31.c:37:     assert(issame(result, count, (float[]){4, 5, 6}, 3));
 	movss	.LC5(%rip), %xmm0	#, tmp100
-	movss	%xmm0, -64(%rbp)	# tmp100, MEM[(float[3] *)_74][0]
+	movss	%xmm0, -64(%rbp)	# tmp100, MEM[(float[3] *)_77][0]
 	movss	.LC6(%rip), %xmm0	#, tmp101
-	movss	%xmm0, -60(%rbp)	# tmp101, MEM[(float[3] *)_74][1]
+	movss	%xmm0, -60(%rbp)	# tmp101, MEM[(float[3] *)_77][1]
 	movss	.LC7(%rip), %xmm0	#, tmp102
-	movss	%xmm0, -56(%rbp)	# tmp102, MEM[(float[3] *)_74][2]
+	movss	%xmm0, -56(%rbp)	# tmp102, MEM[(float[3] *)_77][2]
 	movl	-148(%rbp), %esi	# count, count.0_1
 	leaq	-64(%rbp), %rdx	#, tmp103
 	movq	-144(%rbp), %rax	# result, tmp104
 	movl	$3, %ecx	#,
 	movq	%rax, %rdi	# tmp104,
 	call	issame	#
-# problem31.c:37:     assert(issame(result, count, (float[]){4, 5, 6}, 3));
 	testl	%eax, %eax	# _2
 	jne	.L18	#,
+# problem31.c:37:     assert(issame(result, count, (float[]){4, 5, 6}, 3));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp105
 	movq	%rax, %rcx	# tmp105,
 	movl	$37, %edx	#,
@@ -237,27 +235,27 @@ main:
 	call	free@PLT	#
 # problem31.c:40:     result = func0((float[]){5, 3, -5, 2, 3, 3, 9, 0, 123, 1, -10}, 11, &count);
 	movss	.LC6(%rip), %xmm0	#, tmp109
-	movss	%xmm0, -64(%rbp)	# tmp109, MEM[(float[11] *)_74][0]
+	movss	%xmm0, -64(%rbp)	# tmp109, MEM[(float[11] *)_77][0]
 	movss	.LC10(%rip), %xmm0	#, tmp110
-	movss	%xmm0, -60(%rbp)	# tmp110, MEM[(float[11] *)_74][1]
+	movss	%xmm0, -60(%rbp)	# tmp110, MEM[(float[11] *)_77][1]
 	movss	.LC11(%rip), %xmm0	#, tmp111
-	movss	%xmm0, -56(%rbp)	# tmp111, MEM[(float[11] *)_74][2]
+	movss	%xmm0, -56(%rbp)	# tmp111, MEM[(float[11] *)_77][2]
 	movss	.LC12(%rip), %xmm0	#, tmp112
-	movss	%xmm0, -52(%rbp)	# tmp112, MEM[(float[11] *)_74][3]
+	movss	%xmm0, -52(%rbp)	# tmp112, MEM[(float[11] *)_77][3]
 	movss	.LC10(%rip), %xmm0	#, tmp113
-	movss	%xmm0, -48(%rbp)	# tmp113, MEM[(float[11] *)_74][4]
+	movss	%xmm0, -48(%rbp)	# tmp113, MEM[(float[11] *)_77][4]
 	movss	.LC10(%rip), %xmm0	#, tmp114
-	movss	%xmm0, -44(%rbp)	# tmp114, MEM[(float[11] *)_74][5]
+	movss	%xmm0, -44(%rbp)	# tmp114, MEM[(float[11] *)_77][5]
 	movss	.LC13(%rip), %xmm0	#, tmp115
-	movss	%xmm0, -40(%rbp)	# tmp115, MEM[(float[11] *)_74][6]
+	movss	%xmm0, -40(%rbp)	# tmp115, MEM[(float[11] *)_77][6]
 	pxor	%xmm0, %xmm0	# tmp116
-	movss	%xmm0, -36(%rbp)	# tmp116, MEM[(float[11] *)_74][7]
+	movss	%xmm0, -36(%rbp)	# tmp116, MEM[(float[11] *)_77][7]
 	movss	.LC14(%rip), %xmm0	#, tmp117
-	movss	%xmm0, -32(%rbp)	# tmp117, MEM[(float[11] *)_74][8]
+	movss	%xmm0, -32(%rbp)	# tmp117, MEM[(float[11] *)_77][8]
 	movss	.LC15(%rip), %xmm0	#, tmp118
-	movss	%xmm0, -28(%rbp)	# tmp118, MEM[(float[11] *)_74][9]
+	movss	%xmm0, -28(%rbp)	# tmp118, MEM[(float[11] *)_77][9]
 	movss	.LC16(%rip), %xmm0	#, tmp119
-	movss	%xmm0, -24(%rbp)	# tmp119, MEM[(float[11] *)_74][10]
+	movss	%xmm0, -24(%rbp)	# tmp119, MEM[(float[11] *)_77][10]
 # problem31.c:40:     result = func0((float[]){5, 3, -5, 2, 3, 3, 9, 0, 123, 1, -10}, 11, &count);
 	leaq	-148(%rbp), %rdx	#, tmp120
 	leaq	-64(%rbp), %rax	#, tmp121
@@ -267,28 +265,27 @@ main:
 	movq	%rax, -144(%rbp)	# tmp122, result
 # problem31.c:41:     assert(issame(result, count, (float[]){5, 3, 2, 3, 3, 9, 123, 1}, 8));
 	movss	.LC6(%rip), %xmm0	#, tmp123
-	movss	%xmm0, -96(%rbp)	# tmp123, MEM[(float[8] *)_75][0]
+	movss	%xmm0, -96(%rbp)	# tmp123, MEM[(float[8] *)_78][0]
 	movss	.LC10(%rip), %xmm0	#, tmp124
-	movss	%xmm0, -92(%rbp)	# tmp124, MEM[(float[8] *)_75][1]
+	movss	%xmm0, -92(%rbp)	# tmp124, MEM[(float[8] *)_78][1]
 	movss	.LC12(%rip), %xmm0	#, tmp125
-	movss	%xmm0, -88(%rbp)	# tmp125, MEM[(float[8] *)_75][2]
+	movss	%xmm0, -88(%rbp)	# tmp125, MEM[(float[8] *)_78][2]
 	movss	.LC10(%rip), %xmm0	#, tmp126
-	movss	%xmm0, -84(%rbp)	# tmp126, MEM[(float[8] *)_75][3]
+	movss	%xmm0, -84(%rbp)	# tmp126, MEM[(float[8] *)_78][3]
 	movss	.LC10(%rip), %xmm0	#, tmp127
-	movss	%xmm0, -80(%rbp)	# tmp127, MEM[(float[8] *)_75][4]
+	movss	%xmm0, -80(%rbp)	# tmp127, MEM[(float[8] *)_78][4]
 	movss	.LC13(%rip), %xmm0	#, tmp128
-	movss	%xmm0, -76(%rbp)	# tmp128, MEM[(float[8] *)_75][5]
+	movss	%xmm0, -76(%rbp)	# tmp128, MEM[(float[8] *)_78][5]
 	movss	.LC14(%rip), %xmm0	#, tmp129
-	movss	%xmm0, -72(%rbp)	# tmp129, MEM[(float[8] *)_75][6]
+	movss	%xmm0, -72(%rbp)	# tmp129, MEM[(float[8] *)_78][6]
 	movss	.LC15(%rip), %xmm0	#, tmp130
-	movss	%xmm0, -68(%rbp)	# tmp130, MEM[(float[8] *)_75][7]
+	movss	%xmm0, -68(%rbp)	# tmp130, MEM[(float[8] *)_78][7]
 	movl	-148(%rbp), %esi	# count, count.1_3
 	leaq	-96(%rbp), %rdx	#, tmp131
 	movq	-144(%rbp), %rax	# result, tmp132
 	movl	$8, %ecx	#,
 	movq	%rax, %rdi	# tmp132,
 	call	issame	#
-# problem31.c:41:     assert(issame(result, count, (float[]){5, 3, 2, 3, 3, 9, 123, 1}, 8));
 	testl	%eax, %eax	# _4
 	jne	.L19	#,
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp133
@@ -306,9 +303,9 @@ main:
 	call	free@PLT	#
 # problem31.c:44:     result = func0((float[]){-1, -2}, 2, &count);
 	movss	.LC3(%rip), %xmm0	#, tmp137
-	movss	%xmm0, -96(%rbp)	# tmp137, MEM[(float[2] *)_75][0]
+	movss	%xmm0, -96(%rbp)	# tmp137, MEM[(float[2] *)_78][0]
 	movss	.LC4(%rip), %xmm0	#, tmp138
-	movss	%xmm0, -92(%rbp)	# tmp138, MEM[(float[2] *)_75][1]
+	movss	%xmm0, -92(%rbp)	# tmp138, MEM[(float[2] *)_78][1]
 # problem31.c:44:     result = func0((float[]){-1, -2}, 2, &count);
 	leaq	-148(%rbp), %rdx	#, tmp139
 	leaq	-96(%rbp), %rax	#, tmp140
@@ -323,9 +320,9 @@ main:
 	movl	$0, %ecx	#,
 	movq	%rax, %rdi	# tmp143,
 	call	issame	#
-# problem31.c:45:     assert(issame(result, count, (float[]){}, 0));
 	testl	%eax, %eax	# _6
 	jne	.L20	#,
+# problem31.c:45:     assert(issame(result, count, (float[]){}, 0));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp144
 	movq	%rax, %rcx	# tmp144,
 	movl	$45, %edx	#,
@@ -353,9 +350,9 @@ main:
 	movl	$0, %ecx	#,
 	movq	%rax, %rdi	# tmp152,
 	call	issame	#
-# problem31.c:49:     assert(issame(result, count, (float[]){}, 0));
 	testl	%eax, %eax	# _8
 	jne	.L21	#,
+# problem31.c:49:     assert(issame(result, count, (float[]){}, 0));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp153
 	movq	%rax, %rcx	# tmp153,
 	movl	$49, %edx	#,
@@ -370,11 +367,12 @@ main:
 	movq	%rax, %rdi	# tmp156,
 	call	free@PLT	#
 # problem31.c:52:     return 0;
-	movl	$0, %eax	#, _63
+	movl	$0, %eax	#, _66
 # problem31.c:53: }
-	movq	-8(%rbp), %rdx	# D.4843, tmp159
+	movq	-8(%rbp), %rdx	# D.4006, tmp159
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp159
 	je	.L23	#,
+# problem31.c:53: }
 	call	__stack_chk_fail@PLT	#
 .L23:
 	leave	
@@ -434,7 +432,7 @@ __PRETTY_FUNCTION__.0:
 	.align 4
 .LC16:
 	.long	-1054867456
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

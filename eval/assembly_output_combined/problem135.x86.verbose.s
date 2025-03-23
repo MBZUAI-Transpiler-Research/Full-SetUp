@@ -1,6 +1,6 @@
 	.file	"problem135.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -29,7 +29,6 @@ func0:
 	jne	.L2	#,
 # problem135.c:7:     if (len == 0) return 0;
 	movl	$0, %eax	#, _26
-# problem135.c:7:     if (len == 0) return 0;
 	jmp	.L3	#
 .L2:
 # problem135.c:8:     char last_char = txt[len - 1];
@@ -43,12 +42,11 @@ func0:
 	movb	%al, -6(%rbp)	# tmp112, last_char
 # problem135.c:9:     if (!isalpha((unsigned char)last_char)) return 0;
 	call	__ctype_b_loc@PLT	#
-# problem135.c:9:     if (!isalpha((unsigned char)last_char)) return 0;
-	movq	(%rax), %rax	# *_5, _6
-	movzbl	-6(%rbp), %edx	# last_char, last_char.0_7
-	movzbl	%dl, %edx	# last_char.0_7, _8
-	addq	%rdx, %rdx	# _9
-	addq	%rdx, %rax	# _9, _10
+	movq	(%rax), %rdx	# *_5, _6
+	movzbl	-6(%rbp), %eax	# last_char, last_char.0_7
+	movzbl	%al, %eax	# last_char.0_7, _8
+	addq	%rax, %rax	# _9
+	addq	%rdx, %rax	# _6, _10
 	movzwl	(%rax), %eax	# *_10, _11
 	movzwl	%ax, %eax	# _11, _12
 	andl	$1024, %eax	#, _13
@@ -57,7 +55,6 @@ func0:
 	jne	.L4	#,
 # problem135.c:9:     if (!isalpha((unsigned char)last_char)) return 0;
 	movl	$0, %eax	#, _26
-# problem135.c:9:     if (!isalpha((unsigned char)last_char)) return 0;
 	jmp	.L3	#
 .L4:
 # problem135.c:10:     if (len == 1) return 1;
@@ -65,7 +62,6 @@ func0:
 	jne	.L5	#,
 # problem135.c:10:     if (len == 1) return 1;
 	movl	$1, %eax	#, _26
-# problem135.c:10:     if (len == 1) return 1;
 	jmp	.L3	#
 .L5:
 # problem135.c:11:     char second_last_char = txt[len - 2];
@@ -79,12 +75,11 @@ func0:
 	movb	%al, -5(%rbp)	# tmp115, second_last_char
 # problem135.c:12:     if (isalpha((unsigned char)second_last_char)) return 0;
 	call	__ctype_b_loc@PLT	#
-# problem135.c:12:     if (isalpha((unsigned char)second_last_char)) return 0;
-	movq	(%rax), %rax	# *_17, _18
-	movzbl	-5(%rbp), %edx	# second_last_char, second_last_char.1_19
-	movzbl	%dl, %edx	# second_last_char.1_19, _20
-	addq	%rdx, %rdx	# _21
-	addq	%rdx, %rax	# _21, _22
+	movq	(%rax), %rdx	# *_17, _18
+	movzbl	-5(%rbp), %eax	# second_last_char, second_last_char.1_19
+	movzbl	%al, %eax	# second_last_char.1_19, _20
+	addq	%rax, %rax	# _21
+	addq	%rdx, %rax	# _18, _22
 	movzwl	(%rax), %eax	# *_22, _23
 	movzwl	%ax, %eax	# _23, _24
 	andl	$1024, %eax	#, _25
@@ -93,7 +88,6 @@ func0:
 	je	.L6	#,
 # problem135.c:12:     if (isalpha((unsigned char)second_last_char)) return 0;
 	movl	$0, %eax	#, _26
-# problem135.c:12:     if (isalpha((unsigned char)second_last_char)) return 0;
 	jmp	.L3	#
 .L6:
 # problem135.c:13:     return 1;
@@ -165,9 +159,9 @@ main:
 	leaq	.LC0(%rip), %rax	#, tmp94
 	movq	%rax, %rdi	# tmp94,
 	call	func0	#
-# problem135.c:21:     assert(func0("apple") == 0);
 	testl	%eax, %eax	# _1
 	je	.L8	#,
+# problem135.c:21:     assert(func0("apple") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp95
 	movq	%rax, %rcx	# tmp95,
 	movl	$21, %edx	#,
@@ -181,9 +175,9 @@ main:
 	leaq	.LC3(%rip), %rax	#, tmp98
 	movq	%rax, %rdi	# tmp98,
 	call	func0	#
-# problem135.c:22:     assert(func0("apple pi e") == 1);
 	cmpl	$1, %eax	#, _2
 	je	.L9	#,
+# problem135.c:22:     assert(func0("apple pi e") == 1);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp99
 	movq	%rax, %rcx	# tmp99,
 	movl	$22, %edx	#,
@@ -197,9 +191,9 @@ main:
 	leaq	.LC5(%rip), %rax	#, tmp102
 	movq	%rax, %rdi	# tmp102,
 	call	func0	#
-# problem135.c:23:     assert(func0("eeeee") == 0);
 	testl	%eax, %eax	# _3
 	je	.L10	#,
+# problem135.c:23:     assert(func0("eeeee") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp103
 	movq	%rax, %rcx	# tmp103,
 	movl	$23, %edx	#,
@@ -213,9 +207,9 @@ main:
 	leaq	.LC7(%rip), %rax	#, tmp106
 	movq	%rax, %rdi	# tmp106,
 	call	func0	#
-# problem135.c:24:     assert(func0("A") == 1);
 	cmpl	$1, %eax	#, _4
 	je	.L11	#,
+# problem135.c:24:     assert(func0("A") == 1);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp107
 	movq	%rax, %rcx	# tmp107,
 	movl	$24, %edx	#,
@@ -229,9 +223,9 @@ main:
 	leaq	.LC9(%rip), %rax	#, tmp110
 	movq	%rax, %rdi	# tmp110,
 	call	func0	#
-# problem135.c:25:     assert(func0("Pumpkin pie ") == 0);
 	testl	%eax, %eax	# _5
 	je	.L12	#,
+# problem135.c:25:     assert(func0("Pumpkin pie ") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp111
 	movq	%rax, %rcx	# tmp111,
 	movl	$25, %edx	#,
@@ -245,9 +239,9 @@ main:
 	leaq	.LC11(%rip), %rax	#, tmp114
 	movq	%rax, %rdi	# tmp114,
 	call	func0	#
-# problem135.c:26:     assert(func0("Pumpkin pie 1") == 0);
 	testl	%eax, %eax	# _6
 	je	.L13	#,
+# problem135.c:26:     assert(func0("Pumpkin pie 1") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp115
 	movq	%rax, %rcx	# tmp115,
 	movl	$26, %edx	#,
@@ -261,9 +255,9 @@ main:
 	leaq	.LC13(%rip), %rax	#, tmp118
 	movq	%rax, %rdi	# tmp118,
 	call	func0	#
-# problem135.c:27:     assert(func0("") == 0);
 	testl	%eax, %eax	# _7
 	je	.L14	#,
+# problem135.c:27:     assert(func0("") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp119
 	movq	%rax, %rcx	# tmp119,
 	movl	$27, %edx	#,
@@ -277,9 +271,9 @@ main:
 	leaq	.LC15(%rip), %rax	#, tmp122
 	movq	%rax, %rdi	# tmp122,
 	call	func0	#
-# problem135.c:28:     assert(func0("eeeee e ") == 0);
 	testl	%eax, %eax	# _8
 	je	.L15	#,
+# problem135.c:28:     assert(func0("eeeee e ") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp123
 	movq	%rax, %rcx	# tmp123,
 	movl	$28, %edx	#,
@@ -293,9 +287,9 @@ main:
 	leaq	.LC17(%rip), %rax	#, tmp126
 	movq	%rax, %rdi	# tmp126,
 	call	func0	#
-# problem135.c:29:     assert(func0("apple pie") == 0);
 	testl	%eax, %eax	# _9
 	je	.L16	#,
+# problem135.c:29:     assert(func0("apple pie") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp127
 	movq	%rax, %rcx	# tmp127,
 	movl	$29, %edx	#,
@@ -309,9 +303,9 @@ main:
 	leaq	.LC19(%rip), %rax	#, tmp130
 	movq	%rax, %rdi	# tmp130,
 	call	func0	#
-# problem135.c:30:     assert(func0("apple pi e ") == 0);
 	testl	%eax, %eax	# _10
 	je	.L17	#,
+# problem135.c:30:     assert(func0("apple pi e ") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp131
 	movq	%rax, %rcx	# tmp131,
 	movl	$30, %edx	#,
@@ -335,7 +329,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

@@ -1,6 +1,6 @@
 	.file	"problem30.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -122,7 +122,6 @@ issame:
 	je	.L7	#,
 # problem30.c:28:     if (a_count != b_count) return 0;
 	movl	$0, %eax	#, _11
-# problem30.c:28:     if (a_count != b_count) return 0;
 	jmp	.L8	#
 .L7:
 # problem30.c:29:     for (int i = 0; i < a_count; i++) {
@@ -154,7 +153,6 @@ issame:
 	je	.L10	#,
 # problem30.c:30:         if (strcmp(a[i], b[i]) != 0) return 0;
 	movl	$0, %eax	#, _11
-# problem30.c:30:         if (strcmp(a[i], b[i]) != 0) return 0;
 	jmp	.L8	#
 .L10:
 # problem30.c:29:     for (int i = 0; i < a_count; i++) {
@@ -210,7 +208,7 @@ main:
 	addq	$-128, %rsp	#,
 # problem30.c:35: int main() {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp118
-	movq	%rax, -8(%rbp)	# tmp118, D.3992
+	movq	%rax, -8(%rbp)	# tmp118, D.3128
 	xorl	%eax, %eax	# tmp118
 # problem30.c:39:     count = func0((char*[]){}, 0, "john", &result);
 	leaq	-112(%rbp), %rdx	#, tmp90
@@ -228,9 +226,9 @@ main:
 	movl	$0, %ecx	#,
 	movq	%rax, %rdi	# result.1_1,
 	call	issame	#
-# problem30.c:40:     assert(issame(result, count, (char*[]){}, 0));
 	testl	%eax, %eax	# _2
 	jne	.L13	#,
+# problem30.c:40:     assert(issame(result, count, (char*[]){}, 0));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp96
 	movq	%rax, %rcx	# tmp96,
 	movl	$40, %edx	#,
@@ -246,17 +244,17 @@ main:
 	call	free@PLT	#
 # problem30.c:43:     char* strings[] = {"xxx", "asd", "xxy", "john doe", "xxxAAA", "xxx"};
 	leaq	.LC3(%rip), %rax	#, tmp99
-	movq	%rax, -64(%rbp)	# tmp99, MEM[(char *[6] *)_35][0]
+	movq	%rax, -64(%rbp)	# tmp99, MEM[(char *[6] *)_37][0]
 	leaq	.LC4(%rip), %rax	#, tmp100
-	movq	%rax, -56(%rbp)	# tmp100, MEM[(char *[6] *)_35][1]
+	movq	%rax, -56(%rbp)	# tmp100, MEM[(char *[6] *)_37][1]
 	leaq	.LC5(%rip), %rax	#, tmp101
-	movq	%rax, -48(%rbp)	# tmp101, MEM[(char *[6] *)_35][2]
+	movq	%rax, -48(%rbp)	# tmp101, MEM[(char *[6] *)_37][2]
 	leaq	.LC6(%rip), %rax	#, tmp102
-	movq	%rax, -40(%rbp)	# tmp102, MEM[(char *[6] *)_35][3]
+	movq	%rax, -40(%rbp)	# tmp102, MEM[(char *[6] *)_37][3]
 	leaq	.LC7(%rip), %rax	#, tmp103
-	movq	%rax, -32(%rbp)	# tmp103, MEM[(char *[6] *)_35][4]
+	movq	%rax, -32(%rbp)	# tmp103, MEM[(char *[6] *)_37][4]
 	leaq	.LC3(%rip), %rax	#, tmp104
-	movq	%rax, -24(%rbp)	# tmp104, MEM[(char *[6] *)_35][5]
+	movq	%rax, -24(%rbp)	# tmp104, MEM[(char *[6] *)_37][5]
 # problem30.c:44:     char* expected[] = {"xxx", "xxxAAA", "xxx"};
 	leaq	.LC3(%rip), %rax	#, tmp105
 	movq	%rax, -96(%rbp)	# tmp105, expected[0]
@@ -280,7 +278,6 @@ main:
 	movl	$3, %ecx	#,
 	movq	%rax, %rdi	# result.3_4,
 	call	issame	#
-# problem30.c:46:     assert(issame(result, count, expected, 3));
 	testl	%eax, %eax	# _5
 	jne	.L14	#,
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp114
@@ -297,9 +294,9 @@ main:
 	movq	%rax, %rdi	# result.4_6,
 	call	free@PLT	#
 # problem30.c:49:     return 0;
-	movl	$0, %eax	#, _28
+	movl	$0, %eax	#, _30
 # problem30.c:50: }
-	movq	-8(%rbp), %rdx	# D.3992, tmp119
+	movq	-8(%rbp), %rdx	# D.3128, tmp119
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp119
 	je	.L16	#,
 	call	__stack_chk_fail@PLT	#
@@ -315,7 +312,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

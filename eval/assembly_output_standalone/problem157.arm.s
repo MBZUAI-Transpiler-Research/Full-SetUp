@@ -7,22 +7,21 @@
 func0:
 .LFB0:
 	.cfi_startproc
-	sub	sp, sp, #208
+	stp	x29, x30, [sp, -208]!
 	.cfi_def_cfa_offset 208
-	stp	x29, x30, [sp, 192]
-	.cfi_offset 29, -16
-	.cfi_offset 30, -8
-	add	x29, sp, 192
-	str	w0, [sp, 12]
-	str	x1, [sp]
+	.cfi_offset 29, -208
+	.cfi_offset 30, -200
+	mov	x29, sp
+	str	w0, [sp, 28]
+	str	x1, [sp, 16]
 	adrp	x0, :got:__stack_chk_guard
-	ldr	x0, [x0, :got_lo12:__stack_chk_guard]
+	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]
 	ldr	x1, [x0]
-	str	x1, [sp, 184]
+	str	x1, [sp, 200]
 	mov	x1, 0
 	adrp	x0, .LC15
 	add	x1, x0, :lo12:.LC15
-	add	x0, sp, 80
+	add	x0, sp, 96
 	ldp	q0, q1, [x1]
 	stp	q0, q1, [x0]
 	ldp	q0, q1, [x1, 32]
@@ -33,64 +32,63 @@ func0:
 	str	x1, [x0, 96]
 	adrp	x0, .LC14
 	add	x1, x0, :lo12:.LC14
-	add	x0, sp, 24
+	add	x0, sp, 40
 	ldp	q0, q1, [x1]
 	stp	q0, q1, [x0]
 	ldr	q0, [x1, 32]
 	str	q0, [x0, 32]
 	ldr	w1, [x1, 48]
 	str	w1, [x0, 48]
-	str	wzr, [sp, 20]
-	ldr	x0, [sp]
+	str	wzr, [sp, 36]
+	ldr	x0, [sp, 16]
 	strb	wzr, [x0]
 	b	.L2
 .L4:
-	ldrsw	x0, [sp, 20]
+	ldrsw	x0, [sp, 36]
 	lsl	x0, x0, 3
-	add	x1, sp, 80
+	add	x1, sp, 96
 	ldr	x0, [x1, x0]
 	mov	x1, x0
-	ldr	x0, [sp]
+	ldr	x0, [sp, 16]
 	bl	strcat
-	ldrsw	x0, [sp, 20]
+	ldrsw	x0, [sp, 36]
 	lsl	x0, x0, 2
-	add	x1, sp, 24
+	add	x1, sp, 40
 	ldr	w0, [x1, x0]
-	ldr	w1, [sp, 12]
+	ldr	w1, [sp, 28]
 	sub	w0, w1, w0
-	str	w0, [sp, 12]
+	str	w0, [sp, 28]
 .L3:
-	ldrsw	x0, [sp, 20]
+	ldrsw	x0, [sp, 36]
 	lsl	x0, x0, 2
-	add	x1, sp, 24
+	add	x1, sp, 40
 	ldr	w0, [x1, x0]
-	ldr	w1, [sp, 12]
+	ldr	w1, [sp, 28]
 	cmp	w1, w0
 	bge	.L4
-	ldr	w0, [sp, 12]
+	ldr	w0, [sp, 28]
 	cmp	w0, 0
 	ble	.L2
-	ldr	w0, [sp, 20]
+	ldr	w0, [sp, 36]
 	add	w0, w0, 1
-	str	w0, [sp, 20]
+	str	w0, [sp, 36]
 .L2:
-	ldr	w0, [sp, 12]
+	ldr	w0, [sp, 28]
 	cmp	w0, 0
 	bgt	.L3
 	nop
 	adrp	x0, :got:__stack_chk_guard
-	ldr	x0, [x0, :got_lo12:__stack_chk_guard]
-	ldr	x2, [sp, 184]
+	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]
+	ldr	x2, [sp, 200]
 	ldr	x1, [x0]
 	subs	x2, x2, x1
 	mov	x1, 0
-	beq	.L7
+	beq	.L6
 	bl	__stack_chk_fail
-.L7:
-	ldp	x29, x30, [sp, 192]
-	add	sp, sp, 208
-	.cfi_restore 29
+.L6:
+	ldp	x29, x30, [sp], 208
 	.cfi_restore 30
+	.cfi_restore 29
 	.cfi_def_cfa_offset 0
 	ret
 	.cfi_endproc
@@ -169,5 +167,5 @@ func0:
 	.word	4
 	.word	1
 	.text
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

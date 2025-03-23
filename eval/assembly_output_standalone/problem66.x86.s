@@ -73,12 +73,13 @@ func0:
 	jmp	.L5
 .L2:
 	movl	-68(%rbp), %eax
-	movslq	%eax, %rdx
-	movl	-88(%rbp), %eax
 	cltq
-	subq	%rax, %rdx
+	movl	-88(%rbp), %edx
+	movslq	%edx, %rdx
+	subq	%rdx, %rax
+	movq	%rax, %rcx
 	leaq	xs.0(%rip), %rax
-	addq	%rax, %rdx
+	leaq	(%rcx,%rax), %rdx
 	leaq	-64(%rbp), %rax
 	movq	%rdx, %rsi
 	movq	%rax, %rdi
@@ -114,7 +115,7 @@ func0:
 	.size	func0, .-func0
 	.local	xs.0
 	.comm	xs.0,50,32
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

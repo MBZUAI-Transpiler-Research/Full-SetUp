@@ -1,6 +1,6 @@
 	.file	"problem88.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -54,12 +54,12 @@ func0:
 	leaq	0(,%rax,8), %rdx	#, _6
 	movq	-56(%rbp), %rax	# lst, tmp114
 	addq	%rdx, %rax	# _6, _7
-	movq	(%rax), %rax	# *_7, _8
+	movq	(%rax), %rdx	# *_7, _8
 # problem88.c:9:             if (lst[i][j] == x) {
-	movl	-28(%rbp), %edx	# j, tmp115
-	movslq	%edx, %rdx	# tmp115, _9
-	salq	$2, %rdx	#, _10
-	addq	%rdx, %rax	# _10, _11
+	movl	-28(%rbp), %eax	# j, tmp115
+	cltq
+	salq	$2, %rax	#, _10
+	addq	%rdx, %rax	# _8, _11
 	movl	(%rax), %eax	# *_11, _12
 # problem88.c:9:             if (lst[i][j] == x) {
 	cmpl	%eax, -64(%rbp)	# _12, x
@@ -148,7 +148,6 @@ issame:
 	je	.L9	#,
 # problem88.c:28:     if (aSize != bSize) return 0;
 	movl	$0, %eax	#, _24
-# problem88.c:28:     if (aSize != bSize) return 0;
 	jmp	.L10	#
 .L9:
 # problem88.c:30:     for (int i = 0; i < aSize; i++) {
@@ -203,7 +202,6 @@ issame:
 .L12:
 # problem88.c:31:         if (a[i][0] != b[i][0] || a[i][1] != b[i][1]) return 0;
 	movl	$0, %eax	#, _24
-# problem88.c:31:         if (a[i][0] != b[i][0] || a[i][1] != b[i][1]) return 0;
 	jmp	.L10	#
 .L13:
 # problem88.c:30:     for (int i = 0; i < aSize; i++) {
@@ -292,7 +290,7 @@ main:
 	subq	$256, %rsp	#,
 # problem88.c:43: int main() {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp107
-	movq	%rax, -8(%rbp)	# tmp107, D.3803
+	movq	%rax, -8(%rbp)	# tmp107, D.2966
 	xorl	%eax, %eax	# tmp107
 # problem88.c:48:     rows = 3;
 	movl	$3, -244(%rbp)	#, rows
@@ -301,62 +299,62 @@ main:
 	movl	$6, -184(%rbp)	#, cols1[1]
 	movl	$6, -180(%rbp)	#, cols1[2]
 # problem88.c:50:     int *lst1[] = {(int[]){1,2,3,4,5,6}, (int[]){1,2,3,4,1,6}, (int[]){1,2,3,4,5,1}};
-	movl	$1, -144(%rbp)	#, D.3771[0]
-	movl	$2, -140(%rbp)	#, D.3771[1]
-	movl	$3, -136(%rbp)	#, D.3771[2]
-	movl	$4, -132(%rbp)	#, D.3771[3]
-	movl	$5, -128(%rbp)	#, D.3771[4]
-	movl	$6, -124(%rbp)	#, D.3771[5]
+	movl	$1, -144(%rbp)	#, D.2934[0]
+	movl	$2, -140(%rbp)	#, D.2934[1]
+	movl	$3, -136(%rbp)	#, D.2934[2]
+	movl	$4, -132(%rbp)	#, D.2934[3]
+	movl	$5, -128(%rbp)	#, D.2934[4]
+	movl	$6, -124(%rbp)	#, D.2934[5]
 # problem88.c:50:     int *lst1[] = {(int[]){1,2,3,4,5,6}, (int[]){1,2,3,4,1,6}, (int[]){1,2,3,4,5,1}};
 	leaq	-144(%rbp), %rax	#, tmp87
 	movq	%rax, -176(%rbp)	# tmp87, lst1[0]
 # problem88.c:50:     int *lst1[] = {(int[]){1,2,3,4,5,6}, (int[]){1,2,3,4,1,6}, (int[]){1,2,3,4,5,1}};
-	movl	$1, -112(%rbp)	#, D.3772[0]
-	movl	$2, -108(%rbp)	#, D.3772[1]
-	movl	$3, -104(%rbp)	#, D.3772[2]
-	movl	$4, -100(%rbp)	#, D.3772[3]
-	movl	$1, -96(%rbp)	#, D.3772[4]
-	movl	$6, -92(%rbp)	#, D.3772[5]
+	movl	$1, -112(%rbp)	#, D.2935[0]
+	movl	$2, -108(%rbp)	#, D.2935[1]
+	movl	$3, -104(%rbp)	#, D.2935[2]
+	movl	$4, -100(%rbp)	#, D.2935[3]
+	movl	$1, -96(%rbp)	#, D.2935[4]
+	movl	$6, -92(%rbp)	#, D.2935[5]
 # problem88.c:50:     int *lst1[] = {(int[]){1,2,3,4,5,6}, (int[]){1,2,3,4,1,6}, (int[]){1,2,3,4,5,1}};
 	leaq	-112(%rbp), %rax	#, tmp88
 	movq	%rax, -168(%rbp)	# tmp88, lst1[1]
 # problem88.c:50:     int *lst1[] = {(int[]){1,2,3,4,5,6}, (int[]){1,2,3,4,1,6}, (int[]){1,2,3,4,5,1}};
-	movl	$1, -80(%rbp)	#, D.3773[0]
-	movl	$2, -76(%rbp)	#, D.3773[1]
-	movl	$3, -72(%rbp)	#, D.3773[2]
-	movl	$4, -68(%rbp)	#, D.3773[3]
-	movl	$5, -64(%rbp)	#, D.3773[4]
-	movl	$1, -60(%rbp)	#, D.3773[5]
+	movl	$1, -80(%rbp)	#, D.2936[0]
+	movl	$2, -76(%rbp)	#, D.2936[1]
+	movl	$3, -72(%rbp)	#, D.2936[2]
+	movl	$4, -68(%rbp)	#, D.2936[3]
+	movl	$5, -64(%rbp)	#, D.2936[4]
+	movl	$1, -60(%rbp)	#, D.2936[5]
 # problem88.c:50:     int *lst1[] = {(int[]){1,2,3,4,5,6}, (int[]){1,2,3,4,1,6}, (int[]){1,2,3,4,5,1}};
 	leaq	-80(%rbp), %rax	#, tmp89
 	movq	%rax, -160(%rbp)	# tmp89, lst1[2]
 # problem88.c:51:     int *expected1[] = {(int[]){0, 0}, (int[]){1, 4}, (int[]){1, 0}, (int[]){2, 5}, (int[]){2, 0}};
-	movl	$0, -228(%rbp)	#, D.3775[0]
-	movl	$0, -224(%rbp)	#, D.3775[1]
+	movl	$0, -228(%rbp)	#, D.2938[0]
+	movl	$0, -224(%rbp)	#, D.2938[1]
 # problem88.c:51:     int *expected1[] = {(int[]){0, 0}, (int[]){1, 4}, (int[]){1, 0}, (int[]){2, 5}, (int[]){2, 0}};
 	leaq	-228(%rbp), %rax	#, tmp90
 	movq	%rax, -48(%rbp)	# tmp90, expected1[0]
 # problem88.c:51:     int *expected1[] = {(int[]){0, 0}, (int[]){1, 4}, (int[]){1, 0}, (int[]){2, 5}, (int[]){2, 0}};
-	movl	$1, -220(%rbp)	#, D.3776[0]
-	movl	$4, -216(%rbp)	#, D.3776[1]
+	movl	$1, -220(%rbp)	#, D.2939[0]
+	movl	$4, -216(%rbp)	#, D.2939[1]
 # problem88.c:51:     int *expected1[] = {(int[]){0, 0}, (int[]){1, 4}, (int[]){1, 0}, (int[]){2, 5}, (int[]){2, 0}};
 	leaq	-220(%rbp), %rax	#, tmp91
 	movq	%rax, -40(%rbp)	# tmp91, expected1[1]
 # problem88.c:51:     int *expected1[] = {(int[]){0, 0}, (int[]){1, 4}, (int[]){1, 0}, (int[]){2, 5}, (int[]){2, 0}};
-	movl	$1, -212(%rbp)	#, D.3777[0]
-	movl	$0, -208(%rbp)	#, D.3777[1]
+	movl	$1, -212(%rbp)	#, D.2940[0]
+	movl	$0, -208(%rbp)	#, D.2940[1]
 # problem88.c:51:     int *expected1[] = {(int[]){0, 0}, (int[]){1, 4}, (int[]){1, 0}, (int[]){2, 5}, (int[]){2, 0}};
 	leaq	-212(%rbp), %rax	#, tmp92
 	movq	%rax, -32(%rbp)	# tmp92, expected1[2]
 # problem88.c:51:     int *expected1[] = {(int[]){0, 0}, (int[]){1, 4}, (int[]){1, 0}, (int[]){2, 5}, (int[]){2, 0}};
-	movl	$2, -204(%rbp)	#, D.3778[0]
-	movl	$5, -200(%rbp)	#, D.3778[1]
+	movl	$2, -204(%rbp)	#, D.2941[0]
+	movl	$5, -200(%rbp)	#, D.2941[1]
 # problem88.c:51:     int *expected1[] = {(int[]){0, 0}, (int[]){1, 4}, (int[]){1, 0}, (int[]){2, 5}, (int[]){2, 0}};
 	leaq	-204(%rbp), %rax	#, tmp93
 	movq	%rax, -24(%rbp)	# tmp93, expected1[3]
 # problem88.c:51:     int *expected1[] = {(int[]){0, 0}, (int[]){1, 4}, (int[]){1, 0}, (int[]){2, 5}, (int[]){2, 0}};
-	movl	$2, -196(%rbp)	#, D.3779[0]
-	movl	$0, -192(%rbp)	#, D.3779[1]
+	movl	$2, -196(%rbp)	#, D.2942[0]
+	movl	$0, -192(%rbp)	#, D.2942[1]
 # problem88.c:51:     int *expected1[] = {(int[]){0, 0}, (int[]){1, 4}, (int[]){1, 0}, (int[]){2, 5}, (int[]){2, 0}};
 	leaq	-196(%rbp), %rax	#, tmp94
 	movq	%rax, -16(%rbp)	# tmp94, expected1[4]
@@ -377,9 +375,9 @@ main:
 	movl	$5, %ecx	#,
 	movq	%rax, %rdi	# tmp101,
 	call	issame	#
-# problem88.c:53:     assert(issame(result, returnSize, expected1, 5));
 	testl	%eax, %eax	# _2
 	jne	.L19	#,
+# problem88.c:53:     assert(issame(result, returnSize, expected1, 5));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp102
 	movq	%rax, %rcx	# tmp102,
 	movl	$53, %edx	#,
@@ -398,7 +396,7 @@ main:
 # problem88.c:56:     return 0;
 	movl	$0, %eax	#, _50
 # problem88.c:57: }
-	movq	-8(%rbp), %rdx	# D.3803, tmp108
+	movq	-8(%rbp), %rdx	# D.2966, tmp108
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp108
 	je	.L21	#,
 	call	__stack_chk_fail@PLT	#
@@ -414,7 +412,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

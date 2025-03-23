@@ -1,6 +1,6 @@
 	.file	"problem56.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -20,7 +20,7 @@ func0:
 	movl	%edi, -4036(%rbp)	# n, n
 # problem56.c:3: int func0(int n) {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp102
-	movq	%rax, -8(%rbp)	# tmp102, D.3226
+	movq	%rax, -8(%rbp)	# tmp102, D.2396
 	xorl	%eax, %eax	# tmp102
 # problem56.c:4:     int f[1000] = {0};
 	leaq	-4016(%rbp), %rdx	#, tmp89
@@ -67,7 +67,7 @@ func0:
 	cltq
 	movl	-4016(%rbp,%rax,4), %eax	# f[n_13(D)], _14
 # problem56.c:10: }
-	movq	-8(%rbp), %rdx	# D.3226, tmp103
+	movq	-8(%rbp), %rdx	# D.2396, tmp103
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp103
 	je	.L5	#,
 	call	__stack_chk_fail@PLT	#
@@ -106,9 +106,9 @@ main:
 # problem56.c:17:     assert(func0(10) == 55);
 	movl	$10, %edi	#,
 	call	func0	#
-# problem56.c:17:     assert(func0(10) == 55);
 	cmpl	$55, %eax	#, _1
 	je	.L7	#,
+# problem56.c:17:     assert(func0(10) == 55);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp89
 	movq	%rax, %rcx	# tmp89,
 	movl	$17, %edx	#,
@@ -121,9 +121,9 @@ main:
 # problem56.c:18:     assert(func0(1) == 1);
 	movl	$1, %edi	#,
 	call	func0	#
-# problem56.c:18:     assert(func0(1) == 1);
 	cmpl	$1, %eax	#, _2
 	je	.L8	#,
+# problem56.c:18:     assert(func0(1) == 1);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp92
 	movq	%rax, %rcx	# tmp92,
 	movl	$18, %edx	#,
@@ -136,9 +136,9 @@ main:
 # problem56.c:19:     assert(func0(8) == 21);
 	movl	$8, %edi	#,
 	call	func0	#
-# problem56.c:19:     assert(func0(8) == 21);
 	cmpl	$21, %eax	#, _3
 	je	.L9	#,
+# problem56.c:19:     assert(func0(8) == 21);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp95
 	movq	%rax, %rcx	# tmp95,
 	movl	$19, %edx	#,
@@ -151,9 +151,9 @@ main:
 # problem56.c:20:     assert(func0(11) == 89);
 	movl	$11, %edi	#,
 	call	func0	#
-# problem56.c:20:     assert(func0(11) == 89);
 	cmpl	$89, %eax	#, _4
 	je	.L10	#,
+# problem56.c:20:     assert(func0(11) == 89);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp98
 	movq	%rax, %rcx	# tmp98,
 	movl	$20, %edx	#,
@@ -166,9 +166,9 @@ main:
 # problem56.c:21:     assert(func0(12) == 144);
 	movl	$12, %edi	#,
 	call	func0	#
-# problem56.c:21:     assert(func0(12) == 144);
 	cmpl	$144, %eax	#, _5
 	je	.L11	#,
+# problem56.c:21:     assert(func0(12) == 144);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp101
 	movq	%rax, %rcx	# tmp101,
 	movl	$21, %edx	#,
@@ -192,7 +192,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

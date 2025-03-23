@@ -81,8 +81,8 @@ func0:
 	call	strlen@PLT
 	movq	%rax, -16(%rbp)
 	movq	-24(%rbp), %rax
-	cmpq	%rax, -16(%rbp)
-	jb	.L7
+	cmpq	-16(%rbp), %rax
+	ja	.L7
 	movq	-24(%rbp), %rax
 	cmpq	-16(%rbp), %rax
 	jne	.L8
@@ -588,7 +588,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

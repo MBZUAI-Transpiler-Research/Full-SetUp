@@ -1,6 +1,6 @@
 	.file	"problem38.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -27,7 +27,7 @@ main:
 	.cfi_offset 3, -24
 # problem38.c:16: {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp111
-	movq	%rax, -24(%rbp)	# tmp111, D.3969
+	movq	%rax, -24(%rbp)	# tmp111, D.3105
 	xorl	%eax, %eax	# tmp111
 # problem38.c:17:   unsigned max = 0;
 	movl	$0, -60(%rbp)	#, max
@@ -115,8 +115,8 @@ main:
 	movl	%eax, -48(%rbp)	# _8, l
 # problem38.c:36:       if (l > max) {
 	movl	-48(%rbp), %eax	# l, tmp106
-	cmpl	%eax, -60(%rbp)	# tmp106, max
-	jnb	.L5	#,
+	cmpl	-60(%rbp), %eax	# max, tmp106
+	jbe	.L5	#,
 # problem38.c:37:         max = l;
 	movl	-48(%rbp), %eax	# l, tmp107
 	movl	%eax, -60(%rbp)	# tmp107, max
@@ -137,7 +137,7 @@ main:
 # problem38.c:43:   return 0;
 	movl	$0, %eax	#, _20
 # problem38.c:44: }
-	movq	-24(%rbp), %rdx	# D.3969, tmp112
+	movq	-24(%rbp), %rdx	# D.3105, tmp112
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp112
 	je	.L9	#,
 	call	__stack_chk_fail@PLT	#
@@ -168,11 +168,10 @@ compare:
 # problem38.c:48:   return *(const char *)a - *(const char *)b;
 	movq	-16(%rbp), %rax	# b, tmp89
 	movzbl	(%rax), %eax	# MEM[(const char *)b_7(D)], _3
-	movsbl	%al, %eax	# _3, _4
+	movsbl	%al, %ecx	# _3, _4
 # problem38.c:48:   return *(const char *)a - *(const char *)b;
-	subl	%eax, %edx	# _4, _8
-# problem38.c:48:   return *(const char *)a - *(const char *)b;
-	movl	%edx, %eax	# _8, <retval>
+	movl	%edx, %eax	# _2, _2
+	subl	%ecx, %eax	# _4, _2
 # problem38.c:49: }
 	popq	%rbp	#
 	.cfi_def_cfa 7, 8
@@ -194,7 +193,7 @@ is_pandigital:
 	movq	%rdi, -56(%rbp)	# s, s
 # problem38.c:52: {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp100
-	movq	%rax, -8(%rbp)	# tmp100, D.3973
+	movq	%rax, -8(%rbp)	# tmp100, D.3109
 	xorl	%eax, %eax	# tmp100
 # problem38.c:57:   l = strlen(s);
 	movq	-56(%rbp), %rax	# s, tmp87
@@ -233,12 +232,12 @@ is_pandigital:
 	movq	-40(%rbp), %rax	# i, tmp96
 	addq	%rdx, %rax	# tmp94, tmp95
 	movzbl	(%rax), %eax	# t[i_4], _1
-	movsbq	%al, %rdx	# _1, _2
+	movsbq	%al, %rax	# _1, _2
 # problem38.c:64:     if (t[i] != i+'1') {
-	movq	-40(%rbp), %rax	# i, tmp97
-	addq	$49, %rax	#, _3
+	movq	-40(%rbp), %rdx	# i, tmp97
+	addq	$49, %rdx	#, _3
 # problem38.c:64:     if (t[i] != i+'1') {
-	cmpq	%rax, %rdx	# _3, _2
+	cmpq	%rdx, %rax	# _3, _2
 	je	.L16	#,
 # problem38.c:65:       return 0;
 	movl	$0, %eax	#, _5
@@ -255,9 +254,10 @@ is_pandigital:
 	movl	$1, %eax	#, _5
 .L18:
 # problem38.c:69: }
-	movq	-8(%rbp), %rdx	# D.3973, tmp101
+	movq	-8(%rbp), %rdx	# D.3109, tmp101
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp101
 	je	.L19	#,
+# problem38.c:69: }
 	call	__stack_chk_fail@PLT	#
 .L19:
 	leave	
@@ -266,7 +266,7 @@ is_pandigital:
 	.cfi_endproc
 .LFE8:
 	.size	is_pandigital, .-is_pandigital
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

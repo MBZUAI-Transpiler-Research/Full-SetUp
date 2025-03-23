@@ -1,7 +1,7 @@
 	.arch armv8-a
 	.file	"problem13.c"
-// GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (aarch64-linux-gnu)
-//	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+// GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (aarch64-linux-gnu)
+//	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 // GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 // options passed: -mlittle-endian -mabi=lp64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection
@@ -109,120 +109,114 @@ func0:
 main:
 .LFB1:
 	.cfi_startproc
-	sub	sp, sp, #112	//,,
+	stp	x29, x30, [sp, -112]!	//,,,
 	.cfi_def_cfa_offset 112
-	stp	x29, x30, [sp, 96]	//,,
-	.cfi_offset 29, -16
-	.cfi_offset 30, -8
-	add	x29, sp, 96	//,,
+	.cfi_offset 29, -112
+	.cfi_offset 30, -104
+	mov	x29, sp	//,
 // problem13.c:23: int main() {
-	adrp	x0, :got:__stack_chk_guard	// tmp101,
-	ldr	x0, [x0, :got_lo12:__stack_chk_guard]	// tmp101,
-	ldr	x1, [x0]	// tmp133,
-	str	x1, [sp, 88]	// tmp133, D.5105
-	mov	x1, 0	// tmp133
+	adrp	x0, :got:__stack_chk_guard	// tmp102,
+	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]	// tmp101, tmp102,
+	ldr	x1, [x0]	// tmp135,
+	str	x1, [sp, 104]	// tmp135, D.4496
+	mov	x1, 0	// tmp135
 // problem13.c:24:     char *empty_array[] = {""};
-	adrp	x0, .LC10	// tmp103,
-	add	x0, x0, :lo12:.LC10	// tmp102, tmp103,
-	str	x0, [sp, 8]	// tmp102, empty_array[0]
+	adrp	x0, .LC10	// tmp104,
+	add	x0, x0, :lo12:.LC10	// tmp103, tmp104,
+	str	x0, [sp, 24]	// tmp103, empty_array[0]
 // problem13.c:25:     char *array1[] = {"x", "y", "z"};
-	adrp	x0, .LC11	// tmp105,
-	add	x0, x0, :lo12:.LC11	// tmp104, tmp105,
-	add	x2, sp, 16	// tmp106,,
-	mov	x3, x0	// tmp107, tmp104
-	ldp	x0, x1, [x3]	// tmp108,
-	stp	x0, x1, [x2]	// tmp108, array1
-	ldr	x0, [x3, 16]	// tmp109,
-	str	x0, [x2, 16]	// tmp109, array1
+	adrp	x0, .LC11	// tmp106,
+	add	x0, x0, :lo12:.LC11	// tmp105, tmp106,
+	add	x2, sp, 32	// tmp107,,
+	mov	x3, x0	// tmp108, tmp105
+	ldp	x0, x1, [x3]	// tmp109,
+	stp	x0, x1, [x2]	// tmp109, array1
+	ldr	x0, [x3, 16]	// tmp110,
+	str	x0, [x2, 16]	// tmp110, array1
 // problem13.c:26:     char *array2[] = {"x", "yyy", "zzzz", "www", "kkkk", "abc"};
-	adrp	x0, .LC12	// tmp111,
-	add	x1, x0, :lo12:.LC12	// tmp110, tmp111,
-	add	x0, sp, 40	// tmp112,,
-	ldp	q0, q1, [x1]	// tmp114, tmp115,
-	stp	q0, q1, [x0]	// tmp114, tmp115, array2
-	ldr	q0, [x1, 32]	// tmp116,
-	str	q0, [x0, 32]	// tmp116, array2
+	adrp	x0, .LC12	// tmp112,
+	add	x1, x0, :lo12:.LC12	// tmp111, tmp112,
+	add	x0, sp, 56	// tmp113,,
+	ldp	q0, q1, [x1]	// tmp115, tmp116,
+	stp	q0, q1, [x0]	// tmp115, tmp116, array2
+	ldr	q0, [x1, 32]	// tmp117,
+	str	q0, [x0, 32]	// tmp117, array2
 // problem13.c:28:     assert(strcmp(func0(empty_array, 0), "") == 0);
-	add	x0, sp, 8	// tmp117,,
+	add	x0, sp, 24	// tmp118,,
 	mov	w1, 0	//,
 	bl	func0		//
-// problem13.c:28:     assert(strcmp(func0(empty_array, 0), "") == 0);
 	ldrb	w0, [x0]	// _12, MEM[(const unsigned char * {ref-all})_1]
 	cmp	w0, 0	// _2,
 	beq	.L7		//,
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp118,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp118,
+// problem13.c:28:     assert(strcmp(func0(empty_array, 0), "") == 0);
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp119,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp119,
 	mov	w2, 28	//,
-	adrp	x0, .LC13	// tmp119,
-	add	x1, x0, :lo12:.LC13	//, tmp119,
-	adrp	x0, .LC14	// tmp120,
-	add	x0, x0, :lo12:.LC14	//, tmp120,
+	adrp	x0, .LC13	// tmp120,
+	add	x1, x0, :lo12:.LC13	//, tmp120,
+	adrp	x0, .LC14	// tmp121,
+	add	x0, x0, :lo12:.LC14	//, tmp121,
 	bl	__assert_fail		//
 .L7:
 // problem13.c:29:     assert(strcmp(func0(array1, 3), "x") == 0);
-	add	x0, sp, 16	// tmp121,,
+	add	x0, sp, 32	// tmp122,,
 	mov	w1, 3	//,
 	bl	func0		//
 	mov	x2, x0	// _3,
-// problem13.c:29:     assert(strcmp(func0(array1, 3), "x") == 0);
-	adrp	x0, .LC0	// tmp122,
-	add	x1, x0, :lo12:.LC0	//, tmp122,
+	adrp	x0, .LC0	// tmp123,
+	add	x1, x0, :lo12:.LC0	//, tmp123,
 	mov	x0, x2	//, _3
 	bl	strcmp		//
-// problem13.c:29:     assert(strcmp(func0(array1, 3), "x") == 0);
 	cmp	w0, 0	// _4,
 	beq	.L8		//,
 // problem13.c:29:     assert(strcmp(func0(array1, 3), "x") == 0);
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp123,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp123,
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp124,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp124,
 	mov	w2, 29	//,
-	adrp	x0, .LC13	// tmp124,
-	add	x1, x0, :lo12:.LC13	//, tmp124,
-	adrp	x0, .LC15	// tmp125,
-	add	x0, x0, :lo12:.LC15	//, tmp125,
+	adrp	x0, .LC13	// tmp125,
+	add	x1, x0, :lo12:.LC13	//, tmp125,
+	adrp	x0, .LC15	// tmp126,
+	add	x0, x0, :lo12:.LC15	//, tmp126,
 	bl	__assert_fail		//
 .L8:
 // problem13.c:30:     assert(strcmp(func0(array2, 6), "zzzz") == 0);
-	add	x0, sp, 40	// tmp126,,
+	add	x0, sp, 56	// tmp127,,
 	mov	w1, 6	//,
 	bl	func0		//
 	mov	x2, x0	// _5,
-// problem13.c:30:     assert(strcmp(func0(array2, 6), "zzzz") == 0);
-	adrp	x0, .LC5	// tmp127,
-	add	x1, x0, :lo12:.LC5	//, tmp127,
+	adrp	x0, .LC5	// tmp128,
+	add	x1, x0, :lo12:.LC5	//, tmp128,
 	mov	x0, x2	//, _5
 	bl	strcmp		//
-// problem13.c:30:     assert(strcmp(func0(array2, 6), "zzzz") == 0);
 	cmp	w0, 0	// _6,
 	beq	.L9		//,
 // problem13.c:30:     assert(strcmp(func0(array2, 6), "zzzz") == 0);
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp128,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp128,
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp129,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp129,
 	mov	w2, 30	//,
-	adrp	x0, .LC13	// tmp129,
-	add	x1, x0, :lo12:.LC13	//, tmp129,
-	adrp	x0, .LC16	// tmp130,
-	add	x0, x0, :lo12:.LC16	//, tmp130,
+	adrp	x0, .LC13	// tmp130,
+	add	x1, x0, :lo12:.LC13	//, tmp130,
+	adrp	x0, .LC16	// tmp131,
+	add	x0, x0, :lo12:.LC16	//, tmp131,
 	bl	__assert_fail		//
 .L9:
 // problem13.c:32:     return 0;
 	mov	w0, 0	// _18,
 // problem13.c:33: }
 	mov	w1, w0	// <retval>, _18
-	adrp	x0, :got:__stack_chk_guard	// tmp132,
-	ldr	x0, [x0, :got_lo12:__stack_chk_guard]	// tmp132,
-	ldr	x3, [sp, 88]	// tmp134, D.5105
-	ldr	x2, [x0]	// tmp135,
-	subs	x3, x3, x2	// tmp134, tmp135
-	mov	x2, 0	// tmp135
+	adrp	x0, :got:__stack_chk_guard	// tmp134,
+	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]	// tmp133, tmp134,
+	ldr	x3, [sp, 104]	// tmp136, D.4496
+	ldr	x2, [x0]	// tmp137,
+	subs	x3, x3, x2	// tmp136, tmp137
+	mov	x2, 0	// tmp137
 	beq	.L11		//,
 	bl	__stack_chk_fail		//
 .L11:
 	mov	w0, w1	//, <retval>
-	ldp	x29, x30, [sp, 96]	//,,
-	add	sp, sp, 112	//,,
-	.cfi_restore 29
+	ldp	x29, x30, [sp], 112	//,,,
 	.cfi_restore 30
+	.cfi_restore 29
 	.cfi_def_cfa_offset 0
 	ret	
 	.cfi_endproc
@@ -270,5 +264,5 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

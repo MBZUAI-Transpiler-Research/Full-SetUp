@@ -1,6 +1,6 @@
 	.file	"code.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -25,7 +25,7 @@ func0:
 	movl	%esi, -316(%rbp)	# count, count
 # eval/problem159//code.c:4: char *func0(char *words[], int count) {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp144
-	movq	%rax, -8(%rbp)	# tmp144, D.3414
+	movq	%rax, -8(%rbp)	# tmp144, D.2557
 	xorl	%eax, %eax	# tmp144
 # eval/problem159//code.c:5:     char *max = "";
 	leaq	.LC0(%rip), %rax	#, tmp117
@@ -194,7 +194,7 @@ func0:
 # eval/problem159//code.c:23:     return max;
 	movq	-280(%rbp), %rax	# max, _50
 # eval/problem159//code.c:24: }
-	movq	-8(%rbp), %rdx	# D.3414, tmp145
+	movq	-8(%rbp), %rdx	# D.2557, tmp145
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp145
 	je	.L10	#,
 	call	__stack_chk_fail@PLT	#
@@ -205,7 +205,7 @@ func0:
 	.cfi_endproc
 .LFE0:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

@@ -1,6 +1,6 @@
 	.file	"code.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -21,7 +21,7 @@ func0:
 	movq	%rsi, -272(%rbp)	# n, n
 # eval/problem145//code.c:4: int func0(const char* x, const char* n){
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp156
-	movq	%rax, -8(%rbp)	# tmp156, D.3735
+	movq	%rax, -8(%rbp)	# tmp156, D.2898
 	xorl	%eax, %eax	# tmp156
 # eval/problem145//code.c:8:     for (i = 0; x[i] != '/'; i++) {
 	movl	$0, -248(%rbp)	#, i
@@ -180,28 +180,27 @@ func0:
 	imull	-232(%rbp), %eax	# c, _25
 # eval/problem145//code.c:32:     if ((a * c) % (b * d) == 0) return 1;
 	movl	-236(%rbp), %edx	# b, tmp152
-	movl	%edx, %esi	# tmp152, tmp152
-	imull	-228(%rbp), %esi	# d, tmp152
+	movl	%edx, %ecx	# tmp152, tmp152
+	imull	-228(%rbp), %ecx	# d, tmp152
 # eval/problem145//code.c:32:     if ((a * c) % (b * d) == 0) return 1;
 	cltd
-	idivl	%esi	# _26
-	movl	%edx, %ecx	# tmp153, tmp153
-	movl	%ecx, %eax	# tmp153, _27
+	idivl	%ecx	# _26
+	movl	%edx, %eax	# tmp153, _27
 # eval/problem145//code.c:32:     if ((a * c) % (b * d) == 0) return 1;
 	testl	%eax, %eax	# _27
 	jne	.L10	#,
 # eval/problem145//code.c:32:     if ((a * c) % (b * d) == 0) return 1;
 	movl	$1, %eax	#, _34
-# eval/problem145//code.c:32:     if ((a * c) % (b * d) == 0) return 1;
 	jmp	.L12	#
 .L10:
 # eval/problem145//code.c:33:     return 0;
 	movl	$0, %eax	#, _34
 .L12:
 # eval/problem145//code.c:34: }
-	movq	-8(%rbp), %rdx	# D.3735, tmp157
+	movq	-8(%rbp), %rdx	# D.2898, tmp157
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp157
 	je	.L13	#,
+# eval/problem145//code.c:34: }
 	call	__stack_chk_fail@PLT	#
 .L13:
 	leave	
@@ -210,7 +209,7 @@ func0:
 	.cfi_endproc
 .LFE6:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

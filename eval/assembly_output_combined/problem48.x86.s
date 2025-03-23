@@ -72,14 +72,12 @@ func0:
 	movl	-12(%rbp), %eax
 	cmpl	-28(%rbp), %eax
 	jl	.L7
-	movl	-28(%rbp), %edx
-	movl	%edx, %eax
-	sarl	$31, %eax
-	shrl	$31, %eax
-	addl	%eax, %edx
-	andl	$1, %edx
-	subl	%eax, %edx
-	movl	%edx, %eax
+	movl	-28(%rbp), %eax
+	cltd
+	shrl	$31, %edx
+	addl	%edx, %eax
+	andl	$1, %eax
+	subl	%edx, %eax
 	cmpl	$1, %eax
 	jne	.L8
 	movl	-28(%rbp), %eax
@@ -398,7 +396,7 @@ __PRETTY_FUNCTION__.0:
 	.align 4
 .LC23:
 	.long	1088421888
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

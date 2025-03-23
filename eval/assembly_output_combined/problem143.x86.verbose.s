@@ -1,6 +1,6 @@
 	.file	"problem143.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -26,21 +26,20 @@ func0:
 	jmp	.L2	#
 .L6:
 # problem143.c:6:         if (i % 3 == 0) sum += lst[i] * lst[i];
-	movl	-4(%rbp), %ecx	# i, tmp114
-	movslq	%ecx, %rax	# tmp114, tmp115
+	movl	-4(%rbp), %edx	# i, tmp114
+	movslq	%edx, %rax	# tmp114, tmp115
 	imulq	$1431655766, %rax, %rax	#, tmp115, tmp116
-	shrq	$32, %rax	#, tmp116
-	movq	%rax, %rdx	# tmp116, tmp117
-	movl	%ecx, %eax	# tmp114, tmp118
-	sarl	$31, %eax	#, tmp118
-	subl	%eax, %edx	# tmp118, _1
-	movl	%edx, %eax	# _1, tmp119
-	addl	%eax, %eax	# tmp119
-	addl	%edx, %eax	# _1, tmp119
-	subl	%eax, %ecx	# tmp119, tmp114
-	movl	%ecx, %edx	# tmp114, _1
+	shrq	$32, %rax	#, tmp117
+	movl	%edx, %ecx	# tmp114, tmp118
+	sarl	$31, %ecx	#, tmp118
+	subl	%ecx, %eax	# tmp118, _1
+	movl	%eax, %ecx	# _1, tmp119
+	addl	%ecx, %ecx	# tmp119
+	addl	%eax, %ecx	# _1, tmp119
+	movl	%edx, %eax	# tmp114, tmp114
+	subl	%ecx, %eax	# tmp119, tmp114
 # problem143.c:6:         if (i % 3 == 0) sum += lst[i] * lst[i];
-	testl	%edx, %edx	# _1
+	testl	%eax, %eax	# _1
 	jne	.L3	#,
 # problem143.c:6:         if (i % 3 == 0) sum += lst[i] * lst[i];
 	movl	-4(%rbp), %eax	# i, tmp120
@@ -168,20 +167,20 @@ main:
 	subq	$96, %rsp	#,
 # problem143.c:17: int main() {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp140
-	movq	%rax, -8(%rbp)	# tmp140, D.3264
+	movq	%rax, -8(%rbp)	# tmp140, D.2434
 	xorl	%eax, %eax	# tmp140
 # problem143.c:19:         int lst[] = {1, 2, 3};
-	movl	$1, -96(%rbp)	#, MEM[(int[3] *)_127][0]
-	movl	$2, -92(%rbp)	#, MEM[(int[3] *)_127][1]
-	movl	$3, -88(%rbp)	#, MEM[(int[3] *)_127][2]
+	movl	$1, -96(%rbp)	#, MEM[(int[3] *)_128][0]
+	movl	$2, -92(%rbp)	#, MEM[(int[3] *)_128][1]
+	movl	$3, -88(%rbp)	#, MEM[(int[3] *)_128][2]
 # problem143.c:20:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == 6);
 	leaq	-96(%rbp), %rax	#, tmp95
 	movl	$3, %esi	#,
 	movq	%rax, %rdi	# tmp95,
 	call	func0	#
-# problem143.c:20:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == 6);
 	cmpl	$6, %eax	#, _1
 	je	.L9	#,
+# problem143.c:20:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == 6);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp96
 	movq	%rax, %rcx	# tmp96,
 	movl	$20, %edx	#,
@@ -192,15 +191,14 @@ main:
 	call	__assert_fail@PLT	#
 .L9:
 # problem143.c:23:         int lst[] = {1, 4, 9};
-	movl	$1, -96(%rbp)	#, MEM[(int[3] *)_127][0]
-	movl	$4, -92(%rbp)	#, MEM[(int[3] *)_127][1]
-	movl	$9, -88(%rbp)	#, MEM[(int[3] *)_127][2]
+	movl	$1, -96(%rbp)	#, MEM[(int[3] *)_128][0]
+	movl	$4, -92(%rbp)	#, MEM[(int[3] *)_128][1]
+	movl	$9, -88(%rbp)	#, MEM[(int[3] *)_128][2]
 # problem143.c:24:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == 14);
 	leaq	-96(%rbp), %rax	#, tmp99
 	movl	$3, %esi	#,
 	movq	%rax, %rdi	# tmp99,
 	call	func0	#
-# problem143.c:24:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == 14);
 	cmpl	$14, %eax	#, _2
 	je	.L10	#,
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp100
@@ -217,9 +215,9 @@ main:
 	movl	$0, %esi	#,
 	movq	%rax, %rdi	# tmp103,
 	call	func0	#
-# problem143.c:28:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == 0);
 	testl	%eax, %eax	# _3
 	je	.L11	#,
+# problem143.c:28:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp104
 	movq	%rax, %rcx	# tmp104,
 	movl	$28, %edx	#,
@@ -230,23 +228,23 @@ main:
 	call	__assert_fail@PLT	#
 .L11:
 # problem143.c:31:         int lst[] = {1, 1, 1, 1, 1, 1, 1, 1, 1};
-	movl	$1, -96(%rbp)	#, MEM[(int[9] *)_127][0]
-	movl	$1, -92(%rbp)	#, MEM[(int[9] *)_127][1]
-	movl	$1, -88(%rbp)	#, MEM[(int[9] *)_127][2]
-	movl	$1, -84(%rbp)	#, MEM[(int[9] *)_127][3]
-	movl	$1, -80(%rbp)	#, MEM[(int[9] *)_127][4]
-	movl	$1, -76(%rbp)	#, MEM[(int[9] *)_127][5]
-	movl	$1, -72(%rbp)	#, MEM[(int[9] *)_127][6]
-	movl	$1, -68(%rbp)	#, MEM[(int[9] *)_127][7]
-	movl	$1, -64(%rbp)	#, MEM[(int[9] *)_127][8]
+	movl	$1, -96(%rbp)	#, MEM[(int[9] *)_128][0]
+	movl	$1, -92(%rbp)	#, MEM[(int[9] *)_128][1]
+	movl	$1, -88(%rbp)	#, MEM[(int[9] *)_128][2]
+	movl	$1, -84(%rbp)	#, MEM[(int[9] *)_128][3]
+	movl	$1, -80(%rbp)	#, MEM[(int[9] *)_128][4]
+	movl	$1, -76(%rbp)	#, MEM[(int[9] *)_128][5]
+	movl	$1, -72(%rbp)	#, MEM[(int[9] *)_128][6]
+	movl	$1, -68(%rbp)	#, MEM[(int[9] *)_128][7]
+	movl	$1, -64(%rbp)	#, MEM[(int[9] *)_128][8]
 # problem143.c:32:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == 9);
 	leaq	-96(%rbp), %rax	#, tmp107
 	movl	$9, %esi	#,
 	movq	%rax, %rdi	# tmp107,
 	call	func0	#
-# problem143.c:32:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == 9);
 	cmpl	$9, %eax	#, _4
 	je	.L12	#,
+# problem143.c:32:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == 9);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp108
 	movq	%rax, %rcx	# tmp108,
 	movl	$32, %edx	#,
@@ -257,23 +255,23 @@ main:
 	call	__assert_fail@PLT	#
 .L12:
 # problem143.c:35:         int lst[] = {-1, -1, -1, -1, -1, -1, -1, -1, -1};
-	movl	$-1, -96(%rbp)	#, MEM[(int[9] *)_127][0]
-	movl	$-1, -92(%rbp)	#, MEM[(int[9] *)_127][1]
-	movl	$-1, -88(%rbp)	#, MEM[(int[9] *)_127][2]
-	movl	$-1, -84(%rbp)	#, MEM[(int[9] *)_127][3]
-	movl	$-1, -80(%rbp)	#, MEM[(int[9] *)_127][4]
-	movl	$-1, -76(%rbp)	#, MEM[(int[9] *)_127][5]
-	movl	$-1, -72(%rbp)	#, MEM[(int[9] *)_127][6]
-	movl	$-1, -68(%rbp)	#, MEM[(int[9] *)_127][7]
-	movl	$-1, -64(%rbp)	#, MEM[(int[9] *)_127][8]
+	movl	$-1, -96(%rbp)	#, MEM[(int[9] *)_128][0]
+	movl	$-1, -92(%rbp)	#, MEM[(int[9] *)_128][1]
+	movl	$-1, -88(%rbp)	#, MEM[(int[9] *)_128][2]
+	movl	$-1, -84(%rbp)	#, MEM[(int[9] *)_128][3]
+	movl	$-1, -80(%rbp)	#, MEM[(int[9] *)_128][4]
+	movl	$-1, -76(%rbp)	#, MEM[(int[9] *)_128][5]
+	movl	$-1, -72(%rbp)	#, MEM[(int[9] *)_128][6]
+	movl	$-1, -68(%rbp)	#, MEM[(int[9] *)_128][7]
+	movl	$-1, -64(%rbp)	#, MEM[(int[9] *)_128][8]
 # problem143.c:36:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == -3);
 	leaq	-96(%rbp), %rax	#, tmp111
 	movl	$9, %esi	#,
 	movq	%rax, %rdi	# tmp111,
 	call	func0	#
-# problem143.c:36:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == -3);
 	cmpl	$-3, %eax	#, _5
 	je	.L13	#,
+# problem143.c:36:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == -3);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp112
 	movq	%rax, %rcx	# tmp112,
 	movl	$36, %edx	#,
@@ -284,15 +282,15 @@ main:
 	call	__assert_fail@PLT	#
 .L13:
 # problem143.c:39:         int lst[] = {0};
-	movl	$0, -96(%rbp)	#, MEM[(int[1] *)_127][0]
+	movl	$0, -96(%rbp)	#, MEM[(int[1] *)_128][0]
 # problem143.c:40:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == 0);
 	leaq	-96(%rbp), %rax	#, tmp115
 	movl	$1, %esi	#,
 	movq	%rax, %rdi	# tmp115,
 	call	func0	#
-# problem143.c:40:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == 0);
 	testl	%eax, %eax	# _6
 	je	.L14	#,
+# problem143.c:40:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp116
 	movq	%rax, %rcx	# tmp116,
 	movl	$40, %edx	#,
@@ -303,19 +301,19 @@ main:
 	call	__assert_fail@PLT	#
 .L14:
 # problem143.c:43:         int lst[] = {-1, -5, 2, -1, -5};
-	movl	$-1, -96(%rbp)	#, MEM[(int[5] *)_127][0]
-	movl	$-5, -92(%rbp)	#, MEM[(int[5] *)_127][1]
-	movl	$2, -88(%rbp)	#, MEM[(int[5] *)_127][2]
-	movl	$-1, -84(%rbp)	#, MEM[(int[5] *)_127][3]
-	movl	$-5, -80(%rbp)	#, MEM[(int[5] *)_127][4]
+	movl	$-1, -96(%rbp)	#, MEM[(int[5] *)_128][0]
+	movl	$-5, -92(%rbp)	#, MEM[(int[5] *)_128][1]
+	movl	$2, -88(%rbp)	#, MEM[(int[5] *)_128][2]
+	movl	$-1, -84(%rbp)	#, MEM[(int[5] *)_128][3]
+	movl	$-5, -80(%rbp)	#, MEM[(int[5] *)_128][4]
 # problem143.c:44:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == -126);
 	leaq	-96(%rbp), %rax	#, tmp119
 	movl	$5, %esi	#,
 	movq	%rax, %rdi	# tmp119,
 	call	func0	#
-# problem143.c:44:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == -126);
 	cmpl	$-126, %eax	#, _7
 	je	.L15	#,
+# problem143.c:44:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == -126);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp120
 	movq	%rax, %rcx	# tmp120,
 	movl	$44, %edx	#,
@@ -326,19 +324,19 @@ main:
 	call	__assert_fail@PLT	#
 .L15:
 # problem143.c:47:         int lst[] = {-56, -99, 1, 0, -2};
-	movl	$-56, -96(%rbp)	#, MEM[(int[5] *)_127][0]
-	movl	$-99, -92(%rbp)	#, MEM[(int[5] *)_127][1]
-	movl	$1, -88(%rbp)	#, MEM[(int[5] *)_127][2]
-	movl	$0, -84(%rbp)	#, MEM[(int[5] *)_127][3]
-	movl	$-2, -80(%rbp)	#, MEM[(int[5] *)_127][4]
+	movl	$-56, -96(%rbp)	#, MEM[(int[5] *)_128][0]
+	movl	$-99, -92(%rbp)	#, MEM[(int[5] *)_128][1]
+	movl	$1, -88(%rbp)	#, MEM[(int[5] *)_128][2]
+	movl	$0, -84(%rbp)	#, MEM[(int[5] *)_128][3]
+	movl	$-2, -80(%rbp)	#, MEM[(int[5] *)_128][4]
 # problem143.c:48:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == 3030);
 	leaq	-96(%rbp), %rax	#, tmp123
 	movl	$5, %esi	#,
 	movq	%rax, %rdi	# tmp123,
 	call	func0	#
-# problem143.c:48:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == 3030);
 	cmpl	$3030, %eax	#, _8
 	je	.L16	#,
+# problem143.c:48:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == 3030);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp124
 	movq	%rax, %rcx	# tmp124,
 	movl	$48, %edx	#,
@@ -349,23 +347,23 @@ main:
 	call	__assert_fail@PLT	#
 .L16:
 # problem143.c:51:         int lst[] = {-1, 0, 0, 0, 0, 0, 0, 0, -1};
-	movl	$-1, -96(%rbp)	#, MEM[(int[9] *)_127][0]
-	movl	$0, -92(%rbp)	#, MEM[(int[9] *)_127][1]
-	movl	$0, -88(%rbp)	#, MEM[(int[9] *)_127][2]
-	movl	$0, -84(%rbp)	#, MEM[(int[9] *)_127][3]
-	movl	$0, -80(%rbp)	#, MEM[(int[9] *)_127][4]
-	movl	$0, -76(%rbp)	#, MEM[(int[9] *)_127][5]
-	movl	$0, -72(%rbp)	#, MEM[(int[9] *)_127][6]
-	movl	$0, -68(%rbp)	#, MEM[(int[9] *)_127][7]
-	movl	$-1, -64(%rbp)	#, MEM[(int[9] *)_127][8]
+	movl	$-1, -96(%rbp)	#, MEM[(int[9] *)_128][0]
+	movl	$0, -92(%rbp)	#, MEM[(int[9] *)_128][1]
+	movl	$0, -88(%rbp)	#, MEM[(int[9] *)_128][2]
+	movl	$0, -84(%rbp)	#, MEM[(int[9] *)_128][3]
+	movl	$0, -80(%rbp)	#, MEM[(int[9] *)_128][4]
+	movl	$0, -76(%rbp)	#, MEM[(int[9] *)_128][5]
+	movl	$0, -72(%rbp)	#, MEM[(int[9] *)_128][6]
+	movl	$0, -68(%rbp)	#, MEM[(int[9] *)_128][7]
+	movl	$-1, -64(%rbp)	#, MEM[(int[9] *)_128][8]
 # problem143.c:52:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == 0);
 	leaq	-96(%rbp), %rax	#, tmp127
 	movl	$9, %esi	#,
 	movq	%rax, %rdi	# tmp127,
 	call	func0	#
-# problem143.c:52:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == 0);
 	testl	%eax, %eax	# _9
 	je	.L17	#,
+# problem143.c:52:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp128
 	movq	%rax, %rcx	# tmp128,
 	movl	$52, %edx	#,
@@ -376,29 +374,29 @@ main:
 	call	__assert_fail@PLT	#
 .L17:
 # problem143.c:55:         int lst[] = {-16, -9, -2, 36, 36, 26, -20, 25, -40, 20, -4, 12, -26, 35, 37};
-	movl	$-16, -96(%rbp)	#, MEM[(int[15] *)_127][0]
-	movl	$-9, -92(%rbp)	#, MEM[(int[15] *)_127][1]
-	movl	$-2, -88(%rbp)	#, MEM[(int[15] *)_127][2]
-	movl	$36, -84(%rbp)	#, MEM[(int[15] *)_127][3]
-	movl	$36, -80(%rbp)	#, MEM[(int[15] *)_127][4]
-	movl	$26, -76(%rbp)	#, MEM[(int[15] *)_127][5]
-	movl	$-20, -72(%rbp)	#, MEM[(int[15] *)_127][6]
-	movl	$25, -68(%rbp)	#, MEM[(int[15] *)_127][7]
-	movl	$-40, -64(%rbp)	#, MEM[(int[15] *)_127][8]
-	movl	$20, -60(%rbp)	#, MEM[(int[15] *)_127][9]
-	movl	$-4, -56(%rbp)	#, MEM[(int[15] *)_127][10]
-	movl	$12, -52(%rbp)	#, MEM[(int[15] *)_127][11]
-	movl	$-26, -48(%rbp)	#, MEM[(int[15] *)_127][12]
-	movl	$35, -44(%rbp)	#, MEM[(int[15] *)_127][13]
-	movl	$37, -40(%rbp)	#, MEM[(int[15] *)_127][14]
+	movl	$-16, -96(%rbp)	#, MEM[(int[15] *)_128][0]
+	movl	$-9, -92(%rbp)	#, MEM[(int[15] *)_128][1]
+	movl	$-2, -88(%rbp)	#, MEM[(int[15] *)_128][2]
+	movl	$36, -84(%rbp)	#, MEM[(int[15] *)_128][3]
+	movl	$36, -80(%rbp)	#, MEM[(int[15] *)_128][4]
+	movl	$26, -76(%rbp)	#, MEM[(int[15] *)_128][5]
+	movl	$-20, -72(%rbp)	#, MEM[(int[15] *)_128][6]
+	movl	$25, -68(%rbp)	#, MEM[(int[15] *)_128][7]
+	movl	$-40, -64(%rbp)	#, MEM[(int[15] *)_128][8]
+	movl	$20, -60(%rbp)	#, MEM[(int[15] *)_128][9]
+	movl	$-4, -56(%rbp)	#, MEM[(int[15] *)_128][10]
+	movl	$12, -52(%rbp)	#, MEM[(int[15] *)_128][11]
+	movl	$-26, -48(%rbp)	#, MEM[(int[15] *)_128][12]
+	movl	$35, -44(%rbp)	#, MEM[(int[15] *)_128][13]
+	movl	$37, -40(%rbp)	#, MEM[(int[15] *)_128][14]
 # problem143.c:56:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == -14196);
 	leaq	-96(%rbp), %rax	#, tmp131
 	movl	$15, %esi	#,
 	movq	%rax, %rdi	# tmp131,
 	call	func0	#
-# problem143.c:56:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == -14196);
 	cmpl	$-14196, %eax	#, _10
 	je	.L18	#,
+# problem143.c:56:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == -14196);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp132
 	movq	%rax, %rcx	# tmp132,
 	movl	$56, %edx	#,
@@ -409,34 +407,34 @@ main:
 	call	__assert_fail@PLT	#
 .L18:
 # problem143.c:59:         int lst[] = {-1, -3, 17, -1, -15, 13, -1, 14, -14, -12, -5, 14, -14, 6, 13, 11, 16, 16, 4, 10};
-	movl	$-1, -96(%rbp)	#, MEM[(int[20] *)_127][0]
-	movl	$-3, -92(%rbp)	#, MEM[(int[20] *)_127][1]
-	movl	$17, -88(%rbp)	#, MEM[(int[20] *)_127][2]
-	movl	$-1, -84(%rbp)	#, MEM[(int[20] *)_127][3]
-	movl	$-15, -80(%rbp)	#, MEM[(int[20] *)_127][4]
-	movl	$13, -76(%rbp)	#, MEM[(int[20] *)_127][5]
-	movl	$-1, -72(%rbp)	#, MEM[(int[20] *)_127][6]
-	movl	$14, -68(%rbp)	#, MEM[(int[20] *)_127][7]
-	movl	$-14, -64(%rbp)	#, MEM[(int[20] *)_127][8]
-	movl	$-12, -60(%rbp)	#, MEM[(int[20] *)_127][9]
-	movl	$-5, -56(%rbp)	#, MEM[(int[20] *)_127][10]
-	movl	$14, -52(%rbp)	#, MEM[(int[20] *)_127][11]
-	movl	$-14, -48(%rbp)	#, MEM[(int[20] *)_127][12]
-	movl	$6, -44(%rbp)	#, MEM[(int[20] *)_127][13]
-	movl	$13, -40(%rbp)	#, MEM[(int[20] *)_127][14]
-	movl	$11, -36(%rbp)	#, MEM[(int[20] *)_127][15]
-	movl	$16, -32(%rbp)	#, MEM[(int[20] *)_127][16]
-	movl	$16, -28(%rbp)	#, MEM[(int[20] *)_127][17]
-	movl	$4, -24(%rbp)	#, MEM[(int[20] *)_127][18]
-	movl	$10, -20(%rbp)	#, MEM[(int[20] *)_127][19]
+	movl	$-1, -96(%rbp)	#, MEM[(int[20] *)_128][0]
+	movl	$-3, -92(%rbp)	#, MEM[(int[20] *)_128][1]
+	movl	$17, -88(%rbp)	#, MEM[(int[20] *)_128][2]
+	movl	$-1, -84(%rbp)	#, MEM[(int[20] *)_128][3]
+	movl	$-15, -80(%rbp)	#, MEM[(int[20] *)_128][4]
+	movl	$13, -76(%rbp)	#, MEM[(int[20] *)_128][5]
+	movl	$-1, -72(%rbp)	#, MEM[(int[20] *)_128][6]
+	movl	$14, -68(%rbp)	#, MEM[(int[20] *)_128][7]
+	movl	$-14, -64(%rbp)	#, MEM[(int[20] *)_128][8]
+	movl	$-12, -60(%rbp)	#, MEM[(int[20] *)_128][9]
+	movl	$-5, -56(%rbp)	#, MEM[(int[20] *)_128][10]
+	movl	$14, -52(%rbp)	#, MEM[(int[20] *)_128][11]
+	movl	$-14, -48(%rbp)	#, MEM[(int[20] *)_128][12]
+	movl	$6, -44(%rbp)	#, MEM[(int[20] *)_128][13]
+	movl	$13, -40(%rbp)	#, MEM[(int[20] *)_128][14]
+	movl	$11, -36(%rbp)	#, MEM[(int[20] *)_128][15]
+	movl	$16, -32(%rbp)	#, MEM[(int[20] *)_128][16]
+	movl	$16, -28(%rbp)	#, MEM[(int[20] *)_128][17]
+	movl	$4, -24(%rbp)	#, MEM[(int[20] *)_128][18]
+	movl	$10, -20(%rbp)	#, MEM[(int[20] *)_128][19]
 # problem143.c:60:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == -1448);
 	leaq	-96(%rbp), %rax	#, tmp135
 	movl	$20, %esi	#,
 	movq	%rax, %rdi	# tmp135,
 	call	func0	#
-# problem143.c:60:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == -1448);
 	cmpl	$-1448, %eax	#, _11
 	je	.L19	#,
+# problem143.c:60:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == -1448);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp136
 	movq	%rax, %rcx	# tmp136,
 	movl	$60, %edx	#,
@@ -447,11 +445,12 @@ main:
 	call	__assert_fail@PLT	#
 .L19:
 # problem143.c:63:     return 0;
-	movl	$0, %eax	#, _125
+	movl	$0, %eax	#, _126
 # problem143.c:64: }
-	movq	-8(%rbp), %rdx	# D.3264, tmp141
+	movq	-8(%rbp), %rdx	# D.2434, tmp141
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp141
 	je	.L21	#,
+# problem143.c:64: }
 	call	__stack_chk_fail@PLT	#
 .L21:
 	leave	
@@ -465,7 +464,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

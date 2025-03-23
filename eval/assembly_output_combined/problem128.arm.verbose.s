@@ -1,7 +1,7 @@
 	.arch armv8-a
 	.file	"problem128.c"
-// GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (aarch64-linux-gnu)
-//	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+// GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (aarch64-linux-gnu)
+//	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 // GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 // options passed: -mlittle-endian -mabi=lp64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection
@@ -52,7 +52,6 @@ func0:
 // problem128.c:9:     if (l < 2) return "NO";
 	adrp	x0, .LC0	// tmp108,
 	add	x0, x0, :lo12:.LC0	// _4, tmp108,
-// problem128.c:9:     if (l < 2) return "NO";
 	b	.L3		//
 .L2:
 // problem128.c:11:     for (i = 2; i * i <= l; i++)
@@ -74,7 +73,6 @@ func0:
 // problem128.c:12:         if (l % i == 0) return "NO";
 	adrp	x0, .LC0	// tmp126,
 	add	x0, x0, :lo12:.LC0	// _4, tmp126,
-// problem128.c:12:         if (l % i == 0) return "NO";
 	b	.L3		//
 .L5:
 // problem128.c:11:     for (i = 2; i * i <= l; i++)
@@ -147,12 +145,10 @@ main:
 	mov	w0, 1	//,
 	bl	func0		//
 	mov	x2, x0	// _1,
-// problem128.c:24:     assert(strcmp(func0(1, 2, 2, 3), "NO") == 0);
 	adrp	x0, .LC0	// tmp110,
 	add	x1, x0, :lo12:.LC0	//, tmp110,
 	mov	x0, x2	//, _1
 	bl	strcmp		//
-// problem128.c:24:     assert(strcmp(func0(1, 2, 2, 3), "NO") == 0);
 	cmp	w0, 0	// _2,
 	beq	.L8		//,
 // problem128.c:24:     assert(strcmp(func0(1, 2, 2, 3), "NO") == 0);
@@ -172,12 +168,10 @@ main:
 	mov	w0, -1	//,
 	bl	func0		//
 	mov	x2, x0	// _3,
-// problem128.c:25:     assert(strcmp(func0(-1, 1, 0, 4), "NO") == 0);
 	adrp	x0, .LC0	// tmp114,
 	add	x1, x0, :lo12:.LC0	//, tmp114,
 	mov	x0, x2	//, _3
 	bl	strcmp		//
-// problem128.c:25:     assert(strcmp(func0(-1, 1, 0, 4), "NO") == 0);
 	cmp	w0, 0	// _4,
 	beq	.L9		//,
 // problem128.c:25:     assert(strcmp(func0(-1, 1, 0, 4), "NO") == 0);
@@ -197,12 +191,10 @@ main:
 	mov	w0, -3	//,
 	bl	func0		//
 	mov	x2, x0	// _5,
-// problem128.c:26:     assert(strcmp(func0(-3, -1, -5, 5), "YES") == 0);
 	adrp	x0, .LC1	// tmp118,
 	add	x1, x0, :lo12:.LC1	//, tmp118,
 	mov	x0, x2	//, _5
 	bl	strcmp		//
-// problem128.c:26:     assert(strcmp(func0(-3, -1, -5, 5), "YES") == 0);
 	cmp	w0, 0	// _6,
 	beq	.L10		//,
 // problem128.c:26:     assert(strcmp(func0(-3, -1, -5, 5), "YES") == 0);
@@ -222,12 +214,10 @@ main:
 	mov	w0, -2	//,
 	bl	func0		//
 	mov	x2, x0	// _7,
-// problem128.c:27:     assert(strcmp(func0(-2, 2, -4, 0), "YES") == 0);
 	adrp	x0, .LC1	// tmp122,
 	add	x1, x0, :lo12:.LC1	//, tmp122,
 	mov	x0, x2	//, _7
 	bl	strcmp		//
-// problem128.c:27:     assert(strcmp(func0(-2, 2, -4, 0), "YES") == 0);
 	cmp	w0, 0	// _8,
 	beq	.L11		//,
 // problem128.c:27:     assert(strcmp(func0(-2, 2, -4, 0), "YES") == 0);
@@ -247,12 +237,10 @@ main:
 	mov	w0, -11	//,
 	bl	func0		//
 	mov	x2, x0	// _9,
-// problem128.c:28:     assert(strcmp(func0(-11, 2, -1, -1), "NO") == 0);
 	adrp	x0, .LC0	// tmp126,
 	add	x1, x0, :lo12:.LC0	//, tmp126,
 	mov	x0, x2	//, _9
 	bl	strcmp		//
-// problem128.c:28:     assert(strcmp(func0(-11, 2, -1, -1), "NO") == 0);
 	cmp	w0, 0	// _10,
 	beq	.L12		//,
 // problem128.c:28:     assert(strcmp(func0(-11, 2, -1, -1), "NO") == 0);
@@ -272,12 +260,10 @@ main:
 	mov	w0, 1	//,
 	bl	func0		//
 	mov	x2, x0	// _11,
-// problem128.c:29:     assert(strcmp(func0(1, 2, 3, 5), "NO") == 0);
 	adrp	x0, .LC0	// tmp130,
 	add	x1, x0, :lo12:.LC0	//, tmp130,
 	mov	x0, x2	//, _11
 	bl	strcmp		//
-// problem128.c:29:     assert(strcmp(func0(1, 2, 3, 5), "NO") == 0);
 	cmp	w0, 0	// _12,
 	beq	.L13		//,
 // problem128.c:29:     assert(strcmp(func0(1, 2, 3, 5), "NO") == 0);
@@ -297,12 +283,10 @@ main:
 	mov	w0, 1	//,
 	bl	func0		//
 	mov	x2, x0	// _13,
-// problem128.c:30:     assert(strcmp(func0(1, 2, 1, 2), "NO") == 0);
 	adrp	x0, .LC0	// tmp134,
 	add	x1, x0, :lo12:.LC0	//, tmp134,
 	mov	x0, x2	//, _13
 	bl	strcmp		//
-// problem128.c:30:     assert(strcmp(func0(1, 2, 1, 2), "NO") == 0);
 	cmp	w0, 0	// _14,
 	beq	.L14		//,
 // problem128.c:30:     assert(strcmp(func0(1, 2, 1, 2), "NO") == 0);
@@ -322,12 +306,10 @@ main:
 	mov	w0, -2	//,
 	bl	func0		//
 	mov	x2, x0	// _15,
-// problem128.c:31:     assert(strcmp(func0(-2, -2, -3, -2), "NO") == 0);
 	adrp	x0, .LC0	// tmp138,
 	add	x1, x0, :lo12:.LC0	//, tmp138,
 	mov	x0, x2	//, _15
 	bl	strcmp		//
-// problem128.c:31:     assert(strcmp(func0(-2, -2, -3, -2), "NO") == 0);
 	cmp	w0, 0	// _16,
 	beq	.L15		//,
 // problem128.c:31:     assert(strcmp(func0(-2, -2, -3, -2), "NO") == 0);
@@ -357,5 +339,5 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

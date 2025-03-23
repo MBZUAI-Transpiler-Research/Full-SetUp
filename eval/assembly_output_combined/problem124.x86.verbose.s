@@ -1,6 +1,6 @@
 	.file	"problem124.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -30,16 +30,14 @@ func0:
 	movl	$1, (%rax)	#, *out_47(D)
 # problem124.c:9:     while (n != 1) {
 	jmp	.L2	#
-.L6:
+.L5:
 # problem124.c:10:         if (n % 2 == 1) {
-	movl	-20(%rbp), %edx	# n, tmp114
-	movl	%edx, %eax	# tmp114, tmp115
-	sarl	$31, %eax	#, tmp115
-	shrl	$31, %eax	#, tmp116
-	addl	%eax, %edx	# tmp116, tmp117
-	andl	$1, %edx	#, tmp118
-	subl	%eax, %edx	# tmp116, tmp119
-	movl	%edx, %eax	# tmp119, _1
+	movl	-20(%rbp), %eax	# n, tmp114
+	cltd
+	shrl	$31, %edx	#, tmp116
+	addl	%edx, %eax	# tmp116, tmp117
+	andl	$1, %eax	#, tmp118
+	subl	%edx, %eax	# tmp116, tmp119
 # problem124.c:10:         if (n % 2 == 1) {
 	cmpl	$1, %eax	#, _1
 	jne	.L3	#,
@@ -96,12 +94,12 @@ func0:
 .L2:
 # problem124.c:9:     while (n != 1) {
 	cmpl	$1, -20(%rbp)	#, n
-	jne	.L6	#,
+	jne	.L5	#,
 # problem124.c:22:     for (int i = 1; i < *size; i++) {
 	movl	$1, -12(%rbp)	#, i
 # problem124.c:22:     for (int i = 1; i < *size; i++) {
-	jmp	.L7	#
-.L11:
+	jmp	.L6	#
+.L10:
 # problem124.c:23:         int key = out[i];
 	movl	-12(%rbp), %eax	# i, tmp136
 	cltq
@@ -116,8 +114,8 @@ func0:
 	subl	$1, %eax	#, tmp141
 	movl	%eax, -8(%rbp)	# tmp141, j
 # problem124.c:26:         while (j >= 0 && out[j] > key) {
-	jmp	.L8	#
-.L10:
+	jmp	.L7	#
+.L9:
 # problem124.c:27:             out[j + 1] = out[j];
 	movl	-8(%rbp), %eax	# j, tmp143
 	cltq
@@ -137,10 +135,10 @@ func0:
 	movl	%eax, (%rdx)	# _22, *_21
 # problem124.c:28:             j = j - 1;
 	subl	$1, -8(%rbp)	#, j
-.L8:
+.L7:
 # problem124.c:26:         while (j >= 0 && out[j] > key) {
 	cmpl	$0, -8(%rbp)	#, j
-	js	.L9	#,
+	js	.L8	#,
 # problem124.c:26:         while (j >= 0 && out[j] > key) {
 	movl	-8(%rbp), %eax	# j, tmp147
 	cltq
@@ -150,8 +148,8 @@ func0:
 	movl	(%rax), %eax	# *_25, _26
 # problem124.c:26:         while (j >= 0 && out[j] > key) {
 	cmpl	%eax, -4(%rbp)	# _26, key
-	jl	.L10	#,
-.L9:
+	jl	.L9	#,
+.L8:
 # problem124.c:30:         out[j + 1] = key;
 	movl	-8(%rbp), %eax	# j, tmp149
 	cltq
@@ -164,13 +162,13 @@ func0:
 	movl	%eax, (%rdx)	# tmp151, *_30
 # problem124.c:22:     for (int i = 1; i < *size; i++) {
 	addl	$1, -12(%rbp)	#, i
-.L7:
+.L6:
 # problem124.c:22:     for (int i = 1; i < *size; i++) {
 	movq	-40(%rbp), %rax	# size, tmp152
 	movl	(%rax), %eax	# *size_45(D), _31
 # problem124.c:22:     for (int i = 1; i < *size; i++) {
 	cmpl	%eax, -12(%rbp)	# _31, i
-	jl	.L11	#,
+	jl	.L10	#,
 # problem124.c:32: }
 	nop	
 	nop	
@@ -198,17 +196,16 @@ issame:
 # problem124.c:40:     if (size_a != size_b) return 0;
 	movl	-28(%rbp), %eax	# size_a, tmp92
 	cmpl	-32(%rbp), %eax	# size_b, tmp92
-	je	.L13	#,
+	je	.L12	#,
 # problem124.c:40:     if (size_a != size_b) return 0;
 	movl	$0, %eax	#, _10
-# problem124.c:40:     if (size_a != size_b) return 0;
-	jmp	.L14	#
-.L13:
+	jmp	.L13	#
+.L12:
 # problem124.c:41:     for (int i = 0; i < size_a; i++) {
 	movl	$0, -4(%rbp)	#, i
 # problem124.c:41:     for (int i = 0; i < size_a; i++) {
-	jmp	.L15	#
-.L17:
+	jmp	.L14	#
+.L16:
 # problem124.c:42:         if (a[i] != b[i]) return 0;
 	movl	-4(%rbp), %eax	# i, tmp93
 	cltq
@@ -225,22 +222,21 @@ issame:
 	movl	(%rax), %eax	# *_7, _8
 # problem124.c:42:         if (a[i] != b[i]) return 0;
 	cmpl	%eax, %edx	# _8, _4
-	je	.L16	#,
+	je	.L15	#,
 # problem124.c:42:         if (a[i] != b[i]) return 0;
 	movl	$0, %eax	#, _10
-# problem124.c:42:         if (a[i] != b[i]) return 0;
-	jmp	.L14	#
-.L16:
+	jmp	.L13	#
+.L15:
 # problem124.c:41:     for (int i = 0; i < size_a; i++) {
 	addl	$1, -4(%rbp)	#, i
-.L15:
+.L14:
 # problem124.c:41:     for (int i = 0; i < size_a; i++) {
 	movl	-4(%rbp), %eax	# i, tmp97
 	cmpl	-28(%rbp), %eax	# size_a, tmp97
-	jl	.L17	#,
+	jl	.L16	#,
 # problem124.c:44:     return 1;
 	movl	$1, %eax	#, _10
-.L14:
+.L13:
 # problem124.c:45: }
 	popq	%rbp	#
 	.cfi_def_cfa 7, 8
@@ -278,7 +274,7 @@ main:
 	subq	$80, %rsp	#,
 # problem124.c:47: int main() {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp129
-	movq	%rax, -8(%rbp)	# tmp129, D.3791
+	movq	%rax, -8(%rbp)	# tmp129, D.2954
 	xorl	%eax, %eax	# tmp129
 # problem124.c:52:     int expected1[] = {1, 5, 7, 11, 13, 17};
 	movl	$1, -32(%rbp)	#, expected1[0]
@@ -304,9 +300,9 @@ main:
 	movl	$6, %ecx	#,
 	movq	%rax, %rdi	# tmp96,
 	call	issame	#
-# problem124.c:55:     assert(issame(result, size, expected1, 6));
 	testl	%eax, %eax	# _2
-	jne	.L19	#,
+	jne	.L18	#,
+# problem124.c:55:     assert(issame(result, size, expected1, 6));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp97
 	movq	%rax, %rcx	# tmp97,
 	movl	$55, %edx	#,
@@ -315,7 +311,7 @@ main:
 	leaq	.LC1(%rip), %rax	#, tmp99
 	movq	%rax, %rdi	# tmp99,
 	call	__assert_fail@PLT	#
-.L19:
+.L18:
 # problem124.c:56:     free(result);
 	movq	-64(%rbp), %rax	# result, tmp100
 	movq	%rax, %rdi	# tmp100,
@@ -340,9 +336,9 @@ main:
 	movl	$2, %ecx	#,
 	movq	%rax, %rdi	# tmp105,
 	call	issame	#
-# problem124.c:62:     assert(issame(result, size, expected2, 2));
 	testl	%eax, %eax	# _4
-	jne	.L20	#,
+	jne	.L19	#,
+# problem124.c:62:     assert(issame(result, size, expected2, 2));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp106
 	movq	%rax, %rcx	# tmp106,
 	movl	$62, %edx	#,
@@ -351,7 +347,7 @@ main:
 	leaq	.LC2(%rip), %rax	#, tmp108
 	movq	%rax, %rdi	# tmp108,
 	call	__assert_fail@PLT	#
-.L20:
+.L19:
 # problem124.c:63:     free(result);
 	movq	-64(%rbp), %rax	# result, tmp109
 	movq	%rax, %rdi	# tmp109,
@@ -377,9 +373,9 @@ main:
 	movl	$3, %ecx	#,
 	movq	%rax, %rdi	# tmp114,
 	call	issame	#
-# problem124.c:69:     assert(issame(result, size, expected3, 3));
 	testl	%eax, %eax	# _6
-	jne	.L21	#,
+	jne	.L20	#,
+# problem124.c:69:     assert(issame(result, size, expected3, 3));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp115
 	movq	%rax, %rcx	# tmp115,
 	movl	$69, %edx	#,
@@ -388,7 +384,7 @@ main:
 	leaq	.LC3(%rip), %rax	#, tmp117
 	movq	%rax, %rdi	# tmp117,
 	call	__assert_fail@PLT	#
-.L21:
+.L20:
 # problem124.c:70:     free(result);
 	movq	-64(%rbp), %rax	# result, tmp118
 	movq	%rax, %rdi	# tmp118,
@@ -412,9 +408,9 @@ main:
 	movl	$1, %ecx	#,
 	movq	%rax, %rdi	# tmp123,
 	call	issame	#
-# problem124.c:76:     assert(issame(result, size, expected4, 1));
 	testl	%eax, %eax	# _8
-	jne	.L22	#,
+	jne	.L21	#,
+# problem124.c:76:     assert(issame(result, size, expected4, 1));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp124
 	movq	%rax, %rcx	# tmp124,
 	movl	$76, %edx	#,
@@ -423,7 +419,7 @@ main:
 	leaq	.LC4(%rip), %rax	#, tmp126
 	movq	%rax, %rdi	# tmp126,
 	call	__assert_fail@PLT	#
-.L22:
+.L21:
 # problem124.c:77:     free(result);
 	movq	-64(%rbp), %rax	# result, tmp127
 	movq	%rax, %rdi	# tmp127,
@@ -431,11 +427,11 @@ main:
 # problem124.c:79:     return 0;
 	movl	$0, %eax	#, _46
 # problem124.c:80: }
-	movq	-8(%rbp), %rdx	# D.3791, tmp130
+	movq	-8(%rbp), %rdx	# D.2954, tmp130
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp130
-	je	.L24	#,
+	je	.L23	#,
 	call	__stack_chk_fail@PLT	#
-.L24:
+.L23:
 	leave	
 	.cfi_def_cfa 7, 8
 	ret	
@@ -447,7 +443,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

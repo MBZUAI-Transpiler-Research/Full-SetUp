@@ -1,7 +1,7 @@
 	.arch armv8-a
 	.file	"problem143.c"
-// GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (aarch64-linux-gnu)
-//	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+// GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (aarch64-linux-gnu)
+//	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 // GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 // options passed: -mlittle-endian -mabi=lp64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection
@@ -160,294 +160,292 @@ func0:
 main:
 .LFB1:
 	.cfi_startproc
-	sub	sp, sp, #112	//,,
+	stp	x29, x30, [sp, -112]!	//,,,
 	.cfi_def_cfa_offset 112
-	stp	x29, x30, [sp, 96]	//,,
-	.cfi_offset 29, -16
-	.cfi_offset 30, -8
-	add	x29, sp, 96	//,,
+	.cfi_offset 29, -112
+	.cfi_offset 30, -104
+	mov	x29, sp	//,
 // problem143.c:17: int main() {
-	adrp	x0, :got:__stack_chk_guard	// tmp105,
-	ldr	x0, [x0, :got_lo12:__stack_chk_guard]	// tmp105,
-	ldr	x1, [x0]	// tmp215,
-	str	x1, [sp, 88]	// tmp215, D.4925
-	mov	x1, 0	// tmp215
+	adrp	x0, :got:__stack_chk_guard	// tmp106,
+	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]	// tmp105, tmp106,
+	ldr	x1, [x0]	// tmp217,
+	str	x1, [sp, 104]	// tmp217, D.4343
+	mov	x1, 0	// tmp217
 // problem143.c:19:         int lst[] = {1, 2, 3};
-	adrp	x0, .LC0	// tmp107,
-	add	x1, x0, :lo12:.LC0	// tmp106, tmp107,
-	add	x0, sp, 8	// tmp108,,
-	ldr	x2, [x1]	// tmp110,
-	str	x2, [x0]	// tmp110, MEM[(int[3] *)_58]
-	ldr	w1, [x1, 8]	// tmp111,
-	str	w1, [x0, 8]	// tmp111, MEM[(int[3] *)_58]
+	adrp	x0, .LC0	// tmp108,
+	add	x1, x0, :lo12:.LC0	// tmp107, tmp108,
+	add	x0, sp, 24	// tmp109,,
+	ldr	x2, [x1]	// tmp111,
+	str	x2, [x0]	// tmp111, MEM[(int[3] *)_59]
+	ldr	w1, [x1, 8]	// tmp112,
+	str	w1, [x0, 8]	// tmp112, MEM[(int[3] *)_59]
 // problem143.c:20:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == 6);
-	add	x0, sp, 8	// tmp112,,
+	add	x0, sp, 24	// tmp113,,
 	mov	w1, 3	//,
 	bl	func0		//
-// problem143.c:20:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == 6);
 	cmp	w0, 6	// _1,
 	beq	.L9		//,
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp113,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp113,
+// problem143.c:20:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == 6);
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp114,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp114,
 	mov	w2, 20	//,
-	adrp	x0, .LC9	// tmp114,
-	add	x1, x0, :lo12:.LC9	//, tmp114,
-	adrp	x0, .LC10	// tmp115,
-	add	x0, x0, :lo12:.LC10	//, tmp115,
+	adrp	x0, .LC9	// tmp115,
+	add	x1, x0, :lo12:.LC9	//, tmp115,
+	adrp	x0, .LC10	// tmp116,
+	add	x0, x0, :lo12:.LC10	//, tmp116,
 	bl	__assert_fail		//
 .L9:
 // problem143.c:23:         int lst[] = {1, 4, 9};
-	adrp	x0, .LC1	// tmp117,
-	add	x1, x0, :lo12:.LC1	// tmp116, tmp117,
-	add	x0, sp, 8	// tmp118,,
-	ldr	x2, [x1]	// tmp120,
-	str	x2, [x0]	// tmp120, MEM[(int[3] *)_58]
-	ldr	w1, [x1, 8]	// tmp121,
-	str	w1, [x0, 8]	// tmp121, MEM[(int[3] *)_58]
+	adrp	x0, .LC1	// tmp118,
+	add	x1, x0, :lo12:.LC1	// tmp117, tmp118,
+	add	x0, sp, 24	// tmp119,,
+	ldr	x2, [x1]	// tmp121,
+	str	x2, [x0]	// tmp121, MEM[(int[3] *)_59]
+	ldr	w1, [x1, 8]	// tmp122,
+	str	w1, [x0, 8]	// tmp122, MEM[(int[3] *)_59]
 // problem143.c:24:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == 14);
-	add	x0, sp, 8	// tmp122,,
+	add	x0, sp, 24	// tmp123,,
 	mov	w1, 3	//,
 	bl	func0		//
-// problem143.c:24:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == 14);
 	cmp	w0, 14	// _2,
 	beq	.L10		//,
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp123,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp123,
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp124,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp124,
 	mov	w2, 24	//,
-	adrp	x0, .LC9	// tmp124,
-	add	x1, x0, :lo12:.LC9	//, tmp124,
-	adrp	x0, .LC11	// tmp125,
-	add	x0, x0, :lo12:.LC11	//, tmp125,
+	adrp	x0, .LC9	// tmp125,
+	add	x1, x0, :lo12:.LC9	//, tmp125,
+	adrp	x0, .LC11	// tmp126,
+	add	x0, x0, :lo12:.LC11	//, tmp126,
 	bl	__assert_fail		//
 .L10:
 // problem143.c:28:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == 0);
-	add	x0, sp, 8	// tmp126,,
+	add	x0, sp, 24	// tmp127,,
 	mov	w1, 0	//,
 	bl	func0		//
-// problem143.c:28:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == 0);
 	cmp	w0, 0	// _3,
 	beq	.L11		//,
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp127,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp127,
+// problem143.c:28:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == 0);
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp128,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp128,
 	mov	w2, 28	//,
-	adrp	x0, .LC9	// tmp128,
-	add	x1, x0, :lo12:.LC9	//, tmp128,
-	adrp	x0, .LC12	// tmp129,
-	add	x0, x0, :lo12:.LC12	//, tmp129,
+	adrp	x0, .LC9	// tmp129,
+	add	x1, x0, :lo12:.LC9	//, tmp129,
+	adrp	x0, .LC12	// tmp130,
+	add	x0, x0, :lo12:.LC12	//, tmp130,
 	bl	__assert_fail		//
 .L11:
 // problem143.c:31:         int lst[] = {1, 1, 1, 1, 1, 1, 1, 1, 1};
-	adrp	x0, .LC2	// tmp131,
-	add	x1, x0, :lo12:.LC2	// tmp130, tmp131,
-	add	x0, sp, 8	// tmp132,,
-	ldp	q0, q1, [x1]	// tmp134, tmp135,
-	stp	q0, q1, [x0]	// tmp134, tmp135, MEM[(int[9] *)_58]
-	ldr	w1, [x1, 32]	// tmp136,
-	str	w1, [x0, 32]	// tmp136, MEM[(int[9] *)_58]
+	adrp	x0, .LC2	// tmp132,
+	add	x1, x0, :lo12:.LC2	// tmp131, tmp132,
+	add	x0, sp, 24	// tmp133,,
+	ldp	q0, q1, [x1]	// tmp135, tmp136,
+	stp	q0, q1, [x0]	// tmp135, tmp136, MEM[(int[9] *)_59]
+	ldr	w1, [x1, 32]	// tmp137,
+	str	w1, [x0, 32]	// tmp137, MEM[(int[9] *)_59]
 // problem143.c:32:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == 9);
-	add	x0, sp, 8	// tmp137,,
+	add	x0, sp, 24	// tmp138,,
 	mov	w1, 9	//,
 	bl	func0		//
-// problem143.c:32:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == 9);
 	cmp	w0, 9	// _4,
 	beq	.L12		//,
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp138,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp138,
+// problem143.c:32:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == 9);
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp139,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp139,
 	mov	w2, 32	//,
-	adrp	x0, .LC9	// tmp139,
-	add	x1, x0, :lo12:.LC9	//, tmp139,
-	adrp	x0, .LC13	// tmp140,
-	add	x0, x0, :lo12:.LC13	//, tmp140,
+	adrp	x0, .LC9	// tmp140,
+	add	x1, x0, :lo12:.LC9	//, tmp140,
+	adrp	x0, .LC13	// tmp141,
+	add	x0, x0, :lo12:.LC13	//, tmp141,
 	bl	__assert_fail		//
 .L12:
 // problem143.c:35:         int lst[] = {-1, -1, -1, -1, -1, -1, -1, -1, -1};
-	adrp	x0, .LC3	// tmp142,
-	add	x1, x0, :lo12:.LC3	// tmp141, tmp142,
-	add	x0, sp, 8	// tmp143,,
-	ldp	q0, q1, [x1]	// tmp145, tmp146,
-	stp	q0, q1, [x0]	// tmp145, tmp146, MEM[(int[9] *)_58]
-	ldr	w1, [x1, 32]	// tmp147,
-	str	w1, [x0, 32]	// tmp147, MEM[(int[9] *)_58]
+	adrp	x0, .LC3	// tmp143,
+	add	x1, x0, :lo12:.LC3	// tmp142, tmp143,
+	add	x0, sp, 24	// tmp144,,
+	ldp	q0, q1, [x1]	// tmp146, tmp147,
+	stp	q0, q1, [x0]	// tmp146, tmp147, MEM[(int[9] *)_59]
+	ldr	w1, [x1, 32]	// tmp148,
+	str	w1, [x0, 32]	// tmp148, MEM[(int[9] *)_59]
 // problem143.c:36:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == -3);
-	add	x0, sp, 8	// tmp148,,
+	add	x0, sp, 24	// tmp149,,
 	mov	w1, 9	//,
 	bl	func0		//
-// problem143.c:36:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == -3);
 	cmn	w0, #3	// _5,
 	beq	.L13		//,
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp149,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp149,
+// problem143.c:36:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == -3);
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp150,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp150,
 	mov	w2, 36	//,
-	adrp	x0, .LC9	// tmp150,
-	add	x1, x0, :lo12:.LC9	//, tmp150,
-	adrp	x0, .LC14	// tmp151,
-	add	x0, x0, :lo12:.LC14	//, tmp151,
+	adrp	x0, .LC9	// tmp151,
+	add	x1, x0, :lo12:.LC9	//, tmp151,
+	adrp	x0, .LC14	// tmp152,
+	add	x0, x0, :lo12:.LC14	//, tmp152,
 	bl	__assert_fail		//
 .L13:
 // problem143.c:39:         int lst[] = {0};
-	str	wzr, [sp, 8]	//, MEM[(int[1] *)_58][0]
+	str	wzr, [sp, 24]	//, MEM[(int[1] *)_59][0]
 // problem143.c:40:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == 0);
-	add	x0, sp, 8	// tmp152,,
+	add	x0, sp, 24	// tmp153,,
 	mov	w1, 1	//,
 	bl	func0		//
-// problem143.c:40:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == 0);
 	cmp	w0, 0	// _6,
 	beq	.L14		//,
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp153,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp153,
+// problem143.c:40:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == 0);
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp154,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp154,
 	mov	w2, 40	//,
-	adrp	x0, .LC9	// tmp154,
-	add	x1, x0, :lo12:.LC9	//, tmp154,
-	adrp	x0, .LC12	// tmp155,
-	add	x0, x0, :lo12:.LC12	//, tmp155,
+	adrp	x0, .LC9	// tmp155,
+	add	x1, x0, :lo12:.LC9	//, tmp155,
+	adrp	x0, .LC12	// tmp156,
+	add	x0, x0, :lo12:.LC12	//, tmp156,
 	bl	__assert_fail		//
 .L14:
 // problem143.c:43:         int lst[] = {-1, -5, 2, -1, -5};
-	adrp	x0, .LC4	// tmp157,
-	add	x0, x0, :lo12:.LC4	// tmp156, tmp157,
-	add	x2, sp, 8	// tmp158,,
-	mov	x3, x0	// tmp159, tmp156
-	ldp	x0, x1, [x3]	// tmp160,
-	stp	x0, x1, [x2]	// tmp160, MEM[(int[5] *)_58]
-	ldr	w0, [x3, 16]	// tmp161,
-	str	w0, [x2, 16]	// tmp161, MEM[(int[5] *)_58]
+	adrp	x0, .LC4	// tmp158,
+	add	x0, x0, :lo12:.LC4	// tmp157, tmp158,
+	add	x2, sp, 24	// tmp159,,
+	mov	x3, x0	// tmp160, tmp157
+	ldp	x0, x1, [x3]	// tmp161,
+	stp	x0, x1, [x2]	// tmp161, MEM[(int[5] *)_59]
+	ldr	w0, [x3, 16]	// tmp162,
+	str	w0, [x2, 16]	// tmp162, MEM[(int[5] *)_59]
 // problem143.c:44:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == -126);
-	add	x0, sp, 8	// tmp162,,
+	add	x0, sp, 24	// tmp163,,
 	mov	w1, 5	//,
 	bl	func0		//
-// problem143.c:44:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == -126);
 	cmn	w0, #126	// _7,
 	beq	.L15		//,
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp163,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp163,
+// problem143.c:44:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == -126);
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp164,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp164,
 	mov	w2, 44	//,
-	adrp	x0, .LC9	// tmp164,
-	add	x1, x0, :lo12:.LC9	//, tmp164,
-	adrp	x0, .LC15	// tmp165,
-	add	x0, x0, :lo12:.LC15	//, tmp165,
+	adrp	x0, .LC9	// tmp165,
+	add	x1, x0, :lo12:.LC9	//, tmp165,
+	adrp	x0, .LC15	// tmp166,
+	add	x0, x0, :lo12:.LC15	//, tmp166,
 	bl	__assert_fail		//
 .L15:
 // problem143.c:47:         int lst[] = {-56, -99, 1, 0, -2};
-	adrp	x0, .LC5	// tmp167,
-	add	x0, x0, :lo12:.LC5	// tmp166, tmp167,
-	add	x2, sp, 8	// tmp168,,
-	mov	x3, x0	// tmp169, tmp166
-	ldp	x0, x1, [x3]	// tmp170,
-	stp	x0, x1, [x2]	// tmp170, MEM[(int[5] *)_58]
-	ldr	w0, [x3, 16]	// tmp171,
-	str	w0, [x2, 16]	// tmp171, MEM[(int[5] *)_58]
+	adrp	x0, .LC5	// tmp168,
+	add	x0, x0, :lo12:.LC5	// tmp167, tmp168,
+	add	x2, sp, 24	// tmp169,,
+	mov	x3, x0	// tmp170, tmp167
+	ldp	x0, x1, [x3]	// tmp171,
+	stp	x0, x1, [x2]	// tmp171, MEM[(int[5] *)_59]
+	ldr	w0, [x3, 16]	// tmp172,
+	str	w0, [x2, 16]	// tmp172, MEM[(int[5] *)_59]
 // problem143.c:48:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == 3030);
-	add	x0, sp, 8	// tmp172,,
+	add	x0, sp, 24	// tmp173,,
 	mov	w1, 5	//,
 	bl	func0		//
-// problem143.c:48:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == 3030);
 	cmp	w0, 3030	// _8,
 	beq	.L16		//,
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp173,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp173,
+// problem143.c:48:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == 3030);
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp174,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp174,
 	mov	w2, 48	//,
-	adrp	x0, .LC9	// tmp174,
-	add	x1, x0, :lo12:.LC9	//, tmp174,
-	adrp	x0, .LC16	// tmp175,
-	add	x0, x0, :lo12:.LC16	//, tmp175,
+	adrp	x0, .LC9	// tmp175,
+	add	x1, x0, :lo12:.LC9	//, tmp175,
+	adrp	x0, .LC16	// tmp176,
+	add	x0, x0, :lo12:.LC16	//, tmp176,
 	bl	__assert_fail		//
 .L16:
 // problem143.c:51:         int lst[] = {-1, 0, 0, 0, 0, 0, 0, 0, -1};
-	adrp	x0, .LC6	// tmp177,
-	add	x1, x0, :lo12:.LC6	// tmp176, tmp177,
-	add	x0, sp, 8	// tmp178,,
-	ldp	q0, q1, [x1]	// tmp180, tmp181,
-	stp	q0, q1, [x0]	// tmp180, tmp181, MEM[(int[9] *)_58]
-	ldr	w1, [x1, 32]	// tmp182,
-	str	w1, [x0, 32]	// tmp182, MEM[(int[9] *)_58]
+	adrp	x0, .LC6	// tmp178,
+	add	x1, x0, :lo12:.LC6	// tmp177, tmp178,
+	add	x0, sp, 24	// tmp179,,
+	ldp	q0, q1, [x1]	// tmp181, tmp182,
+	stp	q0, q1, [x0]	// tmp181, tmp182, MEM[(int[9] *)_59]
+	ldr	w1, [x1, 32]	// tmp183,
+	str	w1, [x0, 32]	// tmp183, MEM[(int[9] *)_59]
 // problem143.c:52:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == 0);
-	add	x0, sp, 8	// tmp183,,
+	add	x0, sp, 24	// tmp184,,
 	mov	w1, 9	//,
 	bl	func0		//
-// problem143.c:52:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == 0);
 	cmp	w0, 0	// _9,
 	beq	.L17		//,
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp184,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp184,
+// problem143.c:52:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == 0);
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp185,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp185,
 	mov	w2, 52	//,
-	adrp	x0, .LC9	// tmp185,
-	add	x1, x0, :lo12:.LC9	//, tmp185,
-	adrp	x0, .LC12	// tmp186,
-	add	x0, x0, :lo12:.LC12	//, tmp186,
+	adrp	x0, .LC9	// tmp186,
+	add	x1, x0, :lo12:.LC9	//, tmp186,
+	adrp	x0, .LC12	// tmp187,
+	add	x0, x0, :lo12:.LC12	//, tmp187,
 	bl	__assert_fail		//
 .L17:
 // problem143.c:55:         int lst[] = {-16, -9, -2, 36, 36, 26, -20, 25, -40, 20, -4, 12, -26, 35, 37};
-	adrp	x0, .LC7	// tmp188,
-	add	x1, x0, :lo12:.LC7	// tmp187, tmp188,
-	add	x0, sp, 8	// tmp189,,
-	ldp	q0, q1, [x1]	// tmp191, tmp192,
-	stp	q0, q1, [x0]	// tmp191, tmp192, MEM[(int[15] *)_58]
-	ldr	q0, [x1, 32]	// tmp193,
-	str	q0, [x0, 32]	// tmp193, MEM[(int[15] *)_58]
-	ldr	q0, [x1, 44]	// tmp194,
-	str	q0, [x0, 44]	// tmp194, MEM[(int[15] *)_58]
+	adrp	x0, .LC7	// tmp189,
+	add	x1, x0, :lo12:.LC7	// tmp188, tmp189,
+	add	x0, sp, 24	// tmp190,,
+	ldp	q0, q1, [x1]	// tmp192, tmp193,
+	stp	q0, q1, [x0]	// tmp192, tmp193, MEM[(int[15] *)_59]
+	ldr	q0, [x1, 32]	// tmp194,
+	str	q0, [x0, 32]	// tmp194, MEM[(int[15] *)_59]
+	ldr	q0, [x1, 44]	// tmp195,
+	str	q0, [x0, 44]	// tmp195, MEM[(int[15] *)_59]
 // problem143.c:56:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == -14196);
-	add	x0, sp, 8	// tmp195,,
+	add	x0, sp, 24	// tmp196,,
 	mov	w1, 15	//,
 	bl	func0		//
 	mov	w1, w0	// _10,
-// problem143.c:56:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == -14196);
-	mov	w0, -14196	// tmp196,
-	cmp	w1, w0	// _10, tmp196
+	mov	w0, -14196	// tmp197,
+	cmp	w1, w0	// _10, tmp197
 	beq	.L18		//,
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp197,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp197,
+// problem143.c:56:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == -14196);
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp198,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp198,
 	mov	w2, 56	//,
-	adrp	x0, .LC9	// tmp198,
-	add	x1, x0, :lo12:.LC9	//, tmp198,
-	adrp	x0, .LC17	// tmp199,
-	add	x0, x0, :lo12:.LC17	//, tmp199,
+	adrp	x0, .LC9	// tmp199,
+	add	x1, x0, :lo12:.LC9	//, tmp199,
+	adrp	x0, .LC17	// tmp200,
+	add	x0, x0, :lo12:.LC17	//, tmp200,
 	bl	__assert_fail		//
 .L18:
 // problem143.c:59:         int lst[] = {-1, -3, 17, -1, -15, 13, -1, 14, -14, -12, -5, 14, -14, 6, 13, 11, 16, 16, 4, 10};
-	adrp	x0, .LC8	// tmp201,
-	add	x1, x0, :lo12:.LC8	// tmp200, tmp201,
-	add	x0, sp, 8	// tmp202,,
-	ldp	q0, q1, [x1]	// tmp204, tmp205,
-	stp	q0, q1, [x0]	// tmp204, tmp205, MEM[(int[20] *)_58]
-	ldp	q0, q1, [x1, 32]	// tmp206, tmp207,
-	stp	q0, q1, [x0, 32]	// tmp206, tmp207, MEM[(int[20] *)_58]
-	ldr	q0, [x1, 64]	// tmp208,
-	str	q0, [x0, 64]	// tmp208, MEM[(int[20] *)_58]
+	adrp	x0, .LC8	// tmp202,
+	add	x1, x0, :lo12:.LC8	// tmp201, tmp202,
+	add	x0, sp, 24	// tmp203,,
+	ldp	q0, q1, [x1]	// tmp205, tmp206,
+	stp	q0, q1, [x0]	// tmp205, tmp206, MEM[(int[20] *)_59]
+	ldp	q0, q1, [x1, 32]	// tmp207, tmp208,
+	stp	q0, q1, [x0, 32]	// tmp207, tmp208, MEM[(int[20] *)_59]
+	ldr	q0, [x1, 64]	// tmp209,
+	str	q0, [x0, 64]	// tmp209, MEM[(int[20] *)_59]
 // problem143.c:60:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == -1448);
-	add	x0, sp, 8	// tmp209,,
+	add	x0, sp, 24	// tmp210,,
 	mov	w1, 20	//,
 	bl	func0		//
-// problem143.c:60:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == -1448);
 	cmn	w0, #1448	// _11,
 	beq	.L19		//,
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp210,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp210,
+// problem143.c:60:         assert(func0(lst, sizeof(lst)/sizeof(lst[0])) == -1448);
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp211,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp211,
 	mov	w2, 60	//,
-	adrp	x0, .LC9	// tmp211,
-	add	x1, x0, :lo12:.LC9	//, tmp211,
-	adrp	x0, .LC18	// tmp212,
-	add	x0, x0, :lo12:.LC18	//, tmp212,
+	adrp	x0, .LC9	// tmp212,
+	add	x1, x0, :lo12:.LC9	//, tmp212,
+	adrp	x0, .LC18	// tmp213,
+	add	x0, x0, :lo12:.LC18	//, tmp213,
 	bl	__assert_fail		//
 .L19:
 // problem143.c:63:     return 0;
-	mov	w0, 0	// _56,
+	mov	w0, 0	// _57,
 // problem143.c:64: }
-	mov	w1, w0	// <retval>, _56
-	adrp	x0, :got:__stack_chk_guard	// tmp214,
-	ldr	x0, [x0, :got_lo12:__stack_chk_guard]	// tmp214,
-	ldr	x3, [sp, 88]	// tmp216, D.4925
-	ldr	x2, [x0]	// tmp217,
-	subs	x3, x3, x2	// tmp216, tmp217
-	mov	x2, 0	// tmp217
+	mov	w1, w0	// <retval>, _57
+	adrp	x0, :got:__stack_chk_guard	// tmp216,
+	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]	// tmp215, tmp216,
+	ldr	x3, [sp, 104]	// tmp218, D.4343
+	ldr	x2, [x0]	// tmp219,
+	subs	x3, x3, x2	// tmp218, tmp219
+	mov	x2, 0	// tmp219
 	beq	.L21		//,
+// problem143.c:64: }
 	bl	__stack_chk_fail		//
 .L21:
 	mov	w0, w1	//, <retval>
-	ldp	x29, x30, [sp, 96]	//,,
-	add	sp, sp, 112	//,,
-	.cfi_restore 29
+	ldp	x29, x30, [sp], 112	//,,,
 	.cfi_restore 30
+	.cfi_restore 29
 	.cfi_def_cfa_offset 0
 	ret	
 	.cfi_endproc
@@ -557,5 +555,5 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

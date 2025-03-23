@@ -1,6 +1,6 @@
 	.file	"problem58.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -86,7 +86,6 @@ func0:
 	jne	.L8	#,
 # problem58.c:12:     if (incr + decr == 2) return false;
 	movl	$0, %eax	#, _25
-# problem58.c:12:     if (incr + decr == 2) return false;
 	jmp	.L9	#
 .L8:
 # problem58.c:13:     return true;
@@ -133,7 +132,7 @@ main:
 	subq	$160, %rsp	#,
 # problem58.c:21: int main() {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp163
-	movq	%rax, -8(%rbp)	# tmp163, D.3253
+	movq	%rax, -8(%rbp)	# tmp163, D.2423
 	xorl	%eax, %eax	# tmp163
 # problem58.c:22:     float list1[] = {1, 2, 4, 10};
 	movss	.LC0(%rip), %xmm0	#, tmp94
@@ -220,9 +219,9 @@ main:
 	movl	$4, %esi	#,
 	movq	%rax, %rdi	# tmp130,
 	call	func0	#
-# problem58.c:31:     assert(func0(list1, 4) == true);
 	testb	%al, %al	# _1
 	jne	.L13	#,
+# problem58.c:31:     assert(func0(list1, 4) == true);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp131
 	movq	%rax, %rcx	# tmp131,
 	movl	$31, %edx	#,
@@ -237,9 +236,9 @@ main:
 	movl	$4, %esi	#,
 	movq	%rax, %rdi	# tmp134,
 	call	func0	#
-# problem58.c:32:     assert(func0(list2, 4) == true);
 	testb	%al, %al	# _2
 	jne	.L14	#,
+# problem58.c:32:     assert(func0(list2, 4) == true);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp135
 	movq	%rax, %rcx	# tmp135,
 	movl	$32, %edx	#,
@@ -254,10 +253,10 @@ main:
 	movl	$4, %esi	#,
 	movq	%rax, %rdi	# tmp138,
 	call	func0	#
-# problem58.c:33:     assert(func0(list3, 4) == false);
 	xorl	$1, %eax	#, _4
 	testb	%al, %al	# _4
 	jne	.L15	#,
+# problem58.c:33:     assert(func0(list3, 4) == false);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp139
 	movq	%rax, %rcx	# tmp139,
 	movl	$33, %edx	#,
@@ -272,9 +271,9 @@ main:
 	movl	$4, %esi	#,
 	movq	%rax, %rdi	# tmp142,
 	call	func0	#
-# problem58.c:34:     assert(func0(list4, 4) == true);
 	testb	%al, %al	# _5
 	jne	.L16	#,
+# problem58.c:34:     assert(func0(list4, 4) == true);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp143
 	movq	%rax, %rcx	# tmp143,
 	movl	$34, %edx	#,
@@ -289,9 +288,9 @@ main:
 	movl	$4, %esi	#,
 	movq	%rax, %rdi	# tmp146,
 	call	func0	#
-# problem58.c:35:     assert(func0(list5, 4) == true);
 	testb	%al, %al	# _6
 	jne	.L17	#,
+# problem58.c:35:     assert(func0(list5, 4) == true);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp147
 	movq	%rax, %rcx	# tmp147,
 	movl	$35, %edx	#,
@@ -306,10 +305,10 @@ main:
 	movl	$6, %esi	#,
 	movq	%rax, %rdi	# tmp150,
 	call	func0	#
-# problem58.c:36:     assert(func0(list6, 6) == false);
 	xorl	$1, %eax	#, _8
 	testb	%al, %al	# _8
 	jne	.L18	#,
+# problem58.c:36:     assert(func0(list6, 6) == false);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp151
 	movq	%rax, %rcx	# tmp151,
 	movl	$36, %edx	#,
@@ -324,9 +323,9 @@ main:
 	movl	$6, %esi	#,
 	movq	%rax, %rdi	# tmp154,
 	call	func0	#
-# problem58.c:37:     assert(func0(list7, 6) == true);
 	testb	%al, %al	# _9
 	jne	.L19	#,
+# problem58.c:37:     assert(func0(list7, 6) == true);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp155
 	movq	%rax, %rcx	# tmp155,
 	movl	$37, %edx	#,
@@ -341,9 +340,9 @@ main:
 	movl	$4, %esi	#,
 	movq	%rax, %rdi	# tmp158,
 	call	func0	#
-# problem58.c:38:     assert(func0(list8, 4) == true);
 	testb	%al, %al	# _10
 	jne	.L20	#,
+# problem58.c:38:     assert(func0(list8, 4) == true);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp159
 	movq	%rax, %rcx	# tmp159,
 	movl	$38, %edx	#,
@@ -356,7 +355,7 @@ main:
 # problem58.c:40:     return 0;
 	movl	$0, %eax	#, _64
 # problem58.c:41: }
-	movq	-8(%rbp), %rdx	# D.3253, tmp164
+	movq	-8(%rbp), %rdx	# D.2423, tmp164
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp164
 	je	.L22	#,
 	call	__stack_chk_fail@PLT	#
@@ -402,7 +401,7 @@ __PRETTY_FUNCTION__.0:
 	.align 4
 .LC10:
 	.long	1091567616
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

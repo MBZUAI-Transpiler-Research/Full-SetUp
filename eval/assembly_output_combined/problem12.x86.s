@@ -53,16 +53,16 @@ func0:
 	movzbl	(%rax), %eax
 	cmpb	%al, %dl
 	jne	.L5
-	movl	$48, %ecx
+	movl	$48, %edx
 	jmp	.L6
 .L5:
-	movl	$49, %ecx
+	movl	$49, %edx
 .L6:
 	movl	-24(%rbp), %eax
-	movslq	%eax, %rdx
+	movslq	%eax, %rcx
 	movq	-8(%rbp), %rax
-	addq	%rdx, %rax
-	movb	%cl, (%rax)
+	addq	%rcx, %rax
+	movb	%dl, (%rax)
 	addl	$1, -24(%rbp)
 .L4:
 	movl	-24(%rbp), %eax
@@ -204,7 +204,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

@@ -144,9 +144,9 @@ compare:
 	movsbl	%al, %edx
 	movq	-16(%rbp), %rax
 	movzbl	(%rax), %eax
-	movsbl	%al, %eax
-	subl	%eax, %edx
+	movsbl	%al, %ecx
 	movl	%edx, %eax
+	subl	%ecx, %eax
 	popq	%rbp
 	.cfi_def_cfa 7, 8
 	ret
@@ -191,7 +191,7 @@ is_pandigital:
 	.cfi_endproc
 .LFE8:
 	.size	is_pandigital, .-is_pandigital
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

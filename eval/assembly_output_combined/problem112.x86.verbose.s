@@ -1,6 +1,6 @@
 	.file	"problem112.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -23,7 +23,7 @@ func0:
 	movq	%rcx, -176(%rbp)	# letters, letters
 # problem112.c:4: void func0(const char* test, int* freq, int* max_count, char* letters) {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp132
-	movq	%rax, -8(%rbp)	# tmp132, D.3496
+	movq	%rax, -8(%rbp)	# tmp132, D.2639
 	xorl	%eax, %eax	# tmp132
 # problem112.c:5:     int local_freq[26] = {0}; // for 'a' to 'z'
 	leaq	-112(%rbp), %rdx	#, tmp102
@@ -143,7 +143,7 @@ func0:
 	movb	$0, (%rax)	#, *_20
 # problem112.c:30: }
 	nop	
-	movq	-8(%rbp), %rax	# D.3496, tmp133
+	movq	-8(%rbp), %rax	# D.2639, tmp133
 	subq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp133
 	je	.L8	#,
 	call	__stack_chk_fail@PLT	#
@@ -177,7 +177,6 @@ issame:
 	je	.L10	#,
 # problem112.c:40:     if (max_count1 != max_count2) return false;
 	movl	$0, %eax	#, _41
-# problem112.c:40:     if (max_count1 != max_count2) return false;
 	jmp	.L11	#
 .L10:
 # problem112.c:41:     for (int i = 0; letters1[i] != '\0'; i++) {
@@ -216,7 +215,6 @@ issame:
 	je	.L13	#,
 # problem112.c:42:         if (freq1[letters1[i] - 'a'] != freq2[letters1[i] - 'a']) return false;
 	movl	$0, %eax	#, _41
-# problem112.c:42:         if (freq1[letters1[i] - 'a'] != freq2[letters1[i] - 'a']) return false;
 	jmp	.L11	#
 .L13:
 # problem112.c:41:     for (int i = 0; letters1[i] != '\0'; i++) {
@@ -267,7 +265,6 @@ issame:
 	je	.L16	#,
 # problem112.c:45:         if (freq2[letters2[i] - 'a'] != freq1[letters2[i] - 'a']) return false;
 	movl	$0, %eax	#, _41
-# problem112.c:45:         if (freq2[letters2[i] - 'a'] != freq1[letters2[i] - 'a']) return false;
 	jmp	.L11	#
 .L16:
 # problem112.c:44:     for (int i = 0; letters2[i] != '\0'; i++) {
@@ -345,7 +342,7 @@ main:
 	subq	$288, %rsp	#,
 # problem112.c:50: int main() {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp184
-	movq	%rax, -8(%rbp)	# tmp184, D.3499
+	movq	%rax, -8(%rbp)	# tmp184, D.2642
 	xorl	%eax, %eax	# tmp184
 # problem112.c:55:     func0("a b b a", counts1, &max_count1, letters1);
 	leaq	-48(%rbp), %rcx	#, tmp106
@@ -374,9 +371,9 @@ main:
 	leaq	.LC1(%rip), %r8	#,
 	movq	%rax, %rdi	# tmp113,
 	call	issame	#
-# problem112.c:59:     assert(issame(counts1, letters1, max_count1, counts2, "ab", 2));
 	testb	%al, %al	# _2
 	jne	.L19	#,
+# problem112.c:59:     assert(issame(counts1, letters1, max_count1, counts2, "ab", 2));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp114
 	movq	%rax, %rcx	# tmp114,
 	movl	$59, %edx	#,
@@ -413,9 +410,9 @@ main:
 	leaq	.LC1(%rip), %r8	#,
 	movq	%rax, %rdi	# tmp124,
 	call	issame	#
-# problem112.c:65:     assert(issame(counts1, letters1, max_count1, counts2, "ab", 2));
 	testb	%al, %al	# _4
 	jne	.L20	#,
+# problem112.c:65:     assert(issame(counts1, letters1, max_count1, counts2, "ab", 2));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp125
 	movq	%rax, %rcx	# tmp125,
 	movl	$65, %edx	#,
@@ -466,9 +463,9 @@ main:
 	leaq	.LC6(%rip), %r8	#,
 	movq	%rax, %rdi	# tmp135,
 	call	issame	#
-# problem112.c:70:     assert(issame(counts1, letters1, max_count1, counts2, "abcdg", 1));
 	testb	%al, %al	# _10
 	jne	.L21	#,
+# problem112.c:70:     assert(issame(counts1, letters1, max_count1, counts2, "abcdg", 1));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp136
 	movq	%rax, %rcx	# tmp136,
 	movl	$70, %edx	#,
@@ -511,9 +508,9 @@ main:
 	leaq	.LC9(%rip), %r8	#,
 	movq	%rax, %rdi	# tmp146,
 	call	issame	#
-# problem112.c:75:     assert(issame(counts1, letters1, max_count1, counts2, "rtg", 1));
 	testb	%al, %al	# _14
 	jne	.L22	#,
+# problem112.c:75:     assert(issame(counts1, letters1, max_count1, counts2, "rtg", 1));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp147
 	movq	%rax, %rcx	# tmp147,
 	movl	$75, %edx	#,
@@ -548,9 +545,9 @@ main:
 	leaq	.LC12(%rip), %r8	#,
 	movq	%rax, %rdi	# tmp157,
 	call	issame	#
-# problem112.c:80:     assert(issame(counts1, letters1, max_count1, counts2, "b", 4));
 	testb	%al, %al	# _16
 	jne	.L23	#,
+# problem112.c:80:     assert(issame(counts1, letters1, max_count1, counts2, "b", 4));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp158
 	movq	%rax, %rcx	# tmp158,
 	movl	$80, %edx	#,
@@ -593,9 +590,9 @@ main:
 	leaq	.LC9(%rip), %r8	#,
 	movq	%rax, %rdi	# tmp168,
 	call	issame	#
-# problem112.c:85:     assert(issame(counts1, letters1, max_count1, counts2, "rtg", 1));
 	testb	%al, %al	# _20
 	jne	.L24	#,
+# problem112.c:85:     assert(issame(counts1, letters1, max_count1, counts2, "rtg", 1));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp169
 	movq	%rax, %rcx	# tmp169,
 	movl	$85, %edx	#,
@@ -630,9 +627,9 @@ main:
 	leaq	.LC14(%rip), %r8	#,
 	movq	%rax, %rdi	# tmp179,
 	call	issame	#
-# problem112.c:90:     assert(issame(counts1, letters1, max_count1, counts2, "a", 1));
 	testb	%al, %al	# _22
 	jne	.L25	#,
+# problem112.c:90:     assert(issame(counts1, letters1, max_count1, counts2, "a", 1));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp180
 	movq	%rax, %rcx	# tmp180,
 	movl	$90, %edx	#,
@@ -645,7 +642,7 @@ main:
 # problem112.c:92:     return 0;
 	movl	$0, %eax	#, _69
 # problem112.c:93: }
-	movq	-8(%rbp), %rdx	# D.3499, tmp185
+	movq	-8(%rbp), %rdx	# D.2642, tmp185
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp185
 	je	.L27	#,
 	call	__stack_chk_fail@PLT	#
@@ -661,7 +658,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

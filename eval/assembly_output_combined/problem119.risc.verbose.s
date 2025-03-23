@@ -1,13 +1,10 @@
 	.file	"problem119.c"
 	.option pic
-	.attribute arch, "rv64i2p1_m2p0_a2p1_f2p2_d2p2_c2p0_zicsr2p0_zifencei2p0"
-	.attribute unaligned_access, 0
-	.attribute stack_align, 16
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (riscv64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (riscv64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-# options passed: -mabi=lp64d -misa-spec=20191213 -march=rv64imafdc_zicsr_zifencei -fstack-protector-strong
+# options passed: -mabi=lp64d -misa-spec=2.2 -march=rv64imafdc -fstack-protector-strong
 	.text
 	.section	.rodata
 	.align	3
@@ -18,29 +15,23 @@
 	.globl	func0
 	.type	func0, @function
 func0:
-.LFB0:
-	.cfi_startproc
 	addi	sp,sp,-64	#,,
-	.cfi_def_cfa_offset 64
 	sd	ra,56(sp)	#,
 	sd	s0,48(sp)	#,
-	.cfi_offset 1, -8
-	.cfi_offset 8, -16
 	addi	s0,sp,64	#,,
-	.cfi_def_cfa 8, 0
 	sd	a0,-56(s0)	# word, word
 # problem119.c:6:     const char *vowels = "AEIOUaeiou";
-	lla	a5,.LC0	# tmp158,
-	sd	a5,-32(s0)	# tmp158, vowels
+	lla	a5,.LC0	# tmp96,
+	sd	a5,-32(s0)	# tmp96, vowels
 # problem119.c:7:     size_t len = strlen(word);
 	ld	a0,-56(s0)		#, word
 	call	strlen@plt	#
 	sd	a0,-24(s0)	#, len
 # problem119.c:9:     for (int i = len - 2; i >= 1; i--) {
-	ld	a5,-24(s0)		# tmp159, len
-	sext.w	a5,a5	# _1, tmp159
-	addiw	a5,a5,-2	#, tmp160, _1
-	sext.w	a5,a5	# _2, tmp160
+	ld	a5,-24(s0)		# tmp97, len
+	sext.w	a5,a5	# _1, tmp97
+	addiw	a5,a5,-2	#, tmp98, _1
+	sext.w	a5,a5	# _2, tmp98
 # problem119.c:9:     for (int i = len - 2; i >= 1; i--) {
 	sw	a5,-36(s0)	# _2, i
 # problem119.c:9:     for (int i = len - 2; i >= 1; i--) {
@@ -48,8 +39,8 @@ func0:
 .L5:
 # problem119.c:10:         if (strchr(vowels, word[i]) && !strchr(vowels, word[i + 1]) && !strchr(vowels, word[i - 1])) {
 	lw	a5,-36(s0)		# _3, i
-	ld	a4,-56(s0)		# tmp161, word
-	add	a5,a4,a5	# _3, _4, tmp161
+	ld	a4,-56(s0)		# tmp99, word
+	add	a5,a4,a5	# _3, _4, tmp99
 	lbu	a5,0(a5)	# _5, *_4
 # problem119.c:10:         if (strchr(vowels, word[i]) && !strchr(vowels, word[i + 1]) && !strchr(vowels, word[i - 1])) {
 	sext.w	a5,a5	# _6, _5
@@ -62,8 +53,8 @@ func0:
 # problem119.c:10:         if (strchr(vowels, word[i]) && !strchr(vowels, word[i + 1]) && !strchr(vowels, word[i - 1])) {
 	lw	a5,-36(s0)		# _8, i
 	addi	a5,a5,1	#, _9, _8
-	ld	a4,-56(s0)		# tmp162, word
-	add	a5,a4,a5	# _9, _10, tmp162
+	ld	a4,-56(s0)		# tmp100, word
+	add	a5,a4,a5	# _9, _10, tmp100
 	lbu	a5,0(a5)	# _11, *_10
 # problem119.c:10:         if (strchr(vowels, word[i]) && !strchr(vowels, word[i + 1]) && !strchr(vowels, word[i - 1])) {
 	sext.w	a5,a5	# _12, _11
@@ -76,8 +67,8 @@ func0:
 # problem119.c:10:         if (strchr(vowels, word[i]) && !strchr(vowels, word[i + 1]) && !strchr(vowels, word[i - 1])) {
 	lw	a5,-36(s0)		# _14, i
 	addi	a5,a5,-1	#, _15, _14
-	ld	a4,-56(s0)		# tmp163, word
-	add	a5,a4,a5	# _15, _16, tmp163
+	ld	a4,-56(s0)		# tmp101, word
+	add	a5,a4,a5	# _15, _16, tmp101
 	lbu	a5,0(a5)	# _17, *_16
 # problem119.c:10:         if (strchr(vowels, word[i]) && !strchr(vowels, word[i + 1]) && !strchr(vowels, word[i - 1])) {
 	sext.w	a5,a5	# _18, _17
@@ -89,27 +80,27 @@ func0:
 	bne	a5,zero,.L3	#, _19,,
 # problem119.c:11:             out[0] = word[i];
 	lw	a5,-36(s0)		# _20, i
-	ld	a4,-56(s0)		# tmp164, word
-	add	a5,a4,a5	# _20, _21, tmp164
+	ld	a4,-56(s0)		# tmp102, word
+	add	a5,a4,a5	# _20, _21, tmp102
 	lbu	a4,0(a5)	# _22, *_21
 # problem119.c:11:             out[0] = word[i];
-	lla	a5,out.1	# tmp165,
+	lla	a5,out.1	# tmp103,
 	sb	a4,0(a5)	# _22, out[0]
 # problem119.c:12:             return out;
 	lla	a5,out.1	# _24,
 	j	.L4		#
 .L3:
 # problem119.c:9:     for (int i = len - 2; i >= 1; i--) {
-	lw	a5,-36(s0)		# tmp168, i
-	addiw	a5,a5,-1	#, tmp166, tmp167
-	sw	a5,-36(s0)	# tmp166, i
+	lw	a5,-36(s0)		# tmp106, i
+	addiw	a5,a5,-1	#, tmp104, tmp105
+	sw	a5,-36(s0)	# tmp104, i
 .L2:
 # problem119.c:9:     for (int i = len - 2; i >= 1; i--) {
-	lw	a5,-36(s0)		# tmp170, i
-	sext.w	a5,a5	# tmp171, tmp169
-	bgt	a5,zero,.L5	#, tmp171,,
+	lw	a5,-36(s0)		# tmp108, i
+	sext.w	a5,a5	# tmp109, tmp107
+	bgt	a5,zero,.L5	#, tmp109,,
 # problem119.c:15:     out[0] = '\0';
-	lla	a5,out.1	# tmp172,
+	lla	a5,out.1	# tmp110,
 	sb	zero,0(a5)	#, out[0]
 # problem119.c:16:     return out;
 	lla	a5,out.1	# _24,
@@ -117,15 +108,9 @@ func0:
 # problem119.c:17: }
 	mv	a0,a5	#, <retval>
 	ld	ra,56(sp)		#,
-	.cfi_restore 1
 	ld	s0,48(sp)		#,
-	.cfi_restore 8
-	.cfi_def_cfa 2, 64
 	addi	sp,sp,64	#,,
-	.cfi_def_cfa_offset 0
 	jr	ra		#
-	.cfi_endproc
-.LFE0:
 	.size	func0, .-func0
 	.section	.rodata
 	.align	3
@@ -226,26 +211,18 @@ func0:
 	.globl	main
 	.type	main, @function
 main:
-.LFB1:
-	.cfi_startproc
 	addi	sp,sp,-16	#,,
-	.cfi_def_cfa_offset 16
 	sd	ra,8(sp)	#,
 	sd	s0,0(sp)	#,
-	.cfi_offset 1, -8
-	.cfi_offset 8, -16
 	addi	s0,sp,16	#,,
-	.cfi_def_cfa 8, 0
 # problem119.c:26:     assert(strcmp(func0("yogurt"), "u") == 0);
 	lla	a0,.LC1	#,
 	call	func0		#
 	mv	a5,a0	# _1,
-# problem119.c:26:     assert(strcmp(func0("yogurt"), "u") == 0);
 	lla	a1,.LC2	#,
 	mv	a0,a5	#, _1
 	call	strcmp@plt	#
-	mv	a5,a0	# tmp169,
-# problem119.c:26:     assert(strcmp(func0("yogurt"), "u") == 0);
+	mv	a5,a0	# tmp107,
 	beq	a5,zero,.L7	#, _2,,
 # problem119.c:26:     assert(strcmp(func0("yogurt"), "u") == 0);
 	lla	a3,__PRETTY_FUNCTION__.0	#,
@@ -258,12 +235,10 @@ main:
 	lla	a0,.LC5	#,
 	call	func0		#
 	mv	a5,a0	# _3,
-# problem119.c:27:     assert(strcmp(func0("full"), "u") == 0);
 	lla	a1,.LC2	#,
 	mv	a0,a5	#, _3
 	call	strcmp@plt	#
-	mv	a5,a0	# tmp170,
-# problem119.c:27:     assert(strcmp(func0("full"), "u") == 0);
+	mv	a5,a0	# tmp108,
 	beq	a5,zero,.L8	#, _4,,
 # problem119.c:27:     assert(strcmp(func0("full"), "u") == 0);
 	lla	a3,__PRETTY_FUNCTION__.0	#,
@@ -276,10 +251,10 @@ main:
 	lla	a0,.LC7	#,
 	call	func0		#
 	mv	a5,a0	# _5,
-# problem119.c:28:     assert(strcmp(func0("easy"), "") == 0);
 	lbu	a5,0(a5)	# _33, MEM[(const unsigned char * {ref-all})_5]
 	sext.w	a5,a5	# _6, _33
 	beq	a5,zero,.L9	#, _6,,
+# problem119.c:28:     assert(strcmp(func0("easy"), "") == 0);
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,28		#,
 	lla	a1,.LC3	#,
@@ -290,10 +265,10 @@ main:
 	lla	a0,.LC9	#,
 	call	func0		#
 	mv	a5,a0	# _7,
-# problem119.c:29:     assert(strcmp(func0("eAsy"), "") == 0);
 	lbu	a5,0(a5)	# _36, MEM[(const unsigned char * {ref-all})_7]
 	sext.w	a5,a5	# _8, _36
 	beq	a5,zero,.L10	#, _8,,
+# problem119.c:29:     assert(strcmp(func0("eAsy"), "") == 0);
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,29		#,
 	lla	a1,.LC3	#,
@@ -304,10 +279,10 @@ main:
 	lla	a0,.LC11	#,
 	call	func0		#
 	mv	a5,a0	# _9,
-# problem119.c:30:     assert(strcmp(func0("ali"), "") == 0);
 	lbu	a5,0(a5)	# _39, MEM[(const unsigned char * {ref-all})_9]
 	sext.w	a5,a5	# _10, _39
 	beq	a5,zero,.L11	#, _10,,
+# problem119.c:30:     assert(strcmp(func0("ali"), "") == 0);
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,30		#,
 	lla	a1,.LC3	#,
@@ -318,12 +293,10 @@ main:
 	lla	a0,.LC13	#,
 	call	func0		#
 	mv	a5,a0	# _11,
-# problem119.c:31:     assert(strcmp(func0("bad"), "a") == 0);
 	lla	a1,.LC14	#,
 	mv	a0,a5	#, _11
 	call	strcmp@plt	#
-	mv	a5,a0	# tmp171,
-# problem119.c:31:     assert(strcmp(func0("bad"), "a") == 0);
+	mv	a5,a0	# tmp109,
 	beq	a5,zero,.L12	#, _12,,
 # problem119.c:31:     assert(strcmp(func0("bad"), "a") == 0);
 	lla	a3,__PRETTY_FUNCTION__.0	#,
@@ -336,12 +309,10 @@ main:
 	lla	a0,.LC16	#,
 	call	func0		#
 	mv	a5,a0	# _13,
-# problem119.c:32:     assert(strcmp(func0("most"), "o") == 0);
 	lla	a1,.LC17	#,
 	mv	a0,a5	#, _13
 	call	strcmp@plt	#
-	mv	a5,a0	# tmp172,
-# problem119.c:32:     assert(strcmp(func0("most"), "o") == 0);
+	mv	a5,a0	# tmp110,
 	beq	a5,zero,.L13	#, _14,,
 # problem119.c:32:     assert(strcmp(func0("most"), "o") == 0);
 	lla	a3,__PRETTY_FUNCTION__.0	#,
@@ -354,10 +325,10 @@ main:
 	lla	a0,.LC19	#,
 	call	func0		#
 	mv	a5,a0	# _15,
-# problem119.c:33:     assert(strcmp(func0("ab"), "") == 0);
 	lbu	a5,0(a5)	# _46, MEM[(const unsigned char * {ref-all})_15]
 	sext.w	a5,a5	# _16, _46
 	beq	a5,zero,.L14	#, _16,,
+# problem119.c:33:     assert(strcmp(func0("ab"), "") == 0);
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,33		#,
 	lla	a1,.LC3	#,
@@ -368,10 +339,10 @@ main:
 	lla	a0,.LC21	#,
 	call	func0		#
 	mv	a5,a0	# _17,
-# problem119.c:34:     assert(strcmp(func0("ba"), "") == 0);
 	lbu	a5,0(a5)	# _49, MEM[(const unsigned char * {ref-all})_17]
 	sext.w	a5,a5	# _18, _49
 	beq	a5,zero,.L15	#, _18,,
+# problem119.c:34:     assert(strcmp(func0("ba"), "") == 0);
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,34		#,
 	lla	a1,.LC3	#,
@@ -382,10 +353,10 @@ main:
 	lla	a0,.LC23	#,
 	call	func0		#
 	mv	a5,a0	# _19,
-# problem119.c:35:     assert(strcmp(func0("quick"), "") == 0);
 	lbu	a5,0(a5)	# _52, MEM[(const unsigned char * {ref-all})_19]
 	sext.w	a5,a5	# _20, _52
 	beq	a5,zero,.L16	#, _20,,
+# problem119.c:35:     assert(strcmp(func0("quick"), "") == 0);
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,35		#,
 	lla	a1,.LC3	#,
@@ -396,12 +367,10 @@ main:
 	lla	a0,.LC25	#,
 	call	func0		#
 	mv	a5,a0	# _21,
-# problem119.c:36:     assert(strcmp(func0("anime"), "i") == 0);
 	lla	a1,.LC26	#,
 	mv	a0,a5	#, _21
 	call	strcmp@plt	#
-	mv	a5,a0	# tmp173,
-# problem119.c:36:     assert(strcmp(func0("anime"), "i") == 0);
+	mv	a5,a0	# tmp111,
 	beq	a5,zero,.L17	#, _22,,
 # problem119.c:36:     assert(strcmp(func0("anime"), "i") == 0);
 	lla	a3,__PRETTY_FUNCTION__.0	#,
@@ -414,10 +383,10 @@ main:
 	lla	a0,.LC28	#,
 	call	func0		#
 	mv	a5,a0	# _23,
-# problem119.c:37:     assert(strcmp(func0("Asia"), "") == 0);
 	lbu	a5,0(a5)	# _57, MEM[(const unsigned char * {ref-all})_23]
 	sext.w	a5,a5	# _24, _57
 	beq	a5,zero,.L18	#, _24,,
+# problem119.c:37:     assert(strcmp(func0("Asia"), "") == 0);
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,37		#,
 	lla	a1,.LC3	#,
@@ -428,12 +397,10 @@ main:
 	lla	a0,.LC30	#,
 	call	func0		#
 	mv	a5,a0	# _25,
-# problem119.c:38:     assert(strcmp(func0("Above"), "o") == 0);
 	lla	a1,.LC17	#,
 	mv	a0,a5	#, _25
 	call	strcmp@plt	#
-	mv	a5,a0	# tmp174,
-# problem119.c:38:     assert(strcmp(func0("Above"), "o") == 0);
+	mv	a5,a0	# tmp112,
 	beq	a5,zero,.L19	#, _26,,
 # problem119.c:38:     assert(strcmp(func0("Above"), "o") == 0);
 	lla	a3,__PRETTY_FUNCTION__.0	#,
@@ -447,15 +414,9 @@ main:
 # problem119.c:41: }
 	mv	a0,a5	#, <retval>
 	ld	ra,8(sp)		#,
-	.cfi_restore 1
 	ld	s0,0(sp)		#,
-	.cfi_restore 8
-	.cfi_def_cfa 2, 16
 	addi	sp,sp,16	#,,
-	.cfi_def_cfa_offset 0
 	jr	ra		#
-	.cfi_endproc
-.LFE1:
 	.size	main, .-main
 	.local	out.1
 	.comm	out.1,2,8
@@ -465,5 +426,5 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

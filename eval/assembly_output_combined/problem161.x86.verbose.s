@@ -1,6 +1,6 @@
 	.file	"problem161.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -447,36 +447,35 @@ func0:
 	leaq	0(,%rax,4), %rdx	#, _176
 	movq	-16(%rbp), %rax	# num, tmp515
 	addq	%rdx, %rax	# _176, _177
-	movl	(%rax), %edx	# *_177, _178
+	movl	(%rax), %ecx	# *_177, _178
 # problem161.c:26:                 num[posto[i]] *= num[posto[i + 1]];
 	movl	-28(%rbp), %eax	# i, tmp516
 	cltq
 	addq	$1, %rax	#, _180
-	leaq	0(,%rax,4), %rcx	#, _181
+	leaq	0(,%rax,4), %rdx	#, _181
 	movq	-8(%rbp), %rax	# posto, tmp517
-	addq	%rcx, %rax	# _181, _182
+	addq	%rdx, %rax	# _181, _182
 	movl	(%rax), %eax	# *_182, _183
 	cltq
 # problem161.c:26:                 num[posto[i]] *= num[posto[i + 1]];
-	leaq	0(,%rax,4), %rcx	#, _185
+	leaq	0(,%rax,4), %rdx	#, _185
 	movq	-16(%rbp), %rax	# num, tmp518
-	addq	%rcx, %rax	# _185, _186
+	addq	%rdx, %rax	# _185, _186
 	movl	(%rax), %eax	# *_186, _187
 # problem161.c:26:                 num[posto[i]] *= num[posto[i + 1]];
-	movl	-28(%rbp), %ecx	# i, tmp519
-	movslq	%ecx, %rcx	# tmp519, _188
-	leaq	0(,%rcx,4), %rsi	#, _189
-	movq	-8(%rbp), %rcx	# posto, tmp520
-	addq	%rsi, %rcx	# _189, _190
-	movl	(%rcx), %ecx	# *_190, _191
+	movl	-28(%rbp), %edx	# i, tmp519
+	movslq	%edx, %rdx	# tmp519, _188
+	leaq	0(,%rdx,4), %rsi	#, _189
+	movq	-8(%rbp), %rdx	# posto, tmp520
+	addq	%rsi, %rdx	# _189, _190
+	movl	(%rdx), %edx	# *_190, _191
 # problem161.c:26:                 num[posto[i]] *= num[posto[i + 1]];
-	movslq	%ecx, %rcx	# _191, _192
-	leaq	0(,%rcx,4), %rsi	#, _193
-	movq	-16(%rbp), %rcx	# num, tmp521
-	addq	%rsi, %rcx	# _193, _194
-# problem161.c:26:                 num[posto[i]] *= num[posto[i + 1]];
-	imull	%edx, %eax	# _178, _195
-	movl	%eax, (%rcx)	# _195, *_194
+	movslq	%edx, %rdx	# _191, _192
+	leaq	0(,%rdx,4), %rsi	#, _193
+	movq	-16(%rbp), %rdx	# num, tmp521
+	addq	%rsi, %rdx	# _193, _194
+	imull	%ecx, %eax	# _178, _195
+	movl	%eax, (%rdx)	# _195, *_194
 	jmp	.L19	#
 .L18:
 # problem161.c:28:                 num[posto[i]] /= num[posto[i + 1]];
@@ -518,7 +517,6 @@ func0:
 	leaq	0(,%rcx,4), %rsi	#, _218
 	movq	-16(%rbp), %rcx	# num, tmp530
 	addq	%rsi, %rcx	# _218, _219
-# problem161.c:28:                 num[posto[i]] /= num[posto[i + 1]];
 	cltd
 	idivl	%edi	# _212
 	movl	%eax, (%rcx)	# _220, *_219
@@ -739,7 +737,6 @@ func0:
 	leaq	0(,%rax,4), %rsi	#, _316
 	movq	-16(%rbp), %rax	# num, tmp575
 	addq	%rsi, %rax	# _316, _317
-# problem161.c:37:                 num[posto[i]] += num[posto[i + 1]];
 	addl	%ecx, %edx	# _301, _318
 	movl	%edx, (%rax)	# _318, *_317
 	jmp	.L29	#
@@ -756,36 +753,35 @@ func0:
 	leaq	0(,%rax,4), %rdx	#, _324
 	movq	-16(%rbp), %rax	# num, tmp578
 	addq	%rdx, %rax	# _324, _325
-	movl	(%rax), %ecx	# *_325, _326
+	movl	(%rax), %edx	# *_325, _326
 # problem161.c:39:                 num[posto[i]] -= num[posto[i + 1]];
 	movl	-24(%rbp), %eax	# i, tmp579
 	cltq
 	addq	$1, %rax	#, _328
-	leaq	0(,%rax,4), %rdx	#, _329
+	leaq	0(,%rax,4), %rcx	#, _329
 	movq	-8(%rbp), %rax	# posto, tmp580
-	addq	%rdx, %rax	# _329, _330
+	addq	%rcx, %rax	# _329, _330
 	movl	(%rax), %eax	# *_330, _331
 	cltq
 # problem161.c:39:                 num[posto[i]] -= num[posto[i + 1]];
-	leaq	0(,%rax,4), %rdx	#, _333
+	leaq	0(,%rax,4), %rcx	#, _333
 	movq	-16(%rbp), %rax	# num, tmp581
-	addq	%rdx, %rax	# _333, _334
-	movl	(%rax), %eax	# *_334, _335
+	addq	%rcx, %rax	# _333, _334
+	movl	(%rax), %ecx	# *_334, _335
 # problem161.c:39:                 num[posto[i]] -= num[posto[i + 1]];
-	movl	-24(%rbp), %edx	# i, tmp582
-	movslq	%edx, %rdx	# tmp582, _336
-	leaq	0(,%rdx,4), %rsi	#, _337
-	movq	-8(%rbp), %rdx	# posto, tmp583
-	addq	%rsi, %rdx	# _337, _338
-	movl	(%rdx), %edx	# *_338, _339
+	movl	-24(%rbp), %eax	# i, tmp582
+	cltq
+	leaq	0(,%rax,4), %rsi	#, _337
+	movq	-8(%rbp), %rax	# posto, tmp583
+	addq	%rsi, %rax	# _337, _338
+	movl	(%rax), %eax	# *_338, _339
 # problem161.c:39:                 num[posto[i]] -= num[posto[i + 1]];
-	movslq	%edx, %rdx	# _339, _340
-	leaq	0(,%rdx,4), %rsi	#, _341
-	movq	-16(%rbp), %rdx	# num, tmp584
-	addq	%rsi, %rdx	# _341, _342
-# problem161.c:39:                 num[posto[i]] -= num[posto[i + 1]];
-	subl	%eax, %ecx	# _335, _343
-	movl	%ecx, (%rdx)	# _343, *_342
+	cltq
+	leaq	0(,%rax,4), %rsi	#, _341
+	movq	-16(%rbp), %rax	# num, tmp584
+	addq	%rsi, %rax	# _341, _342
+	subl	%ecx, %edx	# _335, _343
+	movl	%edx, (%rax)	# _343, *_342
 .L29:
 # problem161.c:40:             posto[i + 1] = posto[i];
 	movl	-24(%rbp), %eax	# i, tmp585
@@ -860,7 +856,7 @@ main:
 	addq	$-128, %rsp	#,
 # problem161.c:53: int main() {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp111
-	movq	%rax, -8(%rbp)	# tmp111, D.5079
+	movq	%rax, -8(%rbp)	# tmp111, D.4215
 	xorl	%eax, %eax	# tmp111
 # problem161.c:54:     const char *operators1[] = {"**", "*", "+"};
 	leaq	.LC0(%rip), %rax	#, tmp87
@@ -881,9 +877,9 @@ main:
 	movl	$3, %edx	#,
 	movq	%rax, %rdi	# tmp91,
 	call	func0	#
-# problem161.c:56:     assert(func0(operators1, operands1, 3, 4) == 37);
 	cmpl	$37, %eax	#, _1
 	je	.L33	#,
+# problem161.c:56:     assert(func0(operators1, operands1, 3, 4) == 37);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp92
 	movq	%rax, %rcx	# tmp92,
 	movl	$56, %edx	#,
@@ -912,9 +908,9 @@ main:
 	movl	$3, %edx	#,
 	movq	%rax, %rdi	# tmp99,
 	call	func0	#
-# problem161.c:60:     assert(func0(operators2, operands2, 3, 4) == 9);
 	cmpl	$9, %eax	#, _2
 	je	.L34	#,
+# problem161.c:60:     assert(func0(operators2, operands2, 3, 4) == 9);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp100
 	movq	%rax, %rcx	# tmp100,
 	movl	$60, %edx	#,
@@ -940,9 +936,9 @@ main:
 	movl	$2, %edx	#,
 	movq	%rax, %rdi	# tmp106,
 	call	func0	#
-# problem161.c:64:     assert(func0(operators3, operands3, 2, 3) == 8);
 	cmpl	$8, %eax	#, _3
 	je	.L35	#,
+# problem161.c:64:     assert(func0(operators3, operands3, 2, 3) == 8);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp107
 	movq	%rax, %rcx	# tmp107,
 	movl	$64, %edx	#,
@@ -955,7 +951,7 @@ main:
 # problem161.c:66:     return 0;
 	movl	$0, %eax	#, _30
 # problem161.c:67: }
-	movq	-8(%rbp), %rdx	# D.5079, tmp112
+	movq	-8(%rbp), %rdx	# D.4215, tmp112
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp112
 	je	.L37	#,
 	call	__stack_chk_fail@PLT	#
@@ -971,7 +967,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

@@ -1,13 +1,10 @@
 	.file	"problem47.c"
 	.option pic
-	.attribute arch, "rv64i2p1_m2p0_a2p1_f2p2_d2p2_c2p0_zicsr2p0_zifencei2p0"
-	.attribute unaligned_access, 0
-	.attribute stack_align, 16
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (riscv64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (riscv64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-# options passed: -mabi=lp64d -misa-spec=20191213 -march=rv64imafdc_zicsr_zifencei -fstack-protector-strong
+# options passed: -mabi=lp64d -misa-spec=2.2 -march=rv64imafdc -fstack-protector-strong
 	.text
 	.section	.rodata
 	.align	3
@@ -18,21 +15,15 @@
 	.globl	main
 	.type	main, @function
 main:
-.LFB0:
-	.cfi_startproc
 	addi	sp,sp,-32	#,,
-	.cfi_def_cfa_offset 32
 	sd	ra,24(sp)	#,
 	sd	s0,16(sp)	#,
-	.cfi_offset 1, -8
-	.cfi_offset 8, -16
 	addi	s0,sp,32	#,,
-	.cfi_def_cfa 8, 0
 # problem47.c:16:   unsigned i, j = 0;
 	sw	zero,-20(s0)	#, j
 # problem47.c:17:   for (i = 2; i < M && j < N; i++) {
-	li	a5,2		# tmp139,
-	sw	a5,-24(s0)	# tmp139, i
+	li	a5,2		# tmp77,
+	sw	a5,-24(s0)	# tmp77, i
 # problem47.c:17:   for (i = 2; i < M && j < N; i++) {
 	j	.L2		#
 .L7:
@@ -42,50 +33,50 @@ main:
 	j	.L3		#
 .L5:
 # problem47.c:18:     for (j = 0; j < N && distinct_factor_count(i+j) == 4; j++)
-	lw	a5,-20(s0)		# tmp142, j
-	addiw	a5,a5,1	#, tmp140, tmp141
-	sw	a5,-20(s0)	# tmp140, j
+	lw	a5,-20(s0)		# tmp80, j
+	addiw	a5,a5,1	#, tmp78, tmp79
+	sw	a5,-20(s0)	# tmp78, j
 .L3:
 # problem47.c:18:     for (j = 0; j < N && distinct_factor_count(i+j) == 4; j++)
-	lw	a5,-20(s0)		# tmp144, j
-	sext.w	a4,a5	# tmp145, tmp143
-	li	a5,3		# tmp146,
-	bgtu	a4,a5,.L4	#, tmp145, tmp146,
+	lw	a5,-20(s0)		# tmp82, j
+	sext.w	a4,a5	# tmp83, tmp81
+	li	a5,3		# tmp84,
+	bgtu	a4,a5,.L4	#, tmp83, tmp84,
 # problem47.c:18:     for (j = 0; j < N && distinct_factor_count(i+j) == 4; j++)
-	lw	a5,-24(s0)		# tmp149, i
-	mv	a4,a5	# tmp148, tmp149
-	lw	a5,-20(s0)		# tmp151, j
-	addw	a5,a4,a5	# tmp150, tmp147, tmp148
-	sext.w	a5,a5	# _1, tmp147
+	lw	a5,-24(s0)		# tmp87, i
+	mv	a4,a5	# tmp86, tmp87
+	lw	a5,-20(s0)		# tmp89, j
+	addw	a5,a4,a5	# tmp88, tmp85, tmp86
+	sext.w	a5,a5	# _1, tmp85
 	mv	a0,a5	#, _1
 	call	distinct_factor_count		#
-	mv	a5,a0	# tmp152,
+	mv	a5,a0	# tmp90,
 # problem47.c:18:     for (j = 0; j < N && distinct_factor_count(i+j) == 4; j++)
-	mv	a4,a5	# tmp153, _2
-	li	a5,4		# tmp154,
-	beq	a4,a5,.L5	#, tmp153, tmp154,
+	mv	a4,a5	# tmp91, _2
+	li	a5,4		# tmp92,
+	beq	a4,a5,.L5	#, tmp91, tmp92,
 .L4:
 # problem47.c:17:   for (i = 2; i < M && j < N; i++) {
-	lw	a5,-24(s0)		# tmp157, i
-	addiw	a5,a5,1	#, tmp155, tmp156
-	sw	a5,-24(s0)	# tmp155, i
+	lw	a5,-24(s0)		# tmp95, i
+	addiw	a5,a5,1	#, tmp93, tmp94
+	sw	a5,-24(s0)	# tmp93, i
 .L2:
 # problem47.c:17:   for (i = 2; i < M && j < N; i++) {
-	lw	a5,-24(s0)		# tmp161, i
-	sext.w	a4,a5	# tmp162, tmp160
-	li	a5,999424		# tmp164,
-	addi	a5,a5,575	#, tmp163, tmp164
-	bgtu	a4,a5,.L6	#, tmp162, tmp163,
+	lw	a5,-24(s0)		# tmp99, i
+	sext.w	a4,a5	# tmp100, tmp98
+	li	a5,999424		# tmp102,
+	addi	a5,a5,575	#, tmp101, tmp102
+	bgtu	a4,a5,.L6	#, tmp100, tmp101,
 # problem47.c:17:   for (i = 2; i < M && j < N; i++) {
-	lw	a5,-20(s0)		# tmp166, j
-	sext.w	a4,a5	# tmp167, tmp165
-	li	a5,3		# tmp168,
-	bleu	a4,a5,.L7	#, tmp167, tmp168,
+	lw	a5,-20(s0)		# tmp104, j
+	sext.w	a4,a5	# tmp105, tmp103
+	li	a5,3		# tmp106,
+	bleu	a4,a5,.L7	#, tmp105, tmp106,
 .L6:
 # problem47.c:21:   printf("%u\n", i-1);
-	lw	a5,-24(s0)		# tmp171, i
-	addiw	a5,a5,-1	#, tmp169, tmp170
-	sext.w	a5,a5	# _3, tmp169
+	lw	a5,-24(s0)		# tmp109, i
+	addiw	a5,a5,-1	#, tmp107, tmp108
+	sext.w	a5,a5	# _3, tmp107
 	mv	a1,a5	#, _3
 	lla	a0,.LC0	#,
 	call	printf@plt	#
@@ -94,98 +85,82 @@ main:
 # problem47.c:24: }
 	mv	a0,a5	#, <retval>
 	ld	ra,24(sp)		#,
-	.cfi_restore 1
 	ld	s0,16(sp)		#,
-	.cfi_restore 8
-	.cfi_def_cfa 2, 32
 	addi	sp,sp,32	#,,
-	.cfi_def_cfa_offset 0
 	jr	ra		#
-	.cfi_endproc
-.LFE0:
 	.size	main, .-main
 	.align	1
 	.type	distinct_factor_count, @function
 distinct_factor_count:
-.LFB1:
-	.cfi_startproc
 	addi	sp,sp,-48	#,,
-	.cfi_def_cfa_offset 48
 	sd	s0,40(sp)	#,
-	.cfi_offset 8, -8
 	addi	s0,sp,48	#,,
-	.cfi_def_cfa 8, 0
-	mv	a5,a0	# tmp138, n
-	sw	a5,-36(s0)	# tmp139, n
+	mv	a5,a0	# tmp76, n
+	sw	a5,-36(s0)	# tmp77, n
 # problem47.c:28:   unsigned count = 0;
 	sw	zero,-24(s0)	#, count
 # problem47.c:30:   for (i = 2; i <= n; i++) {
-	li	a5,2		# tmp140,
-	sw	a5,-20(s0)	# tmp140, i
+	li	a5,2		# tmp78,
+	sw	a5,-20(s0)	# tmp78, i
 # problem47.c:30:   for (i = 2; i <= n; i++) {
 	j	.L10		#
 .L14:
 # problem47.c:31:     if (n % i == 0) {
-	lw	a5,-36(s0)		# tmp143, n
-	mv	a4,a5	# tmp142, tmp143
-	lw	a5,-20(s0)		# tmp146, i
-	remuw	a5,a4,a5	# tmp145, tmp144, tmp142
-	sext.w	a5,a5	# _1, tmp144
+	lw	a5,-36(s0)		# tmp81, n
+	mv	a4,a5	# tmp80, tmp81
+	lw	a5,-20(s0)		# tmp84, i
+	remuw	a5,a4,a5	# tmp83, tmp82, tmp80
+	sext.w	a5,a5	# _1, tmp82
 # problem47.c:31:     if (n % i == 0) {
 	bne	a5,zero,.L11	#, _1,,
 # problem47.c:32:       count++;
-	lw	a5,-24(s0)		# tmp149, count
-	addiw	a5,a5,1	#, tmp147, tmp148
-	sw	a5,-24(s0)	# tmp147, count
+	lw	a5,-24(s0)		# tmp87, count
+	addiw	a5,a5,1	#, tmp85, tmp86
+	sw	a5,-24(s0)	# tmp85, count
 # problem47.c:33:       n /= i;
-	lw	a5,-36(s0)		# tmp153, n
-	mv	a4,a5	# tmp152, tmp153
-	lw	a5,-20(s0)		# tmp155, i
-	divuw	a5,a4,a5	# tmp154, tmp151, tmp152
-	sw	a5,-36(s0)	# tmp151, n
+	lw	a5,-36(s0)		# tmp91, n
+	mv	a4,a5	# tmp90, tmp91
+	lw	a5,-20(s0)		# tmp93, i
+	divuw	a5,a4,a5	# tmp92, tmp89, tmp90
+	sw	a5,-36(s0)	# tmp89, n
 # problem47.c:34:       while (n % i == 0) {
 	j	.L12		#
 .L13:
 # problem47.c:35:         n /= i;
-	lw	a5,-36(s0)		# tmp159, n
-	mv	a4,a5	# tmp158, tmp159
-	lw	a5,-20(s0)		# tmp161, i
-	divuw	a5,a4,a5	# tmp160, tmp157, tmp158
-	sw	a5,-36(s0)	# tmp157, n
+	lw	a5,-36(s0)		# tmp97, n
+	mv	a4,a5	# tmp96, tmp97
+	lw	a5,-20(s0)		# tmp99, i
+	divuw	a5,a4,a5	# tmp98, tmp95, tmp96
+	sw	a5,-36(s0)	# tmp95, n
 .L12:
 # problem47.c:34:       while (n % i == 0) {
-	lw	a5,-36(s0)		# tmp164, n
-	mv	a4,a5	# tmp163, tmp164
-	lw	a5,-20(s0)		# tmp167, i
-	remuw	a5,a4,a5	# tmp166, tmp165, tmp163
-	sext.w	a5,a5	# _2, tmp165
+	lw	a5,-36(s0)		# tmp102, n
+	mv	a4,a5	# tmp101, tmp102
+	lw	a5,-20(s0)		# tmp105, i
+	remuw	a5,a4,a5	# tmp104, tmp103, tmp101
+	sext.w	a5,a5	# _2, tmp103
 # problem47.c:34:       while (n % i == 0) {
 	beq	a5,zero,.L13	#, _2,,
 .L11:
 # problem47.c:30:   for (i = 2; i <= n; i++) {
-	lw	a5,-20(s0)		# tmp170, i
-	addiw	a5,a5,1	#, tmp168, tmp169
-	sw	a5,-20(s0)	# tmp168, i
+	lw	a5,-20(s0)		# tmp108, i
+	addiw	a5,a5,1	#, tmp106, tmp107
+	sw	a5,-20(s0)	# tmp106, i
 .L10:
 # problem47.c:30:   for (i = 2; i <= n; i++) {
-	lw	a5,-20(s0)		# tmp172, i
-	mv	a4,a5	# tmp171, tmp172
-	lw	a5,-36(s0)		# tmp174, n
-	sext.w	a4,a4	# tmp175, tmp171
-	sext.w	a5,a5	# tmp176, tmp173
-	bleu	a4,a5,.L14	#, tmp175, tmp176,
+	lw	a5,-20(s0)		# tmp110, i
+	mv	a4,a5	# tmp109, tmp110
+	lw	a5,-36(s0)		# tmp112, n
+	sext.w	a4,a4	# tmp113, tmp109
+	sext.w	a5,a5	# tmp114, tmp111
+	bleu	a4,a5,.L14	#, tmp113, tmp114,
 # problem47.c:39:   return count;
 	lw	a5,-24(s0)		# _12, count
 # problem47.c:40: }
 	mv	a0,a5	#, <retval>
 	ld	s0,40(sp)		#,
-	.cfi_restore 8
-	.cfi_def_cfa 2, 48
 	addi	sp,sp,48	#,,
-	.cfi_def_cfa_offset 0
 	jr	ra		#
-	.cfi_endproc
-.LFE1:
 	.size	distinct_factor_count, .-distinct_factor_count
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits

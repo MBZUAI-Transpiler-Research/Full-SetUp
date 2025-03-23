@@ -1,6 +1,6 @@
 	.file	"problem46.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -112,13 +112,12 @@ main:
 	leaq	0(,%rax,4), %rdx	#, _19
 	movq	-8(%rbp), %rax	# primes, tmp122
 	addq	%rdx, %rax	# _19, _20
-	movl	(%rax), %eax	# *_20, _21
+	movl	(%rax), %edx	# *_20, _21
 # problem46.c:41:       s = (i - primes[j])/2;
-	movl	-28(%rbp), %edx	# i, tmp123
-	subl	%eax, %edx	# _21, _22
+	movl	-28(%rbp), %eax	# i, tmp123
+	subl	%edx, %eax	# _21, _22
 # problem46.c:41:       s = (i - primes[j])/2;
-	movl	%edx, %eax	# _22, _22
-	shrl	%eax	# _22
+	shrl	%eax	# tmp124
 	movl	%eax, -20(%rbp)	# tmp124, s
 # problem46.c:42:       if (is_square(s)) {
 	movl	-20(%rbp), %eax	# s, tmp125
@@ -302,7 +301,7 @@ is_square:
 	.cfi_endproc
 .LFE8:
 	.size	is_square, .-is_square
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

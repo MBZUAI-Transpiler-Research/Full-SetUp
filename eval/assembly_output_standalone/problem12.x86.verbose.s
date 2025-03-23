@@ -1,6 +1,6 @@
 	.file	"code.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -50,7 +50,6 @@ func0:
 	jne	.L2	#,
 # eval/problem12//code.c:10:     if (!output) return NULL;
 	movl	$0, %eax	#, _16
-# eval/problem12//code.c:10:     if (!output) return NULL;
 	jmp	.L3	#
 .L2:
 # eval/problem12//code.c:12:     for (int i = 0; i < min_len; i++) {
@@ -74,19 +73,19 @@ func0:
 	cmpb	%al, %dl	# _10, _7
 	jne	.L5	#,
 # eval/problem12//code.c:13:         output[i] = (a[i] == b[i]) ? '0' : '1';
-	movl	$48, %ecx	#, iftmp.0_17
+	movl	$48, %edx	#, iftmp.0_17
 	jmp	.L6	#
 .L5:
 # eval/problem12//code.c:13:         output[i] = (a[i] == b[i]) ? '0' : '1';
-	movl	$49, %ecx	#, iftmp.0_17
+	movl	$49, %edx	#, iftmp.0_17
 .L6:
 # eval/problem12//code.c:13:         output[i] = (a[i] == b[i]) ? '0' : '1';
 	movl	-24(%rbp), %eax	# i, tmp109
-	movslq	%eax, %rdx	# tmp109, _11
+	movslq	%eax, %rcx	# tmp109, _11
 	movq	-8(%rbp), %rax	# output, tmp110
-	addq	%rdx, %rax	# _11, _12
+	addq	%rcx, %rax	# _11, _12
 # eval/problem12//code.c:13:         output[i] = (a[i] == b[i]) ? '0' : '1';
-	movb	%cl, (%rax)	# iftmp.0_17, *_12
+	movb	%dl, (%rax)	# iftmp.0_17, *_12
 # eval/problem12//code.c:12:     for (int i = 0; i < min_len; i++) {
 	addl	$1, -24(%rbp)	#, i
 .L4:
@@ -111,7 +110,7 @@ func0:
 	.cfi_endproc
 .LFE6:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

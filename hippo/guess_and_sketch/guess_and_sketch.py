@@ -170,7 +170,7 @@ class GuessAndSketch:
                 "problem": {"setup": [], "qemu_args": "", "test": [], "cleanup": []}
             }
 
-        elif "unix_commands" in args.predictions_folder:
+        elif "unix_risc_to_arm" in args.predictions_folder or "unix_commands" in args.predictions_folder:
             self.make_run_commands["gcc_flags"] = ""
             random_num = random.randint(0, 1000)
             self.make_run_commands["qemu_setup"] = {

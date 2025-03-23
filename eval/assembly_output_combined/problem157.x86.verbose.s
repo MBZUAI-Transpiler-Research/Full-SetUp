@@ -1,6 +1,6 @@
 	.file	"problem157.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -49,7 +49,7 @@ func0:
 	movq	%rsi, -208(%rbp)	# result, result
 # problem157.c:4: void func0(int number, char *result) {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp106
-	movq	%rax, -8(%rbp)	# tmp106, D.3471
+	movq	%rax, -8(%rbp)	# tmp106, D.2614
 	xorl	%eax, %eax	# tmp106
 # problem157.c:5:     const char *rep[] = {"m", "cm", "d", "cd", "c", "xc", "l", "xl", "x", "ix", "v", "iv", "i"};
 	leaq	.LC0(%rip), %rax	#, tmp85
@@ -133,11 +133,11 @@ func0:
 	jg	.L3	#,
 # problem157.c:17: }
 	nop	
-	movq	-8(%rbp), %rax	# D.3471, tmp107
+	movq	-8(%rbp), %rax	# D.2614, tmp107
 	subq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp107
-	je	.L7	#,
+	je	.L6	#,
 	call	__stack_chk_fail@PLT	#
-.L7:
+.L6:
 	leave	
 	.cfi_def_cfa 7, 8
 	ret	
@@ -206,7 +206,7 @@ main:
 	subq	$80, %rsp	#,
 # problem157.c:24: int main() {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp183
-	movq	%rax, -8(%rbp)	# tmp183, D.3486
+	movq	%rax, -8(%rbp)	# tmp183, D.2629
 	xorl	%eax, %eax	# tmp183
 # problem157.c:27:     func0(19, result);
 	leaq	-80(%rbp), %rax	#, tmp98
@@ -219,9 +219,9 @@ main:
 	movq	%rdx, %rsi	# tmp100,
 	movq	%rax, %rdi	# tmp99,
 	call	strcmp@PLT	#
-# problem157.c:28:     assert(strcmp(result, "xix") == 0);
 	testl	%eax, %eax	# _1
-	je	.L9	#,
+	je	.L8	#,
+# problem157.c:28:     assert(strcmp(result, "xix") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp101
 	movq	%rax, %rcx	# tmp101,
 	movl	$28, %edx	#,
@@ -230,7 +230,7 @@ main:
 	leaq	.LC15(%rip), %rax	#, tmp103
 	movq	%rax, %rdi	# tmp103,
 	call	__assert_fail@PLT	#
-.L9:
+.L8:
 # problem157.c:30:     func0(152, result);
 	leaq	-80(%rbp), %rax	#, tmp104
 	movq	%rax, %rsi	# tmp104,
@@ -242,9 +242,9 @@ main:
 	movq	%rdx, %rsi	# tmp106,
 	movq	%rax, %rdi	# tmp105,
 	call	strcmp@PLT	#
-# problem157.c:31:     assert(strcmp(result, "clii") == 0);
 	testl	%eax, %eax	# _2
-	je	.L10	#,
+	je	.L9	#,
+# problem157.c:31:     assert(strcmp(result, "clii") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp107
 	movq	%rax, %rcx	# tmp107,
 	movl	$31, %edx	#,
@@ -253,7 +253,7 @@ main:
 	leaq	.LC17(%rip), %rax	#, tmp109
 	movq	%rax, %rdi	# tmp109,
 	call	__assert_fail@PLT	#
-.L10:
+.L9:
 # problem157.c:33:     func0(251, result);
 	leaq	-80(%rbp), %rax	#, tmp110
 	movq	%rax, %rsi	# tmp110,
@@ -265,9 +265,9 @@ main:
 	movq	%rdx, %rsi	# tmp112,
 	movq	%rax, %rdi	# tmp111,
 	call	strcmp@PLT	#
-# problem157.c:34:     assert(strcmp(result, "ccli") == 0);
 	testl	%eax, %eax	# _3
-	je	.L11	#,
+	je	.L10	#,
+# problem157.c:34:     assert(strcmp(result, "ccli") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp113
 	movq	%rax, %rcx	# tmp113,
 	movl	$34, %edx	#,
@@ -276,7 +276,7 @@ main:
 	leaq	.LC19(%rip), %rax	#, tmp115
 	movq	%rax, %rdi	# tmp115,
 	call	__assert_fail@PLT	#
-.L11:
+.L10:
 # problem157.c:36:     func0(426, result);
 	leaq	-80(%rbp), %rax	#, tmp116
 	movq	%rax, %rsi	# tmp116,
@@ -288,9 +288,9 @@ main:
 	movq	%rdx, %rsi	# tmp118,
 	movq	%rax, %rdi	# tmp117,
 	call	strcmp@PLT	#
-# problem157.c:37:     assert(strcmp(result, "cdxxvi") == 0);
 	testl	%eax, %eax	# _4
-	je	.L12	#,
+	je	.L11	#,
+# problem157.c:37:     assert(strcmp(result, "cdxxvi") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp119
 	movq	%rax, %rcx	# tmp119,
 	movl	$37, %edx	#,
@@ -299,7 +299,7 @@ main:
 	leaq	.LC21(%rip), %rax	#, tmp121
 	movq	%rax, %rdi	# tmp121,
 	call	__assert_fail@PLT	#
-.L12:
+.L11:
 # problem157.c:39:     func0(500, result);
 	leaq	-80(%rbp), %rax	#, tmp122
 	movq	%rax, %rsi	# tmp122,
@@ -311,9 +311,9 @@ main:
 	movq	%rdx, %rsi	# tmp124,
 	movq	%rax, %rdi	# tmp123,
 	call	strcmp@PLT	#
-# problem157.c:40:     assert(strcmp(result, "d") == 0);
 	testl	%eax, %eax	# _5
-	je	.L13	#,
+	je	.L12	#,
+# problem157.c:40:     assert(strcmp(result, "d") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp125
 	movq	%rax, %rcx	# tmp125,
 	movl	$40, %edx	#,
@@ -322,7 +322,7 @@ main:
 	leaq	.LC22(%rip), %rax	#, tmp127
 	movq	%rax, %rdi	# tmp127,
 	call	__assert_fail@PLT	#
-.L13:
+.L12:
 # problem157.c:42:     func0(1, result);
 	leaq	-80(%rbp), %rax	#, tmp128
 	movq	%rax, %rsi	# tmp128,
@@ -334,9 +334,9 @@ main:
 	movq	%rdx, %rsi	# tmp130,
 	movq	%rax, %rdi	# tmp129,
 	call	strcmp@PLT	#
-# problem157.c:43:     assert(strcmp(result, "i") == 0);
 	testl	%eax, %eax	# _6
-	je	.L14	#,
+	je	.L13	#,
+# problem157.c:43:     assert(strcmp(result, "i") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp131
 	movq	%rax, %rcx	# tmp131,
 	movl	$43, %edx	#,
@@ -345,7 +345,7 @@ main:
 	leaq	.LC23(%rip), %rax	#, tmp133
 	movq	%rax, %rdi	# tmp133,
 	call	__assert_fail@PLT	#
-.L14:
+.L13:
 # problem157.c:45:     func0(4, result);
 	leaq	-80(%rbp), %rax	#, tmp134
 	movq	%rax, %rsi	# tmp134,
@@ -357,9 +357,9 @@ main:
 	movq	%rdx, %rsi	# tmp136,
 	movq	%rax, %rdi	# tmp135,
 	call	strcmp@PLT	#
-# problem157.c:46:     assert(strcmp(result, "iv") == 0);
 	testl	%eax, %eax	# _7
-	je	.L15	#,
+	je	.L14	#,
+# problem157.c:46:     assert(strcmp(result, "iv") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp137
 	movq	%rax, %rcx	# tmp137,
 	movl	$46, %edx	#,
@@ -368,7 +368,7 @@ main:
 	leaq	.LC24(%rip), %rax	#, tmp139
 	movq	%rax, %rdi	# tmp139,
 	call	__assert_fail@PLT	#
-.L15:
+.L14:
 # problem157.c:48:     func0(43, result);
 	leaq	-80(%rbp), %rax	#, tmp140
 	movq	%rax, %rsi	# tmp140,
@@ -380,9 +380,9 @@ main:
 	movq	%rdx, %rsi	# tmp142,
 	movq	%rax, %rdi	# tmp141,
 	call	strcmp@PLT	#
-# problem157.c:49:     assert(strcmp(result, "xliii") == 0);
 	testl	%eax, %eax	# _8
-	je	.L16	#,
+	je	.L15	#,
+# problem157.c:49:     assert(strcmp(result, "xliii") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp143
 	movq	%rax, %rcx	# tmp143,
 	movl	$49, %edx	#,
@@ -391,7 +391,7 @@ main:
 	leaq	.LC26(%rip), %rax	#, tmp145
 	movq	%rax, %rdi	# tmp145,
 	call	__assert_fail@PLT	#
-.L16:
+.L15:
 # problem157.c:51:     func0(90, result);
 	leaq	-80(%rbp), %rax	#, tmp146
 	movq	%rax, %rsi	# tmp146,
@@ -403,9 +403,9 @@ main:
 	movq	%rdx, %rsi	# tmp148,
 	movq	%rax, %rdi	# tmp147,
 	call	strcmp@PLT	#
-# problem157.c:52:     assert(strcmp(result, "xc") == 0);
 	testl	%eax, %eax	# _9
-	je	.L17	#,
+	je	.L16	#,
+# problem157.c:52:     assert(strcmp(result, "xc") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp149
 	movq	%rax, %rcx	# tmp149,
 	movl	$52, %edx	#,
@@ -414,7 +414,7 @@ main:
 	leaq	.LC27(%rip), %rax	#, tmp151
 	movq	%rax, %rdi	# tmp151,
 	call	__assert_fail@PLT	#
-.L17:
+.L16:
 # problem157.c:54:     func0(94, result);
 	leaq	-80(%rbp), %rax	#, tmp152
 	movq	%rax, %rsi	# tmp152,
@@ -426,9 +426,9 @@ main:
 	movq	%rdx, %rsi	# tmp154,
 	movq	%rax, %rdi	# tmp153,
 	call	strcmp@PLT	#
-# problem157.c:55:     assert(strcmp(result, "xciv") == 0);
 	testl	%eax, %eax	# _10
-	je	.L18	#,
+	je	.L17	#,
+# problem157.c:55:     assert(strcmp(result, "xciv") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp155
 	movq	%rax, %rcx	# tmp155,
 	movl	$55, %edx	#,
@@ -437,7 +437,7 @@ main:
 	leaq	.LC29(%rip), %rax	#, tmp157
 	movq	%rax, %rdi	# tmp157,
 	call	__assert_fail@PLT	#
-.L18:
+.L17:
 # problem157.c:57:     func0(532, result);
 	leaq	-80(%rbp), %rax	#, tmp158
 	movq	%rax, %rsi	# tmp158,
@@ -449,9 +449,9 @@ main:
 	movq	%rdx, %rsi	# tmp160,
 	movq	%rax, %rdi	# tmp159,
 	call	strcmp@PLT	#
-# problem157.c:58:     assert(strcmp(result, "dxxxii") == 0);
 	testl	%eax, %eax	# _11
-	je	.L19	#,
+	je	.L18	#,
+# problem157.c:58:     assert(strcmp(result, "dxxxii") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp161
 	movq	%rax, %rcx	# tmp161,
 	movl	$58, %edx	#,
@@ -460,7 +460,7 @@ main:
 	leaq	.LC31(%rip), %rax	#, tmp163
 	movq	%rax, %rdi	# tmp163,
 	call	__assert_fail@PLT	#
-.L19:
+.L18:
 # problem157.c:60:     func0(900, result);
 	leaq	-80(%rbp), %rax	#, tmp164
 	movq	%rax, %rsi	# tmp164,
@@ -472,9 +472,9 @@ main:
 	movq	%rdx, %rsi	# tmp166,
 	movq	%rax, %rdi	# tmp165,
 	call	strcmp@PLT	#
-# problem157.c:61:     assert(strcmp(result, "cm") == 0);
 	testl	%eax, %eax	# _12
-	je	.L20	#,
+	je	.L19	#,
+# problem157.c:61:     assert(strcmp(result, "cm") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp167
 	movq	%rax, %rcx	# tmp167,
 	movl	$61, %edx	#,
@@ -483,7 +483,7 @@ main:
 	leaq	.LC32(%rip), %rax	#, tmp169
 	movq	%rax, %rdi	# tmp169,
 	call	__assert_fail@PLT	#
-.L20:
+.L19:
 # problem157.c:63:     func0(994, result);
 	leaq	-80(%rbp), %rax	#, tmp170
 	movq	%rax, %rsi	# tmp170,
@@ -495,9 +495,9 @@ main:
 	movq	%rdx, %rsi	# tmp172,
 	movq	%rax, %rdi	# tmp171,
 	call	strcmp@PLT	#
-# problem157.c:64:     assert(strcmp(result, "cmxciv") == 0);
 	testl	%eax, %eax	# _13
-	je	.L21	#,
+	je	.L20	#,
+# problem157.c:64:     assert(strcmp(result, "cmxciv") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp173
 	movq	%rax, %rcx	# tmp173,
 	movl	$64, %edx	#,
@@ -506,7 +506,7 @@ main:
 	leaq	.LC34(%rip), %rax	#, tmp175
 	movq	%rax, %rdi	# tmp175,
 	call	__assert_fail@PLT	#
-.L21:
+.L20:
 # problem157.c:66:     func0(1000, result);
 	leaq	-80(%rbp), %rax	#, tmp176
 	movq	%rax, %rsi	# tmp176,
@@ -518,9 +518,9 @@ main:
 	movq	%rdx, %rsi	# tmp178,
 	movq	%rax, %rdi	# tmp177,
 	call	strcmp@PLT	#
-# problem157.c:67:     assert(strcmp(result, "m") == 0);
 	testl	%eax, %eax	# _14
-	je	.L22	#,
+	je	.L21	#,
+# problem157.c:67:     assert(strcmp(result, "m") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp179
 	movq	%rax, %rcx	# tmp179,
 	movl	$67, %edx	#,
@@ -529,15 +529,15 @@ main:
 	leaq	.LC35(%rip), %rax	#, tmp181
 	movq	%rax, %rdi	# tmp181,
 	call	__assert_fail@PLT	#
-.L22:
+.L21:
 # problem157.c:69:     return 0;
 	movl	$0, %eax	#, _44
 # problem157.c:70: }
-	movq	-8(%rbp), %rdx	# D.3486, tmp184
+	movq	-8(%rbp), %rdx	# D.2629, tmp184
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp184
-	je	.L24	#,
+	je	.L23	#,
 	call	__stack_chk_fail@PLT	#
-.L24:
+.L23:
 	leave	
 	.cfi_def_cfa 7, 8
 	ret	
@@ -549,7 +549,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

@@ -1,6 +1,6 @@
 	.file	"problem141.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -247,7 +247,7 @@ main:
 	subq	$112, %rsp	#,
 # problem141.c:29: int main() {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp125
-	movq	%rax, -8(%rbp)	# tmp125, D.3455
+	movq	%rax, -8(%rbp)	# tmp125, D.2598
 	xorl	%eax, %eax	# tmp125
 # problem141.c:32:     func0("Example", output);
 	leaq	-112(%rbp), %rax	#, tmp89
@@ -261,9 +261,9 @@ main:
 	movq	%rdx, %rsi	# tmp92,
 	movq	%rax, %rdi	# tmp91,
 	call	strcmp@PLT	#
-# problem141.c:33:     assert(strcmp(output, "Example") == 0);
 	testl	%eax, %eax	# _1
 	je	.L13	#,
+# problem141.c:33:     assert(strcmp(output, "Example") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp93
 	movq	%rax, %rcx	# tmp93,
 	movl	$33, %edx	#,
@@ -285,9 +285,9 @@ main:
 	movq	%rdx, %rsi	# tmp99,
 	movq	%rax, %rdi	# tmp98,
 	call	strcmp@PLT	#
-# problem141.c:36:     assert(strcmp(output, "Mudasir_Hanif_") == 0);
 	testl	%eax, %eax	# _2
 	je	.L14	#,
+# problem141.c:36:     assert(strcmp(output, "Mudasir_Hanif_") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp100
 	movq	%rax, %rcx	# tmp100,
 	movl	$36, %edx	#,
@@ -309,9 +309,9 @@ main:
 	movq	%rdx, %rsi	# tmp106,
 	movq	%rax, %rdi	# tmp105,
 	call	strcmp@PLT	#
-# problem141.c:39:     assert(strcmp(output, "Yellow_Yellow__Dirty__Fellow") == 0);
 	testl	%eax, %eax	# _3
 	je	.L15	#,
+# problem141.c:39:     assert(strcmp(output, "Yellow_Yellow__Dirty__Fellow") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp107
 	movq	%rax, %rcx	# tmp107,
 	movl	$39, %edx	#,
@@ -333,9 +333,9 @@ main:
 	movq	%rdx, %rsi	# tmp113,
 	movq	%rax, %rdi	# tmp112,
 	call	strcmp@PLT	#
-# problem141.c:42:     assert(strcmp(output, "Exa-mple") == 0);
 	testl	%eax, %eax	# _4
 	je	.L16	#,
+# problem141.c:42:     assert(strcmp(output, "Exa-mple") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp114
 	movq	%rax, %rcx	# tmp114,
 	movl	$42, %edx	#,
@@ -357,9 +357,9 @@ main:
 	movq	%rdx, %rsi	# tmp120,
 	movq	%rax, %rdi	# tmp119,
 	call	strcmp@PLT	#
-# problem141.c:45:     assert(strcmp(output, "-Exa_1_2_2_mple") == 0);
 	testl	%eax, %eax	# _5
 	je	.L17	#,
+# problem141.c:45:     assert(strcmp(output, "-Exa_1_2_2_mple") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp121
 	movq	%rax, %rcx	# tmp121,
 	movl	$45, %edx	#,
@@ -372,7 +372,7 @@ main:
 # problem141.c:47:     return 0;
 	movl	$0, %eax	#, _17
 # problem141.c:48: }
-	movq	-8(%rbp), %rdx	# D.3455, tmp126
+	movq	-8(%rbp), %rdx	# D.2598, tmp126
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp126
 	je	.L19	#,
 	call	__stack_chk_fail@PLT	#
@@ -388,7 +388,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

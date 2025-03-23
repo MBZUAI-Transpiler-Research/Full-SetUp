@@ -1,6 +1,6 @@
 	.file	"problem12.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -108,8 +108,8 @@ divisor_count:
 .L6:
 # problem12.c:26:   for (i = 2; i <= n; i++) {
 	movq	-8(%rbp), %rax	# i, tmp96
-	cmpq	%rax, -24(%rbp)	# tmp96, n
-	jnb	.L9	#,
+	cmpq	-24(%rbp), %rax	# n, tmp96
+	jbe	.L9	#,
 # problem12.c:34:   return ret;
 	movl	-16(%rbp), %eax	# ret, _11
 # problem12.c:35: }
@@ -119,7 +119,7 @@ divisor_count:
 	.cfi_endproc
 .LFE1:
 	.size	divisor_count, .-divisor_count
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

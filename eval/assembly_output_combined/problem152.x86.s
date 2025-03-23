@@ -68,14 +68,12 @@ func0:
 	movq	%xmm4, %rax
 	movq	%rax, %xmm0
 	call	round@PLT
-	cvttsd2sil	%xmm0, %edx
-	movl	%edx, %eax
-	sarl	$31, %eax
-	shrl	$31, %eax
-	addl	%eax, %edx
-	andl	$1, %edx
-	subl	%eax, %edx
-	movl	%edx, %eax
+	cvttsd2sil	%xmm0, %eax
+	cltd
+	shrl	$31, %edx
+	addl	%edx, %eax
+	andl	$1, %eax
+	subl	%edx, %eax
 	cmpl	$1, %eax
 	jne	.L3
 	movl	-28(%rbp), %eax
@@ -281,23 +279,23 @@ main:
 	movl	$-99, -828(%rbp)
 	jmp	.L17
 .L19:
+	pxor	%xmm1, %xmm1
+	cvtsi2ssl	-828(%rbp), %xmm1
 	movl	-832(%rbp), %eax
 	leal	1(%rax), %edx
 	movl	%edx, -832(%rbp)
 	pxor	%xmm0, %xmm0
-	cvtsi2ssl	-828(%rbp), %xmm0
+	addss	%xmm1, %xmm0
 	cltq
 	movss	%xmm0, -816(%rbp,%rax,4)
 	cmpl	$0, -828(%rbp)
 	jle	.L18
-	movl	-828(%rbp), %edx
-	movl	%edx, %eax
-	sarl	$31, %eax
-	shrl	$31, %eax
-	addl	%eax, %edx
-	andl	$1, %edx
-	subl	%eax, %edx
-	movl	%edx, %eax
+	movl	-828(%rbp), %eax
+	cltd
+	shrl	$31, %edx
+	addl	%edx, %eax
+	andl	$1, %eax
+	subl	%edx, %eax
 	cmpl	$1, %eax
 	jne	.L18
 	movl	-828(%rbp), %eax
@@ -388,7 +386,7 @@ __PRETTY_FUNCTION__.0:
 	.align 4
 .LC20:
 	.long	1077936128
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

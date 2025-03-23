@@ -1,6 +1,6 @@
 	.file	"problem72.c"
-# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
+# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -47,7 +47,6 @@ func0:
 .L2:
 # problem72.c:5: if (a + b <= c || a + c <= b || b + c <= a) return -1;
 	movss	.LC0(%rip), %xmm0	#, _14
-# problem72.c:5: if (a + b <= c || a + c <= b || b + c <= a) return -1;
 	jmp	.L5	#
 .L6:
 # problem72.c:6: float s = (a + b + c) / 2;
@@ -148,7 +147,6 @@ main:
 	movl	.LC5(%rip), %eax	#, tmp120
 	movd	%eax, %xmm0	# tmp120,
 	call	func0	#
-# problem72.c:18:     assert(fabs(func0(3, 4, 5) - 6.00) < 0.01);
 	cvtss2sd	%xmm0, %xmm0	# _1, _2
 	movsd	.LC6(%rip), %xmm1	#, tmp121
 	subsd	%xmm1, %xmm0	# tmp121, _3
@@ -157,6 +155,7 @@ main:
 	movsd	.LC8(%rip), %xmm0	#, tmp123
 	comisd	%xmm1, %xmm0	# _4, tmp123
 	ja	.L8	#,
+# problem72.c:18:     assert(fabs(func0(3, 4, 5) - 6.00) < 0.01);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp124
 	movq	%rax, %rcx	# tmp124,
 	movl	$18, %edx	#,
@@ -172,7 +171,6 @@ main:
 	movl	.LC12(%rip), %eax	#, tmp127
 	movd	%eax, %xmm0	# tmp127,
 	call	func0	#
-# problem72.c:19:     assert(fabs(func0(1, 2, 10) + 1) < 0.01);
 	movss	.LC12(%rip), %xmm1	#, tmp128
 	addss	%xmm1, %xmm0	# tmp128, _6
 	movss	.LC13(%rip), %xmm1	#, tmp129
@@ -182,6 +180,7 @@ main:
 	movsd	.LC8(%rip), %xmm0	#, tmp130
 	comisd	%xmm1, %xmm0	# _8, tmp130
 	ja	.L9	#,
+# problem72.c:19:     assert(fabs(func0(1, 2, 10) + 1) < 0.01);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp131
 	movq	%rax, %rcx	# tmp131,
 	movl	$19, %edx	#,
@@ -197,7 +196,6 @@ main:
 	movl	.LC4(%rip), %eax	#, tmp134
 	movd	%eax, %xmm0	# tmp134,
 	call	func0	#
-# problem72.c:20:     assert(fabs(func0(4, 8, 5) - 8.18) < 0.01);
 	cvtss2sd	%xmm0, %xmm0	# _9, _10
 	movsd	.LC16(%rip), %xmm1	#, tmp135
 	subsd	%xmm1, %xmm0	# tmp135, _11
@@ -206,6 +204,7 @@ main:
 	movsd	.LC8(%rip), %xmm0	#, tmp137
 	comisd	%xmm1, %xmm0	# _12, tmp137
 	ja	.L10	#,
+# problem72.c:20:     assert(fabs(func0(4, 8, 5) - 8.18) < 0.01);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp138
 	movq	%rax, %rcx	# tmp138,
 	movl	$20, %edx	#,
@@ -221,7 +220,6 @@ main:
 	movl	.LC1(%rip), %eax	#, tmp141
 	movd	%eax, %xmm0	# tmp141,
 	call	func0	#
-# problem72.c:21:     assert(fabs(func0(2, 2, 2) - 1.73) < 0.01);
 	cvtss2sd	%xmm0, %xmm0	# _13, _14
 	movsd	.LC18(%rip), %xmm1	#, tmp142
 	subsd	%xmm1, %xmm0	# tmp142, _15
@@ -230,6 +228,7 @@ main:
 	movsd	.LC8(%rip), %xmm0	#, tmp144
 	comisd	%xmm1, %xmm0	# _16, tmp144
 	ja	.L11	#,
+# problem72.c:21:     assert(fabs(func0(2, 2, 2) - 1.73) < 0.01);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp145
 	movq	%rax, %rcx	# tmp145,
 	movl	$21, %edx	#,
@@ -245,7 +244,6 @@ main:
 	movl	.LC12(%rip), %eax	#, tmp148
 	movd	%eax, %xmm0	# tmp148,
 	call	func0	#
-# problem72.c:22:     assert(fabs(func0(1, 2, 3) + 1) < 0.01);
 	movss	.LC12(%rip), %xmm1	#, tmp149
 	addss	%xmm1, %xmm0	# tmp149, _18
 	movss	.LC13(%rip), %xmm1	#, tmp150
@@ -255,6 +253,7 @@ main:
 	movsd	.LC8(%rip), %xmm0	#, tmp151
 	comisd	%xmm1, %xmm0	# _20, tmp151
 	ja	.L12	#,
+# problem72.c:22:     assert(fabs(func0(1, 2, 3) + 1) < 0.01);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp152
 	movq	%rax, %rcx	# tmp152,
 	movl	$22, %edx	#,
@@ -270,7 +269,6 @@ main:
 	movl	.LC11(%rip), %eax	#, tmp155
 	movd	%eax, %xmm0	# tmp155,
 	call	func0	#
-# problem72.c:23:     assert(fabs(func0(10, 5, 7) - 16.25) < 0.01);
 	cvtss2sd	%xmm0, %xmm0	# _21, _22
 	movsd	.LC22(%rip), %xmm1	#, tmp156
 	subsd	%xmm1, %xmm0	# tmp156, _23
@@ -279,6 +277,7 @@ main:
 	movsd	.LC8(%rip), %xmm0	#, tmp158
 	comisd	%xmm1, %xmm0	# _24, tmp158
 	ja	.L13	#,
+# problem72.c:23:     assert(fabs(func0(10, 5, 7) - 16.25) < 0.01);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp159
 	movq	%rax, %rcx	# tmp159,
 	movl	$23, %edx	#,
@@ -294,7 +293,6 @@ main:
 	movl	.LC1(%rip), %eax	#, tmp162
 	movd	%eax, %xmm0	# tmp162,
 	call	func0	#
-# problem72.c:24:     assert(fabs(func0(2, 6, 3) + 1) < 0.01);
 	movss	.LC12(%rip), %xmm1	#, tmp163
 	addss	%xmm1, %xmm0	# tmp163, _26
 	movss	.LC13(%rip), %xmm1	#, tmp164
@@ -304,6 +302,7 @@ main:
 	movsd	.LC8(%rip), %xmm0	#, tmp165
 	comisd	%xmm1, %xmm0	# _28, tmp165
 	ja	.L14	#,
+# problem72.c:24:     assert(fabs(func0(2, 6, 3) + 1) < 0.01);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp166
 	movq	%rax, %rcx	# tmp166,
 	movl	$24, %edx	#,
@@ -319,7 +318,6 @@ main:
 	movl	.LC12(%rip), %eax	#, tmp169
 	movd	%eax, %xmm0	# tmp169,
 	call	func0	#
-# problem72.c:25:     assert(fabs(func0(1, 1, 1) - 0.43) < 0.01);
 	cvtss2sd	%xmm0, %xmm0	# _29, _30
 	movsd	.LC26(%rip), %xmm1	#, tmp170
 	subsd	%xmm1, %xmm0	# tmp170, _31
@@ -328,6 +326,7 @@ main:
 	movsd	.LC8(%rip), %xmm0	#, tmp172
 	comisd	%xmm1, %xmm0	# _32, tmp172
 	ja	.L15	#,
+# problem72.c:25:     assert(fabs(func0(1, 1, 1) - 0.43) < 0.01);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp173
 	movq	%rax, %rcx	# tmp173,
 	movl	$25, %edx	#,
@@ -343,7 +342,6 @@ main:
 	movl	.LC1(%rip), %eax	#, tmp176
 	movd	%eax, %xmm0	# tmp176,
 	call	func0	#
-# problem72.c:26:     assert(fabs(func0(2, 2, 10) + 1) < 0.01);
 	movss	.LC12(%rip), %xmm1	#, tmp177
 	addss	%xmm1, %xmm0	# tmp177, _34
 	movss	.LC13(%rip), %xmm1	#, tmp178
@@ -353,6 +351,7 @@ main:
 	movsd	.LC8(%rip), %xmm0	#, tmp179
 	comisd	%xmm1, %xmm0	# _36, tmp179
 	ja	.L16	#,
+# problem72.c:26:     assert(fabs(func0(2, 2, 10) + 1) < 0.01);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp180
 	movq	%rax, %rcx	# tmp180,
 	movl	$26, %edx	#,
@@ -445,7 +444,7 @@ __PRETTY_FUNCTION__.0:
 .LC26:
 	.long	-1202590843
 	.long	1071351070
-	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8
