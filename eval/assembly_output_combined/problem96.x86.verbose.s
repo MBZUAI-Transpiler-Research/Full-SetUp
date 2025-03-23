@@ -1,6 +1,6 @@
 	.file	"problem96.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -24,6 +24,7 @@ func0:
 	jne	.L2	#,
 # problem96.c:7:     if (size == 0) return 0;
 	movl	$0, %eax	#, _52
+# problem96.c:7:     if (size == 0) return 0;
 	jmp	.L3	#
 .L2:
 # problem96.c:8:     int has_lower = 0, has_upper = 0;
@@ -52,15 +53,16 @@ func0:
 .L10:
 # problem96.c:12:             if (!isalpha((unsigned char)key[j])) return 0;
 	call	__ctype_b_loc@PLT	#
-	movq	(%rax), %rdx	# *_4, _5
-	movl	-12(%rbp), %eax	# j, tmp130
-	movslq	%eax, %rcx	# tmp130, _6
-	movq	-8(%rbp), %rax	# key, tmp131
-	addq	%rcx, %rax	# _6, _7
-	movzbl	(%rax), %eax	# *_7, _8
-	movzbl	%al, %eax	# _9, _10
-	addq	%rax, %rax	# _11
-	addq	%rdx, %rax	# _5, _12
+# problem96.c:12:             if (!isalpha((unsigned char)key[j])) return 0;
+	movq	(%rax), %rax	# *_4, _5
+	movl	-12(%rbp), %edx	# j, tmp130
+	movslq	%edx, %rcx	# tmp130, _6
+	movq	-8(%rbp), %rdx	# key, tmp131
+	addq	%rcx, %rdx	# _6, _7
+	movzbl	(%rdx), %edx	# *_7, _8
+	movzbl	%dl, %edx	# _9, _10
+	addq	%rdx, %rdx	# _11
+	addq	%rdx, %rax	# _11, _12
 	movzwl	(%rax), %eax	# *_12, _13
 	movzwl	%ax, %eax	# _13, _14
 	andl	$1024, %eax	#, _15
@@ -69,19 +71,21 @@ func0:
 	jne	.L6	#,
 # problem96.c:12:             if (!isalpha((unsigned char)key[j])) return 0;
 	movl	$0, %eax	#, _52
+# problem96.c:12:             if (!isalpha((unsigned char)key[j])) return 0;
 	jmp	.L3	#
 .L6:
 # problem96.c:13:             if (isupper((unsigned char)key[j])) has_upper = 1;
 	call	__ctype_b_loc@PLT	#
-	movq	(%rax), %rdx	# *_16, _17
-	movl	-12(%rbp), %eax	# j, tmp132
-	movslq	%eax, %rcx	# tmp132, _18
-	movq	-8(%rbp), %rax	# key, tmp133
-	addq	%rcx, %rax	# _18, _19
-	movzbl	(%rax), %eax	# *_19, _20
-	movzbl	%al, %eax	# _21, _22
-	addq	%rax, %rax	# _23
-	addq	%rdx, %rax	# _17, _24
+# problem96.c:13:             if (isupper((unsigned char)key[j])) has_upper = 1;
+	movq	(%rax), %rax	# *_16, _17
+	movl	-12(%rbp), %edx	# j, tmp132
+	movslq	%edx, %rcx	# tmp132, _18
+	movq	-8(%rbp), %rdx	# key, tmp133
+	addq	%rcx, %rdx	# _18, _19
+	movzbl	(%rdx), %edx	# *_19, _20
+	movzbl	%dl, %edx	# _21, _22
+	addq	%rdx, %rdx	# _23
+	addq	%rdx, %rax	# _23, _24
 	movzwl	(%rax), %eax	# *_24, _25
 	movzwl	%ax, %eax	# _25, _26
 	andl	$256, %eax	#, _27
@@ -93,15 +97,16 @@ func0:
 .L7:
 # problem96.c:14:             if (islower((unsigned char)key[j])) has_lower = 1;
 	call	__ctype_b_loc@PLT	#
-	movq	(%rax), %rdx	# *_28, _29
-	movl	-12(%rbp), %eax	# j, tmp134
-	movslq	%eax, %rcx	# tmp134, _30
-	movq	-8(%rbp), %rax	# key, tmp135
-	addq	%rcx, %rax	# _30, _31
-	movzbl	(%rax), %eax	# *_31, _32
-	movzbl	%al, %eax	# _33, _34
-	addq	%rax, %rax	# _35
-	addq	%rdx, %rax	# _29, _36
+# problem96.c:14:             if (islower((unsigned char)key[j])) has_lower = 1;
+	movq	(%rax), %rax	# *_28, _29
+	movl	-12(%rbp), %edx	# j, tmp134
+	movslq	%edx, %rcx	# tmp134, _30
+	movq	-8(%rbp), %rdx	# key, tmp135
+	addq	%rcx, %rdx	# _30, _31
+	movzbl	(%rdx), %edx	# *_31, _32
+	movzbl	%dl, %edx	# _33, _34
+	addq	%rdx, %rdx	# _35
+	addq	%rdx, %rax	# _35, _36
 	movzwl	(%rax), %eax	# *_36, _37
 	movzwl	%ax, %eax	# _37, _38
 	andl	$512, %eax	#, _39
@@ -120,6 +125,7 @@ func0:
 	jne	.L9	#,
 # problem96.c:15:             if (has_upper + has_lower == 2) return 0;
 	movl	$0, %eax	#, _52
+# problem96.c:15:             if (has_upper + has_lower == 2) return 0;
 	jmp	.L3	#
 .L9:
 # problem96.c:11:         for (int j = 0; key[j]; ++j) {
@@ -229,7 +235,7 @@ main:
 	subq	$256, %rsp	#,
 # problem96.c:26: int main() {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp149
-	movq	%rax, -8(%rbp)	# tmp149, D.3239
+	movq	%rax, -8(%rbp)	# tmp149, D.4103
 	xorl	%eax, %eax	# tmp149
 # problem96.c:27:     char* test1[][2] = {{"p","pineapple"}, {"b","banana"}};
 	leaq	.LC0(%rip), %rax	#, tmp91
@@ -245,9 +251,9 @@ main:
 	movl	$2, %esi	#,
 	movq	%rax, %rdi	# tmp95,
 	call	func0	#
+# problem96.c:28:     assert(func0(test1, 2) == 1);
 	cmpl	$1, %eax	#, _1
 	je	.L13	#,
-# problem96.c:28:     assert(func0(test1, 2) == 1);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp96
 	movq	%rax, %rcx	# tmp96,
 	movl	$28, %edx	#,
@@ -275,9 +281,9 @@ main:
 	movl	$3, %esi	#,
 	movq	%rax, %rdi	# tmp105,
 	call	func0	#
+# problem96.c:31:     assert(func0(test2, 3) == 0);
 	testl	%eax, %eax	# _2
 	je	.L14	#,
-# problem96.c:31:     assert(func0(test2, 3) == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp106
 	movq	%rax, %rcx	# tmp106,
 	movl	$31, %edx	#,
@@ -305,9 +311,9 @@ main:
 	movl	$3, %esi	#,
 	movq	%rax, %rdi	# tmp115,
 	call	func0	#
+# problem96.c:34:     assert(func0(test3, 3) == 0);
 	testl	%eax, %eax	# _3
 	je	.L15	#,
-# problem96.c:34:     assert(func0(test3, 3) == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp116
 	movq	%rax, %rcx	# tmp116,
 	movl	$34, %edx	#,
@@ -335,9 +341,9 @@ main:
 	movl	$3, %esi	#,
 	movq	%rax, %rdi	# tmp125,
 	call	func0	#
+# problem96.c:37:     assert(func0(test4, 3) == 0);
 	testl	%eax, %eax	# _4
 	je	.L16	#,
-# problem96.c:37:     assert(func0(test4, 3) == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp126
 	movq	%rax, %rcx	# tmp126,
 	movl	$37, %edx	#,
@@ -361,9 +367,9 @@ main:
 	movl	$2, %esi	#,
 	movq	%rax, %rdi	# tmp133,
 	call	func0	#
+# problem96.c:40:     assert(func0(test5, 2) == 1);
 	cmpl	$1, %eax	#, _5
 	je	.L17	#,
-# problem96.c:40:     assert(func0(test5, 2) == 1);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp134
 	movq	%rax, %rcx	# tmp134,
 	movl	$40, %edx	#,
@@ -387,9 +393,9 @@ main:
 	movl	$2, %esi	#,
 	movq	%rax, %rdi	# tmp141,
 	call	func0	#
+# problem96.c:43:     assert(func0(test6, 2) == 1);
 	cmpl	$1, %eax	#, _6
 	je	.L18	#,
-# problem96.c:43:     assert(func0(test6, 2) == 1);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp142
 	movq	%rax, %rcx	# tmp142,
 	movl	$43, %edx	#,
@@ -403,9 +409,9 @@ main:
 	movl	$0, %esi	#,
 	movl	$0, %edi	#,
 	call	func0	#
+# problem96.c:45:     assert(func0(NULL, 0) == 0);
 	testl	%eax, %eax	# _7
 	je	.L19	#,
-# problem96.c:45:     assert(func0(NULL, 0) == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp145
 	movq	%rax, %rcx	# tmp145,
 	movl	$45, %edx	#,
@@ -418,7 +424,7 @@ main:
 # problem96.c:47:     return 0;
 	movl	$0, %eax	#, _53
 # problem96.c:48: }
-	movq	-8(%rbp), %rdx	# D.3239, tmp150
+	movq	-8(%rbp), %rdx	# D.4103, tmp150
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp150
 	je	.L21	#,
 	call	__stack_chk_fail@PLT	#
@@ -434,7 +440,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

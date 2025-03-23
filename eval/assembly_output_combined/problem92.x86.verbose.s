@@ -1,6 +1,6 @@
 	.file	"problem92.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -31,15 +31,16 @@ func0:
 .L9:
 # problem92.c:10:         if (isspace(S[i]) && isi) {
 	call	__ctype_b_loc@PLT	#
-	movq	(%rax), %rdx	# *_1, _2
-	movl	-4(%rbp), %eax	# i, tmp132
-	movslq	%eax, %rcx	# tmp132, _3
-	movq	-24(%rbp), %rax	# S, tmp133
-	addq	%rcx, %rax	# _3, _4
-	movzbl	(%rax), %eax	# *_4, _5
-	movsbq	%al, %rax	# _5, _6
-	addq	%rax, %rax	# _7
-	addq	%rdx, %rax	# _2, _8
+# problem92.c:10:         if (isspace(S[i]) && isi) {
+	movq	(%rax), %rax	# *_1, _2
+	movl	-4(%rbp), %edx	# i, tmp132
+	movslq	%edx, %rcx	# tmp132, _3
+	movq	-24(%rbp), %rdx	# S, tmp133
+	addq	%rcx, %rdx	# _3, _4
+	movzbl	(%rdx), %edx	# *_4, _5
+	movsbq	%dl, %rdx	# _5, _6
+	addq	%rdx, %rdx	# _7
+	addq	%rdx, %rax	# _7, _8
 	movzwl	(%rax), %eax	# *_8, _9
 	movzwl	%ax, %eax	# _9, _10
 	andl	$8192, %eax	#, _11
@@ -72,15 +73,16 @@ func0:
 .L4:
 # problem92.c:16:         } else if (!isspace(S[i])) {
 	call	__ctype_b_loc@PLT	#
-	movq	(%rax), %rdx	# *_15, _16
-	movl	-4(%rbp), %eax	# i, tmp136
-	movslq	%eax, %rcx	# tmp136, _17
-	movq	-24(%rbp), %rax	# S, tmp137
-	addq	%rcx, %rax	# _17, _18
-	movzbl	(%rax), %eax	# *_18, _19
-	movsbq	%al, %rax	# _19, _20
-	addq	%rax, %rax	# _21
-	addq	%rdx, %rax	# _16, _22
+# problem92.c:16:         } else if (!isspace(S[i])) {
+	movq	(%rax), %rax	# *_15, _16
+	movl	-4(%rbp), %edx	# i, tmp136
+	movslq	%edx, %rcx	# tmp136, _17
+	movq	-24(%rbp), %rdx	# S, tmp137
+	addq	%rcx, %rdx	# _17, _18
+	movzbl	(%rdx), %edx	# *_18, _19
+	movsbq	%dl, %rdx	# _19, _20
+	addq	%rdx, %rdx	# _21
+	addq	%rdx, %rax	# _21, _22
 	movzwl	(%rax), %eax	# *_22, _23
 	movzwl	%ax, %eax	# _23, _24
 	andl	$8192, %eax	#, _25
@@ -92,15 +94,16 @@ func0:
 .L5:
 # problem92.c:19:         if (!isspace(S[i])) {
 	call	__ctype_b_loc@PLT	#
-	movq	(%rax), %rdx	# *_26, _27
-	movl	-4(%rbp), %eax	# i, tmp138
-	movslq	%eax, %rcx	# tmp138, _28
-	movq	-24(%rbp), %rax	# S, tmp139
-	addq	%rcx, %rax	# _28, _29
-	movzbl	(%rax), %eax	# *_29, _30
-	movsbq	%al, %rax	# _30, _31
-	addq	%rax, %rax	# _32
-	addq	%rdx, %rax	# _27, _33
+# problem92.c:19:         if (!isspace(S[i])) {
+	movq	(%rax), %rax	# *_26, _27
+	movl	-4(%rbp), %edx	# i, tmp138
+	movslq	%edx, %rcx	# tmp138, _28
+	movq	-24(%rbp), %rdx	# S, tmp139
+	addq	%rcx, %rdx	# _28, _29
+	movzbl	(%rdx), %edx	# *_29, _30
+	movsbq	%dl, %rdx	# _30, _31
+	addq	%rdx, %rdx	# _32
+	addq	%rdx, %rax	# _32, _33
 	movzwl	(%rax), %eax	# *_33, _34
 	movzwl	%ax, %eax	# _34, _35
 	andl	$8192, %eax	#, _36
@@ -210,9 +213,9 @@ main:
 	leaq	.LC0(%rip), %rax	#, tmp90
 	movq	%rax, %rdi	# tmp90,
 	call	func0	#
+# problem92.c:34:     assert(func0("Hello world") == 0);
 	testl	%eax, %eax	# _1
 	je	.L12	#,
-# problem92.c:34:     assert(func0("Hello world") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp91
 	movq	%rax, %rcx	# tmp91,
 	movl	$34, %edx	#,
@@ -226,9 +229,9 @@ main:
 	leaq	.LC3(%rip), %rax	#, tmp94
 	movq	%rax, %rdi	# tmp94,
 	call	func0	#
+# problem92.c:35:     assert(func0("Is the sky blue?") == 0);
 	testl	%eax, %eax	# _2
 	je	.L13	#,
-# problem92.c:35:     assert(func0("Is the sky blue?") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp95
 	movq	%rax, %rcx	# tmp95,
 	movl	$35, %edx	#,
@@ -242,9 +245,9 @@ main:
 	leaq	.LC5(%rip), %rax	#, tmp98
 	movq	%rax, %rdi	# tmp98,
 	call	func0	#
+# problem92.c:36:     assert(func0("I love It !") == 1);
 	cmpl	$1, %eax	#, _3
 	je	.L14	#,
-# problem92.c:36:     assert(func0("I love It !") == 1);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp99
 	movq	%rax, %rcx	# tmp99,
 	movl	$36, %edx	#,
@@ -258,9 +261,9 @@ main:
 	leaq	.LC7(%rip), %rax	#, tmp102
 	movq	%rax, %rdi	# tmp102,
 	call	func0	#
+# problem92.c:37:     assert(func0("bIt") == 0);
 	testl	%eax, %eax	# _4
 	je	.L15	#,
-# problem92.c:37:     assert(func0("bIt") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp103
 	movq	%rax, %rcx	# tmp103,
 	movl	$37, %edx	#,
@@ -274,9 +277,9 @@ main:
 	leaq	.LC9(%rip), %rax	#, tmp106
 	movq	%rax, %rdi	# tmp106,
 	call	func0	#
+# problem92.c:38:     assert(func0("I feel good today. I will be productive. will kill It") == 2);
 	cmpl	$2, %eax	#, _5
 	je	.L16	#,
-# problem92.c:38:     assert(func0("I feel good today. I will be productive. will kill It") == 2);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp107
 	movq	%rax, %rcx	# tmp107,
 	movl	$38, %edx	#,
@@ -290,9 +293,9 @@ main:
 	leaq	.LC11(%rip), %rax	#, tmp110
 	movq	%rax, %rdi	# tmp110,
 	call	func0	#
+# problem92.c:39:     assert(func0("You and I are going for a walk") == 0);
 	testl	%eax, %eax	# _6
 	je	.L17	#,
-# problem92.c:39:     assert(func0("You and I are going for a walk") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp111
 	movq	%rax, %rcx	# tmp111,
 	movl	$39, %edx	#,
@@ -316,7 +319,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

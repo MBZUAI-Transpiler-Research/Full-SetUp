@@ -1,5 +1,8 @@
 	.file	"problem42.c"
 	.option pic
+	.attribute arch, "rv64i2p1_m2p0_a2p1_f2p2_d2p2_c2p0_zicsr2p0_zifencei2p0"
+	.attribute unaligned_access, 0
+	.attribute stack_align, 16
 	.text
 	.section	.rodata
 	.align	3
@@ -19,10 +22,16 @@
 	.globl	main
 	.type	main, @function
 main:
+.LFB0:
+	.cfi_startproc
 	addi	sp,sp,-80
+	.cfi_def_cfa_offset 80
 	sd	ra,72(sp)
 	sd	s0,64(sp)
+	.cfi_offset 1, -8
+	.cfi_offset 8, -16
 	addi	s0,sp,80
+	.cfi_def_cfa 8, 0
 	la	a5,__stack_chk_guard
 	ld	a4, 0(a5)
 	sd	a4, -24(s0)
@@ -99,17 +108,29 @@ main:
 .L9:
 	mv	a0,a4
 	ld	ra,72(sp)
+	.cfi_restore 1
 	ld	s0,64(sp)
+	.cfi_restore 8
+	.cfi_def_cfa 2, 80
 	addi	sp,sp,80
+	.cfi_def_cfa_offset 0
 	jr	ra
+	.cfi_endproc
+.LFE0:
 	.size	main, .-main
 	.align	1
 	.type	is_triangle, @function
 is_triangle:
+.LFB1:
+	.cfi_startproc
 	addi	sp,sp,-48
+	.cfi_def_cfa_offset 48
 	sd	ra,40(sp)
 	sd	s0,32(sp)
+	.cfi_offset 1, -8
+	.cfi_offset 8, -16
 	addi	s0,sp,48
+	.cfi_def_cfa 8, 0
 	mv	a5,a0
 	sw	a5,-36(s0)
 	lw	a5,-36(s0)
@@ -143,9 +164,15 @@ is_triangle:
 .L12:
 	mv	a0,a5
 	ld	ra,40(sp)
+	.cfi_restore 1
 	ld	s0,32(sp)
+	.cfi_restore 8
+	.cfi_def_cfa 2, 48
 	addi	sp,sp,48
+	.cfi_def_cfa_offset 0
 	jr	ra
+	.cfi_endproc
+.LFE1:
 	.size	is_triangle, .-is_triangle
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits

@@ -1,7 +1,7 @@
 	.arch armv8-a
 	.file	"problem88.c"
-// GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (aarch64-linux-gnu)
-//	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+// GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (aarch64-linux-gnu)
+//	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 // GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 // options passed: -mlittle-endian -mabi=lp64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection
@@ -152,6 +152,7 @@ issame:
 	beq	.L9		//,
 // problem88.c:28:     if (aSize != bSize) return 0;
 	mov	w0, 0	// _24,
+// problem88.c:28:     if (aSize != bSize) return 0;
 	b	.L10		//
 .L9:
 // problem88.c:30:     for (int i = 0; i < aSize; i++) {
@@ -202,6 +203,7 @@ issame:
 .L12:
 // problem88.c:31:         if (a[i][0] != b[i][0] || a[i][1] != b[i][1]) return 0;
 	mov	w0, 0	// _24,
+// problem88.c:31:         if (a[i][0] != b[i][0] || a[i][1] != b[i][1]) return 0;
 	b	.L10		//
 .L13:
 // problem88.c:30:     for (int i = 0; i < aSize; i++) {
@@ -287,152 +289,154 @@ free_result:
 main:
 .LFB9:
 	.cfi_startproc
-	stp	x29, x30, [sp, -240]!	//,,,
+	sub	sp, sp, #240	//,,
 	.cfi_def_cfa_offset 240
-	.cfi_offset 29, -240
-	.cfi_offset 30, -232
-	mov	x29, sp	//,
+	stp	x29, x30, [sp, 224]	//,,
+	.cfi_offset 29, -16
+	.cfi_offset 30, -8
+	add	x29, sp, 224	//,,
 // problem88.c:43: int main() {
-	adrp	x0, :got:__stack_chk_guard	// tmp98,
-	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]	// tmp97, tmp98,
-	ldr	x1, [x0]	// tmp148,
-	str	x1, [sp, 232]	// tmp148, D.4868
-	mov	x1, 0	// tmp148
+	adrp	x0, :got:__stack_chk_guard	// tmp97,
+	ldr	x0, [x0, :got_lo12:__stack_chk_guard]	// tmp97,
+	ldr	x1, [x0]	// tmp146,
+	str	x1, [sp, 216]	// tmp146, D.5457
+	mov	x1, 0	// tmp146
 // problem88.c:48:     rows = 3;
-	mov	w0, 3	// tmp99,
-	str	w0, [sp, 28]	// tmp99, rows
+	mov	w0, 3	// tmp98,
+	str	w0, [sp, 12]	// tmp98, rows
 // problem88.c:49:     int cols1[] = {6, 6, 6};
-	adrp	x0, .LC0	// tmp101,
-	add	x1, x0, :lo12:.LC0	// tmp100, tmp101,
-	add	x0, sp, 80	// tmp102,,
-	ldr	x2, [x1]	// tmp104,
-	str	x2, [x0]	// tmp104, cols1
-	ldr	w1, [x1, 8]	// tmp105,
-	str	w1, [x0, 8]	// tmp105, cols1
+	adrp	x0, .LC0	// tmp100,
+	add	x1, x0, :lo12:.LC0	// tmp99, tmp100,
+	add	x0, sp, 64	// tmp101,,
+	ldr	x2, [x1]	// tmp103,
+	str	x2, [x0]	// tmp103, cols1
+	ldr	w1, [x1, 8]	// tmp104,
+	str	w1, [x0, 8]	// tmp104, cols1
 // problem88.c:50:     int *lst1[] = {(int[]){1,2,3,4,5,6}, (int[]){1,2,3,4,1,6}, (int[]){1,2,3,4,5,1}};
-	adrp	x0, .LC1	// tmp107,
-	add	x0, x0, :lo12:.LC1	// tmp106, tmp107,
-	add	x2, sp, 120	// tmp108,,
-	mov	x3, x0	// tmp109, tmp106
-	ldp	x0, x1, [x3]	// tmp110,
-	stp	x0, x1, [x2]	// tmp110, D.4832
-	ldr	x0, [x3, 16]	// tmp111,
-	str	x0, [x2, 16]	// tmp111, D.4832
+	adrp	x0, .LC1	// tmp106,
+	add	x0, x0, :lo12:.LC1	// tmp105, tmp106,
+	add	x2, sp, 104	// tmp107,,
+	mov	x3, x0	// tmp108, tmp105
+	ldp	x0, x1, [x3]	// tmp109,
+	stp	x0, x1, [x2]	// tmp109, D.5421
+	ldr	x0, [x3, 16]	// tmp110,
+	str	x0, [x2, 16]	// tmp110, D.5421
 // problem88.c:50:     int *lst1[] = {(int[]){1,2,3,4,5,6}, (int[]){1,2,3,4,1,6}, (int[]){1,2,3,4,5,1}};
-	add	x0, sp, 120	// tmp112,,
-	str	x0, [sp, 96]	// tmp112, lst1[0]
+	add	x0, sp, 104	// tmp111,,
+	str	x0, [sp, 80]	// tmp111, lst1[0]
 // problem88.c:50:     int *lst1[] = {(int[]){1,2,3,4,5,6}, (int[]){1,2,3,4,1,6}, (int[]){1,2,3,4,5,1}};
-	adrp	x0, .LC2	// tmp114,
-	add	x0, x0, :lo12:.LC2	// tmp113, tmp114,
-	add	x2, sp, 144	// tmp115,,
-	mov	x3, x0	// tmp116, tmp113
-	ldp	x0, x1, [x3]	// tmp117,
-	stp	x0, x1, [x2]	// tmp117, D.4833
-	ldr	x0, [x3, 16]	// tmp118,
-	str	x0, [x2, 16]	// tmp118, D.4833
+	adrp	x0, .LC2	// tmp113,
+	add	x0, x0, :lo12:.LC2	// tmp112, tmp113,
+	add	x2, sp, 128	// tmp114,,
+	mov	x3, x0	// tmp115, tmp112
+	ldp	x0, x1, [x3]	// tmp116,
+	stp	x0, x1, [x2]	// tmp116, D.5422
+	ldr	x0, [x3, 16]	// tmp117,
+	str	x0, [x2, 16]	// tmp117, D.5422
 // problem88.c:50:     int *lst1[] = {(int[]){1,2,3,4,5,6}, (int[]){1,2,3,4,1,6}, (int[]){1,2,3,4,5,1}};
-	add	x0, sp, 144	// tmp119,,
-	str	x0, [sp, 104]	// tmp119, lst1[1]
+	add	x0, sp, 128	// tmp118,,
+	str	x0, [sp, 88]	// tmp118, lst1[1]
 // problem88.c:50:     int *lst1[] = {(int[]){1,2,3,4,5,6}, (int[]){1,2,3,4,1,6}, (int[]){1,2,3,4,5,1}};
-	adrp	x0, .LC3	// tmp121,
-	add	x0, x0, :lo12:.LC3	// tmp120, tmp121,
-	add	x2, sp, 168	// tmp122,,
-	mov	x3, x0	// tmp123, tmp120
-	ldp	x0, x1, [x3]	// tmp124,
-	stp	x0, x1, [x2]	// tmp124, D.4834
-	ldr	x0, [x3, 16]	// tmp125,
-	str	x0, [x2, 16]	// tmp125, D.4834
+	adrp	x0, .LC3	// tmp120,
+	add	x0, x0, :lo12:.LC3	// tmp119, tmp120,
+	add	x2, sp, 152	// tmp121,,
+	mov	x3, x0	// tmp122, tmp119
+	ldp	x0, x1, [x3]	// tmp123,
+	stp	x0, x1, [x2]	// tmp123, D.5423
+	ldr	x0, [x3, 16]	// tmp124,
+	str	x0, [x2, 16]	// tmp124, D.5423
 // problem88.c:50:     int *lst1[] = {(int[]){1,2,3,4,5,6}, (int[]){1,2,3,4,1,6}, (int[]){1,2,3,4,5,1}};
-	add	x0, sp, 168	// tmp126,,
-	str	x0, [sp, 112]	// tmp126, lst1[2]
+	add	x0, sp, 152	// tmp125,,
+	str	x0, [sp, 96]	// tmp125, lst1[2]
 // problem88.c:51:     int *expected1[] = {(int[]){0, 0}, (int[]){1, 4}, (int[]){1, 0}, (int[]){2, 5}, (int[]){2, 0}};
-	str	wzr, [sp, 40]	//, D.4836[0]
-	str	wzr, [sp, 44]	//, D.4836[1]
+	str	wzr, [sp, 24]	//, D.5425[0]
+	str	wzr, [sp, 28]	//, D.5425[1]
 // problem88.c:51:     int *expected1[] = {(int[]){0, 0}, (int[]){1, 4}, (int[]){1, 0}, (int[]){2, 5}, (int[]){2, 0}};
-	add	x0, sp, 40	// tmp127,,
-	str	x0, [sp, 192]	// tmp127, expected1[0]
+	add	x0, sp, 24	// tmp126,,
+	str	x0, [sp, 176]	// tmp126, expected1[0]
 // problem88.c:51:     int *expected1[] = {(int[]){0, 0}, (int[]){1, 4}, (int[]){1, 0}, (int[]){2, 5}, (int[]){2, 0}};
-	mov	w0, 1	// tmp128,
-	str	w0, [sp, 48]	// tmp128, D.4837[0]
-	mov	w0, 4	// tmp129,
-	str	w0, [sp, 52]	// tmp129, D.4837[1]
+	mov	w0, 1	// tmp127,
+	str	w0, [sp, 32]	// tmp127, D.5426[0]
+	mov	w0, 4	// tmp128,
+	str	w0, [sp, 36]	// tmp128, D.5426[1]
 // problem88.c:51:     int *expected1[] = {(int[]){0, 0}, (int[]){1, 4}, (int[]){1, 0}, (int[]){2, 5}, (int[]){2, 0}};
-	add	x0, sp, 48	// tmp130,,
-	str	x0, [sp, 200]	// tmp130, expected1[1]
+	add	x0, sp, 32	// tmp129,,
+	str	x0, [sp, 184]	// tmp129, expected1[1]
 // problem88.c:51:     int *expected1[] = {(int[]){0, 0}, (int[]){1, 4}, (int[]){1, 0}, (int[]){2, 5}, (int[]){2, 0}};
-	mov	w0, 1	// tmp131,
-	str	w0, [sp, 56]	// tmp131, D.4838[0]
-	str	wzr, [sp, 60]	//, D.4838[1]
+	mov	w0, 1	// tmp130,
+	str	w0, [sp, 40]	// tmp130, D.5427[0]
+	str	wzr, [sp, 44]	//, D.5427[1]
 // problem88.c:51:     int *expected1[] = {(int[]){0, 0}, (int[]){1, 4}, (int[]){1, 0}, (int[]){2, 5}, (int[]){2, 0}};
-	add	x0, sp, 56	// tmp132,,
-	str	x0, [sp, 208]	// tmp132, expected1[2]
+	add	x0, sp, 40	// tmp131,,
+	str	x0, [sp, 192]	// tmp131, expected1[2]
 // problem88.c:51:     int *expected1[] = {(int[]){0, 0}, (int[]){1, 4}, (int[]){1, 0}, (int[]){2, 5}, (int[]){2, 0}};
-	mov	w0, 2	// tmp133,
-	str	w0, [sp, 64]	// tmp133, D.4839[0]
-	mov	w0, 5	// tmp134,
-	str	w0, [sp, 68]	// tmp134, D.4839[1]
+	mov	w0, 2	// tmp132,
+	str	w0, [sp, 48]	// tmp132, D.5428[0]
+	mov	w0, 5	// tmp133,
+	str	w0, [sp, 52]	// tmp133, D.5428[1]
 // problem88.c:51:     int *expected1[] = {(int[]){0, 0}, (int[]){1, 4}, (int[]){1, 0}, (int[]){2, 5}, (int[]){2, 0}};
-	add	x0, sp, 64	// tmp135,,
-	str	x0, [sp, 216]	// tmp135, expected1[3]
+	add	x0, sp, 48	// tmp134,,
+	str	x0, [sp, 200]	// tmp134, expected1[3]
 // problem88.c:51:     int *expected1[] = {(int[]){0, 0}, (int[]){1, 4}, (int[]){1, 0}, (int[]){2, 5}, (int[]){2, 0}};
-	mov	w0, 2	// tmp136,
-	str	w0, [sp, 72]	// tmp136, D.4840[0]
-	str	wzr, [sp, 76]	//, D.4840[1]
+	mov	w0, 2	// tmp135,
+	str	w0, [sp, 56]	// tmp135, D.5429[0]
+	str	wzr, [sp, 60]	//, D.5429[1]
 // problem88.c:51:     int *expected1[] = {(int[]){0, 0}, (int[]){1, 4}, (int[]){1, 0}, (int[]){2, 5}, (int[]){2, 0}};
-	add	x0, sp, 72	// tmp137,,
-	str	x0, [sp, 224]	// tmp137, expected1[4]
+	add	x0, sp, 56	// tmp136,,
+	str	x0, [sp, 208]	// tmp136, expected1[4]
 // problem88.c:52:     result = func0(lst1, rows, cols1, 1, &returnSize);
-	add	x2, sp, 24	// tmp138,,
-	add	x1, sp, 80	// tmp139,,
-	add	x0, sp, 96	// tmp140,,
-	mov	x4, x2	//, tmp138
+	add	x2, sp, 8	// tmp137,,
+	add	x1, sp, 64	// tmp138,,
+	add	x0, sp, 80	// tmp139,,
+	mov	x4, x2	//, tmp137
 	mov	w3, 1	//,
-	mov	x2, x1	//, tmp139
-	ldr	w1, [sp, 28]	//, rows
+	mov	x2, x1	//, tmp138
+	ldr	w1, [sp, 12]	//, rows
 	bl	func0		//
-	str	x0, [sp, 32]	//, result
+	str	x0, [sp, 16]	//, result
 // problem88.c:53:     assert(issame(result, returnSize, expected1, 5));
-	ldr	w0, [sp, 24]	// returnSize.0_1, returnSize
-	add	x1, sp, 192	// tmp141,,
+	ldr	w0, [sp, 8]	// returnSize.0_1, returnSize
+	add	x1, sp, 176	// tmp140,,
 	mov	w3, 5	//,
-	mov	x2, x1	//, tmp141
+	mov	x2, x1	//, tmp140
 	mov	w1, w0	//, returnSize.0_1
-	ldr	x0, [sp, 32]	//, result
+	ldr	x0, [sp, 16]	//, result
 	bl	issame		//
+// problem88.c:53:     assert(issame(result, returnSize, expected1, 5));
 	cmp	w0, 0	// _2,
 	bne	.L19		//,
-// problem88.c:53:     assert(issame(result, returnSize, expected1, 5));
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp142,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp142,
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp141,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp141,
 	mov	w2, 53	//,
-	adrp	x0, .LC4	// tmp143,
-	add	x1, x0, :lo12:.LC4	//, tmp143,
-	adrp	x0, .LC5	// tmp144,
-	add	x0, x0, :lo12:.LC5	//, tmp144,
+	adrp	x0, .LC4	// tmp142,
+	add	x1, x0, :lo12:.LC4	//, tmp142,
+	adrp	x0, .LC5	// tmp143,
+	add	x0, x0, :lo12:.LC5	//, tmp143,
 	bl	__assert_fail		//
 .L19:
 // problem88.c:54:     free_result(result, returnSize);
-	ldr	w0, [sp, 24]	// returnSize.1_3, returnSize
+	ldr	w0, [sp, 8]	// returnSize.1_3, returnSize
 	mov	w1, w0	//, returnSize.1_3
-	ldr	x0, [sp, 32]	//, result
+	ldr	x0, [sp, 16]	//, result
 	bl	free_result		//
 // problem88.c:56:     return 0;
 	mov	w0, 0	// _33,
 // problem88.c:57: }
 	mov	w1, w0	// <retval>, _33
-	adrp	x0, :got:__stack_chk_guard	// tmp147,
-	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]	// tmp146, tmp147,
-	ldr	x3, [sp, 232]	// tmp149, D.4868
-	ldr	x2, [x0]	// tmp150,
-	subs	x3, x3, x2	// tmp149, tmp150
-	mov	x2, 0	// tmp150
+	adrp	x0, :got:__stack_chk_guard	// tmp145,
+	ldr	x0, [x0, :got_lo12:__stack_chk_guard]	// tmp145,
+	ldr	x3, [sp, 216]	// tmp147, D.5457
+	ldr	x2, [x0]	// tmp148,
+	subs	x3, x3, x2	// tmp147, tmp148
+	mov	x2, 0	// tmp148
 	beq	.L21		//,
 	bl	__stack_chk_fail		//
 .L21:
 	mov	w0, w1	//, <retval>
-	ldp	x29, x30, [sp], 240	//,,,
-	.cfi_restore 30
+	ldp	x29, x30, [sp, 224]	//,,
+	add	sp, sp, 240	//,,
 	.cfi_restore 29
+	.cfi_restore 30
 	.cfi_def_cfa_offset 0
 	ret	
 	.cfi_endproc
@@ -475,5 +479,5 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits

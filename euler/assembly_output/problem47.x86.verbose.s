@@ -1,6 +1,6 @@
 	.file	"problem47.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -132,8 +132,8 @@ distinct_factor_count:
 .L10:
 # problem47.c:30:   for (i = 2; i <= n; i++) {
 	movl	-4(%rbp), %eax	# i, tmp100
-	cmpl	-20(%rbp), %eax	# n, tmp100
-	jbe	.L14	#,
+	cmpl	%eax, -20(%rbp)	# tmp100, n
+	jnb	.L14	#,
 # problem47.c:39:   return count;
 	movl	-8(%rbp), %eax	# count, _12
 # problem47.c:40: }
@@ -143,7 +143,7 @@ distinct_factor_count:
 	.cfi_endproc
 .LFE1:
 	.size	distinct_factor_count, .-distinct_factor_count
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

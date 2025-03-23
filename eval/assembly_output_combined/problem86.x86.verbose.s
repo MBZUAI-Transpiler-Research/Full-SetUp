@@ -1,6 +1,6 @@
 	.file	"problem86.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -103,7 +103,7 @@ main:
 	subq	$80, %rsp	#,
 # problem86.c:14: int main() {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp105
-	movq	%rax, -8(%rbp)	# tmp105, D.2402
+	movq	%rax, -8(%rbp)	# tmp105, D.3232
 	xorl	%eax, %eax	# tmp105
 # problem86.c:15:     int array1[] = {4, 88};
 	movl	$4, -72(%rbp)	#, array1[0]
@@ -113,9 +113,9 @@ main:
 	movl	$2, %esi	#,
 	movq	%rax, %rdi	# tmp88,
 	call	func0	#
+# problem86.c:16:     assert(func0(array1, sizeof(array1) / sizeof(array1[0])) == 88);
 	cmpl	$88, %eax	#, _1
 	je	.L7	#,
-# problem86.c:16:     assert(func0(array1, sizeof(array1) / sizeof(array1[0])) == 88);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp89
 	movq	%rax, %rcx	# tmp89,
 	movl	$16, %edx	#,
@@ -137,9 +137,9 @@ main:
 	movl	$6, %esi	#,
 	movq	%rax, %rdi	# tmp92,
 	call	func0	#
+# problem86.c:19:     assert(func0(array2, sizeof(array2) / sizeof(array2[0])) == 122);
 	cmpl	$122, %eax	#, _2
 	je	.L8	#,
-# problem86.c:19:     assert(func0(array2, sizeof(array2) / sizeof(array2[0])) == 122);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp93
 	movq	%rax, %rcx	# tmp93,
 	movl	$19, %edx	#,
@@ -159,9 +159,9 @@ main:
 	movl	$4, %esi	#,
 	movq	%rax, %rdi	# tmp96,
 	call	func0	#
+# problem86.c:22:     assert(func0(array3, sizeof(array3) / sizeof(array3[0])) == 0);
 	testl	%eax, %eax	# _3
 	je	.L9	#,
-# problem86.c:22:     assert(func0(array3, sizeof(array3) / sizeof(array3[0])) == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp97
 	movq	%rax, %rcx	# tmp97,
 	movl	$22, %edx	#,
@@ -181,9 +181,9 @@ main:
 	movl	$4, %esi	#,
 	movq	%rax, %rdi	# tmp100,
 	call	func0	#
+# problem86.c:25:     assert(func0(array4, sizeof(array4) / sizeof(array4[0])) == 12);
 	cmpl	$12, %eax	#, _4
 	je	.L10	#,
-# problem86.c:25:     assert(func0(array4, sizeof(array4) / sizeof(array4[0])) == 12);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp101
 	movq	%rax, %rcx	# tmp101,
 	movl	$25, %edx	#,
@@ -196,7 +196,7 @@ main:
 # problem86.c:27:     return 0;
 	movl	$0, %eax	#, _30
 # problem86.c:28: }
-	movq	-8(%rbp), %rdx	# D.2402, tmp106
+	movq	-8(%rbp), %rdx	# D.3232, tmp106
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp106
 	je	.L12	#,
 	call	__stack_chk_fail@PLT	#
@@ -212,7 +212,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

@@ -1,6 +1,6 @@
 	.file	"problem1.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -33,63 +33,65 @@ main:
 	jmp	.L2	#
 .L6:
 # problem1.c:14:     if (i % 3 == 0) {
-	movl	-4(%rbp), %edx	# i, tmp89
-	movslq	%edx, %rax	# tmp89, tmp90
+	movl	-4(%rbp), %ecx	# i, tmp89
+	movslq	%ecx, %rax	# tmp89, tmp90
 	imulq	$1431655766, %rax, %rax	#, tmp90, tmp91
-	shrq	$32, %rax	#, tmp92
-	movl	%edx, %ecx	# tmp89, tmp93
-	sarl	$31, %ecx	#, tmp93
-	subl	%ecx, %eax	# tmp93, _1
-	movl	%eax, %ecx	# _1, tmp94
-	addl	%ecx, %ecx	# tmp94
-	addl	%eax, %ecx	# _1, tmp94
-	movl	%edx, %eax	# tmp89, tmp89
-	subl	%ecx, %eax	# tmp94, tmp89
+	shrq	$32, %rax	#, tmp91
+	movq	%rax, %rdx	# tmp91, tmp92
+	movl	%ecx, %eax	# tmp89, tmp93
+	sarl	$31, %eax	#, tmp93
+	subl	%eax, %edx	# tmp93, _1
+	movl	%edx, %eax	# _1, tmp94
+	addl	%eax, %eax	# tmp94
+	addl	%edx, %eax	# _1, tmp94
+	subl	%eax, %ecx	# tmp94, tmp89
+	movl	%ecx, %edx	# tmp89, _1
 # problem1.c:14:     if (i % 3 == 0) {
-	testl	%eax, %eax	# _1
+	testl	%edx, %edx	# _1
 	jne	.L3	#,
 # problem1.c:15:       s3 += i;
 	movl	-4(%rbp), %eax	# i, tmp95
 	addl	%eax, -16(%rbp)	# tmp95, s3
 .L3:
 # problem1.c:17:     if (i % 5 == 0) {
-	movl	-4(%rbp), %edx	# i, tmp96
-	movslq	%edx, %rax	# tmp96, tmp97
+	movl	-4(%rbp), %ecx	# i, tmp96
+	movslq	%ecx, %rax	# tmp96, tmp97
 	imulq	$1717986919, %rax, %rax	#, tmp97, tmp98
 	shrq	$32, %rax	#, tmp99
-	sarl	%eax	# tmp100
-	movl	%edx, %ecx	# tmp96, tmp101
-	sarl	$31, %ecx	#, tmp101
-	subl	%ecx, %eax	# tmp101, _2
-	movl	%eax, %ecx	# _2, tmp102
-	sall	$2, %ecx	#, tmp102
-	addl	%eax, %ecx	# _2, tmp102
-	movl	%edx, %eax	# tmp96, tmp96
-	subl	%ecx, %eax	# tmp102, tmp96
+	movl	%eax, %edx	# tmp99, tmp100
+	sarl	%edx	# tmp100
+	movl	%ecx, %eax	# tmp96, tmp101
+	sarl	$31, %eax	#, tmp101
+	subl	%eax, %edx	# tmp101, _2
+	movl	%edx, %eax	# _2, tmp102
+	sall	$2, %eax	#, tmp102
+	addl	%edx, %eax	# _2, tmp102
+	subl	%eax, %ecx	# tmp102, tmp96
+	movl	%ecx, %edx	# tmp96, _2
 # problem1.c:17:     if (i % 5 == 0) {
-	testl	%eax, %eax	# _2
+	testl	%edx, %edx	# _2
 	jne	.L4	#,
 # problem1.c:18:       s5 += i;
 	movl	-4(%rbp), %eax	# i, tmp103
 	addl	%eax, -12(%rbp)	# tmp103, s5
 .L4:
 # problem1.c:20:     if (i % 15 == 0) {
-	movl	-4(%rbp), %edx	# i, tmp104
-	movslq	%edx, %rax	# tmp104, tmp105
-	imulq	$-2004318071, %rax, %rax	#, tmp105, tmp106
-	shrq	$32, %rax	#, tmp107
-	addl	%edx, %eax	# tmp104, tmp108
-	sarl	$3, %eax	#, tmp109
-	movl	%edx, %ecx	# tmp104, tmp110
+	movl	-4(%rbp), %eax	# i, tmp104
+	movslq	%eax, %rdx	# tmp104, tmp105
+	imulq	$-2004318071, %rdx, %rdx	#, tmp105, tmp106
+	shrq	$32, %rdx	#, tmp107
+	addl	%eax, %edx	# tmp104, tmp108
+	sarl	$3, %edx	#, tmp109
+	movl	%eax, %ecx	# tmp104, tmp110
 	sarl	$31, %ecx	#, tmp110
-	subl	%ecx, %eax	# tmp110, _3
-	movl	%eax, %ecx	# _3, tmp111
+	subl	%ecx, %edx	# tmp110, _3
+	movl	%edx, %ecx	# _3, tmp111
 	sall	$4, %ecx	#, tmp112
-	subl	%eax, %ecx	# _3, tmp111
-	movl	%edx, %eax	# tmp104, tmp104
+	subl	%edx, %ecx	# _3, tmp111
 	subl	%ecx, %eax	# tmp111, tmp104
+	movl	%eax, %edx	# tmp104, _3
 # problem1.c:20:     if (i % 15 == 0) {
-	testl	%eax, %eax	# _3
+	testl	%edx, %edx	# _3
 	jne	.L5	#,
 # problem1.c:21:       s15 += i;
 	movl	-4(%rbp), %eax	# i, tmp113
@@ -121,7 +123,7 @@ main:
 	.cfi_endproc
 .LFE0:
 	.size	main, .-main
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

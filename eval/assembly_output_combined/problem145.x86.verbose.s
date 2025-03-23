@@ -1,6 +1,6 @@
 	.file	"problem145.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -21,7 +21,7 @@ func0:
 	movq	%rsi, -272(%rbp)	# n, n
 # problem145.c:4: int func0(const char* x, const char* n){
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp156
-	movq	%rax, -8(%rbp)	# tmp156, D.2962
+	movq	%rax, -8(%rbp)	# tmp156, D.3799
 	xorl	%eax, %eax	# tmp156
 # problem145.c:8:     for (i = 0; x[i] != '/'; i++) {
 	movl	$0, -248(%rbp)	#, i
@@ -180,27 +180,28 @@ func0:
 	imull	-232(%rbp), %eax	# c, _25
 # problem145.c:32:     if ((a * c) % (b * d) == 0) return 1;
 	movl	-236(%rbp), %edx	# b, tmp152
-	movl	%edx, %ecx	# tmp152, tmp152
-	imull	-228(%rbp), %ecx	# d, tmp152
+	movl	%edx, %esi	# tmp152, tmp152
+	imull	-228(%rbp), %esi	# d, tmp152
 # problem145.c:32:     if ((a * c) % (b * d) == 0) return 1;
 	cltd
-	idivl	%ecx	# _26
-	movl	%edx, %eax	# tmp153, _27
+	idivl	%esi	# _26
+	movl	%edx, %ecx	# tmp153, tmp153
+	movl	%ecx, %eax	# tmp153, _27
 # problem145.c:32:     if ((a * c) % (b * d) == 0) return 1;
 	testl	%eax, %eax	# _27
 	jne	.L10	#,
 # problem145.c:32:     if ((a * c) % (b * d) == 0) return 1;
 	movl	$1, %eax	#, _34
+# problem145.c:32:     if ((a * c) % (b * d) == 0) return 1;
 	jmp	.L12	#
 .L10:
 # problem145.c:33:     return 0;
 	movl	$0, %eax	#, _34
 .L12:
 # problem145.c:34: }
-	movq	-8(%rbp), %rdx	# D.2962, tmp157
+	movq	-8(%rbp), %rdx	# D.3799, tmp157
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp157
 	je	.L13	#,
-# problem145.c:34: }
 	call	__stack_chk_fail@PLT	#
 .L13:
 	leave	
@@ -290,9 +291,9 @@ main:
 	leaq	.LC1(%rip), %rax	#, tmp98
 	movq	%rax, %rdi	# tmp98,
 	call	func0	#
+# problem145.c:41:     assert(func0("1/5", "5/1") == 1);
 	cmpl	$1, %eax	#, _1
 	je	.L15	#,
-# problem145.c:41:     assert(func0("1/5", "5/1") == 1);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp99
 	movq	%rax, %rcx	# tmp99,
 	movl	$41, %edx	#,
@@ -308,9 +309,9 @@ main:
 	leaq	.LC5(%rip), %rax	#, tmp103
 	movq	%rax, %rdi	# tmp103,
 	call	func0	#
+# problem145.c:42:     assert(func0("1/6", "2/1") == 0);
 	testl	%eax, %eax	# _2
 	je	.L16	#,
-# problem145.c:42:     assert(func0("1/6", "2/1") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp104
 	movq	%rax, %rcx	# tmp104,
 	movl	$42, %edx	#,
@@ -326,9 +327,9 @@ main:
 	leaq	.LC0(%rip), %rax	#, tmp108
 	movq	%rax, %rdi	# tmp108,
 	call	func0	#
+# problem145.c:43:     assert(func0("5/1", "3/1") == 1);
 	cmpl	$1, %eax	#, _3
 	je	.L17	#,
-# problem145.c:43:     assert(func0("5/1", "3/1") == 1);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp109
 	movq	%rax, %rcx	# tmp109,
 	movl	$43, %edx	#,
@@ -344,9 +345,9 @@ main:
 	leaq	.LC10(%rip), %rax	#, tmp113
 	movq	%rax, %rdi	# tmp113,
 	call	func0	#
+# problem145.c:44:     assert(func0("7/10", "10/2") == 0);
 	testl	%eax, %eax	# _4
 	je	.L18	#,
-# problem145.c:44:     assert(func0("7/10", "10/2") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp114
 	movq	%rax, %rcx	# tmp114,
 	movl	$44, %edx	#,
@@ -362,9 +363,9 @@ main:
 	leaq	.LC13(%rip), %rax	#, tmp118
 	movq	%rax, %rdi	# tmp118,
 	call	func0	#
+# problem145.c:45:     assert(func0("2/10", "50/10") == 1);
 	cmpl	$1, %eax	#, _5
 	je	.L19	#,
-# problem145.c:45:     assert(func0("2/10", "50/10") == 1);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp119
 	movq	%rax, %rcx	# tmp119,
 	movl	$45, %edx	#,
@@ -380,9 +381,9 @@ main:
 	leaq	.LC16(%rip), %rax	#, tmp123
 	movq	%rax, %rdi	# tmp123,
 	call	func0	#
+# problem145.c:46:     assert(func0("7/2", "4/2") == 1);
 	cmpl	$1, %eax	#, _6
 	je	.L20	#,
-# problem145.c:46:     assert(func0("7/2", "4/2") == 1);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp124
 	movq	%rax, %rcx	# tmp124,
 	movl	$46, %edx	#,
@@ -398,9 +399,9 @@ main:
 	leaq	.LC19(%rip), %rax	#, tmp128
 	movq	%rax, %rdi	# tmp128,
 	call	func0	#
+# problem145.c:47:     assert(func0("11/6", "6/1") == 1);
 	cmpl	$1, %eax	#, _7
 	je	.L21	#,
-# problem145.c:47:     assert(func0("11/6", "6/1") == 1);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp129
 	movq	%rax, %rcx	# tmp129,
 	movl	$47, %edx	#,
@@ -416,9 +417,9 @@ main:
 	leaq	.LC22(%rip), %rax	#, tmp133
 	movq	%rax, %rdi	# tmp133,
 	call	func0	#
+# problem145.c:48:     assert(func0("2/3", "5/2") == 0);
 	testl	%eax, %eax	# _8
 	je	.L22	#,
-# problem145.c:48:     assert(func0("2/3", "5/2") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp134
 	movq	%rax, %rcx	# tmp134,
 	movl	$48, %edx	#,
@@ -434,9 +435,9 @@ main:
 	leaq	.LC21(%rip), %rax	#, tmp138
 	movq	%rax, %rdi	# tmp138,
 	call	func0	#
+# problem145.c:49:     assert(func0("5/2", "3/5") == 0);
 	testl	%eax, %eax	# _9
 	je	.L23	#,
-# problem145.c:49:     assert(func0("5/2", "3/5") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp139
 	movq	%rax, %rcx	# tmp139,
 	movl	$49, %edx	#,
@@ -452,9 +453,9 @@ main:
 	leaq	.LC27(%rip), %rax	#, tmp143
 	movq	%rax, %rdi	# tmp143,
 	call	func0	#
+# problem145.c:50:     assert(func0("2/4", "8/4") == 1);
 	cmpl	$1, %eax	#, _10
 	je	.L24	#,
-# problem145.c:50:     assert(func0("2/4", "8/4") == 1);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp144
 	movq	%rax, %rcx	# tmp144,
 	movl	$50, %edx	#,
@@ -470,9 +471,9 @@ main:
 	leaq	.LC27(%rip), %rax	#, tmp148
 	movq	%rax, %rdi	# tmp148,
 	call	func0	#
+# problem145.c:51:     assert(func0("2/4", "4/2") == 1);
 	cmpl	$1, %eax	#, _11
 	je	.L25	#,
-# problem145.c:51:     assert(func0("2/4", "4/2") == 1);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp149
 	movq	%rax, %rcx	# tmp149,
 	movl	$51, %edx	#,
@@ -488,9 +489,9 @@ main:
 	leaq	.LC1(%rip), %rax	#, tmp153
 	movq	%rax, %rdi	# tmp153,
 	call	func0	#
+# problem145.c:52:     assert(func0("1/5", "5/1") == 1);
 	cmpl	$1, %eax	#, _12
 	je	.L26	#,
-# problem145.c:52:     assert(func0("1/5", "5/1") == 1);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp154
 	movq	%rax, %rcx	# tmp154,
 	movl	$52, %edx	#,
@@ -506,9 +507,9 @@ main:
 	leaq	.LC1(%rip), %rax	#, tmp158
 	movq	%rax, %rdi	# tmp158,
 	call	func0	#
+# problem145.c:53:     assert(func0("1/5", "1/5") == 0);
 	testl	%eax, %eax	# _13
 	je	.L27	#,
-# problem145.c:53:     assert(func0("1/5", "1/5") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp159
 	movq	%rax, %rcx	# tmp159,
 	movl	$53, %edx	#,
@@ -532,7 +533,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

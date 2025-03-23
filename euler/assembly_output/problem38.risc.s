@@ -1,5 +1,8 @@
 	.file	"problem38.c"
 	.option pic
+	.attribute arch, "rv64i2p1_m2p0_a2p1_f2p2_d2p2_c2p0_zicsr2p0_zifencei2p0"
+	.attribute unaligned_access, 0
+	.attribute stack_align, 16
 	.text
 	.section	.rodata
 	.align	3
@@ -13,11 +16,18 @@
 	.globl	main
 	.type	main, @function
 main:
+.LFB6:
+	.cfi_startproc
 	addi	sp,sp,-96
+	.cfi_def_cfa_offset 96
 	sd	ra,88(sp)
 	sd	s0,80(sp)
 	sd	s1,72(sp)
+	.cfi_offset 1, -8
+	.cfi_offset 8, -16
+	.cfi_offset 9, -24
 	addi	s0,sp,96
+	.cfi_def_cfa 8, 0
 	la	a5,__stack_chk_guard
 	ld	a4, 0(a5)
 	sd	a4, -40(s0)
@@ -128,17 +138,29 @@ main:
 .L9:
 	mv	a0,a4
 	ld	ra,88(sp)
+	.cfi_restore 1
 	ld	s0,80(sp)
+	.cfi_restore 8
+	.cfi_def_cfa 2, 96
 	ld	s1,72(sp)
+	.cfi_restore 9
 	addi	sp,sp,96
+	.cfi_def_cfa_offset 0
 	jr	ra
+	.cfi_endproc
+.LFE6:
 	.size	main, .-main
 	.align	1
 	.type	compare, @function
 compare:
+.LFB7:
+	.cfi_startproc
 	addi	sp,sp,-32
+	.cfi_def_cfa_offset 32
 	sd	s0,24(sp)
+	.cfi_offset 8, -8
 	addi	s0,sp,32
+	.cfi_def_cfa 8, 0
 	sd	a0,-24(s0)
 	sd	a1,-32(s0)
 	ld	a5,-24(s0)
@@ -151,16 +173,27 @@ compare:
 	sext.w	a5,a5
 	mv	a0,a5
 	ld	s0,24(sp)
+	.cfi_restore 8
+	.cfi_def_cfa 2, 32
 	addi	sp,sp,32
+	.cfi_def_cfa_offset 0
 	jr	ra
+	.cfi_endproc
+.LFE7:
 	.size	compare, .-compare
 	.align	1
 	.type	is_pandigital, @function
 is_pandigital:
+.LFB8:
+	.cfi_startproc
 	addi	sp,sp,-80
+	.cfi_def_cfa_offset 80
 	sd	ra,72(sp)
 	sd	s0,64(sp)
+	.cfi_offset 1, -8
+	.cfi_offset 8, -16
 	addi	s0,sp,80
+	.cfi_def_cfa 8, 0
 	sd	a0,-72(s0)
 	la	a5,__stack_chk_guard
 	ld	a4, 0(a5)
@@ -220,9 +253,15 @@ is_pandigital:
 .L19:
 	mv	a0,a4
 	ld	ra,72(sp)
+	.cfi_restore 1
 	ld	s0,64(sp)
+	.cfi_restore 8
+	.cfi_def_cfa 2, 80
 	addi	sp,sp,80
+	.cfi_def_cfa_offset 0
 	jr	ra
+	.cfi_endproc
+.LFE8:
 	.size	is_pandigital, .-is_pandigital
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits

@@ -1,5 +1,8 @@
 	.file	"problem40.c"
 	.option pic
+	.attribute arch, "rv64i2p1_m2p0_a2p1_f2p2_d2p2_c2p0_zicsr2p0_zifencei2p0"
+	.attribute unaligned_access, 0
+	.attribute stack_align, 16
 	.text
 	.section	.rodata
 	.align	3
@@ -10,11 +13,18 @@
 	.globl	main
 	.type	main, @function
 main:
+.LFB0:
+	.cfi_startproc
 	addi	sp,sp,-96
+	.cfi_def_cfa_offset 96
 	sd	ra,88(sp)
 	sd	s0,80(sp)
 	fsd	fs0,72(sp)
+	.cfi_offset 1, -8
+	.cfi_offset 8, -16
+	.cfi_offset 40, -24
 	addi	s0,sp,96
+	.cfi_def_cfa 8, 0
 	la	a5,__stack_chk_guard
 	ld	a4, 0(a5)
 	sd	a4, -40(s0)
@@ -141,10 +151,17 @@ main:
 .L10:
 	mv	a0,a4
 	ld	ra,88(sp)
+	.cfi_restore 1
 	ld	s0,80(sp)
+	.cfi_restore 8
+	.cfi_def_cfa 2, 96
 	fld	fs0,72(sp)
+	.cfi_restore 40
 	addi	sp,sp,96
+	.cfi_def_cfa_offset 0
 	jr	ra
+	.cfi_endproc
+.LFE0:
 	.size	main, .-main
 	.section	.rodata
 	.align	3
@@ -155,5 +172,5 @@ main:
 .LC1:
 	.word	0
 	.word	1076101120
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits

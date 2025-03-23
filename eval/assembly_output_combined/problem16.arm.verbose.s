@@ -1,7 +1,7 @@
 	.arch armv8-a
 	.file	"problem16.c"
-// GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (aarch64-linux-gnu)
-//	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+// GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (aarch64-linux-gnu)
+//	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 // GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 // options passed: -mlittle-endian -mabi=lp64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection
@@ -77,6 +77,7 @@ func0:
 	add	x1, x0, :lo12:.LC1	//, tmp112,
 	ldr	x0, [sp, 48]	//, ptr
 	bl	sprintf		//
+// problem16.c:16:     ptr += sprintf(ptr, "0");
 	sxtw	x0, w0	// _2, _20
 // problem16.c:16:     ptr += sprintf(ptr, "0");
 	ldr	x1, [sp, 48]	// tmp114, ptr
@@ -94,6 +95,7 @@ func0:
 	add	x1, x0, :lo12:.LC0	//, tmp116,
 	ldr	x0, [sp, 48]	//, ptr
 	bl	sprintf		//
+// problem16.c:18:         ptr += sprintf(ptr, " %d", i);
 	sxtw	x0, w0	// _3, _25
 // problem16.c:18:         ptr += sprintf(ptr, " %d", i);
 	ldr	x1, [sp, 48]	// tmp118, ptr
@@ -161,9 +163,9 @@ main:
 	add	x1, x0, :lo12:.LC1	//, tmp97,
 	ldr	x0, [sp, 24]	//, result
 	bl	strcmp		//
+// problem16.c:33:     assert(strcmp(result, "0") == 0);
 	cmp	w0, 0	// _1,
 	beq	.L9		//,
-// problem16.c:33:     assert(strcmp(result, "0") == 0);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp98,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp98,
 	mov	w2, 33	//,
@@ -185,9 +187,9 @@ main:
 	add	x1, x0, :lo12:.LC4	//, tmp101,
 	ldr	x0, [sp, 24]	//, result
 	bl	strcmp		//
+// problem16.c:37:     assert(strcmp(result, "0 1 2 3") == 0);
 	cmp	w0, 0	// _2,
 	beq	.L10		//,
-// problem16.c:37:     assert(strcmp(result, "0 1 2 3") == 0);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp102,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp102,
 	mov	w2, 37	//,
@@ -209,9 +211,9 @@ main:
 	add	x1, x0, :lo12:.LC6	//, tmp105,
 	ldr	x0, [sp, 24]	//, result
 	bl	strcmp		//
+// problem16.c:41:     assert(strcmp(result, "0 1 2 3 4 5 6 7 8 9 10") == 0);
 	cmp	w0, 0	// _3,
 	beq	.L11		//,
-// problem16.c:41:     assert(strcmp(result, "0 1 2 3 4 5 6 7 8 9 10") == 0);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp106,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp106,
 	mov	w2, 41	//,
@@ -241,5 +243,5 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits

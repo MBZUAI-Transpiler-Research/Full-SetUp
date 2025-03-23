@@ -1,6 +1,6 @@
 	.file	"code.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -55,15 +55,16 @@ func0:
 .L7:
 # eval/problem118//code.c:14:         if (isspace(s[i]) || s[i] == '\0') {
 	call	__ctype_b_loc@PLT	#
-	movq	(%rax), %rdx	# *_2, _3
-	movl	-52(%rbp), %eax	# i, tmp144
-	movslq	%eax, %rcx	# tmp144, _4
-	movq	-72(%rbp), %rax	# s, tmp145
-	addq	%rcx, %rax	# _4, _5
-	movzbl	(%rax), %eax	# *_5, _6
-	movsbq	%al, %rax	# _6, _7
-	addq	%rax, %rax	# _8
-	addq	%rdx, %rax	# _3, _9
+# eval/problem118//code.c:14:         if (isspace(s[i]) || s[i] == '\0') {
+	movq	(%rax), %rax	# *_2, _3
+	movl	-52(%rbp), %edx	# i, tmp144
+	movslq	%edx, %rcx	# tmp144, _4
+	movq	-72(%rbp), %rdx	# s, tmp145
+	addq	%rcx, %rdx	# _4, _5
+	movzbl	(%rdx), %edx	# *_5, _6
+	movsbq	%dl, %rdx	# _6, _7
+	addq	%rdx, %rdx	# _8
+	addq	%rdx, %rax	# _8, _9
 	movzwl	(%rax), %eax	# *_9, _10
 	movzwl	%ax, %eax	# _10, _11
 	andl	$8192, %eax	#, _12
@@ -177,15 +178,15 @@ func0:
 	jne	.L6	#,
 # eval/problem118//code.c:26:             if (strchr(vowels, s[i]) == NULL && isalpha((unsigned char)s[i])) {
 	call	__ctype_b_loc@PLT	#
-	movq	(%rax), %rdx	# *_43, _44
-	movl	-52(%rbp), %eax	# i, tmp172
-	movslq	%eax, %rcx	# tmp172, _45
-	movq	-72(%rbp), %rax	# s, tmp173
-	addq	%rcx, %rax	# _45, _46
-	movzbl	(%rax), %eax	# *_46, _47
-	movzbl	%al, %eax	# _48, _49
-	addq	%rax, %rax	# _50
-	addq	%rdx, %rax	# _44, _51
+	movq	(%rax), %rax	# *_43, _44
+	movl	-52(%rbp), %edx	# i, tmp172
+	movslq	%edx, %rcx	# tmp172, _45
+	movq	-72(%rbp), %rdx	# s, tmp173
+	addq	%rcx, %rdx	# _45, _46
+	movzbl	(%rdx), %edx	# *_46, _47
+	movzbl	%dl, %edx	# _48, _49
+	addq	%rdx, %rdx	# _50
+	addq	%rdx, %rax	# _50, _51
 	movzwl	(%rax), %eax	# *_51, _52
 	movzwl	%ax, %eax	# _52, _53
 	andl	$1024, %eax	#, _54
@@ -221,7 +222,7 @@ func0:
 	.cfi_endproc
 .LFE6:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

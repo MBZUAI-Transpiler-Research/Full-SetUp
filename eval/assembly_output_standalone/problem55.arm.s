@@ -53,6 +53,7 @@ func0:
 	ldrb	w0, [sp, 38]
 	eor	w0, w0, 1
 	and	w0, w0, 255
+	and	w0, w0, 1
 	cmp	w0, 0
 	beq	.L7
 	mov	w0, 0
@@ -99,6 +100,7 @@ func0:
 	ldrb	w0, [sp, 39]
 	eor	w0, w0, 1
 	and	w0, w0, 255
+	and	w0, w0, 1
 	cmp	w0, 0
 	beq	.L15
 	mov	w0, 0
@@ -122,5 +124,5 @@ func0:
 	.cfi_endproc
 .LFE0:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits

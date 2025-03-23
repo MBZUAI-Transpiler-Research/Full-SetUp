@@ -1,10 +1,13 @@
 	.file	"problem11.c"
 	.option pic
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (riscv64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+	.attribute arch, "rv64i2p1_m2p0_a2p1_f2p2_d2p2_c2p0_zicsr2p0_zifencei2p0"
+	.attribute unaligned_access, 0
+	.attribute stack_align, 16
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (riscv64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-# options passed: -mabi=lp64d -misa-spec=2.2 -march=rv64imafdc -fstack-protector-strong
+# options passed: -mabi=lp64d -misa-spec=20191213 -march=rv64imafdc_zicsr_zifencei -fstack-protector-strong
 	.text
 	.section	.rodata
 	.align	3
@@ -417,23 +420,29 @@
 	.globl	main
 	.type	main, @function
 main:
+.LFB0:
+	.cfi_startproc
 	addi	sp,sp,-1664	#,,
+	.cfi_def_cfa_offset 1664
 	sd	ra,1656(sp)	#,
 	sd	s0,1648(sp)	#,
+	.cfi_offset 1, -8
+	.cfi_offset 8, -16
 	addi	s0,sp,1664	#,,
+	.cfi_def_cfa 8, 0
 # problem11.c:13: {
-	la	a5,__stack_chk_guard		# tmp120,
-	ld	a4, 0(a5)	# tmp338, __stack_chk_guard
-	sd	a4, -24(s0)	# tmp338, D.1922
-	li	a4, 0	# tmp338
+	la	a5,__stack_chk_guard		# tmp182,
+	ld	a4, 0(a5)	# tmp400, __stack_chk_guard
+	sd	a4, -24(s0)	# tmp400, D.2740
+	li	a4, 0	# tmp400
 # problem11.c:14:   unsigned grid[20][20] = {
-	lla	a4,.LC0	# tmp121,
-	addi	a5,s0,-1624	#, tmp122,
-	mv	a3,a4	# tmp123, tmp121
-	li	a4,1600		# tmp124,
-	mv	a2,a4	#, tmp124
-	mv	a1,a3	#, tmp123
-	mv	a0,a5	#, tmp122
+	lla	a4,.LC0	# tmp183,
+	addi	a5,s0,-1624	#, tmp184,
+	mv	a3,a4	# tmp185, tmp183
+	li	a4,1600		# tmp186,
+	mv	a2,a4	#, tmp186
+	mv	a1,a3	#, tmp185
+	mv	a0,a5	#, tmp184
 	call	memcpy@plt	#
 # problem11.c:36:   unsigned m = 0;
 	sw	zero,-1652(s0)	#, m
@@ -448,428 +457,447 @@ main:
 	j	.L3		#
 .L4:
 # problem11.c:41:       unsigned h = grid[i][j] * grid[i][j+1] * grid[i][j+2] * grid[i][j+3];
-	lwu	a3,-1644(s0)	# tmp126, j
-	lwu	a4,-1648(s0)	# tmp127, i
-	mv	a5,a4	# tmp128, tmp127
-	slli	a5,a5,2	#, tmp129, tmp128
-	add	a5,a5,a4	# tmp127, tmp128, tmp128
-	slli	a5,a5,2	#, tmp130, tmp128
-	add	a5,a5,a3	# tmp126, tmp131, tmp128
-	slli	a5,a5,2	#, tmp132, tmp131
-	addi	a5,a5,-16	#, tmp342, tmp132
-	add	a5,a5,s0	#, tmp132, tmp342
+	lwu	a3,-1644(s0)	# tmp188, j
+	lwu	a4,-1648(s0)	# tmp189, i
+	mv	a5,a4	# tmp190, tmp189
+	slli	a5,a5,2	#, tmp191, tmp190
+	add	a5,a5,a4	# tmp189, tmp190, tmp190
+	slli	a5,a5,2	#, tmp192, tmp190
+	add	a5,a5,a3	# tmp188, tmp193, tmp190
+	slli	a5,a5,2	#, tmp194, tmp193
+	addi	a5,a5,-16	#, tmp404, tmp194
+	add	a5,a5,s0	#, tmp194, tmp404
 	lw	a3,-1608(a5)		# _1, grid[i_49][j_50]
 # problem11.c:41:       unsigned h = grid[i][j] * grid[i][j+1] * grid[i][j+2] * grid[i][j+3];
-	lw	a5,-1644(s0)		# tmp135, j
-	addiw	a5,a5,1	#, tmp133, tmp134
-	sext.w	a5,a5	# _2, tmp133
-# problem11.c:41:       unsigned h = grid[i][j] * grid[i][j+1] * grid[i][j+2] * grid[i][j+3];
-	slli	a2,a5,32	#, tmp136, _2
-	srli	a2,a2,32	#, tmp136, tmp136
-	lwu	a4,-1648(s0)	# tmp137, i
-	mv	a5,a4	# tmp138, tmp137
-	slli	a5,a5,2	#, tmp139, tmp138
-	add	a5,a5,a4	# tmp137, tmp138, tmp138
-	slli	a5,a5,2	#, tmp140, tmp138
-	add	a5,a5,a2	# tmp136, tmp141, tmp138
-	slli	a5,a5,2	#, tmp142, tmp141
-	addi	a5,a5,-16	#, tmp343, tmp142
-	add	a5,a5,s0	#, tmp142, tmp343
-	lw	a5,-1608(a5)		# _3, grid[i_49][_2]
-# problem11.c:41:       unsigned h = grid[i][j] * grid[i][j+1] * grid[i][j+2] * grid[i][j+3];
-	mulw	a5,a3,a5	# tmp143, _1, _3
-	sext.w	a3,a5	# _4, tmp143
-# problem11.c:41:       unsigned h = grid[i][j] * grid[i][j+1] * grid[i][j+2] * grid[i][j+3];
-	lw	a5,-1644(s0)		# tmp146, j
-	addiw	a5,a5,2	#, tmp144, tmp145
-	sext.w	a5,a5	# _5, tmp144
-# problem11.c:41:       unsigned h = grid[i][j] * grid[i][j+1] * grid[i][j+2] * grid[i][j+3];
-	slli	a2,a5,32	#, tmp147, _5
-	srli	a2,a2,32	#, tmp147, tmp147
-	lwu	a4,-1648(s0)	# tmp148, i
-	mv	a5,a4	# tmp149, tmp148
-	slli	a5,a5,2	#, tmp150, tmp149
-	add	a5,a5,a4	# tmp148, tmp149, tmp149
-	slli	a5,a5,2	#, tmp151, tmp149
-	add	a5,a5,a2	# tmp147, tmp152, tmp149
-	slli	a5,a5,2	#, tmp153, tmp152
-	addi	a5,a5,-16	#, tmp344, tmp153
-	add	a5,a5,s0	#, tmp153, tmp344
-	lw	a5,-1608(a5)		# _6, grid[i_49][_5]
-# problem11.c:41:       unsigned h = grid[i][j] * grid[i][j+1] * grid[i][j+2] * grid[i][j+3];
-	mulw	a5,a3,a5	# tmp154, _4, _6
-	sext.w	a3,a5	# _7, tmp154
-# problem11.c:41:       unsigned h = grid[i][j] * grid[i][j+1] * grid[i][j+2] * grid[i][j+3];
-	lw	a5,-1644(s0)		# tmp157, j
-	addiw	a5,a5,3	#, tmp155, tmp156
-	sext.w	a5,a5	# _8, tmp155
-# problem11.c:41:       unsigned h = grid[i][j] * grid[i][j+1] * grid[i][j+2] * grid[i][j+3];
-	slli	a2,a5,32	#, tmp158, _8
-	srli	a2,a2,32	#, tmp158, tmp158
-	lwu	a4,-1648(s0)	# tmp159, i
-	mv	a5,a4	# tmp160, tmp159
-	slli	a5,a5,2	#, tmp161, tmp160
-	add	a5,a5,a4	# tmp159, tmp160, tmp160
-	slli	a5,a5,2	#, tmp162, tmp160
-	add	a5,a5,a2	# tmp158, tmp163, tmp160
-	slli	a5,a5,2	#, tmp164, tmp163
-	addi	a5,a5,-16	#, tmp345, tmp164
-	add	a5,a5,s0	#, tmp164, tmp345
-	lw	a5,-1608(a5)		# _9, grid[i_49][_8]
-# problem11.c:41:       unsigned h = grid[i][j] * grid[i][j+1] * grid[i][j+2] * grid[i][j+3];
-	mulw	a5,a3,a5	# tmp165, _7, _9
-	sw	a5,-1640(s0)	# tmp165, h
-# problem11.c:42:       unsigned v = grid[j][i] * grid[j+1][i] * grid[j+2][i] * grid[j+3][i];
-	lwu	a3,-1648(s0)	# tmp166, i
-	lwu	a4,-1644(s0)	# tmp167, j
-	mv	a5,a4	# tmp168, tmp167
-	slli	a5,a5,2	#, tmp169, tmp168
-	add	a5,a5,a4	# tmp167, tmp168, tmp168
-	slli	a5,a5,2	#, tmp170, tmp168
-	add	a5,a5,a3	# tmp166, tmp171, tmp168
-	slli	a5,a5,2	#, tmp172, tmp171
-	addi	a5,a5,-16	#, tmp346, tmp172
-	add	a5,a5,s0	#, tmp172, tmp346
-	lw	a3,-1608(a5)		# _10, grid[j_50][i_49]
-# problem11.c:42:       unsigned v = grid[j][i] * grid[j+1][i] * grid[j+2][i] * grid[j+3][i];
-	lw	a5,-1644(s0)		# tmp175, j
-	addiw	a5,a5,1	#, tmp173, tmp174
-	sext.w	a5,a5	# _11, tmp173
-# problem11.c:42:       unsigned v = grid[j][i] * grid[j+1][i] * grid[j+2][i] * grid[j+3][i];
-	lwu	a2,-1648(s0)	# tmp176, i
-	slli	a4,a5,32	#, tmp177, _11
-	srli	a4,a4,32	#, tmp177, tmp177
-	mv	a5,a4	# tmp178, tmp177
-	slli	a5,a5,2	#, tmp179, tmp178
-	add	a5,a5,a4	# tmp177, tmp178, tmp178
-	slli	a5,a5,2	#, tmp180, tmp178
-	add	a5,a5,a2	# tmp176, tmp181, tmp178
-	slli	a5,a5,2	#, tmp182, tmp181
-	addi	a5,a5,-16	#, tmp347, tmp182
-	add	a5,a5,s0	#, tmp182, tmp347
-	lw	a5,-1608(a5)		# _12, grid[_11][i_49]
-# problem11.c:42:       unsigned v = grid[j][i] * grid[j+1][i] * grid[j+2][i] * grid[j+3][i];
-	mulw	a5,a3,a5	# tmp183, _10, _12
-	sext.w	a3,a5	# _13, tmp183
-# problem11.c:42:       unsigned v = grid[j][i] * grid[j+1][i] * grid[j+2][i] * grid[j+3][i];
-	lw	a5,-1644(s0)		# tmp186, j
-	addiw	a5,a5,2	#, tmp184, tmp185
-	sext.w	a5,a5	# _14, tmp184
-# problem11.c:42:       unsigned v = grid[j][i] * grid[j+1][i] * grid[j+2][i] * grid[j+3][i];
-	lwu	a2,-1648(s0)	# tmp187, i
-	slli	a4,a5,32	#, tmp188, _14
-	srli	a4,a4,32	#, tmp188, tmp188
-	mv	a5,a4	# tmp189, tmp188
-	slli	a5,a5,2	#, tmp190, tmp189
-	add	a5,a5,a4	# tmp188, tmp189, tmp189
-	slli	a5,a5,2	#, tmp191, tmp189
-	add	a5,a5,a2	# tmp187, tmp192, tmp189
-	slli	a5,a5,2	#, tmp193, tmp192
-	addi	a5,a5,-16	#, tmp348, tmp193
-	add	a5,a5,s0	#, tmp193, tmp348
-	lw	a5,-1608(a5)		# _15, grid[_14][i_49]
-# problem11.c:42:       unsigned v = grid[j][i] * grid[j+1][i] * grid[j+2][i] * grid[j+3][i];
-	mulw	a5,a3,a5	# tmp194, _13, _15
-	sext.w	a3,a5	# _16, tmp194
-# problem11.c:42:       unsigned v = grid[j][i] * grid[j+1][i] * grid[j+2][i] * grid[j+3][i];
 	lw	a5,-1644(s0)		# tmp197, j
-	addiw	a5,a5,3	#, tmp195, tmp196
-	sext.w	a5,a5	# _17, tmp195
-# problem11.c:42:       unsigned v = grid[j][i] * grid[j+1][i] * grid[j+2][i] * grid[j+3][i];
-	lwu	a2,-1648(s0)	# tmp198, i
-	slli	a4,a5,32	#, tmp199, _17
-	srli	a4,a4,32	#, tmp199, tmp199
+	addiw	a5,a5,1	#, tmp195, tmp196
+	sext.w	a5,a5	# _2, tmp195
+# problem11.c:41:       unsigned h = grid[i][j] * grid[i][j+1] * grid[i][j+2] * grid[i][j+3];
+	slli	a2,a5,32	#, tmp198, _2
+	srli	a2,a2,32	#, tmp198, tmp198
+	lwu	a4,-1648(s0)	# tmp199, i
 	mv	a5,a4	# tmp200, tmp199
 	slli	a5,a5,2	#, tmp201, tmp200
 	add	a5,a5,a4	# tmp199, tmp200, tmp200
 	slli	a5,a5,2	#, tmp202, tmp200
 	add	a5,a5,a2	# tmp198, tmp203, tmp200
 	slli	a5,a5,2	#, tmp204, tmp203
-	addi	a5,a5,-16	#, tmp349, tmp204
-	add	a5,a5,s0	#, tmp204, tmp349
+	addi	a5,a5,-16	#, tmp405, tmp204
+	add	a5,a5,s0	#, tmp204, tmp405
+	lw	a5,-1608(a5)		# _3, grid[i_49][_2]
+# problem11.c:41:       unsigned h = grid[i][j] * grid[i][j+1] * grid[i][j+2] * grid[i][j+3];
+	mulw	a5,a3,a5	# tmp205, _1, _3
+	sext.w	a3,a5	# _4, tmp205
+# problem11.c:41:       unsigned h = grid[i][j] * grid[i][j+1] * grid[i][j+2] * grid[i][j+3];
+	lw	a5,-1644(s0)		# tmp208, j
+	addiw	a5,a5,2	#, tmp206, tmp207
+	sext.w	a5,a5	# _5, tmp206
+# problem11.c:41:       unsigned h = grid[i][j] * grid[i][j+1] * grid[i][j+2] * grid[i][j+3];
+	slli	a2,a5,32	#, tmp209, _5
+	srli	a2,a2,32	#, tmp209, tmp209
+	lwu	a4,-1648(s0)	# tmp210, i
+	mv	a5,a4	# tmp211, tmp210
+	slli	a5,a5,2	#, tmp212, tmp211
+	add	a5,a5,a4	# tmp210, tmp211, tmp211
+	slli	a5,a5,2	#, tmp213, tmp211
+	add	a5,a5,a2	# tmp209, tmp214, tmp211
+	slli	a5,a5,2	#, tmp215, tmp214
+	addi	a5,a5,-16	#, tmp406, tmp215
+	add	a5,a5,s0	#, tmp215, tmp406
+	lw	a5,-1608(a5)		# _6, grid[i_49][_5]
+# problem11.c:41:       unsigned h = grid[i][j] * grid[i][j+1] * grid[i][j+2] * grid[i][j+3];
+	mulw	a5,a3,a5	# tmp216, _4, _6
+	sext.w	a3,a5	# _7, tmp216
+# problem11.c:41:       unsigned h = grid[i][j] * grid[i][j+1] * grid[i][j+2] * grid[i][j+3];
+	lw	a5,-1644(s0)		# tmp219, j
+	addiw	a5,a5,3	#, tmp217, tmp218
+	sext.w	a5,a5	# _8, tmp217
+# problem11.c:41:       unsigned h = grid[i][j] * grid[i][j+1] * grid[i][j+2] * grid[i][j+3];
+	slli	a2,a5,32	#, tmp220, _8
+	srli	a2,a2,32	#, tmp220, tmp220
+	lwu	a4,-1648(s0)	# tmp221, i
+	mv	a5,a4	# tmp222, tmp221
+	slli	a5,a5,2	#, tmp223, tmp222
+	add	a5,a5,a4	# tmp221, tmp222, tmp222
+	slli	a5,a5,2	#, tmp224, tmp222
+	add	a5,a5,a2	# tmp220, tmp225, tmp222
+	slli	a5,a5,2	#, tmp226, tmp225
+	addi	a5,a5,-16	#, tmp407, tmp226
+	add	a5,a5,s0	#, tmp226, tmp407
+	lw	a5,-1608(a5)		# _9, grid[i_49][_8]
+# problem11.c:41:       unsigned h = grid[i][j] * grid[i][j+1] * grid[i][j+2] * grid[i][j+3];
+	mulw	a5,a3,a5	# tmp227, _7, _9
+	sw	a5,-1640(s0)	# tmp227, h
+# problem11.c:42:       unsigned v = grid[j][i] * grid[j+1][i] * grid[j+2][i] * grid[j+3][i];
+	lwu	a3,-1648(s0)	# tmp228, i
+	lwu	a4,-1644(s0)	# tmp229, j
+	mv	a5,a4	# tmp230, tmp229
+	slli	a5,a5,2	#, tmp231, tmp230
+	add	a5,a5,a4	# tmp229, tmp230, tmp230
+	slli	a5,a5,2	#, tmp232, tmp230
+	add	a5,a5,a3	# tmp228, tmp233, tmp230
+	slli	a5,a5,2	#, tmp234, tmp233
+	addi	a5,a5,-16	#, tmp408, tmp234
+	add	a5,a5,s0	#, tmp234, tmp408
+	lw	a3,-1608(a5)		# _10, grid[j_50][i_49]
+# problem11.c:42:       unsigned v = grid[j][i] * grid[j+1][i] * grid[j+2][i] * grid[j+3][i];
+	lw	a5,-1644(s0)		# tmp237, j
+	addiw	a5,a5,1	#, tmp235, tmp236
+	sext.w	a5,a5	# _11, tmp235
+# problem11.c:42:       unsigned v = grid[j][i] * grid[j+1][i] * grid[j+2][i] * grid[j+3][i];
+	lwu	a2,-1648(s0)	# tmp238, i
+	slli	a4,a5,32	#, tmp239, _11
+	srli	a4,a4,32	#, tmp239, tmp239
+	mv	a5,a4	# tmp240, tmp239
+	slli	a5,a5,2	#, tmp241, tmp240
+	add	a5,a5,a4	# tmp239, tmp240, tmp240
+	slli	a5,a5,2	#, tmp242, tmp240
+	add	a5,a5,a2	# tmp238, tmp243, tmp240
+	slli	a5,a5,2	#, tmp244, tmp243
+	addi	a5,a5,-16	#, tmp409, tmp244
+	add	a5,a5,s0	#, tmp244, tmp409
+	lw	a5,-1608(a5)		# _12, grid[_11][i_49]
+# problem11.c:42:       unsigned v = grid[j][i] * grid[j+1][i] * grid[j+2][i] * grid[j+3][i];
+	mulw	a5,a3,a5	# tmp245, _10, _12
+	sext.w	a3,a5	# _13, tmp245
+# problem11.c:42:       unsigned v = grid[j][i] * grid[j+1][i] * grid[j+2][i] * grid[j+3][i];
+	lw	a5,-1644(s0)		# tmp248, j
+	addiw	a5,a5,2	#, tmp246, tmp247
+	sext.w	a5,a5	# _14, tmp246
+# problem11.c:42:       unsigned v = grid[j][i] * grid[j+1][i] * grid[j+2][i] * grid[j+3][i];
+	lwu	a2,-1648(s0)	# tmp249, i
+	slli	a4,a5,32	#, tmp250, _14
+	srli	a4,a4,32	#, tmp250, tmp250
+	mv	a5,a4	# tmp251, tmp250
+	slli	a5,a5,2	#, tmp252, tmp251
+	add	a5,a5,a4	# tmp250, tmp251, tmp251
+	slli	a5,a5,2	#, tmp253, tmp251
+	add	a5,a5,a2	# tmp249, tmp254, tmp251
+	slli	a5,a5,2	#, tmp255, tmp254
+	addi	a5,a5,-16	#, tmp410, tmp255
+	add	a5,a5,s0	#, tmp255, tmp410
+	lw	a5,-1608(a5)		# _15, grid[_14][i_49]
+# problem11.c:42:       unsigned v = grid[j][i] * grid[j+1][i] * grid[j+2][i] * grid[j+3][i];
+	mulw	a5,a3,a5	# tmp256, _13, _15
+	sext.w	a3,a5	# _16, tmp256
+# problem11.c:42:       unsigned v = grid[j][i] * grid[j+1][i] * grid[j+2][i] * grid[j+3][i];
+	lw	a5,-1644(s0)		# tmp259, j
+	addiw	a5,a5,3	#, tmp257, tmp258
+	sext.w	a5,a5	# _17, tmp257
+# problem11.c:42:       unsigned v = grid[j][i] * grid[j+1][i] * grid[j+2][i] * grid[j+3][i];
+	lwu	a2,-1648(s0)	# tmp260, i
+	slli	a4,a5,32	#, tmp261, _17
+	srli	a4,a4,32	#, tmp261, tmp261
+	mv	a5,a4	# tmp262, tmp261
+	slli	a5,a5,2	#, tmp263, tmp262
+	add	a5,a5,a4	# tmp261, tmp262, tmp262
+	slli	a5,a5,2	#, tmp264, tmp262
+	add	a5,a5,a2	# tmp260, tmp265, tmp262
+	slli	a5,a5,2	#, tmp266, tmp265
+	addi	a5,a5,-16	#, tmp411, tmp266
+	add	a5,a5,s0	#, tmp266, tmp411
 	lw	a5,-1608(a5)		# _18, grid[_17][i_49]
 # problem11.c:42:       unsigned v = grid[j][i] * grid[j+1][i] * grid[j+2][i] * grid[j+3][i];
-	mulw	a5,a3,a5	# tmp205, _16, _18
-	sw	a5,-1636(s0)	# tmp205, v
+	mulw	a5,a3,a5	# tmp267, _16, _18
+	sw	a5,-1636(s0)	# tmp267, v
 # problem11.c:43:       unsigned d1 = grid[i][j] * grid[i+1][j+1] * grid[i+2][j+2] * grid[i+3][j+3];
-	lwu	a3,-1644(s0)	# tmp206, j
-	lwu	a4,-1648(s0)	# tmp207, i
-	mv	a5,a4	# tmp208, tmp207
-	slli	a5,a5,2	#, tmp209, tmp208
-	add	a5,a5,a4	# tmp207, tmp208, tmp208
-	slli	a5,a5,2	#, tmp210, tmp208
-	add	a5,a5,a3	# tmp206, tmp211, tmp208
-	slli	a5,a5,2	#, tmp212, tmp211
-	addi	a5,a5,-16	#, tmp350, tmp212
-	add	a5,a5,s0	#, tmp212, tmp350
+	lwu	a3,-1644(s0)	# tmp268, j
+	lwu	a4,-1648(s0)	# tmp269, i
+	mv	a5,a4	# tmp270, tmp269
+	slli	a5,a5,2	#, tmp271, tmp270
+	add	a5,a5,a4	# tmp269, tmp270, tmp270
+	slli	a5,a5,2	#, tmp272, tmp270
+	add	a5,a5,a3	# tmp268, tmp273, tmp270
+	slli	a5,a5,2	#, tmp274, tmp273
+	addi	a5,a5,-16	#, tmp412, tmp274
+	add	a5,a5,s0	#, tmp274, tmp412
 	lw	a3,-1608(a5)		# _19, grid[i_49][j_50]
 # problem11.c:43:       unsigned d1 = grid[i][j] * grid[i+1][j+1] * grid[i+2][j+2] * grid[i+3][j+3];
-	lw	a5,-1648(s0)		# tmp215, i
-	addiw	a5,a5,1	#, tmp213, tmp214
-	sext.w	a5,a5	# _20, tmp213
+	lw	a5,-1648(s0)		# tmp277, i
+	addiw	a5,a5,1	#, tmp275, tmp276
+	sext.w	a5,a5	# _20, tmp275
 # problem11.c:43:       unsigned d1 = grid[i][j] * grid[i+1][j+1] * grid[i+2][j+2] * grid[i+3][j+3];
-	lw	a4,-1644(s0)		# tmp218, j
-	addiw	a4,a4,1	#, tmp216, tmp217
-	sext.w	a4,a4	# _21, tmp216
+	lw	a4,-1644(s0)		# tmp280, j
+	addiw	a4,a4,1	#, tmp278, tmp279
+	sext.w	a4,a4	# _21, tmp278
 # problem11.c:43:       unsigned d1 = grid[i][j] * grid[i+1][j+1] * grid[i+2][j+2] * grid[i+3][j+3];
-	slli	a2,a4,32	#, tmp219, _21
-	srli	a2,a2,32	#, tmp219, tmp219
-	slli	a4,a5,32	#, tmp220, _20
-	srli	a4,a4,32	#, tmp220, tmp220
-	mv	a5,a4	# tmp221, tmp220
-	slli	a5,a5,2	#, tmp222, tmp221
-	add	a5,a5,a4	# tmp220, tmp221, tmp221
-	slli	a5,a5,2	#, tmp223, tmp221
-	add	a5,a5,a2	# tmp219, tmp224, tmp221
-	slli	a5,a5,2	#, tmp225, tmp224
-	addi	a5,a5,-16	#, tmp351, tmp225
-	add	a5,a5,s0	#, tmp225, tmp351
+	slli	a2,a4,32	#, tmp281, _21
+	srli	a2,a2,32	#, tmp281, tmp281
+	slli	a4,a5,32	#, tmp282, _20
+	srli	a4,a4,32	#, tmp282, tmp282
+	mv	a5,a4	# tmp283, tmp282
+	slli	a5,a5,2	#, tmp284, tmp283
+	add	a5,a5,a4	# tmp282, tmp283, tmp283
+	slli	a5,a5,2	#, tmp285, tmp283
+	add	a5,a5,a2	# tmp281, tmp286, tmp283
+	slli	a5,a5,2	#, tmp287, tmp286
+	addi	a5,a5,-16	#, tmp413, tmp287
+	add	a5,a5,s0	#, tmp287, tmp413
 	lw	a5,-1608(a5)		# _22, grid[_20][_21]
 # problem11.c:43:       unsigned d1 = grid[i][j] * grid[i+1][j+1] * grid[i+2][j+2] * grid[i+3][j+3];
-	mulw	a5,a3,a5	# tmp226, _19, _22
-	sext.w	a3,a5	# _23, tmp226
+	mulw	a5,a3,a5	# tmp288, _19, _22
+	sext.w	a3,a5	# _23, tmp288
 # problem11.c:43:       unsigned d1 = grid[i][j] * grid[i+1][j+1] * grid[i+2][j+2] * grid[i+3][j+3];
-	lw	a5,-1648(s0)		# tmp229, i
-	addiw	a5,a5,2	#, tmp227, tmp228
-	sext.w	a5,a5	# _24, tmp227
+	lw	a5,-1648(s0)		# tmp291, i
+	addiw	a5,a5,2	#, tmp289, tmp290
+	sext.w	a5,a5	# _24, tmp289
 # problem11.c:43:       unsigned d1 = grid[i][j] * grid[i+1][j+1] * grid[i+2][j+2] * grid[i+3][j+3];
-	lw	a4,-1644(s0)		# tmp232, j
-	addiw	a4,a4,2	#, tmp230, tmp231
-	sext.w	a4,a4	# _25, tmp230
+	lw	a4,-1644(s0)		# tmp294, j
+	addiw	a4,a4,2	#, tmp292, tmp293
+	sext.w	a4,a4	# _25, tmp292
 # problem11.c:43:       unsigned d1 = grid[i][j] * grid[i+1][j+1] * grid[i+2][j+2] * grid[i+3][j+3];
-	slli	a2,a4,32	#, tmp233, _25
-	srli	a2,a2,32	#, tmp233, tmp233
-	slli	a4,a5,32	#, tmp234, _24
-	srli	a4,a4,32	#, tmp234, tmp234
-	mv	a5,a4	# tmp235, tmp234
-	slli	a5,a5,2	#, tmp236, tmp235
-	add	a5,a5,a4	# tmp234, tmp235, tmp235
-	slli	a5,a5,2	#, tmp237, tmp235
-	add	a5,a5,a2	# tmp233, tmp238, tmp235
-	slli	a5,a5,2	#, tmp239, tmp238
-	addi	a5,a5,-16	#, tmp352, tmp239
-	add	a5,a5,s0	#, tmp239, tmp352
+	slli	a2,a4,32	#, tmp295, _25
+	srli	a2,a2,32	#, tmp295, tmp295
+	slli	a4,a5,32	#, tmp296, _24
+	srli	a4,a4,32	#, tmp296, tmp296
+	mv	a5,a4	# tmp297, tmp296
+	slli	a5,a5,2	#, tmp298, tmp297
+	add	a5,a5,a4	# tmp296, tmp297, tmp297
+	slli	a5,a5,2	#, tmp299, tmp297
+	add	a5,a5,a2	# tmp295, tmp300, tmp297
+	slli	a5,a5,2	#, tmp301, tmp300
+	addi	a5,a5,-16	#, tmp414, tmp301
+	add	a5,a5,s0	#, tmp301, tmp414
 	lw	a5,-1608(a5)		# _26, grid[_24][_25]
 # problem11.c:43:       unsigned d1 = grid[i][j] * grid[i+1][j+1] * grid[i+2][j+2] * grid[i+3][j+3];
-	mulw	a5,a3,a5	# tmp240, _23, _26
-	sext.w	a3,a5	# _27, tmp240
+	mulw	a5,a3,a5	# tmp302, _23, _26
+	sext.w	a3,a5	# _27, tmp302
 # problem11.c:43:       unsigned d1 = grid[i][j] * grid[i+1][j+1] * grid[i+2][j+2] * grid[i+3][j+3];
-	lw	a5,-1648(s0)		# tmp243, i
-	addiw	a5,a5,3	#, tmp241, tmp242
-	sext.w	a5,a5	# _28, tmp241
+	lw	a5,-1648(s0)		# tmp305, i
+	addiw	a5,a5,3	#, tmp303, tmp304
+	sext.w	a5,a5	# _28, tmp303
 # problem11.c:43:       unsigned d1 = grid[i][j] * grid[i+1][j+1] * grid[i+2][j+2] * grid[i+3][j+3];
-	lw	a4,-1644(s0)		# tmp246, j
-	addiw	a4,a4,3	#, tmp244, tmp245
-	sext.w	a4,a4	# _29, tmp244
+	lw	a4,-1644(s0)		# tmp308, j
+	addiw	a4,a4,3	#, tmp306, tmp307
+	sext.w	a4,a4	# _29, tmp306
 # problem11.c:43:       unsigned d1 = grid[i][j] * grid[i+1][j+1] * grid[i+2][j+2] * grid[i+3][j+3];
-	slli	a2,a4,32	#, tmp247, _29
-	srli	a2,a2,32	#, tmp247, tmp247
-	slli	a4,a5,32	#, tmp248, _28
-	srli	a4,a4,32	#, tmp248, tmp248
-	mv	a5,a4	# tmp249, tmp248
-	slli	a5,a5,2	#, tmp250, tmp249
-	add	a5,a5,a4	# tmp248, tmp249, tmp249
-	slli	a5,a5,2	#, tmp251, tmp249
-	add	a5,a5,a2	# tmp247, tmp252, tmp249
-	slli	a5,a5,2	#, tmp253, tmp252
-	addi	a5,a5,-16	#, tmp353, tmp253
-	add	a5,a5,s0	#, tmp253, tmp353
+	slli	a2,a4,32	#, tmp309, _29
+	srli	a2,a2,32	#, tmp309, tmp309
+	slli	a4,a5,32	#, tmp310, _28
+	srli	a4,a4,32	#, tmp310, tmp310
+	mv	a5,a4	# tmp311, tmp310
+	slli	a5,a5,2	#, tmp312, tmp311
+	add	a5,a5,a4	# tmp310, tmp311, tmp311
+	slli	a5,a5,2	#, tmp313, tmp311
+	add	a5,a5,a2	# tmp309, tmp314, tmp311
+	slli	a5,a5,2	#, tmp315, tmp314
+	addi	a5,a5,-16	#, tmp415, tmp315
+	add	a5,a5,s0	#, tmp315, tmp415
 	lw	a5,-1608(a5)		# _30, grid[_28][_29]
 # problem11.c:43:       unsigned d1 = grid[i][j] * grid[i+1][j+1] * grid[i+2][j+2] * grid[i+3][j+3];
-	mulw	a5,a3,a5	# tmp254, _27, _30
-	sw	a5,-1632(s0)	# tmp254, d1
+	mulw	a5,a3,a5	# tmp316, _27, _30
+	sw	a5,-1632(s0)	# tmp316, d1
 # problem11.c:44:       unsigned d2 = grid[i][N-j-1] * grid[i+1][N-j-2] * grid[i+2][N-j-3] * grid[i+3][N-j-4];
-	li	a5,19		# tmp256,
-	lw	a4,-1644(s0)		# tmp258, j
-	subw	a5,a5,a4	# tmp255, tmp256, tmp257
-	sext.w	a5,a5	# _31, tmp255
+	li	a5,19		# tmp318,
+	lw	a4,-1644(s0)		# tmp320, j
+	subw	a5,a5,a4	# tmp317, tmp318, tmp319
+	sext.w	a5,a5	# _31, tmp317
 # problem11.c:44:       unsigned d2 = grid[i][N-j-1] * grid[i+1][N-j-2] * grid[i+2][N-j-3] * grid[i+3][N-j-4];
-	slli	a3,a5,32	#, tmp259, _31
-	srli	a3,a3,32	#, tmp259, tmp259
-	lwu	a4,-1648(s0)	# tmp260, i
-	mv	a5,a4	# tmp261, tmp260
-	slli	a5,a5,2	#, tmp262, tmp261
-	add	a5,a5,a4	# tmp260, tmp261, tmp261
-	slli	a5,a5,2	#, tmp263, tmp261
-	add	a5,a5,a3	# tmp259, tmp264, tmp261
-	slli	a5,a5,2	#, tmp265, tmp264
-	addi	a5,a5,-16	#, tmp354, tmp265
-	add	a5,a5,s0	#, tmp265, tmp354
+	slli	a3,a5,32	#, tmp321, _31
+	srli	a3,a3,32	#, tmp321, tmp321
+	lwu	a4,-1648(s0)	# tmp322, i
+	mv	a5,a4	# tmp323, tmp322
+	slli	a5,a5,2	#, tmp324, tmp323
+	add	a5,a5,a4	# tmp322, tmp323, tmp323
+	slli	a5,a5,2	#, tmp325, tmp323
+	add	a5,a5,a3	# tmp321, tmp326, tmp323
+	slli	a5,a5,2	#, tmp327, tmp326
+	addi	a5,a5,-16	#, tmp416, tmp327
+	add	a5,a5,s0	#, tmp327, tmp416
 	lw	a3,-1608(a5)		# _32, grid[i_49][_31]
 # problem11.c:44:       unsigned d2 = grid[i][N-j-1] * grid[i+1][N-j-2] * grid[i+2][N-j-3] * grid[i+3][N-j-4];
-	lw	a5,-1648(s0)		# tmp268, i
-	addiw	a5,a5,1	#, tmp266, tmp267
-	sext.w	a4,a5	# _33, tmp266
+	lw	a5,-1648(s0)		# tmp330, i
+	addiw	a5,a5,1	#, tmp328, tmp329
+	sext.w	a4,a5	# _33, tmp328
 # problem11.c:44:       unsigned d2 = grid[i][N-j-1] * grid[i+1][N-j-2] * grid[i+2][N-j-3] * grid[i+3][N-j-4];
-	li	a5,18		# tmp270,
-	lw	a2,-1644(s0)		# tmp272, j
-	subw	a5,a5,a2	# tmp269, tmp270, tmp271
-	sext.w	a5,a5	# _34, tmp269
+	li	a5,18		# tmp332,
+	lw	a2,-1644(s0)		# tmp334, j
+	subw	a5,a5,a2	# tmp331, tmp332, tmp333
+	sext.w	a5,a5	# _34, tmp331
 # problem11.c:44:       unsigned d2 = grid[i][N-j-1] * grid[i+1][N-j-2] * grid[i+2][N-j-3] * grid[i+3][N-j-4];
-	slli	a2,a5,32	#, tmp273, _34
-	srli	a2,a2,32	#, tmp273, tmp273
-	slli	a4,a4,32	#, tmp274, _33
-	srli	a4,a4,32	#, tmp274, tmp274
-	mv	a5,a4	# tmp275, tmp274
-	slli	a5,a5,2	#, tmp276, tmp275
-	add	a5,a5,a4	# tmp274, tmp275, tmp275
-	slli	a5,a5,2	#, tmp277, tmp275
-	add	a5,a5,a2	# tmp273, tmp278, tmp275
-	slli	a5,a5,2	#, tmp279, tmp278
-	addi	a5,a5,-16	#, tmp355, tmp279
-	add	a5,a5,s0	#, tmp279, tmp355
+	slli	a2,a5,32	#, tmp335, _34
+	srli	a2,a2,32	#, tmp335, tmp335
+	slli	a4,a4,32	#, tmp336, _33
+	srli	a4,a4,32	#, tmp336, tmp336
+	mv	a5,a4	# tmp337, tmp336
+	slli	a5,a5,2	#, tmp338, tmp337
+	add	a5,a5,a4	# tmp336, tmp337, tmp337
+	slli	a5,a5,2	#, tmp339, tmp337
+	add	a5,a5,a2	# tmp335, tmp340, tmp337
+	slli	a5,a5,2	#, tmp341, tmp340
+	addi	a5,a5,-16	#, tmp417, tmp341
+	add	a5,a5,s0	#, tmp341, tmp417
 	lw	a5,-1608(a5)		# _35, grid[_33][_34]
 # problem11.c:44:       unsigned d2 = grid[i][N-j-1] * grid[i+1][N-j-2] * grid[i+2][N-j-3] * grid[i+3][N-j-4];
-	mulw	a5,a3,a5	# tmp280, _32, _35
-	sext.w	a3,a5	# _36, tmp280
+	mulw	a5,a3,a5	# tmp342, _32, _35
+	sext.w	a3,a5	# _36, tmp342
 # problem11.c:44:       unsigned d2 = grid[i][N-j-1] * grid[i+1][N-j-2] * grid[i+2][N-j-3] * grid[i+3][N-j-4];
-	lw	a5,-1648(s0)		# tmp283, i
-	addiw	a5,a5,2	#, tmp281, tmp282
-	sext.w	a4,a5	# _37, tmp281
+	lw	a5,-1648(s0)		# tmp345, i
+	addiw	a5,a5,2	#, tmp343, tmp344
+	sext.w	a4,a5	# _37, tmp343
 # problem11.c:44:       unsigned d2 = grid[i][N-j-1] * grid[i+1][N-j-2] * grid[i+2][N-j-3] * grid[i+3][N-j-4];
-	li	a5,17		# tmp285,
-	lw	a2,-1644(s0)		# tmp287, j
-	subw	a5,a5,a2	# tmp284, tmp285, tmp286
-	sext.w	a5,a5	# _38, tmp284
+	li	a5,17		# tmp347,
+	lw	a2,-1644(s0)		# tmp349, j
+	subw	a5,a5,a2	# tmp346, tmp347, tmp348
+	sext.w	a5,a5	# _38, tmp346
 # problem11.c:44:       unsigned d2 = grid[i][N-j-1] * grid[i+1][N-j-2] * grid[i+2][N-j-3] * grid[i+3][N-j-4];
-	slli	a2,a5,32	#, tmp288, _38
-	srli	a2,a2,32	#, tmp288, tmp288
-	slli	a4,a4,32	#, tmp289, _37
-	srli	a4,a4,32	#, tmp289, tmp289
-	mv	a5,a4	# tmp290, tmp289
-	slli	a5,a5,2	#, tmp291, tmp290
-	add	a5,a5,a4	# tmp289, tmp290, tmp290
-	slli	a5,a5,2	#, tmp292, tmp290
-	add	a5,a5,a2	# tmp288, tmp293, tmp290
-	slli	a5,a5,2	#, tmp294, tmp293
-	addi	a5,a5,-16	#, tmp356, tmp294
-	add	a5,a5,s0	#, tmp294, tmp356
+	slli	a2,a5,32	#, tmp350, _38
+	srli	a2,a2,32	#, tmp350, tmp350
+	slli	a4,a4,32	#, tmp351, _37
+	srli	a4,a4,32	#, tmp351, tmp351
+	mv	a5,a4	# tmp352, tmp351
+	slli	a5,a5,2	#, tmp353, tmp352
+	add	a5,a5,a4	# tmp351, tmp352, tmp352
+	slli	a5,a5,2	#, tmp354, tmp352
+	add	a5,a5,a2	# tmp350, tmp355, tmp352
+	slli	a5,a5,2	#, tmp356, tmp355
+	addi	a5,a5,-16	#, tmp418, tmp356
+	add	a5,a5,s0	#, tmp356, tmp418
 	lw	a5,-1608(a5)		# _39, grid[_37][_38]
 # problem11.c:44:       unsigned d2 = grid[i][N-j-1] * grid[i+1][N-j-2] * grid[i+2][N-j-3] * grid[i+3][N-j-4];
-	mulw	a5,a3,a5	# tmp295, _36, _39
-	sext.w	a3,a5	# _40, tmp295
+	mulw	a5,a3,a5	# tmp357, _36, _39
+	sext.w	a3,a5	# _40, tmp357
 # problem11.c:44:       unsigned d2 = grid[i][N-j-1] * grid[i+1][N-j-2] * grid[i+2][N-j-3] * grid[i+3][N-j-4];
-	lw	a5,-1648(s0)		# tmp298, i
-	addiw	a5,a5,3	#, tmp296, tmp297
-	sext.w	a4,a5	# _41, tmp296
+	lw	a5,-1648(s0)		# tmp360, i
+	addiw	a5,a5,3	#, tmp358, tmp359
+	sext.w	a4,a5	# _41, tmp358
 # problem11.c:44:       unsigned d2 = grid[i][N-j-1] * grid[i+1][N-j-2] * grid[i+2][N-j-3] * grid[i+3][N-j-4];
-	li	a5,16		# tmp300,
-	lw	a2,-1644(s0)		# tmp302, j
-	subw	a5,a5,a2	# tmp299, tmp300, tmp301
-	sext.w	a5,a5	# _42, tmp299
+	li	a5,16		# tmp362,
+	lw	a2,-1644(s0)		# tmp364, j
+	subw	a5,a5,a2	# tmp361, tmp362, tmp363
+	sext.w	a5,a5	# _42, tmp361
 # problem11.c:44:       unsigned d2 = grid[i][N-j-1] * grid[i+1][N-j-2] * grid[i+2][N-j-3] * grid[i+3][N-j-4];
-	slli	a2,a5,32	#, tmp303, _42
-	srli	a2,a2,32	#, tmp303, tmp303
-	slli	a4,a4,32	#, tmp304, _41
-	srli	a4,a4,32	#, tmp304, tmp304
-	mv	a5,a4	# tmp305, tmp304
-	slli	a5,a5,2	#, tmp306, tmp305
-	add	a5,a5,a4	# tmp304, tmp305, tmp305
-	slli	a5,a5,2	#, tmp307, tmp305
-	add	a5,a5,a2	# tmp303, tmp308, tmp305
-	slli	a5,a5,2	#, tmp309, tmp308
-	addi	a5,a5,-16	#, tmp357, tmp309
-	add	a5,a5,s0	#, tmp309, tmp357
+	slli	a2,a5,32	#, tmp365, _42
+	srli	a2,a2,32	#, tmp365, tmp365
+	slli	a4,a4,32	#, tmp366, _41
+	srli	a4,a4,32	#, tmp366, tmp366
+	mv	a5,a4	# tmp367, tmp366
+	slli	a5,a5,2	#, tmp368, tmp367
+	add	a5,a5,a4	# tmp366, tmp367, tmp367
+	slli	a5,a5,2	#, tmp369, tmp367
+	add	a5,a5,a2	# tmp365, tmp370, tmp367
+	slli	a5,a5,2	#, tmp371, tmp370
+	addi	a5,a5,-16	#, tmp419, tmp371
+	add	a5,a5,s0	#, tmp371, tmp419
 	lw	a5,-1608(a5)		# _43, grid[_41][_42]
 # problem11.c:44:       unsigned d2 = grid[i][N-j-1] * grid[i+1][N-j-2] * grid[i+2][N-j-3] * grid[i+3][N-j-4];
-	mulw	a5,a3,a5	# tmp310, _40, _43
-	sw	a5,-1628(s0)	# tmp310, d2
+	mulw	a5,a3,a5	# tmp372, _40, _43
+	sw	a5,-1628(s0)	# tmp372, d2
 # problem11.c:45:       m = max(m, max(h, max(v, max(d1, d2))));
-	lw	a4,-1628(s0)		# tmp311, d2
-	lw	a5,-1632(s0)		# tmp312, d1
-	mv	a1,a4	#, tmp311
-	mv	a0,a5	#, tmp312
+	lw	a4,-1628(s0)		# tmp373, d2
+	lw	a5,-1632(s0)		# tmp374, d1
+	mv	a1,a4	#, tmp373
+	mv	a0,a5	#, tmp374
 	call	max		#
-	mv	a5,a0	# tmp313,
-	sext.w	a4,a5	# _44, tmp313
-	lw	a5,-1636(s0)		# tmp314, v
+	mv	a5,a0	# tmp375,
+	sext.w	a4,a5	# _44, tmp375
+# problem11.c:45:       m = max(m, max(h, max(v, max(d1, d2))));
+	lw	a5,-1636(s0)		# tmp376, v
 	mv	a1,a4	#, _44
-	mv	a0,a5	#, tmp314
+	mv	a0,a5	#, tmp376
 	call	max		#
-	mv	a5,a0	# tmp315,
-	sext.w	a4,a5	# _45, tmp315
-	lw	a5,-1640(s0)		# tmp316, h
+	mv	a5,a0	# tmp377,
+	sext.w	a4,a5	# _45, tmp377
+# problem11.c:45:       m = max(m, max(h, max(v, max(d1, d2))));
+	lw	a5,-1640(s0)		# tmp378, h
 	mv	a1,a4	#, _45
-	mv	a0,a5	#, tmp316
+	mv	a0,a5	#, tmp378
 	call	max		#
-	mv	a5,a0	# tmp317,
-	sext.w	a4,a5	# _46, tmp317
-	lw	a5,-1652(s0)		# tmp318, m
+	mv	a5,a0	# tmp379,
+	sext.w	a4,a5	# _46, tmp379
+# problem11.c:45:       m = max(m, max(h, max(v, max(d1, d2))));
+	lw	a5,-1652(s0)		# tmp380, m
 	mv	a1,a4	#, _46
-	mv	a0,a5	#, tmp318
+	mv	a0,a5	#, tmp380
 	call	max		#
-	mv	a5,a0	# tmp319,
-	sw	a5,-1652(s0)	# tmp319, m
+	mv	a5,a0	# tmp381,
+	sw	a5,-1652(s0)	# tmp381, m
 # problem11.c:40:     for (j = 0; j < N-3; j++) {
-	lw	a5,-1644(s0)		# tmp322, j
-	addiw	a5,a5,1	#, tmp320, tmp321
-	sw	a5,-1644(s0)	# tmp320, j
+	lw	a5,-1644(s0)		# tmp384, j
+	addiw	a5,a5,1	#, tmp382, tmp383
+	sw	a5,-1644(s0)	# tmp382, j
 .L3:
 # problem11.c:40:     for (j = 0; j < N-3; j++) {
-	lw	a5,-1644(s0)		# tmp324, j
-	sext.w	a4,a5	# tmp325, tmp323
-	li	a5,16		# tmp326,
-	bleu	a4,a5,.L4	#, tmp325, tmp326,
+	lw	a5,-1644(s0)		# tmp386, j
+	sext.w	a4,a5	# tmp387, tmp385
+	li	a5,16		# tmp388,
+	bleu	a4,a5,.L4	#, tmp387, tmp388,
 # problem11.c:39:   for (i = 0; i < N-3; i++) {
-	lw	a5,-1648(s0)		# tmp329, i
-	addiw	a5,a5,1	#, tmp327, tmp328
-	sw	a5,-1648(s0)	# tmp327, i
+	lw	a5,-1648(s0)		# tmp391, i
+	addiw	a5,a5,1	#, tmp389, tmp390
+	sw	a5,-1648(s0)	# tmp389, i
 .L2:
 # problem11.c:39:   for (i = 0; i < N-3; i++) {
-	lw	a5,-1648(s0)		# tmp331, i
-	sext.w	a4,a5	# tmp332, tmp330
-	li	a5,16		# tmp333,
-	bleu	a4,a5,.L5	#, tmp332, tmp333,
+	lw	a5,-1648(s0)		# tmp393, i
+	sext.w	a4,a5	# tmp394, tmp392
+	li	a5,16		# tmp395,
+	bleu	a4,a5,.L5	#, tmp394, tmp395,
 # problem11.c:48:   printf("%u\n", m);
-	lw	a5,-1652(s0)		# tmp334, m
-	mv	a1,a5	#, tmp334
+	lw	a5,-1652(s0)		# tmp396, m
+	mv	a1,a5	#, tmp396
 	lla	a0,.LC1	#,
 	call	printf@plt	#
 # problem11.c:50:   return 0;
 	li	a5,0		# _58,
 # problem11.c:51: }
 	mv	a4,a5	# <retval>, _58
-	la	a5,__stack_chk_guard		# tmp336,
-	ld	a3, -24(s0)	# tmp339, D.1922
-	ld	a5, 0(a5)	# tmp337, __stack_chk_guard
-	xor	a5, a3, a5	# tmp337, tmp339
-	li	a3, 0	# tmp339
-	beq	a5,zero,.L7	#, tmp337,,
+	la	a5,__stack_chk_guard		# tmp398,
+	ld	a3, -24(s0)	# tmp401, D.2740
+	ld	a5, 0(a5)	# tmp399, __stack_chk_guard
+	xor	a5, a3, a5	# tmp399, tmp401
+	li	a3, 0	# tmp401
+	beq	a5,zero,.L7	#, tmp399,,
 	call	__stack_chk_fail@plt	#
 .L7:
 	mv	a0,a4	#, <retval>
 	ld	ra,1656(sp)		#,
+	.cfi_restore 1
 	ld	s0,1648(sp)		#,
+	.cfi_restore 8
+	.cfi_def_cfa 2, 1664
 	addi	sp,sp,1664	#,,
+	.cfi_def_cfa_offset 0
 	jr	ra		#
+	.cfi_endproc
+.LFE0:
 	.size	main, .-main
 	.align	1
 	.type	max, @function
 max:
+.LFB1:
+	.cfi_startproc
 	addi	sp,sp,-32	#,,
+	.cfi_def_cfa_offset 32
 	sd	s0,24(sp)	#,
+	.cfi_offset 8, -8
 	addi	s0,sp,32	#,,
-	mv	a5,a0	# tmp74, a
-	mv	a4,a1	# tmp76, b
-	sw	a5,-20(s0)	# tmp75, a
-	mv	a5,a4	# tmp77, tmp76
-	sw	a5,-24(s0)	# tmp77, b
+	.cfi_def_cfa 8, 0
+	mv	a5,a0	# tmp136, a
+	mv	a4,a1	# tmp138, b
+	sw	a5,-20(s0)	# tmp137, a
+	mv	a5,a4	# tmp139, tmp138
+	sw	a5,-24(s0)	# tmp139, b
 # problem11.c:55:   return a > b ? a : b;
-	lw	a5,-20(s0)		# tmp80, a
-	mv	a2,a5	# tmp79, tmp80
-	lw	a5,-24(s0)		# tmp81, b
-	mv	a3,a5	# tmp78, tmp81
-	sext.w	a4,a3	# tmp82, tmp78
-	sext.w	a5,a2	# tmp83, tmp79
-	bgeu	a4,a5,.L9	#, tmp82, tmp83,
-	mv	a3,a2	# tmp78, tmp79
+	lw	a5,-20(s0)		# tmp142, a
+	mv	a2,a5	# tmp141, tmp142
+	lw	a5,-24(s0)		# tmp143, b
+	mv	a3,a5	# tmp140, tmp143
+	sext.w	a4,a3	# tmp144, tmp140
+	sext.w	a5,a2	# tmp145, tmp141
+	bgeu	a4,a5,.L9	#, tmp144, tmp145,
+	mv	a3,a2	# tmp140, tmp141
 .L9:
-	sext.w	a5,a3	# _3, tmp78
+	sext.w	a5,a3	# _3, tmp140
 # problem11.c:56: }
 	mv	a0,a5	#, <retval>
 	ld	s0,24(sp)		#,
+	.cfi_restore 8
+	.cfi_def_cfa 2, 32
 	addi	sp,sp,32	#,,
+	.cfi_def_cfa_offset 0
 	jr	ra		#
+	.cfi_endproc
+.LFE1:
 	.size	max, .-max
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits

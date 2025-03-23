@@ -213,7 +213,7 @@ is_abundant:
 	.cfi_endproc
 .LFE7:
 	.size	is_abundant, .-is_abundant
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

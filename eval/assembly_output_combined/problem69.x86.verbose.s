@@ -1,6 +1,6 @@
 	.file	"problem69.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -122,6 +122,7 @@ issame:
 	je	.L9	#,
 # problem69.c:31:     if (a_length != b_length) return 0;
 	movl	$0, %eax	#, _10
+# problem69.c:31:     if (a_length != b_length) return 0;
 	jmp	.L10	#
 .L9:
 # problem69.c:32:     for (int i = 0; i < a_length; ++i) {
@@ -148,6 +149,7 @@ issame:
 	je	.L12	#,
 # problem69.c:33:         if (a[i] != b[i]) return 0;
 	movl	$0, %eax	#, _10
+# problem69.c:33:         if (a[i] != b[i]) return 0;
 	jmp	.L10	#
 .L12:
 # problem69.c:32:     for (int i = 0; i < a_length; ++i) {
@@ -199,7 +201,7 @@ main:
 	subq	$224, %rsp	#,
 # problem69.c:38: int main() {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp151
-	movq	%rax, -8(%rbp)	# tmp151, D.2972
+	movq	%rax, -8(%rbp)	# tmp151, D.3809
 	xorl	%eax, %eax	# tmp151
 # problem69.c:42:     int test1[] = {4, 2, 3};
 	movl	$4, -152(%rbp)	#, test1[0]
@@ -222,9 +224,9 @@ main:
 	movl	$2, %edx	#,
 	movq	%rax, %rdi	# tmp94,
 	call	issame	#
+# problem69.c:45:     assert(issame(result, expect1, 2, 2));
 	testl	%eax, %eax	# _1
 	jne	.L15	#,
-# problem69.c:45:     assert(issame(result, expect1, 2, 2));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp95
 	movq	%rax, %rcx	# tmp95,
 	movl	$45, %edx	#,
@@ -255,9 +257,9 @@ main:
 	movl	$2, %edx	#,
 	movq	%rax, %rdi	# tmp102,
 	call	issame	#
+# problem69.c:50:     assert(issame(result, expect2, 2, 2));
 	testl	%eax, %eax	# _2
 	jne	.L16	#,
-# problem69.c:50:     assert(issame(result, expect2, 2, 2));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp103
 	movq	%rax, %rcx	# tmp103,
 	movl	$50, %edx	#,
@@ -311,9 +313,9 @@ main:
 	movl	$2, %edx	#,
 	movq	%rax, %rdi	# tmp116,
 	call	issame	#
+# problem69.c:59:     assert(issame(result, expect4, 2, 2));
 	testl	%eax, %eax	# _3
 	jne	.L18	#,
-# problem69.c:59:     assert(issame(result, expect4, 2, 2));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp117
 	movq	%rax, %rcx	# tmp117,
 	movl	$59, %edx	#,
@@ -347,9 +349,9 @@ main:
 	movl	$2, %edx	#,
 	movq	%rax, %rdi	# tmp124,
 	call	issame	#
+# problem69.c:64:     assert(issame(result, expect5, 2, 2));
 	testl	%eax, %eax	# _4
 	jne	.L19	#,
-# problem69.c:64:     assert(issame(result, expect5, 2, 2));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp125
 	movq	%rax, %rcx	# tmp125,
 	movl	$64, %edx	#,
@@ -382,9 +384,9 @@ main:
 	movl	$2, %edx	#,
 	movq	%rax, %rdi	# tmp132,
 	call	issame	#
+# problem69.c:69:     assert(issame(result, expect6, 2, 2));
 	testl	%eax, %eax	# _5
 	jne	.L20	#,
-# problem69.c:69:     assert(issame(result, expect6, 2, 2));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp133
 	movq	%rax, %rcx	# tmp133,
 	movl	$69, %edx	#,
@@ -416,9 +418,9 @@ main:
 	movl	$2, %edx	#,
 	movq	%rax, %rdi	# tmp140,
 	call	issame	#
+# problem69.c:74:     assert(issame(result, expect7, 2, 2));
 	testl	%eax, %eax	# _6
 	jne	.L21	#,
-# problem69.c:74:     assert(issame(result, expect7, 2, 2));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp141
 	movq	%rax, %rcx	# tmp141,
 	movl	$74, %edx	#,
@@ -454,9 +456,9 @@ main:
 	call	__assert_fail@PLT	#
 .L22:
 # problem69.c:80:     return 0;
-	movl	$0, %eax	#, _82
+	movl	$0, %eax	#, _81
 # problem69.c:81: }
-	movq	-8(%rbp), %rdx	# D.2972, tmp152
+	movq	-8(%rbp), %rdx	# D.3809, tmp152
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp152
 	je	.L24	#,
 	call	__stack_chk_fail@PLT	#
@@ -472,7 +474,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

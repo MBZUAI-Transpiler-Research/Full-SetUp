@@ -1,6 +1,6 @@
 	.file	"problem128.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -47,6 +47,7 @@ func0:
 	jg	.L2	#,
 # problem128.c:9:     if (l < 2) return "NO";
 	leaq	.LC0(%rip), %rax	#, _4
+# problem128.c:9:     if (l < 2) return "NO";
 	jmp	.L3	#
 .L2:
 # problem128.c:11:     for (i = 2; i * i <= l; i++)
@@ -64,6 +65,7 @@ func0:
 	jne	.L5	#,
 # problem128.c:12:         if (l % i == 0) return "NO";
 	leaq	.LC0(%rip), %rax	#, _4
+# problem128.c:12:         if (l % i == 0) return "NO";
 	jmp	.L3	#
 .L5:
 # problem128.c:11:     for (i = 2; i * i <= l; i++)
@@ -131,10 +133,12 @@ main:
 	movl	$1, %edi	#,
 	call	func0	#
 	movq	%rax, %rdx	#, _1
+# problem128.c:24:     assert(strcmp(func0(1, 2, 2, 3), "NO") == 0);
 	leaq	.LC0(%rip), %rax	#, tmp100
 	movq	%rax, %rsi	# tmp100,
 	movq	%rdx, %rdi	# _1,
 	call	strcmp@PLT	#
+# problem128.c:24:     assert(strcmp(func0(1, 2, 2, 3), "NO") == 0);
 	testl	%eax, %eax	# _2
 	je	.L8	#,
 # problem128.c:24:     assert(strcmp(func0(1, 2, 2, 3), "NO") == 0);
@@ -154,10 +158,12 @@ main:
 	movl	$-1, %edi	#,
 	call	func0	#
 	movq	%rax, %rdx	#, _3
+# problem128.c:25:     assert(strcmp(func0(-1, 1, 0, 4), "NO") == 0);
 	leaq	.LC0(%rip), %rax	#, tmp104
 	movq	%rax, %rsi	# tmp104,
 	movq	%rdx, %rdi	# _3,
 	call	strcmp@PLT	#
+# problem128.c:25:     assert(strcmp(func0(-1, 1, 0, 4), "NO") == 0);
 	testl	%eax, %eax	# _4
 	je	.L9	#,
 # problem128.c:25:     assert(strcmp(func0(-1, 1, 0, 4), "NO") == 0);
@@ -177,10 +183,12 @@ main:
 	movl	$-3, %edi	#,
 	call	func0	#
 	movq	%rax, %rdx	#, _5
+# problem128.c:26:     assert(strcmp(func0(-3, -1, -5, 5), "YES") == 0);
 	leaq	.LC1(%rip), %rax	#, tmp108
 	movq	%rax, %rsi	# tmp108,
 	movq	%rdx, %rdi	# _5,
 	call	strcmp@PLT	#
+# problem128.c:26:     assert(strcmp(func0(-3, -1, -5, 5), "YES") == 0);
 	testl	%eax, %eax	# _6
 	je	.L10	#,
 # problem128.c:26:     assert(strcmp(func0(-3, -1, -5, 5), "YES") == 0);
@@ -200,10 +208,12 @@ main:
 	movl	$-2, %edi	#,
 	call	func0	#
 	movq	%rax, %rdx	#, _7
+# problem128.c:27:     assert(strcmp(func0(-2, 2, -4, 0), "YES") == 0);
 	leaq	.LC1(%rip), %rax	#, tmp112
 	movq	%rax, %rsi	# tmp112,
 	movq	%rdx, %rdi	# _7,
 	call	strcmp@PLT	#
+# problem128.c:27:     assert(strcmp(func0(-2, 2, -4, 0), "YES") == 0);
 	testl	%eax, %eax	# _8
 	je	.L11	#,
 # problem128.c:27:     assert(strcmp(func0(-2, 2, -4, 0), "YES") == 0);
@@ -223,10 +233,12 @@ main:
 	movl	$-11, %edi	#,
 	call	func0	#
 	movq	%rax, %rdx	#, _9
+# problem128.c:28:     assert(strcmp(func0(-11, 2, -1, -1), "NO") == 0);
 	leaq	.LC0(%rip), %rax	#, tmp116
 	movq	%rax, %rsi	# tmp116,
 	movq	%rdx, %rdi	# _9,
 	call	strcmp@PLT	#
+# problem128.c:28:     assert(strcmp(func0(-11, 2, -1, -1), "NO") == 0);
 	testl	%eax, %eax	# _10
 	je	.L12	#,
 # problem128.c:28:     assert(strcmp(func0(-11, 2, -1, -1), "NO") == 0);
@@ -246,10 +258,12 @@ main:
 	movl	$1, %edi	#,
 	call	func0	#
 	movq	%rax, %rdx	#, _11
+# problem128.c:29:     assert(strcmp(func0(1, 2, 3, 5), "NO") == 0);
 	leaq	.LC0(%rip), %rax	#, tmp120
 	movq	%rax, %rsi	# tmp120,
 	movq	%rdx, %rdi	# _11,
 	call	strcmp@PLT	#
+# problem128.c:29:     assert(strcmp(func0(1, 2, 3, 5), "NO") == 0);
 	testl	%eax, %eax	# _12
 	je	.L13	#,
 # problem128.c:29:     assert(strcmp(func0(1, 2, 3, 5), "NO") == 0);
@@ -269,10 +283,12 @@ main:
 	movl	$1, %edi	#,
 	call	func0	#
 	movq	%rax, %rdx	#, _13
+# problem128.c:30:     assert(strcmp(func0(1, 2, 1, 2), "NO") == 0);
 	leaq	.LC0(%rip), %rax	#, tmp124
 	movq	%rax, %rsi	# tmp124,
 	movq	%rdx, %rdi	# _13,
 	call	strcmp@PLT	#
+# problem128.c:30:     assert(strcmp(func0(1, 2, 1, 2), "NO") == 0);
 	testl	%eax, %eax	# _14
 	je	.L14	#,
 # problem128.c:30:     assert(strcmp(func0(1, 2, 1, 2), "NO") == 0);
@@ -292,10 +308,12 @@ main:
 	movl	$-2, %edi	#,
 	call	func0	#
 	movq	%rax, %rdx	#, _15
+# problem128.c:31:     assert(strcmp(func0(-2, -2, -3, -2), "NO") == 0);
 	leaq	.LC0(%rip), %rax	#, tmp128
 	movq	%rax, %rsi	# tmp128,
 	movq	%rdx, %rdi	# _15,
 	call	strcmp@PLT	#
+# problem128.c:31:     assert(strcmp(func0(-2, -2, -3, -2), "NO") == 0);
 	testl	%eax, %eax	# _16
 	je	.L15	#,
 # problem128.c:31:     assert(strcmp(func0(-2, -2, -3, -2), "NO") == 0);
@@ -322,7 +340,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

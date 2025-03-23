@@ -134,8 +134,6 @@ func0:
 	comisd	.LC3(%rip), %xmm0
 	ja	.L15
 	movsd	-32(%rbp), %xmm0
-	movq	%xmm0, %rax
-	movq	%rax, %xmm0
 	popq	%rbp
 	.cfi_def_cfa 7, 8
 	ret
@@ -185,8 +183,6 @@ evaluate_polynomial:
 	cmpl	-44(%rbp), %eax
 	jl	.L20
 	movsd	-16(%rbp), %xmm0
-	movq	%xmm0, %rax
-	movq	%rax, %xmm0
 	popq	%rbp
 	.cfi_def_cfa 7, 8
 	ret
@@ -211,52 +207,41 @@ main:
 	.cfi_offset 6, -16
 	movq	%rsp, %rbp
 	.cfi_def_cfa_register 6
-	pushq	%r15
-	pushq	%r14
-	pushq	%r13
-	pushq	%r12
 	pushq	%rbx
 	subq	$72, %rsp
-	.cfi_offset 15, -24
-	.cfi_offset 14, -32
-	.cfi_offset 13, -40
-	.cfi_offset 12, -48
-	.cfi_offset 3, -56
+	.cfi_offset 3, -24
 	movq	%fs:40, %rax
-	movq	%rax, -56(%rbp)
+	movq	%rax, -24(%rbp)
 	xorl	%eax, %eax
-	movl	$0, -100(%rbp)
+	movl	$0, -68(%rbp)
 	jmp	.L23
 .L32:
 	movq	%rsp, %rax
 	movq	%rax, %rbx
 	call	rand@PLT
-	cltd
-	shrl	$30, %edx
-	addl	%edx, %eax
-	andl	$3, %eax
-	subl	%edx, %eax
+	movl	%eax, %edx
+	movl	%edx, %eax
+	sarl	$31, %eax
+	shrl	$30, %eax
+	addl	%eax, %edx
+	andl	$3, %edx
+	subl	%eax, %edx
+	movl	%edx, %eax
 	addl	$1, %eax
 	addl	%eax, %eax
-	movl	%eax, -92(%rbp)
-	movl	-92(%rbp), %eax
+	movl	%eax, -60(%rbp)
+	movl	-60(%rbp), %eax
 	movslq	%eax, %rdx
 	subq	$1, %rdx
-	movq	%rdx, -80(%rbp)
-	movslq	%eax, %rdx
-	movq	%rdx, %r12
-	movl	$0, %r13d
-	movslq	%eax, %rdx
-	movq	%rdx, %r14
-	movl	$0, %r15d
+	movq	%rdx, -48(%rbp)
 	cltq
 	leaq	0(,%rax,8), %rdx
 	movl	$16, %eax
 	subq	$1, %rax
 	addq	%rdx, %rax
-	movl	$16, %edi
+	movl	$16, %esi
 	movl	$0, %edx
-	divq	%rdi
+	divq	%rsi
 	imulq	$16, %rax, %rax
 	movq	%rax, %rcx
 	andq	$-4096, %rcx
@@ -285,8 +270,8 @@ main:
 	addq	$7, %rax
 	shrq	$3, %rax
 	salq	$3, %rax
-	movq	%rax, -72(%rbp)
-	movl	$0, -96(%rbp)
+	movq	%rax, -40(%rbp)
+	movl	$0, -64(%rbp)
 	jmp	.L27
 .L30:
 	call	rand@PLT
@@ -294,11 +279,11 @@ main:
 	movslq	%ecx, %rax
 	imulq	$818089009, %rax, %rax
 	shrq	$32, %rax
-	sarl	$2, %eax
-	movl	%ecx, %esi
-	sarl	$31, %esi
-	subl	%esi, %eax
 	movl	%eax, %edx
+	sarl	$2, %edx
+	movl	%ecx, %eax
+	sarl	$31, %eax
+	subl	%eax, %edx
 	movl	%edx, %eax
 	sall	$2, %eax
 	addl	%edx, %eax
@@ -309,36 +294,36 @@ main:
 	leal	-10(%rdx), %eax
 	pxor	%xmm0, %xmm0
 	cvtsi2sdl	%eax, %xmm0
-	movsd	%xmm0, -88(%rbp)
+	movsd	%xmm0, -56(%rbp)
 	pxor	%xmm0, %xmm0
-	ucomisd	-88(%rbp), %xmm0
+	ucomisd	-56(%rbp), %xmm0
 	jp	.L28
 	pxor	%xmm0, %xmm0
-	ucomisd	-88(%rbp), %xmm0
+	ucomisd	-56(%rbp), %xmm0
 	jne	.L28
 	movsd	.LC1(%rip), %xmm0
-	movsd	%xmm0, -88(%rbp)
+	movsd	%xmm0, -56(%rbp)
 .L28:
-	movq	-72(%rbp), %rax
-	movl	-96(%rbp), %edx
+	movq	-40(%rbp), %rax
+	movl	-64(%rbp), %edx
 	movslq	%edx, %rdx
-	movsd	-88(%rbp), %xmm0
+	movsd	-56(%rbp), %xmm0
 	movsd	%xmm0, (%rax,%rdx,8)
-	addl	$1, -96(%rbp)
+	addl	$1, -64(%rbp)
 .L27:
-	movl	-96(%rbp), %eax
-	cmpl	-92(%rbp), %eax
+	movl	-64(%rbp), %eax
+	cmpl	-60(%rbp), %eax
 	jl	.L30
-	movl	-92(%rbp), %edx
-	movq	-72(%rbp), %rax
+	movl	-60(%rbp), %edx
+	movq	-40(%rbp), %rax
 	movl	%edx, %esi
 	movq	%rax, %rdi
 	call	func0
 	movq	%xmm0, %rax
-	movq	%rax, -64(%rbp)
-	movq	-64(%rbp), %rcx
-	movl	-92(%rbp), %edx
-	movq	-72(%rbp), %rax
+	movq	%rax, -32(%rbp)
+	movq	-32(%rbp), %rcx
+	movl	-60(%rbp), %edx
+	movq	-40(%rbp), %rax
 	movq	%rcx, %xmm0
 	movl	%edx, %esi
 	movq	%rax, %rdi
@@ -360,23 +345,18 @@ main:
 	call	__assert_fail@PLT
 .L31:
 	movq	%rbx, %rsp
-	addl	$1, -100(%rbp)
+	addl	$1, -68(%rbp)
 .L23:
-	cmpl	$99, -100(%rbp)
+	cmpl	$99, -68(%rbp)
 	jle	.L32
 	movl	$0, %eax
-	movq	-56(%rbp), %rdx
+	movq	-24(%rbp), %rdx
 	subq	%fs:40, %rdx
 	je	.L34
 	call	__stack_chk_fail@PLT
 .L34:
-	leaq	-40(%rbp), %rsp
-	popq	%rbx
-	popq	%r12
-	popq	%r13
-	popq	%r14
-	popq	%r15
-	popq	%rbp
+	movq	-8(%rbp), %rbx
+	leave
 	.cfi_def_cfa 7, 8
 	ret
 	.cfi_endproc
@@ -405,7 +385,7 @@ __PRETTY_FUNCTION__.0:
 .LC4:
 	.long	-755914244
 	.long	1062232653
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

@@ -1,7 +1,7 @@
 	.arch armv8-a
 	.file	"problem28.c"
-// GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (aarch64-linux-gnu)
-//	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+// GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (aarch64-linux-gnu)
+//	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 // GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 // options passed: -mlittle-endian -mabi=lp64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection
@@ -131,102 +131,104 @@ func0:
 main:
 .LFB1:
 	.cfi_startproc
-	stp	x29, x30, [sp, -128]!	//,,,
+	sub	sp, sp, #128	//,,
 	.cfi_def_cfa_offset 128
-	.cfi_offset 29, -128
-	.cfi_offset 30, -120
-	mov	x29, sp	//,
+	stp	x29, x30, [sp, 112]	//,,
+	.cfi_offset 29, -16
+	.cfi_offset 30, -8
+	add	x29, sp, 112	//,,
 // problem28.c:23: int main() {
-	adrp	x0, :got:__stack_chk_guard	// tmp99,
-	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]	// tmp98, tmp99,
-	ldr	x1, [x0]	// tmp122,
-	str	x1, [sp, 120]	// tmp122, D.4486
-	mov	x1, 0	// tmp122
+	adrp	x0, :got:__stack_chk_guard	// tmp98,
+	ldr	x0, [x0, :got_lo12:__stack_chk_guard]	// tmp98,
+	ldr	x1, [x0]	// tmp120,
+	str	x1, [sp, 104]	// tmp120, D.5095
+	mov	x1, 0	// tmp120
 // problem28.c:26:     func0("", result);
-	add	x0, sp, 16	// tmp100,,
-	mov	x1, x0	//, tmp100
-	adrp	x0, .LC0	// tmp101,
-	add	x0, x0, :lo12:.LC0	//, tmp101,
+	mov	x0, sp	// tmp99,
+	mov	x1, x0	//, tmp99
+	adrp	x0, .LC0	// tmp100,
+	add	x0, x0, :lo12:.LC0	//, tmp100,
 	bl	func0		//
 // problem28.c:27:     assert(strcmp(result, "") == 0);
-	ldrb	w0, [sp, 16]	// _6, MEM[(const unsigned char * {ref-all})&result]
+	ldrb	w0, [sp]	// _6, MEM[(const unsigned char * {ref-all})&result]
 	cmp	w0, 0	// _1,
 	beq	.L7		//,
 // problem28.c:27:     assert(strcmp(result, "") == 0);
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp102,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp102,
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp101,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp101,
 	mov	w2, 27	//,
-	adrp	x0, .LC1	// tmp103,
-	add	x1, x0, :lo12:.LC1	//, tmp103,
-	adrp	x0, .LC2	// tmp104,
-	add	x0, x0, :lo12:.LC2	//, tmp104,
+	adrp	x0, .LC1	// tmp102,
+	add	x1, x0, :lo12:.LC1	//, tmp102,
+	adrp	x0, .LC2	// tmp103,
+	add	x0, x0, :lo12:.LC2	//, tmp103,
 	bl	__assert_fail		//
 .L7:
 // problem28.c:29:     func0("Hello!", result);
-	add	x0, sp, 16	// tmp105,,
-	mov	x1, x0	//, tmp105
-	adrp	x0, .LC3	// tmp106,
-	add	x0, x0, :lo12:.LC3	//, tmp106,
+	mov	x0, sp	// tmp104,
+	mov	x1, x0	//, tmp104
+	adrp	x0, .LC3	// tmp105,
+	add	x0, x0, :lo12:.LC3	//, tmp105,
 	bl	func0		//
 // problem28.c:30:     assert(strcmp(result, "hELLO!") == 0);
-	add	x2, sp, 16	// tmp107,,
-	adrp	x0, .LC4	// tmp108,
-	add	x1, x0, :lo12:.LC4	//, tmp108,
-	mov	x0, x2	//, tmp107
+	mov	x2, sp	// tmp106,
+	adrp	x0, .LC4	// tmp107,
+	add	x1, x0, :lo12:.LC4	//, tmp107,
+	mov	x0, x2	//, tmp106
 	bl	strcmp		//
+// problem28.c:30:     assert(strcmp(result, "hELLO!") == 0);
 	cmp	w0, 0	// _2,
 	beq	.L8		//,
-// problem28.c:30:     assert(strcmp(result, "hELLO!") == 0);
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp109,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp109,
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp108,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp108,
 	mov	w2, 30	//,
-	adrp	x0, .LC1	// tmp110,
-	add	x1, x0, :lo12:.LC1	//, tmp110,
-	adrp	x0, .LC5	// tmp111,
-	add	x0, x0, :lo12:.LC5	//, tmp111,
+	adrp	x0, .LC1	// tmp109,
+	add	x1, x0, :lo12:.LC1	//, tmp109,
+	adrp	x0, .LC5	// tmp110,
+	add	x0, x0, :lo12:.LC5	//, tmp110,
 	bl	__assert_fail		//
 .L8:
 // problem28.c:32:     func0("These violent delights have violent ends", result);
-	add	x0, sp, 16	// tmp112,,
-	mov	x1, x0	//, tmp112
-	adrp	x0, .LC6	// tmp113,
-	add	x0, x0, :lo12:.LC6	//, tmp113,
+	mov	x0, sp	// tmp111,
+	mov	x1, x0	//, tmp111
+	adrp	x0, .LC6	// tmp112,
+	add	x0, x0, :lo12:.LC6	//, tmp112,
 	bl	func0		//
 // problem28.c:33:     assert(strcmp(result, "tHESE VIOLENT DELIGHTS HAVE VIOLENT ENDS") == 0);
-	add	x2, sp, 16	// tmp114,,
-	adrp	x0, .LC7	// tmp115,
-	add	x1, x0, :lo12:.LC7	//, tmp115,
-	mov	x0, x2	//, tmp114
+	mov	x2, sp	// tmp113,
+	adrp	x0, .LC7	// tmp114,
+	add	x1, x0, :lo12:.LC7	//, tmp114,
+	mov	x0, x2	//, tmp113
 	bl	strcmp		//
+// problem28.c:33:     assert(strcmp(result, "tHESE VIOLENT DELIGHTS HAVE VIOLENT ENDS") == 0);
 	cmp	w0, 0	// _3,
 	beq	.L9		//,
-// problem28.c:33:     assert(strcmp(result, "tHESE VIOLENT DELIGHTS HAVE VIOLENT ENDS") == 0);
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp116,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp116,
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp115,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp115,
 	mov	w2, 33	//,
-	adrp	x0, .LC1	// tmp117,
-	add	x1, x0, :lo12:.LC1	//, tmp117,
-	adrp	x0, .LC8	// tmp118,
-	add	x0, x0, :lo12:.LC8	//, tmp118,
+	adrp	x0, .LC1	// tmp116,
+	add	x1, x0, :lo12:.LC1	//, tmp116,
+	adrp	x0, .LC8	// tmp117,
+	add	x0, x0, :lo12:.LC8	//, tmp117,
 	bl	__assert_fail		//
 .L9:
 // problem28.c:35:     return 0;
 	mov	w0, 0	// _12,
 // problem28.c:36: }
 	mov	w1, w0	// <retval>, _12
-	adrp	x0, :got:__stack_chk_guard	// tmp121,
-	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]	// tmp120, tmp121,
-	ldr	x3, [sp, 120]	// tmp123, D.4486
-	ldr	x2, [x0]	// tmp124,
-	subs	x3, x3, x2	// tmp123, tmp124
-	mov	x2, 0	// tmp124
+	adrp	x0, :got:__stack_chk_guard	// tmp119,
+	ldr	x0, [x0, :got_lo12:__stack_chk_guard]	// tmp119,
+	ldr	x3, [sp, 104]	// tmp121, D.5095
+	ldr	x2, [x0]	// tmp122,
+	subs	x3, x3, x2	// tmp121, tmp122
+	mov	x2, 0	// tmp122
 	beq	.L11		//,
 	bl	__stack_chk_fail		//
 .L11:
 	mov	w0, w1	//, <retval>
-	ldp	x29, x30, [sp], 128	//,,,
-	.cfi_restore 30
+	ldp	x29, x30, [sp, 112]	//,,
+	add	sp, sp, 128	//,,
 	.cfi_restore 29
+	.cfi_restore 30
 	.cfi_def_cfa_offset 0
 	ret	
 	.cfi_endproc
@@ -238,5 +240,5 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits

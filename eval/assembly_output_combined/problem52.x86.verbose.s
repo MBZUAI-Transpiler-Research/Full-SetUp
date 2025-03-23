@@ -1,6 +1,6 @@
 	.file	"problem52.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -114,7 +114,7 @@ main:
 	subq	$64, %rsp	#,
 # problem52.c:23: int main() {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp132
-	movq	%rax, -8(%rbp)	# tmp132, D.3114
+	movq	%rax, -8(%rbp)	# tmp132, D.3978
 	xorl	%eax, %eax	# tmp132
 # problem52.c:24:     char test1[] = "";
 	movb	$0, -54(%rbp)	#, test1
@@ -140,9 +140,8 @@ main:
 # problem52.c:28:     char test2[] = "abcdef\nghijklm";
 	movabsq	$7424859521335648865, %rax	#, tmp135
 	movq	%rax, -23(%rbp)	# tmp135, test2
-	movl	$1802135912, -15(%rbp)	#, test2
-	movw	$28012, -11(%rbp)	#, test2
-	movb	$0, -9(%rbp)	#, test2
+	movabsq	$30799981064054887, %rax	#, tmp136
+	movq	%rax, -16(%rbp)	# tmp136, test2
 # problem52.c:29:     func0(test2);
 	leaq	-23(%rbp), %rax	#, tmp97
 	movq	%rax, %rdi	# tmp97,
@@ -153,9 +152,9 @@ main:
 	movq	%rdx, %rsi	# tmp99,
 	movq	%rax, %rdi	# tmp98,
 	call	strcmp@PLT	#
+# problem52.c:30:     assert(strcmp(test2, "bcdf\nghjklm") == 0);
 	testl	%eax, %eax	# _2
 	je	.L7	#,
-# problem52.c:30:     assert(strcmp(test2, "bcdf\nghjklm") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp100
 	movq	%rax, %rcx	# tmp100,
 	movl	$30, %edx	#,
@@ -167,8 +166,7 @@ main:
 .L7:
 # problem52.c:32:     char test3[] = "fedcba";
 	movl	$1667523942, -30(%rbp)	#, test3
-	movw	$24930, -26(%rbp)	#, test3
-	movb	$0, -24(%rbp)	#, test3
+	movl	$6382179, -27(%rbp)	#, test3
 # problem52.c:33:     func0(test3);
 	leaq	-30(%rbp), %rax	#, tmp103
 	movq	%rax, %rdi	# tmp103,
@@ -179,9 +177,9 @@ main:
 	movq	%rdx, %rsi	# tmp105,
 	movq	%rax, %rdi	# tmp104,
 	call	strcmp@PLT	#
+# problem52.c:34:     assert(strcmp(test3, "fdcb") == 0);
 	testl	%eax, %eax	# _3
 	je	.L8	#,
-# problem52.c:34:     assert(strcmp(test3, "fdcb") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp106
 	movq	%rax, %rcx	# tmp106,
 	movl	$34, %edx	#,
@@ -226,9 +224,9 @@ main:
 	movq	%rdx, %rsi	# tmp115,
 	movq	%rax, %rdi	# tmp114,
 	call	strcmp@PLT	#
+# problem52.c:42:     assert(strcmp(test5, "cB") == 0);
 	testl	%eax, %eax	# _5
 	je	.L10	#,
-# problem52.c:42:     assert(strcmp(test5, "cB") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp116
 	movq	%rax, %rcx	# tmp116,
 	movl	$42, %edx	#,
@@ -251,9 +249,9 @@ main:
 	movq	%rdx, %rsi	# tmp121,
 	movq	%rax, %rdi	# tmp120,
 	call	strcmp@PLT	#
+# problem52.c:46:     assert(strcmp(test6, "cB") == 0);
 	testl	%eax, %eax	# _6
 	je	.L11	#,
-# problem52.c:46:     assert(strcmp(test6, "cB") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp122
 	movq	%rax, %rcx	# tmp122,
 	movl	$46, %edx	#,
@@ -276,9 +274,9 @@ main:
 	movq	%rdx, %rsi	# tmp127,
 	movq	%rax, %rdi	# tmp126,
 	call	strcmp@PLT	#
+# problem52.c:50:     assert(strcmp(test7, "ybcd") == 0);
 	testl	%eax, %eax	# _7
 	je	.L12	#,
-# problem52.c:50:     assert(strcmp(test7, "ybcd") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp128
 	movq	%rax, %rcx	# tmp128,
 	movl	$50, %edx	#,
@@ -291,7 +289,7 @@ main:
 # problem52.c:52:     return 0;
 	movl	$0, %eax	#, _32
 # problem52.c:53: }
-	movq	-8(%rbp), %rdx	# D.3114, tmp133
+	movq	-8(%rbp), %rdx	# D.3978, tmp133
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp133
 	je	.L14	#,
 	call	__stack_chk_fail@PLT	#
@@ -307,7 +305,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

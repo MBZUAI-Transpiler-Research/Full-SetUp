@@ -1,6 +1,6 @@
 	.file	"problem48.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -48,10 +48,10 @@ main:
 	movq	%rax, -8(%rbp)	# tmp89, r
 	movq	-8(%rbp), %rax	# r, tmp91
 	movabsq	$10000000000, %rdx	#, tmp92
-	imulq	%rax, %rdx	# tmp91, tmp90
-	movq	%rcx, %rax	# _2, _2
-	subq	%rdx, %rax	# tmp90, _2
-	movq	%rax, -8(%rbp)	# tmp93, r
+	imulq	%rdx, %rax	# tmp92, tmp90
+	subq	%rax, %rcx	# tmp90, _2
+	movq	%rcx, %rdx	# _2, tmp93
+	movq	%rdx, -8(%rbp)	# tmp93, r
 # problem48.c:18:     for (j = 0; j < i; j++) {
 	addl	$1, -20(%rbp)	#, j
 .L3:
@@ -72,10 +72,10 @@ main:
 	movq	%rax, -16(%rbp)	# tmp99, rem
 	movq	-16(%rbp), %rax	# rem, tmp101
 	movabsq	$10000000000, %rdx	#, tmp102
-	imulq	%rax, %rdx	# tmp101, tmp100
-	movq	%rcx, %rax	# _3, _3
-	subq	%rdx, %rax	# tmp100, _3
-	movq	%rax, -16(%rbp)	# tmp103, rem
+	imulq	%rdx, %rax	# tmp102, tmp100
+	subq	%rax, %rcx	# tmp100, _3
+	movq	%rcx, %rdx	# _3, tmp103
+	movq	%rdx, -16(%rbp)	# tmp103, rem
 # problem48.c:15:   for (i = 1; i < N; i++) {
 	addl	$1, -24(%rbp)	#, i
 .L2:
@@ -98,7 +98,7 @@ main:
 	.cfi_endproc
 .LFE0:
 	.size	main, .-main
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

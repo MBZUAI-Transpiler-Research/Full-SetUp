@@ -1,7 +1,7 @@
 	.arch armv8-a
 	.file	"code.c"
-// GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (aarch64-linux-gnu)
-//	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+// GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (aarch64-linux-gnu)
+//	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 // GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 // options passed: -mlittle-endian -mabi=lp64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection
@@ -25,6 +25,7 @@ func0:
 	bne	.L2		//,
 // eval/problem96//code.c:7:     if (size == 0) return 0;
 	mov	w0, 0	// _49,
+// eval/problem96//code.c:7:     if (size == 0) return 0;
 	b	.L3		//
 .L2:
 // eval/problem96//code.c:8:     int has_lower = 0, has_upper = 0;
@@ -51,6 +52,7 @@ func0:
 .L10:
 // eval/problem96//code.c:12:             if (!isalpha((unsigned char)key[j])) return 0;
 	bl	__ctype_b_loc		//
+// eval/problem96//code.c:12:             if (!isalpha((unsigned char)key[j])) return 0;
 	ldr	x1, [x0]	// _5, *_4
 	ldrsw	x0, [sp, 52]	// _6, j
 	ldr	x2, [sp, 56]	// tmp137, key
@@ -66,10 +68,12 @@ func0:
 	bne	.L6		//,
 // eval/problem96//code.c:12:             if (!isalpha((unsigned char)key[j])) return 0;
 	mov	w0, 0	// _49,
+// eval/problem96//code.c:12:             if (!isalpha((unsigned char)key[j])) return 0;
 	b	.L3		//
 .L6:
 // eval/problem96//code.c:13:             if (isupper((unsigned char)key[j])) has_upper = 1;
 	bl	__ctype_b_loc		//
+// eval/problem96//code.c:13:             if (isupper((unsigned char)key[j])) has_upper = 1;
 	ldr	x1, [x0]	// _16, *_15
 	ldrsw	x0, [sp, 52]	// _17, j
 	ldr	x2, [sp, 56]	// tmp138, key
@@ -89,6 +93,7 @@ func0:
 .L7:
 // eval/problem96//code.c:14:             if (islower((unsigned char)key[j])) has_lower = 1;
 	bl	__ctype_b_loc		//
+// eval/problem96//code.c:14:             if (islower((unsigned char)key[j])) has_lower = 1;
 	ldr	x1, [x0]	// _27, *_26
 	ldrsw	x0, [sp, 52]	// _28, j
 	ldr	x2, [sp, 56]	// tmp140, key
@@ -115,6 +120,7 @@ func0:
 	bne	.L9		//,
 // eval/problem96//code.c:15:             if (has_upper + has_lower == 2) return 0;
 	mov	w0, 0	// _49,
+// eval/problem96//code.c:15:             if (has_upper + has_lower == 2) return 0;
 	b	.L3		//
 .L9:
 // eval/problem96//code.c:11:         for (int j = 0; key[j]; ++j) {
@@ -152,5 +158,5 @@ func0:
 	.cfi_endproc
 .LFE6:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits

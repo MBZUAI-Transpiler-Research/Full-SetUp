@@ -287,19 +287,20 @@ issame:
 main:
 .LFB8:
 	.cfi_startproc
-	stp	x29, x30, [sp, -368]!
+	sub	sp, sp, #368
 	.cfi_def_cfa_offset 368
-	.cfi_offset 29, -368
-	.cfi_offset 30, -360
-	mov	x29, sp
+	stp	x29, x30, [sp, 352]
+	.cfi_offset 29, -16
+	.cfi_offset 30, -8
+	add	x29, sp, 352
 	adrp	x0, :got:__stack_chk_guard
-	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]
+	ldr	x0, [x0, :got_lo12:__stack_chk_guard]
 	ldr	x1, [x0]
-	str	x1, [sp, 360]
+	str	x1, [sp, 344]
 	mov	x1, 0
 	adrp	x0, .LC26
 	add	x0, x0, :lo12:.LC26
-	add	x2, sp, 56
+	add	x2, sp, 40
 	mov	x3, x0
 	ldp	x0, x1, [x3]
 	stp	x0, x1, [x2]
@@ -307,19 +308,19 @@ main:
 	str	x0, [x2, 16]
 	adrp	x0, .LC0
 	add	x0, x0, :lo12:.LC0
-	str	x0, [sp, 32]
-	add	x1, sp, 20
-	add	x0, sp, 56
+	str	x0, [sp, 16]
+	add	x1, sp, 4
+	add	x0, sp, 40
 	mov	x2, x1
 	mov	w1, 3
 	bl	func0
-	str	x0, [sp, 24]
-	ldr	w1, [sp, 20]
-	add	x0, sp, 32
+	str	x0, [sp, 8]
+	ldr	w1, [sp, 4]
+	add	x0, sp, 16
 	mov	w3, 1
 	mov	w2, w1
 	mov	x1, x0
-	ldr	x0, [sp, 24]
+	ldr	x0, [sp, 8]
 	bl	issame
 	cmp	w0, 0
 	bne	.L21
@@ -332,9 +333,9 @@ main:
 	add	x0, x0, :lo12:.LC28
 	bl	__assert_fail
 .L21:
-	ldr	x0, [sp, 24]
+	ldr	x0, [sp, 8]
 	bl	free
-	add	x0, sp, 376
+	add	x0, sp, 360
 	sub	x0, x0, #224
 	adrp	x1, .LC29
 	add	x1, x1, :lo12:.LC29
@@ -342,24 +343,24 @@ main:
 	st1	{v0.16b - v1.16b}, [x0]
 	adrp	x0, .LC30
 	add	x0, x0, :lo12:.LC30
-	add	x2, sp, 80
+	add	x2, sp, 64
 	mov	x3, x0
 	ldp	x0, x1, [x3]
 	stp	x0, x1, [x2]
 	ldr	x0, [x3, 16]
 	str	x0, [x2, 16]
-	add	x1, sp, 20
-	add	x0, sp, 152
+	add	x1, sp, 4
+	add	x0, sp, 136
 	mov	x2, x1
 	mov	w1, 4
 	bl	func0
-	str	x0, [sp, 24]
-	ldr	w1, [sp, 20]
-	add	x0, sp, 80
+	str	x0, [sp, 8]
+	ldr	w1, [sp, 4]
+	add	x0, sp, 64
 	mov	w3, 3
 	mov	w2, w1
 	mov	x1, x0
-	ldr	x0, [sp, 24]
+	ldr	x0, [sp, 8]
 	bl	issame
 	cmp	w0, 0
 	bne	.L22
@@ -372,21 +373,21 @@ main:
 	add	x0, x0, :lo12:.LC31
 	bl	__assert_fail
 .L22:
-	ldr	x0, [sp, 24]
+	ldr	x0, [sp, 8]
 	bl	free
-	add	x0, sp, 376
+	add	x0, sp, 360
 	sub	x0, x0, #192
 	adrp	x1, .LC32
 	add	x1, x1, :lo12:.LC32
 	ld1	{v0.16b - v1.16b}, [x1]
 	st1	{v0.16b - v1.16b}, [x0]
-	add	x1, sp, 20
-	add	x0, sp, 184
+	add	x1, sp, 4
+	add	x0, sp, 168
 	mov	x2, x1
 	mov	w1, 4
 	bl	func0
-	str	x0, [sp, 24]
-	ldr	w0, [sp, 20]
+	str	x0, [sp, 8]
+	ldr	w0, [sp, 4]
 	cmp	w0, 0
 	beq	.L23
 	adrp	x0, __PRETTY_FUNCTION__.0
@@ -398,9 +399,9 @@ main:
 	add	x0, x0, :lo12:.LC33
 	bl	__assert_fail
 .L23:
-	ldr	x0, [sp, 24]
+	ldr	x0, [sp, 8]
 	bl	free
-	add	x0, sp, 376
+	add	x0, sp, 360
 	sub	x0, x0, #160
 	adrp	x1, .LC34
 	add	x1, x1, :lo12:.LC34
@@ -408,22 +409,22 @@ main:
 	st1	{v0.16b - v1.16b}, [x0]
 	adrp	x0, .LC14
 	add	x0, x0, :lo12:.LC14
-	str	x0, [sp, 40]
+	str	x0, [sp, 24]
 	adrp	x0, .LC13
 	add	x0, x0, :lo12:.LC13
-	str	x0, [sp, 48]
-	add	x1, sp, 20
-	add	x0, sp, 216
+	str	x0, [sp, 32]
+	add	x1, sp, 4
+	add	x0, sp, 200
 	mov	x2, x1
 	mov	w1, 4
 	bl	func0
-	str	x0, [sp, 24]
-	ldr	w1, [sp, 20]
-	add	x0, sp, 40
+	str	x0, [sp, 8]
+	ldr	w1, [sp, 4]
+	add	x0, sp, 24
 	mov	w3, 2
 	mov	w2, w1
 	mov	x1, x0
-	ldr	x0, [sp, 24]
+	ldr	x0, [sp, 8]
 	bl	issame
 	cmp	w0, 0
 	bne	.L24
@@ -436,11 +437,11 @@ main:
 	add	x0, x0, :lo12:.LC35
 	bl	__assert_fail
 .L24:
-	ldr	x0, [sp, 24]
+	ldr	x0, [sp, 8]
 	bl	free
 	adrp	x0, .LC36
 	add	x0, x0, :lo12:.LC36
-	add	x2, sp, 104
+	add	x2, sp, 88
 	mov	x3, x0
 	ldp	x0, x1, [x3]
 	stp	x0, x1, [x2]
@@ -448,24 +449,24 @@ main:
 	str	x0, [x2, 16]
 	adrp	x0, .LC36
 	add	x0, x0, :lo12:.LC36
-	add	x2, sp, 128
+	add	x2, sp, 112
 	mov	x3, x0
 	ldp	x0, x1, [x3]
 	stp	x0, x1, [x2]
 	ldr	x0, [x3, 16]
 	str	x0, [x2, 16]
-	add	x1, sp, 20
-	add	x0, sp, 104
+	add	x1, sp, 4
+	add	x0, sp, 88
 	mov	x2, x1
 	mov	w1, 3
 	bl	func0
-	str	x0, [sp, 24]
-	ldr	w1, [sp, 20]
-	add	x0, sp, 128
+	str	x0, [sp, 8]
+	ldr	w1, [sp, 4]
+	add	x0, sp, 112
 	mov	w3, 3
 	mov	w2, w1
 	mov	x1, x0
-	ldr	x0, [sp, 24]
+	ldr	x0, [sp, 8]
 	bl	issame
 	cmp	w0, 0
 	bne	.L25
@@ -478,22 +479,22 @@ main:
 	add	x0, x0, :lo12:.LC37
 	bl	__assert_fail
 .L25:
-	ldr	x0, [sp, 24]
+	ldr	x0, [sp, 8]
 	bl	free
 	adrp	x0, .LC38
 	add	x1, x0, :lo12:.LC38
-	add	x0, sp, 312
+	add	x0, sp, 296
 	ldp	q0, q1, [x1]
 	stp	q0, q1, [x0]
 	ldr	q0, [x1, 32]
 	str	q0, [x0, 32]
-	add	x1, sp, 20
-	add	x0, sp, 312
+	add	x1, sp, 4
+	add	x0, sp, 296
 	mov	x2, x1
 	mov	w1, 6
 	bl	func0
-	str	x0, [sp, 24]
-	ldr	w0, [sp, 20]
+	str	x0, [sp, 8]
+	ldr	w0, [sp, 4]
 	cmp	w0, 0
 	beq	.L26
 	adrp	x0, __PRETTY_FUNCTION__.0
@@ -505,32 +506,32 @@ main:
 	add	x0, x0, :lo12:.LC33
 	bl	__assert_fail
 .L26:
-	ldr	x0, [sp, 24]
+	ldr	x0, [sp, 8]
 	bl	free
-	add	x0, sp, 376
+	add	x0, sp, 360
 	sub	x0, x0, #128
 	adrp	x1, .LC39
 	add	x1, x1, :lo12:.LC39
 	ld1	{v0.16b - v1.16b}, [x1]
 	st1	{v0.16b - v1.16b}, [x0]
-	add	x0, sp, 376
+	add	x0, sp, 360
 	sub	x0, x0, #96
 	adrp	x1, .LC40
 	add	x1, x1, :lo12:.LC40
 	ld1	{v0.16b - v1.16b}, [x1]
 	st1	{v0.16b - v1.16b}, [x0]
-	add	x1, sp, 20
-	add	x0, sp, 248
+	add	x1, sp, 4
+	add	x0, sp, 232
 	mov	x2, x1
 	mov	w1, 4
 	bl	func0
-	str	x0, [sp, 24]
-	ldr	w1, [sp, 20]
-	add	x0, sp, 280
+	str	x0, [sp, 8]
+	ldr	w1, [sp, 4]
+	add	x0, sp, 264
 	mov	w3, 4
 	mov	w2, w1
 	mov	x1, x0
-	ldr	x0, [sp, 24]
+	ldr	x0, [sp, 8]
 	bl	issame
 	cmp	w0, 0
 	bne	.L27
@@ -543,7 +544,7 @@ main:
 	add	x0, x0, :lo12:.LC41
 	bl	__assert_fail
 .L27:
-	ldr	x0, [sp, 24]
+	ldr	x0, [sp, 8]
 	bl	free
 	adrp	x0, .LC42
 	add	x0, x0, :lo12:.LC42
@@ -551,8 +552,8 @@ main:
 	mov	w0, 0
 	mov	w1, w0
 	adrp	x0, :got:__stack_chk_guard
-	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]
-	ldr	x3, [sp, 360]
+	ldr	x0, [x0, :got_lo12:__stack_chk_guard]
+	ldr	x3, [sp, 344]
 	ldr	x2, [x0]
 	subs	x3, x3, x2
 	mov	x2, 0
@@ -560,9 +561,10 @@ main:
 	bl	__stack_chk_fail
 .L29:
 	mov	w0, w1
-	ldp	x29, x30, [sp], 368
-	.cfi_restore 30
+	ldp	x29, x30, [sp, 352]
+	add	sp, sp, 368
 	.cfi_restore 29
+	.cfi_restore 30
 	.cfi_def_cfa_offset 0
 	ret
 	.cfi_endproc
@@ -680,5 +682,5 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits

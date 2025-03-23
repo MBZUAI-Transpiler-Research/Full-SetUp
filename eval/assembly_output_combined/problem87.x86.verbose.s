@@ -1,6 +1,6 @@
 	.file	"problem87.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -20,7 +20,7 @@ func0:
 	movq	%rdi, -120(%rbp)	# s, s
 # problem87.c:5: char* func0(const char* s) {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp152
-	movq	%rax, -8(%rbp)	# tmp152, D.3135
+	movq	%rax, -8(%rbp)	# tmp152, D.3999
 	xorl	%eax, %eax	# tmp152
 # problem87.c:6:     int len = strlen(s);
 	movq	-120(%rbp), %rax	# s, tmp110
@@ -198,7 +198,7 @@ func0:
 # problem87.c:33:     return out;
 	movq	-72(%rbp), %rax	# out, _53
 # problem87.c:34: }
-	movq	-8(%rbp), %rdx	# D.3135, tmp153
+	movq	-8(%rbp), %rdx	# D.3999, tmp153
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp153
 	je	.L16	#,
 	call	__stack_chk_fail@PLT	#
@@ -276,9 +276,9 @@ main:
 	movq	%rdx, %rsi	# tmp95,
 	movq	%rax, %rdi	# tmp94,
 	call	strcmp@PLT	#
+# problem87.c:46:     assert(strcmp(result, "Hi") == 0);
 	testl	%eax, %eax	# _1
 	je	.L18	#,
-# problem87.c:46:     assert(strcmp(result, "Hi") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp96
 	movq	%rax, %rcx	# tmp96,
 	movl	$46, %edx	#,
@@ -303,9 +303,9 @@ main:
 	movq	%rdx, %rsi	# tmp103,
 	movq	%rax, %rdi	# tmp102,
 	call	strcmp@PLT	#
+# problem87.c:50:     assert(strcmp(result, "ehllo") == 0);
 	testl	%eax, %eax	# _2
 	je	.L19	#,
-# problem87.c:50:     assert(strcmp(result, "ehllo") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp104
 	movq	%rax, %rcx	# tmp104,
 	movl	$50, %edx	#,
@@ -330,9 +330,9 @@ main:
 	movq	%rdx, %rsi	# tmp111,
 	movq	%rax, %rdi	# tmp110,
 	call	strcmp@PLT	#
+# problem87.c:54:     assert(strcmp(result, "bemnru") == 0);
 	testl	%eax, %eax	# _3
 	je	.L20	#,
-# problem87.c:54:     assert(strcmp(result, "bemnru") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp112
 	movq	%rax, %rcx	# tmp112,
 	movl	$54, %edx	#,
@@ -357,9 +357,9 @@ main:
 	movq	%rdx, %rsi	# tmp119,
 	movq	%rax, %rdi	# tmp118,
 	call	strcmp@PLT	#
+# problem87.c:58:     assert(strcmp(result, "abcd") == 0);
 	testl	%eax, %eax	# _4
 	je	.L21	#,
-# problem87.c:58:     assert(strcmp(result, "abcd") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp120
 	movq	%rax, %rcx	# tmp120,
 	movl	$58, %edx	#,
@@ -384,9 +384,9 @@ main:
 	movq	%rdx, %rsi	# tmp127,
 	movq	%rax, %rdi	# tmp126,
 	call	strcmp@PLT	#
+# problem87.c:62:     assert(strcmp(result, "Hello !!!Wdlor") == 0);
 	testl	%eax, %eax	# _5
 	je	.L22	#,
-# problem87.c:62:     assert(strcmp(result, "Hello !!!Wdlor") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp128
 	movq	%rax, %rcx	# tmp128,
 	movl	$62, %edx	#,
@@ -436,9 +436,9 @@ main:
 	movq	%rdx, %rsi	# tmp142,
 	movq	%rax, %rdi	# tmp141,
 	call	strcmp@PLT	#
+# problem87.c:70:     assert(strcmp(result, ".Hi My aemn is Meirst .Rboot How aer ?ouy") == 0);
 	testl	%eax, %eax	# _7
 	je	.L24	#,
-# problem87.c:70:     assert(strcmp(result, ".Hi My aemn is Meirst .Rboot How aer ?ouy") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp143
 	movq	%rax, %rcx	# tmp143,
 	movl	$70, %edx	#,
@@ -466,7 +466,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

@@ -21,13 +21,15 @@ func0:
 	movq	-32(%rbp), %rax
 	movl	$1, (%rax)
 	jmp	.L2
-.L5:
-	movl	-20(%rbp), %eax
-	cltd
-	shrl	$31, %edx
-	addl	%edx, %eax
-	andl	$1, %eax
-	subl	%edx, %eax
+.L6:
+	movl	-20(%rbp), %edx
+	movl	%edx, %eax
+	sarl	$31, %eax
+	shrl	$31, %eax
+	addl	%eax, %edx
+	andl	$1, %edx
+	subl	%eax, %edx
+	movl	%edx, %eax
 	cmpl	$1, %eax
 	jne	.L3
 	movq	-40(%rbp), %rax
@@ -71,10 +73,10 @@ func0:
 	movl	%eax, -20(%rbp)
 .L2:
 	cmpl	$1, -20(%rbp)
-	jne	.L5
+	jne	.L6
 	movl	$1, -12(%rbp)
-	jmp	.L6
-.L10:
+	jmp	.L7
+.L11:
 	movl	-12(%rbp), %eax
 	cltq
 	leaq	0(,%rax,4), %rdx
@@ -85,8 +87,8 @@ func0:
 	movl	-12(%rbp), %eax
 	subl	$1, %eax
 	movl	%eax, -8(%rbp)
-	jmp	.L7
-.L9:
+	jmp	.L8
+.L10:
 	movl	-8(%rbp), %eax
 	cltq
 	leaq	0(,%rax,4), %rdx
@@ -101,9 +103,9 @@ func0:
 	movl	(%rax), %eax
 	movl	%eax, (%rdx)
 	subl	$1, -8(%rbp)
-.L7:
+.L8:
 	cmpl	$0, -8(%rbp)
-	js	.L8
+	js	.L9
 	movl	-8(%rbp), %eax
 	cltq
 	leaq	0(,%rax,4), %rdx
@@ -111,8 +113,8 @@ func0:
 	addq	%rdx, %rax
 	movl	(%rax), %eax
 	cmpl	%eax, -4(%rbp)
-	jl	.L9
-.L8:
+	jl	.L10
+.L9:
 	movl	-8(%rbp), %eax
 	cltq
 	addq	$1, %rax
@@ -122,11 +124,11 @@ func0:
 	movl	-4(%rbp), %eax
 	movl	%eax, (%rdx)
 	addl	$1, -12(%rbp)
-.L6:
+.L7:
 	movq	-40(%rbp), %rax
 	movl	(%rax), %eax
 	cmpl	%eax, -12(%rbp)
-	jl	.L10
+	jl	.L11
 	nop
 	nop
 	leave
@@ -152,13 +154,13 @@ issame:
 	movl	%ecx, -32(%rbp)
 	movl	-28(%rbp), %eax
 	cmpl	-32(%rbp), %eax
-	je	.L12
+	je	.L13
 	movl	$0, %eax
-	jmp	.L13
-.L12:
-	movl	$0, -4(%rbp)
 	jmp	.L14
-.L16:
+.L13:
+	movl	$0, -4(%rbp)
+	jmp	.L15
+.L17:
 	movl	-4(%rbp), %eax
 	cltq
 	leaq	0(,%rax,4), %rdx
@@ -172,17 +174,17 @@ issame:
 	addq	%rcx, %rax
 	movl	(%rax), %eax
 	cmpl	%eax, %edx
-	je	.L15
+	je	.L16
 	movl	$0, %eax
-	jmp	.L13
-.L15:
+	jmp	.L14
+.L16:
 	addl	$1, -4(%rbp)
-.L14:
+.L15:
 	movl	-4(%rbp), %eax
 	cmpl	-28(%rbp), %eax
-	jl	.L16
+	jl	.L17
 	movl	$1, %eax
-.L13:
+.L14:
 	popq	%rbp
 	.cfi_def_cfa 7, 8
 	ret
@@ -241,7 +243,7 @@ main:
 	movq	%rax, %rdi
 	call	issame
 	testl	%eax, %eax
-	jne	.L18
+	jne	.L19
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax
 	movq	%rax, %rcx
 	movl	$55, %edx
@@ -250,7 +252,7 @@ main:
 	leaq	.LC1(%rip), %rax
 	movq	%rax, %rdi
 	call	__assert_fail@PLT
-.L18:
+.L19:
 	movq	-64(%rbp), %rax
 	movq	%rax, %rdi
 	call	free@PLT
@@ -271,7 +273,7 @@ main:
 	movq	%rax, %rdi
 	call	issame
 	testl	%eax, %eax
-	jne	.L19
+	jne	.L20
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax
 	movq	%rax, %rcx
 	movl	$62, %edx
@@ -280,7 +282,7 @@ main:
 	leaq	.LC2(%rip), %rax
 	movq	%rax, %rdi
 	call	__assert_fail@PLT
-.L19:
+.L20:
 	movq	-64(%rbp), %rax
 	movq	%rax, %rdi
 	call	free@PLT
@@ -302,7 +304,7 @@ main:
 	movq	%rax, %rdi
 	call	issame
 	testl	%eax, %eax
-	jne	.L20
+	jne	.L21
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax
 	movq	%rax, %rcx
 	movl	$69, %edx
@@ -311,7 +313,7 @@ main:
 	leaq	.LC3(%rip), %rax
 	movq	%rax, %rdi
 	call	__assert_fail@PLT
-.L20:
+.L21:
 	movq	-64(%rbp), %rax
 	movq	%rax, %rdi
 	call	free@PLT
@@ -331,7 +333,7 @@ main:
 	movq	%rax, %rdi
 	call	issame
 	testl	%eax, %eax
-	jne	.L21
+	jne	.L22
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax
 	movq	%rax, %rcx
 	movl	$76, %edx
@@ -340,16 +342,16 @@ main:
 	leaq	.LC4(%rip), %rax
 	movq	%rax, %rdi
 	call	__assert_fail@PLT
-.L21:
+.L22:
 	movq	-64(%rbp), %rax
 	movq	%rax, %rdi
 	call	free@PLT
 	movl	$0, %eax
 	movq	-8(%rbp), %rdx
 	subq	%fs:40, %rdx
-	je	.L23
+	je	.L24
 	call	__stack_chk_fail@PLT
-.L23:
+.L24:
 	leave
 	.cfi_def_cfa 7, 8
 	ret
@@ -361,7 +363,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

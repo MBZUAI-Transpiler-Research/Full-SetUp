@@ -1,14 +1,23 @@
 	.file	"problem34.c"
 	.option pic
+	.attribute arch, "rv64i2p1_m2p0_a2p1_f2p2_d2p2_c2p0_zicsr2p0_zifencei2p0"
+	.attribute unaligned_access, 0
+	.attribute stack_align, 16
 	.text
 	.align	1
 	.globl	func0
 	.type	func0, @function
 func0:
+.LFB6:
+	.cfi_startproc
 	addi	sp,sp,-80
+	.cfi_def_cfa_offset 80
 	sd	ra,72(sp)
 	sd	s0,64(sp)
+	.cfi_offset 1, -8
+	.cfi_offset 8, -16
 	addi	s0,sp,80
+	.cfi_def_cfa 8, 0
 	sd	a0,-56(s0)
 	mv	a5,a1
 	sd	a2,-72(s0)
@@ -185,17 +194,28 @@ func0:
 	call	free@plt
 	nop
 	ld	ra,72(sp)
+	.cfi_restore 1
 	ld	s0,64(sp)
+	.cfi_restore 8
+	.cfi_def_cfa 2, 80
 	addi	sp,sp,80
+	.cfi_def_cfa_offset 0
 	jr	ra
+	.cfi_endproc
+.LFE6:
 	.size	func0, .-func0
 	.align	1
 	.globl	issame
 	.type	issame, @function
 issame:
+.LFB7:
+	.cfi_startproc
 	addi	sp,sp,-64
+	.cfi_def_cfa_offset 64
 	sd	s0,56(sp)
+	.cfi_offset 8, -8
 	addi	s0,sp,64
+	.cfi_def_cfa 8, 0
 	sd	a0,-40(s0)
 	sd	a1,-48(s0)
 	mv	a5,a2
@@ -232,8 +252,13 @@ issame:
 .L17:
 	mv	a0,a5
 	ld	s0,56(sp)
+	.cfi_restore 8
+	.cfi_def_cfa 2, 64
 	addi	sp,sp,64
+	.cfi_def_cfa_offset 0
 	jr	ra
+	.cfi_endproc
+.LFE7:
 	.size	issame, .-issame
 	.section	.rodata
 	.align	3
@@ -367,10 +392,16 @@ issame:
 	.globl	main
 	.type	main, @function
 main:
+.LFB8:
+	.cfi_startproc
 	addi	sp,sp,-624
+	.cfi_def_cfa_offset 624
 	sd	ra,616(sp)
 	sd	s0,608(sp)
+	.cfi_offset 1, -8
+	.cfi_offset 8, -16
 	addi	s0,sp,624
+	.cfi_def_cfa 8, 0
 	la	a5,__stack_chk_guard
 	ld	a4, 0(a5)
 	sd	a4, -24(s0)
@@ -631,9 +662,15 @@ main:
 .L28:
 	mv	a0,a4
 	ld	ra,616(sp)
+	.cfi_restore 1
 	ld	s0,608(sp)
+	.cfi_restore 8
+	.cfi_def_cfa 2, 624
 	addi	sp,sp,624
+	.cfi_def_cfa_offset 0
 	jr	ra
+	.cfi_endproc
+.LFE8:
 	.size	main, .-main
 	.section	.rodata
 	.align	3
@@ -641,5 +678,5 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits

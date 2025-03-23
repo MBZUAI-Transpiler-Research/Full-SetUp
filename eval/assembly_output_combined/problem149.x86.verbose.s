@@ -1,6 +1,6 @@
 	.file	"problem149.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -40,7 +40,7 @@ func0:
 	movq	%rdx, -136(%rbp)	# returnSize, returnSize
 # problem149.c:5: char** func0(const char* planet1, const char* planet2, int* returnSize) {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp138
-	movq	%rax, -8(%rbp)	# tmp138, D.3159
+	movq	%rax, -8(%rbp)	# tmp138, D.4023
 	xorl	%eax, %eax	# tmp138
 # problem149.c:6:     const char* planets[] = {"Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"};
 	leaq	.LC0(%rip), %rax	#, tmp100
@@ -199,10 +199,9 @@ func0:
 	movq	-88(%rbp), %rax	# out, _25
 .L13:
 # problem149.c:27: }
-	movq	-8(%rbp), %rdx	# D.3159, tmp139
+	movq	-8(%rbp), %rdx	# D.4023, tmp139
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp139
 	je	.L14	#,
-# problem149.c:27: }
 	call	__stack_chk_fail@PLT	#
 .L14:
 	leave	
@@ -233,6 +232,7 @@ issame:
 	je	.L16	#,
 # problem149.c:37:     if (a_size != b_size) return 0;
 	movl	$0, %eax	#, _11
+# problem149.c:37:     if (a_size != b_size) return 0;
 	jmp	.L17	#
 .L16:
 # problem149.c:38:     for (int i = 0; i < a_size; i++) {
@@ -264,6 +264,7 @@ issame:
 	je	.L19	#,
 # problem149.c:39:         if (strcmp(a[i], b[i]) != 0) return 0;
 	movl	$0, %eax	#, _11
+# problem149.c:39:         if (strcmp(a[i], b[i]) != 0) return 0;
 	jmp	.L17	#
 .L19:
 # problem149.c:38:     for (int i = 0; i < a_size; i++) {
@@ -317,7 +318,7 @@ main:
 	subq	$144, %rsp	#,
 # problem149.c:44: int main() {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp170
-	movq	%rax, -8(%rbp)	# tmp170, D.3169
+	movq	%rax, -8(%rbp)	# tmp170, D.4033
 	xorl	%eax, %eax	# tmp170
 # problem149.c:48:     const char* test1[] = {"Saturn", "Uranus"};
 	leaq	.LC5(%rip), %rax	#, tmp95
@@ -340,9 +341,9 @@ main:
 	movl	$2, %ecx	#,
 	movq	%rax, %rdi	# tmp102,
 	call	issame	#
+# problem149.c:50:     assert(issame(result, test1, size, 2));
 	testl	%eax, %eax	# _2
 	jne	.L22	#,
-# problem149.c:50:     assert(issame(result, test1, size, 2));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp103
 	movq	%rax, %rcx	# tmp103,
 	movl	$50, %edx	#,
@@ -375,9 +376,9 @@ main:
 	movl	$1, %ecx	#,
 	movq	%rax, %rdi	# tmp113,
 	call	issame	#
+# problem149.c:55:     assert(issame(result, test2, size, 1));
 	testl	%eax, %eax	# _4
 	jne	.L23	#,
-# problem149.c:55:     assert(issame(result, test2, size, 1));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp114
 	movq	%rax, %rcx	# tmp114,
 	movl	$55, %edx	#,
@@ -418,9 +419,9 @@ main:
 	movl	$5, %ecx	#,
 	movq	%rax, %rdi	# tmp128,
 	call	issame	#
+# problem149.c:60:     assert(issame(result, test3, size, 5));
 	testl	%eax, %eax	# _6
 	jne	.L24	#,
-# problem149.c:60:     assert(issame(result, test3, size, 5));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp129
 	movq	%rax, %rcx	# tmp129,
 	movl	$60, %edx	#,
@@ -461,9 +462,9 @@ main:
 	movl	$5, %ecx	#,
 	movq	%rax, %rdi	# tmp143,
 	call	issame	#
+# problem149.c:65:     assert(issame(result, test4, size, 5));
 	testl	%eax, %eax	# _8
 	jne	.L25	#,
-# problem149.c:65:     assert(issame(result, test4, size, 5));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp144
 	movq	%rax, %rcx	# tmp144,
 	movl	$65, %edx	#,
@@ -561,7 +562,7 @@ main:
 # problem149.c:77:     return 0;
 	movl	$0, %eax	#, _52
 # problem149.c:78: }
-	movq	-8(%rbp), %rdx	# D.3169, tmp171
+	movq	-8(%rbp), %rdx	# D.4033, tmp171
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp171
 	je	.L33	#,
 	call	__stack_chk_fail@PLT	#
@@ -577,7 +578,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

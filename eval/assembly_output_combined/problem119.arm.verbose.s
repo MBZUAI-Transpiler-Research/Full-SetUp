@@ -1,7 +1,7 @@
 	.arch armv8-a
 	.file	"problem119.c"
-// GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (aarch64-linux-gnu)
-//	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+// GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (aarch64-linux-gnu)
+//	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 // GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 // options passed: -mlittle-endian -mabi=lp64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection
@@ -228,10 +228,12 @@ main:
 	add	x0, x0, :lo12:.LC1	//, tmp127,
 	bl	func0		//
 	mov	x2, x0	// _1,
+// problem119.c:26:     assert(strcmp(func0("yogurt"), "u") == 0);
 	adrp	x0, .LC2	// tmp128,
 	add	x1, x0, :lo12:.LC2	//, tmp128,
 	mov	x0, x2	//, _1
 	bl	strcmp		//
+// problem119.c:26:     assert(strcmp(func0("yogurt"), "u") == 0);
 	cmp	w0, 0	// _2,
 	beq	.L7		//,
 // problem119.c:26:     assert(strcmp(func0("yogurt"), "u") == 0);
@@ -249,10 +251,12 @@ main:
 	add	x0, x0, :lo12:.LC5	//, tmp132,
 	bl	func0		//
 	mov	x2, x0	// _3,
+// problem119.c:27:     assert(strcmp(func0("full"), "u") == 0);
 	adrp	x0, .LC2	// tmp133,
 	add	x1, x0, :lo12:.LC2	//, tmp133,
 	mov	x0, x2	//, _3
 	bl	strcmp		//
+// problem119.c:27:     assert(strcmp(func0("full"), "u") == 0);
 	cmp	w0, 0	// _4,
 	beq	.L8		//,
 // problem119.c:27:     assert(strcmp(func0("full"), "u") == 0);
@@ -269,10 +273,10 @@ main:
 	adrp	x0, .LC7	// tmp137,
 	add	x0, x0, :lo12:.LC7	//, tmp137,
 	bl	func0		//
+// problem119.c:28:     assert(strcmp(func0("easy"), "") == 0);
 	ldrb	w0, [x0]	// _33, MEM[(const unsigned char * {ref-all})_5]
 	cmp	w0, 0	// _6,
 	beq	.L9		//,
-// problem119.c:28:     assert(strcmp(func0("easy"), "") == 0);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp138,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp138,
 	mov	w2, 28	//,
@@ -286,10 +290,10 @@ main:
 	adrp	x0, .LC9	// tmp141,
 	add	x0, x0, :lo12:.LC9	//, tmp141,
 	bl	func0		//
+// problem119.c:29:     assert(strcmp(func0("eAsy"), "") == 0);
 	ldrb	w0, [x0]	// _36, MEM[(const unsigned char * {ref-all})_7]
 	cmp	w0, 0	// _8,
 	beq	.L10		//,
-// problem119.c:29:     assert(strcmp(func0("eAsy"), "") == 0);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp142,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp142,
 	mov	w2, 29	//,
@@ -303,10 +307,10 @@ main:
 	adrp	x0, .LC11	// tmp145,
 	add	x0, x0, :lo12:.LC11	//, tmp145,
 	bl	func0		//
+// problem119.c:30:     assert(strcmp(func0("ali"), "") == 0);
 	ldrb	w0, [x0]	// _39, MEM[(const unsigned char * {ref-all})_9]
 	cmp	w0, 0	// _10,
 	beq	.L11		//,
-// problem119.c:30:     assert(strcmp(func0("ali"), "") == 0);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp146,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp146,
 	mov	w2, 30	//,
@@ -321,10 +325,12 @@ main:
 	add	x0, x0, :lo12:.LC13	//, tmp149,
 	bl	func0		//
 	mov	x2, x0	// _11,
+// problem119.c:31:     assert(strcmp(func0("bad"), "a") == 0);
 	adrp	x0, .LC14	// tmp150,
 	add	x1, x0, :lo12:.LC14	//, tmp150,
 	mov	x0, x2	//, _11
 	bl	strcmp		//
+// problem119.c:31:     assert(strcmp(func0("bad"), "a") == 0);
 	cmp	w0, 0	// _12,
 	beq	.L12		//,
 // problem119.c:31:     assert(strcmp(func0("bad"), "a") == 0);
@@ -342,10 +348,12 @@ main:
 	add	x0, x0, :lo12:.LC16	//, tmp154,
 	bl	func0		//
 	mov	x2, x0	// _13,
+// problem119.c:32:     assert(strcmp(func0("most"), "o") == 0);
 	adrp	x0, .LC17	// tmp155,
 	add	x1, x0, :lo12:.LC17	//, tmp155,
 	mov	x0, x2	//, _13
 	bl	strcmp		//
+// problem119.c:32:     assert(strcmp(func0("most"), "o") == 0);
 	cmp	w0, 0	// _14,
 	beq	.L13		//,
 // problem119.c:32:     assert(strcmp(func0("most"), "o") == 0);
@@ -362,10 +370,10 @@ main:
 	adrp	x0, .LC19	// tmp159,
 	add	x0, x0, :lo12:.LC19	//, tmp159,
 	bl	func0		//
+// problem119.c:33:     assert(strcmp(func0("ab"), "") == 0);
 	ldrb	w0, [x0]	// _46, MEM[(const unsigned char * {ref-all})_15]
 	cmp	w0, 0	// _16,
 	beq	.L14		//,
-// problem119.c:33:     assert(strcmp(func0("ab"), "") == 0);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp160,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp160,
 	mov	w2, 33	//,
@@ -379,10 +387,10 @@ main:
 	adrp	x0, .LC21	// tmp163,
 	add	x0, x0, :lo12:.LC21	//, tmp163,
 	bl	func0		//
+// problem119.c:34:     assert(strcmp(func0("ba"), "") == 0);
 	ldrb	w0, [x0]	// _49, MEM[(const unsigned char * {ref-all})_17]
 	cmp	w0, 0	// _18,
 	beq	.L15		//,
-// problem119.c:34:     assert(strcmp(func0("ba"), "") == 0);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp164,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp164,
 	mov	w2, 34	//,
@@ -396,10 +404,10 @@ main:
 	adrp	x0, .LC23	// tmp167,
 	add	x0, x0, :lo12:.LC23	//, tmp167,
 	bl	func0		//
+// problem119.c:35:     assert(strcmp(func0("quick"), "") == 0);
 	ldrb	w0, [x0]	// _52, MEM[(const unsigned char * {ref-all})_19]
 	cmp	w0, 0	// _20,
 	beq	.L16		//,
-// problem119.c:35:     assert(strcmp(func0("quick"), "") == 0);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp168,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp168,
 	mov	w2, 35	//,
@@ -414,10 +422,12 @@ main:
 	add	x0, x0, :lo12:.LC25	//, tmp171,
 	bl	func0		//
 	mov	x2, x0	// _21,
+// problem119.c:36:     assert(strcmp(func0("anime"), "i") == 0);
 	adrp	x0, .LC26	// tmp172,
 	add	x1, x0, :lo12:.LC26	//, tmp172,
 	mov	x0, x2	//, _21
 	bl	strcmp		//
+// problem119.c:36:     assert(strcmp(func0("anime"), "i") == 0);
 	cmp	w0, 0	// _22,
 	beq	.L17		//,
 // problem119.c:36:     assert(strcmp(func0("anime"), "i") == 0);
@@ -434,10 +444,10 @@ main:
 	adrp	x0, .LC28	// tmp176,
 	add	x0, x0, :lo12:.LC28	//, tmp176,
 	bl	func0		//
+// problem119.c:37:     assert(strcmp(func0("Asia"), "") == 0);
 	ldrb	w0, [x0]	// _57, MEM[(const unsigned char * {ref-all})_23]
 	cmp	w0, 0	// _24,
 	beq	.L18		//,
-// problem119.c:37:     assert(strcmp(func0("Asia"), "") == 0);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp177,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp177,
 	mov	w2, 37	//,
@@ -452,10 +462,12 @@ main:
 	add	x0, x0, :lo12:.LC30	//, tmp180,
 	bl	func0		//
 	mov	x2, x0	// _25,
+// problem119.c:38:     assert(strcmp(func0("Above"), "o") == 0);
 	adrp	x0, .LC17	// tmp181,
 	add	x1, x0, :lo12:.LC17	//, tmp181,
 	mov	x0, x2	//, _25
 	bl	strcmp		//
+// problem119.c:38:     assert(strcmp(func0("Above"), "o") == 0);
 	cmp	w0, 0	// _26,
 	beq	.L19		//,
 // problem119.c:38:     assert(strcmp(func0("Above"), "o") == 0);
@@ -487,5 +499,5 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits

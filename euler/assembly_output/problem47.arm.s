@@ -126,5 +126,5 @@ distinct_factor_count:
 	.cfi_endproc
 .LFE1:
 	.size	distinct_factor_count, .-distinct_factor_count
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits

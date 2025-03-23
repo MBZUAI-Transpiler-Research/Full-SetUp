@@ -1,6 +1,6 @@
 	.file	"problem65.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -146,9 +146,9 @@ main:
 	leaq	.LC1(%rip), %rax	#, tmp91
 	movq	%rax, %rdi	# tmp91,
 	call	func0	#
+# problem65.c:28:     assert(func0("abcde") == 2);
 	cmpl	$2, %eax	#, _1
 	je	.L9	#,
-# problem65.c:28:     assert(func0("abcde") == 2);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp92
 	movq	%rax, %rcx	# tmp92,
 	movl	$28, %edx	#,
@@ -162,9 +162,9 @@ main:
 	leaq	.LC4(%rip), %rax	#, tmp95
 	movq	%rax, %rdi	# tmp95,
 	call	func0	#
+# problem65.c:29:     assert(func0("Alone") == 3);
 	cmpl	$3, %eax	#, _2
 	je	.L10	#,
-# problem65.c:29:     assert(func0("Alone") == 3);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp96
 	movq	%rax, %rcx	# tmp96,
 	movl	$29, %edx	#,
@@ -178,9 +178,9 @@ main:
 	leaq	.LC6(%rip), %rax	#, tmp99
 	movq	%rax, %rdi	# tmp99,
 	call	func0	#
+# problem65.c:30:     assert(func0("key") == 2);
 	cmpl	$2, %eax	#, _3
 	je	.L11	#,
-# problem65.c:30:     assert(func0("key") == 2);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp100
 	movq	%rax, %rcx	# tmp100,
 	movl	$30, %edx	#,
@@ -194,9 +194,9 @@ main:
 	leaq	.LC8(%rip), %rax	#, tmp103
 	movq	%rax, %rdi	# tmp103,
 	call	func0	#
+# problem65.c:31:     assert(func0("bye") == 1);
 	cmpl	$1, %eax	#, _4
 	je	.L12	#,
-# problem65.c:31:     assert(func0("bye") == 1);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp104
 	movq	%rax, %rcx	# tmp104,
 	movl	$31, %edx	#,
@@ -210,9 +210,9 @@ main:
 	leaq	.LC10(%rip), %rax	#, tmp107
 	movq	%rax, %rdi	# tmp107,
 	call	func0	#
+# problem65.c:32:     assert(func0("keY") == 2);
 	cmpl	$2, %eax	#, _5
 	je	.L13	#,
-# problem65.c:32:     assert(func0("keY") == 2);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp108
 	movq	%rax, %rcx	# tmp108,
 	movl	$32, %edx	#,
@@ -226,9 +226,9 @@ main:
 	leaq	.LC12(%rip), %rax	#, tmp111
 	movq	%rax, %rdi	# tmp111,
 	call	func0	#
+# problem65.c:33:     assert(func0("bYe") == 1);
 	cmpl	$1, %eax	#, _6
 	je	.L14	#,
-# problem65.c:33:     assert(func0("bYe") == 1);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp112
 	movq	%rax, %rcx	# tmp112,
 	movl	$33, %edx	#,
@@ -242,9 +242,9 @@ main:
 	leaq	.LC14(%rip), %rax	#, tmp115
 	movq	%rax, %rdi	# tmp115,
 	call	func0	#
+# problem65.c:34:     assert(func0("ACEDY") == 3);
 	cmpl	$3, %eax	#, _7
 	je	.L15	#,
-# problem65.c:34:     assert(func0("ACEDY") == 3);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp116
 	movq	%rax, %rcx	# tmp116,
 	movl	$34, %edx	#,
@@ -268,7 +268,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

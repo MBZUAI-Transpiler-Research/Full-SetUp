@@ -59,31 +59,35 @@ func0:
 	movslq	%eax, %rdx
 	imulq	$1717986919, %rdx, %rdx
 	shrq	$32, %rdx
-	sarl	$2, %edx
-	sarl	$31, %eax
-	movl	%eax, %ecx
-	movl	%edx, %eax
-	subl	%ecx, %eax
+	movl	%edx, %ecx
+	sarl	$2, %ecx
+	cltd
+	movl	%ecx, %eax
+	subl	%edx, %eax
 	movl	%eax, -12(%rbp)
 .L4:
 	cmpl	$9, -12(%rbp)
 	jg	.L5
 	movl	-12(%rbp), %eax
 	movl	%eax, -4(%rbp)
-	movl	-4(%rbp), %eax
-	cltd
-	shrl	$31, %edx
-	addl	%edx, %eax
-	andl	$1, %eax
-	subl	%edx, %eax
+	movl	-4(%rbp), %edx
+	movl	%edx, %eax
+	sarl	$31, %eax
+	shrl	$31, %eax
+	addl	%eax, %edx
+	andl	$1, %edx
+	subl	%eax, %edx
+	movl	%edx, %eax
 	cmpl	$1, %eax
 	jne	.L3
-	movl	-8(%rbp), %eax
-	cltd
-	shrl	$31, %edx
-	addl	%edx, %eax
-	andl	$1, %eax
-	subl	%edx, %eax
+	movl	-8(%rbp), %edx
+	movl	%edx, %eax
+	sarl	$31, %eax
+	shrl	$31, %eax
+	addl	%eax, %edx
+	andl	$1, %edx
+	subl	%eax, %edx
+	movl	%edx, %eax
 	cmpl	$1, %eax
 	jne	.L3
 	addl	$1, -20(%rbp)
@@ -283,7 +287,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

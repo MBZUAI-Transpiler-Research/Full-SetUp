@@ -1,6 +1,6 @@
 	.file	"problem114.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -89,13 +89,15 @@ func0:
 	movzbl	(%rax), %eax	# *_22, _23
 	movsbl	%al, %eax	# _23, _24
 # problem114.c:10:             if (lst[i][j] >= '0' && lst[i][j] <= '9' && (lst[i][j] - '0') % 2 == 1)
-	subl	$48, %eax	#, _25
+	leal	-48(%rax), %edx	#, _25
 # problem114.c:10:             if (lst[i][j] >= '0' && lst[i][j] <= '9' && (lst[i][j] - '0') % 2 == 1)
-	cltd
-	shrl	$31, %edx	#, tmp137
-	addl	%edx, %eax	# tmp137, tmp138
-	andl	$1, %eax	#, tmp139
-	subl	%edx, %eax	# tmp137, tmp140
+	movl	%edx, %eax	# _25, tmp136
+	sarl	$31, %eax	#, tmp136
+	shrl	$31, %eax	#, tmp137
+	addl	%eax, %edx	# tmp137, tmp138
+	andl	$1, %edx	#, tmp139
+	subl	%eax, %edx	# tmp137, tmp140
+	movl	%edx, %eax	# tmp140, _26
 # problem114.c:10:             if (lst[i][j] >= '0' && lst[i][j] <= '9' && (lst[i][j] - '0') % 2 == 1)
 	cmpl	$1, %eax	#, _26
 	jne	.L4	#,
@@ -278,7 +280,7 @@ main:
 	subq	$160, %rsp	#,
 # problem114.c:34: int main() {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp142
-	movq	%rax, -8(%rbp)	# tmp142, D.3148
+	movq	%rax, -8(%rbp)	# tmp142, D.4012
 	xorl	%eax, %eax	# tmp142
 # problem114.c:35:     char *input1[] = {"1234567"};
 	leaq	.LC1(%rip), %rax	#, tmp99
@@ -299,9 +301,9 @@ main:
 	movq	%rcx, %rsi	# tmp103,
 	movq	%rax, %rdi	# tmp104,
 	call	issame	#
+# problem114.c:38:     assert(issame(result1, expected1, 1));
 	testl	%eax, %eax	# _1
 	jne	.L14	#,
-# problem114.c:38:     assert(issame(result1, expected1, 1));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp105
 	movq	%rax, %rcx	# tmp105,
 	movl	$38, %edx	#,
@@ -334,9 +336,9 @@ main:
 	movq	%rcx, %rsi	# tmp114,
 	movq	%rax, %rdi	# tmp115,
 	call	issame	#
+# problem114.c:46:     assert(issame(result2, expected2, 2));
 	testl	%eax, %eax	# _2
 	jne	.L15	#,
-# problem114.c:46:     assert(issame(result2, expected2, 2));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp116
 	movq	%rax, %rcx	# tmp116,
 	movl	$46, %edx	#,
@@ -373,9 +375,9 @@ main:
 	movq	%rcx, %rsi	# tmp127,
 	movq	%rax, %rdi	# tmp128,
 	call	issame	#
+# problem114.c:55:     assert(issame(result3, expected3, 3));
 	testl	%eax, %eax	# _3
 	jne	.L16	#,
-# problem114.c:55:     assert(issame(result3, expected3, 3));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp129
 	movq	%rax, %rcx	# tmp129,
 	movl	$55, %edx	#,
@@ -463,7 +465,7 @@ main:
 # problem114.c:65:     return 0;
 	movl	$0, %eax	#, _53
 # problem114.c:66: }
-	movq	-8(%rbp), %rdx	# D.3148, tmp143
+	movq	-8(%rbp), %rdx	# D.4012, tmp143
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp143
 	je	.L24	#,
 	call	__stack_chk_fail@PLT	#
@@ -479,7 +481,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

@@ -1,7 +1,7 @@
 	.arch armv8-a
 	.file	"problem19.c"
-// GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (aarch64-linux-gnu)
-//	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+// GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (aarch64-linux-gnu)
+//	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 // GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 // options passed: -mlittle-endian -mabi=lp64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection
@@ -37,6 +37,7 @@ func0:
 	bne	.L2		//,
 // problem19.c:8:     if (str_len == 0) return 0;
 	mov	w0, 0	// _11,
+// problem19.c:8:     if (str_len == 0) return 0;
 	b	.L3		//
 .L2:
 // problem19.c:9:     for (int i = 0; i <= str_len - sub_len; i++) {
@@ -140,9 +141,9 @@ main:
 	adrp	x0, .LC1	// tmp99,
 	add	x0, x0, :lo12:.LC1	//, tmp99,
 	bl	func0		//
+// problem19.c:21:     assert(func0("", "x") == 0);
 	cmp	w0, 0	// _1,
 	beq	.L8		//,
-// problem19.c:21:     assert(func0("", "x") == 0);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp100,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp100,
 	mov	w2, 21	//,
@@ -158,9 +159,9 @@ main:
 	adrp	x0, .LC4	// tmp104,
 	add	x0, x0, :lo12:.LC4	//, tmp104,
 	bl	func0		//
+// problem19.c:22:     assert(func0("xyxyxyx", "x") == 4);
 	cmp	w0, 4	// _2,
 	beq	.L9		//,
-// problem19.c:22:     assert(func0("xyxyxyx", "x") == 4);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp105,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp105,
 	mov	w2, 22	//,
@@ -176,9 +177,9 @@ main:
 	adrp	x0, .LC7	// tmp109,
 	add	x0, x0, :lo12:.LC7	//, tmp109,
 	bl	func0		//
+// problem19.c:23:     assert(func0("cacacacac", "cac") == 4);
 	cmp	w0, 4	// _3,
 	beq	.L10		//,
-// problem19.c:23:     assert(func0("cacacacac", "cac") == 4);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp110,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp110,
 	mov	w2, 23	//,
@@ -194,9 +195,9 @@ main:
 	adrp	x0, .LC10	// tmp114,
 	add	x0, x0, :lo12:.LC10	//, tmp114,
 	bl	func0		//
+// problem19.c:24:     assert(func0("john doe", "john") == 1);
 	cmp	w0, 1	// _4,
 	beq	.L11		//,
-// problem19.c:24:     assert(func0("john doe", "john") == 1);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp115,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp115,
 	mov	w2, 24	//,
@@ -223,5 +224,5 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits

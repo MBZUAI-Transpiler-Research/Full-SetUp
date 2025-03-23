@@ -1,6 +1,6 @@
 	.file	"code.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -27,11 +27,11 @@ func0:
 	movslq	%edx, %rax	# _1, tmp88
 	imulq	$1717986919, %rax, %rax	#, tmp88, tmp89
 	shrq	$32, %rax	#, tmp90
-	sarl	$2, %eax	#, tmp91
-	movl	%edx, %esi	# _1, tmp92
-	sarl	$31, %esi	#, tmp92
-	subl	%esi, %eax	# tmp92, tmp91
-	movl	%eax, %ecx	# tmp91, _2
+	movl	%eax, %ecx	# tmp90, tmp91
+	sarl	$2, %ecx	#, tmp91
+	movl	%edx, %eax	# _1, tmp92
+	sarl	$31, %eax	#, tmp92
+	subl	%eax, %ecx	# tmp92, _2
 	movl	%ecx, %eax	# _2, tmp93
 	sall	$2, %eax	#, tmp93
 	addl	%ecx, %eax	# _2, tmp93
@@ -48,11 +48,11 @@ func0:
 	movslq	%esi, %rax	# _3, tmp95
 	imulq	$1717986919, %rax, %rax	#, tmp95, tmp96
 	shrq	$32, %rax	#, tmp97
-	sarl	$2, %eax	#, tmp98
-	movl	%esi, %edi	# _3, tmp99
-	sarl	$31, %edi	#, tmp99
-	subl	%edi, %eax	# tmp99, tmp98
-	movl	%eax, %edx	# tmp98, _4
+	movl	%eax, %edx	# tmp97, tmp98
+	sarl	$2, %edx	#, tmp98
+	movl	%esi, %eax	# _3, tmp99
+	sarl	$31, %eax	#, tmp99
+	subl	%eax, %edx	# tmp99, _4
 	movl	%edx, %eax	# _4, tmp100
 	sall	$2, %eax	#, tmp100
 	addl	%edx, %eax	# _4, tmp100
@@ -69,7 +69,7 @@ func0:
 	.cfi_endproc
 .LFE6:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

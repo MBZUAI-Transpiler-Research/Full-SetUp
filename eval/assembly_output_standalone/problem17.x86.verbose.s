@@ -1,6 +1,6 @@
 	.file	"code.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -20,7 +20,7 @@ func0:
 	movq	%rdi, -1064(%rbp)	# str, str
 # eval/problem17//code.c:5: int func0(const char *str) {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp115
-	movq	%rax, -8(%rbp)	# tmp115, D.2651
+	movq	%rax, -8(%rbp)	# tmp115, D.3508
 	xorl	%eax, %eax	# tmp115
 # eval/problem17//code.c:6:     int count = 0;
 	movl	$0, -1048(%rbp)	#, count
@@ -56,11 +56,11 @@ func0:
 	jne	.L3	#,
 # eval/problem17//code.c:12:         if (char_map[ch] == 0 && isalpha((unsigned char)ch)) {
 	call	__ctype_b_loc@PLT	#
-	movq	(%rax), %rdx	# *_9, _10
-	movzbl	-1049(%rbp), %eax	# ch, ch.0_11
-	movzbl	%al, %eax	# ch.0_11, _12
-	addq	%rax, %rax	# _13
-	addq	%rdx, %rax	# _10, _14
+	movq	(%rax), %rax	# *_9, _10
+	movzbl	-1049(%rbp), %edx	# ch, ch.0_11
+	movzbl	%dl, %edx	# ch.0_11, _12
+	addq	%rdx, %rdx	# _13
+	addq	%rdx, %rax	# _13, _14
 	movzwl	(%rax), %eax	# *_14, _15
 	movzwl	%ax, %eax	# _15, _16
 	andl	$1024, %eax	#, _17
@@ -90,7 +90,7 @@ func0:
 # eval/problem17//code.c:18:     return count;
 	movl	-1048(%rbp), %eax	# count, _32
 # eval/problem17//code.c:19: }
-	movq	-8(%rbp), %rdx	# D.2651, tmp116
+	movq	-8(%rbp), %rdx	# D.3508, tmp116
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp116
 	je	.L6	#,
 	call	__stack_chk_fail@PLT	#
@@ -101,7 +101,7 @@ func0:
 	.cfi_endproc
 .LFE0:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

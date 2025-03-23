@@ -1,6 +1,6 @@
 	.file	"problem77.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -31,6 +31,7 @@ func0:
 	jne	.L3	#,
 # problem77.c:6:         if (p == x) return 1;
 	movl	$1, %eax	#, _3
+# problem77.c:6:         if (p == x) return 1;
 	jmp	.L4	#
 .L3:
 # problem77.c:7:         p = p * n; count += 1;
@@ -109,9 +110,9 @@ main:
 	movl	$4, %esi	#,
 	movl	$1, %edi	#,
 	call	func0	#
+# problem77.c:17:     assert(func0(1, 4) == 1);
 	cmpl	$1, %eax	#, _1
 	je	.L8	#,
-# problem77.c:17:     assert(func0(1, 4) == 1);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp100
 	movq	%rax, %rcx	# tmp100,
 	movl	$17, %edx	#,
@@ -125,9 +126,9 @@ main:
 	movl	$2, %esi	#,
 	movl	$2, %edi	#,
 	call	func0	#
+# problem77.c:18:     assert(func0(2, 2) == 1);
 	cmpl	$1, %eax	#, _2
 	je	.L9	#,
-# problem77.c:18:     assert(func0(2, 2) == 1);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp103
 	movq	%rax, %rcx	# tmp103,
 	movl	$18, %edx	#,
@@ -141,9 +142,9 @@ main:
 	movl	$2, %esi	#,
 	movl	$8, %edi	#,
 	call	func0	#
+# problem77.c:19:     assert(func0(8, 2) == 1);
 	cmpl	$1, %eax	#, _3
 	je	.L10	#,
-# problem77.c:19:     assert(func0(8, 2) == 1);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp106
 	movq	%rax, %rcx	# tmp106,
 	movl	$19, %edx	#,
@@ -157,9 +158,9 @@ main:
 	movl	$2, %esi	#,
 	movl	$3, %edi	#,
 	call	func0	#
+# problem77.c:20:     assert(func0(3, 2) == 0);
 	testl	%eax, %eax	# _4
 	je	.L11	#,
-# problem77.c:20:     assert(func0(3, 2) == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp109
 	movq	%rax, %rcx	# tmp109,
 	movl	$20, %edx	#,
@@ -173,9 +174,9 @@ main:
 	movl	$1, %esi	#,
 	movl	$3, %edi	#,
 	call	func0	#
+# problem77.c:21:     assert(func0(3, 1) == 0);
 	testl	%eax, %eax	# _5
 	je	.L12	#,
-# problem77.c:21:     assert(func0(3, 1) == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp112
 	movq	%rax, %rcx	# tmp112,
 	movl	$21, %edx	#,
@@ -189,9 +190,9 @@ main:
 	movl	$3, %esi	#,
 	movl	$5, %edi	#,
 	call	func0	#
+# problem77.c:22:     assert(func0(5, 3) == 0);
 	testl	%eax, %eax	# _6
 	je	.L13	#,
-# problem77.c:22:     assert(func0(5, 3) == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp115
 	movq	%rax, %rcx	# tmp115,
 	movl	$22, %edx	#,
@@ -205,9 +206,9 @@ main:
 	movl	$2, %esi	#,
 	movl	$16, %edi	#,
 	call	func0	#
+# problem77.c:23:     assert(func0(16, 2) == 1);
 	cmpl	$1, %eax	#, _7
 	je	.L14	#,
-# problem77.c:23:     assert(func0(16, 2) == 1);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp118
 	movq	%rax, %rcx	# tmp118,
 	movl	$23, %edx	#,
@@ -221,9 +222,9 @@ main:
 	movl	$16, %esi	#,
 	movl	$143214, %edi	#,
 	call	func0	#
+# problem77.c:24:     assert(func0(143214, 16) == 0);
 	testl	%eax, %eax	# _8
 	je	.L15	#,
-# problem77.c:24:     assert(func0(143214, 16) == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp121
 	movq	%rax, %rcx	# tmp121,
 	movl	$24, %edx	#,
@@ -237,9 +238,9 @@ main:
 	movl	$2, %esi	#,
 	movl	$4, %edi	#,
 	call	func0	#
+# problem77.c:25:     assert(func0(4, 2) == 1);
 	cmpl	$1, %eax	#, _9
 	je	.L16	#,
-# problem77.c:25:     assert(func0(4, 2) == 1);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp124
 	movq	%rax, %rcx	# tmp124,
 	movl	$25, %edx	#,
@@ -253,9 +254,9 @@ main:
 	movl	$3, %esi	#,
 	movl	$9, %edi	#,
 	call	func0	#
+# problem77.c:26:     assert(func0(9, 3) == 1);
 	cmpl	$1, %eax	#, _10
 	je	.L17	#,
-# problem77.c:26:     assert(func0(9, 3) == 1);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp127
 	movq	%rax, %rcx	# tmp127,
 	movl	$26, %edx	#,
@@ -269,9 +270,9 @@ main:
 	movl	$4, %esi	#,
 	movl	$16, %edi	#,
 	call	func0	#
+# problem77.c:27:     assert(func0(16, 4) == 1);
 	cmpl	$1, %eax	#, _11
 	je	.L18	#,
-# problem77.c:27:     assert(func0(16, 4) == 1);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp130
 	movq	%rax, %rcx	# tmp130,
 	movl	$27, %edx	#,
@@ -285,9 +286,9 @@ main:
 	movl	$2, %esi	#,
 	movl	$24, %edi	#,
 	call	func0	#
+# problem77.c:28:     assert(func0(24, 2) == 0);
 	testl	%eax, %eax	# _12
 	je	.L19	#,
-# problem77.c:28:     assert(func0(24, 2) == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp133
 	movq	%rax, %rcx	# tmp133,
 	movl	$28, %edx	#,
@@ -301,9 +302,9 @@ main:
 	movl	$4, %esi	#,
 	movl	$128, %edi	#,
 	call	func0	#
+# problem77.c:29:     assert(func0(128, 4) == 0);
 	testl	%eax, %eax	# _13
 	je	.L20	#,
-# problem77.c:29:     assert(func0(128, 4) == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp136
 	movq	%rax, %rcx	# tmp136,
 	movl	$29, %edx	#,
@@ -317,9 +318,9 @@ main:
 	movl	$6, %esi	#,
 	movl	$12, %edi	#,
 	call	func0	#
+# problem77.c:30:     assert(func0(12, 6) == 0);
 	testl	%eax, %eax	# _14
 	je	.L21	#,
-# problem77.c:30:     assert(func0(12, 6) == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp139
 	movq	%rax, %rcx	# tmp139,
 	movl	$30, %edx	#,
@@ -333,9 +334,9 @@ main:
 	movl	$1, %esi	#,
 	movl	$1, %edi	#,
 	call	func0	#
+# problem77.c:31:     assert(func0(1, 1) == 1);
 	cmpl	$1, %eax	#, _15
 	je	.L22	#,
-# problem77.c:31:     assert(func0(1, 1) == 1);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp142
 	movq	%rax, %rcx	# tmp142,
 	movl	$31, %edx	#,
@@ -349,9 +350,9 @@ main:
 	movl	$12, %esi	#,
 	movl	$1, %edi	#,
 	call	func0	#
+# problem77.c:32:     assert(func0(1, 12) == 1);
 	cmpl	$1, %eax	#, _16
 	je	.L23	#,
-# problem77.c:32:     assert(func0(1, 12) == 1);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp145
 	movq	%rax, %rcx	# tmp145,
 	movl	$32, %edx	#,
@@ -375,7 +376,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

@@ -47,14 +47,14 @@ main:
 	addl	%eax, -28(%rbp)
 .L4:
 	movl	-28(%rbp), %eax
-	cmpq	%rax, -16(%rbp)
-	ja	.L5
+	cmpq	-16(%rbp), %rax
+	jb	.L5
 .L3:
 	addl	$1, -32(%rbp)
 .L2:
 	movl	-32(%rbp), %eax
-	cmpq	%rax, -16(%rbp)
-	ja	.L6
+	cmpq	-16(%rbp), %rax
+	jb	.L6
 	movq	-8(%rbp), %rax
 	movq	%rax, %rdi
 	call	free@PLT
@@ -71,7 +71,7 @@ main:
 	.cfi_endproc
 .LFE6:
 	.size	main, .-main
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

@@ -38,11 +38,10 @@ func0:
 	movq	%fs:40, %rax
 	movq	%rax, -8(%rbp)
 	xorl	%eax, %eax
-	movq	$0, -144(%rbp)
-	movq	$0, -136(%rbp)
-	movq	$0, -128(%rbp)
-	movq	$0, -120(%rbp)
-	movq	$0, -112(%rbp)
+	pxor	%xmm0, %xmm0
+	movaps	%xmm0, -144(%rbp)
+	movaps	%xmm0, -128(%rbp)
+	movq	%xmm0, -112(%rbp)
 	leaq	.LC0(%rip), %rax
 	movq	%rax, -96(%rbp)
 	leaq	.LC1(%rip), %rax
@@ -210,7 +209,7 @@ func0:
 	.size	func0, .-func0
 	.local	out.0
 	.comm	out.0,1000,32
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

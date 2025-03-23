@@ -1,6 +1,6 @@
 	.file	"problem84.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -22,6 +22,7 @@ func0:
 	jg	.L2	#,
 # problem84.c:4:     if (n < 1) return 0;
 	movl	$0, %eax	#, _3
+# problem84.c:4:     if (n < 1) return 0;
 	jmp	.L3	#
 .L2:
 # problem84.c:5:     if (n == 1) return 1;
@@ -29,6 +30,7 @@ func0:
 	jne	.L4	#,
 # problem84.c:5:     if (n == 1) return 1;
 	movl	$1, %eax	#, _3
+# problem84.c:5:     if (n == 1) return 1;
 	jmp	.L3	#
 .L4:
 # problem84.c:6:     int out = 18;
@@ -90,9 +92,9 @@ main:
 # problem84.c:17:     assert(func0(1) == 1);
 	movl	$1, %edi	#,
 	call	func0	#
+# problem84.c:17:     assert(func0(1) == 1);
 	cmpl	$1, %eax	#, _1
 	je	.L8	#,
-# problem84.c:17:     assert(func0(1) == 1);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp89
 	movq	%rax, %rcx	# tmp89,
 	movl	$17, %edx	#,
@@ -105,9 +107,9 @@ main:
 # problem84.c:18:     assert(func0(2) == 18);
 	movl	$2, %edi	#,
 	call	func0	#
+# problem84.c:18:     assert(func0(2) == 18);
 	cmpl	$18, %eax	#, _2
 	je	.L9	#,
-# problem84.c:18:     assert(func0(2) == 18);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp92
 	movq	%rax, %rcx	# tmp92,
 	movl	$18, %edx	#,
@@ -120,9 +122,9 @@ main:
 # problem84.c:19:     assert(func0(3) == 180);
 	movl	$3, %edi	#,
 	call	func0	#
+# problem84.c:19:     assert(func0(3) == 180);
 	cmpl	$180, %eax	#, _3
 	je	.L10	#,
-# problem84.c:19:     assert(func0(3) == 180);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp95
 	movq	%rax, %rcx	# tmp95,
 	movl	$19, %edx	#,
@@ -135,9 +137,9 @@ main:
 # problem84.c:20:     assert(func0(4) == 1800);
 	movl	$4, %edi	#,
 	call	func0	#
+# problem84.c:20:     assert(func0(4) == 1800);
 	cmpl	$1800, %eax	#, _4
 	je	.L11	#,
-# problem84.c:20:     assert(func0(4) == 1800);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp98
 	movq	%rax, %rcx	# tmp98,
 	movl	$20, %edx	#,
@@ -150,9 +152,9 @@ main:
 # problem84.c:21:     assert(func0(5) == 18000);
 	movl	$5, %edi	#,
 	call	func0	#
+# problem84.c:21:     assert(func0(5) == 18000);
 	cmpl	$18000, %eax	#, _5
 	je	.L12	#,
-# problem84.c:21:     assert(func0(5) == 18000);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp101
 	movq	%rax, %rcx	# tmp101,
 	movl	$21, %edx	#,
@@ -176,7 +178,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

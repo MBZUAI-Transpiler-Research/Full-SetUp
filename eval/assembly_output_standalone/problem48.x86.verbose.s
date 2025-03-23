@@ -1,6 +1,6 @@
 	.file	"code.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -97,12 +97,14 @@ func0:
 	cmpl	-28(%rbp), %eax	# size, tmp141
 	jl	.L7	#,
 # eval/problem48//code.c:15:     if (size % 2 == 1) return l[size / 2];
-	movl	-28(%rbp), %eax	# size, tmp142
-	cltd
-	shrl	$31, %edx	#, tmp144
-	addl	%edx, %eax	# tmp144, tmp145
-	andl	$1, %eax	#, tmp146
-	subl	%edx, %eax	# tmp144, tmp147
+	movl	-28(%rbp), %edx	# size, tmp142
+	movl	%edx, %eax	# tmp142, tmp143
+	sarl	$31, %eax	#, tmp143
+	shrl	$31, %eax	#, tmp144
+	addl	%eax, %edx	# tmp144, tmp145
+	andl	$1, %edx	#, tmp146
+	subl	%eax, %edx	# tmp144, tmp147
+	movl	%edx, %eax	# tmp147, _22
 # eval/problem48//code.c:15:     if (size % 2 == 1) return l[size / 2];
 	cmpl	$1, %eax	#, _22
 	jne	.L8	#,
@@ -118,6 +120,7 @@ func0:
 	movq	-24(%rbp), %rax	# l, tmp152
 	addq	%rdx, %rax	# _25, _26
 	movss	(%rax), %xmm0	# *_26, _41
+# eval/problem48//code.c:15:     if (size % 2 == 1) return l[size / 2];
 	jmp	.L9	#
 .L8:
 # eval/problem48//code.c:16:     return 0.5 * (l[size / 2] + l[size / 2 - 1]);
@@ -162,7 +165,7 @@ func0:
 	.align 4
 .LC0:
 	.long	1056964608
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

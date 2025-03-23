@@ -12,19 +12,20 @@
 main:
 .LFB0:
 	.cfi_startproc
-	stp	x29, x30, [sp, -256]!
+	sub	sp, sp, #256
 	.cfi_def_cfa_offset 256
-	.cfi_offset 29, -256
-	.cfi_offset 30, -248
-	mov	x29, sp
+	stp	x29, x30, [sp, 240]
+	.cfi_offset 29, -16
+	.cfi_offset 30, -8
+	add	x29, sp, 240
 	adrp	x0, :got:__stack_chk_guard
-	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]
+	ldr	x0, [x0, :got_lo12:__stack_chk_guard]
 	ldr	x1, [x0]
-	str	x1, [sp, 248]
+	str	x1, [sp, 232]
 	mov	x1, 0
 	adrp	x0, .LC0
 	add	x1, x0, :lo12:.LC0
-	add	x0, sp, 16
+	mov	x0, sp
 	ldp	q0, q1, [x1]
 	stp	q0, q1, [x0]
 	ldp	q0, q1, [x1, 32]
@@ -41,7 +42,7 @@ main:
 	stp	q0, q1, [x0, 192]
 	ldrb	w1, [x1, 224]
 	strb	w1, [x0, 224]
-	add	x0, sp, 16
+	mov	x0, sp
 	mov	w2, 0
 	mov	w1, 0
 	bl	findmax
@@ -52,8 +53,8 @@ main:
 	mov	w0, 0
 	mov	w1, w0
 	adrp	x0, :got:__stack_chk_guard
-	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]
-	ldr	x3, [sp, 248]
+	ldr	x0, [x0, :got_lo12:__stack_chk_guard]
+	ldr	x3, [sp, 232]
 	ldr	x2, [x0]
 	subs	x3, x3, x2
 	mov	x2, 0
@@ -61,9 +62,10 @@ main:
 	bl	__stack_chk_fail
 .L3:
 	mov	w0, w1
-	ldp	x29, x30, [sp], 256
-	.cfi_restore 30
+	ldp	x29, x30, [sp, 240]
+	add	sp, sp, 256
 	.cfi_restore 29
+	.cfi_restore 30
 	.cfi_def_cfa_offset 0
 	ret
 	.cfi_endproc
@@ -166,5 +168,5 @@ findmax:
 	.cfi_endproc
 .LFE1:
 	.size	findmax, .-findmax
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits

@@ -1,6 +1,6 @@
 	.file	"code.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -24,7 +24,7 @@ func0:
 	movl	%edi, -52(%rbp)	# N, N
 # eval/problem85//code.c:4: char* func0(int N) {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp154
-	movq	%rax, -8(%rbp)	# tmp154, D.2892
+	movq	%rax, -8(%rbp)	# tmp154, D.3729
 	xorl	%eax, %eax	# tmp154
 # eval/problem85//code.c:6:     sprintf(str, "%d", N);
 	movl	-52(%rbp), %edx	# N, tmp114
@@ -82,12 +82,14 @@ func0:
 	jmp	.L5	#
 .L7:
 # eval/problem85//code.c:17:             bi[index++] = (sum % 2) + '0';
-	movl	-40(%rbp), %eax	# sum, tmp124
-	cltd
-	shrl	$31, %edx	#, tmp126
-	addl	%edx, %eax	# tmp126, tmp127
-	andl	$1, %eax	#, tmp128
-	subl	%edx, %eax	# tmp126, tmp129
+	movl	-40(%rbp), %edx	# sum, tmp124
+	movl	%edx, %eax	# tmp124, tmp125
+	sarl	$31, %eax	#, tmp125
+	shrl	$31, %eax	#, tmp126
+	addl	%eax, %edx	# tmp126, tmp127
+	andl	$1, %edx	#, tmp128
+	subl	%eax, %edx	# tmp126, tmp129
+	movl	%edx, %eax	# tmp129, _8
 # eval/problem85//code.c:17:             bi[index++] = (sum % 2) + '0';
 	leal	48(%rax), %ecx	#, _10
 # eval/problem85//code.c:17:             bi[index++] = (sum % 2) + '0';
@@ -177,7 +179,7 @@ func0:
 # eval/problem85//code.c:29:     return bi;
 	movq	-24(%rbp), %rax	# bi, _55
 # eval/problem85//code.c:30: }
-	movq	-8(%rbp), %rdx	# D.2892, tmp155
+	movq	-8(%rbp), %rdx	# D.3729, tmp155
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp155
 	je	.L11	#,
 	call	__stack_chk_fail@PLT	#
@@ -188,7 +190,7 @@ func0:
 	.cfi_endproc
 .LFE6:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

@@ -1,16 +1,27 @@
 	.file	"problem152.c"
 	.option pic
+	.attribute arch, "rv64i2p1_m2p0_a2p1_f2p2_d2p2_c2p0_zicsr2p0_zifencei2p0"
+	.attribute unaligned_access, 0
+	.attribute stack_align, 16
 	.text
 	.align	1
 	.globl	func0
 	.type	func0, @function
 func0:
+.LFB0:
+	.cfi_startproc
 	addi	sp,sp,-80
+	.cfi_def_cfa_offset 80
 	sd	ra,72(sp)
 	sd	s0,64(sp)
 	sd	s1,56(sp)
 	fsd	fs0,40(sp)
+	.cfi_offset 1, -8
+	.cfi_offset 8, -16
+	.cfi_offset 9, -24
+	.cfi_offset 40, -40
 	addi	s0,sp,80
+	.cfi_def_cfa 8, 0
 	sd	a0,-72(s0)
 	mv	a5,a1
 	sw	a5,-76(s0)
@@ -44,7 +55,7 @@ func0:
 	ld	a4,-72(s0)
 	add	a5,a4,a5
 	flw	fa5,0(a5)
-	fmv.w.x	fa4,zero
+	fmv.s.x	fa4,zero
 	fgt.s	a5,fa5,fa4
 	beq	a5,zero,.L3
 	lw	a5,-60(s0)
@@ -110,11 +121,19 @@ func0:
 	ld	a5,-56(s0)
 	mv	a0,a5
 	ld	ra,72(sp)
+	.cfi_restore 1
 	ld	s0,64(sp)
+	.cfi_restore 8
+	.cfi_def_cfa 2, 80
 	ld	s1,56(sp)
+	.cfi_restore 9
 	fld	fs0,40(sp)
+	.cfi_restore 40
 	addi	sp,sp,80
+	.cfi_def_cfa_offset 0
 	jr	ra
+	.cfi_endproc
+.LFE0:
 	.size	func0, .-func0
 	.section	.rodata
 	.align	3
@@ -146,10 +165,16 @@ func0:
 	.globl	main
 	.type	main, @function
 main:
+.LFB1:
+	.cfi_startproc
 	addi	sp,sp,-848
+	.cfi_def_cfa_offset 848
 	sd	ra,840(sp)
 	sd	s0,832(sp)
+	.cfi_offset 1, -8
+	.cfi_offset 8, -16
 	addi	s0,sp,848
+	.cfi_def_cfa 8, 0
 	la	a5,__stack_chk_guard
 	ld	a4, 0(a5)
 	sd	a4, -24(s0)
@@ -276,13 +301,11 @@ main:
 	sw	a5,-836(s0)
 	j	.L17
 .L19:
-	lw	a5,-836(s0)
-	fcvt.s.w	fa5,a5
 	lw	a5,-840(s0)
 	addiw	a4,a5,1
 	sw	a4,-840(s0)
-	fmv.w.x	fa4,zero
-	fadd.s	fa5,fa5,fa4
+	lw	a4,-836(s0)
+	fcvt.s.w	fa5,a4
 	slli	a5,a5,2
 	addi	a5,a5,-16
 	add	a5,a5,s0
@@ -343,9 +366,15 @@ main:
 .L22:
 	mv	a0,a4
 	ld	ra,840(sp)
+	.cfi_restore 1
 	ld	s0,832(sp)
+	.cfi_restore 8
+	.cfi_def_cfa 2, 848
 	addi	sp,sp,848
+	.cfi_def_cfa_offset 0
 	jr	ra
+	.cfi_endproc
+.LFE1:
 	.size	main, .-main
 	.section	.rodata
 	.align	3
@@ -393,5 +422,5 @@ __PRETTY_FUNCTION__.0:
 	.align	2
 .LC18:
 	.word	1077936128
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits

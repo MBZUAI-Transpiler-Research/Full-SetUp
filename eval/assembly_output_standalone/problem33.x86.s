@@ -134,8 +134,6 @@ func0:
 	comisd	.LC3(%rip), %xmm0
 	ja	.L15
 	movsd	-32(%rbp), %xmm0
-	movq	%xmm0, %rax
-	movq	%rax, %xmm0
 	popq	%rbp
 	.cfi_def_cfa 7, 8
 	ret
@@ -157,7 +155,7 @@ func0:
 .LC3:
 	.long	-1598689907
 	.long	1051772663
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

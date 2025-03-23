@@ -1,7 +1,7 @@
 	.arch armv8-a
 	.file	"problem35.c"
-// GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (aarch64-linux-gnu)
-//	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+// GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (aarch64-linux-gnu)
+//	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 // GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 // options passed: -mlittle-endian -mabi=lp64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection
@@ -219,116 +219,118 @@ func0:
 main:
 .LFB7:
 	.cfi_startproc
-	stp	x29, x30, [sp, -112]!	//,,,
+	sub	sp, sp, #112	//,,
 	.cfi_def_cfa_offset 112
-	.cfi_offset 29, -112
-	.cfi_offset 30, -104
-	mov	x29, sp	//,
+	stp	x29, x30, [sp, 96]	//,,
+	.cfi_offset 29, -16
+	.cfi_offset 30, -8
+	add	x29, sp, 96	//,,
 // problem35.c:40: int main() {
-	adrp	x0, :got:__stack_chk_guard	// tmp102,
-	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]	// tmp101, tmp102,
-	ldr	x1, [x0]	// tmp135,
-	str	x1, [sp, 104]	// tmp135, D.4843
-	mov	x1, 0	// tmp135
+	adrp	x0, :got:__stack_chk_guard	// tmp101,
+	ldr	x0, [x0, :got_lo12:__stack_chk_guard]	// tmp101,
+	ldr	x1, [x0]	// tmp133,
+	str	x1, [sp, 88]	// tmp133, D.5432
+	mov	x1, 0	// tmp133
 // problem35.c:41:     int test_array[] = {5, 3, 5, 2, 3, 3, 9, 0, 123};
-	adrp	x0, .LC0	// tmp104,
-	add	x1, x0, :lo12:.LC0	// tmp103, tmp104,
-	add	x0, sp, 64	// tmp105,,
-	ldp	q0, q1, [x1]	// tmp107, tmp108,
-	stp	q0, q1, [x0]	// tmp107, tmp108, test_array
-	ldr	w1, [x1, 32]	// tmp109,
-	str	w1, [x0, 32]	// tmp109, test_array
+	adrp	x0, .LC0	// tmp103,
+	add	x1, x0, :lo12:.LC0	// tmp102, tmp103,
+	add	x0, sp, 48	// tmp104,,
+	ldp	q0, q1, [x1]	// tmp106, tmp107,
+	stp	q0, q1, [x0]	// tmp106, tmp107, test_array
+	ldr	w1, [x1, 32]	// tmp108,
+	str	w1, [x0, 32]	// tmp108, test_array
 // problem35.c:42:     int expected_array[] = {0, 2, 3, 5, 9, 123};
-	adrp	x0, .LC1	// tmp111,
-	add	x0, x0, :lo12:.LC1	// tmp110, tmp111,
-	add	x2, sp, 40	// tmp112,,
-	mov	x3, x0	// tmp113, tmp110
-	ldp	x0, x1, [x3]	// tmp114,
-	stp	x0, x1, [x2]	// tmp114, expected_array
-	ldr	x0, [x3, 16]	// tmp115,
-	str	x0, [x2, 16]	// tmp115, expected_array
+	adrp	x0, .LC1	// tmp110,
+	add	x0, x0, :lo12:.LC1	// tmp109, tmp110,
+	add	x2, sp, 24	// tmp111,,
+	mov	x3, x0	// tmp112, tmp109
+	ldp	x0, x1, [x3]	// tmp113,
+	stp	x0, x1, [x2]	// tmp113, expected_array
+	ldr	x0, [x3, 16]	// tmp114,
+	str	x0, [x2, 16]	// tmp114, expected_array
 // problem35.c:44:     int *unique_array = func0(test_array, sizeof(test_array) / sizeof(test_array[0]), &unique_size);
-	add	x1, sp, 24	// tmp116,,
-	add	x0, sp, 64	// tmp117,,
-	mov	x2, x1	//, tmp116
+	add	x1, sp, 8	// tmp115,,
+	add	x0, sp, 48	// tmp116,,
+	mov	x2, x1	//, tmp115
 	mov	w1, 9	//,
 	bl	func0		//
-	str	x0, [sp, 32]	//, unique_array
+	str	x0, [sp, 16]	//, unique_array
 // problem35.c:46:     assert(unique_size == sizeof(expected_array) / sizeof(expected_array[0]));
-	ldr	w0, [sp, 24]	// unique_size.1_1, unique_size
+	ldr	w0, [sp, 8]	// unique_size.1_1, unique_size
 	cmp	w0, 6	// unique_size.1_1,
 	beq	.L16		//,
 // problem35.c:46:     assert(unique_size == sizeof(expected_array) / sizeof(expected_array[0]));
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp118,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp118,
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp117,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp117,
 	mov	w2, 46	//,
-	adrp	x0, .LC2	// tmp119,
-	add	x1, x0, :lo12:.LC2	//, tmp119,
-	adrp	x0, .LC3	// tmp120,
-	add	x0, x0, :lo12:.LC3	//, tmp120,
+	adrp	x0, .LC2	// tmp118,
+	add	x1, x0, :lo12:.LC2	//, tmp118,
+	adrp	x0, .LC3	// tmp119,
+	add	x0, x0, :lo12:.LC3	//, tmp119,
 	bl	__assert_fail		//
 .L16:
 // problem35.c:47:     for (int i = 0; i < unique_size; i++) {
-	str	wzr, [sp, 28]	//, i
+	str	wzr, [sp, 12]	//, i
 // problem35.c:47:     for (int i = 0; i < unique_size; i++) {
 	b	.L17		//
 .L19:
 // problem35.c:48:         assert(unique_array[i] == expected_array[i]);
-	ldrsw	x0, [sp, 28]	// _2, i
+	ldrsw	x0, [sp, 12]	// _2, i
 	lsl	x0, x0, 2	// _3, _2,
-	ldr	x1, [sp, 32]	// tmp121, unique_array
-	add	x0, x1, x0	// _4, tmp121, _3
+	ldr	x1, [sp, 16]	// tmp120, unique_array
+	add	x0, x1, x0	// _4, tmp120, _3
 	ldr	w1, [x0]	// _5, *_4
-	ldrsw	x0, [sp, 28]	// tmp122, i
-	lsl	x0, x0, 2	// tmp123, tmp122,
-	add	x2, sp, 40	// tmp124,,
+	ldrsw	x0, [sp, 12]	// tmp121, i
+	lsl	x0, x0, 2	// tmp122, tmp121,
+	add	x2, sp, 24	// tmp123,,
 	ldr	w0, [x2, x0]	// _6, expected_array[i_8]
 	cmp	w1, w0	// _5, _6
 	beq	.L18		//,
 // problem35.c:48:         assert(unique_array[i] == expected_array[i]);
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp125,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp125,
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp124,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp124,
 	mov	w2, 48	//,
-	adrp	x0, .LC2	// tmp126,
-	add	x1, x0, :lo12:.LC2	//, tmp126,
-	adrp	x0, .LC4	// tmp127,
-	add	x0, x0, :lo12:.LC4	//, tmp127,
+	adrp	x0, .LC2	// tmp125,
+	add	x1, x0, :lo12:.LC2	//, tmp125,
+	adrp	x0, .LC4	// tmp126,
+	add	x0, x0, :lo12:.LC4	//, tmp126,
 	bl	__assert_fail		//
 .L18:
 // problem35.c:47:     for (int i = 0; i < unique_size; i++) {
-	ldr	w0, [sp, 28]	// tmp129, i
-	add	w0, w0, 1	// tmp128, tmp129,
-	str	w0, [sp, 28]	// tmp128, i
+	ldr	w0, [sp, 12]	// tmp128, i
+	add	w0, w0, 1	// tmp127, tmp128,
+	str	w0, [sp, 12]	// tmp127, i
 .L17:
 // problem35.c:47:     for (int i = 0; i < unique_size; i++) {
-	ldr	w0, [sp, 24]	// unique_size.2_7, unique_size
-	ldr	w1, [sp, 28]	// tmp130, i
-	cmp	w1, w0	// tmp130, unique_size.2_7
+	ldr	w0, [sp, 8]	// unique_size.2_7, unique_size
+	ldr	w1, [sp, 12]	// tmp129, i
+	cmp	w1, w0	// tmp129, unique_size.2_7
 	blt	.L19		//,
 // problem35.c:51:     free(unique_array);
-	ldr	x0, [sp, 32]	//, unique_array
+	ldr	x0, [sp, 16]	//, unique_array
 	bl	free		//
 // problem35.c:52:     printf("All tests passed!\n");
-	adrp	x0, .LC5	// tmp131,
-	add	x0, x0, :lo12:.LC5	//, tmp131,
+	adrp	x0, .LC5	// tmp130,
+	add	x0, x0, :lo12:.LC5	//, tmp130,
 	bl	puts		//
 // problem35.c:54:     return 0;
 	mov	w0, 0	// _18,
 // problem35.c:55: }
 	mov	w1, w0	// <retval>, _18
-	adrp	x0, :got:__stack_chk_guard	// tmp134,
-	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]	// tmp133, tmp134,
-	ldr	x3, [sp, 104]	// tmp136, D.4843
-	ldr	x2, [x0]	// tmp137,
-	subs	x3, x3, x2	// tmp136, tmp137
-	mov	x2, 0	// tmp137
+	adrp	x0, :got:__stack_chk_guard	// tmp132,
+	ldr	x0, [x0, :got_lo12:__stack_chk_guard]	// tmp132,
+	ldr	x3, [sp, 88]	// tmp134, D.5432
+	ldr	x2, [x0]	// tmp135,
+	subs	x3, x3, x2	// tmp134, tmp135
+	mov	x2, 0	// tmp135
 	beq	.L21		//,
 	bl	__stack_chk_fail		//
 .L21:
 	mov	w0, w1	//, <retval>
-	ldp	x29, x30, [sp], 112	//,,,
-	.cfi_restore 30
+	ldp	x29, x30, [sp, 96]	//,,
+	add	sp, sp, 112	//,,
 	.cfi_restore 29
+	.cfi_restore 30
 	.cfi_def_cfa_offset 0
 	ret	
 	.cfi_endproc
@@ -361,5 +363,5 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits

@@ -17,19 +17,20 @@ func0:
 	movl	$0, -4(%rbp)
 	jmp	.L2
 .L6:
-	movl	-4(%rbp), %edx
-	movslq	%edx, %rax
+	movl	-4(%rbp), %ecx
+	movslq	%ecx, %rax
 	imulq	$1431655766, %rax, %rax
 	shrq	$32, %rax
-	movl	%edx, %ecx
-	sarl	$31, %ecx
-	subl	%ecx, %eax
-	movl	%eax, %ecx
-	addl	%ecx, %ecx
-	addl	%eax, %ecx
+	movq	%rax, %rdx
+	movl	%ecx, %eax
+	sarl	$31, %eax
+	subl	%eax, %edx
 	movl	%edx, %eax
-	subl	%ecx, %eax
-	testl	%eax, %eax
+	addl	%eax, %eax
+	addl	%edx, %eax
+	subl	%eax, %ecx
+	movl	%ecx, %edx
+	testl	%edx, %edx
 	jne	.L3
 	movl	-4(%rbp), %eax
 	cltq
@@ -94,7 +95,7 @@ func0:
 	.cfi_endproc
 .LFE0:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

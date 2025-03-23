@@ -1,7 +1,7 @@
 	.arch armv8-a
 	.file	"problem72.c"
-// GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (aarch64-linux-gnu)
-//	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+// GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (aarch64-linux-gnu)
+//	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 // GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 // options passed: -mlittle-endian -mabi=lp64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection
@@ -44,11 +44,11 @@ func0:
 	ldr	s1, [sp, 28]	// tmp115, a
 	fcmpe	s1, s0	// tmp115, _3
 	bge	.L2		//,
-// problem72.c:5: if (a + b <= c || a + c <= b || b + c <= a) return -1;
 	b	.L6		//
 .L2:
 // problem72.c:5: if (a + b <= c || a + c <= b || b + c <= a) return -1;
 	fmov	s0, -1.0e+0	// _14,
+// problem72.c:5: if (a + b <= c || a + c <= b || b + c <= a) return -1;
 	b	.L5		//
 .L6:
 // problem72.c:6: float s = (a + b + c) / 2;
@@ -151,6 +151,7 @@ main:
 	fmov	s1, 4.0e+0	//,
 	fmov	s0, 3.0e+0	//,
 	bl	func0		//
+// problem72.c:18:     assert(fabs(func0(3, 4, 5) - 6.00) < 0.01);
 	fcvt	d1, s0	// _2, _1
 	fmov	d0, 6.0e+0	// tmp130,
 	fsub	d0, d1, d0	// _3, _2, tmp130
@@ -159,7 +160,6 @@ main:
 	ldr	d1, [x0, #:lo12:.LC10]	// tmp131,
 	fcmpe	d0, d1	// _4, tmp131
 	bmi	.L8		//,
-// problem72.c:18:     assert(fabs(func0(3, 4, 5) - 6.00) < 0.01);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp132,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp132,
 	mov	w2, 18	//,
@@ -175,6 +175,7 @@ main:
 	fmov	s0, 1.0e+0	//,
 	bl	func0		//
 	fmov	s1, s0	// _5,
+// problem72.c:19:     assert(fabs(func0(1, 2, 10) + 1) < 0.01);
 	fmov	s0, 1.0e+0	// tmp135,
 	fadd	s0, s1, s0	// _6, _5, tmp135
 	fabs	s0, s0	// _7, _6
@@ -183,7 +184,6 @@ main:
 	ldr	d1, [x0, #:lo12:.LC10]	// tmp136,
 	fcmpe	d0, d1	// _8, tmp136
 	bmi	.L9		//,
-// problem72.c:19:     assert(fabs(func0(1, 2, 10) + 1) < 0.01);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp137,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp137,
 	mov	w2, 19	//,
@@ -198,6 +198,7 @@ main:
 	fmov	s1, 8.0e+0	//,
 	fmov	s0, 4.0e+0	//,
 	bl	func0		//
+// problem72.c:20:     assert(fabs(func0(4, 8, 5) - 8.18) < 0.01);
 	fcvt	d0, s0	// _10, _9
 	adrp	x0, .LC11	// tmp180,
 	ldr	d1, [x0, #:lo12:.LC11]	// tmp140,
@@ -207,7 +208,6 @@ main:
 	ldr	d1, [x0, #:lo12:.LC10]	// tmp141,
 	fcmpe	d0, d1	// _12, tmp141
 	bmi	.L10		//,
-// problem72.c:20:     assert(fabs(func0(4, 8, 5) - 8.18) < 0.01);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp142,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp142,
 	mov	w2, 20	//,
@@ -222,6 +222,7 @@ main:
 	fmov	s1, 2.0e+0	//,
 	fmov	s0, 2.0e+0	//,
 	bl	func0		//
+// problem72.c:21:     assert(fabs(func0(2, 2, 2) - 1.73) < 0.01);
 	fcvt	d0, s0	// _14, _13
 	adrp	x0, .LC12	// tmp182,
 	ldr	d1, [x0, #:lo12:.LC12]	// tmp145,
@@ -231,7 +232,6 @@ main:
 	ldr	d1, [x0, #:lo12:.LC10]	// tmp146,
 	fcmpe	d0, d1	// _16, tmp146
 	bmi	.L11		//,
-// problem72.c:21:     assert(fabs(func0(2, 2, 2) - 1.73) < 0.01);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp147,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp147,
 	mov	w2, 21	//,
@@ -247,6 +247,7 @@ main:
 	fmov	s0, 1.0e+0	//,
 	bl	func0		//
 	fmov	s1, s0	// _17,
+// problem72.c:22:     assert(fabs(func0(1, 2, 3) + 1) < 0.01);
 	fmov	s0, 1.0e+0	// tmp150,
 	fadd	s0, s1, s0	// _18, _17, tmp150
 	fabs	s0, s0	// _19, _18
@@ -255,7 +256,6 @@ main:
 	ldr	d1, [x0, #:lo12:.LC10]	// tmp151,
 	fcmpe	d0, d1	// _20, tmp151
 	bmi	.L12		//,
-// problem72.c:22:     assert(fabs(func0(1, 2, 3) + 1) < 0.01);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp152,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp152,
 	mov	w2, 22	//,
@@ -270,6 +270,7 @@ main:
 	fmov	s1, 5.0e+0	//,
 	fmov	s0, 1.0e+1	//,
 	bl	func0		//
+// problem72.c:23:     assert(fabs(func0(10, 5, 7) - 16.25) < 0.01);
 	fcvt	d0, s0	// _22, _21
 	mov	x0, 70368744177664	// tmp176,
 	movk	x0, 0x4030, lsl 48	// tmp176,,
@@ -280,7 +281,6 @@ main:
 	ldr	d1, [x0, #:lo12:.LC10]	// tmp156,
 	fcmpe	d0, d1	// _24, tmp156
 	bmi	.L13		//,
-// problem72.c:23:     assert(fabs(func0(10, 5, 7) - 16.25) < 0.01);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp157,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp157,
 	mov	w2, 23	//,
@@ -296,6 +296,7 @@ main:
 	fmov	s0, 2.0e+0	//,
 	bl	func0		//
 	fmov	s1, s0	// _25,
+// problem72.c:24:     assert(fabs(func0(2, 6, 3) + 1) < 0.01);
 	fmov	s0, 1.0e+0	// tmp160,
 	fadd	s0, s1, s0	// _26, _25, tmp160
 	fabs	s0, s0	// _27, _26
@@ -304,7 +305,6 @@ main:
 	ldr	d1, [x0, #:lo12:.LC10]	// tmp161,
 	fcmpe	d0, d1	// _28, tmp161
 	bmi	.L14		//,
-// problem72.c:24:     assert(fabs(func0(2, 6, 3) + 1) < 0.01);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp162,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp162,
 	mov	w2, 24	//,
@@ -319,6 +319,7 @@ main:
 	fmov	s1, 1.0e+0	//,
 	fmov	s0, 1.0e+0	//,
 	bl	func0		//
+// problem72.c:25:     assert(fabs(func0(1, 1, 1) - 0.43) < 0.01);
 	fcvt	d0, s0	// _30, _29
 	adrp	x0, .LC13	// tmp187,
 	ldr	d1, [x0, #:lo12:.LC13]	// tmp165,
@@ -328,7 +329,6 @@ main:
 	ldr	d1, [x0, #:lo12:.LC10]	// tmp166,
 	fcmpe	d0, d1	// _32, tmp166
 	bmi	.L15		//,
-// problem72.c:25:     assert(fabs(func0(1, 1, 1) - 0.43) < 0.01);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp167,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp167,
 	mov	w2, 25	//,
@@ -344,6 +344,7 @@ main:
 	fmov	s0, 2.0e+0	//,
 	bl	func0		//
 	fmov	s1, s0	// _33,
+// problem72.c:26:     assert(fabs(func0(2, 2, 10) + 1) < 0.01);
 	fmov	s0, 1.0e+0	// tmp170,
 	fadd	s0, s1, s0	// _34, _33, tmp170
 	fabs	s0, s0	// _35, _34
@@ -352,7 +353,6 @@ main:
 	ldr	d1, [x0, #:lo12:.LC10]	// tmp171,
 	fcmpe	d0, d1	// _36, tmp171
 	bmi	.L16		//,
-// problem72.c:26:     assert(fabs(func0(2, 2, 10) + 1) < 0.01);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp172,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp172,
 	mov	w2, 26	//,
@@ -395,5 +395,5 @@ __PRETTY_FUNCTION__.0:
 .LC13:
 	.word	-1202590843
 	.word	1071351070
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits

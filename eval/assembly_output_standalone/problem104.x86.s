@@ -46,12 +46,14 @@ func0:
 	addq	%rdx, %rax
 	movb	$0, (%rax)
 .L4:
-	movl	-16(%rbp), %eax
-	cltd
-	shrl	$31, %edx
-	addl	%edx, %eax
-	andl	$1, %eax
-	subl	%edx, %eax
+	movl	-16(%rbp), %edx
+	movl	%edx, %eax
+	sarl	$31, %eax
+	shrl	$31, %eax
+	addl	%eax, %edx
+	andl	$1, %edx
+	subl	%eax, %edx
+	movl	%edx, %eax
 	leal	48(%rax), %ecx
 	movl	-12(%rbp), %eax
 	leal	-1(%rax), %edx
@@ -81,7 +83,7 @@ func0:
 	.cfi_endproc
 .LFE6:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

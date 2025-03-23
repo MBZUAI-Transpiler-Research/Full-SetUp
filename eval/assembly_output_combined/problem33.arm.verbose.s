@@ -1,7 +1,7 @@
 	.arch armv8-a
 	.file	"problem33.c"
-// GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (aarch64-linux-gnu)
-//	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+// GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (aarch64-linux-gnu)
+//	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 // GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 // options passed: -mlittle-endian -mabi=lp64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection
@@ -296,10 +296,10 @@ evaluate_polynomial:
 main:
 .LFB8:
 	.cfi_startproc
-	stp	x29, x30, [sp, -160]!	//,,,
-	.cfi_def_cfa_offset 160
-	.cfi_offset 29, -160
-	.cfi_offset 30, -152
+	stp	x29, x30, [sp, -96]!	//,,,
+	.cfi_def_cfa_offset 96
+	.cfi_offset 29, -96
+	.cfi_offset 30, -88
 	mov	x29, sp	//,
 	.cfi_def_cfa_register 29
 	stp	x19, x20, [sp, 16]	//,,
@@ -307,91 +307,91 @@ main:
 	stp	x23, x24, [sp, 48]	//,,
 	stp	x25, x26, [sp, 64]	//,,
 	str	x27, [sp, 80]	//,
-	sub	sp, sp, #16	//,,
-	.cfi_offset 19, -144
-	.cfi_offset 20, -136
-	.cfi_offset 21, -128
-	.cfi_offset 22, -120
-	.cfi_offset 23, -112
-	.cfi_offset 24, -104
-	.cfi_offset 25, -96
-	.cfi_offset 26, -88
-	.cfi_offset 27, -80
+	sub	sp, sp, #80	//,,
+	.cfi_offset 19, -80
+	.cfi_offset 20, -72
+	.cfi_offset 21, -64
+	.cfi_offset 22, -56
+	.cfi_offset 23, -48
+	.cfi_offset 24, -40
+	.cfi_offset 25, -32
+	.cfi_offset 26, -24
+	.cfi_offset 27, -16
 // problem33.c:61: int main() {
-	adrp	x0, :got:__stack_chk_guard	// tmp118,
-	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]	// tmp117, tmp118,
-	ldr	x1, [x0]	// tmp164,
-	str	x1, [x29, 152]	// tmp164, D.5911
-	mov	x1, 0	// tmp164
+	adrp	x0, :got:__stack_chk_guard	// tmp117,
+	ldr	x0, [x0, :got_lo12:__stack_chk_guard]	// tmp117,
+	ldr	x1, [x0]	// tmp162,
+	str	x1, [x29, -8]	// tmp162, D.6659
+	mov	x1, 0	// tmp162
 // problem33.c:65:     for (int i = 0; i < 100; i++) {
-	str	wzr, [x29, 108]	//, i
+	str	wzr, [x29, -52]	//, i
 // problem33.c:65:     for (int i = 0; i < 100; i++) {
 	b	.L23		//
 .L31:
 // problem33.c:65:     for (int i = 0; i < 100; i++) {
-	mov	x0, sp	// tmp119,
-	mov	x19, x0	// saved_stack.2_31, tmp119
+	mov	x0, sp	// tmp118,
+	mov	x19, x0	// saved_stack.2_31, tmp118
 // problem33.c:66:         ncoeff = 2 * (1 + rand() % 4);
 	bl	rand		//
 // problem33.c:66:         ncoeff = 2 * (1 + rand() % 4);
-	negs	w1, w0	// tmp120, _1
-	and	w0, w0, 3	// tmp121, _1,
-	and	w1, w1, 3	// tmp122, tmp120,
-	csneg	w0, w0, w1, mi	// _2, tmp121, tmp122,
+	negs	w1, w0	// tmp119, _1
+	and	w0, w0, 3	// tmp120, _1,
+	and	w1, w1, 3	// tmp121, tmp119,
+	csneg	w0, w0, w1, mi	// _2, tmp120, tmp121,
 // problem33.c:66:         ncoeff = 2 * (1 + rand() % 4);
 	add	w0, w0, 1	// _3, _2,
 // problem33.c:66:         ncoeff = 2 * (1 + rand() % 4);
-	lsl	w0, w0, 1	// tmp123, _3,
-	str	w0, [x29, 116]	// tmp123, ncoeff
+	lsl	w0, w0, 1	// tmp122, _3,
+	str	w0, [x29, -44]	// tmp122, ncoeff
 // problem33.c:67:         double coeffs[ncoeff];
-	ldr	w0, [x29, 116]	// ncoeff.0_34, ncoeff
+	ldr	w0, [x29, -44]	// ncoeff.0_34, ncoeff
 // problem33.c:67:         double coeffs[ncoeff];
 	sxtw	x1, w0	// _4, ncoeff.0_34
 	sub	x1, x1, #1	// _5, _4,
-	str	x1, [x29, 128]	// _6, D.5894
+	str	x1, [x29, -32]	// _6, D.6642
 	sxtw	x1, w0	// _7, ncoeff.0_34
 	mov	x24, x1	// _8, _7
 	mov	x25, 0	// _8,
-	lsr	x1, x24, 58	// tmp124, _8,
+	lsr	x1, x24, 58	// tmp123, _8,
 	lsl	x21, x25, 6	// _9, _8,
-	orr	x21, x1, x21	// _9, tmp124, _9
+	orr	x21, x1, x21	// _9, tmp123, _9
 	lsl	x20, x24, 6	// _9, _8,
 	sxtw	x1, w0	// _12, ncoeff.0_34
 	mov	x26, x1	// _13, _12
 	mov	x27, 0	// _13,
-	lsr	x1, x26, 58	// tmp125, _13,
+	lsr	x1, x26, 58	// tmp124, _13,
 	lsl	x23, x27, 6	// _14, _13,
-	orr	x23, x1, x23	// _14, tmp125, _14
+	orr	x23, x1, x23	// _14, tmp124, _14
 	lsl	x22, x26, 6	// _14, _13,
 	sxtw	x0, w0	// _15, ncoeff.0_34
 	lsl	x0, x0, 3	// _16, _15,
-	add	x0, x0, 15	// tmp126, _16,
-	lsr	x0, x0, 4	// tmp127, tmp126,
-	lsl	x0, x0, 4	// tmp128, tmp127,
-	and	x1, x0, -65536	// tmp130, tmp128,
-	sub	x1, sp, x1	// tmp131,, tmp130
+	add	x0, x0, 15	// tmp125, _16,
+	lsr	x0, x0, 4	// tmp126, tmp125,
+	lsl	x0, x0, 4	// tmp127, tmp126,
+	and	x1, x0, -65536	// tmp129, tmp127,
+	sub	x1, sp, x1	// tmp130,, tmp129
 .L24:
-	cmp	sp, x1	//, tmp131
+	cmp	sp, x1	//, tmp130
 	beq	.L25		//,
 	sub	sp, sp, #65536	//,,
 	str	xzr, [sp, 1024]	//,
 	b	.L24		//
 .L25:
-	and	x1, x0, 65535	// tmp132, tmp128,
-	sub	sp, sp, x1	//,, tmp132
+	and	x1, x0, 65535	// tmp131, tmp127,
+	sub	sp, sp, x1	//,, tmp131
 	str	xzr, [sp]	//,
-	and	x0, x0, 65535	// tmp133, tmp128,
-	cmp	x0, 1024	// tmp133,
+	and	x0, x0, 65535	// tmp132, tmp127,
+	cmp	x0, 1024	// tmp132,
 	bcc	.L26		//,
 	str	xzr, [sp, 1024]	//,
 .L26:
-	add	x0, sp, 16	// tmp129,,
-	add	x0, x0, 7	// tmp134, tmp129,
-	lsr	x0, x0, 3	// tmp135, tmp134,
-	lsl	x0, x0, 3	// tmp136, tmp135,
-	str	x0, [x29, 136]	// tmp136, coeffs.1
+	add	x0, sp, 16	// tmp128,,
+	add	x0, x0, 7	// tmp133, tmp128,
+	lsr	x0, x0, 3	// tmp134, tmp133,
+	lsl	x0, x0, 3	// tmp135, tmp134,
+	str	x0, [x29, -24]	// tmp135, coeffs.1
 // problem33.c:68:         for (int j = 0; j < ncoeff; j++) {
-	str	wzr, [x29, 112]	//, j
+	str	wzr, [x29, -48]	//, j
 // problem33.c:68:         for (int j = 0; j < ncoeff; j++) {
 	b	.L27		//
 .L29:
@@ -399,89 +399,89 @@ main:
 	bl	rand		//
 	mov	w1, w0	// _17,
 // problem33.c:69:             double coeff = -10 + rand() % 21;
-	mov	w0, 3121	// tmp138,
-	movk	w0, 0x30c3, lsl 16	// tmp138,,
-	smull	x0, w1, w0	// tmp137, _17, tmp138
-	lsr	x0, x0, 32	// tmp139, tmp137,
-	asr	w2, w0, 2	// tmp140, tmp139,
-	asr	w0, w1, 31	// tmp141, _17,
-	sub	w0, w2, w0	// _18, tmp140, tmp141
-	mov	w2, 21	// tmp143,
-	mul	w0, w0, w2	// tmp142, _18, tmp143
-	sub	w0, w1, w0	// _18, _17, tmp142
+	mov	w0, 3121	// tmp137,
+	movk	w0, 0x30c3, lsl 16	// tmp137,,
+	smull	x0, w1, w0	// tmp136, _17, tmp137
+	lsr	x0, x0, 32	// tmp138, tmp136,
+	asr	w2, w0, 2	// tmp139, tmp138,
+	asr	w0, w1, 31	// tmp140, _17,
+	sub	w0, w2, w0	// _18, tmp139, tmp140
+	mov	w2, 21	// tmp142,
+	mul	w0, w0, w2	// tmp141, _18, tmp142
+	sub	w0, w1, w0	// _18, _17, tmp141
 // problem33.c:69:             double coeff = -10 + rand() % 21;
 	sub	w0, w0, #10	// _19, _18,
 // problem33.c:69:             double coeff = -10 + rand() % 21;
-	scvtf	d0, w0	// tmp144, _19
-	str	d0, [x29, 120]	// tmp144, coeff
+	scvtf	d0, w0	// tmp143, _19
+	str	d0, [x29, -40]	// tmp143, coeff
 // problem33.c:70:             if (coeff == 0) coeff = 1;
-	ldr	d0, [x29, 120]	// tmp145, coeff
-	fcmp	d0, #0.0	// tmp145
+	ldr	d0, [x29, -40]	// tmp144, coeff
+	fcmp	d0, #0.0	// tmp144
 	bne	.L28		//,
 // problem33.c:70:             if (coeff == 0) coeff = 1;
-	fmov	d0, 1.0e+0	// tmp146,
-	str	d0, [x29, 120]	// tmp146, coeff
+	fmov	d0, 1.0e+0	// tmp145,
+	str	d0, [x29, -40]	// tmp145, coeff
 .L28:
 // problem33.c:71:             coeffs[j] = coeff;
-	ldr	x0, [x29, 136]	// tmp147, coeffs.1
-	ldrsw	x1, [x29, 112]	// tmp148, j
-	ldr	d0, [x29, 120]	// tmp149, coeff
-	str	d0, [x0, x1, lsl 3]	// tmp149, (*coeffs.1_41)[j_23]
+	ldr	x0, [x29, -24]	// tmp146, coeffs.1
+	ldrsw	x1, [x29, -48]	// tmp147, j
+	ldr	d0, [x29, -40]	// tmp148, coeff
+	str	d0, [x0, x1, lsl 3]	// tmp148, (*coeffs.1_41)[j_23]
 // problem33.c:68:         for (int j = 0; j < ncoeff; j++) {
-	ldr	w0, [x29, 112]	// tmp151, j
-	add	w0, w0, 1	// tmp150, tmp151,
-	str	w0, [x29, 112]	// tmp150, j
+	ldr	w0, [x29, -48]	// tmp150, j
+	add	w0, w0, 1	// tmp149, tmp150,
+	str	w0, [x29, -48]	// tmp149, j
 .L27:
 // problem33.c:68:         for (int j = 0; j < ncoeff; j++) {
-	ldr	w1, [x29, 112]	// tmp152, j
-	ldr	w0, [x29, 116]	// tmp153, ncoeff
-	cmp	w1, w0	// tmp152, tmp153
+	ldr	w1, [x29, -48]	// tmp151, j
+	ldr	w0, [x29, -44]	// tmp152, ncoeff
+	cmp	w1, w0	// tmp151, tmp152
 	blt	.L29		//,
 // problem33.c:74:         solution = func0(coeffs, ncoeff);
-	ldr	w1, [x29, 116]	//, ncoeff
-	ldr	x0, [x29, 136]	//, coeffs.1
+	ldr	w1, [x29, -44]	//, ncoeff
+	ldr	x0, [x29, -24]	//, coeffs.1
 	bl	func0		//
-	str	d0, [x29, 144]	//, solution
+	str	d0, [x29, -16]	//, solution
 // problem33.c:76:         assert(fabs(evaluate_polynomial(coeffs, ncoeff, solution)) < 1e-3);
-	ldr	d0, [x29, 144]	//, solution
-	ldr	w1, [x29, 116]	//, ncoeff
-	ldr	x0, [x29, 136]	//, coeffs.1
+	ldr	d0, [x29, -16]	//, solution
+	ldr	w1, [x29, -44]	//, ncoeff
+	ldr	x0, [x29, -24]	//, coeffs.1
 	bl	evaluate_polynomial		//
-	fabs	d0, d0	// _21, _20
-	adrp	x0, .LC3	// tmp169,
-	ldr	d1, [x0, #:lo12:.LC3]	// tmp154,
-	fcmpe	d0, d1	// _21, tmp154
-	bmi	.L30		//,
 // problem33.c:76:         assert(fabs(evaluate_polynomial(coeffs, ncoeff, solution)) < 1e-3);
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp155,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp155,
+	fabs	d0, d0	// _21, _20
+	adrp	x0, .LC3	// tmp167,
+	ldr	d1, [x0, #:lo12:.LC3]	// tmp153,
+	fcmpe	d0, d1	// _21, tmp153
+	bmi	.L30		//,
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp154,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp154,
 	mov	w2, 76	//,
-	adrp	x0, .LC1	// tmp156,
-	add	x1, x0, :lo12:.LC1	//, tmp156,
-	adrp	x0, .LC2	// tmp157,
-	add	x0, x0, :lo12:.LC2	//, tmp157,
+	adrp	x0, .LC1	// tmp155,
+	add	x1, x0, :lo12:.LC1	//, tmp155,
+	adrp	x0, .LC2	// tmp156,
+	add	x0, x0, :lo12:.LC2	//, tmp156,
 	bl	__assert_fail		//
 .L30:
 	mov	sp, x19	//, saved_stack.2_31
 // problem33.c:65:     for (int i = 0; i < 100; i++) {
-	ldr	w0, [x29, 108]	// tmp159, i
-	add	w0, w0, 1	// tmp158, tmp159,
-	str	w0, [x29, 108]	// tmp158, i
+	ldr	w0, [x29, -52]	// tmp158, i
+	add	w0, w0, 1	// tmp157, tmp158,
+	str	w0, [x29, -52]	// tmp157, i
 .L23:
 // problem33.c:65:     for (int i = 0; i < 100; i++) {
-	ldr	w0, [x29, 108]	// tmp160, i
-	cmp	w0, 99	// tmp160,
+	ldr	w0, [x29, -52]	// tmp159, i
+	cmp	w0, 99	// tmp159,
 	ble	.L31		//,
 // problem33.c:79:     return 0;
 	mov	w0, 0	// _29,
 // problem33.c:80: }
 	mov	w1, w0	// <retval>, _29
-	adrp	x0, :got:__stack_chk_guard	// tmp163,
-	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]	// tmp162, tmp163,
-	ldr	x3, [x29, 152]	// tmp165, D.5911
-	ldr	x2, [x0]	// tmp166,
-	subs	x3, x3, x2	// tmp165, tmp166
-	mov	x2, 0	// tmp166
+	adrp	x0, :got:__stack_chk_guard	// tmp161,
+	ldr	x0, [x0, :got_lo12:__stack_chk_guard]	// tmp161,
+	ldr	x3, [x29, -8]	// tmp163, D.6659
+	ldr	x2, [x0]	// tmp164,
+	subs	x3, x3, x2	// tmp163, tmp164
+	mov	x2, 0	// tmp164
 	beq	.L33		//,
 	bl	__stack_chk_fail		//
 .L33:
@@ -492,7 +492,7 @@ main:
 	ldp	x23, x24, [sp, 48]	//,,
 	ldp	x25, x26, [sp, 64]	//,,
 	ldr	x27, [sp, 80]	//,
-	ldp	x29, x30, [sp], 160	//,,,
+	ldp	x29, x30, [sp], 96	//,,,
 	.cfi_restore 30
 	.cfi_restore 29
 	.cfi_restore 27
@@ -523,5 +523,5 @@ __PRETTY_FUNCTION__.0:
 .LC3:
 	.word	-755914244
 	.word	1062232653
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits

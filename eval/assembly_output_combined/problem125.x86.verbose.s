@@ -1,6 +1,6 @@
 	.file	"problem125.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -20,7 +20,7 @@ func0:
 	movq	%rdi, -56(%rbp)	# date, date
 # problem125.c:5: int func0(const char *date) {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp131
-	movq	%rax, -8(%rbp)	# tmp131, D.3165
+	movq	%rax, -8(%rbp)	# tmp131, D.4029
 	xorl	%eax, %eax	# tmp131
 # problem125.c:8:     if (strlen(date) != 10) return 0;
 	movq	-56(%rbp), %rax	# date, tmp109
@@ -31,6 +31,7 @@ func0:
 	je	.L2	#,
 # problem125.c:8:     if (strlen(date) != 10) return 0;
 	movl	$0, %eax	#, _27
+# problem125.c:8:     if (strlen(date) != 10) return 0;
 	jmp	.L18	#
 .L2:
 # problem125.c:9:     for (int i = 0; i < 10; i++) {
@@ -56,6 +57,7 @@ func0:
 	je	.L8	#,
 # problem125.c:11:             if (date[i] != '-') return 0;
 	movl	$0, %eax	#, _27
+# problem125.c:11:             if (date[i] != '-') return 0;
 	jmp	.L18	#
 .L6:
 # problem125.c:13:             if (date[i] < '0' || date[i] > '9') return 0;
@@ -79,6 +81,7 @@ func0:
 .L9:
 # problem125.c:13:             if (date[i] < '0' || date[i] > '9') return 0;
 	movl	$0, %eax	#, _27
+# problem125.c:13:             if (date[i] < '0' || date[i] > '9') return 0;
 	jmp	.L18	#
 .L8:
 # problem125.c:9:     for (int i = 0; i < 10; i++) {
@@ -161,6 +164,7 @@ func0:
 .L11:
 # problem125.c:25:     if (mm < 1 || mm > 12) return 0;
 	movl	$0, %eax	#, _27
+# problem125.c:25:     if (mm < 1 || mm > 12) return 0;
 	jmp	.L18	#
 .L12:
 # problem125.c:26:     if (dd < 1 || dd > 31) return 0;
@@ -172,6 +176,7 @@ func0:
 .L13:
 # problem125.c:26:     if (dd < 1 || dd > 31) return 0;
 	movl	$0, %eax	#, _27
+# problem125.c:26:     if (dd < 1 || dd > 31) return 0;
 	jmp	.L18	#
 .L14:
 # problem125.c:27:     if ((mm == 4 || mm == 6 || mm == 9 || mm == 11) && dd == 31) return 0;
@@ -192,6 +197,7 @@ func0:
 	jne	.L16	#,
 # problem125.c:27:     if ((mm == 4 || mm == 6 || mm == 9 || mm == 11) && dd == 31) return 0;
 	movl	$0, %eax	#, _27
+# problem125.c:27:     if ((mm == 4 || mm == 6 || mm == 9 || mm == 11) && dd == 31) return 0;
 	jmp	.L18	#
 .L16:
 # problem125.c:28:     if (mm == 2 && dd > 29) return 0;
@@ -202,16 +208,16 @@ func0:
 	jle	.L17	#,
 # problem125.c:28:     if (mm == 2 && dd > 29) return 0;
 	movl	$0, %eax	#, _27
+# problem125.c:28:     if (mm == 2 && dd > 29) return 0;
 	jmp	.L18	#
 .L17:
 # problem125.c:30:     return 1;
 	movl	$1, %eax	#, _27
 .L18:
 # problem125.c:31: }
-	movq	-8(%rbp), %rdx	# D.3165, tmp132
+	movq	-8(%rbp), %rdx	# D.4029, tmp132
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp132
 	je	.L19	#,
-# problem125.c:31: }
 	call	__stack_chk_fail@PLT	#
 .L19:
 	leave	
@@ -303,9 +309,9 @@ main:
 	leaq	.LC0(%rip), %rax	#, tmp100
 	movq	%rax, %rdi	# tmp100,
 	call	func0	#
+# problem125.c:38:     assert(func0("03-11-2000") == 1);
 	cmpl	$1, %eax	#, _1
 	je	.L21	#,
-# problem125.c:38:     assert(func0("03-11-2000") == 1);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp101
 	movq	%rax, %rcx	# tmp101,
 	movl	$38, %edx	#,
@@ -319,9 +325,9 @@ main:
 	leaq	.LC3(%rip), %rax	#, tmp104
 	movq	%rax, %rdi	# tmp104,
 	call	func0	#
+# problem125.c:39:     assert(func0("15-01-2012") == 0);
 	testl	%eax, %eax	# _2
 	je	.L22	#,
-# problem125.c:39:     assert(func0("15-01-2012") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp105
 	movq	%rax, %rcx	# tmp105,
 	movl	$39, %edx	#,
@@ -335,9 +341,9 @@ main:
 	leaq	.LC5(%rip), %rax	#, tmp108
 	movq	%rax, %rdi	# tmp108,
 	call	func0	#
+# problem125.c:40:     assert(func0("04-0-2040") == 0);
 	testl	%eax, %eax	# _3
 	je	.L23	#,
-# problem125.c:40:     assert(func0("04-0-2040") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp109
 	movq	%rax, %rcx	# tmp109,
 	movl	$40, %edx	#,
@@ -351,9 +357,9 @@ main:
 	leaq	.LC7(%rip), %rax	#, tmp112
 	movq	%rax, %rdi	# tmp112,
 	call	func0	#
+# problem125.c:41:     assert(func0("06-04-2020") == 1);
 	cmpl	$1, %eax	#, _4
 	je	.L24	#,
-# problem125.c:41:     assert(func0("06-04-2020") == 1);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp113
 	movq	%rax, %rcx	# tmp113,
 	movl	$41, %edx	#,
@@ -367,9 +373,9 @@ main:
 	leaq	.LC9(%rip), %rax	#, tmp116
 	movq	%rax, %rdi	# tmp116,
 	call	func0	#
+# problem125.c:42:     assert(func0("01-01-2007") == 1);
 	cmpl	$1, %eax	#, _5
 	je	.L25	#,
-# problem125.c:42:     assert(func0("01-01-2007") == 1);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp117
 	movq	%rax, %rcx	# tmp117,
 	movl	$42, %edx	#,
@@ -383,9 +389,9 @@ main:
 	leaq	.LC11(%rip), %rax	#, tmp120
 	movq	%rax, %rdi	# tmp120,
 	call	func0	#
+# problem125.c:43:     assert(func0("03-32-2011") == 0);
 	testl	%eax, %eax	# _6
 	je	.L26	#,
-# problem125.c:43:     assert(func0("03-32-2011") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp121
 	movq	%rax, %rcx	# tmp121,
 	movl	$43, %edx	#,
@@ -399,9 +405,9 @@ main:
 	leaq	.LC13(%rip), %rax	#, tmp124
 	movq	%rax, %rdi	# tmp124,
 	call	func0	#
+# problem125.c:44:     assert(func0("") == 0);
 	testl	%eax, %eax	# _7
 	je	.L27	#,
-# problem125.c:44:     assert(func0("") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp125
 	movq	%rax, %rcx	# tmp125,
 	movl	$44, %edx	#,
@@ -415,9 +421,9 @@ main:
 	leaq	.LC15(%rip), %rax	#, tmp128
 	movq	%rax, %rdi	# tmp128,
 	call	func0	#
+# problem125.c:45:     assert(func0("04-31-3000") == 0);
 	testl	%eax, %eax	# _8
 	je	.L28	#,
-# problem125.c:45:     assert(func0("04-31-3000") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp129
 	movq	%rax, %rcx	# tmp129,
 	movl	$45, %edx	#,
@@ -431,9 +437,9 @@ main:
 	leaq	.LC17(%rip), %rax	#, tmp132
 	movq	%rax, %rdi	# tmp132,
 	call	func0	#
+# problem125.c:46:     assert(func0("06-06-2005") == 1);
 	cmpl	$1, %eax	#, _9
 	je	.L29	#,
-# problem125.c:46:     assert(func0("06-06-2005") == 1);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp133
 	movq	%rax, %rcx	# tmp133,
 	movl	$46, %edx	#,
@@ -447,9 +453,9 @@ main:
 	leaq	.LC19(%rip), %rax	#, tmp136
 	movq	%rax, %rdi	# tmp136,
 	call	func0	#
+# problem125.c:47:     assert(func0("21-31-2000") == 0);
 	testl	%eax, %eax	# _10
 	je	.L30	#,
-# problem125.c:47:     assert(func0("21-31-2000") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp137
 	movq	%rax, %rcx	# tmp137,
 	movl	$47, %edx	#,
@@ -463,9 +469,9 @@ main:
 	leaq	.LC21(%rip), %rax	#, tmp140
 	movq	%rax, %rdi	# tmp140,
 	call	func0	#
+# problem125.c:48:     assert(func0("04-12-2003") == 1);
 	cmpl	$1, %eax	#, _11
 	je	.L31	#,
-# problem125.c:48:     assert(func0("04-12-2003") == 1);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp141
 	movq	%rax, %rcx	# tmp141,
 	movl	$48, %edx	#,
@@ -479,9 +485,9 @@ main:
 	leaq	.LC23(%rip), %rax	#, tmp144
 	movq	%rax, %rdi	# tmp144,
 	call	func0	#
+# problem125.c:49:     assert(func0("04122003") == 0);
 	testl	%eax, %eax	# _12
 	je	.L32	#,
-# problem125.c:49:     assert(func0("04122003") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp145
 	movq	%rax, %rcx	# tmp145,
 	movl	$49, %edx	#,
@@ -495,9 +501,9 @@ main:
 	leaq	.LC25(%rip), %rax	#, tmp148
 	movq	%rax, %rdi	# tmp148,
 	call	func0	#
+# problem125.c:50:     assert(func0("20030412") == 0);
 	testl	%eax, %eax	# _13
 	je	.L33	#,
-# problem125.c:50:     assert(func0("20030412") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp149
 	movq	%rax, %rcx	# tmp149,
 	movl	$50, %edx	#,
@@ -511,9 +517,9 @@ main:
 	leaq	.LC27(%rip), %rax	#, tmp152
 	movq	%rax, %rdi	# tmp152,
 	call	func0	#
+# problem125.c:51:     assert(func0("2003-04") == 0);
 	testl	%eax, %eax	# _14
 	je	.L34	#,
-# problem125.c:51:     assert(func0("2003-04") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp153
 	movq	%rax, %rcx	# tmp153,
 	movl	$51, %edx	#,
@@ -527,9 +533,9 @@ main:
 	leaq	.LC29(%rip), %rax	#, tmp156
 	movq	%rax, %rdi	# tmp156,
 	call	func0	#
+# problem125.c:52:     assert(func0("2003-04-12") == 0);
 	testl	%eax, %eax	# _15
 	je	.L35	#,
-# problem125.c:52:     assert(func0("2003-04-12") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp157
 	movq	%rax, %rcx	# tmp157,
 	movl	$52, %edx	#,
@@ -543,9 +549,9 @@ main:
 	leaq	.LC31(%rip), %rax	#, tmp160
 	movq	%rax, %rdi	# tmp160,
 	call	func0	#
+# problem125.c:53:     assert(func0("04-2003") == 0);
 	testl	%eax, %eax	# _16
 	je	.L36	#,
-# problem125.c:53:     assert(func0("04-2003") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp161
 	movq	%rax, %rcx	# tmp161,
 	movl	$53, %edx	#,
@@ -569,7 +575,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

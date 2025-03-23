@@ -1,6 +1,6 @@
 	.file	"problem42.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -29,7 +29,7 @@ main:
 	subq	$80, %rsp	#,
 # problem42.c:12: {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp106
-	movq	%rax, -8(%rbp)	# tmp106, D.3434
+	movq	%rax, -8(%rbp)	# tmp106, D.4264
 	xorl	%eax, %eax	# tmp106
 # problem42.c:14:   int cnt = 0;
 	movl	$0, -68(%rbp)	#, cnt
@@ -110,10 +110,9 @@ main:
 	movl	$0, %eax	#, _9
 .L8:
 # problem42.c:35: }
-	movq	-8(%rbp), %rdx	# D.3434, tmp107
+	movq	-8(%rbp), %rdx	# D.4264, tmp107
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp107
 	je	.L9	#,
-# problem42.c:35: }
 	call	__stack_chk_fail@PLT	#
 .L9:
 	leave	
@@ -150,14 +149,15 @@ is_triangle:
 	movl	%eax, -4(%rbp)	# tmp93, sq
 # problem42.c:44:   return (sq*sq == 1+8*c && (sq & 1) == 1);
 	movl	-4(%rbp), %eax	# sq, tmp94
-	imull	%eax, %eax	# tmp94, _5
+	imull	%eax, %eax	# tmp94, tmp94
+	movl	%eax, %edx	# tmp94, _5
 # problem42.c:44:   return (sq*sq == 1+8*c && (sq & 1) == 1);
-	movl	-20(%rbp), %edx	# c, tmp95
-	sall	$3, %edx	#, _6
+	movl	-20(%rbp), %eax	# c, tmp95
+	sall	$3, %eax	#, _6
 # problem42.c:44:   return (sq*sq == 1+8*c && (sq & 1) == 1);
-	addl	$1, %edx	#, _7
+	addl	$1, %eax	#, _7
 # problem42.c:44:   return (sq*sq == 1+8*c && (sq & 1) == 1);
-	cmpl	%edx, %eax	# _7, _5
+	cmpl	%eax, %edx	# _7, _5
 	jne	.L11	#,
 # problem42.c:44:   return (sq*sq == 1+8*c && (sq & 1) == 1);
 	movl	-4(%rbp), %eax	# sq, tmp96
@@ -167,6 +167,7 @@ is_triangle:
 	je	.L11	#,
 # problem42.c:44:   return (sq*sq == 1+8*c && (sq & 1) == 1);
 	movl	$1, %eax	#, iftmp.0_9
+# problem42.c:44:   return (sq*sq == 1+8*c && (sq & 1) == 1);
 	jmp	.L13	#
 .L11:
 # problem42.c:44:   return (sq*sq == 1+8*c && (sq & 1) == 1);
@@ -179,7 +180,7 @@ is_triangle:
 	.cfi_endproc
 .LFE1:
 	.size	is_triangle, .-is_triangle
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

@@ -1,5 +1,8 @@
 	.file	"problem157.c"
 	.option pic
+	.attribute arch, "rv64i2p1_m2p0_a2p1_f2p2_d2p2_c2p0_zicsr2p0_zifencei2p0"
+	.attribute unaligned_access, 0
+	.attribute stack_align, 16
 	.text
 	.section	.rodata
 	.align	3
@@ -78,10 +81,16 @@
 	.globl	func0
 	.type	func0, @function
 func0:
+.LFB0:
+	.cfi_startproc
 	addi	sp,sp,-208
+	.cfi_def_cfa_offset 208
 	sd	ra,200(sp)
 	sd	s0,192(sp)
+	.cfi_offset 1, -8
+	.cfi_offset 8, -16
 	addi	s0,sp,208
+	.cfi_def_cfa 8, 0
 	mv	a5,a0
 	sd	a1,-208(s0)
 	sw	a5,-196(s0)
@@ -158,13 +167,19 @@ func0:
 	ld	a5, 0(a5)
 	xor	a5, a4, a5
 	li	a4, 0
-	beq	a5,zero,.L6
+	beq	a5,zero,.L7
 	call	__stack_chk_fail@plt
-.L6:
+.L7:
 	ld	ra,200(sp)
+	.cfi_restore 1
 	ld	s0,192(sp)
+	.cfi_restore 8
+	.cfi_def_cfa 2, 208
 	addi	sp,sp,208
+	.cfi_def_cfa_offset 0
 	jr	ra
+	.cfi_endproc
+.LFE0:
 	.size	func0, .-func0
 	.section	.rodata
 	.align	3
@@ -241,10 +256,16 @@ func0:
 	.globl	main
 	.type	main, @function
 main:
+.LFB1:
+	.cfi_startproc
 	addi	sp,sp,-96
+	.cfi_def_cfa_offset 96
 	sd	ra,88(sp)
 	sd	s0,80(sp)
+	.cfi_offset 1, -8
+	.cfi_offset 8, -16
 	addi	s0,sp,96
+	.cfi_def_cfa 8, 0
 	la	a5,__stack_chk_guard
 	ld	a4, 0(a5)
 	sd	a4, -24(s0)
@@ -258,13 +279,13 @@ main:
 	mv	a0,a5
 	call	strcmp@plt
 	mv	a5,a0
-	beq	a5,zero,.L8
+	beq	a5,zero,.L9
 	lla	a3,__PRETTY_FUNCTION__.0
 	li	a2,28
 	lla	a1,.LC17
 	lla	a0,.LC18
 	call	__assert_fail@plt
-.L8:
+.L9:
 	addi	a5,s0,-88
 	mv	a1,a5
 	li	a0,152
@@ -274,13 +295,13 @@ main:
 	mv	a0,a5
 	call	strcmp@plt
 	mv	a5,a0
-	beq	a5,zero,.L9
+	beq	a5,zero,.L10
 	lla	a3,__PRETTY_FUNCTION__.0
 	li	a2,31
 	lla	a1,.LC17
 	lla	a0,.LC20
 	call	__assert_fail@plt
-.L9:
+.L10:
 	addi	a5,s0,-88
 	mv	a1,a5
 	li	a0,251
@@ -290,13 +311,13 @@ main:
 	mv	a0,a5
 	call	strcmp@plt
 	mv	a5,a0
-	beq	a5,zero,.L10
+	beq	a5,zero,.L11
 	lla	a3,__PRETTY_FUNCTION__.0
 	li	a2,34
 	lla	a1,.LC17
 	lla	a0,.LC22
 	call	__assert_fail@plt
-.L10:
+.L11:
 	addi	a5,s0,-88
 	mv	a1,a5
 	li	a0,426
@@ -306,13 +327,13 @@ main:
 	mv	a0,a5
 	call	strcmp@plt
 	mv	a5,a0
-	beq	a5,zero,.L11
+	beq	a5,zero,.L12
 	lla	a3,__PRETTY_FUNCTION__.0
 	li	a2,37
 	lla	a1,.LC17
 	lla	a0,.LC24
 	call	__assert_fail@plt
-.L11:
+.L12:
 	addi	a5,s0,-88
 	mv	a1,a5
 	li	a0,500
@@ -322,13 +343,13 @@ main:
 	mv	a0,a5
 	call	strcmp@plt
 	mv	a5,a0
-	beq	a5,zero,.L12
+	beq	a5,zero,.L13
 	lla	a3,__PRETTY_FUNCTION__.0
 	li	a2,40
 	lla	a1,.LC17
 	lla	a0,.LC25
 	call	__assert_fail@plt
-.L12:
+.L13:
 	addi	a5,s0,-88
 	mv	a1,a5
 	li	a0,1
@@ -338,13 +359,13 @@ main:
 	mv	a0,a5
 	call	strcmp@plt
 	mv	a5,a0
-	beq	a5,zero,.L13
+	beq	a5,zero,.L14
 	lla	a3,__PRETTY_FUNCTION__.0
 	li	a2,43
 	lla	a1,.LC17
 	lla	a0,.LC26
 	call	__assert_fail@plt
-.L13:
+.L14:
 	addi	a5,s0,-88
 	mv	a1,a5
 	li	a0,4
@@ -354,13 +375,13 @@ main:
 	mv	a0,a5
 	call	strcmp@plt
 	mv	a5,a0
-	beq	a5,zero,.L14
+	beq	a5,zero,.L15
 	lla	a3,__PRETTY_FUNCTION__.0
 	li	a2,46
 	lla	a1,.LC17
 	lla	a0,.LC27
 	call	__assert_fail@plt
-.L14:
+.L15:
 	addi	a5,s0,-88
 	mv	a1,a5
 	li	a0,43
@@ -370,13 +391,13 @@ main:
 	mv	a0,a5
 	call	strcmp@plt
 	mv	a5,a0
-	beq	a5,zero,.L15
+	beq	a5,zero,.L16
 	lla	a3,__PRETTY_FUNCTION__.0
 	li	a2,49
 	lla	a1,.LC17
 	lla	a0,.LC29
 	call	__assert_fail@plt
-.L15:
+.L16:
 	addi	a5,s0,-88
 	mv	a1,a5
 	li	a0,90
@@ -386,13 +407,13 @@ main:
 	mv	a0,a5
 	call	strcmp@plt
 	mv	a5,a0
-	beq	a5,zero,.L16
+	beq	a5,zero,.L17
 	lla	a3,__PRETTY_FUNCTION__.0
 	li	a2,52
 	lla	a1,.LC17
 	lla	a0,.LC30
 	call	__assert_fail@plt
-.L16:
+.L17:
 	addi	a5,s0,-88
 	mv	a1,a5
 	li	a0,94
@@ -402,13 +423,13 @@ main:
 	mv	a0,a5
 	call	strcmp@plt
 	mv	a5,a0
-	beq	a5,zero,.L17
+	beq	a5,zero,.L18
 	lla	a3,__PRETTY_FUNCTION__.0
 	li	a2,55
 	lla	a1,.LC17
 	lla	a0,.LC32
 	call	__assert_fail@plt
-.L17:
+.L18:
 	addi	a5,s0,-88
 	mv	a1,a5
 	li	a0,532
@@ -418,13 +439,13 @@ main:
 	mv	a0,a5
 	call	strcmp@plt
 	mv	a5,a0
-	beq	a5,zero,.L18
+	beq	a5,zero,.L19
 	lla	a3,__PRETTY_FUNCTION__.0
 	li	a2,58
 	lla	a1,.LC17
 	lla	a0,.LC34
 	call	__assert_fail@plt
-.L18:
+.L19:
 	addi	a5,s0,-88
 	mv	a1,a5
 	li	a0,900
@@ -434,13 +455,13 @@ main:
 	mv	a0,a5
 	call	strcmp@plt
 	mv	a5,a0
-	beq	a5,zero,.L19
+	beq	a5,zero,.L20
 	lla	a3,__PRETTY_FUNCTION__.0
 	li	a2,61
 	lla	a1,.LC17
 	lla	a0,.LC35
 	call	__assert_fail@plt
-.L19:
+.L20:
 	addi	a5,s0,-88
 	mv	a1,a5
 	li	a0,994
@@ -450,13 +471,13 @@ main:
 	mv	a0,a5
 	call	strcmp@plt
 	mv	a5,a0
-	beq	a5,zero,.L20
+	beq	a5,zero,.L21
 	lla	a3,__PRETTY_FUNCTION__.0
 	li	a2,64
 	lla	a1,.LC17
 	lla	a0,.LC37
 	call	__assert_fail@plt
-.L20:
+.L21:
 	addi	a5,s0,-88
 	mv	a1,a5
 	li	a0,1000
@@ -466,13 +487,13 @@ main:
 	mv	a0,a5
 	call	strcmp@plt
 	mv	a5,a0
-	beq	a5,zero,.L21
+	beq	a5,zero,.L22
 	lla	a3,__PRETTY_FUNCTION__.0
 	li	a2,67
 	lla	a1,.LC17
 	lla	a0,.LC38
 	call	__assert_fail@plt
-.L21:
+.L22:
 	li	a5,0
 	mv	a4,a5
 	la	a5,__stack_chk_guard
@@ -480,14 +501,20 @@ main:
 	ld	a5, 0(a5)
 	xor	a5, a3, a5
 	li	a3, 0
-	beq	a5,zero,.L23
+	beq	a5,zero,.L24
 	call	__stack_chk_fail@plt
-.L23:
+.L24:
 	mv	a0,a4
 	ld	ra,88(sp)
+	.cfi_restore 1
 	ld	s0,80(sp)
+	.cfi_restore 8
+	.cfi_def_cfa 2, 96
 	addi	sp,sp,96
+	.cfi_def_cfa_offset 0
 	jr	ra
+	.cfi_endproc
+.LFE1:
 	.size	main, .-main
 	.section	.rodata
 	.align	3
@@ -495,5 +522,5 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits

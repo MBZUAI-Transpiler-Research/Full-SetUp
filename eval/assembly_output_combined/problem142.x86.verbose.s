@@ -1,6 +1,6 @@
 	.file	"problem142.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -45,6 +45,7 @@ func0:
 	jg	.L2	#,
 # problem142.c:7:     if (length < 5) return "No";
 	leaq	.LC0(%rip), %rax	#, _21
+# problem142.c:7:     if (length < 5) return "No";
 	jmp	.L3	#
 .L2:
 # problem142.c:8:     char w = file_name[0];
@@ -67,6 +68,7 @@ func0:
 .L4:
 # problem142.c:9:     if (w < 'A' || (w > 'Z' && w < 'a') || w > 'z') return "No";
 	leaq	.LC0(%rip), %rax	#, _21
+# problem142.c:9:     if (w < 'A' || (w > 'Z' && w < 'a') || w > 'z') return "No";
 	jmp	.L3	#
 .L6:
 # problem142.c:10:     const char* last = file_name + length - 4;
@@ -106,6 +108,7 @@ func0:
 	je	.L7	#,
 # problem142.c:11:     if (strcmp(last, ".txt") != 0 && strcmp(last, ".exe") != 0 && strcmp(last, ".dll") != 0) return "No";
 	leaq	.LC0(%rip), %rax	#, _21
+# problem142.c:11:     if (strcmp(last, ".txt") != 0 && strcmp(last, ".exe") != 0 && strcmp(last, ".dll") != 0) return "No";
 	jmp	.L3	#
 .L7:
 # problem142.c:12:     for (int i = 0; i < length; i++) {
@@ -162,6 +165,7 @@ func0:
 .L12:
 # problem142.c:16:     if (num_digit > 3 || num_dot != 1) return "No";
 	leaq	.LC0(%rip), %rax	#, _21
+# problem142.c:16:     if (num_digit > 3 || num_dot != 1) return "No";
 	jmp	.L3	#
 .L13:
 # problem142.c:17:     return "Yes";
@@ -322,10 +326,12 @@ main:
 	movq	%rax, %rdi	# tmp136,
 	call	func0	#
 	movq	%rax, %rdx	#, _1
+# problem142.c:26:     assert(strcmp(func0("example.txt"), "Yes") == 0);
 	leaq	.LC4(%rip), %rax	#, tmp137
 	movq	%rax, %rsi	# tmp137,
 	movq	%rdx, %rdi	# _1,
 	call	strcmp@PLT	#
+# problem142.c:26:     assert(strcmp(func0("example.txt"), "Yes") == 0);
 	testl	%eax, %eax	# _2
 	je	.L15	#,
 # problem142.c:26:     assert(strcmp(func0("example.txt"), "Yes") == 0);
@@ -343,10 +349,12 @@ main:
 	movq	%rax, %rdi	# tmp141,
 	call	func0	#
 	movq	%rax, %rdx	#, _3
+# problem142.c:27:     assert(strcmp(func0("1example.dll"), "No") == 0);
 	leaq	.LC0(%rip), %rax	#, tmp142
 	movq	%rax, %rsi	# tmp142,
 	movq	%rdx, %rdi	# _3,
 	call	strcmp@PLT	#
+# problem142.c:27:     assert(strcmp(func0("1example.dll"), "No") == 0);
 	testl	%eax, %eax	# _4
 	je	.L16	#,
 # problem142.c:27:     assert(strcmp(func0("1example.dll"), "No") == 0);
@@ -364,10 +372,12 @@ main:
 	movq	%rax, %rdi	# tmp146,
 	call	func0	#
 	movq	%rax, %rdx	#, _5
+# problem142.c:28:     assert(strcmp(func0("s1sdf3.asd"), "No") == 0);
 	leaq	.LC0(%rip), %rax	#, tmp147
 	movq	%rax, %rsi	# tmp147,
 	movq	%rdx, %rdi	# _5,
 	call	strcmp@PLT	#
+# problem142.c:28:     assert(strcmp(func0("s1sdf3.asd"), "No") == 0);
 	testl	%eax, %eax	# _6
 	je	.L17	#,
 # problem142.c:28:     assert(strcmp(func0("s1sdf3.asd"), "No") == 0);
@@ -385,10 +395,12 @@ main:
 	movq	%rax, %rdi	# tmp151,
 	call	func0	#
 	movq	%rax, %rdx	#, _7
+# problem142.c:29:     assert(strcmp(func0("K.dll"), "Yes") == 0);
 	leaq	.LC4(%rip), %rax	#, tmp152
 	movq	%rax, %rsi	# tmp152,
 	movq	%rdx, %rdi	# _7,
 	call	strcmp@PLT	#
+# problem142.c:29:     assert(strcmp(func0("K.dll"), "Yes") == 0);
 	testl	%eax, %eax	# _8
 	je	.L18	#,
 # problem142.c:29:     assert(strcmp(func0("K.dll"), "Yes") == 0);
@@ -406,10 +418,12 @@ main:
 	movq	%rax, %rdi	# tmp156,
 	call	func0	#
 	movq	%rax, %rdx	#, _9
+# problem142.c:30:     assert(strcmp(func0("MY16FILE3.exe"), "Yes") == 0);
 	leaq	.LC4(%rip), %rax	#, tmp157
 	movq	%rax, %rsi	# tmp157,
 	movq	%rdx, %rdi	# _9,
 	call	strcmp@PLT	#
+# problem142.c:30:     assert(strcmp(func0("MY16FILE3.exe"), "Yes") == 0);
 	testl	%eax, %eax	# _10
 	je	.L19	#,
 # problem142.c:30:     assert(strcmp(func0("MY16FILE3.exe"), "Yes") == 0);
@@ -427,10 +441,12 @@ main:
 	movq	%rax, %rdi	# tmp161,
 	call	func0	#
 	movq	%rax, %rdx	#, _11
+# problem142.c:31:     assert(strcmp(func0("His12FILE94.exe"), "No") == 0);
 	leaq	.LC0(%rip), %rax	#, tmp162
 	movq	%rax, %rsi	# tmp162,
 	movq	%rdx, %rdi	# _11,
 	call	strcmp@PLT	#
+# problem142.c:31:     assert(strcmp(func0("His12FILE94.exe"), "No") == 0);
 	testl	%eax, %eax	# _12
 	je	.L20	#,
 # problem142.c:31:     assert(strcmp(func0("His12FILE94.exe"), "No") == 0);
@@ -448,10 +464,12 @@ main:
 	movq	%rax, %rdi	# tmp166,
 	call	func0	#
 	movq	%rax, %rdx	#, _13
+# problem142.c:32:     assert(strcmp(func0("_Y.txt"), "No") == 0);
 	leaq	.LC0(%rip), %rax	#, tmp167
 	movq	%rax, %rsi	# tmp167,
 	movq	%rdx, %rdi	# _13,
 	call	strcmp@PLT	#
+# problem142.c:32:     assert(strcmp(func0("_Y.txt"), "No") == 0);
 	testl	%eax, %eax	# _14
 	je	.L21	#,
 # problem142.c:32:     assert(strcmp(func0("_Y.txt"), "No") == 0);
@@ -469,10 +487,12 @@ main:
 	movq	%rax, %rdi	# tmp171,
 	call	func0	#
 	movq	%rax, %rdx	#, _15
+# problem142.c:33:     assert(strcmp(func0("?aREYA.exe"), "No") == 0);
 	leaq	.LC0(%rip), %rax	#, tmp172
 	movq	%rax, %rsi	# tmp172,
 	movq	%rdx, %rdi	# _15,
 	call	strcmp@PLT	#
+# problem142.c:33:     assert(strcmp(func0("?aREYA.exe"), "No") == 0);
 	testl	%eax, %eax	# _16
 	je	.L22	#,
 # problem142.c:33:     assert(strcmp(func0("?aREYA.exe"), "No") == 0);
@@ -490,10 +510,12 @@ main:
 	movq	%rax, %rdi	# tmp176,
 	call	func0	#
 	movq	%rax, %rdx	#, _17
+# problem142.c:34:     assert(strcmp(func0("/this_is_valid.dll"), "No") == 0);
 	leaq	.LC0(%rip), %rax	#, tmp177
 	movq	%rax, %rsi	# tmp177,
 	movq	%rdx, %rdi	# _17,
 	call	strcmp@PLT	#
+# problem142.c:34:     assert(strcmp(func0("/this_is_valid.dll"), "No") == 0);
 	testl	%eax, %eax	# _18
 	je	.L23	#,
 # problem142.c:34:     assert(strcmp(func0("/this_is_valid.dll"), "No") == 0);
@@ -511,10 +533,12 @@ main:
 	movq	%rax, %rdi	# tmp181,
 	call	func0	#
 	movq	%rax, %rdx	#, _19
+# problem142.c:35:     assert(strcmp(func0("this_is_valid.wow"), "No") == 0);
 	leaq	.LC0(%rip), %rax	#, tmp182
 	movq	%rax, %rsi	# tmp182,
 	movq	%rdx, %rdi	# _19,
 	call	strcmp@PLT	#
+# problem142.c:35:     assert(strcmp(func0("this_is_valid.wow"), "No") == 0);
 	testl	%eax, %eax	# _20
 	je	.L24	#,
 # problem142.c:35:     assert(strcmp(func0("this_is_valid.wow"), "No") == 0);
@@ -532,10 +556,12 @@ main:
 	movq	%rax, %rdi	# tmp186,
 	call	func0	#
 	movq	%rax, %rdx	#, _21
+# problem142.c:36:     assert(strcmp(func0("this_is_valid.txt"), "Yes") == 0);
 	leaq	.LC4(%rip), %rax	#, tmp187
 	movq	%rax, %rsi	# tmp187,
 	movq	%rdx, %rdi	# _21,
 	call	strcmp@PLT	#
+# problem142.c:36:     assert(strcmp(func0("this_is_valid.txt"), "Yes") == 0);
 	testl	%eax, %eax	# _22
 	je	.L25	#,
 # problem142.c:36:     assert(strcmp(func0("this_is_valid.txt"), "Yes") == 0);
@@ -553,10 +579,12 @@ main:
 	movq	%rax, %rdi	# tmp191,
 	call	func0	#
 	movq	%rax, %rdx	#, _23
+# problem142.c:37:     assert(strcmp(func0("this_is_valid.txtexe"), "No") == 0);
 	leaq	.LC0(%rip), %rax	#, tmp192
 	movq	%rax, %rsi	# tmp192,
 	movq	%rdx, %rdi	# _23,
 	call	strcmp@PLT	#
+# problem142.c:37:     assert(strcmp(func0("this_is_valid.txtexe"), "No") == 0);
 	testl	%eax, %eax	# _24
 	je	.L26	#,
 # problem142.c:37:     assert(strcmp(func0("this_is_valid.txtexe"), "No") == 0);
@@ -574,10 +602,12 @@ main:
 	movq	%rax, %rdi	# tmp196,
 	call	func0	#
 	movq	%rax, %rdx	#, _25
+# problem142.c:38:     assert(strcmp(func0("#this2_i4s_5valid.ten"), "No") == 0);
 	leaq	.LC0(%rip), %rax	#, tmp197
 	movq	%rax, %rsi	# tmp197,
 	movq	%rdx, %rdi	# _25,
 	call	strcmp@PLT	#
+# problem142.c:38:     assert(strcmp(func0("#this2_i4s_5valid.ten"), "No") == 0);
 	testl	%eax, %eax	# _26
 	je	.L27	#,
 # problem142.c:38:     assert(strcmp(func0("#this2_i4s_5valid.ten"), "No") == 0);
@@ -595,10 +625,12 @@ main:
 	movq	%rax, %rdi	# tmp201,
 	call	func0	#
 	movq	%rax, %rdx	#, _27
+# problem142.c:39:     assert(strcmp(func0("@this1_is6_valid.exe"), "No") == 0);
 	leaq	.LC0(%rip), %rax	#, tmp202
 	movq	%rax, %rsi	# tmp202,
 	movq	%rdx, %rdi	# _27,
 	call	strcmp@PLT	#
+# problem142.c:39:     assert(strcmp(func0("@this1_is6_valid.exe"), "No") == 0);
 	testl	%eax, %eax	# _28
 	je	.L28	#,
 # problem142.c:39:     assert(strcmp(func0("@this1_is6_valid.exe"), "No") == 0);
@@ -616,10 +648,12 @@ main:
 	movq	%rax, %rdi	# tmp206,
 	call	func0	#
 	movq	%rax, %rdx	#, _29
+# problem142.c:40:     assert(strcmp(func0("this_is_12valid.6exe4.txt"), "No") == 0);
 	leaq	.LC0(%rip), %rax	#, tmp207
 	movq	%rax, %rsi	# tmp207,
 	movq	%rdx, %rdi	# _29,
 	call	strcmp@PLT	#
+# problem142.c:40:     assert(strcmp(func0("this_is_12valid.6exe4.txt"), "No") == 0);
 	testl	%eax, %eax	# _30
 	je	.L29	#,
 # problem142.c:40:     assert(strcmp(func0("this_is_12valid.6exe4.txt"), "No") == 0);
@@ -637,10 +671,12 @@ main:
 	movq	%rax, %rdi	# tmp211,
 	call	func0	#
 	movq	%rax, %rdx	#, _31
+# problem142.c:41:     assert(strcmp(func0("all.exe.txt"), "No") == 0);
 	leaq	.LC0(%rip), %rax	#, tmp212
 	movq	%rax, %rsi	# tmp212,
 	movq	%rdx, %rdi	# _31,
 	call	strcmp@PLT	#
+# problem142.c:41:     assert(strcmp(func0("all.exe.txt"), "No") == 0);
 	testl	%eax, %eax	# _32
 	je	.L30	#,
 # problem142.c:41:     assert(strcmp(func0("all.exe.txt"), "No") == 0);
@@ -658,10 +694,12 @@ main:
 	movq	%rax, %rdi	# tmp216,
 	call	func0	#
 	movq	%rax, %rdx	#, _33
+# problem142.c:42:     assert(strcmp(func0("I563_No.exe"), "Yes") == 0);
 	leaq	.LC4(%rip), %rax	#, tmp217
 	movq	%rax, %rsi	# tmp217,
 	movq	%rdx, %rdi	# _33,
 	call	strcmp@PLT	#
+# problem142.c:42:     assert(strcmp(func0("I563_No.exe"), "Yes") == 0);
 	testl	%eax, %eax	# _34
 	je	.L31	#,
 # problem142.c:42:     assert(strcmp(func0("I563_No.exe"), "Yes") == 0);
@@ -679,10 +717,12 @@ main:
 	movq	%rax, %rdi	# tmp221,
 	call	func0	#
 	movq	%rax, %rdx	#, _35
+# problem142.c:43:     assert(strcmp(func0("Is3youfault.txt"), "Yes") == 0);
 	leaq	.LC4(%rip), %rax	#, tmp222
 	movq	%rax, %rsi	# tmp222,
 	movq	%rdx, %rdi	# _35,
 	call	strcmp@PLT	#
+# problem142.c:43:     assert(strcmp(func0("Is3youfault.txt"), "Yes") == 0);
 	testl	%eax, %eax	# _36
 	je	.L32	#,
 # problem142.c:43:     assert(strcmp(func0("Is3youfault.txt"), "Yes") == 0);
@@ -700,10 +740,12 @@ main:
 	movq	%rax, %rdi	# tmp226,
 	call	func0	#
 	movq	%rax, %rdx	#, _37
+# problem142.c:44:     assert(strcmp(func0("no_one#knows.dll"), "Yes") == 0);
 	leaq	.LC4(%rip), %rax	#, tmp227
 	movq	%rax, %rsi	# tmp227,
 	movq	%rdx, %rdi	# _37,
 	call	strcmp@PLT	#
+# problem142.c:44:     assert(strcmp(func0("no_one#knows.dll"), "Yes") == 0);
 	testl	%eax, %eax	# _38
 	je	.L33	#,
 # problem142.c:44:     assert(strcmp(func0("no_one#knows.dll"), "Yes") == 0);
@@ -721,10 +763,12 @@ main:
 	movq	%rax, %rdi	# tmp231,
 	call	func0	#
 	movq	%rax, %rdx	#, _39
+# problem142.c:45:     assert(strcmp(func0("1I563_Yes3.exe"), "No") == 0);
 	leaq	.LC0(%rip), %rax	#, tmp232
 	movq	%rax, %rsi	# tmp232,
 	movq	%rdx, %rdi	# _39,
 	call	strcmp@PLT	#
+# problem142.c:45:     assert(strcmp(func0("1I563_Yes3.exe"), "No") == 0);
 	testl	%eax, %eax	# _40
 	je	.L34	#,
 # problem142.c:45:     assert(strcmp(func0("1I563_Yes3.exe"), "No") == 0);
@@ -742,10 +786,12 @@ main:
 	movq	%rax, %rdi	# tmp236,
 	call	func0	#
 	movq	%rax, %rdx	#, _41
+# problem142.c:46:     assert(strcmp(func0("I563_Yes3.txtt"), "No") == 0);
 	leaq	.LC0(%rip), %rax	#, tmp237
 	movq	%rax, %rsi	# tmp237,
 	movq	%rdx, %rdi	# _41,
 	call	strcmp@PLT	#
+# problem142.c:46:     assert(strcmp(func0("I563_Yes3.txtt"), "No") == 0);
 	testl	%eax, %eax	# _42
 	je	.L35	#,
 # problem142.c:46:     assert(strcmp(func0("I563_Yes3.txtt"), "No") == 0);
@@ -763,10 +809,12 @@ main:
 	movq	%rax, %rdi	# tmp241,
 	call	func0	#
 	movq	%rax, %rdx	#, _43
+# problem142.c:47:     assert(strcmp(func0("final..txt"), "No") == 0);
 	leaq	.LC0(%rip), %rax	#, tmp242
 	movq	%rax, %rsi	# tmp242,
 	movq	%rdx, %rdi	# _43,
 	call	strcmp@PLT	#
+# problem142.c:47:     assert(strcmp(func0("final..txt"), "No") == 0);
 	testl	%eax, %eax	# _44
 	je	.L36	#,
 # problem142.c:47:     assert(strcmp(func0("final..txt"), "No") == 0);
@@ -784,10 +832,12 @@ main:
 	movq	%rax, %rdi	# tmp246,
 	call	func0	#
 	movq	%rax, %rdx	#, _45
+# problem142.c:48:     assert(strcmp(func0("final132"), "No") == 0);
 	leaq	.LC0(%rip), %rax	#, tmp247
 	movq	%rax, %rsi	# tmp247,
 	movq	%rdx, %rdi	# _45,
 	call	strcmp@PLT	#
+# problem142.c:48:     assert(strcmp(func0("final132"), "No") == 0);
 	testl	%eax, %eax	# _46
 	je	.L37	#,
 # problem142.c:48:     assert(strcmp(func0("final132"), "No") == 0);
@@ -805,10 +855,12 @@ main:
 	movq	%rax, %rdi	# tmp251,
 	call	func0	#
 	movq	%rax, %rdx	#, _47
+# problem142.c:49:     assert(strcmp(func0("_f4indsartal132."), "No") == 0);
 	leaq	.LC0(%rip), %rax	#, tmp252
 	movq	%rax, %rsi	# tmp252,
 	movq	%rdx, %rdi	# _47,
 	call	strcmp@PLT	#
+# problem142.c:49:     assert(strcmp(func0("_f4indsartal132."), "No") == 0);
 	testl	%eax, %eax	# _48
 	je	.L38	#,
 # problem142.c:49:     assert(strcmp(func0("_f4indsartal132."), "No") == 0);
@@ -826,10 +878,12 @@ main:
 	movq	%rax, %rdi	# tmp256,
 	call	func0	#
 	movq	%rax, %rdx	#, _49
+# problem142.c:50:     assert(strcmp(func0(".txt"), "No") == 0);
 	leaq	.LC0(%rip), %rax	#, tmp257
 	movq	%rax, %rsi	# tmp257,
 	movq	%rdx, %rdi	# _49,
 	call	strcmp@PLT	#
+# problem142.c:50:     assert(strcmp(func0(".txt"), "No") == 0);
 	testl	%eax, %eax	# _50
 	je	.L39	#,
 # problem142.c:50:     assert(strcmp(func0(".txt"), "No") == 0);
@@ -847,10 +901,12 @@ main:
 	movq	%rax, %rdi	# tmp261,
 	call	func0	#
 	movq	%rax, %rdx	#, _51
+# problem142.c:51:     assert(strcmp(func0("s."), "No") == 0);
 	leaq	.LC0(%rip), %rax	#, tmp262
 	movq	%rax, %rsi	# tmp262,
 	movq	%rdx, %rdi	# _51,
 	call	strcmp@PLT	#
+# problem142.c:51:     assert(strcmp(func0("s."), "No") == 0);
 	testl	%eax, %eax	# _52
 	je	.L40	#,
 # problem142.c:51:     assert(strcmp(func0("s."), "No") == 0);
@@ -877,7 +933,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

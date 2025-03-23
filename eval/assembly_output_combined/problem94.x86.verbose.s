@@ -1,6 +1,6 @@
 	.file	"problem94.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -41,10 +41,11 @@ func0:
 	movb	%al, -17(%rbp)	# tmp122, w
 # problem94.c:11:         if (islower(w)) {
 	call	__ctype_b_loc@PLT	#
-	movq	(%rax), %rdx	# *_3, _4
-	movsbq	-17(%rbp), %rax	# w, _5
-	addq	%rax, %rax	# _6
-	addq	%rdx, %rax	# _4, _7
+# problem94.c:11:         if (islower(w)) {
+	movq	(%rax), %rax	# *_3, _4
+	movsbq	-17(%rbp), %rdx	# w, _5
+	addq	%rdx, %rdx	# _6
+	addq	%rdx, %rax	# _6, _7
 	movzwl	(%rax), %eax	# *_7, _8
 	movzwl	%ax, %eax	# _8, _9
 	andl	$512, %eax	#, _10
@@ -61,10 +62,11 @@ func0:
 .L3:
 # problem94.c:13:         } else if (isupper(w)) {
 	call	__ctype_b_loc@PLT	#
-	movq	(%rax), %rdx	# *_13, _14
-	movsbq	-17(%rbp), %rax	# w, _15
-	addq	%rax, %rax	# _16
-	addq	%rdx, %rax	# _14, _17
+# problem94.c:13:         } else if (isupper(w)) {
+	movq	(%rax), %rax	# *_13, _14
+	movsbq	-17(%rbp), %rdx	# w, _15
+	addq	%rdx, %rdx	# _16
+	addq	%rdx, %rax	# _16, _17
 	movzwl	(%rax), %eax	# *_17, _18
 	movzwl	%ax, %eax	# _18, _19
 	andl	$256, %eax	#, _20
@@ -206,7 +208,7 @@ main:
 	subq	$112, %rsp	#,
 # problem94.c:35: int main() {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp125
-	movq	%rax, -8(%rbp)	# tmp125, D.2701
+	movq	%rax, -8(%rbp)	# tmp125, D.3558
 	xorl	%eax, %eax	# tmp125
 # problem94.c:38:     func0("TEST", output);
 	leaq	-112(%rbp), %rax	#, tmp89
@@ -220,9 +222,9 @@ main:
 	movq	%rdx, %rsi	# tmp92,
 	movq	%rax, %rdi	# tmp91,
 	call	strcmp@PLT	#
+# problem94.c:39:     assert(strcmp(output, "tgst") == 0);
 	testl	%eax, %eax	# _1
 	je	.L13	#,
-# problem94.c:39:     assert(strcmp(output, "tgst") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp93
 	movq	%rax, %rcx	# tmp93,
 	movl	$39, %edx	#,
@@ -244,9 +246,9 @@ main:
 	movq	%rdx, %rsi	# tmp99,
 	movq	%rax, %rdi	# tmp98,
 	call	strcmp@PLT	#
+# problem94.c:42:     assert(strcmp(output, "mWDCSKR") == 0);
 	testl	%eax, %eax	# _2
 	je	.L14	#,
-# problem94.c:42:     assert(strcmp(output, "mWDCSKR") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp100
 	movq	%rax, %rcx	# tmp100,
 	movl	$42, %edx	#,
@@ -268,9 +270,9 @@ main:
 	movq	%rdx, %rsi	# tmp106,
 	movq	%rax, %rdi	# tmp105,
 	call	strcmp@PLT	#
+# problem94.c:45:     assert(strcmp(output, "ygs") == 0);
 	testl	%eax, %eax	# _3
 	je	.L15	#,
-# problem94.c:45:     assert(strcmp(output, "ygs") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp107
 	movq	%rax, %rcx	# tmp107,
 	movl	$45, %edx	#,
@@ -292,9 +294,9 @@ main:
 	movq	%rdx, %rsi	# tmp113,
 	movq	%rax, %rdi	# tmp112,
 	call	strcmp@PLT	#
+# problem94.c:48:     assert(strcmp(output, "tHKS KS C MGSSCGG") == 0);
 	testl	%eax, %eax	# _4
 	je	.L16	#,
-# problem94.c:48:     assert(strcmp(output, "tHKS KS C MGSSCGG") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp114
 	movq	%rax, %rcx	# tmp114,
 	movl	$48, %edx	#,
@@ -316,9 +318,9 @@ main:
 	movq	%rdx, %rsi	# tmp120,
 	movq	%rax, %rdi	# tmp119,
 	call	strcmp@PLT	#
+# problem94.c:51:     assert(strcmp(output, "k dQnT kNqW wHcT Tq wRkTg") == 0);
 	testl	%eax, %eax	# _5
 	je	.L17	#,
-# problem94.c:51:     assert(strcmp(output, "k dQnT kNqW wHcT Tq wRkTg") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp121
 	movq	%rax, %rcx	# tmp121,
 	movl	$51, %edx	#,
@@ -331,7 +333,7 @@ main:
 # problem94.c:53:     return 0;
 	movl	$0, %eax	#, _17
 # problem94.c:54: }
-	movq	-8(%rbp), %rdx	# D.2701, tmp126
+	movq	-8(%rbp), %rdx	# D.3558, tmp126
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp126
 	je	.L19	#,
 	call	__stack_chk_fail@PLT	#
@@ -347,7 +349,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

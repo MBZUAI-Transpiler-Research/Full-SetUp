@@ -1,6 +1,6 @@
 	.file	"problem40.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -23,7 +23,7 @@ main:
 	subq	$96, %rsp	#,
 # problem40.c:10: {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp125
-	movq	%rax, -8(%rbp)	# tmp125, D.3426
+	movq	%rax, -8(%rbp)	# tmp125, D.4256
 	xorl	%eax, %eax	# tmp125
 # problem40.c:11:   int nth = 1;
 	movl	$1, -72(%rbp)	#, nth
@@ -83,11 +83,11 @@ main:
 	movq	%rax, %xmm0	# tmp103,
 	call	pow@PLT	#
 # problem40.c:21:         d[l++] = (i / (int)pow(10, digits-j-1)) % 10; /* retrieve i's j-th digit */
-	cvttsd2sil	%xmm0, %esi	# _10, _11
+	cvttsd2sil	%xmm0, %edi	# _10, _11
 # problem40.c:21:         d[l++] = (i / (int)pow(10, digits-j-1)) % 10; /* retrieve i's j-th digit */
 	movl	-68(%rbp), %eax	# i, tmp106
 	cltd
-	idivl	%esi	# _11
+	idivl	%edi	# _11
 	movl	%eax, %ecx	# tmp104, _12
 # problem40.c:21:         d[l++] = (i / (int)pow(10, digits-j-1)) % 10; /* retrieve i's j-th digit */
 	movl	-64(%rbp), %esi	# l, l.0_13
@@ -97,11 +97,11 @@ main:
 	movslq	%ecx, %rax	# _12, tmp108
 	imulq	$1717986919, %rax, %rax	#, tmp108, tmp109
 	shrq	$32, %rax	#, tmp110
-	sarl	$2, %eax	#, tmp111
-	movl	%ecx, %edi	# _12, tmp112
-	sarl	$31, %edi	#, tmp112
-	subl	%edi, %eax	# tmp112, tmp111
-	movl	%eax, %edx	# tmp111, _14
+	movl	%eax, %edx	# tmp110, tmp111
+	sarl	$2, %edx	#, tmp111
+	movl	%ecx, %eax	# _12, tmp112
+	sarl	$31, %eax	#, tmp112
+	subl	%eax, %edx	# tmp112, _14
 	movl	%edx, %eax	# _14, tmp113
 	sall	$2, %eax	#, tmp113
 	addl	%edx, %eax	# _14, tmp113
@@ -157,7 +157,7 @@ main:
 # problem40.c:31:   return 0;
 	movl	$0, %eax	#, _35
 # problem40.c:32: }
-	movq	-8(%rbp), %rdx	# D.3426, tmp126
+	movq	-8(%rbp), %rdx	# D.4256, tmp126
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp126
 	je	.L11	#,
 	call	__stack_chk_fail@PLT	#
@@ -177,7 +177,7 @@ main:
 .LC1:
 	.long	0
 	.long	1076101120
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

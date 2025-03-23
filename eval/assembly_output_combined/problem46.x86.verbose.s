@@ -1,6 +1,6 @@
 	.file	"problem46.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -61,6 +61,7 @@ main:
 	movl	.LC2(%rip), %eax	#, tmp96
 	movd	%eax, %xmm0	# tmp96,
 	call	func0	#
+# problem46.c:15:     assert(fabs(func0(5, 3) - 7.5) < 1e-4);
 	cvtss2sd	%xmm0, %xmm0	# _1, _2
 	movsd	.LC3(%rip), %xmm1	#, tmp97
 	subsd	%xmm1, %xmm0	# tmp97, _3
@@ -69,7 +70,6 @@ main:
 	movsd	.LC5(%rip), %xmm0	#, tmp99
 	comisd	%xmm1, %xmm0	# _4, tmp99
 	ja	.L4	#,
-# problem46.c:15:     assert(fabs(func0(5, 3) - 7.5) < 1e-4);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp100
 	movq	%rax, %rcx	# tmp100,
 	movl	$15, %edx	#,
@@ -84,6 +84,7 @@ main:
 	movl	.LC8(%rip), %eax	#, tmp103
 	movd	%eax, %xmm0	# tmp103,
 	call	func0	#
+# problem46.c:16:     assert(fabs(func0(2, 2) - 2.0) < 1e-4);
 	cvtss2sd	%xmm0, %xmm0	# _5, _6
 	movsd	.LC9(%rip), %xmm1	#, tmp104
 	subsd	%xmm1, %xmm0	# tmp104, _7
@@ -92,7 +93,6 @@ main:
 	movsd	.LC5(%rip), %xmm0	#, tmp106
 	comisd	%xmm1, %xmm0	# _8, tmp106
 	ja	.L5	#,
-# problem46.c:16:     assert(fabs(func0(2, 2) - 2.0) < 1e-4);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp107
 	movq	%rax, %rcx	# tmp107,
 	movl	$16, %edx	#,
@@ -107,6 +107,7 @@ main:
 	movl	.LC12(%rip), %eax	#, tmp110
 	movd	%eax, %xmm0	# tmp110,
 	call	func0	#
+# problem46.c:17:     assert(fabs(func0(10, 8) - 40.0) < 1e-4);
 	cvtss2sd	%xmm0, %xmm0	# _9, _10
 	movsd	.LC13(%rip), %xmm1	#, tmp111
 	subsd	%xmm1, %xmm0	# tmp111, _11
@@ -115,7 +116,6 @@ main:
 	movsd	.LC5(%rip), %xmm0	#, tmp113
 	comisd	%xmm1, %xmm0	# _12, tmp113
 	ja	.L6	#,
-# problem46.c:17:     assert(fabs(func0(10, 8) - 40.0) < 1e-4);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp114
 	movq	%rax, %rcx	# tmp114,
 	movl	$17, %edx	#,
@@ -179,7 +179,7 @@ __PRETTY_FUNCTION__.0:
 .LC13:
 	.long	0
 	.long	1078198272
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

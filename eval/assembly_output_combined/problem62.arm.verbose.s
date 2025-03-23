@@ -1,7 +1,7 @@
 	.arch armv8-a
 	.file	"problem62.c"
-// GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (aarch64-linux-gnu)
-//	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+// GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (aarch64-linux-gnu)
+//	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 // GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 // options passed: -mlittle-endian -mabi=lp64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection
@@ -59,6 +59,7 @@ func0:
 	bge	.L5		//,
 // problem62.c:10:         if (level < 0) return false;
 	mov	w0, 0	// _13,
+// problem62.c:10:         if (level < 0) return false;
 	b	.L6		//
 .L5:
 // problem62.c:7:     for (int i = 0; i < strlen(brackets); i++) {
@@ -184,219 +185,231 @@ main:
 	add	x0, x0, :lo12:.LC0	//, tmp114,
 	bl	func0		//
 	and	w0, w0, 255	// _1, tmp115
-	cmp	w0, 0	// _1,
-	bne	.L9		//,
 // problem62.c:21:     assert(func0("()"));
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp116,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp116,
+	and	w0, w0, 1	// tmp116, _1,
+	cmp	w0, 0	// tmp116,
+	bne	.L9		//,
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp117,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp117,
 	mov	w2, 21	//,
-	adrp	x0, .LC1	// tmp117,
-	add	x1, x0, :lo12:.LC1	//, tmp117,
-	adrp	x0, .LC2	// tmp118,
-	add	x0, x0, :lo12:.LC2	//, tmp118,
+	adrp	x0, .LC1	// tmp118,
+	add	x1, x0, :lo12:.LC1	//, tmp118,
+	adrp	x0, .LC2	// tmp119,
+	add	x0, x0, :lo12:.LC2	//, tmp119,
 	bl	__assert_fail		//
 .L9:
 // problem62.c:22:     assert(func0("(()())"));
-	adrp	x0, .LC3	// tmp119,
-	add	x0, x0, :lo12:.LC3	//, tmp119,
+	adrp	x0, .LC3	// tmp120,
+	add	x0, x0, :lo12:.LC3	//, tmp120,
 	bl	func0		//
-	and	w0, w0, 255	// _2, tmp120
-	cmp	w0, 0	// _2,
-	bne	.L10		//,
+	and	w0, w0, 255	// _2, tmp121
 // problem62.c:22:     assert(func0("(()())"));
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp121,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp121,
+	and	w0, w0, 1	// tmp122, _2,
+	cmp	w0, 0	// tmp122,
+	bne	.L10		//,
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp123,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp123,
 	mov	w2, 22	//,
-	adrp	x0, .LC1	// tmp122,
-	add	x1, x0, :lo12:.LC1	//, tmp122,
-	adrp	x0, .LC4	// tmp123,
-	add	x0, x0, :lo12:.LC4	//, tmp123,
+	adrp	x0, .LC1	// tmp124,
+	add	x1, x0, :lo12:.LC1	//, tmp124,
+	adrp	x0, .LC4	// tmp125,
+	add	x0, x0, :lo12:.LC4	//, tmp125,
 	bl	__assert_fail		//
 .L10:
 // problem62.c:23:     assert(func0("()()(()())()"));
-	adrp	x0, .LC5	// tmp124,
-	add	x0, x0, :lo12:.LC5	//, tmp124,
+	adrp	x0, .LC5	// tmp126,
+	add	x0, x0, :lo12:.LC5	//, tmp126,
 	bl	func0		//
-	and	w0, w0, 255	// _3, tmp125
-	cmp	w0, 0	// _3,
-	bne	.L11		//,
+	and	w0, w0, 255	// _3, tmp127
 // problem62.c:23:     assert(func0("()()(()())()"));
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp126,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp126,
+	and	w0, w0, 1	// tmp128, _3,
+	cmp	w0, 0	// tmp128,
+	bne	.L11		//,
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp129,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp129,
 	mov	w2, 23	//,
-	adrp	x0, .LC1	// tmp127,
-	add	x1, x0, :lo12:.LC1	//, tmp127,
-	adrp	x0, .LC6	// tmp128,
-	add	x0, x0, :lo12:.LC6	//, tmp128,
+	adrp	x0, .LC1	// tmp130,
+	add	x1, x0, :lo12:.LC1	//, tmp130,
+	adrp	x0, .LC6	// tmp131,
+	add	x0, x0, :lo12:.LC6	//, tmp131,
 	bl	__assert_fail		//
 .L11:
 // problem62.c:24:     assert(func0("()()((()()())())(()()(()))"));
-	adrp	x0, .LC7	// tmp129,
-	add	x0, x0, :lo12:.LC7	//, tmp129,
+	adrp	x0, .LC7	// tmp132,
+	add	x0, x0, :lo12:.LC7	//, tmp132,
 	bl	func0		//
-	and	w0, w0, 255	// _4, tmp130
-	cmp	w0, 0	// _4,
-	bne	.L12		//,
+	and	w0, w0, 255	// _4, tmp133
 // problem62.c:24:     assert(func0("()()((()()())())(()()(()))"));
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp131,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp131,
+	and	w0, w0, 1	// tmp134, _4,
+	cmp	w0, 0	// tmp134,
+	bne	.L12		//,
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp135,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp135,
 	mov	w2, 24	//,
-	adrp	x0, .LC1	// tmp132,
-	add	x1, x0, :lo12:.LC1	//, tmp132,
-	adrp	x0, .LC8	// tmp133,
-	add	x0, x0, :lo12:.LC8	//, tmp133,
+	adrp	x0, .LC1	// tmp136,
+	add	x1, x0, :lo12:.LC1	//, tmp136,
+	adrp	x0, .LC8	// tmp137,
+	add	x0, x0, :lo12:.LC8	//, tmp137,
 	bl	__assert_fail		//
 .L12:
 // problem62.c:25:     assert(!func0("((()())))"));
-	adrp	x0, .LC9	// tmp134,
-	add	x0, x0, :lo12:.LC9	//, tmp134,
+	adrp	x0, .LC9	// tmp138,
+	add	x0, x0, :lo12:.LC9	//, tmp138,
 	bl	func0		//
-	and	w0, w0, 255	// _5, tmp135
-	eor	w0, w0, 1	// tmp136, _5,
-	and	w0, w0, 255	// _6, tmp136
-	cmp	w0, 0	// _6,
-	bne	.L13		//,
+	and	w0, w0, 255	// _5, tmp139
 // problem62.c:25:     assert(!func0("((()())))"));
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp137,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp137,
+	eor	w0, w0, 1	// tmp140, _5,
+	and	w0, w0, 255	// _6, tmp140
+	and	w0, w0, 1	// tmp141, _6,
+	cmp	w0, 0	// tmp141,
+	bne	.L13		//,
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp142,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp142,
 	mov	w2, 25	//,
-	adrp	x0, .LC1	// tmp138,
-	add	x1, x0, :lo12:.LC1	//, tmp138,
-	adrp	x0, .LC10	// tmp139,
-	add	x0, x0, :lo12:.LC10	//, tmp139,
+	adrp	x0, .LC1	// tmp143,
+	add	x1, x0, :lo12:.LC1	//, tmp143,
+	adrp	x0, .LC10	// tmp144,
+	add	x0, x0, :lo12:.LC10	//, tmp144,
 	bl	__assert_fail		//
 .L13:
 // problem62.c:26:     assert(!func0(")(()"));
-	adrp	x0, .LC11	// tmp140,
-	add	x0, x0, :lo12:.LC11	//, tmp140,
+	adrp	x0, .LC11	// tmp145,
+	add	x0, x0, :lo12:.LC11	//, tmp145,
 	bl	func0		//
-	and	w0, w0, 255	// _7, tmp141
-	eor	w0, w0, 1	// tmp142, _7,
-	and	w0, w0, 255	// _8, tmp142
-	cmp	w0, 0	// _8,
-	bne	.L14		//,
+	and	w0, w0, 255	// _7, tmp146
 // problem62.c:26:     assert(!func0(")(()"));
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp143,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp143,
+	eor	w0, w0, 1	// tmp147, _7,
+	and	w0, w0, 255	// _8, tmp147
+	and	w0, w0, 1	// tmp148, _8,
+	cmp	w0, 0	// tmp148,
+	bne	.L14		//,
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp149,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp149,
 	mov	w2, 26	//,
-	adrp	x0, .LC1	// tmp144,
-	add	x1, x0, :lo12:.LC1	//, tmp144,
-	adrp	x0, .LC12	// tmp145,
-	add	x0, x0, :lo12:.LC12	//, tmp145,
+	adrp	x0, .LC1	// tmp150,
+	add	x1, x0, :lo12:.LC1	//, tmp150,
+	adrp	x0, .LC12	// tmp151,
+	add	x0, x0, :lo12:.LC12	//, tmp151,
 	bl	__assert_fail		//
 .L14:
 // problem62.c:27:     assert(!func0("("));
-	adrp	x0, .LC13	// tmp146,
-	add	x0, x0, :lo12:.LC13	//, tmp146,
+	adrp	x0, .LC13	// tmp152,
+	add	x0, x0, :lo12:.LC13	//, tmp152,
 	bl	func0		//
-	and	w0, w0, 255	// _9, tmp147
-	eor	w0, w0, 1	// tmp148, _9,
-	and	w0, w0, 255	// _10, tmp148
-	cmp	w0, 0	// _10,
-	bne	.L15		//,
+	and	w0, w0, 255	// _9, tmp153
 // problem62.c:27:     assert(!func0("("));
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp149,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp149,
+	eor	w0, w0, 1	// tmp154, _9,
+	and	w0, w0, 255	// _10, tmp154
+	and	w0, w0, 1	// tmp155, _10,
+	cmp	w0, 0	// tmp155,
+	bne	.L15		//,
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp156,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp156,
 	mov	w2, 27	//,
-	adrp	x0, .LC1	// tmp150,
-	add	x1, x0, :lo12:.LC1	//, tmp150,
-	adrp	x0, .LC14	// tmp151,
-	add	x0, x0, :lo12:.LC14	//, tmp151,
+	adrp	x0, .LC1	// tmp157,
+	add	x1, x0, :lo12:.LC1	//, tmp157,
+	adrp	x0, .LC14	// tmp158,
+	add	x0, x0, :lo12:.LC14	//, tmp158,
 	bl	__assert_fail		//
 .L15:
 // problem62.c:28:     assert(!func0("(((("));
-	adrp	x0, .LC15	// tmp152,
-	add	x0, x0, :lo12:.LC15	//, tmp152,
+	adrp	x0, .LC15	// tmp159,
+	add	x0, x0, :lo12:.LC15	//, tmp159,
 	bl	func0		//
-	and	w0, w0, 255	// _11, tmp153
-	eor	w0, w0, 1	// tmp154, _11,
-	and	w0, w0, 255	// _12, tmp154
-	cmp	w0, 0	// _12,
-	bne	.L16		//,
+	and	w0, w0, 255	// _11, tmp160
 // problem62.c:28:     assert(!func0("(((("));
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp155,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp155,
+	eor	w0, w0, 1	// tmp161, _11,
+	and	w0, w0, 255	// _12, tmp161
+	and	w0, w0, 1	// tmp162, _12,
+	cmp	w0, 0	// tmp162,
+	bne	.L16		//,
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp163,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp163,
 	mov	w2, 28	//,
-	adrp	x0, .LC1	// tmp156,
-	add	x1, x0, :lo12:.LC1	//, tmp156,
-	adrp	x0, .LC16	// tmp157,
-	add	x0, x0, :lo12:.LC16	//, tmp157,
+	adrp	x0, .LC1	// tmp164,
+	add	x1, x0, :lo12:.LC1	//, tmp164,
+	adrp	x0, .LC16	// tmp165,
+	add	x0, x0, :lo12:.LC16	//, tmp165,
 	bl	__assert_fail		//
 .L16:
 // problem62.c:29:     assert(!func0(")"));
-	adrp	x0, .LC17	// tmp158,
-	add	x0, x0, :lo12:.LC17	//, tmp158,
+	adrp	x0, .LC17	// tmp166,
+	add	x0, x0, :lo12:.LC17	//, tmp166,
 	bl	func0		//
-	and	w0, w0, 255	// _13, tmp159
-	eor	w0, w0, 1	// tmp160, _13,
-	and	w0, w0, 255	// _14, tmp160
-	cmp	w0, 0	// _14,
-	bne	.L17		//,
+	and	w0, w0, 255	// _13, tmp167
 // problem62.c:29:     assert(!func0(")"));
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp161,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp161,
+	eor	w0, w0, 1	// tmp168, _13,
+	and	w0, w0, 255	// _14, tmp168
+	and	w0, w0, 1	// tmp169, _14,
+	cmp	w0, 0	// tmp169,
+	bne	.L17		//,
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp170,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp170,
 	mov	w2, 29	//,
-	adrp	x0, .LC1	// tmp162,
-	add	x1, x0, :lo12:.LC1	//, tmp162,
-	adrp	x0, .LC18	// tmp163,
-	add	x0, x0, :lo12:.LC18	//, tmp163,
+	adrp	x0, .LC1	// tmp171,
+	add	x1, x0, :lo12:.LC1	//, tmp171,
+	adrp	x0, .LC18	// tmp172,
+	add	x0, x0, :lo12:.LC18	//, tmp172,
 	bl	__assert_fail		//
 .L17:
 // problem62.c:30:     assert(!func0("(()"));
-	adrp	x0, .LC19	// tmp164,
-	add	x0, x0, :lo12:.LC19	//, tmp164,
+	adrp	x0, .LC19	// tmp173,
+	add	x0, x0, :lo12:.LC19	//, tmp173,
 	bl	func0		//
-	and	w0, w0, 255	// _15, tmp165
-	eor	w0, w0, 1	// tmp166, _15,
-	and	w0, w0, 255	// _16, tmp166
-	cmp	w0, 0	// _16,
-	bne	.L18		//,
+	and	w0, w0, 255	// _15, tmp174
 // problem62.c:30:     assert(!func0("(()"));
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp167,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp167,
+	eor	w0, w0, 1	// tmp175, _15,
+	and	w0, w0, 255	// _16, tmp175
+	and	w0, w0, 1	// tmp176, _16,
+	cmp	w0, 0	// tmp176,
+	bne	.L18		//,
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp177,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp177,
 	mov	w2, 30	//,
-	adrp	x0, .LC1	// tmp168,
-	add	x1, x0, :lo12:.LC1	//, tmp168,
-	adrp	x0, .LC20	// tmp169,
-	add	x0, x0, :lo12:.LC20	//, tmp169,
+	adrp	x0, .LC1	// tmp178,
+	add	x1, x0, :lo12:.LC1	//, tmp178,
+	adrp	x0, .LC20	// tmp179,
+	add	x0, x0, :lo12:.LC20	//, tmp179,
 	bl	__assert_fail		//
 .L18:
 // problem62.c:31:     assert(!func0("()()(()())())(()"));
-	adrp	x0, .LC21	// tmp170,
-	add	x0, x0, :lo12:.LC21	//, tmp170,
+	adrp	x0, .LC21	// tmp180,
+	add	x0, x0, :lo12:.LC21	//, tmp180,
 	bl	func0		//
-	and	w0, w0, 255	// _17, tmp171
-	eor	w0, w0, 1	// tmp172, _17,
-	and	w0, w0, 255	// _18, tmp172
-	cmp	w0, 0	// _18,
-	bne	.L19		//,
+	and	w0, w0, 255	// _17, tmp181
 // problem62.c:31:     assert(!func0("()()(()())())(()"));
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp173,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp173,
+	eor	w0, w0, 1	// tmp182, _17,
+	and	w0, w0, 255	// _18, tmp182
+	and	w0, w0, 1	// tmp183, _18,
+	cmp	w0, 0	// tmp183,
+	bne	.L19		//,
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp184,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp184,
 	mov	w2, 31	//,
-	adrp	x0, .LC1	// tmp174,
-	add	x1, x0, :lo12:.LC1	//, tmp174,
-	adrp	x0, .LC22	// tmp175,
-	add	x0, x0, :lo12:.LC22	//, tmp175,
+	adrp	x0, .LC1	// tmp185,
+	add	x1, x0, :lo12:.LC1	//, tmp185,
+	adrp	x0, .LC22	// tmp186,
+	add	x0, x0, :lo12:.LC22	//, tmp186,
 	bl	__assert_fail		//
 .L19:
 // problem62.c:32:     assert(!func0("()()(()())()))()"));
-	adrp	x0, .LC23	// tmp176,
-	add	x0, x0, :lo12:.LC23	//, tmp176,
+	adrp	x0, .LC23	// tmp187,
+	add	x0, x0, :lo12:.LC23	//, tmp187,
 	bl	func0		//
-	and	w0, w0, 255	// _19, tmp177
-	eor	w0, w0, 1	// tmp178, _19,
-	and	w0, w0, 255	// _20, tmp178
-	cmp	w0, 0	// _20,
-	bne	.L20		//,
+	and	w0, w0, 255	// _19, tmp188
 // problem62.c:32:     assert(!func0("()()(()())()))()"));
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp179,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp179,
+	eor	w0, w0, 1	// tmp189, _19,
+	and	w0, w0, 255	// _20, tmp189
+	and	w0, w0, 1	// tmp190, _20,
+	cmp	w0, 0	// tmp190,
+	bne	.L20		//,
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp191,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp191,
 	mov	w2, 32	//,
-	adrp	x0, .LC1	// tmp180,
-	add	x1, x0, :lo12:.LC1	//, tmp180,
-	adrp	x0, .LC24	// tmp181,
-	add	x0, x0, :lo12:.LC24	//, tmp181,
+	adrp	x0, .LC1	// tmp192,
+	add	x1, x0, :lo12:.LC1	//, tmp192,
+	adrp	x0, .LC24	// tmp193,
+	add	x0, x0, :lo12:.LC24	//, tmp193,
 	bl	__assert_fail		//
 .L20:
 // problem62.c:34:     return 0;
@@ -416,5 +429,5 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits

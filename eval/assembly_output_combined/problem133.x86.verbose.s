@@ -1,6 +1,6 @@
 	.file	"problem133.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -75,6 +75,7 @@ func0:
 	jge	.L7	#,
 # problem133.c:11:         if (count <= maxcount - 2) return 1;
 	movl	$1, %eax	#, _17
+# problem133.c:11:         if (count <= maxcount - 2) return 1;
 	jmp	.L8	#
 .L7:
 # problem133.c:6:     for (int i = 0; i < strlen(str); i++) {
@@ -176,9 +177,9 @@ main:
 	leaq	.LC0(%rip), %rax	#, tmp98
 	movq	%rax, %rdi	# tmp98,
 	call	func0	#
+# problem133.c:22:     assert(func0("[[]]") == 1);
 	cmpl	$1, %eax	#, _1
 	je	.L11	#,
-# problem133.c:22:     assert(func0("[[]]") == 1);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp99
 	movq	%rax, %rcx	# tmp99,
 	movl	$22, %edx	#,
@@ -192,9 +193,9 @@ main:
 	leaq	.LC3(%rip), %rax	#, tmp102
 	movq	%rax, %rdi	# tmp102,
 	call	func0	#
+# problem133.c:23:     assert(func0("[]]]]]]][[[[[]") == 0);
 	testl	%eax, %eax	# _2
 	je	.L12	#,
-# problem133.c:23:     assert(func0("[]]]]]]][[[[[]") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp103
 	movq	%rax, %rcx	# tmp103,
 	movl	$23, %edx	#,
@@ -208,9 +209,9 @@ main:
 	leaq	.LC5(%rip), %rax	#, tmp106
 	movq	%rax, %rdi	# tmp106,
 	call	func0	#
+# problem133.c:24:     assert(func0("[][]") == 0);
 	testl	%eax, %eax	# _3
 	je	.L13	#,
-# problem133.c:24:     assert(func0("[][]") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp107
 	movq	%rax, %rcx	# tmp107,
 	movl	$24, %edx	#,
@@ -224,9 +225,9 @@ main:
 	leaq	.LC7(%rip), %rax	#, tmp110
 	movq	%rax, %rdi	# tmp110,
 	call	func0	#
+# problem133.c:25:     assert(func0("[]") == 0);
 	testl	%eax, %eax	# _4
 	je	.L14	#,
-# problem133.c:25:     assert(func0("[]") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp111
 	movq	%rax, %rcx	# tmp111,
 	movl	$25, %edx	#,
@@ -240,9 +241,9 @@ main:
 	leaq	.LC9(%rip), %rax	#, tmp114
 	movq	%rax, %rdi	# tmp114,
 	call	func0	#
+# problem133.c:26:     assert(func0("[[[[]]]]") == 1);
 	cmpl	$1, %eax	#, _5
 	je	.L15	#,
-# problem133.c:26:     assert(func0("[[[[]]]]") == 1);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp115
 	movq	%rax, %rcx	# tmp115,
 	movl	$26, %edx	#,
@@ -256,9 +257,9 @@ main:
 	leaq	.LC11(%rip), %rax	#, tmp118
 	movq	%rax, %rdi	# tmp118,
 	call	func0	#
+# problem133.c:27:     assert(func0("[]]]]]]]]]]") == 0);
 	testl	%eax, %eax	# _6
 	je	.L16	#,
-# problem133.c:27:     assert(func0("[]]]]]]]]]]") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp119
 	movq	%rax, %rcx	# tmp119,
 	movl	$27, %edx	#,
@@ -272,9 +273,9 @@ main:
 	leaq	.LC13(%rip), %rax	#, tmp122
 	movq	%rax, %rdi	# tmp122,
 	call	func0	#
+# problem133.c:28:     assert(func0("[][][[]]") == 1);
 	cmpl	$1, %eax	#, _7
 	je	.L17	#,
-# problem133.c:28:     assert(func0("[][][[]]") == 1);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp123
 	movq	%rax, %rcx	# tmp123,
 	movl	$28, %edx	#,
@@ -288,9 +289,9 @@ main:
 	leaq	.LC15(%rip), %rax	#, tmp126
 	movq	%rax, %rdi	# tmp126,
 	call	func0	#
+# problem133.c:29:     assert(func0("[[]") == 0);
 	testl	%eax, %eax	# _8
 	je	.L18	#,
-# problem133.c:29:     assert(func0("[[]") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp127
 	movq	%rax, %rcx	# tmp127,
 	movl	$29, %edx	#,
@@ -304,9 +305,9 @@ main:
 	leaq	.LC17(%rip), %rax	#, tmp130
 	movq	%rax, %rdi	# tmp130,
 	call	func0	#
+# problem133.c:30:     assert(func0("[]]") == 0);
 	testl	%eax, %eax	# _9
 	je	.L19	#,
-# problem133.c:30:     assert(func0("[]]") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp131
 	movq	%rax, %rcx	# tmp131,
 	movl	$30, %edx	#,
@@ -320,9 +321,9 @@ main:
 	leaq	.LC19(%rip), %rax	#, tmp134
 	movq	%rax, %rdi	# tmp134,
 	call	func0	#
+# problem133.c:31:     assert(func0("[[]][[") == 1);
 	cmpl	$1, %eax	#, _10
 	je	.L20	#,
-# problem133.c:31:     assert(func0("[[]][[") == 1);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp135
 	movq	%rax, %rcx	# tmp135,
 	movl	$31, %edx	#,
@@ -336,9 +337,9 @@ main:
 	leaq	.LC21(%rip), %rax	#, tmp138
 	movq	%rax, %rdi	# tmp138,
 	call	func0	#
+# problem133.c:32:     assert(func0("[[][]]") == 1);
 	cmpl	$1, %eax	#, _11
 	je	.L21	#,
-# problem133.c:32:     assert(func0("[[][]]") == 1);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp139
 	movq	%rax, %rcx	# tmp139,
 	movl	$32, %edx	#,
@@ -352,9 +353,9 @@ main:
 	leaq	.LC23(%rip), %rax	#, tmp142
 	movq	%rax, %rdi	# tmp142,
 	call	func0	#
+# problem133.c:33:     assert(func0("") == 0);
 	testl	%eax, %eax	# _12
 	je	.L22	#,
-# problem133.c:33:     assert(func0("") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp143
 	movq	%rax, %rcx	# tmp143,
 	movl	$33, %edx	#,
@@ -368,9 +369,9 @@ main:
 	leaq	.LC25(%rip), %rax	#, tmp146
 	movq	%rax, %rdi	# tmp146,
 	call	func0	#
+# problem133.c:34:     assert(func0("[[[[[[[[") == 0);
 	testl	%eax, %eax	# _13
 	je	.L23	#,
-# problem133.c:34:     assert(func0("[[[[[[[[") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp147
 	movq	%rax, %rcx	# tmp147,
 	movl	$34, %edx	#,
@@ -384,9 +385,9 @@ main:
 	leaq	.LC27(%rip), %rax	#, tmp150
 	movq	%rax, %rdi	# tmp150,
 	call	func0	#
+# problem133.c:35:     assert(func0("]]]]]]]]") == 0);
 	testl	%eax, %eax	# _14
 	je	.L24	#,
-# problem133.c:35:     assert(func0("]]]]]]]]") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp151
 	movq	%rax, %rcx	# tmp151,
 	movl	$35, %edx	#,
@@ -410,7 +411,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

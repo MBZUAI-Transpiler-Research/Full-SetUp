@@ -117,10 +117,11 @@ is_triangle:
 	movl	%eax, -4(%rbp)
 	movl	-4(%rbp), %eax
 	imull	%eax, %eax
-	movl	-20(%rbp), %edx
-	sall	$3, %edx
-	addl	$1, %edx
-	cmpl	%edx, %eax
+	movl	%eax, %edx
+	movl	-20(%rbp), %eax
+	sall	$3, %eax
+	addl	$1, %eax
+	cmpl	%eax, %edx
 	jne	.L11
 	movl	-4(%rbp), %eax
 	andl	$1, %eax
@@ -137,7 +138,7 @@ is_triangle:
 	.cfi_endproc
 .LFE1:
 	.size	is_triangle, .-is_triangle
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

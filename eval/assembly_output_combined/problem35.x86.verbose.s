@@ -1,6 +1,6 @@
 	.file	"problem35.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -220,7 +220,7 @@ main:
 	subq	$96, %rsp	#,
 # problem35.c:40: int main() {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp107
-	movq	%rax, -8(%rbp)	# tmp107, D.2943
+	movq	%rax, -8(%rbp)	# tmp107, D.3780
 	xorl	%eax, %eax	# tmp107
 # problem35.c:41:     int test_array[] = {5, 3, 5, 2, 3, 3, 9, 0, 123};
 	movl	$5, -48(%rbp)	#, test_array[0]
@@ -305,7 +305,7 @@ main:
 # problem35.c:54:     return 0;
 	movl	$0, %eax	#, _31
 # problem35.c:55: }
-	movq	-8(%rbp), %rdx	# D.2943, tmp108
+	movq	-8(%rbp), %rdx	# D.3780, tmp108
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp108
 	je	.L21	#,
 	call	__stack_chk_fail@PLT	#
@@ -321,7 +321,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

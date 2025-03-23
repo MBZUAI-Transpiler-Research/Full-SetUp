@@ -1,6 +1,6 @@
 	.file	"problem3.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -66,6 +66,7 @@ main:
 	movd	%eax, %xmm0	# tmp94,
 	call	func0	#
 	movd	%xmm0, %eax	#, _1
+# problem3.c:16:     assert(func0(3.5f) == 0.5f);
 	movd	%eax, %xmm2	# _1, _1
 	ucomiss	.LC2(%rip), %xmm2	#, _1
 	jp	.L9	#,
@@ -73,7 +74,6 @@ main:
 	ucomiss	.LC2(%rip), %xmm3	#, _1
 	je	.L4	#,
 .L9:
-# problem3.c:16:     assert(func0(3.5f) == 0.5f);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp95
 	movq	%rax, %rcx	# tmp95,
 	movl	$16, %edx	#,
@@ -88,6 +88,7 @@ main:
 	movd	%eax, %xmm0	# tmp98,
 	call	func0	#
 	movd	%xmm0, %eax	#, _2
+# problem3.c:17:     assert(fabs(func0(1.33f) - 0.33f) < 1e-4);
 	movss	.LC6(%rip), %xmm1	#, tmp99
 	movd	%eax, %xmm0	# _2, _2
 	subss	%xmm1, %xmm0	# tmp99, _2
@@ -98,7 +99,6 @@ main:
 	movsd	.LC8(%rip), %xmm0	#, tmp101
 	comisd	%xmm1, %xmm0	# _5, tmp101
 	ja	.L6	#,
-# problem3.c:17:     assert(fabs(func0(1.33f) - 0.33f) < 1e-4);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp102
 	movq	%rax, %rcx	# tmp102,
 	movl	$17, %edx	#,
@@ -113,6 +113,7 @@ main:
 	movd	%eax, %xmm0	# tmp105,
 	call	func0	#
 	movd	%xmm0, %eax	#, _6
+# problem3.c:18:     assert(fabs(func0(123.456f) - 0.456f) < 1e-4);
 	movss	.LC11(%rip), %xmm1	#, tmp106
 	movd	%eax, %xmm0	# _6, _6
 	subss	%xmm1, %xmm0	# tmp106, _6
@@ -123,7 +124,6 @@ main:
 	movsd	.LC8(%rip), %xmm0	#, tmp108
 	comisd	%xmm1, %xmm0	# _9, tmp108
 	ja	.L7	#,
-# problem3.c:18:     assert(fabs(func0(123.456f) - 0.456f) < 1e-4);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp109
 	movq	%rax, %rcx	# tmp109,
 	movl	$18, %edx	#,
@@ -175,7 +175,7 @@ __PRETTY_FUNCTION__.0:
 	.align 4
 .LC11:
 	.long	1055488213
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

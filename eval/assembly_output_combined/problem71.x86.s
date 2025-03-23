@@ -80,7 +80,7 @@ func0:
 	movl	%eax, -12(%rbp)
 	movl	$0, -8(%rbp)
 	jmp	.L7
-.L9:
+.L10:
 	movl	-16(%rbp), %eax
 	cmpl	-12(%rbp), %eax
 	jne	.L8
@@ -137,7 +137,7 @@ func0:
 .L7:
 	movl	-16(%rbp), %eax
 	cmpl	-12(%rbp), %eax
-	jle	.L9
+	jle	.L10
 	nop
 	nop
 	popq	%rbp
@@ -161,8 +161,8 @@ issame:
 	movq	%rsi, -32(%rbp)
 	movl	%edx, -36(%rbp)
 	movl	$0, -4(%rbp)
-	jmp	.L11
-.L14:
+	jmp	.L12
+.L15:
 	movl	-4(%rbp), %eax
 	cltq
 	leaq	0(,%rax,4), %rdx
@@ -176,17 +176,17 @@ issame:
 	addq	%rcx, %rax
 	movl	(%rax), %eax
 	cmpl	%eax, %edx
-	je	.L12
+	je	.L13
 	movl	$0, %eax
-	jmp	.L13
-.L12:
+	jmp	.L14
+.L13:
 	addl	$1, -4(%rbp)
-.L11:
+.L12:
 	movl	-4(%rbp), %eax
 	cmpl	-36(%rbp), %eax
-	jl	.L14
+	jl	.L15
 	movl	$1, %eax
-.L13:
+.L14:
 	popq	%rbp
 	.cfi_def_cfa 7, 8
 	ret
@@ -250,7 +250,7 @@ main:
 	movq	%rax, %rdi
 	call	issame
 	testl	%eax, %eax
-	jne	.L16
+	jne	.L17
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax
 	movq	%rax, %rcx
 	movl	$45, %edx
@@ -259,7 +259,7 @@ main:
 	leaq	.LC1(%rip), %rax
 	movq	%rax, %rdi
 	call	__assert_fail@PLT
-.L16:
+.L17:
 	movl	$5, -496(%rbp)
 	movl	$6, -492(%rbp)
 	movl	$7, -488(%rbp)
@@ -282,7 +282,7 @@ main:
 	movq	%rax, %rdi
 	call	issame
 	testl	%eax, %eax
-	jne	.L17
+	jne	.L18
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax
 	movq	%rax, %rcx
 	movl	$51, %edx
@@ -291,7 +291,7 @@ main:
 	leaq	.LC2(%rip), %rax
 	movq	%rax, %rdi
 	call	__assert_fail@PLT
-.L17:
+.L18:
 	movl	$1, -400(%rbp)
 	movl	$2, -396(%rbp)
 	movl	$3, -392(%rbp)
@@ -314,7 +314,7 @@ main:
 	movq	%rax, %rdi
 	call	issame
 	testl	%eax, %eax
-	jne	.L18
+	jne	.L19
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax
 	movq	%rax, %rcx
 	movl	$57, %edx
@@ -323,7 +323,7 @@ main:
 	leaq	.LC3(%rip), %rax
 	movq	%rax, %rdi
 	call	__assert_fail@PLT
-.L18:
+.L19:
 	movl	$5, -304(%rbp)
 	movl	$6, -300(%rbp)
 	movl	$7, -296(%rbp)
@@ -348,7 +348,7 @@ main:
 	movq	%rax, %rdi
 	call	issame
 	testl	%eax, %eax
-	jne	.L19
+	jne	.L20
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax
 	movq	%rax, %rcx
 	movl	$63, %edx
@@ -357,7 +357,7 @@ main:
 	leaq	.LC4(%rip), %rax
 	movq	%rax, %rdi
 	call	__assert_fail@PLT
-.L19:
+.L20:
 	movl	$5, -544(%rbp)
 	movl	$5, -540(%rbp)
 	movl	$5, -536(%rbp)
@@ -378,7 +378,7 @@ main:
 	movq	%rax, %rdi
 	call	issame
 	testl	%eax, %eax
-	jne	.L20
+	jne	.L21
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax
 	movq	%rax, %rcx
 	movl	$69, %edx
@@ -387,7 +387,7 @@ main:
 	leaq	.LC5(%rip), %rax
 	movq	%rax, %rdi
 	call	__assert_fail@PLT
-.L20:
+.L21:
 	leaq	-608(%rbp), %rdx
 	leaq	-616(%rbp), %rax
 	movl	$0, %esi
@@ -400,7 +400,7 @@ main:
 	movq	%rax, %rdi
 	call	issame
 	testl	%eax, %eax
-	jne	.L21
+	jne	.L22
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax
 	movq	%rax, %rcx
 	movl	$75, %edx
@@ -409,7 +409,7 @@ main:
 	leaq	.LC6(%rip), %rax
 	movq	%rax, %rdi
 	call	__assert_fail@PLT
-.L21:
+.L22:
 	movl	$1, -208(%rbp)
 	movl	$2, -204(%rbp)
 	movl	$3, -200(%rbp)
@@ -438,7 +438,7 @@ main:
 	movq	%rax, %rdi
 	call	issame
 	testl	%eax, %eax
-	jne	.L22
+	jne	.L23
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax
 	movq	%rax, %rcx
 	movl	$81, %edx
@@ -447,7 +447,7 @@ main:
 	leaq	.LC7(%rip), %rax
 	movq	%rax, %rdi
 	call	__assert_fail@PLT
-.L22:
+.L23:
 	movl	$0, -112(%rbp)
 	movl	$2, -108(%rbp)
 	movl	$2, -104(%rbp)
@@ -476,7 +476,7 @@ main:
 	movq	%rax, %rdi
 	call	issame
 	testl	%eax, %eax
-	jne	.L23
+	jne	.L24
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax
 	movq	%rax, %rcx
 	movl	$87, %edx
@@ -485,7 +485,7 @@ main:
 	leaq	.LC8(%rip), %rax
 	movq	%rax, %rdi
 	call	__assert_fail@PLT
-.L23:
+.L24:
 	movl	$111111, -604(%rbp)
 	movl	$111111, -600(%rbp)
 	leaq	-596(%rbp), %rdx
@@ -500,7 +500,7 @@ main:
 	movq	%rax, %rdi
 	call	issame
 	testl	%eax, %eax
-	jne	.L24
+	jne	.L25
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax
 	movq	%rax, %rcx
 	movl	$93, %edx
@@ -509,13 +509,13 @@ main:
 	leaq	.LC9(%rip), %rax
 	movq	%rax, %rdi
 	call	__assert_fail@PLT
-.L24:
+.L25:
 	movl	$0, %eax
 	movq	-8(%rbp), %rdx
 	subq	%fs:40, %rdx
-	je	.L26
+	je	.L27
 	call	__stack_chk_fail@PLT
-.L26:
+.L27:
 	leave
 	.cfi_def_cfa 7, 8
 	ret
@@ -527,7 +527,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

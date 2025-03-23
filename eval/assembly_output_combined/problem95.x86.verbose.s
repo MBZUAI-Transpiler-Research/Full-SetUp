@@ -1,6 +1,6 @@
 	.file	"problem95.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -94,11 +94,11 @@ func0:
 	movslq	%ecx, %rax	# tmp100, tmp101
 	imulq	$1717986919, %rax, %rax	#, tmp101, tmp102
 	shrq	$32, %rax	#, tmp103
-	sarl	$2, %eax	#, tmp104
-	movl	%ecx, %esi	# tmp100, tmp105
-	sarl	$31, %esi	#, tmp105
-	subl	%esi, %eax	# tmp105, tmp104
-	movl	%eax, %edx	# tmp104, _6
+	movl	%eax, %edx	# tmp103, tmp104
+	sarl	$2, %edx	#, tmp104
+	movl	%ecx, %eax	# tmp100, tmp105
+	sarl	$31, %eax	#, tmp105
+	subl	%eax, %edx	# tmp105, _6
 	movl	%edx, %eax	# _6, tmp106
 	sall	$2, %eax	#, tmp106
 	addl	%edx, %eax	# _6, tmp106
@@ -112,11 +112,11 @@ func0:
 	movslq	%eax, %rdx	# tmp109, tmp110
 	imulq	$1717986919, %rdx, %rdx	#, tmp110, tmp111
 	shrq	$32, %rdx	#, tmp112
-	sarl	$2, %edx	#, tmp113
-	sarl	$31, %eax	#, tmp109
-	movl	%eax, %ecx	# tmp109, tmp114
-	movl	%edx, %eax	# tmp113, tmp113
-	subl	%ecx, %eax	# tmp114, tmp113
+	movl	%edx, %ecx	# tmp112, tmp113
+	sarl	$2, %ecx	#, tmp113
+	cltd
+	movl	%ecx, %eax	# tmp113, tmp113
+	subl	%edx, %eax	# tmp114, tmp113
 	movl	%eax, -24(%rbp)	# tmp108, largest
 .L9:
 # problem95.c:22:     while (largest > 0) {
@@ -176,7 +176,7 @@ main:
 	subq	$400, %rsp	#,
 # problem95.c:34: int main() {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp130
-	movq	%rax, -8(%rbp)	# tmp130, D.2438
+	movq	%rax, -8(%rbp)	# tmp130, D.3268
 	xorl	%eax, %eax	# tmp130
 # problem95.c:35:     int lst1[] = {0,3,2,1,3,5,7,4,5,5,5,2,181,32,4,32,3,2,32,324,4,3};
 	movl	$0, -96(%rbp)	#, lst1[0]
@@ -206,9 +206,9 @@ main:
 	movl	$22, %esi	#,
 	movq	%rax, %rdi	# tmp93,
 	call	func0	#
+# problem95.c:36:     assert(func0(lst1, sizeof(lst1)/sizeof(lst1[0])) == 10);
 	cmpl	$10, %eax	#, _1
 	je	.L13	#,
-# problem95.c:36:     assert(func0(lst1, sizeof(lst1)/sizeof(lst1[0])) == 10);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp94
 	movq	%rax, %rcx	# tmp94,
 	movl	$36, %edx	#,
@@ -242,9 +242,9 @@ main:
 	movl	$18, %esi	#,
 	movq	%rax, %rdi	# tmp97,
 	call	func0	#
+# problem95.c:39:     assert(func0(lst2, sizeof(lst2)/sizeof(lst2[0])) == 25);
 	cmpl	$25, %eax	#, _2
 	je	.L14	#,
-# problem95.c:39:     assert(func0(lst2, sizeof(lst2)/sizeof(lst2[0])) == 25);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp98
 	movq	%rax, %rcx	# tmp98,
 	movl	$39, %edx	#,
@@ -276,9 +276,9 @@ main:
 	movl	$16, %esi	#,
 	movq	%rax, %rdi	# tmp101,
 	call	func0	#
+# problem95.c:42:     assert(func0(lst3, sizeof(lst3)/sizeof(lst3[0])) == 13);
 	cmpl	$13, %eax	#, _3
 	je	.L15	#,
-# problem95.c:42:     assert(func0(lst3, sizeof(lst3)/sizeof(lst3[0])) == 13);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp102
 	movq	%rax, %rcx	# tmp102,
 	movl	$42, %edx	#,
@@ -308,9 +308,9 @@ main:
 	movl	$14, %esi	#,
 	movq	%rax, %rdi	# tmp105,
 	call	func0	#
+# problem95.c:45:     assert(func0(lst4, sizeof(lst4)/sizeof(lst4[0])) == 11);
 	cmpl	$11, %eax	#, _4
 	je	.L16	#,
-# problem95.c:45:     assert(func0(lst4, sizeof(lst4)/sizeof(lst4[0])) == 11);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp106
 	movq	%rax, %rcx	# tmp106,
 	movl	$45, %edx	#,
@@ -332,9 +332,9 @@ main:
 	movl	$6, %esi	#,
 	movq	%rax, %rdi	# tmp109,
 	call	func0	#
+# problem95.c:48:     assert(func0(lst5, sizeof(lst5)/sizeof(lst5[0])) == 3);
 	cmpl	$3, %eax	#, _5
 	je	.L17	#,
-# problem95.c:48:     assert(func0(lst5, sizeof(lst5)/sizeof(lst5[0])) == 3);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp110
 	movq	%rax, %rcx	# tmp110,
 	movl	$48, %edx	#,
@@ -356,9 +356,9 @@ main:
 	movl	$6, %esi	#,
 	movq	%rax, %rdi	# tmp113,
 	call	func0	#
+# problem95.c:51:     assert(func0(lst6, sizeof(lst6)/sizeof(lst6[0])) == 7);
 	cmpl	$7, %eax	#, _6
 	je	.L18	#,
-# problem95.c:51:     assert(func0(lst6, sizeof(lst6)/sizeof(lst6[0])) == 7);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp114
 	movq	%rax, %rcx	# tmp114,
 	movl	$51, %edx	#,
@@ -375,9 +375,9 @@ main:
 	movl	$1, %esi	#,
 	movq	%rax, %rdi	# tmp117,
 	call	func0	#
+# problem95.c:54:     assert(func0(lst7, sizeof(lst7)/sizeof(lst7[0])) == 19);
 	cmpl	$19, %eax	#, _7
 	je	.L19	#,
-# problem95.c:54:     assert(func0(lst7, sizeof(lst7)/sizeof(lst7[0])) == 19);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp118
 	movq	%rax, %rcx	# tmp118,
 	movl	$54, %edx	#,
@@ -397,9 +397,9 @@ main:
 	movl	$4, %esi	#,
 	movq	%rax, %rdi	# tmp121,
 	call	func0	#
+# problem95.c:57:     assert(func0(lst8, sizeof(lst8)/sizeof(lst8[0])) == 19);
 	cmpl	$19, %eax	#, _8
 	je	.L20	#,
-# problem95.c:57:     assert(func0(lst8, sizeof(lst8)/sizeof(lst8[0])) == 19);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp122
 	movq	%rax, %rcx	# tmp122,
 	movl	$57, %edx	#,
@@ -418,9 +418,9 @@ main:
 	movl	$3, %esi	#,
 	movq	%rax, %rdi	# tmp125,
 	call	func0	#
+# problem95.c:60:     assert(func0(lst9, sizeof(lst9)/sizeof(lst9[0])) == 10);
 	cmpl	$10, %eax	#, _9
 	je	.L21	#,
-# problem95.c:60:     assert(func0(lst9, sizeof(lst9)/sizeof(lst9[0])) == 10);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp126
 	movq	%rax, %rcx	# tmp126,
 	movl	$60, %edx	#,
@@ -433,7 +433,7 @@ main:
 # problem95.c:62:     return 0;
 	movl	$0, %eax	#, _119
 # problem95.c:63: }
-	movq	-8(%rbp), %rdx	# D.2438, tmp131
+	movq	-8(%rbp), %rdx	# D.3268, tmp131
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp131
 	je	.L23	#,
 	call	__stack_chk_fail@PLT	#
@@ -449,7 +449,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

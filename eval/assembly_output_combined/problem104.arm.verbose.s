@@ -1,7 +1,7 @@
 	.arch armv8-a
 	.file	"problem104.c"
-// GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (aarch64-linux-gnu)
-//	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+// GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (aarch64-linux-gnu)
+//	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 // GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 // options passed: -mlittle-endian -mabi=lp64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection
@@ -32,6 +32,7 @@ func0:
 // problem104.c:5:     if (n > m) return "-1";
 	adrp	x0, .LC0	// tmp108,
 	add	x0, x0, :lo12:.LC0	// _15, tmp108,
+// problem104.c:5:     if (n > m) return "-1";
 	b	.L3		//
 .L2:
 // problem104.c:6:     int num = (m + n) / 2;
@@ -197,10 +198,12 @@ main:
 	mov	w0, 1	//,
 	bl	func0		//
 	mov	x2, x0	// _1,
+// problem104.c:27:     assert(strcmp(func0(1, 5), "11") == 0);
 	adrp	x0, .LC1	// tmp118,
 	add	x1, x0, :lo12:.LC1	//, tmp118,
 	mov	x0, x2	//, _1
 	bl	strcmp		//
+// problem104.c:27:     assert(strcmp(func0(1, 5), "11") == 0);
 	cmp	w0, 0	// _2,
 	beq	.L6		//,
 // problem104.c:27:     assert(strcmp(func0(1, 5), "11") == 0);
@@ -218,10 +221,12 @@ main:
 	mov	w0, 7	//,
 	bl	func0		//
 	mov	x2, x0	// _3,
+// problem104.c:28:     assert(strcmp(func0(7, 13), "1010") == 0);
 	adrp	x0, .LC4	// tmp122,
 	add	x1, x0, :lo12:.LC4	//, tmp122,
 	mov	x0, x2	//, _3
 	bl	strcmp		//
+// problem104.c:28:     assert(strcmp(func0(7, 13), "1010") == 0);
 	cmp	w0, 0	// _4,
 	beq	.L7		//,
 // problem104.c:28:     assert(strcmp(func0(7, 13), "1010") == 0);
@@ -239,10 +244,12 @@ main:
 	mov	w0, 964	//,
 	bl	func0		//
 	mov	x2, x0	// _5,
+// problem104.c:29:     assert(strcmp(func0(964, 977), "1111001010") == 0);
 	adrp	x0, .LC6	// tmp126,
 	add	x1, x0, :lo12:.LC6	//, tmp126,
 	mov	x0, x2	//, _5
 	bl	strcmp		//
+// problem104.c:29:     assert(strcmp(func0(964, 977), "1111001010") == 0);
 	cmp	w0, 0	// _6,
 	beq	.L8		//,
 // problem104.c:29:     assert(strcmp(func0(964, 977), "1111001010") == 0);
@@ -260,10 +267,12 @@ main:
 	mov	w0, 996	//,
 	bl	func0		//
 	mov	x2, x0	// _7,
+// problem104.c:30:     assert(strcmp(func0(996, 997), "1111100100") == 0);
 	adrp	x0, .LC8	// tmp130,
 	add	x1, x0, :lo12:.LC8	//, tmp130,
 	mov	x0, x2	//, _7
 	bl	strcmp		//
+// problem104.c:30:     assert(strcmp(func0(996, 997), "1111100100") == 0);
 	cmp	w0, 0	// _8,
 	beq	.L9		//,
 // problem104.c:30:     assert(strcmp(func0(996, 997), "1111100100") == 0);
@@ -281,10 +290,12 @@ main:
 	mov	w0, 560	//,
 	bl	func0		//
 	mov	x2, x0	// _9,
+// problem104.c:31:     assert(strcmp(func0(560, 851), "1011000001") == 0);
 	adrp	x0, .LC10	// tmp134,
 	add	x1, x0, :lo12:.LC10	//, tmp134,
 	mov	x0, x2	//, _9
 	bl	strcmp		//
+// problem104.c:31:     assert(strcmp(func0(560, 851), "1011000001") == 0);
 	cmp	w0, 0	// _10,
 	beq	.L10		//,
 // problem104.c:31:     assert(strcmp(func0(560, 851), "1011000001") == 0);
@@ -302,10 +313,12 @@ main:
 	mov	w0, 185	//,
 	bl	func0		//
 	mov	x2, x0	// _11,
+// problem104.c:32:     assert(strcmp(func0(185, 546), "101101101") == 0);
 	adrp	x0, .LC12	// tmp138,
 	add	x1, x0, :lo12:.LC12	//, tmp138,
 	mov	x0, x2	//, _11
 	bl	strcmp		//
+// problem104.c:32:     assert(strcmp(func0(185, 546), "101101101") == 0);
 	cmp	w0, 0	// _12,
 	beq	.L11		//,
 // problem104.c:32:     assert(strcmp(func0(185, 546), "101101101") == 0);
@@ -323,10 +336,12 @@ main:
 	mov	w0, 362	//,
 	bl	func0		//
 	mov	x2, x0	// _13,
+// problem104.c:33:     assert(strcmp(func0(362, 496), "110101101") == 0);
 	adrp	x0, .LC14	// tmp142,
 	add	x1, x0, :lo12:.LC14	//, tmp142,
 	mov	x0, x2	//, _13
 	bl	strcmp		//
+// problem104.c:33:     assert(strcmp(func0(362, 496), "110101101") == 0);
 	cmp	w0, 0	// _14,
 	beq	.L12		//,
 // problem104.c:33:     assert(strcmp(func0(362, 496), "110101101") == 0);
@@ -344,10 +359,12 @@ main:
 	mov	w0, 350	//,
 	bl	func0		//
 	mov	x2, x0	// _15,
+// problem104.c:34:     assert(strcmp(func0(350, 902), "1001110010") == 0);
 	adrp	x0, .LC16	// tmp146,
 	add	x1, x0, :lo12:.LC16	//, tmp146,
 	mov	x0, x2	//, _15
 	bl	strcmp		//
+// problem104.c:34:     assert(strcmp(func0(350, 902), "1001110010") == 0);
 	cmp	w0, 0	// _16,
 	beq	.L13		//,
 // problem104.c:34:     assert(strcmp(func0(350, 902), "1001110010") == 0);
@@ -365,10 +382,12 @@ main:
 	mov	w0, 197	//,
 	bl	func0		//
 	mov	x2, x0	// _17,
+// problem104.c:35:     assert(strcmp(func0(197, 233), "11010111") == 0);
 	adrp	x0, .LC18	// tmp150,
 	add	x1, x0, :lo12:.LC18	//, tmp150,
 	mov	x0, x2	//, _17
 	bl	strcmp		//
+// problem104.c:35:     assert(strcmp(func0(197, 233), "11010111") == 0);
 	cmp	w0, 0	// _18,
 	beq	.L14		//,
 // problem104.c:35:     assert(strcmp(func0(197, 233), "11010111") == 0);
@@ -386,10 +405,12 @@ main:
 	mov	w0, 7	//,
 	bl	func0		//
 	mov	x2, x0	// _19,
+// problem104.c:36:     assert(strcmp(func0(7, 5), "-1") == 0);
 	adrp	x0, .LC0	// tmp154,
 	add	x1, x0, :lo12:.LC0	//, tmp154,
 	mov	x0, x2	//, _19
 	bl	strcmp		//
+// problem104.c:36:     assert(strcmp(func0(7, 5), "-1") == 0);
 	cmp	w0, 0	// _20,
 	beq	.L15		//,
 // problem104.c:36:     assert(strcmp(func0(7, 5), "-1") == 0);
@@ -407,10 +428,12 @@ main:
 	mov	w0, 5	//,
 	bl	func0		//
 	mov	x2, x0	// _21,
+// problem104.c:37:     assert(strcmp(func0(5, 1), "-1") == 0);
 	adrp	x0, .LC0	// tmp158,
 	add	x1, x0, :lo12:.LC0	//, tmp158,
 	mov	x0, x2	//, _21
 	bl	strcmp		//
+// problem104.c:37:     assert(strcmp(func0(5, 1), "-1") == 0);
 	cmp	w0, 0	// _22,
 	beq	.L16		//,
 // problem104.c:37:     assert(strcmp(func0(5, 1), "-1") == 0);
@@ -428,10 +451,12 @@ main:
 	mov	w0, 5	//,
 	bl	func0		//
 	mov	x2, x0	// _23,
+// problem104.c:38:     assert(strcmp(func0(5, 5), "101") == 0);
 	adrp	x0, .LC22	// tmp162,
 	add	x1, x0, :lo12:.LC22	//, tmp162,
 	mov	x0, x2	//, _23
 	bl	strcmp		//
+// problem104.c:38:     assert(strcmp(func0(5, 5), "101") == 0);
 	cmp	w0, 0	// _24,
 	beq	.L17		//,
 // problem104.c:38:     assert(strcmp(func0(5, 5), "101") == 0);
@@ -461,5 +486,5 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits

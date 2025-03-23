@@ -70,13 +70,12 @@ func0:
 	movl	-20(%rbp), %eax
 	cltq
 	movl	-12(%rbp), %edx
+	movslq	%edx, %rcx
+	movl	-20(%rbp), %edx
 	movslq	%edx, %rdx
-	movl	-20(%rbp), %ecx
-	movslq	%ecx, %rcx
-	movq	%rdx, %rsi
-	subq	%rcx, %rsi
+	subq	%rdx, %rcx
 	movq	-40(%rbp), %rdx
-	addq	%rdx, %rsi
+	leaq	(%rcx,%rdx), %rsi
 	movl	-16(%rbp), %edx
 	movslq	%edx, %rcx
 	movq	-48(%rbp), %rdx
@@ -138,13 +137,12 @@ func0:
 	movl	-20(%rbp), %eax
 	cltq
 	movl	-12(%rbp), %edx
+	movslq	%edx, %rcx
+	movl	-20(%rbp), %edx
 	movslq	%edx, %rdx
-	movl	-20(%rbp), %ecx
-	movslq	%ecx, %rcx
-	movq	%rdx, %rsi
-	subq	%rcx, %rsi
+	subq	%rdx, %rcx
 	movq	-40(%rbp), %rdx
-	addq	%rdx, %rsi
+	leaq	(%rcx,%rdx), %rsi
 	movl	-16(%rbp), %edx
 	movslq	%edx, %rcx
 	movq	-48(%rbp), %rdx
@@ -385,7 +383,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

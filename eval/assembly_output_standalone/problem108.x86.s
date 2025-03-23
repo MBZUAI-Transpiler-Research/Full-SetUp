@@ -36,33 +36,33 @@ func0:
 	sall	$2, %eax
 	addl	%edx, %eax
 	addl	%eax, %eax
-	movl	%eax, %edi
-	movl	-16(%rbp), %edx
-	movslq	%edx, %rax
+	movl	%eax, %esi
+	movl	-16(%rbp), %ecx
+	movslq	%ecx, %rax
 	imulq	$1717986919, %rax, %rax
 	shrq	$32, %rax
-	sarl	$2, %eax
-	movl	%edx, %esi
-	sarl	$31, %esi
-	subl	%esi, %eax
-	movl	%eax, %ecx
+	movl	%eax, %edx
+	sarl	$2, %edx
 	movl	%ecx, %eax
+	sarl	$31, %eax
+	subl	%eax, %edx
+	movl	%edx, %eax
 	sall	$2, %eax
-	addl	%ecx, %eax
+	addl	%edx, %eax
 	addl	%eax, %eax
-	movl	%edx, %ecx
 	subl	%eax, %ecx
-	leal	(%rdi,%rcx), %eax
+	movl	%ecx, %edx
+	leal	(%rsi,%rdx), %eax
 	movl	%eax, -20(%rbp)
 	movl	-16(%rbp), %eax
 	movslq	%eax, %rdx
 	imulq	$1717986919, %rdx, %rdx
 	shrq	$32, %rdx
-	sarl	$2, %edx
-	sarl	$31, %eax
-	movl	%eax, %ecx
-	movl	%edx, %eax
-	subl	%ecx, %eax
+	movl	%edx, %ecx
+	sarl	$2, %ecx
+	cltd
+	movl	%ecx, %eax
+	subl	%edx, %eax
 	movl	%eax, -16(%rbp)
 .L3:
 	cmpl	$0, -16(%rbp)
@@ -99,7 +99,7 @@ func0:
 	.cfi_endproc
 .LFE6:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

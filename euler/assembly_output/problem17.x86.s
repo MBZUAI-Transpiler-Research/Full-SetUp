@@ -164,21 +164,19 @@ main:
 	shrq	$32, %rdx
 	sarl	$2, %edx
 	sarl	$31, %eax
-	movl	%eax, %esi
-	movl	%edx, %eax
-	subl	%esi, %eax
-	cltq
+	subl	%eax, %edx
+	movslq	%edx, %rax
 	movl	-48(%rbp,%rax,4), %eax
 	leal	(%rcx,%rax), %esi
 	movl	-160(%rbp), %ecx
 	movslq	%ecx, %rax
 	imulq	$1717986919, %rax, %rax
 	shrq	$32, %rax
-	sarl	$2, %eax
-	movl	%ecx, %edi
-	sarl	$31, %edi
-	subl	%edi, %eax
 	movl	%eax, %edx
+	sarl	$2, %edx
+	movl	%ecx, %eax
+	sarl	$31, %eax
+	subl	%eax, %edx
 	movl	%edx, %eax
 	sall	$2, %eax
 	addl	%edx, %eax
@@ -219,7 +217,7 @@ main:
 	.cfi_endproc
 .LFE0:
 	.size	main, .-main
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

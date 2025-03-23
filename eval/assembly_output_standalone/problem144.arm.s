@@ -65,6 +65,7 @@ func0:
 	strb	wzr, [sp, 43]
 .L10:
 	ldrb	w0, [sp, 43]
+	and	w0, w0, 1
 	cmp	w0, 0
 	beq	.L11
 	ldr	w0, [sp, 48]
@@ -143,6 +144,7 @@ func0:
 	strb	wzr, [sp, 43]
 .L19:
 	ldrb	w0, [sp, 43]
+	and	w0, w0, 1
 	cmp	w0, 0
 	beq	.L20
 	ldr	w0, [sp, 48]
@@ -188,5 +190,5 @@ func0:
 	.cfi_endproc
 .LFE0:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits

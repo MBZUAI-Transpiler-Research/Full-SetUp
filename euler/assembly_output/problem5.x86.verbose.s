@@ -1,6 +1,6 @@
 	.file	"problem5.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -71,8 +71,8 @@ gcd:
 	movq	%rsi, -32(%rbp)	# b, b
 # problem5.c:27:   if (a > b) {
 	movq	-24(%rbp), %rax	# a, tmp84
-	cmpq	-32(%rbp), %rax	# b, tmp84
-	jbe	.L7	#,
+	cmpq	%rax, -32(%rbp)	# tmp84, b
+	jnb	.L7	#,
 # problem5.c:28:     unsigned long t = a;
 	movq	-24(%rbp), %rax	# a, tmp85
 	movq	%rax, -16(%rbp)	# tmp85, t
@@ -143,7 +143,7 @@ lcm:
 	.cfi_endproc
 .LFE2:
 	.size	lcm, .-lcm
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

@@ -213,30 +213,31 @@ issame:
 main:
 .LFB8:
 	.cfi_startproc
-	stp	x29, x30, [sp, -160]!
+	sub	sp, sp, #160
 	.cfi_def_cfa_offset 160
-	.cfi_offset 29, -160
-	.cfi_offset 30, -152
-	mov	x29, sp
+	stp	x29, x30, [sp, 144]
+	.cfi_offset 29, -16
+	.cfi_offset 30, -8
+	add	x29, sp, 144
 	adrp	x0, :got:__stack_chk_guard
-	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]
+	ldr	x0, [x0, :got_lo12:__stack_chk_guard]
 	ldr	x1, [x0]
-	str	x1, [sp, 152]
+	str	x1, [sp, 136]
 	mov	x1, 0
 	adrp	x0, .LC8
 	add	x0, x0, :lo12:.LC8
-	str	x0, [sp, 56]
+	str	x0, [sp, 40]
 	adrp	x0, .LC9
 	add	x0, x0, :lo12:.LC9
-	str	x0, [sp, 64]
-	add	x0, sp, 56
+	str	x0, [sp, 48]
+	add	x0, sp, 40
 	mov	w1, 1
 	bl	func0
-	str	x0, [sp, 32]
-	add	x0, sp, 64
+	str	x0, [sp, 16]
+	add	x0, sp, 48
 	mov	w2, 1
 	mov	x1, x0
-	ldr	x0, [sp, 32]
+	ldr	x0, [sp, 16]
 	bl	issame
 	cmp	w0, 0
 	bne	.L14
@@ -251,24 +252,24 @@ main:
 .L14:
 	adrp	x0, .LC12
 	add	x0, x0, :lo12:.LC12
-	str	x0, [sp, 72]
+	str	x0, [sp, 56]
 	adrp	x0, .LC13
 	add	x0, x0, :lo12:.LC13
-	str	x0, [sp, 80]
+	str	x0, [sp, 64]
 	adrp	x0, .LC14
 	add	x0, x0, :lo12:.LC14
-	str	x0, [sp, 88]
+	str	x0, [sp, 72]
 	adrp	x0, .LC15
 	add	x0, x0, :lo12:.LC15
-	str	x0, [sp, 96]
-	add	x0, sp, 72
+	str	x0, [sp, 80]
+	add	x0, sp, 56
 	mov	w1, 2
 	bl	func0
-	str	x0, [sp, 40]
-	add	x0, sp, 88
+	str	x0, [sp, 24]
+	add	x0, sp, 72
 	mov	w2, 2
 	mov	x1, x0
-	ldr	x0, [sp, 40]
+	ldr	x0, [sp, 24]
 	bl	issame
 	cmp	w0, 0
 	bne	.L15
@@ -283,7 +284,7 @@ main:
 .L15:
 	adrp	x0, .LC17
 	add	x0, x0, :lo12:.LC17
-	add	x2, sp, 104
+	add	x2, sp, 88
 	mov	x3, x0
 	ldp	x0, x1, [x3]
 	stp	x0, x1, [x2]
@@ -291,20 +292,20 @@ main:
 	str	x0, [x2, 16]
 	adrp	x0, .LC18
 	add	x0, x0, :lo12:.LC18
-	add	x2, sp, 128
+	add	x2, sp, 112
 	mov	x3, x0
 	ldp	x0, x1, [x3]
 	stp	x0, x1, [x2]
 	ldr	x0, [x3, 16]
 	str	x0, [x2, 16]
-	add	x0, sp, 104
+	add	x0, sp, 88
 	mov	w1, 3
 	bl	func0
-	str	x0, [sp, 48]
-	add	x0, sp, 128
+	str	x0, [sp, 32]
+	add	x0, sp, 112
 	mov	w2, 3
 	mov	x1, x0
-	ldr	x0, [sp, 48]
+	ldr	x0, [sp, 32]
 	bl	issame
 	cmp	w0, 0
 	bne	.L16
@@ -317,65 +318,65 @@ main:
 	add	x0, x0, :lo12:.LC19
 	bl	__assert_fail
 .L16:
-	str	wzr, [sp, 20]
+	str	wzr, [sp, 4]
 	b	.L17
 .L18:
-	ldrsw	x0, [sp, 20]
+	ldrsw	x0, [sp, 4]
+	lsl	x0, x0, 3
+	ldr	x1, [sp, 16]
+	add	x0, x1, x0
+	ldr	x0, [x0]
+	bl	free
+	ldr	w0, [sp, 4]
+	add	w0, w0, 1
+	str	w0, [sp, 4]
+.L17:
+	ldr	w0, [sp, 4]
+	cmp	w0, 0
+	ble	.L18
+	ldr	x0, [sp, 16]
+	bl	free
+	str	wzr, [sp, 8]
+	b	.L19
+.L20:
+	ldrsw	x0, [sp, 8]
+	lsl	x0, x0, 3
+	ldr	x1, [sp, 24]
+	add	x0, x1, x0
+	ldr	x0, [x0]
+	bl	free
+	ldr	w0, [sp, 8]
+	add	w0, w0, 1
+	str	w0, [sp, 8]
+.L19:
+	ldr	w0, [sp, 8]
+	cmp	w0, 1
+	ble	.L20
+	ldr	x0, [sp, 24]
+	bl	free
+	str	wzr, [sp, 12]
+	b	.L21
+.L22:
+	ldrsw	x0, [sp, 12]
 	lsl	x0, x0, 3
 	ldr	x1, [sp, 32]
 	add	x0, x1, x0
 	ldr	x0, [x0]
 	bl	free
-	ldr	w0, [sp, 20]
+	ldr	w0, [sp, 12]
 	add	w0, w0, 1
-	str	w0, [sp, 20]
-.L17:
-	ldr	w0, [sp, 20]
-	cmp	w0, 0
-	ble	.L18
-	ldr	x0, [sp, 32]
-	bl	free
-	str	wzr, [sp, 24]
-	b	.L19
-.L20:
-	ldrsw	x0, [sp, 24]
-	lsl	x0, x0, 3
-	ldr	x1, [sp, 40]
-	add	x0, x1, x0
-	ldr	x0, [x0]
-	bl	free
-	ldr	w0, [sp, 24]
-	add	w0, w0, 1
-	str	w0, [sp, 24]
-.L19:
-	ldr	w0, [sp, 24]
-	cmp	w0, 1
-	ble	.L20
-	ldr	x0, [sp, 40]
-	bl	free
-	str	wzr, [sp, 28]
-	b	.L21
-.L22:
-	ldrsw	x0, [sp, 28]
-	lsl	x0, x0, 3
-	ldr	x1, [sp, 48]
-	add	x0, x1, x0
-	ldr	x0, [x0]
-	bl	free
-	ldr	w0, [sp, 28]
-	add	w0, w0, 1
-	str	w0, [sp, 28]
+	str	w0, [sp, 12]
 .L21:
-	ldr	w0, [sp, 28]
+	ldr	w0, [sp, 12]
 	cmp	w0, 2
 	ble	.L22
-	ldr	x0, [sp, 48]
+	ldr	x0, [sp, 32]
 	bl	free
 	mov	w0, 0
 	mov	w1, w0
 	adrp	x0, :got:__stack_chk_guard
-	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]
-	ldr	x3, [sp, 152]
+	ldr	x0, [x0, :got_lo12:__stack_chk_guard]
+	ldr	x3, [sp, 136]
 	ldr	x2, [x0]
 	subs	x3, x3, x2
 	mov	x2, 0
@@ -383,9 +384,10 @@ main:
 	bl	__stack_chk_fail
 .L24:
 	mov	w0, w1
-	ldp	x29, x30, [sp], 160
-	.cfi_restore 30
+	ldp	x29, x30, [sp, 144]
+	add	sp, sp, 160
 	.cfi_restore 29
+	.cfi_restore 30
 	.cfi_def_cfa_offset 0
 	ret
 	.cfi_endproc
@@ -427,5 +429,5 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits

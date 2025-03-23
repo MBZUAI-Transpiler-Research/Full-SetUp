@@ -1,237 +1,252 @@
 	.file	"code.c"
 	.option pic
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (riscv64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+	.attribute arch, "rv64i2p1_m2p0_a2p1_f2p2_d2p2_c2p0_zicsr2p0_zifencei2p0"
+	.attribute unaligned_access, 0
+	.attribute stack_align, 16
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (riscv64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-# options passed: -mabi=lp64d -misa-spec=2.2 -march=rv64imafdc -fstack-protector-strong
+# options passed: -mabi=lp64d -misa-spec=20191213 -march=rv64imafdc_zicsr_zifencei -fstack-protector-strong
 	.text
 	.align	1
 	.globl	func0
 	.type	func0, @function
 func0:
+.LFB0:
+	.cfi_startproc
 	addi	sp,sp,-80	#,,
+	.cfi_def_cfa_offset 80
 	sd	s0,72(sp)	#,
+	.cfi_offset 8, -8
 	addi	s0,sp,80	#,,
+	.cfi_def_cfa 8, 0
 	sd	a0,-72(s0)	# xs, xs
-	mv	a5,a1	# tmp93, size
-	sw	a5,-76(s0)	# tmp94, size
+	mv	a5,a1	# tmp155, size
+	sw	a5,-76(s0)	# tmp156, size
 # eval/problem33//code.c:5:     double ans = 0.0;
-	sd	zero,-48(s0)	#, ans
+	fmv.d.x	fa5,zero	# tmp157,
+	fsd	fa5,-48(s0)	# tmp157, ans
 # eval/problem33//code.c:9:     value = xs[0];
-	ld	a5,-72(s0)		# tmp95, xs
-	fld	fa5,0(a5)	# tmp96, *xs_36(D)
-	fsd	fa5,-40(s0)	# tmp96, value
+	ld	a5,-72(s0)		# tmp158, xs
+	fld	fa5,0(a5)	# tmp159, *xs_36(D)
+	fsd	fa5,-40(s0)	# tmp159, value
 # eval/problem33//code.c:10:     for (i = 1; i < size; i++) {
-	li	a5,1		# tmp97,
-	sw	a5,-64(s0)	# tmp97, i
+	li	a5,1		# tmp160,
+	sw	a5,-64(s0)	# tmp160, i
 # eval/problem33//code.c:10:     for (i = 1; i < size; i++) {
 	j	.L2		#
 .L5:
 # eval/problem33//code.c:11:         x_pow = 1.0;
-	lla	a5,.LC0	# tmp98,
-	fld	fa5,0(a5)	# tmp99,
-	fsd	fa5,-24(s0)	# tmp99, x_pow
+	lla	a5,.LC0	# tmp161,
+	fld	fa5,0(a5)	# tmp162,
+	fsd	fa5,-24(s0)	# tmp162, x_pow
 # eval/problem33//code.c:12:         for (int j = 0; j < i; j++) {
 	sw	zero,-60(s0)	#, j
 # eval/problem33//code.c:12:         for (int j = 0; j < i; j++) {
 	j	.L3		#
 .L4:
 # eval/problem33//code.c:13:             x_pow *= ans;
-	fld	fa4,-24(s0)	# tmp101, x_pow
-	fld	fa5,-48(s0)	# tmp102, ans
-	fmul.d	fa5,fa4,fa5	# tmp100, tmp101, tmp102
-	fsd	fa5,-24(s0)	# tmp100, x_pow
+	fld	fa4,-24(s0)	# tmp164, x_pow
+	fld	fa5,-48(s0)	# tmp165, ans
+	fmul.d	fa5,fa4,fa5	# tmp163, tmp164, tmp165
+	fsd	fa5,-24(s0)	# tmp163, x_pow
 # eval/problem33//code.c:12:         for (int j = 0; j < i; j++) {
-	lw	a5,-60(s0)		# tmp105, j
-	addiw	a5,a5,1	#, tmp103, tmp104
-	sw	a5,-60(s0)	# tmp103, j
+	lw	a5,-60(s0)		# tmp168, j
+	addiw	a5,a5,1	#, tmp166, tmp167
+	sw	a5,-60(s0)	# tmp166, j
 .L3:
 # eval/problem33//code.c:12:         for (int j = 0; j < i; j++) {
-	lw	a5,-60(s0)		# tmp107, j
-	mv	a4,a5	# tmp106, tmp107
-	lw	a5,-64(s0)		# tmp109, i
-	sext.w	a4,a4	# tmp110, tmp106
-	sext.w	a5,a5	# tmp111, tmp108
-	blt	a4,a5,.L4	#, tmp110, tmp111,
+	lw	a5,-60(s0)		# tmp170, j
+	mv	a4,a5	# tmp169, tmp170
+	lw	a5,-64(s0)		# tmp172, i
+	sext.w	a4,a4	# tmp173, tmp169
+	sext.w	a5,a5	# tmp174, tmp171
+	blt	a4,a5,.L4	#, tmp173, tmp174,
 # eval/problem33//code.c:15:         value += xs[i] * x_pow;
 	lw	a5,-64(s0)		# _1, i
 	slli	a5,a5,3	#, _2, _1
-	ld	a4,-72(s0)		# tmp112, xs
-	add	a5,a4,a5	# _2, _3, tmp112
+	ld	a4,-72(s0)		# tmp175, xs
+	add	a5,a4,a5	# _2, _3, tmp175
 	fld	fa4,0(a5)	# _4, *_3
 # eval/problem33//code.c:15:         value += xs[i] * x_pow;
-	fld	fa5,-24(s0)	# tmp113, x_pow
-	fmul.d	fa5,fa4,fa5	# _5, _4, tmp113
+	fld	fa5,-24(s0)	# tmp176, x_pow
+	fmul.d	fa5,fa4,fa5	# _5, _4, tmp176
 # eval/problem33//code.c:15:         value += xs[i] * x_pow;
-	fld	fa4,-40(s0)	# tmp115, value
-	fadd.d	fa5,fa4,fa5	# tmp114, tmp115, _5
-	fsd	fa5,-40(s0)	# tmp114, value
+	fld	fa4,-40(s0)	# tmp178, value
+	fadd.d	fa5,fa4,fa5	# tmp177, tmp178, _5
+	fsd	fa5,-40(s0)	# tmp177, value
 # eval/problem33//code.c:10:     for (i = 1; i < size; i++) {
-	lw	a5,-64(s0)		# tmp118, i
-	addiw	a5,a5,1	#, tmp116, tmp117
-	sw	a5,-64(s0)	# tmp116, i
+	lw	a5,-64(s0)		# tmp181, i
+	addiw	a5,a5,1	#, tmp179, tmp180
+	sw	a5,-64(s0)	# tmp179, i
 .L2:
 # eval/problem33//code.c:10:     for (i = 1; i < size; i++) {
-	lw	a5,-64(s0)		# tmp120, i
-	mv	a4,a5	# tmp119, tmp120
-	lw	a5,-76(s0)		# tmp122, size
-	sext.w	a4,a4	# tmp123, tmp119
-	sext.w	a5,a5	# tmp124, tmp121
-	blt	a4,a5,.L5	#, tmp123, tmp124,
+	lw	a5,-64(s0)		# tmp183, i
+	mv	a4,a5	# tmp182, tmp183
+	lw	a5,-76(s0)		# tmp185, size
+	sext.w	a4,a4	# tmp186, tmp182
+	sext.w	a5,a5	# tmp187, tmp184
+	blt	a4,a5,.L5	#, tmp186, tmp187,
 # eval/problem33//code.c:18:     while (fabs(value) > 1e-6) {
 	j	.L6		#
 .L15:
 # eval/problem33//code.c:19:         driv = 0.0;
-	sd	zero,-32(s0)	#, driv
+	fmv.d.x	fa5,zero	# tmp188,
+	fsd	fa5,-32(s0)	# tmp188, driv
 # eval/problem33//code.c:20:         for (i = 1; i < size; i++) {
-	li	a5,1		# tmp125,
-	sw	a5,-64(s0)	# tmp125, i
+	li	a5,1		# tmp189,
+	sw	a5,-64(s0)	# tmp189, i
 # eval/problem33//code.c:20:         for (i = 1; i < size; i++) {
 	j	.L7		#
 .L10:
 # eval/problem33//code.c:21:             x_pow = 1.0;
-	lla	a5,.LC0	# tmp126,
-	fld	fa5,0(a5)	# tmp127,
-	fsd	fa5,-24(s0)	# tmp127, x_pow
+	lla	a5,.LC0	# tmp190,
+	fld	fa5,0(a5)	# tmp191,
+	fsd	fa5,-24(s0)	# tmp191, x_pow
 # eval/problem33//code.c:22:             for (int j = 1; j < i; j++) {
-	li	a5,1		# tmp128,
-	sw	a5,-56(s0)	# tmp128, j
+	li	a5,1		# tmp192,
+	sw	a5,-56(s0)	# tmp192, j
 # eval/problem33//code.c:22:             for (int j = 1; j < i; j++) {
 	j	.L8		#
 .L9:
 # eval/problem33//code.c:23:                 x_pow *= ans;
-	fld	fa4,-24(s0)	# tmp130, x_pow
-	fld	fa5,-48(s0)	# tmp131, ans
-	fmul.d	fa5,fa4,fa5	# tmp129, tmp130, tmp131
-	fsd	fa5,-24(s0)	# tmp129, x_pow
+	fld	fa4,-24(s0)	# tmp194, x_pow
+	fld	fa5,-48(s0)	# tmp195, ans
+	fmul.d	fa5,fa4,fa5	# tmp193, tmp194, tmp195
+	fsd	fa5,-24(s0)	# tmp193, x_pow
 # eval/problem33//code.c:22:             for (int j = 1; j < i; j++) {
-	lw	a5,-56(s0)		# tmp134, j
-	addiw	a5,a5,1	#, tmp132, tmp133
-	sw	a5,-56(s0)	# tmp132, j
+	lw	a5,-56(s0)		# tmp198, j
+	addiw	a5,a5,1	#, tmp196, tmp197
+	sw	a5,-56(s0)	# tmp196, j
 .L8:
 # eval/problem33//code.c:22:             for (int j = 1; j < i; j++) {
-	lw	a5,-56(s0)		# tmp136, j
-	mv	a4,a5	# tmp135, tmp136
-	lw	a5,-64(s0)		# tmp138, i
-	sext.w	a4,a4	# tmp139, tmp135
-	sext.w	a5,a5	# tmp140, tmp137
-	blt	a4,a5,.L9	#, tmp139, tmp140,
+	lw	a5,-56(s0)		# tmp200, j
+	mv	a4,a5	# tmp199, tmp200
+	lw	a5,-64(s0)		# tmp202, i
+	sext.w	a4,a4	# tmp203, tmp199
+	sext.w	a5,a5	# tmp204, tmp201
+	blt	a4,a5,.L9	#, tmp203, tmp204,
 # eval/problem33//code.c:25:             driv += i * xs[i] * x_pow;
-	lw	a5,-64(s0)		# tmp142, i
-	fcvt.d.w	fa4,a5	# _6, tmp141
+	lw	a5,-64(s0)		# tmp206, i
+	fcvt.d.w	fa4,a5	# _6, tmp205
 # eval/problem33//code.c:25:             driv += i * xs[i] * x_pow;
 	lw	a5,-64(s0)		# _7, i
 	slli	a5,a5,3	#, _8, _7
-	ld	a4,-72(s0)		# tmp143, xs
-	add	a5,a4,a5	# _8, _9, tmp143
+	ld	a4,-72(s0)		# tmp207, xs
+	add	a5,a4,a5	# _8, _9, tmp207
 	fld	fa5,0(a5)	# _10, *_9
 # eval/problem33//code.c:25:             driv += i * xs[i] * x_pow;
 	fmul.d	fa4,fa4,fa5	# _11, _6, _10
 # eval/problem33//code.c:25:             driv += i * xs[i] * x_pow;
-	fld	fa5,-24(s0)	# tmp144, x_pow
-	fmul.d	fa5,fa4,fa5	# _12, _11, tmp144
+	fld	fa5,-24(s0)	# tmp208, x_pow
+	fmul.d	fa5,fa4,fa5	# _12, _11, tmp208
 # eval/problem33//code.c:25:             driv += i * xs[i] * x_pow;
-	fld	fa4,-32(s0)	# tmp146, driv
-	fadd.d	fa5,fa4,fa5	# tmp145, tmp146, _12
-	fsd	fa5,-32(s0)	# tmp145, driv
+	fld	fa4,-32(s0)	# tmp210, driv
+	fadd.d	fa5,fa4,fa5	# tmp209, tmp210, _12
+	fsd	fa5,-32(s0)	# tmp209, driv
 # eval/problem33//code.c:20:         for (i = 1; i < size; i++) {
-	lw	a5,-64(s0)		# tmp149, i
-	addiw	a5,a5,1	#, tmp147, tmp148
-	sw	a5,-64(s0)	# tmp147, i
+	lw	a5,-64(s0)		# tmp213, i
+	addiw	a5,a5,1	#, tmp211, tmp212
+	sw	a5,-64(s0)	# tmp211, i
 .L7:
 # eval/problem33//code.c:20:         for (i = 1; i < size; i++) {
-	lw	a5,-64(s0)		# tmp151, i
-	mv	a4,a5	# tmp150, tmp151
-	lw	a5,-76(s0)		# tmp153, size
-	sext.w	a4,a4	# tmp154, tmp150
-	sext.w	a5,a5	# tmp155, tmp152
-	blt	a4,a5,.L10	#, tmp154, tmp155,
+	lw	a5,-64(s0)		# tmp215, i
+	mv	a4,a5	# tmp214, tmp215
+	lw	a5,-76(s0)		# tmp217, size
+	sext.w	a4,a4	# tmp218, tmp214
+	sext.w	a5,a5	# tmp219, tmp216
+	blt	a4,a5,.L10	#, tmp218, tmp219,
 # eval/problem33//code.c:27:         ans = ans - value / driv;
-	fld	fa4,-40(s0)	# tmp156, value
-	fld	fa5,-32(s0)	# tmp157, driv
-	fdiv.d	fa5,fa4,fa5	# _13, tmp156, tmp157
+	fld	fa4,-40(s0)	# tmp220, value
+	fld	fa5,-32(s0)	# tmp221, driv
+	fdiv.d	fa5,fa4,fa5	# _13, tmp220, tmp221
 # eval/problem33//code.c:27:         ans = ans - value / driv;
-	fld	fa4,-48(s0)	# tmp159, ans
-	fsub.d	fa5,fa4,fa5	# tmp158, tmp159, _13
-	fsd	fa5,-48(s0)	# tmp158, ans
+	fld	fa4,-48(s0)	# tmp223, ans
+	fsub.d	fa5,fa4,fa5	# tmp222, tmp223, _13
+	fsd	fa5,-48(s0)	# tmp222, ans
 # eval/problem33//code.c:29:         value = xs[0];
-	ld	a5,-72(s0)		# tmp160, xs
-	fld	fa5,0(a5)	# tmp161, *xs_36(D)
-	fsd	fa5,-40(s0)	# tmp161, value
+	ld	a5,-72(s0)		# tmp224, xs
+	fld	fa5,0(a5)	# tmp225, *xs_36(D)
+	fsd	fa5,-40(s0)	# tmp225, value
 # eval/problem33//code.c:30:         for (i = 1; i < size; i++) {
-	li	a5,1		# tmp162,
-	sw	a5,-64(s0)	# tmp162, i
+	li	a5,1		# tmp226,
+	sw	a5,-64(s0)	# tmp226, i
 # eval/problem33//code.c:30:         for (i = 1; i < size; i++) {
 	j	.L11		#
 .L14:
 # eval/problem33//code.c:31:             x_pow = 1.0;
-	lla	a5,.LC0	# tmp163,
-	fld	fa5,0(a5)	# tmp164,
-	fsd	fa5,-24(s0)	# tmp164, x_pow
+	lla	a5,.LC0	# tmp227,
+	fld	fa5,0(a5)	# tmp228,
+	fsd	fa5,-24(s0)	# tmp228, x_pow
 # eval/problem33//code.c:32:             for (int j = 0; j < i; j++) {
 	sw	zero,-52(s0)	#, j
 # eval/problem33//code.c:32:             for (int j = 0; j < i; j++) {
 	j	.L12		#
 .L13:
 # eval/problem33//code.c:33:                 x_pow *= ans;
-	fld	fa4,-24(s0)	# tmp166, x_pow
-	fld	fa5,-48(s0)	# tmp167, ans
-	fmul.d	fa5,fa4,fa5	# tmp165, tmp166, tmp167
-	fsd	fa5,-24(s0)	# tmp165, x_pow
+	fld	fa4,-24(s0)	# tmp230, x_pow
+	fld	fa5,-48(s0)	# tmp231, ans
+	fmul.d	fa5,fa4,fa5	# tmp229, tmp230, tmp231
+	fsd	fa5,-24(s0)	# tmp229, x_pow
 # eval/problem33//code.c:32:             for (int j = 0; j < i; j++) {
-	lw	a5,-52(s0)		# tmp170, j
-	addiw	a5,a5,1	#, tmp168, tmp169
-	sw	a5,-52(s0)	# tmp168, j
+	lw	a5,-52(s0)		# tmp234, j
+	addiw	a5,a5,1	#, tmp232, tmp233
+	sw	a5,-52(s0)	# tmp232, j
 .L12:
 # eval/problem33//code.c:32:             for (int j = 0; j < i; j++) {
-	lw	a5,-52(s0)		# tmp172, j
-	mv	a4,a5	# tmp171, tmp172
-	lw	a5,-64(s0)		# tmp174, i
-	sext.w	a4,a4	# tmp175, tmp171
-	sext.w	a5,a5	# tmp176, tmp173
-	blt	a4,a5,.L13	#, tmp175, tmp176,
+	lw	a5,-52(s0)		# tmp236, j
+	mv	a4,a5	# tmp235, tmp236
+	lw	a5,-64(s0)		# tmp238, i
+	sext.w	a4,a4	# tmp239, tmp235
+	sext.w	a5,a5	# tmp240, tmp237
+	blt	a4,a5,.L13	#, tmp239, tmp240,
 # eval/problem33//code.c:35:             value += xs[i] * x_pow;
 	lw	a5,-64(s0)		# _14, i
 	slli	a5,a5,3	#, _15, _14
-	ld	a4,-72(s0)		# tmp177, xs
-	add	a5,a4,a5	# _15, _16, tmp177
+	ld	a4,-72(s0)		# tmp241, xs
+	add	a5,a4,a5	# _15, _16, tmp241
 	fld	fa4,0(a5)	# _17, *_16
 # eval/problem33//code.c:35:             value += xs[i] * x_pow;
-	fld	fa5,-24(s0)	# tmp178, x_pow
-	fmul.d	fa5,fa4,fa5	# _18, _17, tmp178
+	fld	fa5,-24(s0)	# tmp242, x_pow
+	fmul.d	fa5,fa4,fa5	# _18, _17, tmp242
 # eval/problem33//code.c:35:             value += xs[i] * x_pow;
-	fld	fa4,-40(s0)	# tmp180, value
-	fadd.d	fa5,fa4,fa5	# tmp179, tmp180, _18
-	fsd	fa5,-40(s0)	# tmp179, value
+	fld	fa4,-40(s0)	# tmp244, value
+	fadd.d	fa5,fa4,fa5	# tmp243, tmp244, _18
+	fsd	fa5,-40(s0)	# tmp243, value
 # eval/problem33//code.c:30:         for (i = 1; i < size; i++) {
-	lw	a5,-64(s0)		# tmp183, i
-	addiw	a5,a5,1	#, tmp181, tmp182
-	sw	a5,-64(s0)	# tmp181, i
+	lw	a5,-64(s0)		# tmp247, i
+	addiw	a5,a5,1	#, tmp245, tmp246
+	sw	a5,-64(s0)	# tmp245, i
 .L11:
 # eval/problem33//code.c:30:         for (i = 1; i < size; i++) {
-	lw	a5,-64(s0)		# tmp185, i
-	mv	a4,a5	# tmp184, tmp185
-	lw	a5,-76(s0)		# tmp187, size
-	sext.w	a4,a4	# tmp188, tmp184
-	sext.w	a5,a5	# tmp189, tmp186
-	blt	a4,a5,.L14	#, tmp188, tmp189,
+	lw	a5,-64(s0)		# tmp249, i
+	mv	a4,a5	# tmp248, tmp249
+	lw	a5,-76(s0)		# tmp251, size
+	sext.w	a4,a4	# tmp252, tmp248
+	sext.w	a5,a5	# tmp253, tmp250
+	blt	a4,a5,.L14	#, tmp252, tmp253,
 .L6:
 # eval/problem33//code.c:18:     while (fabs(value) > 1e-6) {
-	fld	fa5,-40(s0)	# tmp190, value
-	fabs.d	fa4,fa5	# _19, tmp190
+	fld	fa5,-40(s0)	# tmp254, value
+	fabs.d	fa4,fa5	# _19, tmp254
 # eval/problem33//code.c:18:     while (fabs(value) > 1e-6) {
-	lla	a5,.LC1	# tmp192,
-	fld	fa5,0(a5)	# tmp191,
-	fgt.d	a5,fa4,fa5	#, tmp193, _19, tmp191
-	bne	a5,zero,.L15	#, tmp193,,
+	lla	a5,.LC1	# tmp256,
+	fld	fa5,0(a5)	# tmp255,
+	fgt.d	a5,fa4,fa5	#, tmp257, _19, tmp255
+	bne	a5,zero,.L15	#, tmp257,,
 # eval/problem33//code.c:39:     return ans;
 	fld	fa5,-48(s0)	# _40, ans
 # eval/problem33//code.c:40: }
 	fmv.d	fa0,fa5	#, <retval>
 	ld	s0,72(sp)		#,
+	.cfi_restore 8
+	.cfi_def_cfa 2, 80
 	addi	sp,sp,80	#,,
+	.cfi_def_cfa_offset 0
 	jr	ra		#
+	.cfi_endproc
+.LFE0:
 	.size	func0, .-func0
 	.section	.rodata
 	.align	3
@@ -242,5 +257,5 @@ func0:
 .LC1:
 	.word	-1598689907
 	.word	1051772663
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits

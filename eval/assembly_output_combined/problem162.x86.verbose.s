@@ -1,6 +1,6 @@
 	.file	"problem162.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -33,15 +33,16 @@ func0:
 .L6:
 # problem162.c:9:         if (isalpha((unsigned char)s[i])) {
 	call	__ctype_b_loc@PLT	#
-	movq	(%rax), %rdx	# *_2, _3
-	movl	-12(%rbp), %eax	# i, tmp154
-	movslq	%eax, %rcx	# tmp154, _4
-	movq	-40(%rbp), %rax	# s, tmp155
-	addq	%rcx, %rax	# _4, _5
-	movzbl	(%rax), %eax	# *_5, _6
-	movzbl	%al, %eax	# _7, _8
-	addq	%rax, %rax	# _9
-	addq	%rdx, %rax	# _3, _10
+# problem162.c:9:         if (isalpha((unsigned char)s[i])) {
+	movq	(%rax), %rax	# *_2, _3
+	movl	-12(%rbp), %edx	# i, tmp154
+	movslq	%edx, %rcx	# tmp154, _4
+	movq	-40(%rbp), %rdx	# s, tmp155
+	addq	%rcx, %rdx	# _4, _5
+	movzbl	(%rdx), %edx	# *_5, _6
+	movzbl	%dl, %edx	# _7, _8
+	addq	%rdx, %rdx	# _9
+	addq	%rdx, %rax	# _9, _10
 	movzwl	(%rax), %eax	# *_10, _11
 	movzwl	%ax, %eax	# _11, _12
 	andl	$1024, %eax	#, _13
@@ -50,15 +51,16 @@ func0:
 	je	.L3	#,
 # problem162.c:10:             if (isupper((unsigned char)s[i])) s[i] = tolower((unsigned char)s[i]);
 	call	__ctype_b_loc@PLT	#
-	movq	(%rax), %rdx	# *_14, _15
-	movl	-12(%rbp), %eax	# i, tmp156
-	movslq	%eax, %rcx	# tmp156, _16
-	movq	-40(%rbp), %rax	# s, tmp157
-	addq	%rcx, %rax	# _16, _17
-	movzbl	(%rax), %eax	# *_17, _18
-	movzbl	%al, %eax	# _19, _20
-	addq	%rax, %rax	# _21
-	addq	%rdx, %rax	# _15, _22
+# problem162.c:10:             if (isupper((unsigned char)s[i])) s[i] = tolower((unsigned char)s[i]);
+	movq	(%rax), %rax	# *_14, _15
+	movl	-12(%rbp), %edx	# i, tmp156
+	movslq	%edx, %rcx	# tmp156, _16
+	movq	-40(%rbp), %rdx	# s, tmp157
+	addq	%rcx, %rdx	# _16, _17
+	movzbl	(%rdx), %edx	# *_17, _18
+	movzbl	%dl, %edx	# _19, _20
+	addq	%rdx, %rdx	# _21
+	addq	%rdx, %rax	# _21, _22
 	movzwl	(%rax), %eax	# *_22, _23
 	movzwl	%ax, %eax	# _23, _24
 	andl	$256, %eax	#, _25
@@ -75,27 +77,29 @@ func0:
 	movzbl	%al, %eax	# _29, _30
 	movl	%eax, %edi	# _30,
 	call	tolower@PLT	#
-	movl	%eax, %edx	#, _31
+	movl	%eax, %ecx	#, _31
 # problem162.c:10:             if (isupper((unsigned char)s[i])) s[i] = tolower((unsigned char)s[i]);
 	movl	-12(%rbp), %eax	# i, tmp160
-	movslq	%eax, %rcx	# tmp160, _32
+	movslq	%eax, %rdx	# tmp160, _32
 	movq	-40(%rbp), %rax	# s, tmp161
-	addq	%rcx, %rax	# _32, _33
+	addq	%rdx, %rax	# _32, _33
 # problem162.c:10:             if (isupper((unsigned char)s[i])) s[i] = tolower((unsigned char)s[i]);
+	movl	%ecx, %edx	# _31, _34
 	movb	%dl, (%rax)	# _34, *_33
 	jmp	.L5	#
 .L4:
 # problem162.c:11:             else if (islower((unsigned char)s[i])) s[i] = toupper((unsigned char)s[i]);
 	call	__ctype_b_loc@PLT	#
-	movq	(%rax), %rdx	# *_35, _36
-	movl	-12(%rbp), %eax	# i, tmp162
-	movslq	%eax, %rcx	# tmp162, _37
-	movq	-40(%rbp), %rax	# s, tmp163
-	addq	%rcx, %rax	# _37, _38
-	movzbl	(%rax), %eax	# *_38, _39
-	movzbl	%al, %eax	# _40, _41
-	addq	%rax, %rax	# _42
-	addq	%rdx, %rax	# _36, _43
+# problem162.c:11:             else if (islower((unsigned char)s[i])) s[i] = toupper((unsigned char)s[i]);
+	movq	(%rax), %rax	# *_35, _36
+	movl	-12(%rbp), %edx	# i, tmp162
+	movslq	%edx, %rcx	# tmp162, _37
+	movq	-40(%rbp), %rdx	# s, tmp163
+	addq	%rcx, %rdx	# _37, _38
+	movzbl	(%rdx), %edx	# *_38, _39
+	movzbl	%dl, %edx	# _40, _41
+	addq	%rdx, %rdx	# _42
+	addq	%rdx, %rax	# _42, _43
 	movzwl	(%rax), %eax	# *_43, _44
 	movzwl	%ax, %eax	# _44, _45
 	andl	$512, %eax	#, _46
@@ -112,13 +116,14 @@ func0:
 	movzbl	%al, %eax	# _50, _51
 	movl	%eax, %edi	# _51,
 	call	toupper@PLT	#
-	movl	%eax, %edx	#, _52
+	movl	%eax, %ecx	#, _52
 # problem162.c:11:             else if (islower((unsigned char)s[i])) s[i] = toupper((unsigned char)s[i]);
 	movl	-12(%rbp), %eax	# i, tmp166
-	movslq	%eax, %rcx	# tmp166, _53
+	movslq	%eax, %rdx	# tmp166, _53
 	movq	-40(%rbp), %rax	# s, tmp167
-	addq	%rcx, %rax	# _53, _54
+	addq	%rdx, %rax	# _53, _54
 # problem162.c:11:             else if (islower((unsigned char)s[i])) s[i] = toupper((unsigned char)s[i]);
+	movl	%ecx, %edx	# _52, _55
 	movb	%dl, (%rax)	# _55, *_54
 	jmp	.L5	#
 .L3:
@@ -257,7 +262,7 @@ main:
 	subq	$64, %rsp	#,
 # problem162.c:31: int main(){
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp141
-	movq	%rax, -8(%rbp)	# tmp141, D.2717
+	movq	%rax, -8(%rbp)	# tmp141, D.3574
 	xorl	%eax, %eax	# tmp141
 # problem162.c:32:     char test1[] = "AsDf";
 	movl	$1715761985, -49(%rbp)	#, test1
@@ -267,10 +272,12 @@ main:
 	movq	%rax, %rdi	# tmp100,
 	call	func0	#
 	movq	%rax, %rdx	#, _1
+# problem162.c:33:     assert(strcmp(func0(test1), "aSdF") == 0);
 	leaq	.LC0(%rip), %rax	#, tmp101
 	movq	%rax, %rsi	# tmp101,
 	movq	%rdx, %rdi	# _1,
 	call	strcmp@PLT	#
+# problem162.c:33:     assert(strcmp(func0(test1), "aSdF") == 0);
 	testl	%eax, %eax	# _2
 	je	.L12	#,
 # problem162.c:33:     assert(strcmp(func0(test1), "aSdF") == 0);
@@ -291,10 +298,12 @@ main:
 	movq	%rax, %rdi	# tmp105,
 	call	func0	#
 	movq	%rax, %rdx	#, _3
+# problem162.c:36:     assert(strcmp(func0(test2), "4321") == 0);
 	leaq	.LC3(%rip), %rax	#, tmp106
 	movq	%rax, %rsi	# tmp106,
 	movq	%rdx, %rdi	# _3,
 	call	strcmp@PLT	#
+# problem162.c:36:     assert(strcmp(func0(test2), "4321") == 0);
 	testl	%eax, %eax	# _4
 	je	.L13	#,
 # problem162.c:36:     assert(strcmp(func0(test2), "4321") == 0);
@@ -315,10 +324,12 @@ main:
 	movq	%rax, %rdi	# tmp110,
 	call	func0	#
 	movq	%rax, %rdx	#, _5
+# problem162.c:39:     assert(strcmp(func0(test3), "AB") == 0);
 	leaq	.LC5(%rip), %rax	#, tmp111
 	movq	%rax, %rsi	# tmp111,
 	movq	%rdx, %rdi	# _5,
 	call	strcmp@PLT	#
+# problem162.c:39:     assert(strcmp(func0(test3), "AB") == 0);
 	testl	%eax, %eax	# _6
 	je	.L14	#,
 # problem162.c:39:     assert(strcmp(func0(test3), "AB") == 0);
@@ -339,10 +350,12 @@ main:
 	movq	%rax, %rdi	# tmp115,
 	call	func0	#
 	movq	%rax, %rdx	#, _7
+# problem162.c:42:     assert(strcmp(func0(test4), "#A@c") == 0);
 	leaq	.LC7(%rip), %rax	#, tmp116
 	movq	%rax, %rsi	# tmp116,
 	movq	%rdx, %rdi	# _7,
 	call	strcmp@PLT	#
+# problem162.c:42:     assert(strcmp(func0(test4), "#A@c") == 0);
 	testl	%eax, %eax	# _8
 	je	.L15	#,
 # problem162.c:42:     assert(strcmp(func0(test4), "#A@c") == 0);
@@ -364,10 +377,12 @@ main:
 	movq	%rax, %rdi	# tmp120,
 	call	func0	#
 	movq	%rax, %rdx	#, _9
+# problem162.c:45:     assert(strcmp(func0(test5), "#aSDFw^45") == 0);
 	leaq	.LC9(%rip), %rax	#, tmp121
 	movq	%rax, %rsi	# tmp121,
 	movq	%rdx, %rdi	# _9,
 	call	strcmp@PLT	#
+# problem162.c:45:     assert(strcmp(func0(test5), "#aSDFw^45") == 0);
 	testl	%eax, %eax	# _10
 	je	.L16	#,
 # problem162.c:45:     assert(strcmp(func0(test5), "#aSDFw^45") == 0);
@@ -388,10 +403,12 @@ main:
 	movq	%rax, %rdi	# tmp125,
 	call	func0	#
 	movq	%rax, %rdx	#, _11
+# problem162.c:48:     assert(strcmp(func0(test6), "2@6#") == 0);
 	leaq	.LC11(%rip), %rax	#, tmp126
 	movq	%rax, %rsi	# tmp126,
 	movq	%rdx, %rdi	# _11,
 	call	strcmp@PLT	#
+# problem162.c:48:     assert(strcmp(func0(test6), "2@6#") == 0);
 	testl	%eax, %eax	# _12
 	je	.L17	#,
 # problem162.c:48:     assert(strcmp(func0(test6), "2@6#") == 0);
@@ -412,10 +429,12 @@ main:
 	movq	%rax, %rdi	# tmp130,
 	call	func0	#
 	movq	%rax, %rdx	#, _13
+# problem162.c:51:     assert(strcmp(func0(test7), "#$A^d") == 0);
 	leaq	.LC13(%rip), %rax	#, tmp131
 	movq	%rax, %rsi	# tmp131,
 	movq	%rdx, %rdi	# _13,
 	call	strcmp@PLT	#
+# problem162.c:51:     assert(strcmp(func0(test7), "#$A^d") == 0);
 	testl	%eax, %eax	# _14
 	je	.L18	#,
 # problem162.c:51:     assert(strcmp(func0(test7), "#$A^d") == 0);
@@ -436,10 +455,12 @@ main:
 	movq	%rax, %rdi	# tmp135,
 	call	func0	#
 	movq	%rax, %rdx	#, _15
+# problem162.c:54:     assert(strcmp(func0(test8), "#CCC") == 0);
 	leaq	.LC15(%rip), %rax	#, tmp136
 	movq	%rax, %rsi	# tmp136,
 	movq	%rdx, %rdi	# _15,
 	call	strcmp@PLT	#
+# problem162.c:54:     assert(strcmp(func0(test8), "#CCC") == 0);
 	testl	%eax, %eax	# _16
 	je	.L19	#,
 # problem162.c:54:     assert(strcmp(func0(test8), "#CCC") == 0);
@@ -455,7 +476,7 @@ main:
 # problem162.c:56:     return 0;
 	movl	$0, %eax	#, _42
 # problem162.c:57: }
-	movq	-8(%rbp), %rdx	# D.2717, tmp142
+	movq	-8(%rbp), %rdx	# D.3574, tmp142
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp142
 	je	.L21	#,
 	call	__stack_chk_fail@PLT	#
@@ -471,7 +492,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

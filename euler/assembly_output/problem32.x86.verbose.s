@@ -1,6 +1,6 @@
 	.file	"problem32.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -27,7 +27,7 @@ main:
 	.cfi_offset 3, -24
 # problem32.c:16: {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp119
-	movq	%rax, -24(%rbp)	# tmp119, D.4146
+	movq	%rax, -24(%rbp)	# tmp119, D.5010
 	xorl	%eax, %eax	# tmp119
 # problem32.c:18:   int sum = 0;
 	movl	$0, -48(%rbp)	#, sum
@@ -61,8 +61,10 @@ main:
 	movq	%rax, %xmm0	# _1,
 	call	log10@PLT	#
 	movq	%xmm0, %rax	#, _2
+# problem32.c:28:       if (DIGITS(multiplicand) + DIGITS(multiplier) + DIGITS(product) != 6) {
 	movq	%rax, %xmm0	# _2,
 	call	floor@PLT	#
+# problem32.c:28:       if (DIGITS(multiplicand) + DIGITS(multiplier) + DIGITS(product) != 6) {
 	cvttsd2siq	%xmm0, %rbx	# _3, _4
 # problem32.c:28:       if (DIGITS(multiplicand) + DIGITS(multiplier) + DIGITS(product) != 6) {
 	pxor	%xmm2, %xmm2	# _5
@@ -71,8 +73,10 @@ main:
 	movq	%rax, %xmm0	# _5,
 	call	log10@PLT	#
 	movq	%xmm0, %rax	#, _6
+# problem32.c:28:       if (DIGITS(multiplicand) + DIGITS(multiplier) + DIGITS(product) != 6) {
 	movq	%rax, %xmm0	# _6,
 	call	floor@PLT	#
+# problem32.c:28:       if (DIGITS(multiplicand) + DIGITS(multiplier) + DIGITS(product) != 6) {
 	cvttsd2siq	%xmm0, %rax	# _7, _8
 # problem32.c:28:       if (DIGITS(multiplicand) + DIGITS(multiplier) + DIGITS(product) != 6) {
 	addq	%rax, %rbx	# _8, _9
@@ -83,8 +87,10 @@ main:
 	movq	%rax, %xmm0	# _10,
 	call	log10@PLT	#
 	movq	%xmm0, %rax	#, _11
+# problem32.c:28:       if (DIGITS(multiplicand) + DIGITS(multiplier) + DIGITS(product) != 6) {
 	movq	%rax, %xmm0	# _11,
 	call	floor@PLT	#
+# problem32.c:28:       if (DIGITS(multiplicand) + DIGITS(multiplier) + DIGITS(product) != 6) {
 	cvttsd2siq	%xmm0, %rax	# _12, _13
 # problem32.c:28:       if (DIGITS(multiplicand) + DIGITS(multiplier) + DIGITS(product) != 6) {
 	addq	%rbx, %rax	# _9, _14
@@ -150,7 +156,7 @@ main:
 # problem32.c:41:   return 0;
 	movl	$0, %eax	#, _29
 # problem32.c:42: }
-	movq	-24(%rbp), %rdx	# D.4146, tmp120
+	movq	-24(%rbp), %rdx	# D.5010, tmp120
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp120
 	je	.L11	#,
 	call	__stack_chk_fail@PLT	#
@@ -181,10 +187,11 @@ compare:
 # problem32.c:46:   return *(const char *)a - *(const char *)b;
 	movq	-16(%rbp), %rax	# b, tmp89
 	movzbl	(%rax), %eax	# MEM[(const char *)b_7(D)], _3
-	movsbl	%al, %ecx	# _3, _4
+	movsbl	%al, %eax	# _3, _4
 # problem32.c:46:   return *(const char *)a - *(const char *)b;
-	movl	%edx, %eax	# _2, _2
-	subl	%ecx, %eax	# _4, _2
+	subl	%eax, %edx	# _4, _8
+# problem32.c:46:   return *(const char *)a - *(const char *)b;
+	movl	%edx, %eax	# _8, <retval>
 # problem32.c:47: }
 	popq	%rbp	#
 	.cfi_def_cfa 7, 8
@@ -234,7 +241,7 @@ is_pandigital:
 	.cfi_endproc
 .LFE8:
 	.size	is_pandigital, .-is_pandigital
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

@@ -1,6 +1,6 @@
 	.file	"problem132.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -29,11 +29,11 @@ func0:
 	movslq	%edx, %rax	# tmp86, tmp87
 	imulq	$1717986919, %rax, %rax	#, tmp87, tmp88
 	shrq	$32, %rax	#, tmp89
-	sarl	$2, %eax	#, tmp90
-	movl	%edx, %esi	# tmp86, tmp91
-	sarl	$31, %esi	#, tmp91
-	subl	%esi, %eax	# tmp91, tmp90
-	movl	%eax, %ecx	# tmp90, tmp85
+	movl	%eax, %ecx	# tmp89, tmp90
+	sarl	$2, %ecx	#, tmp90
+	movl	%edx, %eax	# tmp86, tmp91
+	sarl	$31, %eax	#, tmp91
+	subl	%eax, %ecx	# tmp91, tmp85
 	movl	%ecx, %eax	# tmp85, tmp92
 	sall	$2, %eax	#, tmp92
 	addl	%ecx, %eax	# tmp85, tmp92
@@ -41,12 +41,14 @@ func0:
 	subl	%eax, %edx	# tmp92, tmp94
 	movl	%edx, -4(%rbp)	# tmp94, digit
 # problem132.c:7:         if (digit % 2 == 1) {
-	movl	-4(%rbp), %eax	# digit, tmp95
-	cltd
-	shrl	$31, %edx	#, tmp97
-	addl	%edx, %eax	# tmp97, tmp98
-	andl	$1, %eax	#, tmp99
-	subl	%edx, %eax	# tmp97, tmp100
+	movl	-4(%rbp), %edx	# digit, tmp95
+	movl	%edx, %eax	# tmp95, tmp96
+	sarl	$31, %eax	#, tmp96
+	shrl	$31, %eax	#, tmp97
+	addl	%eax, %edx	# tmp97, tmp98
+	andl	$1, %edx	#, tmp99
+	subl	%eax, %edx	# tmp97, tmp100
+	movl	%edx, %eax	# tmp100, _1
 # problem132.c:7:         if (digit % 2 == 1) {
 	cmpl	$1, %eax	#, _1
 	jne	.L3	#,
@@ -62,11 +64,11 @@ func0:
 	movslq	%eax, %rdx	# tmp104, tmp105
 	imulq	$1717986919, %rdx, %rdx	#, tmp105, tmp106
 	shrq	$32, %rdx	#, tmp107
-	sarl	$2, %edx	#, tmp108
-	sarl	$31, %eax	#, tmp104
-	movl	%eax, %ecx	# tmp104, tmp109
-	movl	%edx, %eax	# tmp108, tmp108
-	subl	%ecx, %eax	# tmp109, tmp108
+	movl	%edx, %ecx	# tmp107, tmp108
+	sarl	$2, %ecx	#, tmp108
+	cltd
+	movl	%ecx, %eax	# tmp108, tmp108
+	subl	%edx, %eax	# tmp109, tmp108
 	movl	%eax, -20(%rbp)	# tmp103, n
 .L2:
 # problem132.c:5:     while (n > 0) {
@@ -77,6 +79,7 @@ func0:
 	je	.L5	#,
 # problem132.c:13:     return has_odd ? prod : 0;
 	movl	-12(%rbp), %eax	# prod, iftmp.0_7
+# problem132.c:13:     return has_odd ? prod : 0;
 	jmp	.L7	#
 .L5:
 # problem132.c:13:     return has_odd ? prod : 0;
@@ -121,9 +124,9 @@ main:
 # problem132.c:21:     assert(func0(5) == 5);
 	movl	$5, %edi	#,
 	call	func0	#
+# problem132.c:21:     assert(func0(5) == 5);
 	cmpl	$5, %eax	#, _1
 	je	.L9	#,
-# problem132.c:21:     assert(func0(5) == 5);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp91
 	movq	%rax, %rcx	# tmp91,
 	movl	$21, %edx	#,
@@ -136,9 +139,9 @@ main:
 # problem132.c:22:     assert(func0(54) == 5);
 	movl	$54, %edi	#,
 	call	func0	#
+# problem132.c:22:     assert(func0(54) == 5);
 	cmpl	$5, %eax	#, _2
 	je	.L10	#,
-# problem132.c:22:     assert(func0(54) == 5);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp94
 	movq	%rax, %rcx	# tmp94,
 	movl	$22, %edx	#,
@@ -151,9 +154,9 @@ main:
 # problem132.c:23:     assert(func0(120) == 1);
 	movl	$120, %edi	#,
 	call	func0	#
+# problem132.c:23:     assert(func0(120) == 1);
 	cmpl	$1, %eax	#, _3
 	je	.L11	#,
-# problem132.c:23:     assert(func0(120) == 1);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp97
 	movq	%rax, %rcx	# tmp97,
 	movl	$23, %edx	#,
@@ -166,9 +169,9 @@ main:
 # problem132.c:24:     assert(func0(5014) == 5);
 	movl	$5014, %edi	#,
 	call	func0	#
+# problem132.c:24:     assert(func0(5014) == 5);
 	cmpl	$5, %eax	#, _4
 	je	.L12	#,
-# problem132.c:24:     assert(func0(5014) == 5);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp100
 	movq	%rax, %rcx	# tmp100,
 	movl	$24, %edx	#,
@@ -181,9 +184,9 @@ main:
 # problem132.c:25:     assert(func0(98765) == 315);
 	movl	$98765, %edi	#,
 	call	func0	#
+# problem132.c:25:     assert(func0(98765) == 315);
 	cmpl	$315, %eax	#, _5
 	je	.L13	#,
-# problem132.c:25:     assert(func0(98765) == 315);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp103
 	movq	%rax, %rcx	# tmp103,
 	movl	$25, %edx	#,
@@ -196,9 +199,9 @@ main:
 # problem132.c:26:     assert(func0(5576543) == 2625);
 	movl	$5576543, %edi	#,
 	call	func0	#
+# problem132.c:26:     assert(func0(5576543) == 2625);
 	cmpl	$2625, %eax	#, _6
 	je	.L14	#,
-# problem132.c:26:     assert(func0(5576543) == 2625);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp106
 	movq	%rax, %rcx	# tmp106,
 	movl	$26, %edx	#,
@@ -211,9 +214,9 @@ main:
 # problem132.c:27:     assert(func0(2468) == 0);
 	movl	$2468, %edi	#,
 	call	func0	#
+# problem132.c:27:     assert(func0(2468) == 0);
 	testl	%eax, %eax	# _7
 	je	.L15	#,
-# problem132.c:27:     assert(func0(2468) == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp109
 	movq	%rax, %rcx	# tmp109,
 	movl	$27, %edx	#,
@@ -237,7 +240,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

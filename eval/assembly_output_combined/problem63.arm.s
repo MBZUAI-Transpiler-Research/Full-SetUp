@@ -132,44 +132,46 @@ issame:
 main:
 .LFB2:
 	.cfi_startproc
-	stp	x29, x30, [sp, -176]!
+	sub	sp, sp, #176
 	.cfi_def_cfa_offset 176
-	.cfi_offset 29, -176
-	.cfi_offset 30, -168
-	mov	x29, sp
+	stp	x29, x30, [sp, 160]
+	.cfi_offset 29, -16
+	.cfi_offset 30, -8
+	add	x29, sp, 160
 	adrp	x0, :got:__stack_chk_guard
-	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]
+	ldr	x0, [x0, :got_lo12:__stack_chk_guard]
 	ldr	x1, [x0]
-	str	x1, [sp, 168]
+	str	x1, [sp, 152]
 	mov	x1, 0
 	adrp	x0, .LC0
 	add	x0, x0, :lo12:.LC0
-	add	x2, sp, 120
+	add	x2, sp, 104
 	mov	x3, x0
 	ldp	x0, x1, [x3]
 	stp	x0, x1, [x2]
 	ldr	w0, [x3, 16]
 	str	w0, [x2, 16]
 	fmov	s0, 1.0e+0
-	str	s0, [sp, 88]
+	str	s0, [sp, 72]
 	fmov	s0, 4.0e+0
-	str	s0, [sp, 92]
+	str	s0, [sp, 76]
 	fmov	s0, 1.2e+1
-	str	s0, [sp, 96]
+	str	s0, [sp, 80]
 	fmov	s0, 2.0e+1
-	str	s0, [sp, 100]
-	add	x1, sp, 72
-	add	x0, sp, 120
+	str	s0, [sp, 84]
+	add	x1, sp, 56
+	add	x0, sp, 104
 	mov	x2, x1
 	mov	w1, 5
 	bl	func0
-	add	x1, sp, 88
-	add	x0, sp, 72
+	add	x1, sp, 72
+	add	x0, sp, 56
 	mov	w3, 4
 	mov	x2, x1
 	mov	w1, 4
 	bl	issame
 	and	w0, w0, 255
+	and	w0, w0, 1
 	cmp	w0, 0
 	bne	.L14
 	adrp	x0, __PRETTY_FUNCTION__.0
@@ -183,27 +185,28 @@ main:
 .L14:
 	adrp	x0, .LC1
 	add	x1, x0, :lo12:.LC1
-	add	x0, sp, 40
+	add	x0, sp, 24
 	ldr	x2, [x1]
 	str	x2, [x0]
 	ldr	w1, [x1, 8]
 	str	w1, [x0, 8]
 	fmov	s0, 2.0e+0
-	str	s0, [sp, 24]
+	str	s0, [sp, 8]
 	fmov	s0, 6.0e+0
-	str	s0, [sp, 28]
-	add	x1, sp, 72
-	add	x0, sp, 40
+	str	s0, [sp, 12]
+	add	x1, sp, 56
+	add	x0, sp, 24
 	mov	x2, x1
 	mov	w1, 3
 	bl	func0
-	add	x1, sp, 24
-	add	x0, sp, 72
+	add	x1, sp, 8
+	add	x0, sp, 56
 	mov	w3, 2
 	mov	x2, x1
 	mov	w1, 2
 	bl	issame
 	and	w0, w0, 255
+	and	w0, w0, 1
 	cmp	w0, 0
 	bne	.L15
 	adrp	x0, __PRETTY_FUNCTION__.0
@@ -217,27 +220,28 @@ main:
 .L15:
 	adrp	x0, .LC2
 	add	x1, x0, :lo12:.LC2
-	add	x0, sp, 56
+	add	x0, sp, 40
 	ldr	x2, [x1]
 	str	x2, [x0]
 	ldr	w1, [x1, 8]
 	str	w1, [x0, 8]
 	fmov	s0, 2.0e+0
-	str	s0, [sp, 32]
+	str	s0, [sp, 16]
 	fmov	s0, 2.0e+0
-	str	s0, [sp, 36]
-	add	x1, sp, 72
-	add	x0, sp, 56
+	str	s0, [sp, 20]
+	add	x1, sp, 56
+	add	x0, sp, 40
 	mov	x2, x1
 	mov	w1, 3
 	bl	func0
-	add	x1, sp, 32
-	add	x0, sp, 72
+	add	x1, sp, 16
+	add	x0, sp, 56
 	mov	w3, 2
 	mov	x2, x1
 	mov	w1, 2
 	bl	issame
 	and	w0, w0, 255
+	and	w0, w0, 1
 	cmp	w0, 0
 	bne	.L16
 	adrp	x0, __PRETTY_FUNCTION__.0
@@ -251,31 +255,32 @@ main:
 .L16:
 	adrp	x0, .LC3
 	add	x0, x0, :lo12:.LC3
-	add	x2, sp, 144
+	add	x2, sp, 128
 	mov	x3, x0
 	ldp	x0, x1, [x3]
 	stp	x0, x1, [x2]
 	ldr	w0, [x3, 16]
 	str	w0, [x2, 16]
 	fmov	s0, 2.0e+0
-	str	s0, [sp, 104]
+	str	s0, [sp, 88]
 	fmov	s0, 2.0e+0
-	str	s0, [sp, 108]
-	str	wzr, [sp, 112]
+	str	s0, [sp, 92]
+	str	wzr, [sp, 96]
 	fmov	s0, 1.6e+1
-	str	s0, [sp, 116]
-	add	x1, sp, 72
-	add	x0, sp, 144
+	str	s0, [sp, 100]
+	add	x1, sp, 56
+	add	x0, sp, 128
 	mov	x2, x1
 	mov	w1, 5
 	bl	func0
-	add	x1, sp, 104
-	add	x0, sp, 72
+	add	x1, sp, 88
+	add	x0, sp, 56
 	mov	w3, 4
 	mov	x2, x1
 	mov	w1, 4
 	bl	issame
 	and	w0, w0, 255
+	and	w0, w0, 1
 	cmp	w0, 0
 	bne	.L17
 	adrp	x0, __PRETTY_FUNCTION__.0
@@ -288,18 +293,19 @@ main:
 	bl	__assert_fail
 .L17:
 	fmov	s0, 1.0e+0
-	str	s0, [sp, 16]
-	add	x1, sp, 72
-	add	x0, sp, 16
+	str	s0, [sp]
+	add	x1, sp, 56
+	mov	x0, sp
 	mov	x2, x1
 	mov	w1, 1
 	bl	func0
-	add	x0, sp, 72
+	add	x0, sp, 56
 	mov	w3, 0
 	mov	x2, 0
 	mov	w1, 0
 	bl	issame
 	and	w0, w0, 255
+	and	w0, w0, 1
 	cmp	w0, 0
 	bne	.L18
 	adrp	x0, __PRETTY_FUNCTION__.0
@@ -314,8 +320,8 @@ main:
 	mov	w0, 0
 	mov	w1, w0
 	adrp	x0, :got:__stack_chk_guard
-	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]
-	ldr	x3, [sp, 168]
+	ldr	x0, [x0, :got_lo12:__stack_chk_guard]
+	ldr	x3, [sp, 152]
 	ldr	x2, [x0]
 	subs	x3, x3, x2
 	mov	x2, 0
@@ -323,9 +329,10 @@ main:
 	bl	__stack_chk_fail
 .L20:
 	mov	w0, w1
-	ldp	x29, x30, [sp], 176
-	.cfi_restore 30
+	ldp	x29, x30, [sp, 160]
+	add	sp, sp, 176
 	.cfi_restore 29
+	.cfi_restore 30
 	.cfi_def_cfa_offset 0
 	ret
 	.cfi_endproc
@@ -367,5 +374,5 @@ __PRETTY_FUNCTION__.0:
 .LC4:
 	.word	-350469331
 	.word	1058682594
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits

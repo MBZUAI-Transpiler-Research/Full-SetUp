@@ -1,6 +1,6 @@
 	.file	"problem22.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -29,7 +29,7 @@ main:
 	.cfi_offset 3, -24
 # problem22.c:14: {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp159
-	movq	%rax, -24(%rbp)	# tmp159, D.3100
+	movq	%rax, -24(%rbp)	# tmp159, D.3964
 	xorl	%eax, %eax	# tmp159
 # problem22.c:15:   int count = 0;
 	movl	$0, -76(%rbp)	#, count
@@ -216,10 +216,9 @@ main:
 	movl	$0, %eax	#, _46
 .L10:
 # problem22.c:53: }
-	movq	-24(%rbp), %rdx	# D.3100, tmp160
+	movq	-24(%rbp), %rdx	# D.3964, tmp160
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp160
 	je	.L11	#,
-# problem22.c:53: }
 	call	__stack_chk_fail@PLT	#
 .L11:
 	movq	-8(%rbp), %rbx	#,
@@ -257,7 +256,7 @@ compare:
 	.cfi_endproc
 .LFE7:
 	.size	compare, .-compare
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

@@ -1,7 +1,7 @@
 	.arch armv8-a
 	.file	"problem130.c"
-// GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (aarch64-linux-gnu)
-//	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+// GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (aarch64-linux-gnu)
+//	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 // GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 // options passed: -mlittle-endian -mabi=lp64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection
@@ -315,6 +315,7 @@ issame:
 	beq	.L18		//,
 // problem130.c:34:         if (a[i] != b[i]) return 0;
 	mov	w0, 0	// _10,
+// problem130.c:34:         if (a[i] != b[i]) return 0;
 	b	.L19		//
 .L18:
 // problem130.c:33:     for (int i = 0; i < size; i++) {
@@ -363,341 +364,343 @@ issame:
 main:
 .LFB8:
 	.cfi_startproc
-	sub	sp, sp, #592	//,,
-	.cfi_def_cfa_offset 592
-	stp	x29, x30, [sp]	//,,
-	.cfi_offset 29, -592
-	.cfi_offset 30, -584
+	stp	x29, x30, [sp, -16]!	//,,,
+	.cfi_def_cfa_offset 16
+	.cfi_offset 29, -16
+	.cfi_offset 30, -8
 	mov	x29, sp	//,
+	sub	sp, sp, #576	//,,
+	.cfi_def_cfa_offset 592
 // problem130.c:39: int main() {
-	adrp	x0, :got:__stack_chk_guard	// tmp105,
-	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]	// tmp104, tmp105,
-	ldr	x1, [x0]	// tmp267,
-	str	x1, [sp, 584]	// tmp267, D.4899
-	mov	x1, 0	// tmp267
+	adrp	x0, :got:__stack_chk_guard	// tmp104,
+	ldr	x0, [x0, :got_lo12:__stack_chk_guard]	// tmp104,
+	ldr	x1, [x0]	// tmp265,
+	str	x1, [sp, 568]	// tmp265, D.5488
+	mov	x1, 0	// tmp265
 // problem130.c:43:     int grid1[3][3] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
-	adrp	x0, .LC0	// tmp107,
-	add	x1, x0, :lo12:.LC0	// tmp106, tmp107,
-	add	x0, sp, 312	// tmp108,,
-	ldp	q0, q1, [x1]	// tmp110, tmp111,
-	stp	q0, q1, [x0]	// tmp110, tmp111, grid1
-	ldr	w1, [x1, 32]	// tmp112,
-	str	w1, [x0, 32]	// tmp112, grid1
+	adrp	x0, .LC0	// tmp106,
+	add	x1, x0, :lo12:.LC0	// tmp105, tmp106,
+	add	x0, sp, 296	// tmp107,,
+	ldp	q0, q1, [x1]	// tmp109, tmp110,
+	stp	q0, q1, [x0]	// tmp109, tmp110, grid1
+	ldr	w1, [x1, 32]	// tmp111,
+	str	w1, [x0, 32]	// tmp111, grid1
 // problem130.c:44:     int *grid1_ptrs[] = {grid1[0], grid1[1], grid1[2]};
-	add	x0, sp, 312	// tmp113,,
-	str	x0, [sp, 136]	// tmp113, grid1_ptrs[0]
-	add	x0, sp, 312	// tmp114,,
-	add	x0, x0, 12	// tmp115, tmp114,
-	str	x0, [sp, 144]	// tmp115, grid1_ptrs[1]
-	add	x0, sp, 312	// tmp116,,
-	add	x0, x0, 24	// tmp117, tmp116,
-	str	x0, [sp, 152]	// tmp117, grid1_ptrs[2]
+	add	x0, sp, 296	// tmp112,,
+	str	x0, [sp, 120]	// tmp112, grid1_ptrs[0]
+	add	x0, sp, 296	// tmp113,,
+	add	x0, x0, 12	// tmp114, tmp113,
+	str	x0, [sp, 128]	// tmp114, grid1_ptrs[1]
+	add	x0, sp, 296	// tmp115,,
+	add	x0, x0, 24	// tmp116, tmp115,
+	str	x0, [sp, 136]	// tmp116, grid1_ptrs[2]
 // problem130.c:45:     int result1[] = {1, 2, 1};
-	adrp	x0, .LC1	// tmp119,
-	add	x1, x0, :lo12:.LC1	// tmp118, tmp119,
-	add	x0, sp, 80	// tmp120,,
-	ldr	x2, [x1]	// tmp122,
-	str	x2, [x0]	// tmp122, result1
-	ldr	w1, [x1, 8]	// tmp123,
-	str	w1, [x0, 8]	// tmp123, result1
+	adrp	x0, .LC1	// tmp118,
+	add	x1, x0, :lo12:.LC1	// tmp117, tmp118,
+	add	x0, sp, 64	// tmp119,,
+	ldr	x2, [x1]	// tmp121,
+	str	x2, [x0]	// tmp121, result1
+	ldr	w1, [x1, 8]	// tmp122,
+	str	w1, [x0, 8]	// tmp122, result1
 // problem130.c:46:     int *out1 = func0(grid1_ptrs, 3, 3, &size);
-	add	x1, sp, 28	// tmp124,,
-	add	x0, sp, 136	// tmp125,,
-	mov	x3, x1	//, tmp124
+	add	x1, sp, 12	// tmp123,,
+	add	x0, sp, 120	// tmp124,,
+	mov	x3, x1	//, tmp123
 	mov	w2, 3	//,
 	mov	w1, 3	//,
 	bl	func0		//
-	str	x0, [sp, 32]	//, out1
+	str	x0, [sp, 16]	//, out1
 // problem130.c:47:     assert(issame(out1, result1, size));
-	ldr	w1, [sp, 28]	// size.1_1, size
-	add	x0, sp, 80	// tmp126,,
+	ldr	w1, [sp, 12]	// size.1_1, size
+	add	x0, sp, 64	// tmp125,,
 	mov	w2, w1	//, size.1_1
-	mov	x1, x0	//, tmp126
-	ldr	x0, [sp, 32]	//, out1
+	mov	x1, x0	//, tmp125
+	ldr	x0, [sp, 16]	//, out1
 	bl	issame		//
+// problem130.c:47:     assert(issame(out1, result1, size));
 	cmp	w0, 0	// _2,
 	bne	.L22		//,
-// problem130.c:47:     assert(issame(out1, result1, size));
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp127,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp127,
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp126,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp126,
 	mov	w2, 47	//,
-	adrp	x0, .LC8	// tmp128,
-	add	x1, x0, :lo12:.LC8	//, tmp128,
-	adrp	x0, .LC9	// tmp129,
-	add	x0, x0, :lo12:.LC9	//, tmp129,
+	adrp	x0, .LC8	// tmp127,
+	add	x1, x0, :lo12:.LC8	//, tmp127,
+	adrp	x0, .LC9	// tmp128,
+	add	x0, x0, :lo12:.LC9	//, tmp128,
 	bl	__assert_fail		//
 .L22:
 // problem130.c:48:     free(out1);
-	ldr	x0, [sp, 32]	//, out1
+	ldr	x0, [sp, 16]	//, out1
 	bl	free		//
 // problem130.c:51:     int grid2[3][3] = {{5, 9, 3}, {4, 1, 6}, {7, 8, 2}};
-	adrp	x0, .LC2	// tmp131,
-	add	x1, x0, :lo12:.LC2	// tmp130, tmp131,
-	add	x0, sp, 352	// tmp132,,
-	ldp	q0, q1, [x1]	// tmp134, tmp135,
-	stp	q0, q1, [x0]	// tmp134, tmp135, grid2
-	ldr	w1, [x1, 32]	// tmp136,
-	str	w1, [x0, 32]	// tmp136, grid2
+	adrp	x0, .LC2	// tmp130,
+	add	x1, x0, :lo12:.LC2	// tmp129, tmp130,
+	add	x0, sp, 336	// tmp131,,
+	ldp	q0, q1, [x1]	// tmp133, tmp134,
+	stp	q0, q1, [x0]	// tmp133, tmp134, grid2
+	ldr	w1, [x1, 32]	// tmp135,
+	str	w1, [x0, 32]	// tmp135, grid2
 // problem130.c:52:     int *grid2_ptrs[] = {grid2[0], grid2[1], grid2[2]};
-	add	x0, sp, 352	// tmp137,,
-	str	x0, [sp, 160]	// tmp137, grid2_ptrs[0]
-	add	x0, sp, 352	// tmp138,,
-	add	x0, x0, 12	// tmp139, tmp138,
-	str	x0, [sp, 168]	// tmp139, grid2_ptrs[1]
-	add	x0, sp, 352	// tmp140,,
-	add	x0, x0, 24	// tmp141, tmp140,
-	str	x0, [sp, 176]	// tmp141, grid2_ptrs[2]
+	add	x0, sp, 336	// tmp136,,
+	str	x0, [sp, 144]	// tmp136, grid2_ptrs[0]
+	add	x0, sp, 336	// tmp137,,
+	add	x0, x0, 12	// tmp138, tmp137,
+	str	x0, [sp, 152]	// tmp138, grid2_ptrs[1]
+	add	x0, sp, 336	// tmp139,,
+	add	x0, x0, 24	// tmp140, tmp139,
+	str	x0, [sp, 160]	// tmp140, grid2_ptrs[2]
 // problem130.c:53:     int result2[] = {1};
-	mov	w0, 1	// tmp142,
-	str	w0, [sp, 72]	// tmp142, result2[0]
+	mov	w0, 1	// tmp141,
+	str	w0, [sp, 56]	// tmp141, result2[0]
 // problem130.c:54:     int *out2 = func0(grid2_ptrs, 3, 1, &size);
-	add	x1, sp, 28	// tmp143,,
-	add	x0, sp, 160	// tmp144,,
-	mov	x3, x1	//, tmp143
+	add	x1, sp, 12	// tmp142,,
+	add	x0, sp, 144	// tmp143,,
+	mov	x3, x1	//, tmp142
 	mov	w2, 1	//,
 	mov	w1, 3	//,
 	bl	func0		//
-	str	x0, [sp, 40]	//, out2
+	str	x0, [sp, 24]	//, out2
 // problem130.c:55:     assert(issame(out2, result2, size));
-	ldr	w1, [sp, 28]	// size.2_3, size
-	add	x0, sp, 72	// tmp145,,
+	ldr	w1, [sp, 12]	// size.2_3, size
+	add	x0, sp, 56	// tmp144,,
 	mov	w2, w1	//, size.2_3
-	mov	x1, x0	//, tmp145
-	ldr	x0, [sp, 40]	//, out2
+	mov	x1, x0	//, tmp144
+	ldr	x0, [sp, 24]	//, out2
 	bl	issame		//
+// problem130.c:55:     assert(issame(out2, result2, size));
 	cmp	w0, 0	// _4,
 	bne	.L23		//,
-// problem130.c:55:     assert(issame(out2, result2, size));
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp146,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp146,
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp145,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp145,
 	mov	w2, 55	//,
-	adrp	x0, .LC8	// tmp147,
-	add	x1, x0, :lo12:.LC8	//, tmp147,
-	adrp	x0, .LC10	// tmp148,
-	add	x0, x0, :lo12:.LC10	//, tmp148,
+	adrp	x0, .LC8	// tmp146,
+	add	x1, x0, :lo12:.LC8	//, tmp146,
+	adrp	x0, .LC10	// tmp147,
+	add	x0, x0, :lo12:.LC10	//, tmp147,
 	bl	__assert_fail		//
 .L23:
 // problem130.c:56:     free(out2);
-	ldr	x0, [sp, 40]	//, out2
+	ldr	x0, [sp, 24]	//, out2
 	bl	free		//
 // problem130.c:59:     int grid3[4][4] = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}};
-	adrp	x0, .LC3	// tmp150,
-	add	x1, x0, :lo12:.LC3	// tmp149, tmp150,
-	add	x0, sp, 392	// tmp151,,
-	ldp	q0, q1, [x1]	// tmp153, tmp154,
-	stp	q0, q1, [x0]	// tmp153, tmp154, grid3
-	ldp	q0, q1, [x1, 32]	// tmp155, tmp156,
-	stp	q0, q1, [x0, 32]	// tmp155, tmp156, grid3
+	adrp	x0, .LC3	// tmp149,
+	add	x1, x0, :lo12:.LC3	// tmp148, tmp149,
+	add	x0, sp, 376	// tmp150,,
+	ldp	q0, q1, [x1]	// tmp152, tmp153,
+	stp	q0, q1, [x0]	// tmp152, tmp153, grid3
+	ldp	q0, q1, [x1, 32]	// tmp154, tmp155,
+	stp	q0, q1, [x0, 32]	// tmp154, tmp155, grid3
 // problem130.c:60:     int *grid3_ptrs[] = {grid3[0], grid3[1], grid3[2], grid3[3]};
-	add	x0, sp, 600	// tmp157,,
-	sub	x0, x0, #384	// tmp159, tmp157,
-	add	x1, sp, 392	// tmp160,,
-	str	x1, [x0]	// tmp160, grid3_ptrs[0]
-	add	x0, sp, 600	// tmp161,,
-	sub	x0, x0, #384	// tmp163, tmp161,
-	add	x1, sp, 392	// tmp164,,
-	add	x1, x1, 16	// tmp165, tmp164,
-	str	x1, [x0, 8]	// tmp165, grid3_ptrs[1]
-	add	x0, sp, 600	// tmp166,,
-	sub	x0, x0, #384	// tmp168, tmp166,
-	add	x1, sp, 392	// tmp169,,
-	add	x1, x1, 32	// tmp170, tmp169,
-	str	x1, [x0, 16]	// tmp170, grid3_ptrs[2]
-	add	x0, sp, 600	// tmp171,,
-	sub	x0, x0, #384	// tmp173, tmp171,
-	add	x1, sp, 392	// tmp174,,
-	add	x1, x1, 48	// tmp175, tmp174,
-	str	x1, [x0, 24]	// tmp175, grid3_ptrs[3]
+	add	x0, sp, 584	// tmp156,,
+	sub	x0, x0, #384	// tmp158, tmp156,
+	add	x1, sp, 376	// tmp159,,
+	str	x1, [x0]	// tmp159, grid3_ptrs[0]
+	add	x0, sp, 584	// tmp160,,
+	sub	x0, x0, #384	// tmp162, tmp160,
+	add	x1, sp, 376	// tmp163,,
+	add	x1, x1, 16	// tmp164, tmp163,
+	str	x1, [x0, 8]	// tmp164, grid3_ptrs[1]
+	add	x0, sp, 584	// tmp165,,
+	sub	x0, x0, #384	// tmp167, tmp165,
+	add	x1, sp, 376	// tmp168,,
+	add	x1, x1, 32	// tmp169, tmp168,
+	str	x1, [x0, 16]	// tmp169, grid3_ptrs[2]
+	add	x0, sp, 584	// tmp170,,
+	sub	x0, x0, #384	// tmp172, tmp170,
+	add	x1, sp, 376	// tmp173,,
+	add	x1, x1, 48	// tmp174, tmp173,
+	str	x1, [x0, 24]	// tmp174, grid3_ptrs[3]
 // problem130.c:61:     int result3[] = {1, 2, 1, 2};
-	mov	w0, 1	// tmp176,
-	str	w0, [sp, 96]	// tmp176, result3[0]
-	mov	w0, 2	// tmp177,
-	str	w0, [sp, 100]	// tmp177, result3[1]
-	mov	w0, 1	// tmp178,
-	str	w0, [sp, 104]	// tmp178, result3[2]
-	mov	w0, 2	// tmp179,
-	str	w0, [sp, 108]	// tmp179, result3[3]
+	mov	w0, 1	// tmp175,
+	str	w0, [sp, 80]	// tmp175, result3[0]
+	mov	w0, 2	// tmp176,
+	str	w0, [sp, 84]	// tmp176, result3[1]
+	mov	w0, 1	// tmp177,
+	str	w0, [sp, 88]	// tmp177, result3[2]
+	mov	w0, 2	// tmp178,
+	str	w0, [sp, 92]	// tmp178, result3[3]
 // problem130.c:62:     int *out3 = func0(grid3_ptrs, 4, 4, &size);
-	add	x1, sp, 28	// tmp180,,
-	add	x0, sp, 216	// tmp181,,
-	mov	x3, x1	//, tmp180
+	add	x1, sp, 12	// tmp179,,
+	add	x0, sp, 200	// tmp180,,
+	mov	x3, x1	//, tmp179
 	mov	w2, 4	//,
 	mov	w1, 4	//,
 	bl	func0		//
-	str	x0, [sp, 48]	//, out3
+	str	x0, [sp, 32]	//, out3
 // problem130.c:63:     assert(issame(out3, result3, size));
-	ldr	w1, [sp, 28]	// size.3_5, size
-	add	x0, sp, 96	// tmp182,,
+	ldr	w1, [sp, 12]	// size.3_5, size
+	add	x0, sp, 80	// tmp181,,
 	mov	w2, w1	//, size.3_5
-	mov	x1, x0	//, tmp182
-	ldr	x0, [sp, 48]	//, out3
+	mov	x1, x0	//, tmp181
+	ldr	x0, [sp, 32]	//, out3
 	bl	issame		//
+// problem130.c:63:     assert(issame(out3, result3, size));
 	cmp	w0, 0	// _6,
 	bne	.L24		//,
-// problem130.c:63:     assert(issame(out3, result3, size));
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp183,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp183,
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp182,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp182,
 	mov	w2, 63	//,
-	adrp	x0, .LC8	// tmp184,
-	add	x1, x0, :lo12:.LC8	//, tmp184,
-	adrp	x0, .LC11	// tmp185,
-	add	x0, x0, :lo12:.LC11	//, tmp185,
+	adrp	x0, .LC8	// tmp183,
+	add	x1, x0, :lo12:.LC8	//, tmp183,
+	adrp	x0, .LC11	// tmp184,
+	add	x0, x0, :lo12:.LC11	//, tmp184,
 	bl	__assert_fail		//
 .L24:
 // problem130.c:64:     free(out3);
-	ldr	x0, [sp, 48]	//, out3
+	ldr	x0, [sp, 32]	//, out3
 	bl	free		//
 // problem130.c:67:     int grid4[4][4] = {{6, 4, 13, 10}, {5, 7, 12, 1}, {3, 16, 11, 15}, {8, 14, 9, 2}};
-	adrp	x0, .LC4	// tmp187,
-	add	x1, x0, :lo12:.LC4	// tmp186, tmp187,
-	add	x0, sp, 456	// tmp188,,
-	ldp	q0, q1, [x1]	// tmp190, tmp191,
-	stp	q0, q1, [x0]	// tmp190, tmp191, grid4
-	ldp	q0, q1, [x1, 32]	// tmp192, tmp193,
-	stp	q0, q1, [x0, 32]	// tmp192, tmp193, grid4
+	adrp	x0, .LC4	// tmp186,
+	add	x1, x0, :lo12:.LC4	// tmp185, tmp186,
+	add	x0, sp, 440	// tmp187,,
+	ldp	q0, q1, [x1]	// tmp189, tmp190,
+	stp	q0, q1, [x0]	// tmp189, tmp190, grid4
+	ldp	q0, q1, [x1, 32]	// tmp191, tmp192,
+	stp	q0, q1, [x0, 32]	// tmp191, tmp192, grid4
 // problem130.c:68:     int *grid4_ptrs[] = {grid4[0], grid4[1], grid4[2], grid4[3]};
-	add	x0, sp, 600	// tmp194,,
-	sub	x0, x0, #352	// tmp196, tmp194,
-	add	x1, sp, 456	// tmp197,,
-	str	x1, [x0]	// tmp197, grid4_ptrs[0]
-	add	x0, sp, 600	// tmp198,,
-	sub	x0, x0, #352	// tmp200, tmp198,
-	add	x1, sp, 456	// tmp201,,
-	add	x1, x1, 16	// tmp202, tmp201,
-	str	x1, [x0, 8]	// tmp202, grid4_ptrs[1]
-	add	x0, sp, 600	// tmp203,,
-	sub	x0, x0, #352	// tmp205, tmp203,
-	add	x1, sp, 456	// tmp206,,
-	add	x1, x1, 32	// tmp207, tmp206,
-	str	x1, [x0, 16]	// tmp207, grid4_ptrs[2]
-	add	x0, sp, 600	// tmp208,,
-	sub	x0, x0, #352	// tmp210, tmp208,
-	add	x1, sp, 456	// tmp211,,
-	add	x1, x1, 48	// tmp212, tmp211,
-	str	x1, [x0, 24]	// tmp212, grid4_ptrs[3]
+	add	x0, sp, 584	// tmp193,,
+	sub	x0, x0, #352	// tmp195, tmp193,
+	add	x1, sp, 440	// tmp196,,
+	str	x1, [x0]	// tmp196, grid4_ptrs[0]
+	add	x0, sp, 584	// tmp197,,
+	sub	x0, x0, #352	// tmp199, tmp197,
+	add	x1, sp, 440	// tmp200,,
+	add	x1, x1, 16	// tmp201, tmp200,
+	str	x1, [x0, 8]	// tmp201, grid4_ptrs[1]
+	add	x0, sp, 584	// tmp202,,
+	sub	x0, x0, #352	// tmp204, tmp202,
+	add	x1, sp, 440	// tmp205,,
+	add	x1, x1, 32	// tmp206, tmp205,
+	str	x1, [x0, 16]	// tmp206, grid4_ptrs[2]
+	add	x0, sp, 584	// tmp207,,
+	sub	x0, x0, #352	// tmp209, tmp207,
+	add	x1, sp, 440	// tmp210,,
+	add	x1, x1, 48	// tmp211, tmp210,
+	str	x1, [x0, 24]	// tmp211, grid4_ptrs[3]
 // problem130.c:69:     int result4[] = {1, 10, 1, 10, 1, 10, 1};
-	adrp	x0, .LC5	// tmp214,
-	add	x1, x0, :lo12:.LC5	// tmp213, tmp214,
-	add	x0, sp, 184	// tmp215,,
-	ldr	q0, [x1]	// tmp217,
-	str	q0, [x0]	// tmp217, result4
-	ldr	q0, [x1, 12]	// tmp218,
-	str	q0, [x0, 12]	// tmp218, result4
+	adrp	x0, .LC5	// tmp213,
+	add	x1, x0, :lo12:.LC5	// tmp212, tmp213,
+	add	x0, sp, 168	// tmp214,,
+	ldr	q0, [x1]	// tmp216,
+	str	q0, [x0]	// tmp216, result4
+	ldr	q0, [x1, 12]	// tmp217,
+	str	q0, [x0, 12]	// tmp217, result4
 // problem130.c:70:     int *out4 = func0(grid4_ptrs, 4, 7, &size);
-	add	x1, sp, 28	// tmp219,,
-	add	x0, sp, 248	// tmp220,,
-	mov	x3, x1	//, tmp219
+	add	x1, sp, 12	// tmp218,,
+	add	x0, sp, 232	// tmp219,,
+	mov	x3, x1	//, tmp218
 	mov	w2, 7	//,
 	mov	w1, 4	//,
 	bl	func0		//
-	str	x0, [sp, 56]	//, out4
+	str	x0, [sp, 40]	//, out4
 // problem130.c:71:     assert(issame(out4, result4, size));
-	ldr	w1, [sp, 28]	// size.4_7, size
-	add	x0, sp, 184	// tmp221,,
+	ldr	w1, [sp, 12]	// size.4_7, size
+	add	x0, sp, 168	// tmp220,,
 	mov	w2, w1	//, size.4_7
-	mov	x1, x0	//, tmp221
-	ldr	x0, [sp, 56]	//, out4
+	mov	x1, x0	//, tmp220
+	ldr	x0, [sp, 40]	//, out4
 	bl	issame		//
+// problem130.c:71:     assert(issame(out4, result4, size));
 	cmp	w0, 0	// _8,
 	bne	.L25		//,
-// problem130.c:71:     assert(issame(out4, result4, size));
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp222,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp222,
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp221,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp221,
 	mov	w2, 71	//,
-	adrp	x0, .LC8	// tmp223,
-	add	x1, x0, :lo12:.LC8	//, tmp223,
-	adrp	x0, .LC12	// tmp224,
-	add	x0, x0, :lo12:.LC12	//, tmp224,
+	adrp	x0, .LC8	// tmp222,
+	add	x1, x0, :lo12:.LC8	//, tmp222,
+	adrp	x0, .LC12	// tmp223,
+	add	x0, x0, :lo12:.LC12	//, tmp223,
 	bl	__assert_fail		//
 .L25:
 // problem130.c:72:     free(out4);
-	ldr	x0, [sp, 56]	//, out4
+	ldr	x0, [sp, 40]	//, out4
 	bl	free		//
 // problem130.c:75:     int grid5[4][4] = {{8, 14, 9, 2}, {6, 4, 13, 15}, {5, 7, 1, 12}, {3, 10, 11, 16}};
-	adrp	x0, .LC6	// tmp226,
-	add	x1, x0, :lo12:.LC6	// tmp225, tmp226,
-	add	x0, sp, 520	// tmp227,,
-	ldp	q0, q1, [x1]	// tmp229, tmp230,
-	stp	q0, q1, [x0]	// tmp229, tmp230, grid5
-	ldp	q0, q1, [x1, 32]	// tmp231, tmp232,
-	stp	q0, q1, [x0, 32]	// tmp231, tmp232, grid5
+	adrp	x0, .LC6	// tmp225,
+	add	x1, x0, :lo12:.LC6	// tmp224, tmp225,
+	add	x0, sp, 504	// tmp226,,
+	ldp	q0, q1, [x1]	// tmp228, tmp229,
+	stp	q0, q1, [x0]	// tmp228, tmp229, grid5
+	ldp	q0, q1, [x1, 32]	// tmp230, tmp231,
+	stp	q0, q1, [x0, 32]	// tmp230, tmp231, grid5
 // problem130.c:76:     int *grid5_ptrs[] = {grid5[0], grid5[1], grid5[2], grid5[3]};
-	add	x0, sp, 600	// tmp233,,
-	sub	x0, x0, #320	// tmp235, tmp233,
-	add	x1, sp, 520	// tmp236,,
-	str	x1, [x0]	// tmp236, grid5_ptrs[0]
-	add	x0, sp, 600	// tmp237,,
-	sub	x0, x0, #320	// tmp239, tmp237,
-	add	x1, sp, 520	// tmp240,,
-	add	x1, x1, 16	// tmp241, tmp240,
-	str	x1, [x0, 8]	// tmp241, grid5_ptrs[1]
-	add	x0, sp, 600	// tmp242,,
-	sub	x0, x0, #320	// tmp244, tmp242,
-	add	x1, sp, 520	// tmp245,,
-	add	x1, x1, 32	// tmp246, tmp245,
-	str	x1, [x0, 16]	// tmp246, grid5_ptrs[2]
-	add	x0, sp, 600	// tmp247,,
-	sub	x0, x0, #320	// tmp249, tmp247,
-	add	x1, sp, 520	// tmp250,,
-	add	x1, x1, 48	// tmp251, tmp250,
-	str	x1, [x0, 24]	// tmp251, grid5_ptrs[3]
+	add	x0, sp, 584	// tmp232,,
+	sub	x0, x0, #320	// tmp234, tmp232,
+	add	x1, sp, 504	// tmp235,,
+	str	x1, [x0]	// tmp235, grid5_ptrs[0]
+	add	x0, sp, 584	// tmp236,,
+	sub	x0, x0, #320	// tmp238, tmp236,
+	add	x1, sp, 504	// tmp239,,
+	add	x1, x1, 16	// tmp240, tmp239,
+	str	x1, [x0, 8]	// tmp240, grid5_ptrs[1]
+	add	x0, sp, 584	// tmp241,,
+	sub	x0, x0, #320	// tmp243, tmp241,
+	add	x1, sp, 504	// tmp244,,
+	add	x1, x1, 32	// tmp245, tmp244,
+	str	x1, [x0, 16]	// tmp245, grid5_ptrs[2]
+	add	x0, sp, 584	// tmp246,,
+	sub	x0, x0, #320	// tmp248, tmp246,
+	add	x1, sp, 504	// tmp249,,
+	add	x1, x1, 48	// tmp250, tmp249,
+	str	x1, [x0, 24]	// tmp250, grid5_ptrs[3]
 // problem130.c:77:     int result5[] = {1, 7, 1, 7, 1};
-	adrp	x0, .LC7	// tmp253,
-	add	x0, x0, :lo12:.LC7	// tmp252, tmp253,
-	add	x2, sp, 112	// tmp254,,
-	mov	x3, x0	// tmp255, tmp252
-	ldp	x0, x1, [x3]	// tmp256,
-	stp	x0, x1, [x2]	// tmp256, result5
-	ldr	w0, [x3, 16]	// tmp257,
-	str	w0, [x2, 16]	// tmp257, result5
+	adrp	x0, .LC7	// tmp252,
+	add	x0, x0, :lo12:.LC7	// tmp251, tmp252,
+	add	x2, sp, 96	// tmp253,,
+	mov	x3, x0	// tmp254, tmp251
+	ldp	x0, x1, [x3]	// tmp255,
+	stp	x0, x1, [x2]	// tmp255, result5
+	ldr	w0, [x3, 16]	// tmp256,
+	str	w0, [x2, 16]	// tmp256, result5
 // problem130.c:78:     int *out5 = func0(grid5_ptrs, 4, 5, &size);
-	add	x1, sp, 28	// tmp258,,
-	add	x0, sp, 280	// tmp259,,
-	mov	x3, x1	//, tmp258
+	add	x1, sp, 12	// tmp257,,
+	add	x0, sp, 264	// tmp258,,
+	mov	x3, x1	//, tmp257
 	mov	w2, 5	//,
 	mov	w1, 4	//,
 	bl	func0		//
-	str	x0, [sp, 64]	//, out5
+	str	x0, [sp, 48]	//, out5
 // problem130.c:79:     assert(issame(out5, result5, size));
-	ldr	w1, [sp, 28]	// size.5_9, size
-	add	x0, sp, 112	// tmp260,,
+	ldr	w1, [sp, 12]	// size.5_9, size
+	add	x0, sp, 96	// tmp259,,
 	mov	w2, w1	//, size.5_9
-	mov	x1, x0	//, tmp260
-	ldr	x0, [sp, 64]	//, out5
+	mov	x1, x0	//, tmp259
+	ldr	x0, [sp, 48]	//, out5
 	bl	issame		//
+// problem130.c:79:     assert(issame(out5, result5, size));
 	cmp	w0, 0	// _10,
 	bne	.L26		//,
-// problem130.c:79:     assert(issame(out5, result5, size));
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp261,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp261,
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp260,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp260,
 	mov	w2, 79	//,
-	adrp	x0, .LC8	// tmp262,
-	add	x1, x0, :lo12:.LC8	//, tmp262,
-	adrp	x0, .LC13	// tmp263,
-	add	x0, x0, :lo12:.LC13	//, tmp263,
+	adrp	x0, .LC8	// tmp261,
+	add	x1, x0, :lo12:.LC8	//, tmp261,
+	adrp	x0, .LC13	// tmp262,
+	add	x0, x0, :lo12:.LC13	//, tmp262,
 	bl	__assert_fail		//
 .L26:
 // problem130.c:80:     free(out5);
-	ldr	x0, [sp, 64]	//, out5
+	ldr	x0, [sp, 48]	//, out5
 	bl	free		//
 // problem130.c:82:     return 0;
 	mov	w0, 0	// _68,
 // problem130.c:83: }
 	mov	w1, w0	// <retval>, _68
-	adrp	x0, :got:__stack_chk_guard	// tmp266,
-	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]	// tmp265, tmp266,
-	ldr	x3, [sp, 584]	// tmp268, D.4899
-	ldr	x2, [x0]	// tmp269,
-	subs	x3, x3, x2	// tmp268, tmp269
-	mov	x2, 0	// tmp269
+	adrp	x0, :got:__stack_chk_guard	// tmp264,
+	ldr	x0, [x0, :got_lo12:__stack_chk_guard]	// tmp264,
+	ldr	x3, [sp, 568]	// tmp266, D.5488
+	ldr	x2, [x0]	// tmp267,
+	subs	x3, x3, x2	// tmp266, tmp267
+	mov	x2, 0	// tmp267
 	beq	.L28		//,
 	bl	__stack_chk_fail		//
 .L28:
 	mov	w0, w1	//, <retval>
-	ldp	x29, x30, [sp]	//,,
-	add	sp, sp, 592	//,,
-	.cfi_restore 29
+	add	sp, sp, 576	//,,
+	.cfi_def_cfa_offset 16
+	ldp	x29, x30, [sp], 16	//,,,
 	.cfi_restore 30
+	.cfi_restore 29
 	.cfi_def_cfa_offset 0
 	ret	
 	.cfi_endproc
@@ -808,5 +811,5 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits

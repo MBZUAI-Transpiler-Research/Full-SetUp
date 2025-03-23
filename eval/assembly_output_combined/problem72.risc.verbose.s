@@ -1,105 +1,121 @@
 	.file	"problem72.c"
 	.option pic
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (riscv64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+	.attribute arch, "rv64i2p1_m2p0_a2p1_f2p2_d2p2_c2p0_zicsr2p0_zifencei2p0"
+	.attribute unaligned_access, 0
+	.attribute stack_align, 16
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (riscv64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-# options passed: -mabi=lp64d -misa-spec=2.2 -march=rv64imafdc -fstack-protector-strong
+# options passed: -mabi=lp64d -misa-spec=20191213 -march=rv64imafdc_zicsr_zifencei -fstack-protector-strong
 	.text
 	.align	1
 	.globl	func0
 	.type	func0, @function
 func0:
+.LFB0:
+	.cfi_startproc
 	addi	sp,sp,-48	#,,
+	.cfi_def_cfa_offset 48
 	sd	ra,40(sp)	#,
 	sd	s0,32(sp)	#,
+	.cfi_offset 1, -8
+	.cfi_offset 8, -16
 	addi	s0,sp,48	#,,
+	.cfi_def_cfa 8, 0
 	fsw	fa0,-36(s0)	# a, a
 	fsw	fa1,-40(s0)	# b, b
 	fsw	fa2,-44(s0)	# c, c
 # problem72.c:5: if (a + b <= c || a + c <= b || b + c <= a) return -1;
-	flw	fa4,-36(s0)	# tmp87, a
-	flw	fa5,-40(s0)	# tmp88, b
-	fadd.s	fa5,fa4,fa5	# _1, tmp87, tmp88
+	flw	fa4,-36(s0)	# tmp149, a
+	flw	fa5,-40(s0)	# tmp150, b
+	fadd.s	fa5,fa4,fa5	# _1, tmp149, tmp150
 # problem72.c:5: if (a + b <= c || a + c <= b || b + c <= a) return -1;
-	flw	fa4,-44(s0)	# tmp89, c
-	fge.s	a5,fa4,fa5	#, tmp90, tmp89, _1
-	bne	a5,zero,.L2	#, tmp90,,
+	flw	fa4,-44(s0)	# tmp151, c
+	fge.s	a5,fa4,fa5	#, tmp152, tmp151, _1
+	bne	a5,zero,.L2	#, tmp152,,
 # problem72.c:5: if (a + b <= c || a + c <= b || b + c <= a) return -1;
-	flw	fa4,-36(s0)	# tmp91, a
-	flw	fa5,-44(s0)	# tmp92, c
-	fadd.s	fa5,fa4,fa5	# _2, tmp91, tmp92
+	flw	fa4,-36(s0)	# tmp153, a
+	flw	fa5,-44(s0)	# tmp154, c
+	fadd.s	fa5,fa4,fa5	# _2, tmp153, tmp154
 # problem72.c:5: if (a + b <= c || a + c <= b || b + c <= a) return -1;
-	flw	fa4,-40(s0)	# tmp93, b
-	fge.s	a5,fa4,fa5	#, tmp94, tmp93, _2
-	bne	a5,zero,.L2	#, tmp94,,
+	flw	fa4,-40(s0)	# tmp155, b
+	fge.s	a5,fa4,fa5	#, tmp156, tmp155, _2
+	bne	a5,zero,.L2	#, tmp156,,
 # problem72.c:5: if (a + b <= c || a + c <= b || b + c <= a) return -1;
-	flw	fa4,-40(s0)	# tmp95, b
-	flw	fa5,-44(s0)	# tmp96, c
-	fadd.s	fa5,fa4,fa5	# _3, tmp95, tmp96
+	flw	fa4,-40(s0)	# tmp157, b
+	flw	fa5,-44(s0)	# tmp158, c
+	fadd.s	fa5,fa4,fa5	# _3, tmp157, tmp158
 # problem72.c:5: if (a + b <= c || a + c <= b || b + c <= a) return -1;
-	flw	fa4,-36(s0)	# tmp97, a
-	fge.s	a5,fa4,fa5	#, tmp98, tmp97, _3
-	beq	a5,zero,.L6	#, tmp98,,
+	flw	fa4,-36(s0)	# tmp159, a
+	fge.s	a5,fa4,fa5	#, tmp160, tmp159, _3
+	beq	a5,zero,.L6	#, tmp160,,
 .L2:
 # problem72.c:5: if (a + b <= c || a + c <= b || b + c <= a) return -1;
-	lla	a5,.LC0	# tmp99,
+	lla	a5,.LC0	# tmp161,
 	flw	fa5,0(a5)	# _14,
+# problem72.c:5: if (a + b <= c || a + c <= b || b + c <= a) return -1;
 	j	.L5		#
 .L6:
 # problem72.c:6: float s = (a + b + c) / 2;
-	flw	fa4,-36(s0)	# tmp100, a
-	flw	fa5,-40(s0)	# tmp101, b
-	fadd.s	fa4,fa4,fa5	# _4, tmp100, tmp101
+	flw	fa4,-36(s0)	# tmp162, a
+	flw	fa5,-40(s0)	# tmp163, b
+	fadd.s	fa4,fa4,fa5	# _4, tmp162, tmp163
 # problem72.c:6: float s = (a + b + c) / 2;
-	flw	fa5,-44(s0)	# tmp102, c
-	fadd.s	fa4,fa4,fa5	# _5, _4, tmp102
+	flw	fa5,-44(s0)	# tmp164, c
+	fadd.s	fa4,fa4,fa5	# _5, _4, tmp164
 # problem72.c:6: float s = (a + b + c) / 2;
-	lla	a5,.LC1	# tmp105,
-	flw	fa5,0(a5)	# tmp104,
-	fdiv.s	fa5,fa4,fa5	# tmp103, _5, tmp104
-	fsw	fa5,-24(s0)	# tmp103, s
+	lla	a5,.LC1	# tmp167,
+	flw	fa5,0(a5)	# tmp166,
+	fdiv.s	fa5,fa4,fa5	# tmp165, _5, tmp166
+	fsw	fa5,-24(s0)	# tmp165, s
 # problem72.c:7: float area = sqrtf(s * (s - a) * (s - b) * (s - c));
-	flw	fa4,-24(s0)	# tmp106, s
-	flw	fa5,-36(s0)	# tmp107, a
-	fsub.s	fa4,fa4,fa5	# _6, tmp106, tmp107
+	flw	fa4,-24(s0)	# tmp168, s
+	flw	fa5,-36(s0)	# tmp169, a
+	fsub.s	fa4,fa4,fa5	# _6, tmp168, tmp169
 # problem72.c:7: float area = sqrtf(s * (s - a) * (s - b) * (s - c));
-	flw	fa5,-24(s0)	# tmp108, s
-	fmul.s	fa4,fa4,fa5	# _7, _6, tmp108
+	flw	fa5,-24(s0)	# tmp170, s
+	fmul.s	fa4,fa4,fa5	# _7, _6, tmp170
 # problem72.c:7: float area = sqrtf(s * (s - a) * (s - b) * (s - c));
-	flw	fa3,-24(s0)	# tmp109, s
-	flw	fa5,-40(s0)	# tmp110, b
-	fsub.s	fa5,fa3,fa5	# _8, tmp109, tmp110
+	flw	fa3,-24(s0)	# tmp171, s
+	flw	fa5,-40(s0)	# tmp172, b
+	fsub.s	fa5,fa3,fa5	# _8, tmp171, tmp172
 # problem72.c:7: float area = sqrtf(s * (s - a) * (s - b) * (s - c));
 	fmul.s	fa4,fa4,fa5	# _9, _7, _8
 # problem72.c:7: float area = sqrtf(s * (s - a) * (s - b) * (s - c));
-	flw	fa3,-24(s0)	# tmp111, s
-	flw	fa5,-44(s0)	# tmp112, c
-	fsub.s	fa5,fa3,fa5	# _10, tmp111, tmp112
+	flw	fa3,-24(s0)	# tmp173, s
+	flw	fa5,-44(s0)	# tmp174, c
+	fsub.s	fa5,fa3,fa5	# _10, tmp173, tmp174
 # problem72.c:7: float area = sqrtf(s * (s - a) * (s - b) * (s - c));
 	fmul.s	fa5,fa4,fa5	# _11, _9, _10
 	fmv.s	fa0,fa5	#, _11
 	call	sqrtf@plt	#
 	fsw	fa0,-20(s0)	#, area
 # problem72.c:8: return roundf(area * 100) / 100;
-	flw	fa4,-20(s0)	# tmp113, area
-	lla	a5,.LC2	# tmp115,
-	flw	fa5,0(a5)	# tmp114,
-	fmul.s	fa5,fa4,fa5	# _12, tmp113, tmp114
+	flw	fa4,-20(s0)	# tmp175, area
+	lla	a5,.LC2	# tmp177,
+	flw	fa5,0(a5)	# tmp176,
+	fmul.s	fa5,fa4,fa5	# _12, tmp175, tmp176
 	fmv.s	fa0,fa5	#, _12
 	call	roundf@plt	#
 	fmv.s	fa4,fa0	# _13,
 # problem72.c:8: return roundf(area * 100) / 100;
-	lla	a5,.LC2	# tmp117,
-	flw	fa5,0(a5)	# tmp116,
-	fdiv.s	fa5,fa4,fa5	# _14, _13, tmp116
+	lla	a5,.LC2	# tmp179,
+	flw	fa5,0(a5)	# tmp178,
+	fdiv.s	fa5,fa4,fa5	# _14, _13, tmp178
 .L5:
 # problem72.c:9: }
 	fmv.s	fa0,fa5	#, <retval>
 	ld	ra,40(sp)		#,
+	.cfi_restore 1
 	ld	s0,32(sp)		#,
+	.cfi_restore 8
+	.cfi_def_cfa 2, 48
 	addi	sp,sp,48	#,,
+	.cfi_def_cfa_offset 0
 	jr	ra		#
+	.cfi_endproc
+.LFE0:
 	.size	func0, .-func0
 	.section	.rodata
 	.align	3
@@ -137,32 +153,38 @@ func0:
 	.globl	main
 	.type	main, @function
 main:
+.LFB1:
+	.cfi_startproc
 	addi	sp,sp,-16	#,,
+	.cfi_def_cfa_offset 16
 	sd	ra,8(sp)	#,
 	sd	s0,0(sp)	#,
+	.cfi_offset 1, -8
+	.cfi_offset 8, -16
 	addi	s0,sp,16	#,,
+	.cfi_def_cfa 8, 0
 # problem72.c:18:     assert(fabs(func0(3, 4, 5) - 6.00) < 0.01);
-	lla	a5,.LC3	# tmp111,
-	flw	fa3,0(a5)	# tmp110,
-	lla	a5,.LC4	# tmp113,
-	flw	fa4,0(a5)	# tmp112,
-	lla	a5,.LC5	# tmp115,
-	flw	fa5,0(a5)	# tmp114,
-	fmv.s	fa2,fa3	#, tmp110
-	fmv.s	fa1,fa4	#, tmp112
-	fmv.s	fa0,fa5	#, tmp114
+	lla	a5,.LC3	# tmp173,
+	flw	fa3,0(a5)	# tmp172,
+	lla	a5,.LC4	# tmp175,
+	flw	fa4,0(a5)	# tmp174,
+	lla	a5,.LC5	# tmp177,
+	flw	fa5,0(a5)	# tmp176,
+	fmv.s	fa2,fa3	#, tmp172
+	fmv.s	fa1,fa4	#, tmp174
+	fmv.s	fa0,fa5	#, tmp176
 	call	func0		#
 	fmv.s	fa5,fa0	# _1,
-	fcvt.d.s	fa4,fa5	# _2, _1
-	lla	a5,.LC6	# tmp117,
-	fld	fa5,0(a5)	# tmp116,
-	fsub.d	fa5,fa4,fa5	# _3, _2, tmp116
-	fabs.d	fa4,fa5	# _4, _3
-	lla	a5,.LC7	# tmp119,
-	fld	fa5,0(a5)	# tmp118,
-	flt.d	a5,fa4,fa5	#, tmp120, _4, tmp118
-	bne	a5,zero,.L8	#, tmp120,,
 # problem72.c:18:     assert(fabs(func0(3, 4, 5) - 6.00) < 0.01);
+	fcvt.d.s	fa4,fa5	# _2, _1
+	lla	a5,.LC6	# tmp179,
+	fld	fa5,0(a5)	# tmp178,
+	fsub.d	fa5,fa4,fa5	# _3, _2, tmp178
+	fabs.d	fa4,fa5	# _4, _3
+	lla	a5,.LC7	# tmp181,
+	fld	fa5,0(a5)	# tmp180,
+	flt.d	a5,fa4,fa5	#, tmp182, _4, tmp180
+	bne	a5,zero,.L8	#, tmp182,,
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,18		#,
 	lla	a1,.LC8	#,
@@ -170,27 +192,27 @@ main:
 	call	__assert_fail@plt	#
 .L8:
 # problem72.c:19:     assert(fabs(func0(1, 2, 10) + 1) < 0.01);
-	lla	a5,.LC10	# tmp122,
-	flw	fa3,0(a5)	# tmp121,
-	lla	a5,.LC1	# tmp124,
-	flw	fa4,0(a5)	# tmp123,
-	lla	a5,.LC11	# tmp126,
-	flw	fa5,0(a5)	# tmp125,
-	fmv.s	fa2,fa3	#, tmp121
-	fmv.s	fa1,fa4	#, tmp123
-	fmv.s	fa0,fa5	#, tmp125
+	lla	a5,.LC10	# tmp184,
+	flw	fa3,0(a5)	# tmp183,
+	lla	a5,.LC1	# tmp186,
+	flw	fa4,0(a5)	# tmp185,
+	lla	a5,.LC11	# tmp188,
+	flw	fa5,0(a5)	# tmp187,
+	fmv.s	fa2,fa3	#, tmp183
+	fmv.s	fa1,fa4	#, tmp185
+	fmv.s	fa0,fa5	#, tmp187
 	call	func0		#
 	fmv.s	fa4,fa0	# _5,
-	lla	a5,.LC11	# tmp128,
-	flw	fa5,0(a5)	# tmp127,
-	fadd.s	fa5,fa4,fa5	# _6, _5, tmp127
+# problem72.c:19:     assert(fabs(func0(1, 2, 10) + 1) < 0.01);
+	lla	a5,.LC11	# tmp190,
+	flw	fa5,0(a5)	# tmp189,
+	fadd.s	fa5,fa4,fa5	# _6, _5, tmp189
 	fabs.s	fa5,fa5	# _7, _6
 	fcvt.d.s	fa4,fa5	# _8, _7
-	lla	a5,.LC7	# tmp130,
-	fld	fa5,0(a5)	# tmp129,
-	flt.d	a5,fa4,fa5	#, tmp131, _8, tmp129
-	bne	a5,zero,.L9	#, tmp131,,
-# problem72.c:19:     assert(fabs(func0(1, 2, 10) + 1) < 0.01);
+	lla	a5,.LC7	# tmp192,
+	fld	fa5,0(a5)	# tmp191,
+	flt.d	a5,fa4,fa5	#, tmp193, _8, tmp191
+	bne	a5,zero,.L9	#, tmp193,,
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,19		#,
 	lla	a1,.LC8	#,
@@ -198,27 +220,27 @@ main:
 	call	__assert_fail@plt	#
 .L9:
 # problem72.c:20:     assert(fabs(func0(4, 8, 5) - 8.18) < 0.01);
-	lla	a5,.LC3	# tmp133,
-	flw	fa3,0(a5)	# tmp132,
-	lla	a5,.LC13	# tmp135,
-	flw	fa4,0(a5)	# tmp134,
-	lla	a5,.LC4	# tmp137,
-	flw	fa5,0(a5)	# tmp136,
-	fmv.s	fa2,fa3	#, tmp132
-	fmv.s	fa1,fa4	#, tmp134
-	fmv.s	fa0,fa5	#, tmp136
+	lla	a5,.LC3	# tmp195,
+	flw	fa3,0(a5)	# tmp194,
+	lla	a5,.LC13	# tmp197,
+	flw	fa4,0(a5)	# tmp196,
+	lla	a5,.LC4	# tmp199,
+	flw	fa5,0(a5)	# tmp198,
+	fmv.s	fa2,fa3	#, tmp194
+	fmv.s	fa1,fa4	#, tmp196
+	fmv.s	fa0,fa5	#, tmp198
 	call	func0		#
 	fmv.s	fa5,fa0	# _9,
-	fcvt.d.s	fa4,fa5	# _10, _9
-	lla	a5,.LC14	# tmp139,
-	fld	fa5,0(a5)	# tmp138,
-	fsub.d	fa5,fa4,fa5	# _11, _10, tmp138
-	fabs.d	fa4,fa5	# _12, _11
-	lla	a5,.LC7	# tmp141,
-	fld	fa5,0(a5)	# tmp140,
-	flt.d	a5,fa4,fa5	#, tmp142, _12, tmp140
-	bne	a5,zero,.L10	#, tmp142,,
 # problem72.c:20:     assert(fabs(func0(4, 8, 5) - 8.18) < 0.01);
+	fcvt.d.s	fa4,fa5	# _10, _9
+	lla	a5,.LC14	# tmp201,
+	fld	fa5,0(a5)	# tmp200,
+	fsub.d	fa5,fa4,fa5	# _11, _10, tmp200
+	fabs.d	fa4,fa5	# _12, _11
+	lla	a5,.LC7	# tmp203,
+	fld	fa5,0(a5)	# tmp202,
+	flt.d	a5,fa4,fa5	#, tmp204, _12, tmp202
+	bne	a5,zero,.L10	#, tmp204,,
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,20		#,
 	lla	a1,.LC8	#,
@@ -226,27 +248,27 @@ main:
 	call	__assert_fail@plt	#
 .L10:
 # problem72.c:21:     assert(fabs(func0(2, 2, 2) - 1.73) < 0.01);
-	lla	a5,.LC1	# tmp144,
-	flw	fa3,0(a5)	# tmp143,
-	lla	a5,.LC1	# tmp146,
-	flw	fa4,0(a5)	# tmp145,
-	lla	a5,.LC1	# tmp148,
-	flw	fa5,0(a5)	# tmp147,
-	fmv.s	fa2,fa3	#, tmp143
-	fmv.s	fa1,fa4	#, tmp145
-	fmv.s	fa0,fa5	#, tmp147
+	lla	a5,.LC1	# tmp206,
+	flw	fa3,0(a5)	# tmp205,
+	lla	a5,.LC1	# tmp208,
+	flw	fa4,0(a5)	# tmp207,
+	lla	a5,.LC1	# tmp210,
+	flw	fa5,0(a5)	# tmp209,
+	fmv.s	fa2,fa3	#, tmp205
+	fmv.s	fa1,fa4	#, tmp207
+	fmv.s	fa0,fa5	#, tmp209
 	call	func0		#
 	fmv.s	fa5,fa0	# _13,
-	fcvt.d.s	fa4,fa5	# _14, _13
-	lla	a5,.LC16	# tmp150,
-	fld	fa5,0(a5)	# tmp149,
-	fsub.d	fa5,fa4,fa5	# _15, _14, tmp149
-	fabs.d	fa4,fa5	# _16, _15
-	lla	a5,.LC7	# tmp152,
-	fld	fa5,0(a5)	# tmp151,
-	flt.d	a5,fa4,fa5	#, tmp153, _16, tmp151
-	bne	a5,zero,.L11	#, tmp153,,
 # problem72.c:21:     assert(fabs(func0(2, 2, 2) - 1.73) < 0.01);
+	fcvt.d.s	fa4,fa5	# _14, _13
+	lla	a5,.LC16	# tmp212,
+	fld	fa5,0(a5)	# tmp211,
+	fsub.d	fa5,fa4,fa5	# _15, _14, tmp211
+	fabs.d	fa4,fa5	# _16, _15
+	lla	a5,.LC7	# tmp214,
+	fld	fa5,0(a5)	# tmp213,
+	flt.d	a5,fa4,fa5	#, tmp215, _16, tmp213
+	bne	a5,zero,.L11	#, tmp215,,
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,21		#,
 	lla	a1,.LC8	#,
@@ -254,27 +276,27 @@ main:
 	call	__assert_fail@plt	#
 .L11:
 # problem72.c:22:     assert(fabs(func0(1, 2, 3) + 1) < 0.01);
-	lla	a5,.LC5	# tmp155,
-	flw	fa3,0(a5)	# tmp154,
-	lla	a5,.LC1	# tmp157,
-	flw	fa4,0(a5)	# tmp156,
-	lla	a5,.LC11	# tmp159,
-	flw	fa5,0(a5)	# tmp158,
-	fmv.s	fa2,fa3	#, tmp154
-	fmv.s	fa1,fa4	#, tmp156
-	fmv.s	fa0,fa5	#, tmp158
+	lla	a5,.LC5	# tmp217,
+	flw	fa3,0(a5)	# tmp216,
+	lla	a5,.LC1	# tmp219,
+	flw	fa4,0(a5)	# tmp218,
+	lla	a5,.LC11	# tmp221,
+	flw	fa5,0(a5)	# tmp220,
+	fmv.s	fa2,fa3	#, tmp216
+	fmv.s	fa1,fa4	#, tmp218
+	fmv.s	fa0,fa5	#, tmp220
 	call	func0		#
 	fmv.s	fa4,fa0	# _17,
-	lla	a5,.LC11	# tmp161,
-	flw	fa5,0(a5)	# tmp160,
-	fadd.s	fa5,fa4,fa5	# _18, _17, tmp160
+# problem72.c:22:     assert(fabs(func0(1, 2, 3) + 1) < 0.01);
+	lla	a5,.LC11	# tmp223,
+	flw	fa5,0(a5)	# tmp222,
+	fadd.s	fa5,fa4,fa5	# _18, _17, tmp222
 	fabs.s	fa5,fa5	# _19, _18
 	fcvt.d.s	fa4,fa5	# _20, _19
-	lla	a5,.LC7	# tmp163,
-	fld	fa5,0(a5)	# tmp162,
-	flt.d	a5,fa4,fa5	#, tmp164, _20, tmp162
-	bne	a5,zero,.L12	#, tmp164,,
-# problem72.c:22:     assert(fabs(func0(1, 2, 3) + 1) < 0.01);
+	lla	a5,.LC7	# tmp225,
+	fld	fa5,0(a5)	# tmp224,
+	flt.d	a5,fa4,fa5	#, tmp226, _20, tmp224
+	bne	a5,zero,.L12	#, tmp226,,
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,22		#,
 	lla	a1,.LC8	#,
@@ -282,27 +304,27 @@ main:
 	call	__assert_fail@plt	#
 .L12:
 # problem72.c:23:     assert(fabs(func0(10, 5, 7) - 16.25) < 0.01);
-	lla	a5,.LC19	# tmp166,
-	flw	fa3,0(a5)	# tmp165,
-	lla	a5,.LC3	# tmp168,
-	flw	fa4,0(a5)	# tmp167,
-	lla	a5,.LC10	# tmp170,
-	flw	fa5,0(a5)	# tmp169,
-	fmv.s	fa2,fa3	#, tmp165
-	fmv.s	fa1,fa4	#, tmp167
-	fmv.s	fa0,fa5	#, tmp169
+	lla	a5,.LC19	# tmp228,
+	flw	fa3,0(a5)	# tmp227,
+	lla	a5,.LC3	# tmp230,
+	flw	fa4,0(a5)	# tmp229,
+	lla	a5,.LC10	# tmp232,
+	flw	fa5,0(a5)	# tmp231,
+	fmv.s	fa2,fa3	#, tmp227
+	fmv.s	fa1,fa4	#, tmp229
+	fmv.s	fa0,fa5	#, tmp231
 	call	func0		#
 	fmv.s	fa5,fa0	# _21,
-	fcvt.d.s	fa4,fa5	# _22, _21
-	lla	a5,.LC20	# tmp172,
-	fld	fa5,0(a5)	# tmp171,
-	fsub.d	fa5,fa4,fa5	# _23, _22, tmp171
-	fabs.d	fa4,fa5	# _24, _23
-	lla	a5,.LC7	# tmp174,
-	fld	fa5,0(a5)	# tmp173,
-	flt.d	a5,fa4,fa5	#, tmp175, _24, tmp173
-	bne	a5,zero,.L13	#, tmp175,,
 # problem72.c:23:     assert(fabs(func0(10, 5, 7) - 16.25) < 0.01);
+	fcvt.d.s	fa4,fa5	# _22, _21
+	lla	a5,.LC20	# tmp234,
+	fld	fa5,0(a5)	# tmp233,
+	fsub.d	fa5,fa4,fa5	# _23, _22, tmp233
+	fabs.d	fa4,fa5	# _24, _23
+	lla	a5,.LC7	# tmp236,
+	fld	fa5,0(a5)	# tmp235,
+	flt.d	a5,fa4,fa5	#, tmp237, _24, tmp235
+	bne	a5,zero,.L13	#, tmp237,,
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,23		#,
 	lla	a1,.LC8	#,
@@ -310,27 +332,27 @@ main:
 	call	__assert_fail@plt	#
 .L13:
 # problem72.c:24:     assert(fabs(func0(2, 6, 3) + 1) < 0.01);
-	lla	a5,.LC5	# tmp177,
-	flw	fa3,0(a5)	# tmp176,
-	lla	a5,.LC22	# tmp179,
-	flw	fa4,0(a5)	# tmp178,
-	lla	a5,.LC1	# tmp181,
-	flw	fa5,0(a5)	# tmp180,
-	fmv.s	fa2,fa3	#, tmp176
-	fmv.s	fa1,fa4	#, tmp178
-	fmv.s	fa0,fa5	#, tmp180
+	lla	a5,.LC5	# tmp239,
+	flw	fa3,0(a5)	# tmp238,
+	lla	a5,.LC22	# tmp241,
+	flw	fa4,0(a5)	# tmp240,
+	lla	a5,.LC1	# tmp243,
+	flw	fa5,0(a5)	# tmp242,
+	fmv.s	fa2,fa3	#, tmp238
+	fmv.s	fa1,fa4	#, tmp240
+	fmv.s	fa0,fa5	#, tmp242
 	call	func0		#
 	fmv.s	fa4,fa0	# _25,
-	lla	a5,.LC11	# tmp183,
-	flw	fa5,0(a5)	# tmp182,
-	fadd.s	fa5,fa4,fa5	# _26, _25, tmp182
+# problem72.c:24:     assert(fabs(func0(2, 6, 3) + 1) < 0.01);
+	lla	a5,.LC11	# tmp245,
+	flw	fa5,0(a5)	# tmp244,
+	fadd.s	fa5,fa4,fa5	# _26, _25, tmp244
 	fabs.s	fa5,fa5	# _27, _26
 	fcvt.d.s	fa4,fa5	# _28, _27
-	lla	a5,.LC7	# tmp185,
-	fld	fa5,0(a5)	# tmp184,
-	flt.d	a5,fa4,fa5	#, tmp186, _28, tmp184
-	bne	a5,zero,.L14	#, tmp186,,
-# problem72.c:24:     assert(fabs(func0(2, 6, 3) + 1) < 0.01);
+	lla	a5,.LC7	# tmp247,
+	fld	fa5,0(a5)	# tmp246,
+	flt.d	a5,fa4,fa5	#, tmp248, _28, tmp246
+	bne	a5,zero,.L14	#, tmp248,,
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,24		#,
 	lla	a1,.LC8	#,
@@ -338,27 +360,27 @@ main:
 	call	__assert_fail@plt	#
 .L14:
 # problem72.c:25:     assert(fabs(func0(1, 1, 1) - 0.43) < 0.01);
-	lla	a5,.LC11	# tmp188,
-	flw	fa3,0(a5)	# tmp187,
-	lla	a5,.LC11	# tmp190,
-	flw	fa4,0(a5)	# tmp189,
-	lla	a5,.LC11	# tmp192,
-	flw	fa5,0(a5)	# tmp191,
-	fmv.s	fa2,fa3	#, tmp187
-	fmv.s	fa1,fa4	#, tmp189
-	fmv.s	fa0,fa5	#, tmp191
+	lla	a5,.LC11	# tmp250,
+	flw	fa3,0(a5)	# tmp249,
+	lla	a5,.LC11	# tmp252,
+	flw	fa4,0(a5)	# tmp251,
+	lla	a5,.LC11	# tmp254,
+	flw	fa5,0(a5)	# tmp253,
+	fmv.s	fa2,fa3	#, tmp249
+	fmv.s	fa1,fa4	#, tmp251
+	fmv.s	fa0,fa5	#, tmp253
 	call	func0		#
 	fmv.s	fa5,fa0	# _29,
-	fcvt.d.s	fa4,fa5	# _30, _29
-	lla	a5,.LC24	# tmp194,
-	fld	fa5,0(a5)	# tmp193,
-	fsub.d	fa5,fa4,fa5	# _31, _30, tmp193
-	fabs.d	fa4,fa5	# _32, _31
-	lla	a5,.LC7	# tmp196,
-	fld	fa5,0(a5)	# tmp195,
-	flt.d	a5,fa4,fa5	#, tmp197, _32, tmp195
-	bne	a5,zero,.L15	#, tmp197,,
 # problem72.c:25:     assert(fabs(func0(1, 1, 1) - 0.43) < 0.01);
+	fcvt.d.s	fa4,fa5	# _30, _29
+	lla	a5,.LC24	# tmp256,
+	fld	fa5,0(a5)	# tmp255,
+	fsub.d	fa5,fa4,fa5	# _31, _30, tmp255
+	fabs.d	fa4,fa5	# _32, _31
+	lla	a5,.LC7	# tmp258,
+	fld	fa5,0(a5)	# tmp257,
+	flt.d	a5,fa4,fa5	#, tmp259, _32, tmp257
+	bne	a5,zero,.L15	#, tmp259,,
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,25		#,
 	lla	a1,.LC8	#,
@@ -366,27 +388,27 @@ main:
 	call	__assert_fail@plt	#
 .L15:
 # problem72.c:26:     assert(fabs(func0(2, 2, 10) + 1) < 0.01);
-	lla	a5,.LC10	# tmp199,
-	flw	fa3,0(a5)	# tmp198,
-	lla	a5,.LC1	# tmp201,
-	flw	fa4,0(a5)	# tmp200,
-	lla	a5,.LC1	# tmp203,
-	flw	fa5,0(a5)	# tmp202,
-	fmv.s	fa2,fa3	#, tmp198
-	fmv.s	fa1,fa4	#, tmp200
-	fmv.s	fa0,fa5	#, tmp202
+	lla	a5,.LC10	# tmp261,
+	flw	fa3,0(a5)	# tmp260,
+	lla	a5,.LC1	# tmp263,
+	flw	fa4,0(a5)	# tmp262,
+	lla	a5,.LC1	# tmp265,
+	flw	fa5,0(a5)	# tmp264,
+	fmv.s	fa2,fa3	#, tmp260
+	fmv.s	fa1,fa4	#, tmp262
+	fmv.s	fa0,fa5	#, tmp264
 	call	func0		#
 	fmv.s	fa4,fa0	# _33,
-	lla	a5,.LC11	# tmp205,
-	flw	fa5,0(a5)	# tmp204,
-	fadd.s	fa5,fa4,fa5	# _34, _33, tmp204
+# problem72.c:26:     assert(fabs(func0(2, 2, 10) + 1) < 0.01);
+	lla	a5,.LC11	# tmp267,
+	flw	fa5,0(a5)	# tmp266,
+	fadd.s	fa5,fa4,fa5	# _34, _33, tmp266
 	fabs.s	fa5,fa5	# _35, _34
 	fcvt.d.s	fa4,fa5	# _36, _35
-	lla	a5,.LC7	# tmp207,
-	fld	fa5,0(a5)	# tmp206,
-	flt.d	a5,fa4,fa5	#, tmp208, _36, tmp206
-	bne	a5,zero,.L16	#, tmp208,,
-# problem72.c:26:     assert(fabs(func0(2, 2, 10) + 1) < 0.01);
+	lla	a5,.LC7	# tmp269,
+	fld	fa5,0(a5)	# tmp268,
+	flt.d	a5,fa4,fa5	#, tmp270, _36, tmp268
+	bne	a5,zero,.L16	#, tmp270,,
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,26		#,
 	lla	a1,.LC8	#,
@@ -398,9 +420,15 @@ main:
 # problem72.c:29: }
 	mv	a0,a5	#, <retval>
 	ld	ra,8(sp)		#,
+	.cfi_restore 1
 	ld	s0,0(sp)		#,
+	.cfi_restore 8
+	.cfi_def_cfa 2, 16
 	addi	sp,sp,16	#,,
+	.cfi_def_cfa_offset 0
 	jr	ra		#
+	.cfi_endproc
+.LFE1:
 	.size	main, .-main
 	.section	.rodata
 	.align	3
@@ -465,5 +493,5 @@ __PRETTY_FUNCTION__.0:
 .LC24:
 	.word	-1202590843
 	.word	1071351070
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits

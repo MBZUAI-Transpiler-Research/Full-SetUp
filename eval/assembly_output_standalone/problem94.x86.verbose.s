@@ -1,6 +1,6 @@
 	.file	"code.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -41,10 +41,11 @@ func0:
 	movb	%al, -17(%rbp)	# tmp122, w
 # eval/problem94//code.c:11:         if (islower(w)) {
 	call	__ctype_b_loc@PLT	#
-	movq	(%rax), %rdx	# *_3, _4
-	movsbq	-17(%rbp), %rax	# w, _5
-	addq	%rax, %rax	# _6
-	addq	%rdx, %rax	# _4, _7
+# eval/problem94//code.c:11:         if (islower(w)) {
+	movq	(%rax), %rax	# *_3, _4
+	movsbq	-17(%rbp), %rdx	# w, _5
+	addq	%rdx, %rdx	# _6
+	addq	%rdx, %rax	# _6, _7
 	movzwl	(%rax), %eax	# *_7, _8
 	movzwl	%ax, %eax	# _8, _9
 	andl	$512, %eax	#, _10
@@ -61,10 +62,11 @@ func0:
 .L3:
 # eval/problem94//code.c:13:         } else if (isupper(w)) {
 	call	__ctype_b_loc@PLT	#
-	movq	(%rax), %rdx	# *_13, _14
-	movsbq	-17(%rbp), %rax	# w, _15
-	addq	%rax, %rax	# _16
-	addq	%rdx, %rax	# _14, _17
+# eval/problem94//code.c:13:         } else if (isupper(w)) {
+	movq	(%rax), %rax	# *_13, _14
+	movsbq	-17(%rbp), %rdx	# w, _15
+	addq	%rdx, %rdx	# _16
+	addq	%rdx, %rax	# _16, _17
 	movzwl	(%rax), %eax	# *_17, _18
 	movzwl	%ax, %eax	# _18, _19
 	andl	$256, %eax	#, _20
@@ -155,7 +157,7 @@ func0:
 	.cfi_endproc
 .LFE0:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

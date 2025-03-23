@@ -1,6 +1,6 @@
 	.file	"problem18.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -29,7 +29,7 @@ func0:
 	movq	%rsi, -80(%rbp)	# count, count
 # problem18.c:5: int *func0(const char *music_string, int *count) {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp174
-	movq	%rax, -8(%rbp)	# tmp174, D.3170
+	movq	%rax, -8(%rbp)	# tmp174, D.4034
 	xorl	%eax, %eax	# tmp174
 # problem18.c:6:     int *out = NULL;
 	movq	$0, -40(%rbp)	#, out
@@ -67,6 +67,7 @@ func0:
 	movq	%rax, %rdi	# tmp128,
 	call	strlen@PLT	#
 	movq	%rax, %rdx	# tmp130, _77
+# problem18.c:14:     strcat(temp_music_string, " ");
 	movq	-32(%rbp), %rax	# temp_music_string, tmp131
 	addq	%rdx, %rax	# _77, _78
 	movw	$32, (%rax)	#, MEM <char[1:2]> [(void *)_78]
@@ -275,7 +276,7 @@ func0:
 # problem18.c:50:     return out;
 	movq	-40(%rbp), %rax	# out, _84
 # problem18.c:51: }
-	movq	-8(%rbp), %rdx	# D.3170, tmp175
+	movq	-8(%rbp), %rdx	# D.4034, tmp175
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp175
 	je	.L19	#,
 	call	__stack_chk_fail@PLT	#
@@ -307,6 +308,7 @@ issame:
 	je	.L21	#,
 # problem18.c:59:     if (a_size != b_size) return 0;
 	movl	$0, %eax	#, _10
+# problem18.c:59:     if (a_size != b_size) return 0;
 	jmp	.L22	#
 .L21:
 # problem18.c:60:     for (int i = 0; i < a_size; i++) {
@@ -333,6 +335,7 @@ issame:
 	je	.L24	#,
 # problem18.c:61:         if (a[i] != b[i]) return 0;
 	movl	$0, %eax	#, _10
+# problem18.c:61:         if (a[i] != b[i]) return 0;
 	jmp	.L22	#
 .L24:
 # problem18.c:60:     for (int i = 0; i < a_size; i++) {
@@ -395,7 +398,7 @@ main:
 	subq	$64, %rsp	#,
 # problem18.c:66: int main() {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp140
-	movq	%rax, -8(%rbp)	# tmp140, D.3176
+	movq	%rax, -8(%rbp)	# tmp140, D.4040
 	xorl	%eax, %eax	# tmp140
 # problem18.c:70:     result = func0("", &count);
 	leaq	-60(%rbp), %rax	#, tmp94
@@ -411,9 +414,9 @@ main:
 	movl	$0, %ecx	#,
 	movq	%rax, %rdi	# tmp98,
 	call	issame	#
+# problem18.c:71:     assert(issame(result, count, (int[]){}, 0));
 	testl	%eax, %eax	# _2
 	jne	.L27	#,
-# problem18.c:71:     assert(issame(result, count, (int[]){}, 0));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp99
 	movq	%rax, %rcx	# tmp99,
 	movl	$71, %edx	#,
@@ -435,16 +438,17 @@ main:
 	call	func0	#
 	movq	%rax, -56(%rbp)	# tmp105, result
 # problem18.c:75:     assert(issame(result, count, (int[]){4, 4, 4, 4}, 4));
-	movl	$4, -48(%rbp)	#, MEM[(int[4] *)_75][0]
-	movl	$4, -44(%rbp)	#, MEM[(int[4] *)_75][1]
-	movl	$4, -40(%rbp)	#, MEM[(int[4] *)_75][2]
-	movl	$4, -36(%rbp)	#, MEM[(int[4] *)_75][3]
+	movl	$4, -48(%rbp)	#, MEM[(int[4] *)_74][0]
+	movl	$4, -44(%rbp)	#, MEM[(int[4] *)_74][1]
+	movl	$4, -40(%rbp)	#, MEM[(int[4] *)_74][2]
+	movl	$4, -36(%rbp)	#, MEM[(int[4] *)_74][3]
 	movl	-60(%rbp), %esi	# count, count.7_3
 	leaq	-48(%rbp), %rdx	#, tmp106
 	movq	-56(%rbp), %rax	# result, tmp107
 	movl	$4, %ecx	#,
 	movq	%rax, %rdi	# tmp107,
 	call	issame	#
+# problem18.c:75:     assert(issame(result, count, (int[]){4, 4, 4, 4}, 4));
 	testl	%eax, %eax	# _4
 	jne	.L28	#,
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp108
@@ -468,19 +472,19 @@ main:
 	call	func0	#
 	movq	%rax, -56(%rbp)	# tmp114, result
 # problem18.c:79:     assert(issame(result, count, (int[]){1, 1, 1, 1}, 4));
-	movl	$1, -48(%rbp)	#, MEM[(int[4] *)_75][0]
-	movl	$1, -44(%rbp)	#, MEM[(int[4] *)_75][1]
-	movl	$1, -40(%rbp)	#, MEM[(int[4] *)_75][2]
-	movl	$1, -36(%rbp)	#, MEM[(int[4] *)_75][3]
+	movl	$1, -48(%rbp)	#, MEM[(int[4] *)_74][0]
+	movl	$1, -44(%rbp)	#, MEM[(int[4] *)_74][1]
+	movl	$1, -40(%rbp)	#, MEM[(int[4] *)_74][2]
+	movl	$1, -36(%rbp)	#, MEM[(int[4] *)_74][3]
 	movl	-60(%rbp), %esi	# count, count.8_5
 	leaq	-48(%rbp), %rdx	#, tmp115
 	movq	-56(%rbp), %rax	# result, tmp116
 	movl	$4, %ecx	#,
 	movq	%rax, %rdi	# tmp116,
 	call	issame	#
+# problem18.c:79:     assert(issame(result, count, (int[]){1, 1, 1, 1}, 4));
 	testl	%eax, %eax	# _6
 	jne	.L29	#,
-# problem18.c:79:     assert(issame(result, count, (int[]){1, 1, 1, 1}, 4));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp117
 	movq	%rax, %rcx	# tmp117,
 	movl	$79, %edx	#,
@@ -502,23 +506,23 @@ main:
 	call	func0	#
 	movq	%rax, -56(%rbp)	# tmp123, result
 # problem18.c:83:     assert(issame(result, count, (int[]){2, 2, 1, 1, 4, 4, 4, 4}, 8));
-	movl	$2, -48(%rbp)	#, MEM[(int[8] *)_75][0]
-	movl	$2, -44(%rbp)	#, MEM[(int[8] *)_75][1]
-	movl	$1, -40(%rbp)	#, MEM[(int[8] *)_75][2]
-	movl	$1, -36(%rbp)	#, MEM[(int[8] *)_75][3]
-	movl	$4, -32(%rbp)	#, MEM[(int[8] *)_75][4]
-	movl	$4, -28(%rbp)	#, MEM[(int[8] *)_75][5]
-	movl	$4, -24(%rbp)	#, MEM[(int[8] *)_75][6]
-	movl	$4, -20(%rbp)	#, MEM[(int[8] *)_75][7]
+	movl	$2, -48(%rbp)	#, MEM[(int[8] *)_74][0]
+	movl	$2, -44(%rbp)	#, MEM[(int[8] *)_74][1]
+	movl	$1, -40(%rbp)	#, MEM[(int[8] *)_74][2]
+	movl	$1, -36(%rbp)	#, MEM[(int[8] *)_74][3]
+	movl	$4, -32(%rbp)	#, MEM[(int[8] *)_74][4]
+	movl	$4, -28(%rbp)	#, MEM[(int[8] *)_74][5]
+	movl	$4, -24(%rbp)	#, MEM[(int[8] *)_74][6]
+	movl	$4, -20(%rbp)	#, MEM[(int[8] *)_74][7]
 	movl	-60(%rbp), %esi	# count, count.9_7
 	leaq	-48(%rbp), %rdx	#, tmp124
 	movq	-56(%rbp), %rax	# result, tmp125
 	movl	$8, %ecx	#,
 	movq	%rax, %rdi	# tmp125,
 	call	issame	#
+# problem18.c:83:     assert(issame(result, count, (int[]){2, 2, 1, 1, 4, 4, 4, 4}, 8));
 	testl	%eax, %eax	# _8
 	jne	.L30	#,
-# problem18.c:83:     assert(issame(result, count, (int[]){2, 2, 1, 1, 4, 4, 4, 4}, 8));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp126
 	movq	%rax, %rcx	# tmp126,
 	movl	$83, %edx	#,
@@ -540,23 +544,23 @@ main:
 	call	func0	#
 	movq	%rax, -56(%rbp)	# tmp132, result
 # problem18.c:87:     assert(issame(result, count, (int[]){2, 1, 2, 1, 4, 2, 4, 2}, 8));
-	movl	$2, -48(%rbp)	#, MEM[(int[8] *)_75][0]
-	movl	$1, -44(%rbp)	#, MEM[(int[8] *)_75][1]
-	movl	$2, -40(%rbp)	#, MEM[(int[8] *)_75][2]
-	movl	$1, -36(%rbp)	#, MEM[(int[8] *)_75][3]
-	movl	$4, -32(%rbp)	#, MEM[(int[8] *)_75][4]
-	movl	$2, -28(%rbp)	#, MEM[(int[8] *)_75][5]
-	movl	$4, -24(%rbp)	#, MEM[(int[8] *)_75][6]
-	movl	$2, -20(%rbp)	#, MEM[(int[8] *)_75][7]
+	movl	$2, -48(%rbp)	#, MEM[(int[8] *)_74][0]
+	movl	$1, -44(%rbp)	#, MEM[(int[8] *)_74][1]
+	movl	$2, -40(%rbp)	#, MEM[(int[8] *)_74][2]
+	movl	$1, -36(%rbp)	#, MEM[(int[8] *)_74][3]
+	movl	$4, -32(%rbp)	#, MEM[(int[8] *)_74][4]
+	movl	$2, -28(%rbp)	#, MEM[(int[8] *)_74][5]
+	movl	$4, -24(%rbp)	#, MEM[(int[8] *)_74][6]
+	movl	$2, -20(%rbp)	#, MEM[(int[8] *)_74][7]
 	movl	-60(%rbp), %esi	# count, count.10_9
 	leaq	-48(%rbp), %rdx	#, tmp133
 	movq	-56(%rbp), %rax	# result, tmp134
 	movl	$8, %ecx	#,
 	movq	%rax, %rdi	# tmp134,
 	call	issame	#
+# problem18.c:87:     assert(issame(result, count, (int[]){2, 1, 2, 1, 4, 2, 4, 2}, 8));
 	testl	%eax, %eax	# _10
 	jne	.L31	#,
-# problem18.c:87:     assert(issame(result, count, (int[]){2, 1, 2, 1, 4, 2, 4, 2}, 8));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp135
 	movq	%rax, %rcx	# tmp135,
 	movl	$87, %edx	#,
@@ -571,12 +575,11 @@ main:
 	movq	%rax, %rdi	# tmp138,
 	call	free@PLT	#
 # problem18.c:90:     return 0;
-	movl	$0, %eax	#, _67
+	movl	$0, %eax	#, _66
 # problem18.c:91: }
-	movq	-8(%rbp), %rdx	# D.3176, tmp141
+	movq	-8(%rbp), %rdx	# D.4040, tmp141
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp141
 	je	.L33	#,
-# problem18.c:91: }
 	call	__stack_chk_fail@PLT	#
 .L33:
 	leave	
@@ -590,7 +593,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

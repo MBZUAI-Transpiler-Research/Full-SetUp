@@ -1,6 +1,6 @@
 	.file	"code.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -67,12 +67,12 @@ func0:
 	leaq	(%rdx,%rax), %rcx	#, _7
 # eval/problem89//code.c:17:         (*out_array)[i] = array[i];
 	movq	-56(%rbp), %rax	# out_array, tmp167
-	movq	(%rax), %rdx	# *out_array_90(D), _8
+	movq	(%rax), %rax	# *out_array_90(D), _8
 # eval/problem89//code.c:17:         (*out_array)[i] = array[i];
-	movl	-24(%rbp), %eax	# i, tmp168
-	cltq
-	salq	$2, %rax	#, _10
-	addq	%rax, %rdx	# _10, _11
+	movl	-24(%rbp), %edx	# i, tmp168
+	movslq	%edx, %rdx	# tmp168, _9
+	salq	$2, %rdx	#, _10
+	addq	%rax, %rdx	# _8, _11
 # eval/problem89//code.c:17:         (*out_array)[i] = array[i];
 	movl	(%rcx), %eax	# *_7, _12
 # eval/problem89//code.c:17:         (*out_array)[i] = array[i];
@@ -96,13 +96,15 @@ func0:
 	addq	%rcx, %rax	# _16, _17
 	movl	(%rax), %eax	# *_17, _18
 # eval/problem89//code.c:20:     int shouldSortAscending = (array[0] + array[size - 1]) % 2 == 1;
-	addl	%edx, %eax	# _13, _19
+	addl	%eax, %edx	# _18, _19
 # eval/problem89//code.c:20:     int shouldSortAscending = (array[0] + array[size - 1]) % 2 == 1;
-	cltd
-	shrl	$31, %edx	#, tmp174
-	addl	%edx, %eax	# tmp174, tmp175
-	andl	$1, %eax	#, tmp176
-	subl	%edx, %eax	# tmp174, tmp177
+	movl	%edx, %eax	# _19, tmp173
+	sarl	$31, %eax	#, tmp173
+	shrl	$31, %eax	#, tmp174
+	addl	%eax, %edx	# tmp174, tmp175
+	andl	$1, %edx	#, tmp176
+	subl	%eax, %edx	# tmp174, tmp177
+	movl	%edx, %eax	# tmp177, _20
 # eval/problem89//code.c:20:     int shouldSortAscending = (array[0] + array[size - 1]) % 2 == 1;
 	cmpl	$1, %eax	#, _20
 	sete	%al	#, _21
@@ -126,64 +128,64 @@ func0:
 	je	.L9	#,
 # eval/problem89//code.c:25:                 if ((*out_array)[i] > (*out_array)[j]) {
 	movq	-56(%rbp), %rax	# out_array, tmp183
-	movq	(%rax), %rdx	# *out_array_90(D), _22
+	movq	(%rax), %rax	# *out_array_90(D), _22
 # eval/problem89//code.c:25:                 if ((*out_array)[i] > (*out_array)[j]) {
-	movl	-20(%rbp), %eax	# i, tmp184
-	cltq
-	salq	$2, %rax	#, _24
-	addq	%rdx, %rax	# _22, _25
+	movl	-20(%rbp), %edx	# i, tmp184
+	movslq	%edx, %rdx	# tmp184, _23
+	salq	$2, %rdx	#, _24
+	addq	%rdx, %rax	# _24, _25
 	movl	(%rax), %edx	# *_25, _26
 # eval/problem89//code.c:25:                 if ((*out_array)[i] > (*out_array)[j]) {
 	movq	-56(%rbp), %rax	# out_array, tmp185
-	movq	(%rax), %rcx	# *out_array_90(D), _27
+	movq	(%rax), %rax	# *out_array_90(D), _27
 # eval/problem89//code.c:25:                 if ((*out_array)[i] > (*out_array)[j]) {
-	movl	-16(%rbp), %eax	# j, tmp186
-	cltq
-	salq	$2, %rax	#, _29
-	addq	%rcx, %rax	# _27, _30
+	movl	-16(%rbp), %ecx	# j, tmp186
+	movslq	%ecx, %rcx	# tmp186, _28
+	salq	$2, %rcx	#, _29
+	addq	%rcx, %rax	# _29, _30
 	movl	(%rax), %eax	# *_30, _31
 # eval/problem89//code.c:25:                 if ((*out_array)[i] > (*out_array)[j]) {
 	cmpl	%eax, %edx	# _31, _26
 	jle	.L10	#,
 # eval/problem89//code.c:26:                     int temp = (*out_array)[i];
 	movq	-56(%rbp), %rax	# out_array, tmp187
-	movq	(%rax), %rdx	# *out_array_90(D), _32
+	movq	(%rax), %rax	# *out_array_90(D), _32
 # eval/problem89//code.c:26:                     int temp = (*out_array)[i];
-	movl	-20(%rbp), %eax	# i, tmp188
-	cltq
-	salq	$2, %rax	#, _34
-	addq	%rdx, %rax	# _32, _35
+	movl	-20(%rbp), %edx	# i, tmp188
+	movslq	%edx, %rdx	# tmp188, _33
+	salq	$2, %rdx	#, _34
+	addq	%rdx, %rax	# _34, _35
 # eval/problem89//code.c:26:                     int temp = (*out_array)[i];
 	movl	(%rax), %eax	# *_35, tmp189
 	movl	%eax, -4(%rbp)	# tmp189, temp
 # eval/problem89//code.c:27:                     (*out_array)[i] = (*out_array)[j];
 	movq	-56(%rbp), %rax	# out_array, tmp190
-	movq	(%rax), %rdx	# *out_array_90(D), _36
+	movq	(%rax), %rax	# *out_array_90(D), _36
 # eval/problem89//code.c:27:                     (*out_array)[i] = (*out_array)[j];
-	movl	-16(%rbp), %eax	# j, tmp191
-	cltq
-	salq	$2, %rax	#, _38
-	leaq	(%rdx,%rax), %rcx	#, _39
+	movl	-16(%rbp), %edx	# j, tmp191
+	movslq	%edx, %rdx	# tmp191, _37
+	salq	$2, %rdx	#, _38
+	leaq	(%rax,%rdx), %rcx	#, _39
 # eval/problem89//code.c:27:                     (*out_array)[i] = (*out_array)[j];
 	movq	-56(%rbp), %rax	# out_array, tmp192
-	movq	(%rax), %rdx	# *out_array_90(D), _40
+	movq	(%rax), %rax	# *out_array_90(D), _40
 # eval/problem89//code.c:27:                     (*out_array)[i] = (*out_array)[j];
-	movl	-20(%rbp), %eax	# i, tmp193
-	cltq
-	salq	$2, %rax	#, _42
-	addq	%rax, %rdx	# _42, _43
+	movl	-20(%rbp), %edx	# i, tmp193
+	movslq	%edx, %rdx	# tmp193, _41
+	salq	$2, %rdx	#, _42
+	addq	%rax, %rdx	# _40, _43
 # eval/problem89//code.c:27:                     (*out_array)[i] = (*out_array)[j];
 	movl	(%rcx), %eax	# *_39, _44
 # eval/problem89//code.c:27:                     (*out_array)[i] = (*out_array)[j];
 	movl	%eax, (%rdx)	# _44, *_43
 # eval/problem89//code.c:28:                     (*out_array)[j] = temp;
 	movq	-56(%rbp), %rax	# out_array, tmp194
-	movq	(%rax), %rdx	# *out_array_90(D), _45
+	movq	(%rax), %rax	# *out_array_90(D), _45
 # eval/problem89//code.c:28:                     (*out_array)[j] = temp;
-	movl	-16(%rbp), %eax	# j, tmp195
-	cltq
-	salq	$2, %rax	#, _47
-	addq	%rax, %rdx	# _47, _48
+	movl	-16(%rbp), %edx	# j, tmp195
+	movslq	%edx, %rdx	# tmp195, _46
+	salq	$2, %rdx	#, _47
+	addq	%rax, %rdx	# _45, _48
 # eval/problem89//code.c:28:                     (*out_array)[j] = temp;
 	movl	-4(%rbp), %eax	# temp, tmp196
 	movl	%eax, (%rdx)	# tmp196, *_48
@@ -191,64 +193,64 @@ func0:
 .L9:
 # eval/problem89//code.c:31:                 if ((*out_array)[i] < (*out_array)[j]) {
 	movq	-56(%rbp), %rax	# out_array, tmp197
-	movq	(%rax), %rdx	# *out_array_90(D), _49
+	movq	(%rax), %rax	# *out_array_90(D), _49
 # eval/problem89//code.c:31:                 if ((*out_array)[i] < (*out_array)[j]) {
-	movl	-20(%rbp), %eax	# i, tmp198
-	cltq
-	salq	$2, %rax	#, _51
-	addq	%rdx, %rax	# _49, _52
+	movl	-20(%rbp), %edx	# i, tmp198
+	movslq	%edx, %rdx	# tmp198, _50
+	salq	$2, %rdx	#, _51
+	addq	%rdx, %rax	# _51, _52
 	movl	(%rax), %edx	# *_52, _53
 # eval/problem89//code.c:31:                 if ((*out_array)[i] < (*out_array)[j]) {
 	movq	-56(%rbp), %rax	# out_array, tmp199
-	movq	(%rax), %rcx	# *out_array_90(D), _54
+	movq	(%rax), %rax	# *out_array_90(D), _54
 # eval/problem89//code.c:31:                 if ((*out_array)[i] < (*out_array)[j]) {
-	movl	-16(%rbp), %eax	# j, tmp200
-	cltq
-	salq	$2, %rax	#, _56
-	addq	%rcx, %rax	# _54, _57
+	movl	-16(%rbp), %ecx	# j, tmp200
+	movslq	%ecx, %rcx	# tmp200, _55
+	salq	$2, %rcx	#, _56
+	addq	%rcx, %rax	# _56, _57
 	movl	(%rax), %eax	# *_57, _58
 # eval/problem89//code.c:31:                 if ((*out_array)[i] < (*out_array)[j]) {
 	cmpl	%eax, %edx	# _58, _53
 	jge	.L10	#,
 # eval/problem89//code.c:32:                     int temp = (*out_array)[i];
 	movq	-56(%rbp), %rax	# out_array, tmp201
-	movq	(%rax), %rdx	# *out_array_90(D), _59
+	movq	(%rax), %rax	# *out_array_90(D), _59
 # eval/problem89//code.c:32:                     int temp = (*out_array)[i];
-	movl	-20(%rbp), %eax	# i, tmp202
-	cltq
-	salq	$2, %rax	#, _61
-	addq	%rdx, %rax	# _59, _62
+	movl	-20(%rbp), %edx	# i, tmp202
+	movslq	%edx, %rdx	# tmp202, _60
+	salq	$2, %rdx	#, _61
+	addq	%rdx, %rax	# _61, _62
 # eval/problem89//code.c:32:                     int temp = (*out_array)[i];
 	movl	(%rax), %eax	# *_62, tmp203
 	movl	%eax, -8(%rbp)	# tmp203, temp
 # eval/problem89//code.c:33:                     (*out_array)[i] = (*out_array)[j];
 	movq	-56(%rbp), %rax	# out_array, tmp204
-	movq	(%rax), %rdx	# *out_array_90(D), _63
+	movq	(%rax), %rax	# *out_array_90(D), _63
 # eval/problem89//code.c:33:                     (*out_array)[i] = (*out_array)[j];
-	movl	-16(%rbp), %eax	# j, tmp205
-	cltq
-	salq	$2, %rax	#, _65
-	leaq	(%rdx,%rax), %rcx	#, _66
+	movl	-16(%rbp), %edx	# j, tmp205
+	movslq	%edx, %rdx	# tmp205, _64
+	salq	$2, %rdx	#, _65
+	leaq	(%rax,%rdx), %rcx	#, _66
 # eval/problem89//code.c:33:                     (*out_array)[i] = (*out_array)[j];
 	movq	-56(%rbp), %rax	# out_array, tmp206
-	movq	(%rax), %rdx	# *out_array_90(D), _67
+	movq	(%rax), %rax	# *out_array_90(D), _67
 # eval/problem89//code.c:33:                     (*out_array)[i] = (*out_array)[j];
-	movl	-20(%rbp), %eax	# i, tmp207
-	cltq
-	salq	$2, %rax	#, _69
-	addq	%rax, %rdx	# _69, _70
+	movl	-20(%rbp), %edx	# i, tmp207
+	movslq	%edx, %rdx	# tmp207, _68
+	salq	$2, %rdx	#, _69
+	addq	%rax, %rdx	# _67, _70
 # eval/problem89//code.c:33:                     (*out_array)[i] = (*out_array)[j];
 	movl	(%rcx), %eax	# *_66, _71
 # eval/problem89//code.c:33:                     (*out_array)[i] = (*out_array)[j];
 	movl	%eax, (%rdx)	# _71, *_70
 # eval/problem89//code.c:34:                     (*out_array)[j] = temp;
 	movq	-56(%rbp), %rax	# out_array, tmp208
-	movq	(%rax), %rdx	# *out_array_90(D), _72
+	movq	(%rax), %rax	# *out_array_90(D), _72
 # eval/problem89//code.c:34:                     (*out_array)[j] = temp;
-	movl	-16(%rbp), %eax	# j, tmp209
-	cltq
-	salq	$2, %rax	#, _74
-	addq	%rax, %rdx	# _74, _75
+	movl	-16(%rbp), %edx	# j, tmp209
+	movslq	%edx, %rdx	# tmp209, _73
+	salq	$2, %rdx	#, _74
+	addq	%rax, %rdx	# _72, _75
 # eval/problem89//code.c:34:                     (*out_array)[j] = temp;
 	movl	-8(%rbp), %eax	# temp, tmp210
 	movl	%eax, (%rdx)	# tmp210, *_75
@@ -277,7 +279,7 @@ func0:
 	.cfi_endproc
 .LFE6:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

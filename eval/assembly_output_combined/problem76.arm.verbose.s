@@ -1,7 +1,7 @@
 	.arch armv8-a
 	.file	"problem76.c"
-// GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (aarch64-linux-gnu)
-//	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+// GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (aarch64-linux-gnu)
+//	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 // GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 // options passed: -mlittle-endian -mabi=lp64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection
@@ -21,6 +21,7 @@ func0:
 	bgt	.L2		//,
 // problem76.c:5:     if (a < 2) return 0;
 	mov	w0, 0	// _10,
+// problem76.c:5:     if (a < 2) return 0;
 	b	.L3		//
 .L2:
 // problem76.c:6:     int num = 0;
@@ -137,9 +138,9 @@ main:
 // problem76.c:23:     assert(func0(5) == 0);
 	mov	w0, 5	//,
 	bl	func0		//
+// problem76.c:23:     assert(func0(5) == 0);
 	cmp	w0, 0	// _1,
 	beq	.L10		//,
-// problem76.c:23:     assert(func0(5) == 0);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp104,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp104,
 	mov	w2, 23	//,
@@ -152,9 +153,9 @@ main:
 // problem76.c:24:     assert(func0(30) == 1);
 	mov	w0, 30	//,
 	bl	func0		//
+// problem76.c:24:     assert(func0(30) == 1);
 	cmp	w0, 1	// _2,
 	beq	.L11		//,
-// problem76.c:24:     assert(func0(30) == 1);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp107,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp107,
 	mov	w2, 24	//,
@@ -167,9 +168,9 @@ main:
 // problem76.c:25:     assert(func0(8) == 1); // 8 = 2 * 2 * 2
 	mov	w0, 8	//,
 	bl	func0		//
+// problem76.c:25:     assert(func0(8) == 1); // 8 = 2 * 2 * 2
 	cmp	w0, 1	// _3,
 	beq	.L12		//,
-// problem76.c:25:     assert(func0(8) == 1); // 8 = 2 * 2 * 2
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp110,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp110,
 	mov	w2, 25	//,
@@ -182,9 +183,9 @@ main:
 // problem76.c:26:     assert(func0(10) == 0);
 	mov	w0, 10	//,
 	bl	func0		//
+// problem76.c:26:     assert(func0(10) == 0);
 	cmp	w0, 0	// _4,
 	beq	.L13		//,
-// problem76.c:26:     assert(func0(10) == 0);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp113,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp113,
 	mov	w2, 26	//,
@@ -197,9 +198,9 @@ main:
 // problem76.c:27:     assert(func0(125) == 1); // 125 = 5 * 5 * 5 (three times the same prime)
 	mov	w0, 125	//,
 	bl	func0		//
+// problem76.c:27:     assert(func0(125) == 1); // 125 = 5 * 5 * 5 (three times the same prime)
 	cmp	w0, 1	// _5,
 	beq	.L14		//,
-// problem76.c:27:     assert(func0(125) == 1); // 125 = 5 * 5 * 5 (three times the same prime)
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp116,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp116,
 	mov	w2, 27	//,
@@ -212,9 +213,9 @@ main:
 // problem76.c:28:     assert(func0(3 * 5 * 7) == 1);
 	mov	w0, 105	//,
 	bl	func0		//
+// problem76.c:28:     assert(func0(3 * 5 * 7) == 1);
 	cmp	w0, 1	// _6,
 	beq	.L15		//,
-// problem76.c:28:     assert(func0(3 * 5 * 7) == 1);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp119,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp119,
 	mov	w2, 28	//,
@@ -227,9 +228,9 @@ main:
 // problem76.c:29:     assert(func0(3 * 6 * 7) == 0);
 	mov	w0, 126	//,
 	bl	func0		//
+// problem76.c:29:     assert(func0(3 * 6 * 7) == 0);
 	cmp	w0, 0	// _7,
 	beq	.L16		//,
-// problem76.c:29:     assert(func0(3 * 6 * 7) == 0);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp122,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp122,
 	mov	w2, 29	//,
@@ -242,9 +243,9 @@ main:
 // problem76.c:30:     assert(func0(9 * 9 * 9) == 0);
 	mov	w0, 729	//,
 	bl	func0		//
+// problem76.c:30:     assert(func0(9 * 9 * 9) == 0);
 	cmp	w0, 0	// _8,
 	beq	.L17		//,
-// problem76.c:30:     assert(func0(9 * 9 * 9) == 0);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp125,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp125,
 	mov	w2, 30	//,
@@ -257,9 +258,9 @@ main:
 // problem76.c:31:     assert(func0(11 * 9 * 9) == 0);
 	mov	w0, 891	//,
 	bl	func0		//
+// problem76.c:31:     assert(func0(11 * 9 * 9) == 0);
 	cmp	w0, 0	// _9,
 	beq	.L18		//,
-// problem76.c:31:     assert(func0(11 * 9 * 9) == 0);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp128,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp128,
 	mov	w2, 31	//,
@@ -272,9 +273,9 @@ main:
 // problem76.c:32:     assert(func0(11 * 13 * 7) == 1);
 	mov	w0, 1001	//,
 	bl	func0		//
+// problem76.c:32:     assert(func0(11 * 13 * 7) == 1);
 	cmp	w0, 1	// _10,
 	beq	.L19		//,
-// problem76.c:32:     assert(func0(11 * 13 * 7) == 1);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp131,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp131,
 	mov	w2, 32	//,
@@ -305,5 +306,5 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits

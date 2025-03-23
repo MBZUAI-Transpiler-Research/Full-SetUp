@@ -132,11 +132,12 @@ func0:
 	movl	-240(%rbp), %eax
 	imull	-232(%rbp), %eax
 	movl	-236(%rbp), %edx
-	movl	%edx, %ecx
-	imull	-228(%rbp), %ecx
+	movl	%edx, %esi
+	imull	-228(%rbp), %esi
 	cltd
-	idivl	%ecx
-	movl	%edx, %eax
+	idivl	%esi
+	movl	%edx, %ecx
+	movl	%ecx, %eax
 	testl	%eax, %eax
 	jne	.L10
 	movl	$1, %eax
@@ -450,7 +451,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

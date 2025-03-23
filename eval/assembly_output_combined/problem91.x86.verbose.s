@@ -1,6 +1,6 @@
 	.file	"problem91.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -23,6 +23,7 @@ func0:
 	jg	.L2	#,
 # problem91.c:5:     if (size < 2) return -1;
 	movl	$-1, %eax	#, _24
+# problem91.c:5:     if (size < 2) return -1;
 	jmp	.L3	#
 .L2:
 # problem91.c:7:     int first = INT_MAX, second = INT_MAX;
@@ -100,6 +101,7 @@ func0:
 	jne	.L8	#,
 # problem91.c:17:     if (second == INT_MAX) return -1;
 	movl	$-1, %eax	#, _24
+# problem91.c:17:     if (second == INT_MAX) return -1;
 	jmp	.L3	#
 .L8:
 # problem91.c:18:     return second;
@@ -142,7 +144,7 @@ main:
 	addq	$-128, %rsp	#,
 # problem91.c:25: int main() {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp115
-	movq	%rax, -8(%rbp)	# tmp115, D.2422
+	movq	%rax, -8(%rbp)	# tmp115, D.3252
 	xorl	%eax, %eax	# tmp115
 # problem91.c:26:     int test1[] = {1, 2, 3, 4, 5};
 	movl	$1, -96(%rbp)	#, test1[0]
@@ -155,9 +157,9 @@ main:
 	movl	$5, %esi	#,
 	movq	%rax, %rdi	# tmp90,
 	call	func0	#
+# problem91.c:27:     assert(func0(test1, 5) == 2);
 	cmpl	$2, %eax	#, _1
 	je	.L10	#,
-# problem91.c:27:     assert(func0(test1, 5) == 2);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp91
 	movq	%rax, %rcx	# tmp91,
 	movl	$27, %edx	#,
@@ -178,9 +180,9 @@ main:
 	movl	$5, %esi	#,
 	movq	%rax, %rdi	# tmp94,
 	call	func0	#
+# problem91.c:30:     assert(func0(test2, 5) == 2);
 	cmpl	$2, %eax	#, _2
 	je	.L11	#,
-# problem91.c:30:     assert(func0(test2, 5) == 2);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp95
 	movq	%rax, %rcx	# tmp95,
 	movl	$30, %edx	#,
@@ -195,9 +197,9 @@ main:
 	movl	$0, %esi	#,
 	movq	%rax, %rdi	# tmp98,
 	call	func0	#
+# problem91.c:32:     assert(func0((int[]){}, 0) == -1);
 	cmpl	$-1, %eax	#, _3
 	je	.L12	#,
-# problem91.c:32:     assert(func0((int[]){}, 0) == -1);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp99
 	movq	%rax, %rcx	# tmp99,
 	movl	$32, %edx	#,
@@ -215,6 +217,7 @@ main:
 	movl	$2, %esi	#,
 	movq	%rax, %rdi	# tmp102,
 	call	func0	#
+# problem91.c:35:     assert(func0(test4, 2) == -1);
 	cmpl	$-1, %eax	#, _4
 	je	.L13	#,
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp103
@@ -227,19 +230,19 @@ main:
 	call	__assert_fail@PLT	#
 .L13:
 # problem91.c:37:     int test5[] = {1, 1, 1, 1, 0};
-	movl	$1, -32(%rbp)	#, MEM[(int[5] *)_51][0]
-	movl	$1, -28(%rbp)	#, MEM[(int[5] *)_51][1]
-	movl	$1, -24(%rbp)	#, MEM[(int[5] *)_51][2]
-	movl	$1, -20(%rbp)	#, MEM[(int[5] *)_51][3]
-	movl	$0, -16(%rbp)	#, MEM[(int[5] *)_51][4]
+	movl	$1, -32(%rbp)	#, MEM[(int[5] *)_50][0]
+	movl	$1, -28(%rbp)	#, MEM[(int[5] *)_50][1]
+	movl	$1, -24(%rbp)	#, MEM[(int[5] *)_50][2]
+	movl	$1, -20(%rbp)	#, MEM[(int[5] *)_50][3]
+	movl	$0, -16(%rbp)	#, MEM[(int[5] *)_50][4]
 # problem91.c:38:     assert(func0(test5, 5) == 1);
 	leaq	-32(%rbp), %rax	#, tmp106
 	movl	$5, %esi	#,
 	movq	%rax, %rdi	# tmp106,
 	call	func0	#
+# problem91.c:38:     assert(func0(test5, 5) == 1);
 	cmpl	$1, %eax	#, _5
 	je	.L14	#,
-# problem91.c:38:     assert(func0(test5, 5) == 1);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp107
 	movq	%rax, %rcx	# tmp107,
 	movl	$38, %edx	#,
@@ -259,9 +262,9 @@ main:
 	movl	$4, %esi	#,
 	movq	%rax, %rdi	# tmp110,
 	call	func0	#
+# problem91.c:41:     assert(func0(test6, 4) == -35);
 	cmpl	$-35, %eax	#, _6
 	je	.L15	#,
-# problem91.c:41:     assert(func0(test6, 4) == -35);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp111
 	movq	%rax, %rcx	# tmp111,
 	movl	$41, %edx	#,
@@ -272,9 +275,9 @@ main:
 	call	__assert_fail@PLT	#
 .L15:
 # problem91.c:43:     return 0;
-	movl	$0, %eax	#, _43
+	movl	$0, %eax	#, _42
 # problem91.c:44: }
-	movq	-8(%rbp), %rdx	# D.2422, tmp116
+	movq	-8(%rbp), %rdx	# D.3252, tmp116
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp116
 	je	.L17	#,
 	call	__stack_chk_fail@PLT	#
@@ -290,7 +293,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

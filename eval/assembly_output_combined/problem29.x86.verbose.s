@@ -1,6 +1,6 @@
 	.file	"problem29.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -138,7 +138,7 @@ main:
 	subq	$96, %rsp	#,
 # problem29.c:31: int main() {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp120
-	movq	%rax, -8(%rbp)	# tmp120, D.3109
+	movq	%rax, -8(%rbp)	# tmp120, D.3973
 	xorl	%eax, %eax	# tmp120
 # problem29.c:34:     result = func0(empty_strings, 0);
 	leaq	-88(%rbp), %rax	#, tmp88
@@ -148,8 +148,8 @@ main:
 	movq	%rax, -96(%rbp)	# tmp89, result
 # problem29.c:35:     assert(strcmp(result, "") == 0);
 	movq	-96(%rbp), %rax	# result, tmp90
-	movzbl	(%rax), %eax	# MEM[(const unsigned char * {ref-all})result_7], _8
-	movzbl	%al, %eax	# _8, _1
+	movzbl	(%rax), %eax	# MEM[(const unsigned char * {ref-all})result_6], _7
+	movzbl	%al, %eax	# _7, _1
 	testl	%eax, %eax	# _1
 	je	.L9	#,
 # problem29.c:35:     assert(strcmp(result, "") == 0);
@@ -185,9 +185,9 @@ main:
 	movq	%rdx, %rsi	# tmp101,
 	movq	%rax, %rdi	# tmp100,
 	call	strcmp@PLT	#
+# problem29.c:40:     assert(strcmp(result, "xyz") == 0);
 	testl	%eax, %eax	# _2
 	je	.L10	#,
-# problem29.c:40:     assert(strcmp(result, "xyz") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp102
 	movq	%rax, %rcx	# tmp102,
 	movl	$40, %edx	#,
@@ -224,9 +224,9 @@ main:
 	movq	%rdx, %rsi	# tmp114,
 	movq	%rax, %rdi	# tmp113,
 	call	strcmp@PLT	#
+# problem29.c:45:     assert(strcmp(result, "xyzwk") == 0);
 	testl	%eax, %eax	# _3
 	je	.L11	#,
-# problem29.c:45:     assert(strcmp(result, "xyzwk") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp115
 	movq	%rax, %rcx	# tmp115,
 	movl	$45, %edx	#,
@@ -241,9 +241,9 @@ main:
 	movq	%rax, %rdi	# tmp118,
 	call	free@PLT	#
 # problem29.c:48:     return 0;
-	movl	$0, %eax	#, _27
+	movl	$0, %eax	#, _26
 # problem29.c:49: }
-	movq	-8(%rbp), %rdx	# D.3109, tmp121
+	movq	-8(%rbp), %rdx	# D.3973, tmp121
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp121
 	je	.L13	#,
 	call	__stack_chk_fail@PLT	#
@@ -259,7 +259,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

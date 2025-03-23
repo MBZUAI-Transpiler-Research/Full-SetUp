@@ -1,6 +1,6 @@
 	.file	"code.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -23,7 +23,7 @@ func0:
 	movl	%esi, -76(%rbp)	# n, n
 # eval/problem68//code.c:5: int func0(const char *s, int n) {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp125
-	movq	%rax, -24(%rbp)	# tmp125, D.3003
+	movq	%rax, -24(%rbp)	# tmp125, D.3840
 	xorl	%eax, %eax	# tmp125
 # eval/problem68//code.c:6:     char num1[10] = "";
 	movq	$0, -44(%rbp)	#, num1
@@ -42,15 +42,16 @@ func0:
 .L6:
 # eval/problem68//code.c:11:         if (isdigit(s[i])) {
 	call	__ctype_b_loc@PLT	#
-	movq	(%rax), %rdx	# *_1, _2
-	movl	-48(%rbp), %eax	# i, tmp109
-	movslq	%eax, %rcx	# tmp109, _3
-	movq	-72(%rbp), %rax	# s, tmp110
-	addq	%rcx, %rax	# _3, _4
-	movzbl	(%rax), %eax	# *_4, _5
-	movsbq	%al, %rax	# _5, _6
-	addq	%rax, %rax	# _7
-	addq	%rdx, %rax	# _2, _8
+# eval/problem68//code.c:11:         if (isdigit(s[i])) {
+	movq	(%rax), %rax	# *_1, _2
+	movl	-48(%rbp), %edx	# i, tmp109
+	movslq	%edx, %rcx	# tmp109, _3
+	movq	-72(%rbp), %rdx	# s, tmp110
+	addq	%rcx, %rdx	# _3, _4
+	movzbl	(%rdx), %edx	# *_4, _5
+	movsbq	%dl, %rdx	# _5, _6
+	addq	%rdx, %rdx	# _7
+	addq	%rdx, %rax	# _7, _8
 	movzwl	(%rax), %eax	# *_8, _9
 	movzwl	%ax, %eax	# _9, _10
 	andl	$2048, %eax	#, _11
@@ -119,21 +120,21 @@ func0:
 	leaq	-44(%rbp), %rax	#, tmp121
 	movq	%rax, %rdi	# tmp121,
 	call	atoi@PLT	#
-	movl	%eax, %edx	#, _23
 # eval/problem68//code.c:24:     return n - atoi(num1) - atoi(num2);
-	movl	-76(%rbp), %eax	# n, tmp122
-	subl	%edx, %eax	# _23, tmp122
-	movl	%eax, %ebx	# tmp122, _24
+	movl	-76(%rbp), %edx	# n, tmp122
+	movl	%edx, %ebx	# tmp122, tmp122
+	subl	%eax, %ebx	# _23, tmp122
 # eval/problem68//code.c:24:     return n - atoi(num1) - atoi(num2);
 	leaq	-34(%rbp), %rax	#, tmp123
 	movq	%rax, %rdi	# tmp123,
 	call	atoi@PLT	#
-	movl	%eax, %edx	#, _25
 # eval/problem68//code.c:24:     return n - atoi(num1) - atoi(num2);
-	movl	%ebx, %eax	# _24, _24
-	subl	%edx, %eax	# _25, _24
+	subl	%eax, %ebx	# _25, _24
+	movl	%ebx, %edx	# _24, _41
+# eval/problem68//code.c:24:     return n - atoi(num1) - atoi(num2);
+	movl	%edx, %eax	# _41, <retval>
 # eval/problem68//code.c:25: }
-	movq	-24(%rbp), %rdx	# D.3003, tmp126
+	movq	-24(%rbp), %rdx	# D.3840, tmp126
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp126
 	je	.L8	#,
 	call	__stack_chk_fail@PLT	#
@@ -145,7 +146,7 @@ func0:
 	.cfi_endproc
 .LFE6:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

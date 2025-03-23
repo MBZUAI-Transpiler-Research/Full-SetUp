@@ -1,7 +1,7 @@
 	.arch armv8-a
 	.file	"problem14.c"
-// GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (aarch64-linux-gnu)
-//	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+// GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (aarch64-linux-gnu)
+//	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 // GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 // options passed: -mlittle-endian -mabi=lp64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection
@@ -79,9 +79,9 @@ main:
 	mov	w1, 7	//,
 	mov	w0, 3	//,
 	bl	func0		//
+// problem14.c:17:     assert(func0(3, 7) == 1);
 	cmp	w0, 1	// _1,
 	beq	.L6		//,
-// problem14.c:17:     assert(func0(3, 7) == 1);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp98,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp98,
 	mov	w2, 17	//,
@@ -95,9 +95,9 @@ main:
 	mov	w1, 15	//,
 	mov	w0, 10	//,
 	bl	func0		//
+// problem14.c:18:     assert(func0(10, 15) == 5);
 	cmp	w0, 5	// _2,
 	beq	.L7		//,
-// problem14.c:18:     assert(func0(10, 15) == 5);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp101,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp101,
 	mov	w2, 18	//,
@@ -111,9 +111,9 @@ main:
 	mov	w1, 14	//,
 	mov	w0, 49	//,
 	bl	func0		//
+// problem14.c:19:     assert(func0(49, 14) == 7);
 	cmp	w0, 7	// _3,
 	beq	.L8		//,
-// problem14.c:19:     assert(func0(49, 14) == 7);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp104,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp104,
 	mov	w2, 19	//,
@@ -127,9 +127,9 @@ main:
 	mov	w1, 60	//,
 	mov	w0, 144	//,
 	bl	func0		//
+// problem14.c:20:     assert(func0(144, 60) == 12);
 	cmp	w0, 12	// _4,
 	beq	.L9		//,
-// problem14.c:20:     assert(func0(144, 60) == 12);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp107,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp107,
 	mov	w2, 20	//,
@@ -156,5 +156,5 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits

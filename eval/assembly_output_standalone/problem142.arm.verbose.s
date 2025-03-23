@@ -1,7 +1,7 @@
 	.arch armv8-a
 	.file	"code.c"
-// GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (aarch64-linux-gnu)
-//	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+// GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (aarch64-linux-gnu)
+//	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 // GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 // options passed: -mlittle-endian -mabi=lp64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection
@@ -51,6 +51,7 @@ func0:
 // eval/problem142//code.c:7:     if (length < 5) return "No";
 	adrp	x0, .LC0	// tmp111,
 	add	x0, x0, :lo12:.LC0	// _21, tmp111,
+// eval/problem142//code.c:7:     if (length < 5) return "No";
 	b	.L3		//
 .L2:
 // eval/problem142//code.c:8:     char w = file_name[0];
@@ -78,6 +79,7 @@ func0:
 // eval/problem142//code.c:9:     if (w < 'A' || (w > 'Z' && w < 'a') || w > 'z') return "No";
 	adrp	x0, .LC0	// tmp118,
 	add	x0, x0, :lo12:.LC0	// _21, tmp118,
+// eval/problem142//code.c:9:     if (w < 'A' || (w > 'Z' && w < 'a') || w > 'z') return "No";
 	b	.L3		//
 .L6:
 // eval/problem142//code.c:10:     const char* last = file_name + length - 4;
@@ -114,6 +116,7 @@ func0:
 // eval/problem142//code.c:11:     if (strcmp(last, ".txt") != 0 && strcmp(last, ".exe") != 0 && strcmp(last, ".dll") != 0) return "No";
 	adrp	x0, .LC0	// tmp124,
 	add	x0, x0, :lo12:.LC0	// _21, tmp124,
+// eval/problem142//code.c:11:     if (strcmp(last, ".txt") != 0 && strcmp(last, ".exe") != 0 && strcmp(last, ".dll") != 0) return "No";
 	b	.L3		//
 .L7:
 // eval/problem142//code.c:12:     for (int i = 0; i < length; i++) {
@@ -177,6 +180,7 @@ func0:
 // eval/problem142//code.c:16:     if (num_digit > 3 || num_dot != 1) return "No";
 	adrp	x0, .LC0	// tmp138,
 	add	x0, x0, :lo12:.LC0	// _21, tmp138,
+// eval/problem142//code.c:16:     if (num_digit > 3 || num_dot != 1) return "No";
 	b	.L3		//
 .L13:
 // eval/problem142//code.c:17:     return "Yes";
@@ -192,5 +196,5 @@ func0:
 	.cfi_endproc
 .LFE0:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits

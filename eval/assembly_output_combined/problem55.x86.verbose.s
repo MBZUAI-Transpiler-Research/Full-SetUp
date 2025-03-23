@@ -1,6 +1,6 @@
 	.file	"problem55.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -79,6 +79,7 @@ func0:
 	je	.L7	#,
 # problem55.c:15:         if (!found) return false;
 	movl	$0, %eax	#, _23
+# problem55.c:15:         if (!found) return false;
 	jmp	.L8	#
 .L7:
 # problem55.c:7:     for (int i = 0; i < len0; i++) {
@@ -136,6 +137,7 @@ func0:
 	je	.L15	#,
 # problem55.c:25:         if (!found) return false;
 	movl	$0, %eax	#, _23
+# problem55.c:25:         if (!found) return false;
 	jmp	.L8	#
 .L15:
 # problem55.c:17:     for (int i = 0; i < len1; i++) {
@@ -215,9 +217,9 @@ main:
 	leaq	.LC1(%rip), %rax	#, tmp96
 	movq	%rax, %rdi	# tmp96,
 	call	func0	#
+# problem55.c:36:     assert(func0("eabcdzzzz", "dddzzzzzzzddeddabc") == true);
 	testb	%al, %al	# _1
 	jne	.L18	#,
-# problem55.c:36:     assert(func0("eabcdzzzz", "dddzzzzzzzddeddabc") == true);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp97
 	movq	%rax, %rcx	# tmp97,
 	movl	$36, %edx	#,
@@ -233,9 +235,9 @@ main:
 	leaq	.LC5(%rip), %rax	#, tmp101
 	movq	%rax, %rdi	# tmp101,
 	call	func0	#
+# problem55.c:37:     assert(func0("abcd", "dddddddabc") == true);
 	testb	%al, %al	# _2
 	jne	.L19	#,
-# problem55.c:37:     assert(func0("abcd", "dddddddabc") == true);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp102
 	movq	%rax, %rcx	# tmp102,
 	movl	$37, %edx	#,
@@ -251,9 +253,9 @@ main:
 	leaq	.LC4(%rip), %rax	#, tmp106
 	movq	%rax, %rdi	# tmp106,
 	call	func0	#
+# problem55.c:38:     assert(func0("dddddddabc", "abcd") == true);
 	testb	%al, %al	# _3
 	jne	.L20	#,
-# problem55.c:38:     assert(func0("dddddddabc", "abcd") == true);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp107
 	movq	%rax, %rcx	# tmp107,
 	movl	$38, %edx	#,
@@ -269,10 +271,10 @@ main:
 	leaq	.LC8(%rip), %rax	#, tmp111
 	movq	%rax, %rdi	# tmp111,
 	call	func0	#
+# problem55.c:39:     assert(func0("eabcd", "dddddddabc") == false);
 	xorl	$1, %eax	#, _5
 	testb	%al, %al	# _5
 	jne	.L21	#,
-# problem55.c:39:     assert(func0("eabcd", "dddddddabc") == false);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp112
 	movq	%rax, %rcx	# tmp112,
 	movl	$39, %edx	#,
@@ -288,10 +290,10 @@ main:
 	leaq	.LC5(%rip), %rax	#, tmp116
 	movq	%rax, %rdi	# tmp116,
 	call	func0	#
+# problem55.c:40:     assert(func0("abcd", "dddddddabce") == false);
 	xorl	$1, %eax	#, _7
 	testb	%al, %al	# _7
 	jne	.L22	#,
-# problem55.c:40:     assert(func0("abcd", "dddddddabce") == false);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp117
 	movq	%rax, %rcx	# tmp117,
 	movl	$40, %edx	#,
@@ -307,10 +309,10 @@ main:
 	leaq	.LC1(%rip), %rax	#, tmp121
 	movq	%rax, %rdi	# tmp121,
 	call	func0	#
+# problem55.c:41:     assert(func0("eabcdzzzz", "dddzzzzzzzddddabc") == false);
 	xorl	$1, %eax	#, _9
 	testb	%al, %al	# _9
 	jne	.L23	#,
-# problem55.c:41:     assert(func0("eabcdzzzz", "dddzzzzzzzddddabc") == false);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp122
 	movq	%rax, %rcx	# tmp122,
 	movl	$41, %edx	#,
@@ -326,10 +328,10 @@ main:
 	leaq	.LC15(%rip), %rax	#, tmp126
 	movq	%rax, %rdi	# tmp126,
 	call	func0	#
+# problem55.c:42:     assert(func0("aabb", "aaccc") == false);
 	xorl	$1, %eax	#, _11
 	testb	%al, %al	# _11
 	jne	.L24	#,
-# problem55.c:42:     assert(func0("aabb", "aaccc") == false);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp127
 	movq	%rax, %rcx	# tmp127,
 	movl	$42, %edx	#,
@@ -353,7 +355,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

@@ -1,5 +1,8 @@
 	.file	"problem82.c"
 	.option pic
+	.attribute arch, "rv64i2p1_m2p0_a2p1_f2p2_d2p2_c2p0_zicsr2p0_zifencei2p0"
+	.attribute unaligned_access, 0
+	.attribute stack_align, 16
 	.text
 	.section	.rodata
 	.align	3
@@ -46,10 +49,16 @@
 	.globl	func0
 	.type	func0, @function
 func0:
+.LFB6:
+	.cfi_startproc
 	addi	sp,sp,-48
+	.cfi_def_cfa_offset 48
 	sd	ra,40(sp)
 	sd	s0,32(sp)
+	.cfi_offset 1, -8
+	.cfi_offset 8, -16
 	addi	s0,sp,48
+	.cfi_def_cfa 8, 0
 	sd	a0,-40(s0)
 	mv	a5,a1
 	sw	a5,-44(s0)
@@ -298,18 +307,30 @@ func0:
 	ld	a5,-24(s0)
 	mv	a0,a5
 	ld	ra,40(sp)
+	.cfi_restore 1
 	ld	s0,32(sp)
+	.cfi_restore 8
+	.cfi_def_cfa 2, 48
 	addi	sp,sp,48
+	.cfi_def_cfa_offset 0
 	jr	ra
+	.cfi_endproc
+.LFE6:
 	.size	func0, .-func0
 	.align	1
 	.globl	issame
 	.type	issame, @function
 issame:
+.LFB7:
+	.cfi_startproc
 	addi	sp,sp,-64
+	.cfi_def_cfa_offset 64
 	sd	ra,56(sp)
 	sd	s0,48(sp)
+	.cfi_offset 1, -8
+	.cfi_offset 8, -16
 	addi	s0,sp,64
+	.cfi_def_cfa 8, 0
 	sd	a0,-40(s0)
 	sd	a1,-48(s0)
 	mv	a5,a2
@@ -349,9 +370,15 @@ issame:
 .L57:
 	mv	a0,a5
 	ld	ra,56(sp)
+	.cfi_restore 1
 	ld	s0,48(sp)
+	.cfi_restore 8
+	.cfi_def_cfa 2, 64
 	addi	sp,sp,64
+	.cfi_def_cfa_offset 0
 	jr	ra
+	.cfi_endproc
+.LFE7:
 	.size	issame, .-issame
 	.section	.rodata
 	.align	3
@@ -411,10 +438,16 @@ issame:
 	.globl	main
 	.type	main, @function
 main:
+.LFB8:
+	.cfi_startproc
 	addi	sp,sp,-272
+	.cfi_def_cfa_offset 272
 	sd	ra,264(sp)
 	sd	s0,256(sp)
+	.cfi_offset 1, -8
+	.cfi_offset 8, -16
 	addi	s0,sp,272
+	.cfi_def_cfa 8, 0
 	la	a5,__stack_chk_guard
 	ld	a4, 0(a5)
 	sd	a4, -24(s0)
@@ -507,7 +540,8 @@ main:
 .L62:
 	ld	a0,-256(s0)
 	call	free@plt
-	sw	zero,-208(s0)
+	fmv.s.x	fa5,zero
+	fsw	fa5,-208(s0)
 	lla	a5,.LC28
 	sd	a5,-184(s0)
 	addi	a5,s0,-208
@@ -568,7 +602,8 @@ main:
 .L64:
 	ld	a0,-240(s0)
 	call	free@plt
-	sw	zero,-176(s0)
+	fmv.s.x	fa5,zero
+	fsw	fa5,-176(s0)
 	lla	a5,.LC39
 	flw	fa5,0(a5)
 	fsw	fa5,-172(s0)
@@ -608,9 +643,15 @@ main:
 .L67:
 	mv	a0,a4
 	ld	ra,264(sp)
+	.cfi_restore 1
 	ld	s0,256(sp)
+	.cfi_restore 8
+	.cfi_def_cfa 2, 272
 	addi	sp,sp,272
+	.cfi_def_cfa_offset 0
 	jr	ra
+	.cfi_endproc
+.LFE8:
 	.size	main, .-main
 	.section	.rodata
 	.align	3
@@ -675,5 +716,5 @@ __PRETTY_FUNCTION__.0:
 	.align	2
 .LC39:
 	.word	1060320051
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits

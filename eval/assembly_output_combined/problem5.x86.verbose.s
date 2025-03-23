@@ -1,6 +1,6 @@
 	.file	"problem5.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -123,7 +123,7 @@ main:
 	subq	$64, %rsp	#,
 # problem5.c:26: int main() {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp130
-	movq	%rax, -8(%rbp)	# tmp130, D.3456
+	movq	%rax, -8(%rbp)	# tmp130, D.4286
 	xorl	%eax, %eax	# tmp130
 # problem5.c:27:     float case1[] = {1.0, 2.0, 3.0};
 	movss	.LC2(%rip), %xmm0	#, tmp96
@@ -137,6 +137,7 @@ main:
 	movl	$3, %esi	#,
 	movq	%rax, %rdi	# tmp99,
 	call	func0	#
+# problem5.c:28:     assert(fabs(func0(case1, 3) - 2.0/3.0) < 1e-4);
 	cvtss2sd	%xmm0, %xmm0	# _1, _2
 	movsd	.LC5(%rip), %xmm1	#, tmp100
 	subsd	%xmm1, %xmm0	# tmp100, _3
@@ -145,7 +146,6 @@ main:
 	movsd	.LC7(%rip), %xmm0	#, tmp102
 	comisd	%xmm1, %xmm0	# _4, tmp102
 	ja	.L8	#,
-# problem5.c:28:     assert(fabs(func0(case1, 3) - 2.0/3.0) < 1e-4);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp103
 	movq	%rax, %rcx	# tmp103,
 	movl	$28, %edx	#,
@@ -169,6 +169,7 @@ main:
 	movl	$4, %esi	#,
 	movq	%rax, %rdi	# tmp110,
 	call	func0	#
+# problem5.c:31:     assert(fabs(func0(case2, 4) - 1.0) < 1e-4);
 	cvtss2sd	%xmm0, %xmm0	# _5, _6
 	movsd	.LC11(%rip), %xmm1	#, tmp111
 	subsd	%xmm1, %xmm0	# tmp111, _7
@@ -177,7 +178,6 @@ main:
 	movsd	.LC7(%rip), %xmm0	#, tmp113
 	comisd	%xmm1, %xmm0	# _8, tmp113
 	ja	.L9	#,
-# problem5.c:31:     assert(fabs(func0(case2, 4) - 1.0) < 1e-4);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp114
 	movq	%rax, %rcx	# tmp114,
 	movl	$31, %edx	#,
@@ -203,6 +203,7 @@ main:
 	movl	$5, %esi	#,
 	movq	%rax, %rdi	# tmp122,
 	call	func0	#
+# problem5.c:34:     assert(fabs(func0(case3, 5) - 6.0/5.0) < 1e-4);
 	cvtss2sd	%xmm0, %xmm0	# _9, _10
 	movsd	.LC14(%rip), %xmm1	#, tmp123
 	subsd	%xmm1, %xmm0	# tmp123, _11
@@ -211,7 +212,6 @@ main:
 	movsd	.LC7(%rip), %xmm0	#, tmp125
 	comisd	%xmm1, %xmm0	# _12, tmp125
 	ja	.L10	#,
-# problem5.c:34:     assert(fabs(func0(case3, 5) - 6.0/5.0) < 1e-4);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp126
 	movq	%rax, %rcx	# tmp126,
 	movl	$34, %edx	#,
@@ -224,7 +224,7 @@ main:
 # problem5.c:36:     return 0;
 	movl	$0, %eax	#, _32
 # problem5.c:37: }
-	movq	-8(%rbp), %rdx	# D.3456, tmp131
+	movq	-8(%rbp), %rdx	# D.4286, tmp131
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp131
 	je	.L12	#,
 	call	__stack_chk_fail@PLT	#
@@ -283,7 +283,7 @@ __PRETTY_FUNCTION__.0:
 .LC14:
 	.long	858993459
 	.long	1072902963
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

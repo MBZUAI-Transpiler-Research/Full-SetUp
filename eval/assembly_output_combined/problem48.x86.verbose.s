@@ -1,6 +1,6 @@
 	.file	"problem48.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -97,12 +97,14 @@ func0:
 	cmpl	-28(%rbp), %eax	# size, tmp141
 	jl	.L7	#,
 # problem48.c:15:     if (size % 2 == 1) return l[size / 2];
-	movl	-28(%rbp), %eax	# size, tmp142
-	cltd
-	shrl	$31, %edx	#, tmp144
-	addl	%edx, %eax	# tmp144, tmp145
-	andl	$1, %eax	#, tmp146
-	subl	%edx, %eax	# tmp144, tmp147
+	movl	-28(%rbp), %edx	# size, tmp142
+	movl	%edx, %eax	# tmp142, tmp143
+	sarl	$31, %eax	#, tmp143
+	shrl	$31, %eax	#, tmp144
+	addl	%eax, %edx	# tmp144, tmp145
+	andl	$1, %edx	#, tmp146
+	subl	%eax, %edx	# tmp144, tmp147
+	movl	%edx, %eax	# tmp147, _22
 # problem48.c:15:     if (size % 2 == 1) return l[size / 2];
 	cmpl	$1, %eax	#, _22
 	jne	.L8	#,
@@ -118,6 +120,7 @@ func0:
 	movq	-24(%rbp), %rax	# l, tmp152
 	addq	%rdx, %rax	# _25, _26
 	movss	(%rax), %xmm0	# *_26, _41
+# problem48.c:15:     if (size % 2 == 1) return l[size / 2];
 	jmp	.L9	#
 .L8:
 # problem48.c:16:     return 0.5 * (l[size / 2] + l[size / 2 - 1]);
@@ -191,7 +194,7 @@ main:
 	addq	$-128, %rsp	#,
 # problem48.c:25: int main() {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp161
-	movq	%rax, -8(%rbp)	# tmp161, D.3985
+	movq	%rax, -8(%rbp)	# tmp161, D.4822
 	xorl	%eax, %eax	# tmp161
 # problem48.c:26:     float list1[] = {3, 1, 2, 4, 5};
 	movss	.LC1(%rip), %xmm0	#, tmp104
@@ -210,6 +213,7 @@ main:
 	movq	%rax, %rdi	# tmp109,
 	call	func0	#
 	movd	%xmm0, %eax	#, _1
+# problem48.c:27:     assert(fabs(func0(list1, 5) - 3) < 1e-4);
 	movss	.LC1(%rip), %xmm1	#, tmp110
 	movd	%eax, %xmm0	# _1, _1
 	subss	%xmm1, %xmm0	# tmp110, _1
@@ -220,7 +224,6 @@ main:
 	movsd	.LC7(%rip), %xmm0	#, tmp112
 	comisd	%xmm1, %xmm0	# _4, tmp112
 	ja	.L12	#,
-# problem48.c:27:     assert(fabs(func0(list1, 5) - 3) < 1e-4);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp113
 	movq	%rax, %rcx	# tmp113,
 	movl	$27, %edx	#,
@@ -248,6 +251,7 @@ main:
 	movl	$6, %esi	#,
 	movq	%rax, %rdi	# tmp122,
 	call	func0	#
+# problem48.c:30:     assert(fabs(func0(list2, 6) - 8.0) < 1e-4);
 	cvtss2sd	%xmm0, %xmm0	# _5, _6
 	movsd	.LC15(%rip), %xmm1	#, tmp123
 	subsd	%xmm1, %xmm0	# tmp123, _7
@@ -256,7 +260,6 @@ main:
 	movsd	.LC7(%rip), %xmm0	#, tmp125
 	comisd	%xmm1, %xmm0	# _8, tmp125
 	ja	.L13	#,
-# problem48.c:30:     assert(fabs(func0(list2, 6) - 8.0) < 1e-4);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp126
 	movq	%rax, %rcx	# tmp126,
 	movl	$30, %edx	#,
@@ -275,6 +278,7 @@ main:
 	movq	%rax, %rdi	# tmp130,
 	call	func0	#
 	movd	%xmm0, %eax	#, _9
+# problem48.c:33:     assert(fabs(func0(list3, 1) - 5) < 1e-4);
 	movss	.LC5(%rip), %xmm1	#, tmp131
 	movd	%eax, %xmm0	# _9, _9
 	subss	%xmm1, %xmm0	# tmp131, _9
@@ -285,7 +289,6 @@ main:
 	movsd	.LC7(%rip), %xmm0	#, tmp133
 	comisd	%xmm1, %xmm0	# _12, tmp133
 	ja	.L14	#,
-# problem48.c:33:     assert(fabs(func0(list3, 1) - 5) < 1e-4);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp134
 	movq	%rax, %rcx	# tmp134,
 	movl	$33, %edx	#,
@@ -305,6 +308,7 @@ main:
 	movl	$2, %esi	#,
 	movq	%rax, %rdi	# tmp139,
 	call	func0	#
+# problem48.c:36:     assert(fabs(func0(list4, 2) - 5.5) < 1e-4);
 	cvtss2sd	%xmm0, %xmm0	# _13, _14
 	movsd	.LC19(%rip), %xmm1	#, tmp140
 	subsd	%xmm1, %xmm0	# tmp140, _15
@@ -313,7 +317,6 @@ main:
 	movsd	.LC7(%rip), %xmm0	#, tmp142
 	comisd	%xmm1, %xmm0	# _16, tmp142
 	ja	.L15	#,
-# problem48.c:36:     assert(fabs(func0(list4, 2) - 5.5) < 1e-4);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp143
 	movq	%rax, %rcx	# tmp143,
 	movl	$36, %edx	#,
@@ -344,6 +347,7 @@ main:
 	movq	%rax, %rdi	# tmp153,
 	call	func0	#
 	movd	%xmm0, %eax	#, _17
+# problem48.c:39:     assert(fabs(func0(list5, 7) - 7) < 1e-4);
 	movss	.LC23(%rip), %xmm1	#, tmp154
 	movd	%eax, %xmm0	# _17, _17
 	subss	%xmm1, %xmm0	# tmp154, _17
@@ -354,7 +358,6 @@ main:
 	movsd	.LC7(%rip), %xmm0	#, tmp156
 	comisd	%xmm1, %xmm0	# _20, tmp156
 	ja	.L16	#,
-# problem48.c:39:     assert(fabs(func0(list5, 7) - 7) < 1e-4);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp157
 	movq	%rax, %rcx	# tmp157,
 	movl	$39, %edx	#,
@@ -367,7 +370,7 @@ main:
 # problem48.c:41:     return 0;
 	movl	$0, %eax	#, _53
 # problem48.c:42: }
-	movq	-8(%rbp), %rdx	# D.3985, tmp162
+	movq	-8(%rbp), %rdx	# D.4822, tmp162
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp162
 	je	.L18	#,
 	call	__stack_chk_fail@PLT	#
@@ -449,7 +452,7 @@ __PRETTY_FUNCTION__.0:
 	.align 4
 .LC23:
 	.long	1088421888
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

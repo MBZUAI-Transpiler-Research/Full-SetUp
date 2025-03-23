@@ -1,6 +1,6 @@
 	.file	"problem151.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -57,6 +57,7 @@ func0:
 	je	.L6	#,
 # problem151.c:9:     if (isp) return x;
 	movl	-24(%rbp), %eax	# x, _7
+# problem151.c:9:     if (isp) return x;
 	jmp	.L7	#
 .L6:
 # problem151.c:10:     return y;
@@ -109,9 +110,9 @@ main:
 	movl	$34, %esi	#,
 	movl	$7, %edi	#,
 	call	func0	#
+# problem151.c:18:     assert(func0(7, 34, 12) == 34);
 	cmpl	$34, %eax	#, _1
 	je	.L9	#,
-# problem151.c:18:     assert(func0(7, 34, 12) == 34);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp94
 	movq	%rax, %rcx	# tmp94,
 	movl	$18, %edx	#,
@@ -126,9 +127,9 @@ main:
 	movl	$8, %esi	#,
 	movl	$15, %edi	#,
 	call	func0	#
+# problem151.c:19:     assert(func0(15, 8, 5) == 5);
 	cmpl	$5, %eax	#, _2
 	je	.L10	#,
-# problem151.c:19:     assert(func0(15, 8, 5) == 5);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp97
 	movq	%rax, %rcx	# tmp97,
 	movl	$19, %edx	#,
@@ -143,9 +144,9 @@ main:
 	movl	$33, %esi	#,
 	movl	$3, %edi	#,
 	call	func0	#
+# problem151.c:20:     assert(func0(3, 33, 5212) == 33);
 	cmpl	$33, %eax	#, _3
 	je	.L11	#,
-# problem151.c:20:     assert(func0(3, 33, 5212) == 33);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp100
 	movq	%rax, %rcx	# tmp100,
 	movl	$20, %edx	#,
@@ -160,9 +161,9 @@ main:
 	movl	$3, %esi	#,
 	movl	$1259, %edi	#,
 	call	func0	#
+# problem151.c:21:     assert(func0(1259, 3, 52) == 3);
 	cmpl	$3, %eax	#, _4
 	je	.L12	#,
-# problem151.c:21:     assert(func0(1259, 3, 52) == 3);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp103
 	movq	%rax, %rcx	# tmp103,
 	movl	$21, %edx	#,
@@ -177,9 +178,9 @@ main:
 	movl	$-1, %esi	#,
 	movl	$7919, %edi	#,
 	call	func0	#
+# problem151.c:22:     assert(func0(7919, -1, 12) == -1);
 	cmpl	$-1, %eax	#, _5
 	je	.L13	#,
-# problem151.c:22:     assert(func0(7919, -1, 12) == -1);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp106
 	movq	%rax, %rcx	# tmp106,
 	movl	$22, %edx	#,
@@ -194,9 +195,9 @@ main:
 	movl	$1245, %esi	#,
 	movl	$3609, %edi	#,
 	call	func0	#
+# problem151.c:23:     assert(func0(3609, 1245, 583) == 583);
 	cmpl	$583, %eax	#, _6
 	je	.L14	#,
-# problem151.c:23:     assert(func0(3609, 1245, 583) == 583);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp109
 	movq	%rax, %rcx	# tmp109,
 	movl	$23, %edx	#,
@@ -211,9 +212,9 @@ main:
 	movl	$56, %esi	#,
 	movl	$91, %edi	#,
 	call	func0	#
+# problem151.c:24:     assert(func0(91, 56, 129) == 129);
 	cmpl	$129, %eax	#, _7
 	je	.L15	#,
-# problem151.c:24:     assert(func0(91, 56, 129) == 129);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp112
 	movq	%rax, %rcx	# tmp112,
 	movl	$24, %edx	#,
@@ -228,9 +229,9 @@ main:
 	movl	$34, %esi	#,
 	movl	$6, %edi	#,
 	call	func0	#
+# problem151.c:25:     assert(func0(6, 34, 1234) == 1234);
 	cmpl	$1234, %eax	#, _8
 	je	.L16	#,
-# problem151.c:25:     assert(func0(6, 34, 1234) == 1234);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp115
 	movq	%rax, %rcx	# tmp115,
 	movl	$25, %edx	#,
@@ -245,9 +246,9 @@ main:
 	movl	$2, %esi	#,
 	movl	$1, %edi	#,
 	call	func0	#
+# problem151.c:26:     assert(func0(1, 2, 0) == 0);
 	testl	%eax, %eax	# _9
 	je	.L17	#,
-# problem151.c:26:     assert(func0(1, 2, 0) == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp118
 	movq	%rax, %rcx	# tmp118,
 	movl	$26, %edx	#,
@@ -262,9 +263,9 @@ main:
 	movl	$2, %esi	#,
 	movl	$2, %edi	#,
 	call	func0	#
+# problem151.c:27:     assert(func0(2, 2, 0) == 2);
 	cmpl	$2, %eax	#, _10
 	je	.L18	#,
-# problem151.c:27:     assert(func0(2, 2, 0) == 2);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp121
 	movq	%rax, %rcx	# tmp121,
 	movl	$27, %edx	#,
@@ -288,7 +289,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

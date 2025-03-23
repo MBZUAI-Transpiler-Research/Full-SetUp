@@ -1,7 +1,7 @@
 	.arch armv8-a
 	.file	"problem42.c"
-// GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (aarch64-linux-gnu)
-//	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+// GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (aarch64-linux-gnu)
+//	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 // GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 // options passed: -mlittle-endian -mabi=lp64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection
@@ -26,113 +26,114 @@
 main:
 .LFB0:
 	.cfi_startproc
-	stp	x29, x30, [sp, -80]!	//,,,
+	sub	sp, sp, #80	//,,
 	.cfi_def_cfa_offset 80
-	.cfi_offset 29, -80
-	.cfi_offset 30, -72
-	mov	x29, sp	//,
+	stp	x29, x30, [sp, 64]	//,,
+	.cfi_offset 29, -16
+	.cfi_offset 30, -8
+	add	x29, sp, 64	//,,
 // problem42.c:12: {
-	adrp	x0, :got:__stack_chk_guard	// tmp101,
-	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]	// tmp100, tmp101,
-	ldr	x1, [x0]	// tmp123,
-	str	x1, [sp, 72]	// tmp123, D.5319
-	mov	x1, 0	// tmp123
+	adrp	x0, :got:__stack_chk_guard	// tmp100,
+	ldr	x0, [x0, :got_lo12:__stack_chk_guard]	// tmp100,
+	ldr	x1, [x0]	// tmp121,
+	str	x1, [sp, 56]	// tmp121, D.6060
+	mov	x1, 0	// tmp121
 // problem42.c:14:   int cnt = 0;
-	str	wzr, [sp, 20]	//, cnt
+	str	wzr, [sp, 4]	//, cnt
 // problem42.c:17:   fp = fopen("words.txt", "r");
-	adrp	x0, .LC0	// tmp102,
-	add	x1, x0, :lo12:.LC0	//, tmp102,
-	adrp	x0, .LC1	// tmp103,
-	add	x0, x0, :lo12:.LC1	//, tmp103,
+	adrp	x0, .LC0	// tmp101,
+	add	x1, x0, :lo12:.LC0	//, tmp101,
+	adrp	x0, .LC1	// tmp102,
+	add	x0, x0, :lo12:.LC1	//, tmp102,
 	bl	fopen		//
-	str	x0, [sp, 32]	// tmp104, fp
+	str	x0, [sp, 16]	// tmp103, fp
 // problem42.c:18:   if (!fp) {
-	ldr	x0, [sp, 32]	// tmp105, fp
-	cmp	x0, 0	// tmp105,
+	ldr	x0, [sp, 16]	// tmp104, fp
+	cmp	x0, 0	// tmp104,
 	bne	.L4		//,
 // problem42.c:19:     perror("words.txt");
-	adrp	x0, .LC1	// tmp106,
-	add	x0, x0, :lo12:.LC1	//, tmp106,
+	adrp	x0, .LC1	// tmp105,
+	add	x0, x0, :lo12:.LC1	//, tmp105,
 	bl	perror		//
 // problem42.c:20:     return 1;
 	mov	w0, 1	// _9,
 	b	.L8		//
 .L7:
 // problem42.c:24:     int i, sum = 0;
-	str	wzr, [sp, 28]	//, sum
+	str	wzr, [sp, 12]	//, sum
 // problem42.c:25:     for (i = 0; buf[i] != '\0'; i++) {
-	str	wzr, [sp, 24]	//, i
+	str	wzr, [sp, 8]	//, i
 // problem42.c:25:     for (i = 0; buf[i] != '\0'; i++) {
 	b	.L5		//
 .L6:
 // problem42.c:26:       sum += buf[i]-'A'+1;
-	ldrsw	x0, [sp, 24]	// tmp107, i
-	add	x1, sp, 40	// tmp108,,
+	ldrsw	x0, [sp, 8]	// tmp106, i
+	add	x1, sp, 24	// tmp107,,
 	ldrb	w0, [x1, x0]	// _1, buf[i_7]
 // problem42.c:26:       sum += buf[i]-'A'+1;
 	sub	w0, w0, #64	// _3, _2,
 // problem42.c:26:       sum += buf[i]-'A'+1;
-	ldr	w1, [sp, 28]	// tmp110, sum
-	add	w0, w1, w0	// tmp109, tmp110, _3
-	str	w0, [sp, 28]	// tmp109, sum
+	ldr	w1, [sp, 12]	// tmp109, sum
+	add	w0, w1, w0	// tmp108, tmp109, _3
+	str	w0, [sp, 12]	// tmp108, sum
 // problem42.c:25:     for (i = 0; buf[i] != '\0'; i++) {
-	ldr	w0, [sp, 24]	// tmp112, i
-	add	w0, w0, 1	// tmp111, tmp112,
-	str	w0, [sp, 24]	// tmp111, i
+	ldr	w0, [sp, 8]	// tmp111, i
+	add	w0, w0, 1	// tmp110, tmp111,
+	str	w0, [sp, 8]	// tmp110, i
 .L5:
 // problem42.c:25:     for (i = 0; buf[i] != '\0'; i++) {
-	ldrsw	x0, [sp, 24]	// tmp113, i
-	add	x1, sp, 40	// tmp114,,
+	ldrsw	x0, [sp, 8]	// tmp112, i
+	add	x1, sp, 24	// tmp113,,
 	ldrb	w0, [x1, x0]	// _4, buf[i_7]
 // problem42.c:25:     for (i = 0; buf[i] != '\0'; i++) {
 	cmp	w0, 0	// _4,
 	bne	.L6		//,
 // problem42.c:28:     cnt += is_triangle(sum);
-	ldr	w0, [sp, 28]	//, sum
+	ldr	w0, [sp, 12]	//, sum
 	bl	is_triangle		//
 	mov	w1, w0	// _23,
 // problem42.c:28:     cnt += is_triangle(sum);
-	ldr	w0, [sp, 20]	// tmp116, cnt
-	add	w0, w0, w1	// tmp115, tmp116, _23
-	str	w0, [sp, 20]	// tmp115, cnt
+	ldr	w0, [sp, 4]	// tmp115, cnt
+	add	w0, w0, w1	// tmp114, tmp115, _23
+	str	w0, [sp, 4]	// tmp114, cnt
 .L4:
 // problem42.c:23:   while (fscanf(fp, "\"%[^\"]\",", buf) != EOF) {
-	add	x0, sp, 40	// tmp117,,
-	mov	x2, x0	//, tmp117
-	adrp	x0, .LC2	// tmp118,
-	add	x1, x0, :lo12:.LC2	//, tmp118,
-	ldr	x0, [sp, 32]	//, fp
+	add	x0, sp, 24	// tmp116,,
+	mov	x2, x0	//, tmp116
+	adrp	x0, .LC2	// tmp117,
+	add	x1, x0, :lo12:.LC2	//, tmp117,
+	ldr	x0, [sp, 16]	//, fp
 	bl	__isoc99_fscanf		//
 // problem42.c:23:   while (fscanf(fp, "\"%[^\"]\",", buf) != EOF) {
 	cmn	w0, #1	// _5,
 	bne	.L7		//,
 // problem42.c:30:   fclose(fp);
-	ldr	x0, [sp, 32]	//, fp
+	ldr	x0, [sp, 16]	//, fp
 	bl	fclose		//
 // problem42.c:32:   printf("%d\n", cnt);
-	ldr	w1, [sp, 20]	//, cnt
-	adrp	x0, .LC3	// tmp119,
-	add	x0, x0, :lo12:.LC3	//, tmp119,
+	ldr	w1, [sp, 4]	//, cnt
+	adrp	x0, .LC3	// tmp118,
+	add	x0, x0, :lo12:.LC3	//, tmp118,
 	bl	printf		//
 // problem42.c:34:   return 0;
 	mov	w0, 0	// _9,
 .L8:
 // problem42.c:35: }
 	mov	w1, w0	// <retval>, _9
-	adrp	x0, :got:__stack_chk_guard	// tmp122,
-	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]	// tmp121, tmp122,
-	ldr	x3, [sp, 72]	// tmp124, D.5319
-	ldr	x2, [x0]	// tmp125,
-	subs	x3, x3, x2	// tmp124, tmp125
-	mov	x2, 0	// tmp125
+	adrp	x0, :got:__stack_chk_guard	// tmp120,
+	ldr	x0, [x0, :got_lo12:__stack_chk_guard]	// tmp120,
+	ldr	x3, [sp, 56]	// tmp122, D.6060
+	ldr	x2, [x0]	// tmp123,
+	subs	x3, x3, x2	// tmp122, tmp123
+	mov	x2, 0	// tmp123
 	beq	.L9		//,
-// problem42.c:35: }
 	bl	__stack_chk_fail		//
 .L9:
 	mov	w0, w1	//, <retval>
-	ldp	x29, x30, [sp], 80	//,,,
-	.cfi_restore 30
+	ldp	x29, x30, [sp, 64]	//,,
+	add	sp, sp, 80	//,,
 	.cfi_restore 29
+	.cfi_restore 30
 	.cfi_def_cfa_offset 0
 	ret	
 	.cfi_endproc
@@ -179,6 +180,7 @@ is_triangle:
 	beq	.L11		//,
 // problem42.c:44:   return (sq*sq == 1+8*c && (sq & 1) == 1);
 	mov	w0, 1	// iftmp.0_9,
+// problem42.c:44:   return (sq*sq == 1+8*c && (sq & 1) == 1);
 	b	.L13		//
 .L11:
 // problem42.c:44:   return (sq*sq == 1+8*c && (sq & 1) == 1);
@@ -193,5 +195,5 @@ is_triangle:
 	.cfi_endproc
 .LFE1:
 	.size	is_triangle, .-is_triangle
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits

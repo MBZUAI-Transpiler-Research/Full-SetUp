@@ -1,7 +1,7 @@
 	.arch armv8-a
 	.file	"problem9.c"
-// GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (aarch64-linux-gnu)
-//	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+// GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (aarch64-linux-gnu)
+//	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 // GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 // options passed: -mlittle-endian -mabi=lp64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection
@@ -108,6 +108,7 @@ issame:
 	beq	.L6		//,
 // problem9.c:19:         if (a[i] != b[i]) return 0;
 	mov	w0, 0	// _10,
+// problem9.c:19:         if (a[i] != b[i]) return 0;
 	b	.L7		//
 .L6:
 // problem9.c:18:     for (int i = 0; i < size; i++) {
@@ -156,190 +157,192 @@ issame:
 main:
 .LFB2:
 	.cfi_startproc
-	stp	x29, x30, [sp, -96]!	//,,,
+	sub	sp, sp, #96	//,,
 	.cfi_def_cfa_offset 96
-	.cfi_offset 29, -96
-	.cfi_offset 30, -88
-	mov	x29, sp	//,
+	stp	x29, x30, [sp, 80]	//,,
+	.cfi_offset 29, -16
+	.cfi_offset 30, -8
+	add	x29, sp, 80	//,,
 // problem9.c:24: int main() {
-	adrp	x0, :got:__stack_chk_guard	// tmp100,
-	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]	// tmp99, tmp100,
-	ldr	x1, [x0]	// tmp161,
-	str	x1, [sp, 88]	// tmp161, D.4335
-	mov	x1, 0	// tmp161
+	adrp	x0, :got:__stack_chk_guard	// tmp99,
+	ldr	x0, [x0, :got_lo12:__stack_chk_guard]	// tmp99,
+	ldr	x1, [x0]	// tmp159,
+	str	x1, [sp, 72]	// tmp159, D.4917
+	mov	x1, 0	// tmp159
 // problem9.c:28:     func0((int[]){}, 0, result);
-	add	x1, sp, 32	// tmp101,,
-	add	x0, sp, 16	// tmp102,,
-	mov	x2, x1	//, tmp101
+	add	x1, sp, 16	// tmp100,,
+	mov	x0, sp	// tmp101,
+	mov	x2, x1	//, tmp100
 	mov	w1, 0	//,
 	bl	func0		//
 // problem9.c:29:     assert(issame(result, (const int[]){0, 1}, 2));
-	str	wzr, [sp, 72]	//, MEM[(int[2] *)_56][0]
-	mov	w0, 1	// tmp103,
-	str	w0, [sp, 76]	// tmp103, MEM[(int[2] *)_56][1]
-	add	x1, sp, 72	// tmp104,,
-	add	x0, sp, 32	// tmp105,,
+	str	wzr, [sp, 56]	//, MEM[(int[2] *)_55][0]
+	mov	w0, 1	// tmp102,
+	str	w0, [sp, 60]	// tmp102, MEM[(int[2] *)_55][1]
+	add	x1, sp, 56	// tmp103,,
+	add	x0, sp, 16	// tmp104,,
 	mov	w2, 2	//,
 	bl	issame		//
+// problem9.c:29:     assert(issame(result, (const int[]){0, 1}, 2));
 	cmp	w0, 0	// _1,
 	bne	.L10		//,
-// problem9.c:29:     assert(issame(result, (const int[]){0, 1}, 2));
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp106,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp106,
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp105,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp105,
 	mov	w2, 29	//,
-	adrp	x0, .LC2	// tmp107,
-	add	x1, x0, :lo12:.LC2	//, tmp107,
-	adrp	x0, .LC3	// tmp108,
-	add	x0, x0, :lo12:.LC3	//, tmp108,
+	adrp	x0, .LC2	// tmp106,
+	add	x1, x0, :lo12:.LC2	//, tmp106,
+	adrp	x0, .LC3	// tmp107,
+	add	x0, x0, :lo12:.LC3	//, tmp107,
 	bl	__assert_fail		//
 .L10:
 // problem9.c:32:     func0((int[]){1, 1, 1}, 3, result);
-	adrp	x0, .LC0	// tmp110,
-	add	x1, x0, :lo12:.LC0	// tmp109, tmp110,
-	add	x0, sp, 56	// tmp111,,
-	ldr	x2, [x1]	// tmp113,
-	str	x2, [x0]	// tmp113, D.4294
-	ldr	w1, [x1, 8]	// tmp114,
-	str	w1, [x0, 8]	// tmp114, D.4294
+	adrp	x0, .LC0	// tmp109,
+	add	x1, x0, :lo12:.LC0	// tmp108, tmp109,
+	add	x0, sp, 40	// tmp110,,
+	ldr	x2, [x1]	// tmp112,
+	str	x2, [x0]	// tmp112, D.4876
+	ldr	w1, [x1, 8]	// tmp113,
+	str	w1, [x0, 8]	// tmp113, D.4876
 // problem9.c:32:     func0((int[]){1, 1, 1}, 3, result);
-	add	x1, sp, 32	// tmp115,,
-	add	x0, sp, 56	// tmp116,,
-	mov	x2, x1	//, tmp115
+	add	x1, sp, 16	// tmp114,,
+	add	x0, sp, 40	// tmp115,,
+	mov	x2, x1	//, tmp114
 	mov	w1, 3	//,
 	bl	func0		//
 // problem9.c:33:     assert(issame(result, (const int[]){3, 1}, 2));
-	mov	w0, 3	// tmp117,
-	str	w0, [sp, 72]	// tmp117, MEM[(int[2] *)_56][0]
-	mov	w0, 1	// tmp118,
-	str	w0, [sp, 76]	// tmp118, MEM[(int[2] *)_56][1]
-	add	x1, sp, 72	// tmp119,,
-	add	x0, sp, 32	// tmp120,,
+	mov	w0, 3	// tmp116,
+	str	w0, [sp, 56]	// tmp116, MEM[(int[2] *)_55][0]
+	mov	w0, 1	// tmp117,
+	str	w0, [sp, 60]	// tmp117, MEM[(int[2] *)_55][1]
+	add	x1, sp, 56	// tmp118,,
+	add	x0, sp, 16	// tmp119,,
 	mov	w2, 2	//,
 	bl	issame		//
+// problem9.c:33:     assert(issame(result, (const int[]){3, 1}, 2));
 	cmp	w0, 0	// _2,
 	bne	.L11		//,
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp121,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp121,
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp120,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp120,
 	mov	w2, 33	//,
-	adrp	x0, .LC2	// tmp122,
-	add	x1, x0, :lo12:.LC2	//, tmp122,
-	adrp	x0, .LC4	// tmp123,
-	add	x0, x0, :lo12:.LC4	//, tmp123,
+	adrp	x0, .LC2	// tmp121,
+	add	x1, x0, :lo12:.LC2	//, tmp121,
+	adrp	x0, .LC4	// tmp122,
+	add	x0, x0, :lo12:.LC4	//, tmp122,
 	bl	__assert_fail		//
 .L11:
 // problem9.c:36:     func0((int[]){100, 0}, 2, result);
-	mov	w0, 100	// tmp124,
-	str	w0, [sp, 40]	// tmp124, D.4297[0]
-	str	wzr, [sp, 44]	//, D.4297[1]
+	mov	w0, 100	// tmp123,
+	str	w0, [sp, 24]	// tmp123, D.4879[0]
+	str	wzr, [sp, 28]	//, D.4879[1]
 // problem9.c:36:     func0((int[]){100, 0}, 2, result);
-	add	x1, sp, 32	// tmp125,,
-	add	x0, sp, 40	// tmp126,,
-	mov	x2, x1	//, tmp125
+	add	x1, sp, 16	// tmp124,,
+	add	x0, sp, 24	// tmp125,,
+	mov	x2, x1	//, tmp124
 	mov	w1, 2	//,
 	bl	func0		//
 // problem9.c:37:     assert(issame(result, (const int[]){100, 0}, 2));
-	mov	w0, 100	// tmp127,
-	str	w0, [sp, 72]	// tmp127, MEM[(int[2] *)_56][0]
-	str	wzr, [sp, 76]	//, MEM[(int[2] *)_56][1]
-	add	x1, sp, 72	// tmp128,,
-	add	x0, sp, 32	// tmp129,,
+	mov	w0, 100	// tmp126,
+	str	w0, [sp, 56]	// tmp126, MEM[(int[2] *)_55][0]
+	str	wzr, [sp, 60]	//, MEM[(int[2] *)_55][1]
+	add	x1, sp, 56	// tmp127,,
+	add	x0, sp, 16	// tmp128,,
 	mov	w2, 2	//,
 	bl	issame		//
+// problem9.c:37:     assert(issame(result, (const int[]){100, 0}, 2));
 	cmp	w0, 0	// _3,
 	bne	.L12		//,
-// problem9.c:37:     assert(issame(result, (const int[]){100, 0}, 2));
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp130,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp130,
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp129,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp129,
 	mov	w2, 37	//,
-	adrp	x0, .LC2	// tmp131,
-	add	x1, x0, :lo12:.LC2	//, tmp131,
-	adrp	x0, .LC5	// tmp132,
-	add	x0, x0, :lo12:.LC5	//, tmp132,
+	adrp	x0, .LC2	// tmp130,
+	add	x1, x0, :lo12:.LC2	//, tmp130,
+	adrp	x0, .LC5	// tmp131,
+	add	x0, x0, :lo12:.LC5	//, tmp131,
 	bl	__assert_fail		//
 .L12:
 // problem9.c:40:     func0((int[]){3, 5, 7}, 3, result);
-	adrp	x0, .LC1	// tmp134,
-	add	x1, x0, :lo12:.LC1	// tmp133, tmp134,
-	add	x0, sp, 72	// tmp135,,
-	ldr	x2, [x1]	// tmp137,
-	str	x2, [x0]	// tmp137, MEM[(int[3] *)_56]
-	ldr	w1, [x1, 8]	// tmp138,
-	str	w1, [x0, 8]	// tmp138, MEM[(int[3] *)_56]
+	adrp	x0, .LC1	// tmp133,
+	add	x1, x0, :lo12:.LC1	// tmp132, tmp133,
+	add	x0, sp, 56	// tmp134,,
+	ldr	x2, [x1]	// tmp136,
+	str	x2, [x0]	// tmp136, MEM[(int[3] *)_55]
+	ldr	w1, [x1, 8]	// tmp137,
+	str	w1, [x0, 8]	// tmp137, MEM[(int[3] *)_55]
 // problem9.c:40:     func0((int[]){3, 5, 7}, 3, result);
-	add	x1, sp, 32	// tmp139,,
-	add	x0, sp, 72	// tmp140,,
-	mov	x2, x1	//, tmp139
+	add	x1, sp, 16	// tmp138,,
+	add	x0, sp, 56	// tmp139,,
+	mov	x2, x1	//, tmp138
 	mov	w1, 3	//,
 	bl	func0		//
 // problem9.c:41:     assert(issame(result, (const int[]){3 + 5 + 7, 3 * 5 * 7}, 2));
-	mov	w0, 15	// tmp141,
-	str	w0, [sp, 48]	// tmp141, MEM[(int[2] *)_57][0]
-	mov	w0, 105	// tmp142,
-	str	w0, [sp, 52]	// tmp142, MEM[(int[2] *)_57][1]
-	add	x1, sp, 48	// tmp143,,
-	add	x0, sp, 32	// tmp144,,
+	mov	w0, 15	// tmp140,
+	str	w0, [sp, 32]	// tmp140, MEM[(int[2] *)_56][0]
+	mov	w0, 105	// tmp141,
+	str	w0, [sp, 36]	// tmp141, MEM[(int[2] *)_56][1]
+	add	x1, sp, 32	// tmp142,,
+	add	x0, sp, 16	// tmp143,,
 	mov	w2, 2	//,
 	bl	issame		//
+// problem9.c:41:     assert(issame(result, (const int[]){3 + 5 + 7, 3 * 5 * 7}, 2));
 	cmp	w0, 0	// _4,
 	bne	.L13		//,
-// problem9.c:41:     assert(issame(result, (const int[]){3 + 5 + 7, 3 * 5 * 7}, 2));
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp145,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp145,
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp144,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp144,
 	mov	w2, 41	//,
-	adrp	x0, .LC2	// tmp146,
-	add	x1, x0, :lo12:.LC2	//, tmp146,
-	adrp	x0, .LC6	// tmp147,
-	add	x0, x0, :lo12:.LC6	//, tmp147,
+	adrp	x0, .LC2	// tmp145,
+	add	x1, x0, :lo12:.LC2	//, tmp145,
+	adrp	x0, .LC6	// tmp146,
+	add	x0, x0, :lo12:.LC6	//, tmp146,
 	bl	__assert_fail		//
 .L13:
 // problem9.c:44:     func0((int[]){10}, 1, result);
-	mov	w0, 10	// tmp148,
-	str	w0, [sp, 24]	// tmp148, D.4303[0]
+	mov	w0, 10	// tmp147,
+	str	w0, [sp, 8]	// tmp147, D.4885[0]
 // problem9.c:44:     func0((int[]){10}, 1, result);
-	add	x1, sp, 32	// tmp149,,
-	add	x0, sp, 24	// tmp150,,
-	mov	x2, x1	//, tmp149
+	add	x1, sp, 16	// tmp148,,
+	add	x0, sp, 8	// tmp149,,
+	mov	x2, x1	//, tmp148
 	mov	w1, 1	//,
 	bl	func0		//
 // problem9.c:45:     assert(issame(result, (const int[]){10, 10}, 2));
+	mov	w0, 10	// tmp150,
+	str	w0, [sp, 32]	// tmp150, MEM[(int[2] *)_56][0]
 	mov	w0, 10	// tmp151,
-	str	w0, [sp, 48]	// tmp151, MEM[(int[2] *)_57][0]
-	mov	w0, 10	// tmp152,
-	str	w0, [sp, 52]	// tmp152, MEM[(int[2] *)_57][1]
-	add	x1, sp, 48	// tmp153,,
-	add	x0, sp, 32	// tmp154,,
+	str	w0, [sp, 36]	// tmp151, MEM[(int[2] *)_56][1]
+	add	x1, sp, 32	// tmp152,,
+	add	x0, sp, 16	// tmp153,,
 	mov	w2, 2	//,
 	bl	issame		//
+// problem9.c:45:     assert(issame(result, (const int[]){10, 10}, 2));
 	cmp	w0, 0	// _5,
 	bne	.L14		//,
-// problem9.c:45:     assert(issame(result, (const int[]){10, 10}, 2));
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp155,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp155,
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp154,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp154,
 	mov	w2, 45	//,
-	adrp	x0, .LC2	// tmp156,
-	add	x1, x0, :lo12:.LC2	//, tmp156,
-	adrp	x0, .LC7	// tmp157,
-	add	x0, x0, :lo12:.LC7	//, tmp157,
+	adrp	x0, .LC2	// tmp155,
+	add	x1, x0, :lo12:.LC2	//, tmp155,
+	adrp	x0, .LC7	// tmp156,
+	add	x0, x0, :lo12:.LC7	//, tmp156,
 	bl	__assert_fail		//
 .L14:
 // problem9.c:47:     return 0;
-	mov	w0, 0	// _43,
+	mov	w0, 0	// _42,
 // problem9.c:48: }
-	mov	w1, w0	// <retval>, _43
-	adrp	x0, :got:__stack_chk_guard	// tmp160,
-	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]	// tmp159, tmp160,
-	ldr	x3, [sp, 88]	// tmp162, D.4335
-	ldr	x2, [x0]	// tmp163,
-	subs	x3, x3, x2	// tmp162, tmp163
-	mov	x2, 0	// tmp163
+	mov	w1, w0	// <retval>, _42
+	adrp	x0, :got:__stack_chk_guard	// tmp158,
+	ldr	x0, [x0, :got_lo12:__stack_chk_guard]	// tmp158,
+	ldr	x3, [sp, 72]	// tmp160, D.4917
+	ldr	x2, [x0]	// tmp161,
+	subs	x3, x3, x2	// tmp160, tmp161
+	mov	x2, 0	// tmp161
 	beq	.L16		//,
-// problem9.c:48: }
 	bl	__stack_chk_fail		//
 .L16:
 	mov	w0, w1	//, <retval>
-	ldp	x29, x30, [sp], 96	//,,,
-	.cfi_restore 30
+	ldp	x29, x30, [sp, 80]	//,,
+	add	sp, sp, 96	//,,
 	.cfi_restore 29
+	.cfi_restore 30
 	.cfi_def_cfa_offset 0
 	ret	
 	.cfi_endproc
@@ -363,5 +366,5 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits

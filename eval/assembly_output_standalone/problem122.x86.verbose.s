@@ -1,6 +1,6 @@
 	.file	"code.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -33,13 +33,15 @@ func0:
 	leaq	0(,%rax,4), %rdx	#, _3
 	movq	-24(%rbp), %rax	# lst, tmp97
 	addq	%rdx, %rax	# _3, _4
-	movl	(%rax), %eax	# *_4, _5
+	movl	(%rax), %edx	# *_4, _5
 # eval/problem122//code.c:6:         if (lst[i * 2] % 2 == 1) sum += lst[i * 2];
-	cltd
-	shrl	$31, %edx	#, tmp99
-	addl	%edx, %eax	# tmp99, tmp100
-	andl	$1, %eax	#, tmp101
-	subl	%edx, %eax	# tmp99, tmp102
+	movl	%edx, %eax	# _5, tmp98
+	sarl	$31, %eax	#, tmp98
+	shrl	$31, %eax	#, tmp99
+	addl	%eax, %edx	# tmp99, tmp100
+	andl	$1, %edx	#, tmp101
+	subl	%eax, %edx	# tmp99, tmp102
+	movl	%edx, %eax	# tmp102, _6
 # eval/problem122//code.c:6:         if (lst[i * 2] % 2 == 1) sum += lst[i * 2];
 	cmpl	$1, %eax	#, _6
 	jne	.L3	#,
@@ -73,7 +75,7 @@ func0:
 	.cfi_endproc
 .LFE0:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

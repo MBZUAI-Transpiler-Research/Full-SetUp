@@ -1,6 +1,6 @@
 	.file	"code.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -25,7 +25,7 @@ func0:
 	movl	%esi, -88(%rbp)	# shift, shift
 # eval/problem66//code.c:5: char* func0(int x, int shift) {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp132
-	movq	%rax, -8(%rbp)	# tmp132, D.3067
+	movq	%rax, -8(%rbp)	# tmp132, D.3931
 	xorl	%eax, %eax	# tmp132
 # eval/problem66//code.c:7:     sprintf(xs, "%d", x);
 	movl	-84(%rbp), %eax	# x, tmp97
@@ -97,14 +97,13 @@ func0:
 .L2:
 # eval/problem66//code.c:18:         strcpy(temp, xs + len - shift);
 	movl	-68(%rbp), %eax	# len, tmp120
+	movslq	%eax, %rdx	# tmp120, _8
+	movl	-88(%rbp), %eax	# shift, tmp121
 	cltq
-	movl	-88(%rbp), %edx	# shift, tmp121
-	movslq	%edx, %rdx	# tmp121, _9
-	subq	%rdx, %rax	# _9, _8
-	movq	%rax, %rcx	# _8, _10
+	subq	%rax, %rdx	# _9, _10
 # eval/problem66//code.c:18:         strcpy(temp, xs + len - shift);
 	leaq	xs.0(%rip), %rax	#, tmp122
-	leaq	(%rcx,%rax), %rdx	#, _11
+	addq	%rax, %rdx	# tmp122, _11
 	leaq	-64(%rbp), %rax	#, tmp123
 	movq	%rdx, %rsi	# _11,
 	movq	%rax, %rdi	# tmp123,
@@ -133,7 +132,7 @@ func0:
 # eval/problem66//code.c:24:     return xs;
 	leaq	xs.0(%rip), %rax	#, _32
 # eval/problem66//code.c:25: }
-	movq	-8(%rbp), %rdx	# D.3067, tmp133
+	movq	-8(%rbp), %rdx	# D.3931, tmp133
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp133
 	je	.L7	#,
 	call	__stack_chk_fail@PLT	#
@@ -146,7 +145,7 @@ func0:
 	.size	func0, .-func0
 	.local	xs.0
 	.comm	xs.0,50,32
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

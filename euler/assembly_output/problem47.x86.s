@@ -99,8 +99,8 @@ distinct_factor_count:
 	addl	$1, -4(%rbp)
 .L10:
 	movl	-4(%rbp), %eax
-	cmpl	-20(%rbp), %eax
-	jbe	.L14
+	cmpl	%eax, -20(%rbp)
+	jnb	.L14
 	movl	-8(%rbp), %eax
 	popq	%rbp
 	.cfi_def_cfa 7, 8
@@ -108,7 +108,7 @@ distinct_factor_count:
 	.cfi_endproc
 .LFE1:
 	.size	distinct_factor_count, .-distinct_factor_count
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

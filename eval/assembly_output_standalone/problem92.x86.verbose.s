@@ -1,6 +1,6 @@
 	.file	"code.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -31,15 +31,16 @@ func0:
 .L9:
 # eval/problem92//code.c:10:         if (isspace(S[i]) && isi) {
 	call	__ctype_b_loc@PLT	#
-	movq	(%rax), %rdx	# *_1, _2
-	movl	-4(%rbp), %eax	# i, tmp132
-	movslq	%eax, %rcx	# tmp132, _3
-	movq	-24(%rbp), %rax	# S, tmp133
-	addq	%rcx, %rax	# _3, _4
-	movzbl	(%rax), %eax	# *_4, _5
-	movsbq	%al, %rax	# _5, _6
-	addq	%rax, %rax	# _7
-	addq	%rdx, %rax	# _2, _8
+# eval/problem92//code.c:10:         if (isspace(S[i]) && isi) {
+	movq	(%rax), %rax	# *_1, _2
+	movl	-4(%rbp), %edx	# i, tmp132
+	movslq	%edx, %rcx	# tmp132, _3
+	movq	-24(%rbp), %rdx	# S, tmp133
+	addq	%rcx, %rdx	# _3, _4
+	movzbl	(%rdx), %edx	# *_4, _5
+	movsbq	%dl, %rdx	# _5, _6
+	addq	%rdx, %rdx	# _7
+	addq	%rdx, %rax	# _7, _8
 	movzwl	(%rax), %eax	# *_8, _9
 	movzwl	%ax, %eax	# _9, _10
 	andl	$8192, %eax	#, _11
@@ -72,15 +73,16 @@ func0:
 .L4:
 # eval/problem92//code.c:16:         } else if (!isspace(S[i])) {
 	call	__ctype_b_loc@PLT	#
-	movq	(%rax), %rdx	# *_15, _16
-	movl	-4(%rbp), %eax	# i, tmp136
-	movslq	%eax, %rcx	# tmp136, _17
-	movq	-24(%rbp), %rax	# S, tmp137
-	addq	%rcx, %rax	# _17, _18
-	movzbl	(%rax), %eax	# *_18, _19
-	movsbq	%al, %rax	# _19, _20
-	addq	%rax, %rax	# _21
-	addq	%rdx, %rax	# _16, _22
+# eval/problem92//code.c:16:         } else if (!isspace(S[i])) {
+	movq	(%rax), %rax	# *_15, _16
+	movl	-4(%rbp), %edx	# i, tmp136
+	movslq	%edx, %rcx	# tmp136, _17
+	movq	-24(%rbp), %rdx	# S, tmp137
+	addq	%rcx, %rdx	# _17, _18
+	movzbl	(%rdx), %edx	# *_18, _19
+	movsbq	%dl, %rdx	# _19, _20
+	addq	%rdx, %rdx	# _21
+	addq	%rdx, %rax	# _21, _22
 	movzwl	(%rax), %eax	# *_22, _23
 	movzwl	%ax, %eax	# _23, _24
 	andl	$8192, %eax	#, _25
@@ -92,15 +94,16 @@ func0:
 .L5:
 # eval/problem92//code.c:19:         if (!isspace(S[i])) {
 	call	__ctype_b_loc@PLT	#
-	movq	(%rax), %rdx	# *_26, _27
-	movl	-4(%rbp), %eax	# i, tmp138
-	movslq	%eax, %rcx	# tmp138, _28
-	movq	-24(%rbp), %rax	# S, tmp139
-	addq	%rcx, %rax	# _28, _29
-	movzbl	(%rax), %eax	# *_29, _30
-	movsbq	%al, %rax	# _30, _31
-	addq	%rax, %rax	# _32
-	addq	%rdx, %rax	# _27, _33
+# eval/problem92//code.c:19:         if (!isspace(S[i])) {
+	movq	(%rax), %rax	# *_26, _27
+	movl	-4(%rbp), %edx	# i, tmp138
+	movslq	%edx, %rcx	# tmp138, _28
+	movq	-24(%rbp), %rdx	# S, tmp139
+	addq	%rcx, %rdx	# _28, _29
+	movzbl	(%rdx), %edx	# *_29, _30
+	movsbq	%dl, %rdx	# _30, _31
+	addq	%rdx, %rdx	# _32
+	addq	%rdx, %rax	# _32, _33
 	movzwl	(%rax), %eax	# *_33, _34
 	movzwl	%ax, %eax	# _34, _35
 	andl	$8192, %eax	#, _36
@@ -162,7 +165,7 @@ func0:
 	.cfi_endproc
 .LFE0:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

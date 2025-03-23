@@ -1,6 +1,6 @@
 	.file	"problem11.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -297,9 +297,9 @@ main:
 	movq	%rdx, %rsi	# tmp100,
 	movq	%rax, %rdi	# tmp99,
 	call	strcmp@PLT	#
+# problem11.c:54:     assert(strcmp(palindrome, "x") == 0);
 	testl	%eax, %eax	# _2
 	je	.L17	#,
-# problem11.c:54:     assert(strcmp(palindrome, "x") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp101
 	movq	%rax, %rcx	# tmp101,
 	movl	$54, %edx	#,
@@ -324,9 +324,9 @@ main:
 	movq	%rdx, %rsi	# tmp108,
 	movq	%rax, %rdi	# tmp107,
 	call	strcmp@PLT	#
+# problem11.c:59:     assert(strcmp(palindrome, "xyzyx") == 0);
 	testl	%eax, %eax	# _3
 	je	.L18	#,
-# problem11.c:59:     assert(strcmp(palindrome, "xyzyx") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp109
 	movq	%rax, %rcx	# tmp109,
 	movl	$59, %edx	#,
@@ -351,9 +351,9 @@ main:
 	movq	%rdx, %rsi	# tmp116,
 	movq	%rax, %rdi	# tmp115,
 	call	strcmp@PLT	#
+# problem11.c:64:     assert(strcmp(palindrome, "xyx") == 0);
 	testl	%eax, %eax	# _4
 	je	.L19	#,
-# problem11.c:64:     assert(strcmp(palindrome, "xyx") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp117
 	movq	%rax, %rcx	# tmp117,
 	movl	$64, %edx	#,
@@ -378,9 +378,9 @@ main:
 	movq	%rdx, %rsi	# tmp124,
 	movq	%rax, %rdi	# tmp123,
 	call	strcmp@PLT	#
+# problem11.c:69:     assert(strcmp(palindrome, "jerryrrej") == 0);
 	testl	%eax, %eax	# _5
 	je	.L20	#,
-# problem11.c:69:     assert(strcmp(palindrome, "jerryrrej") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp125
 	movq	%rax, %rcx	# tmp125,
 	movl	$69, %edx	#,
@@ -408,7 +408,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

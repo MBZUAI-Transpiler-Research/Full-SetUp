@@ -226,10 +226,10 @@ evaluate_polynomial:
 main:
 .LFB8:
 	.cfi_startproc
-	stp	x29, x30, [sp, -160]!
-	.cfi_def_cfa_offset 160
-	.cfi_offset 29, -160
-	.cfi_offset 30, -152
+	stp	x29, x30, [sp, -96]!
+	.cfi_def_cfa_offset 96
+	.cfi_offset 29, -96
+	.cfi_offset 30, -88
 	mov	x29, sp
 	.cfi_def_cfa_register 29
 	stp	x19, x20, [sp, 16]
@@ -237,22 +237,22 @@ main:
 	stp	x23, x24, [sp, 48]
 	stp	x25, x26, [sp, 64]
 	str	x27, [sp, 80]
-	sub	sp, sp, #16
-	.cfi_offset 19, -144
-	.cfi_offset 20, -136
-	.cfi_offset 21, -128
-	.cfi_offset 22, -120
-	.cfi_offset 23, -112
-	.cfi_offset 24, -104
-	.cfi_offset 25, -96
-	.cfi_offset 26, -88
-	.cfi_offset 27, -80
+	sub	sp, sp, #80
+	.cfi_offset 19, -80
+	.cfi_offset 20, -72
+	.cfi_offset 21, -64
+	.cfi_offset 22, -56
+	.cfi_offset 23, -48
+	.cfi_offset 24, -40
+	.cfi_offset 25, -32
+	.cfi_offset 26, -24
+	.cfi_offset 27, -16
 	adrp	x0, :got:__stack_chk_guard
-	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]
+	ldr	x0, [x0, :got_lo12:__stack_chk_guard]
 	ldr	x1, [x0]
-	str	x1, [x29, 152]
+	str	x1, [x29, -8]
 	mov	x1, 0
-	str	wzr, [x29, 108]
+	str	wzr, [x29, -52]
 	b	.L23
 .L31:
 	mov	x0, sp
@@ -264,11 +264,11 @@ main:
 	csneg	w0, w0, w1, mi
 	add	w0, w0, 1
 	lsl	w0, w0, 1
-	str	w0, [x29, 116]
-	ldr	w0, [x29, 116]
+	str	w0, [x29, -44]
+	ldr	w0, [x29, -44]
 	sxtw	x1, w0
 	sub	x1, x1, #1
-	str	x1, [x29, 128]
+	str	x1, [x29, -32]
 	sxtw	x1, w0
 	mov	x24, x1
 	mov	x25, 0
@@ -309,8 +309,8 @@ main:
 	add	x0, x0, 7
 	lsr	x0, x0, 3
 	lsl	x0, x0, 3
-	str	x0, [x29, 136]
-	str	wzr, [x29, 112]
+	str	x0, [x29, -24]
+	str	wzr, [x29, -48]
 	b	.L27
 .L29:
 	bl	rand
@@ -327,32 +327,32 @@ main:
 	sub	w0, w1, w0
 	sub	w0, w0, #10
 	scvtf	d0, w0
-	str	d0, [x29, 120]
-	ldr	d0, [x29, 120]
+	str	d0, [x29, -40]
+	ldr	d0, [x29, -40]
 	fcmp	d0, #0.0
 	bne	.L28
 	fmov	d0, 1.0e+0
-	str	d0, [x29, 120]
+	str	d0, [x29, -40]
 .L28:
-	ldr	x0, [x29, 136]
-	ldrsw	x1, [x29, 112]
-	ldr	d0, [x29, 120]
+	ldr	x0, [x29, -24]
+	ldrsw	x1, [x29, -48]
+	ldr	d0, [x29, -40]
 	str	d0, [x0, x1, lsl 3]
-	ldr	w0, [x29, 112]
+	ldr	w0, [x29, -48]
 	add	w0, w0, 1
-	str	w0, [x29, 112]
+	str	w0, [x29, -48]
 .L27:
-	ldr	w1, [x29, 112]
-	ldr	w0, [x29, 116]
+	ldr	w1, [x29, -48]
+	ldr	w0, [x29, -44]
 	cmp	w1, w0
 	blt	.L29
-	ldr	w1, [x29, 116]
-	ldr	x0, [x29, 136]
+	ldr	w1, [x29, -44]
+	ldr	x0, [x29, -24]
 	bl	func0
-	str	d0, [x29, 144]
-	ldr	d0, [x29, 144]
-	ldr	w1, [x29, 116]
-	ldr	x0, [x29, 136]
+	str	d0, [x29, -16]
+	ldr	d0, [x29, -16]
+	ldr	w1, [x29, -44]
+	ldr	x0, [x29, -24]
 	bl	evaluate_polynomial
 	fabs	d0, d0
 	adrp	x0, .LC3
@@ -369,18 +369,18 @@ main:
 	bl	__assert_fail
 .L30:
 	mov	sp, x19
-	ldr	w0, [x29, 108]
+	ldr	w0, [x29, -52]
 	add	w0, w0, 1
-	str	w0, [x29, 108]
+	str	w0, [x29, -52]
 .L23:
-	ldr	w0, [x29, 108]
+	ldr	w0, [x29, -52]
 	cmp	w0, 99
 	ble	.L31
 	mov	w0, 0
 	mov	w1, w0
 	adrp	x0, :got:__stack_chk_guard
-	ldr	x0, [x0, #:got_lo12:__stack_chk_guard]
-	ldr	x3, [x29, 152]
+	ldr	x0, [x0, :got_lo12:__stack_chk_guard]
+	ldr	x3, [x29, -8]
 	ldr	x2, [x0]
 	subs	x3, x3, x2
 	mov	x2, 0
@@ -394,7 +394,7 @@ main:
 	ldp	x23, x24, [sp, 48]
 	ldp	x25, x26, [sp, 64]
 	ldr	x27, [sp, 80]
-	ldp	x29, x30, [sp], 160
+	ldp	x29, x30, [sp], 96
 	.cfi_restore 30
 	.cfi_restore 29
 	.cfi_restore 27
@@ -425,5 +425,5 @@ __PRETTY_FUNCTION__.0:
 .LC3:
 	.word	-755914244
 	.word	1062232653
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits

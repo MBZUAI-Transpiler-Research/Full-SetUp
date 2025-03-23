@@ -1,6 +1,6 @@
 	.file	"problem49.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -121,9 +121,9 @@ main:
 	leaq	.LC0(%rip), %rax	#, tmp94
 	movq	%rax, %rdi	# tmp94,
 	call	func0	#
+# problem49.c:22:     assert(func0("") == true);
 	testb	%al, %al	# _1
 	jne	.L7	#,
-# problem49.c:22:     assert(func0("") == true);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp95
 	movq	%rax, %rcx	# tmp95,
 	movl	$22, %edx	#,
@@ -137,9 +137,9 @@ main:
 	leaq	.LC3(%rip), %rax	#, tmp98
 	movq	%rax, %rdi	# tmp98,
 	call	func0	#
+# problem49.c:23:     assert(func0("aba") == true);
 	testb	%al, %al	# _2
 	jne	.L8	#,
-# problem49.c:23:     assert(func0("aba") == true);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp99
 	movq	%rax, %rcx	# tmp99,
 	movl	$23, %edx	#,
@@ -153,9 +153,9 @@ main:
 	leaq	.LC5(%rip), %rax	#, tmp102
 	movq	%rax, %rdi	# tmp102,
 	call	func0	#
+# problem49.c:24:     assert(func0("aaaaa") == true);
 	testb	%al, %al	# _3
 	jne	.L9	#,
-# problem49.c:24:     assert(func0("aaaaa") == true);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp103
 	movq	%rax, %rcx	# tmp103,
 	movl	$24, %edx	#,
@@ -169,10 +169,10 @@ main:
 	leaq	.LC7(%rip), %rax	#, tmp106
 	movq	%rax, %rdi	# tmp106,
 	call	func0	#
+# problem49.c:25:     assert(func0("zbcd") == false);
 	xorl	$1, %eax	#, _5
 	testb	%al, %al	# _5
 	jne	.L10	#,
-# problem49.c:25:     assert(func0("zbcd") == false);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp107
 	movq	%rax, %rcx	# tmp107,
 	movl	$25, %edx	#,
@@ -186,9 +186,9 @@ main:
 	leaq	.LC9(%rip), %rax	#, tmp110
 	movq	%rax, %rdi	# tmp110,
 	call	func0	#
+# problem49.c:26:     assert(func0("xywyx") == true);
 	testb	%al, %al	# _6
 	jne	.L11	#,
-# problem49.c:26:     assert(func0("xywyx") == true);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp111
 	movq	%rax, %rcx	# tmp111,
 	movl	$26, %edx	#,
@@ -202,10 +202,10 @@ main:
 	leaq	.LC11(%rip), %rax	#, tmp114
 	movq	%rax, %rdi	# tmp114,
 	call	func0	#
+# problem49.c:27:     assert(func0("xywyz") == false);
 	xorl	$1, %eax	#, _8
 	testb	%al, %al	# _8
 	jne	.L12	#,
-# problem49.c:27:     assert(func0("xywyz") == false);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp115
 	movq	%rax, %rcx	# tmp115,
 	movl	$27, %edx	#,
@@ -219,10 +219,10 @@ main:
 	leaq	.LC13(%rip), %rax	#, tmp118
 	movq	%rax, %rdi	# tmp118,
 	call	func0	#
+# problem49.c:28:     assert(func0("xywzx") == false);
 	xorl	$1, %eax	#, _10
 	testb	%al, %al	# _10
 	jne	.L13	#,
-# problem49.c:28:     assert(func0("xywzx") == false);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp119
 	movq	%rax, %rcx	# tmp119,
 	movl	$28, %edx	#,
@@ -246,7 +246,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

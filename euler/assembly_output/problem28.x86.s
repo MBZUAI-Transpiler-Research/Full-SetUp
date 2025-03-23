@@ -22,13 +22,12 @@ main:
 .L3:
 	movl	-4(%rbp), %eax
 	imull	%eax, %eax
-	leal	(%rax,%rax), %edx
+	leal	(%rax,%rax), %ecx
 	movl	-4(%rbp), %eax
-	movl	%eax, %esi
-	leal	0(,%rax,4), %ecx
-	movl	%esi, %eax
-	subl	%ecx, %eax
-	addl	%edx, %eax
+	movl	%eax, %edx
+	sall	$2, %eax
+	subl	%eax, %edx
+	leal	(%rcx,%rdx), %eax
 	addl	$3, %eax
 	addl	%eax, %eax
 	addl	%eax, -8(%rbp)
@@ -49,7 +48,7 @@ main:
 	.cfi_endproc
 .LFE0:
 	.size	main, .-main
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

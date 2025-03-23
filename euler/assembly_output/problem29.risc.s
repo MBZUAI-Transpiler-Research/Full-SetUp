@@ -1,5 +1,8 @@
 	.file	"problem29.c"
 	.option pic
+	.attribute arch, "rv64i2p1_m2p0_a2p1_f2p2_d2p2_c2p0_zicsr2p0_zifencei2p0"
+	.attribute unaligned_access, 0
+	.attribute stack_align, 16
 	.text
 	.section	.rodata
 	.align	3
@@ -10,10 +13,16 @@
 	.globl	main
 	.type	main, @function
 main:
+.LFB26:
+	.cfi_startproc
 	addi	sp,sp,-64
+	.cfi_def_cfa_offset 64
 	sd	ra,56(sp)
 	sd	s0,48(sp)
+	.cfi_offset 1, -8
+	.cfi_offset 8, -16
 	addi	s0,sp,64
+	.cfi_def_cfa 8, 0
 	la	a5,__stack_chk_guard
 	ld	a4, 0(a5)
 	sd	a4, -24(s0)
@@ -152,17 +161,29 @@ main:
 .L10:
 	mv	a0,a4
 	ld	ra,56(sp)
+	.cfi_restore 1
 	ld	s0,48(sp)
+	.cfi_restore 8
+	.cfi_def_cfa 2, 64
 	addi	sp,sp,64
+	.cfi_def_cfa_offset 0
 	jr	ra
+	.cfi_endproc
+.LFE26:
 	.size	main, .-main
 	.align	1
 	.type	compare, @function
 compare:
+.LFB27:
+	.cfi_startproc
 	addi	sp,sp,-32
+	.cfi_def_cfa_offset 32
 	sd	ra,24(sp)
 	sd	s0,16(sp)
+	.cfi_offset 1, -8
+	.cfi_offset 8, -16
 	addi	s0,sp,32
+	.cfi_def_cfa 8, 0
 	sd	a0,-24(s0)
 	sd	a1,-32(s0)
 	ld	a1,-32(s0)
@@ -171,9 +192,15 @@ compare:
 	mv	a5,a0
 	mv	a0,a5
 	ld	ra,24(sp)
+	.cfi_restore 1
 	ld	s0,16(sp)
+	.cfi_restore 8
+	.cfi_def_cfa 2, 32
 	addi	sp,sp,32
+	.cfi_def_cfa_offset 0
 	jr	ra
+	.cfi_endproc
+.LFE27:
 	.size	compare, .-compare
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits

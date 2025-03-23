@@ -20,10 +20,8 @@ func0:
 	imulq	$1431655766, %rdx, %rdx
 	shrq	$32, %rdx
 	sarl	$31, %eax
-	movl	%eax, %ecx
-	movl	%edx, %eax
-	subl	%ecx, %eax
-	addl	$1, %eax
+	subl	%eax, %edx
+	leal	1(%rdx), %eax
 	cltq
 	salq	$2, %rax
 	movq	%rax, %rdi
@@ -129,29 +127,28 @@ func0:
 	movl	$0, -28(%rbp)
 	jmp	.L10
 .L13:
-	movl	-28(%rbp), %edx
-	movslq	%edx, %rax
+	movl	-28(%rbp), %ecx
+	movslq	%ecx, %rax
 	imulq	$1431655766, %rax, %rax
 	shrq	$32, %rax
-	movl	%edx, %ecx
-	sarl	$31, %ecx
-	subl	%ecx, %eax
-	movl	%eax, %ecx
-	addl	%ecx, %ecx
-	addl	%eax, %ecx
+	movq	%rax, %rdx
+	movl	%ecx, %eax
+	sarl	$31, %eax
+	subl	%eax, %edx
 	movl	%edx, %eax
-	subl	%ecx, %eax
-	testl	%eax, %eax
+	addl	%eax, %eax
+	addl	%edx, %eax
+	subl	%eax, %ecx
+	movl	%ecx, %edx
+	testl	%edx, %edx
 	jne	.L11
 	movl	-28(%rbp), %eax
 	movslq	%eax, %rdx
 	imulq	$1431655766, %rdx, %rdx
 	shrq	$32, %rdx
 	sarl	$31, %eax
-	movl	%eax, %ecx
-	movl	%edx, %eax
-	subl	%ecx, %eax
-	cltq
+	subl	%eax, %edx
+	movslq	%edx, %rax
 	leaq	0(,%rax,4), %rdx
 	movq	-8(%rbp), %rax
 	addq	%rdx, %rax
@@ -192,7 +189,7 @@ func0:
 	.cfi_endproc
 .LFE6:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

@@ -1,5 +1,8 @@
 	.file	"ls.c"
 	.option pic
+	.attribute arch, "rv64i2p1_m2p0_a2p1_f2p2_d2p2_c2p0_zicsr2p0_zifencei2p0"
+	.attribute unaligned_access, 0
+	.attribute stack_align, 16
 	.text
 	.section	.rodata
 	.align	3
@@ -13,10 +16,16 @@
 	.globl	main
 	.type	main, @function
 main:
+.LFB6:
+	.cfi_startproc
 	addi	sp,sp,-64
+	.cfi_def_cfa_offset 64
 	sd	ra,56(sp)
 	sd	s0,48(sp)
+	.cfi_offset 1, -8
+	.cfi_offset 8, -16
 	addi	s0,sp,64
+	.cfi_def_cfa 8, 0
 	mv	a5,a0
 	sd	a1,-64(s0)
 	sw	a5,-52(s0)
@@ -79,6 +88,8 @@ main:
 .L5:
 	li	a0,0
 	call	exit@plt
+	.cfi_endproc
+.LFE6:
 	.size	main, .-main
 	.section	.rodata
 	.align	3
@@ -101,10 +112,16 @@ main:
 	.globl	recursive
 	.type	recursive, @function
 recursive:
+.LFB7:
+	.cfi_startproc
 	addi	sp,sp,-1088
+	.cfi_def_cfa_offset 1088
 	sd	ra,1080(sp)
 	sd	s0,1072(sp)
+	.cfi_offset 1, -8
+	.cfi_offset 8, -16
 	addi	s0,sp,1088
+	.cfi_def_cfa 8, 0
 	sd	a0,-1080(s0)
 	mv	a5,a1
 	sw	a5,-1084(s0)
@@ -114,11 +131,12 @@ recursive:
 	li	a4, 0
 	ld	a0,-1080(s0)
 	call	opendir@plt
-	sd	a0,-1064(s0)
+	mv	a5,a0
+	sd	a5,-1064(s0)
 	ld	a5,-1064(s0)
-	beq	a5,zero,.L17
+	beq	a5,zero,.L18
 	j	.L11
-.L15:
+.L16:
 	ld	a5,-1056(s0)
 	lbu	a5,18(a5)
 	mv	a4,a5
@@ -130,16 +148,14 @@ recursive:
 	mv	a0,a5
 	call	strcmp@plt
 	mv	a5,a0
-	beq	a5,zero,.L11
+	beq	a5,zero,.L19
 	ld	a5,-1056(s0)
 	addi	a5,a5,19
 	lla	a1,.LC2
 	mv	a0,a5
 	call	strcmp@plt
 	mv	a5,a0
-	bne	a5,zero,.L14
-	j	.L11
-.L14:
+	beq	a5,zero,.L19
 	ld	a5,-1056(s0)
 	addi	a4,a5,19
 	addi	a5,s0,-1048
@@ -172,16 +188,19 @@ recursive:
 	mv	a1,a5
 	lla	a0,.LC6
 	call	printf@plt
+	j	.L11
+.L19:
+	nop
 .L11:
 	ld	a0,-1064(s0)
 	call	readdir@plt
 	sd	a0,-1056(s0)
 	ld	a5,-1056(s0)
-	bne	a5,zero,.L15
+	bne	a5,zero,.L16
 	ld	a0,-1064(s0)
 	call	closedir@plt
 	j	.L8
-.L17:
+.L18:
 	nop
 .L8:
 	la	a5,__stack_chk_guard
@@ -189,13 +208,19 @@ recursive:
 	ld	a5, 0(a5)
 	xor	a5, a4, a5
 	li	a4, 0
-	beq	a5,zero,.L16
+	beq	a5,zero,.L17
 	call	__stack_chk_fail@plt
-.L16:
+.L17:
 	ld	ra,1080(sp)
+	.cfi_restore 1
 	ld	s0,1072(sp)
+	.cfi_restore 8
+	.cfi_def_cfa 2, 1088
 	addi	sp,sp,1088
+	.cfi_def_cfa_offset 0
 	jr	ra
+	.cfi_endproc
+.LFE7:
 	.size	recursive, .-recursive
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits

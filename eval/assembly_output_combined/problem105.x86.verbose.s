@@ -1,6 +1,6 @@
 	.file	"problem105.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -72,11 +72,11 @@ func0:
 	movslq	%eax, %rdx	# tmp146, tmp147
 	imulq	$1717986919, %rdx, %rdx	#, tmp147, tmp148
 	shrq	$32, %rdx	#, tmp149
-	sarl	$2, %edx	#, tmp150
-	sarl	$31, %eax	#, tmp146
-	movl	%eax, %ecx	# tmp146, tmp151
-	movl	%edx, %eax	# tmp150, tmp150
-	subl	%ecx, %eax	# tmp151, tmp150
+	movl	%edx, %ecx	# tmp149, tmp150
+	sarl	$2, %ecx	#, tmp150
+	cltd
+	movl	%ecx, %eax	# tmp150, tmp150
+	subl	%edx, %eax	# tmp151, tmp150
 	movl	%eax, -16(%rbp)	# tmp145, num
 .L4:
 # problem105.c:14:         while (num > 0 && !has_even_digit) {
@@ -142,67 +142,67 @@ func0:
 .L13:
 # problem105.c:27:             if ((*out)[j] > (*out)[j + 1]) {
 	movq	-56(%rbp), %rax	# out, tmp161
-	movq	(%rax), %rdx	# *out_72(D), _22
+	movq	(%rax), %rax	# *out_72(D), _22
 # problem105.c:27:             if ((*out)[j] > (*out)[j + 1]) {
-	movl	-8(%rbp), %eax	# j, tmp162
-	cltq
-	salq	$2, %rax	#, _24
-	addq	%rdx, %rax	# _22, _25
+	movl	-8(%rbp), %edx	# j, tmp162
+	movslq	%edx, %rdx	# tmp162, _23
+	salq	$2, %rdx	#, _24
+	addq	%rdx, %rax	# _24, _25
 	movl	(%rax), %edx	# *_25, _26
 # problem105.c:27:             if ((*out)[j] > (*out)[j + 1]) {
 	movq	-56(%rbp), %rax	# out, tmp163
-	movq	(%rax), %rcx	# *out_72(D), _27
+	movq	(%rax), %rax	# *out_72(D), _27
 # problem105.c:27:             if ((*out)[j] > (*out)[j + 1]) {
-	movl	-8(%rbp), %eax	# j, tmp164
-	cltq
-	addq	$1, %rax	#, _29
-	salq	$2, %rax	#, _30
-	addq	%rcx, %rax	# _27, _31
+	movl	-8(%rbp), %ecx	# j, tmp164
+	movslq	%ecx, %rcx	# tmp164, _28
+	addq	$1, %rcx	#, _29
+	salq	$2, %rcx	#, _30
+	addq	%rcx, %rax	# _30, _31
 	movl	(%rax), %eax	# *_31, _32
 # problem105.c:27:             if ((*out)[j] > (*out)[j + 1]) {
 	cmpl	%eax, %edx	# _32, _26
 	jle	.L12	#,
 # problem105.c:28:                 int temp = (*out)[j];
 	movq	-56(%rbp), %rax	# out, tmp165
-	movq	(%rax), %rdx	# *out_72(D), _33
+	movq	(%rax), %rax	# *out_72(D), _33
 # problem105.c:28:                 int temp = (*out)[j];
-	movl	-8(%rbp), %eax	# j, tmp166
-	cltq
-	salq	$2, %rax	#, _35
-	addq	%rdx, %rax	# _33, _36
+	movl	-8(%rbp), %edx	# j, tmp166
+	movslq	%edx, %rdx	# tmp166, _34
+	salq	$2, %rdx	#, _35
+	addq	%rdx, %rax	# _35, _36
 # problem105.c:28:                 int temp = (*out)[j];
 	movl	(%rax), %eax	# *_36, tmp167
 	movl	%eax, -4(%rbp)	# tmp167, temp
 # problem105.c:29:                 (*out)[j] = (*out)[j + 1];
 	movq	-56(%rbp), %rax	# out, tmp168
-	movq	(%rax), %rdx	# *out_72(D), _37
+	movq	(%rax), %rax	# *out_72(D), _37
 # problem105.c:29:                 (*out)[j] = (*out)[j + 1];
-	movl	-8(%rbp), %eax	# j, tmp169
-	cltq
-	addq	$1, %rax	#, _39
-	salq	$2, %rax	#, _40
-	leaq	(%rdx,%rax), %rcx	#, _41
+	movl	-8(%rbp), %edx	# j, tmp169
+	movslq	%edx, %rdx	# tmp169, _38
+	addq	$1, %rdx	#, _39
+	salq	$2, %rdx	#, _40
+	leaq	(%rax,%rdx), %rcx	#, _41
 # problem105.c:29:                 (*out)[j] = (*out)[j + 1];
 	movq	-56(%rbp), %rax	# out, tmp170
-	movq	(%rax), %rdx	# *out_72(D), _42
+	movq	(%rax), %rax	# *out_72(D), _42
 # problem105.c:29:                 (*out)[j] = (*out)[j + 1];
-	movl	-8(%rbp), %eax	# j, tmp171
-	cltq
-	salq	$2, %rax	#, _44
-	addq	%rax, %rdx	# _44, _45
+	movl	-8(%rbp), %edx	# j, tmp171
+	movslq	%edx, %rdx	# tmp171, _43
+	salq	$2, %rdx	#, _44
+	addq	%rax, %rdx	# _42, _45
 # problem105.c:29:                 (*out)[j] = (*out)[j + 1];
 	movl	(%rcx), %eax	# *_41, _46
 # problem105.c:29:                 (*out)[j] = (*out)[j + 1];
 	movl	%eax, (%rdx)	# _46, *_45
 # problem105.c:30:                 (*out)[j + 1] = temp;
 	movq	-56(%rbp), %rax	# out, tmp172
-	movq	(%rax), %rdx	# *out_72(D), _47
+	movq	(%rax), %rax	# *out_72(D), _47
 # problem105.c:30:                 (*out)[j + 1] = temp;
-	movl	-8(%rbp), %eax	# j, tmp173
-	cltq
-	addq	$1, %rax	#, _49
-	salq	$2, %rax	#, _50
-	addq	%rax, %rdx	# _50, _51
+	movl	-8(%rbp), %edx	# j, tmp173
+	movslq	%edx, %rdx	# tmp173, _48
+	addq	$1, %rdx	#, _49
+	salq	$2, %rdx	#, _50
+	addq	%rax, %rdx	# _47, _51
 # problem105.c:30:                 (*out)[j + 1] = temp;
 	movl	-4(%rbp), %eax	# temp, tmp174
 	movl	%eax, (%rdx)	# tmp174, *_51
@@ -261,6 +261,7 @@ issame:
 	je	.L16	#,
 # problem105.c:44:     if (a_size != b_size) return false;
 	movl	$0, %eax	#, _10
+# problem105.c:44:     if (a_size != b_size) return false;
 	jmp	.L17	#
 .L16:
 # problem105.c:45:     for (int i = 0; i < a_size; i++) {
@@ -287,6 +288,7 @@ issame:
 	je	.L19	#,
 # problem105.c:46:         if (a[i] != b[i]) return false;
 	movl	$0, %eax	#, _10
+# problem105.c:46:         if (a[i] != b[i]) return false;
 	jmp	.L17	#
 .L19:
 # problem105.c:45:     for (int i = 0; i < a_size; i++) {
@@ -336,7 +338,7 @@ main:
 	subq	$160, %rsp	#,
 # problem105.c:51: int main() {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp128
-	movq	%rax, -8(%rbp)	# tmp128, D.2976
+	movq	%rax, -8(%rbp)	# tmp128, D.3813
 	xorl	%eax, %eax	# tmp128
 # problem105.c:53:     int test1[] = {15, 33, 1422, 1};
 	movl	$15, -64(%rbp)	#, test1[0]
@@ -361,9 +363,9 @@ main:
 	movl	$3, %ecx	#,
 	movq	%rax, %rdi	# out1.2_2,
 	call	issame	#
+# problem105.c:58:     assert(issame(out1, out1_size, expected1, 3));
 	testb	%al, %al	# _3
 	jne	.L22	#,
-# problem105.c:58:     assert(issame(out1, out1_size, expected1, 3));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp104
 	movq	%rax, %rcx	# tmp104,
 	movl	$58, %edx	#,
@@ -396,9 +398,9 @@ main:
 	movl	$0, %edx	#,
 	movq	%rax, %rdi	# out2.5_6,
 	call	issame	#
+# problem105.c:65:     assert(issame(out2, out2_size, NULL, 0));
 	testb	%al, %al	# _7
 	jne	.L23	#,
-# problem105.c:65:     assert(issame(out2, out2_size, NULL, 0));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp110
 	movq	%rax, %rcx	# tmp110,
 	movl	$65, %edx	#,
@@ -434,9 +436,9 @@ main:
 	movl	$2, %ecx	#,
 	movq	%rax, %rdi	# out3.8_10,
 	call	issame	#
+# problem105.c:73:     assert(issame(out3, out3_size, expected3, 2));
 	testb	%al, %al	# _11
 	jne	.L24	#,
-# problem105.c:73:     assert(issame(out3, out3_size, expected3, 2));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp117
 	movq	%rax, %rcx	# tmp117,
 	movl	$73, %edx	#,
@@ -471,9 +473,9 @@ main:
 	movl	$2, %ecx	#,
 	movq	%rax, %rdi	# out4.11_14,
 	call	issame	#
+# problem105.c:81:     assert(issame(out4, out4_size, expected4, 2));
 	testb	%al, %al	# _15
 	jne	.L25	#,
-# problem105.c:81:     assert(issame(out4, out4_size, expected4, 2));
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp124
 	movq	%rax, %rcx	# tmp124,
 	movl	$81, %edx	#,
@@ -490,7 +492,7 @@ main:
 # problem105.c:84:     return 0;
 	movl	$0, %eax	#, _56
 # problem105.c:85: }
-	movq	-8(%rbp), %rdx	# D.2976, tmp129
+	movq	-8(%rbp), %rdx	# D.3813, tmp129
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp129
 	je	.L27	#,
 	call	__stack_chk_fail@PLT	#
@@ -506,7 +508,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

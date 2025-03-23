@@ -1,7 +1,7 @@
 	.arch armv8-a
 	.file	"problem81.c"
-// GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (aarch64-linux-gnu)
-//	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+// GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (aarch64-linux-gnu)
+//	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 // GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 // options passed: -mlittle-endian -mabi=lp64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection
@@ -28,6 +28,7 @@ func0:
 	bhi	.L2		//,
 // problem81.c:5:     if (strlen(s) < 3) return false;
 	mov	w0, 0	// _19,
+// problem81.c:5:     if (strlen(s) < 3) return false;
 	b	.L3		//
 .L2:
 // problem81.c:6:     for (int i = 2; i < strlen(s); i++)
@@ -67,6 +68,7 @@ func0:
 .L5:
 // problem81.c:7:         if (s[i] == s[i-1] || s[i] == s[i-2]) return false;
 	mov	w0, 0	// _19,
+// problem81.c:7:         if (s[i] == s[i-1] || s[i] == s[i-2]) return false;
 	b	.L3		//
 .L6:
 // problem81.c:6:     for (int i = 2; i < strlen(s); i++)
@@ -165,145 +167,153 @@ main:
 	add	x0, x0, :lo12:.LC0	//, tmp107,
 	bl	func0		//
 	and	w0, w0, 255	// _1, tmp108
+// problem81.c:17:     assert(func0("a") == false);
 	eor	w0, w0, 1	// tmp109, _1,
 	and	w0, w0, 255	// _2, tmp109
-	cmp	w0, 0	// _2,
+	and	w0, w0, 1	// tmp110, _2,
+	cmp	w0, 0	// tmp110,
 	bne	.L9		//,
-// problem81.c:17:     assert(func0("a") == false);
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp110,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp110,
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp111,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp111,
 	mov	w2, 17	//,
-	adrp	x0, .LC1	// tmp111,
-	add	x1, x0, :lo12:.LC1	//, tmp111,
-	adrp	x0, .LC2	// tmp112,
-	add	x0, x0, :lo12:.LC2	//, tmp112,
+	adrp	x0, .LC1	// tmp112,
+	add	x1, x0, :lo12:.LC1	//, tmp112,
+	adrp	x0, .LC2	// tmp113,
+	add	x0, x0, :lo12:.LC2	//, tmp113,
 	bl	__assert_fail		//
 .L9:
 // problem81.c:18:     assert(func0("aa") == false);
-	adrp	x0, .LC3	// tmp113,
-	add	x0, x0, :lo12:.LC3	//, tmp113,
+	adrp	x0, .LC3	// tmp114,
+	add	x0, x0, :lo12:.LC3	//, tmp114,
 	bl	func0		//
-	and	w0, w0, 255	// _3, tmp114
-	eor	w0, w0, 1	// tmp115, _3,
-	and	w0, w0, 255	// _4, tmp115
-	cmp	w0, 0	// _4,
-	bne	.L10		//,
+	and	w0, w0, 255	// _3, tmp115
 // problem81.c:18:     assert(func0("aa") == false);
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp116,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp116,
+	eor	w0, w0, 1	// tmp116, _3,
+	and	w0, w0, 255	// _4, tmp116
+	and	w0, w0, 1	// tmp117, _4,
+	cmp	w0, 0	// tmp117,
+	bne	.L10		//,
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp118,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp118,
 	mov	w2, 18	//,
-	adrp	x0, .LC1	// tmp117,
-	add	x1, x0, :lo12:.LC1	//, tmp117,
-	adrp	x0, .LC4	// tmp118,
-	add	x0, x0, :lo12:.LC4	//, tmp118,
+	adrp	x0, .LC1	// tmp119,
+	add	x1, x0, :lo12:.LC1	//, tmp119,
+	adrp	x0, .LC4	// tmp120,
+	add	x0, x0, :lo12:.LC4	//, tmp120,
 	bl	__assert_fail		//
 .L10:
 // problem81.c:19:     assert(func0("abcd") == true);
-	adrp	x0, .LC5	// tmp119,
-	add	x0, x0, :lo12:.LC5	//, tmp119,
+	adrp	x0, .LC5	// tmp121,
+	add	x0, x0, :lo12:.LC5	//, tmp121,
 	bl	func0		//
-	and	w0, w0, 255	// _5, tmp120
-	cmp	w0, 0	// _5,
-	bne	.L11		//,
+	and	w0, w0, 255	// _5, tmp122
 // problem81.c:19:     assert(func0("abcd") == true);
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp121,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp121,
+	and	w0, w0, 1	// tmp123, _5,
+	cmp	w0, 0	// tmp123,
+	bne	.L11		//,
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp124,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp124,
 	mov	w2, 19	//,
-	adrp	x0, .LC1	// tmp122,
-	add	x1, x0, :lo12:.LC1	//, tmp122,
-	adrp	x0, .LC6	// tmp123,
-	add	x0, x0, :lo12:.LC6	//, tmp123,
+	adrp	x0, .LC1	// tmp125,
+	add	x1, x0, :lo12:.LC1	//, tmp125,
+	adrp	x0, .LC6	// tmp126,
+	add	x0, x0, :lo12:.LC6	//, tmp126,
 	bl	__assert_fail		//
 .L11:
 // problem81.c:20:     assert(func0("aabb") == false);
-	adrp	x0, .LC7	// tmp124,
-	add	x0, x0, :lo12:.LC7	//, tmp124,
+	adrp	x0, .LC7	// tmp127,
+	add	x0, x0, :lo12:.LC7	//, tmp127,
 	bl	func0		//
-	and	w0, w0, 255	// _6, tmp125
-	eor	w0, w0, 1	// tmp126, _6,
-	and	w0, w0, 255	// _7, tmp126
-	cmp	w0, 0	// _7,
-	bne	.L12		//,
+	and	w0, w0, 255	// _6, tmp128
 // problem81.c:20:     assert(func0("aabb") == false);
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp127,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp127,
+	eor	w0, w0, 1	// tmp129, _6,
+	and	w0, w0, 255	// _7, tmp129
+	and	w0, w0, 1	// tmp130, _7,
+	cmp	w0, 0	// tmp130,
+	bne	.L12		//,
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp131,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp131,
 	mov	w2, 20	//,
-	adrp	x0, .LC1	// tmp128,
-	add	x1, x0, :lo12:.LC1	//, tmp128,
-	adrp	x0, .LC8	// tmp129,
-	add	x0, x0, :lo12:.LC8	//, tmp129,
+	adrp	x0, .LC1	// tmp132,
+	add	x1, x0, :lo12:.LC1	//, tmp132,
+	adrp	x0, .LC8	// tmp133,
+	add	x0, x0, :lo12:.LC8	//, tmp133,
 	bl	__assert_fail		//
 .L12:
 // problem81.c:21:     assert(func0("adb") == true);
-	adrp	x0, .LC9	// tmp130,
-	add	x0, x0, :lo12:.LC9	//, tmp130,
+	adrp	x0, .LC9	// tmp134,
+	add	x0, x0, :lo12:.LC9	//, tmp134,
 	bl	func0		//
-	and	w0, w0, 255	// _8, tmp131
-	cmp	w0, 0	// _8,
-	bne	.L13		//,
+	and	w0, w0, 255	// _8, tmp135
 // problem81.c:21:     assert(func0("adb") == true);
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp132,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp132,
+	and	w0, w0, 1	// tmp136, _8,
+	cmp	w0, 0	// tmp136,
+	bne	.L13		//,
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp137,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp137,
 	mov	w2, 21	//,
-	adrp	x0, .LC1	// tmp133,
-	add	x1, x0, :lo12:.LC1	//, tmp133,
-	adrp	x0, .LC10	// tmp134,
-	add	x0, x0, :lo12:.LC10	//, tmp134,
+	adrp	x0, .LC1	// tmp138,
+	add	x1, x0, :lo12:.LC1	//, tmp138,
+	adrp	x0, .LC10	// tmp139,
+	add	x0, x0, :lo12:.LC10	//, tmp139,
 	bl	__assert_fail		//
 .L13:
 // problem81.c:22:     assert(func0("xyy") == false);
-	adrp	x0, .LC11	// tmp135,
-	add	x0, x0, :lo12:.LC11	//, tmp135,
+	adrp	x0, .LC11	// tmp140,
+	add	x0, x0, :lo12:.LC11	//, tmp140,
 	bl	func0		//
-	and	w0, w0, 255	// _9, tmp136
-	eor	w0, w0, 1	// tmp137, _9,
-	and	w0, w0, 255	// _10, tmp137
-	cmp	w0, 0	// _10,
-	bne	.L14		//,
+	and	w0, w0, 255	// _9, tmp141
 // problem81.c:22:     assert(func0("xyy") == false);
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp138,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp138,
+	eor	w0, w0, 1	// tmp142, _9,
+	and	w0, w0, 255	// _10, tmp142
+	and	w0, w0, 1	// tmp143, _10,
+	cmp	w0, 0	// tmp143,
+	bne	.L14		//,
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp144,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp144,
 	mov	w2, 22	//,
-	adrp	x0, .LC1	// tmp139,
-	add	x1, x0, :lo12:.LC1	//, tmp139,
-	adrp	x0, .LC12	// tmp140,
-	add	x0, x0, :lo12:.LC12	//, tmp140,
+	adrp	x0, .LC1	// tmp145,
+	add	x1, x0, :lo12:.LC1	//, tmp145,
+	adrp	x0, .LC12	// tmp146,
+	add	x0, x0, :lo12:.LC12	//, tmp146,
 	bl	__assert_fail		//
 .L14:
 // problem81.c:23:     assert(func0("iopaxpoi") == true);
-	adrp	x0, .LC13	// tmp141,
-	add	x0, x0, :lo12:.LC13	//, tmp141,
+	adrp	x0, .LC13	// tmp147,
+	add	x0, x0, :lo12:.LC13	//, tmp147,
 	bl	func0		//
-	and	w0, w0, 255	// _11, tmp142
-	cmp	w0, 0	// _11,
-	bne	.L15		//,
+	and	w0, w0, 255	// _11, tmp148
 // problem81.c:23:     assert(func0("iopaxpoi") == true);
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp143,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp143,
+	and	w0, w0, 1	// tmp149, _11,
+	cmp	w0, 0	// tmp149,
+	bne	.L15		//,
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp150,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp150,
 	mov	w2, 23	//,
-	adrp	x0, .LC1	// tmp144,
-	add	x1, x0, :lo12:.LC1	//, tmp144,
-	adrp	x0, .LC14	// tmp145,
-	add	x0, x0, :lo12:.LC14	//, tmp145,
+	adrp	x0, .LC1	// tmp151,
+	add	x1, x0, :lo12:.LC1	//, tmp151,
+	adrp	x0, .LC14	// tmp152,
+	add	x0, x0, :lo12:.LC14	//, tmp152,
 	bl	__assert_fail		//
 .L15:
 // problem81.c:24:     assert(func0("iopaxioi") == false);
-	adrp	x0, .LC15	// tmp146,
-	add	x0, x0, :lo12:.LC15	//, tmp146,
+	adrp	x0, .LC15	// tmp153,
+	add	x0, x0, :lo12:.LC15	//, tmp153,
 	bl	func0		//
-	and	w0, w0, 255	// _12, tmp147
-	eor	w0, w0, 1	// tmp148, _12,
-	and	w0, w0, 255	// _13, tmp148
-	cmp	w0, 0	// _13,
-	bne	.L16		//,
+	and	w0, w0, 255	// _12, tmp154
 // problem81.c:24:     assert(func0("iopaxioi") == false);
-	adrp	x0, __PRETTY_FUNCTION__.0	// tmp149,
-	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp149,
+	eor	w0, w0, 1	// tmp155, _12,
+	and	w0, w0, 255	// _13, tmp155
+	and	w0, w0, 1	// tmp156, _13,
+	cmp	w0, 0	// tmp156,
+	bne	.L16		//,
+	adrp	x0, __PRETTY_FUNCTION__.0	// tmp157,
+	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp157,
 	mov	w2, 24	//,
-	adrp	x0, .LC1	// tmp150,
-	add	x1, x0, :lo12:.LC1	//, tmp150,
-	adrp	x0, .LC16	// tmp151,
-	add	x0, x0, :lo12:.LC16	//, tmp151,
+	adrp	x0, .LC1	// tmp158,
+	add	x1, x0, :lo12:.LC1	//, tmp158,
+	adrp	x0, .LC16	// tmp159,
+	add	x0, x0, :lo12:.LC16	//, tmp159,
 	bl	__assert_fail		//
 .L16:
 // problem81.c:26:     return 0;
@@ -323,5 +333,5 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits

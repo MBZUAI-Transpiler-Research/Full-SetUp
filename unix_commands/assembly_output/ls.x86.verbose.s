@@ -1,6 +1,6 @@
 	.file	"ls.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -27,7 +27,7 @@ main:
 	movq	%rsi, -48(%rbp)	# argv, argv
 # ls.c:8:  {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp109
-	movq	%rax, -8(%rbp)	# tmp109, D.3146
+	movq	%rax, -8(%rbp)	# tmp109, D.4010
 	xorl	%eax, %eax	# tmp109
 # ls.c:13:    if (argc == 1)
 	cmpl	$1, -36(%rbp)	#, argc
@@ -46,11 +46,11 @@ main:
 	jmp	.L3	#
 .L4:
 # ls.c:18:          printf("%s\n",name[n]->d_name);
-	movq	-16(%rbp), %rdx	# name, name.0_1
-	movl	-20(%rbp), %eax	# n, tmp103
-	cltq
-	salq	$3, %rax	#, _3
-	addq	%rdx, %rax	# name.0_1, _4
+	movq	-16(%rbp), %rax	# name, name.0_1
+	movl	-20(%rbp), %edx	# n, tmp103
+	movslq	%edx, %rdx	# tmp103, _2
+	salq	$3, %rdx	#, _3
+	addq	%rdx, %rax	# _3, _4
 	movq	(%rax), %rax	# *_4, _5
 # ls.c:18:          printf("%s\n",name[n]->d_name);
 	addq	$19, %rax	#, _6
@@ -58,11 +58,11 @@ main:
 	movq	%rax, %rdi	# _6,
 	call	puts@PLT	#
 # ls.c:19:          free(name[n]);
-	movq	-16(%rbp), %rdx	# name, name.1_7
-	movl	-20(%rbp), %eax	# n, tmp104
-	cltq
-	salq	$3, %rax	#, _9
-	addq	%rdx, %rax	# name.1_7, _10
+	movq	-16(%rbp), %rax	# name, name.1_7
+	movl	-20(%rbp), %edx	# n, tmp104
+	movslq	%edx, %rdx	# tmp104, _8
+	salq	$3, %rdx	#, _9
+	addq	%rdx, %rax	# _9, _10
 # ls.c:19:          free(name[n]);
 	movq	(%rax), %rax	# *_10, _11
 	movq	%rax, %rdi	# _11,
@@ -87,10 +87,10 @@ main:
 # ls.c:23:   else if(argc==2 || argv[1]=="-R"){
 	movq	-48(%rbp), %rax	# argv, tmp106
 	addq	$8, %rax	#, _14
-	movq	(%rax), %rax	# *_14, _15
+	movq	(%rax), %rdx	# *_14, _15
 # ls.c:23:   else if(argc==2 || argv[1]=="-R"){
-	leaq	.LC1(%rip), %rdx	#, tmp107
-	cmpq	%rdx, %rax	# tmp107, _15
+	leaq	.LC1(%rip), %rax	#, tmp107
+	cmpq	%rax, %rdx	# tmp107, _15
 	jne	.L5	#,
 .L6:
 # ls.c:25:    recursive(".",0);
@@ -133,7 +133,7 @@ recursive:
 	movl	%esi, -1068(%rbp)	# indent, indent
 # ls.c:33: {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp114
-	movq	%rax, -8(%rbp)	# tmp114, D.3150
+	movq	%rax, -8(%rbp)	# tmp114, D.4014
 	xorl	%eax, %eax	# tmp114
 # ls.c:37:     if (!(dir = opendir(name)))
 	movq	-1064(%rbp), %rax	# name, tmp91
@@ -142,10 +142,10 @@ recursive:
 	movq	%rax, -1056(%rbp)	# tmp92, dir
 # ls.c:37:     if (!(dir = opendir(name)))
 	cmpq	$0, -1056(%rbp)	#, dir
-	je	.L17	#,
+	je	.L18	#,
 # ls.c:40:     while ((entry = readdir(dir)) != NULL) {
 	jmp	.L11	#
-.L15:
+.L16:
 # ls.c:41:         if (entry->d_type == DT_DIR) {
 	movq	-1048(%rbp), %rax	# entry, tmp93
 	movzbl	18(%rax), %eax	# entry_17->d_type, _1
@@ -162,7 +162,7 @@ recursive:
 	call	strcmp@PLT	#
 # ls.c:43:             if (strcmp(entry->d_name, ".") == 0 || strcmp(entry->d_name, "..") == 0)
 	testl	%eax, %eax	# _3
-	je	.L11	#,
+	je	.L19	#,
 # ls.c:43:             if (strcmp(entry->d_name, ".") == 0 || strcmp(entry->d_name, "..") == 0)
 	movq	-1048(%rbp), %rax	# entry, tmp96
 	addq	$19, %rax	#, _4
@@ -173,9 +173,7 @@ recursive:
 	call	strcmp@PLT	#
 # ls.c:43:             if (strcmp(entry->d_name, ".") == 0 || strcmp(entry->d_name, "..") == 0)
 	testl	%eax, %eax	# _5
-	jne	.L14	#,
-	jmp	.L11	#
-.L14:
+	je	.L19	#,
 # ls.c:45:             sprintf(path,"%s",entry->d_name);
 	movq	-1048(%rbp), %rax	# entry, tmp98
 	leaq	19(%rax), %rdx	#, _6
@@ -219,6 +217,10 @@ recursive:
 	movq	%rax, %rdi	# tmp110,
 	movl	$0, %eax	#,
 	call	printf@PLT	#
+	jmp	.L11	#
+.L19:
+# ls.c:44:                 continue;
+	nop	
 .L11:
 # ls.c:40:     while ((entry = readdir(dir)) != NULL) {
 	movq	-1056(%rbp), %rax	# dir, tmp111
@@ -227,29 +229,29 @@ recursive:
 	movq	%rax, -1048(%rbp)	# tmp112, entry
 # ls.c:40:     while ((entry = readdir(dir)) != NULL) {
 	cmpq	$0, -1048(%rbp)	#, entry
-	jne	.L15	#,
+	jne	.L16	#,
 # ls.c:52:     closedir(dir);
 	movq	-1056(%rbp), %rax	# dir, tmp113
 	movq	%rax, %rdi	# tmp113,
 	call	closedir@PLT	#
 	jmp	.L8	#
-.L17:
+.L18:
 # ls.c:38:         return;
 	nop	
 .L8:
 # ls.c:53: }
-	movq	-8(%rbp), %rax	# D.3150, tmp115
+	movq	-8(%rbp), %rax	# D.4014, tmp115
 	subq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp115
-	je	.L16	#,
+	je	.L17	#,
 	call	__stack_chk_fail@PLT	#
-.L16:
+.L17:
 	leave	
 	.cfi_def_cfa 7, 8
 	ret	
 	.cfi_endproc
 .LFE7:
 	.size	recursive, .-recursive
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

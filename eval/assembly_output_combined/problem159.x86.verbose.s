@@ -1,6 +1,6 @@
 	.file	"problem159.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -25,7 +25,7 @@ func0:
 	movl	%esi, -316(%rbp)	# count, count
 # problem159.c:4: char *func0(char *words[], int count) {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp144
-	movq	%rax, -8(%rbp)	# tmp144, D.2623
+	movq	%rax, -8(%rbp)	# tmp144, D.3480
 	xorl	%eax, %eax	# tmp144
 # problem159.c:5:     char *max = "";
 	leaq	.LC0(%rip), %rax	#, tmp117
@@ -194,7 +194,7 @@ func0:
 # problem159.c:23:     return max;
 	movq	-280(%rbp), %rax	# max, _50
 # problem159.c:24: }
-	movq	-8(%rbp), %rdx	# D.2623, tmp145
+	movq	-8(%rbp), %rdx	# D.3480, tmp145
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp145
 	je	.L10	#,
 	call	__stack_chk_fail@PLT	#
@@ -299,7 +299,7 @@ main:
 	subq	$320, %rsp	#,
 # problem159.c:31: int main() {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp188
-	movq	%rax, -8(%rbp)	# tmp188, D.2626
+	movq	%rax, -8(%rbp)	# tmp188, D.3483
 	xorl	%eax, %eax	# tmp188
 # problem159.c:32:     char *words1[] = {"name", "of", "string"};
 	leaq	.LC1(%rip), %rax	#, tmp104
@@ -314,10 +314,12 @@ main:
 	movq	%rax, %rdi	# tmp107,
 	call	func0	#
 	movq	%rax, %rdx	#, _1
+# problem159.c:33:     assert(strcmp(func0(words1, 3), "string") == 0);
 	leaq	.LC3(%rip), %rax	#, tmp108
 	movq	%rax, %rsi	# tmp108,
 	movq	%rdx, %rdi	# _1,
 	call	strcmp@PLT	#
+# problem159.c:33:     assert(strcmp(func0(words1, 3), "string") == 0);
 	testl	%eax, %eax	# _2
 	je	.L12	#,
 # problem159.c:33:     assert(strcmp(func0(words1, 3), "string") == 0);
@@ -343,10 +345,12 @@ main:
 	movq	%rax, %rdi	# tmp115,
 	call	func0	#
 	movq	%rax, %rdx	#, _3
+# problem159.c:36:     assert(strcmp(func0(words2, 3), "enam") == 0);
 	leaq	.LC6(%rip), %rax	#, tmp116
 	movq	%rax, %rsi	# tmp116,
 	movq	%rdx, %rdi	# _3,
 	call	strcmp@PLT	#
+# problem159.c:36:     assert(strcmp(func0(words2, 3), "enam") == 0);
 	testl	%eax, %eax	# _4
 	je	.L13	#,
 # problem159.c:36:     assert(strcmp(func0(words2, 3), "enam") == 0);
@@ -372,10 +376,12 @@ main:
 	movq	%rax, %rdi	# tmp123,
 	call	func0	#
 	movq	%rax, %rdx	#, _5
+# problem159.c:39:     assert(strcmp(func0(words3, 3), "aaaaaaa") == 0);
 	leaq	.LC9(%rip), %rax	#, tmp124
 	movq	%rax, %rsi	# tmp124,
 	movq	%rdx, %rdi	# _5,
 	call	strcmp@PLT	#
+# problem159.c:39:     assert(strcmp(func0(words3, 3), "aaaaaaa") == 0);
 	testl	%eax, %eax	# _6
 	je	.L14	#,
 # problem159.c:39:     assert(strcmp(func0(words3, 3), "aaaaaaa") == 0);
@@ -399,10 +405,12 @@ main:
 	movq	%rax, %rdi	# tmp130,
 	call	func0	#
 	movq	%rax, %rdx	#, _7
+# problem159.c:42:     assert(strcmp(func0(words4, 2), "abc") == 0);
 	leaq	.LC13(%rip), %rax	#, tmp131
 	movq	%rax, %rsi	# tmp131,
 	movq	%rdx, %rdi	# _7,
 	call	strcmp@PLT	#
+# problem159.c:42:     assert(strcmp(func0(words4, 2), "abc") == 0);
 	testl	%eax, %eax	# _8
 	je	.L15	#,
 # problem159.c:42:     assert(strcmp(func0(words4, 2), "abc") == 0);
@@ -432,10 +440,12 @@ main:
 	movq	%rax, %rdi	# tmp140,
 	call	func0	#
 	movq	%rax, %rdx	#, _9
+# problem159.c:45:     assert(strcmp(func0(words5, 5), "footbott") == 0);
 	leaq	.LC18(%rip), %rax	#, tmp141
 	movq	%rax, %rsi	# tmp141,
 	movq	%rdx, %rdi	# _9,
 	call	strcmp@PLT	#
+# problem159.c:45:     assert(strcmp(func0(words5, 5), "footbott") == 0);
 	testl	%eax, %eax	# _10
 	je	.L16	#,
 # problem159.c:45:     assert(strcmp(func0(words5, 5), "footbott") == 0);
@@ -463,10 +473,12 @@ main:
 	movq	%rax, %rdi	# tmp149,
 	call	func0	#
 	movq	%rax, %rdx	#, _11
+# problem159.c:48:     assert(strcmp(func0(words6, 4), "gonna") == 0);
 	leaq	.LC22(%rip), %rax	#, tmp150
 	movq	%rax, %rsi	# tmp150,
 	movq	%rdx, %rdi	# _11,
 	call	strcmp@PLT	#
+# problem159.c:48:     assert(strcmp(func0(words6, 4), "gonna") == 0);
 	testl	%eax, %eax	# _12
 	je	.L17	#,
 # problem159.c:48:     assert(strcmp(func0(words6, 4), "gonna") == 0);
@@ -496,10 +508,12 @@ main:
 	movq	%rax, %rdi	# tmp159,
 	call	func0	#
 	movq	%rax, %rdx	#, _13
+# problem159.c:51:     assert(strcmp(func0(words7, 5), "nation") == 0);
 	leaq	.LC27(%rip), %rax	#, tmp160
 	movq	%rax, %rsi	# tmp160,
 	movq	%rdx, %rdi	# _13,
 	call	strcmp@PLT	#
+# problem159.c:51:     assert(strcmp(func0(words7, 5), "nation") == 0);
 	testl	%eax, %eax	# _14
 	je	.L18	#,
 # problem159.c:51:     assert(strcmp(func0(words7, 5), "nation") == 0);
@@ -527,10 +541,12 @@ main:
 	movq	%rax, %rdi	# tmp168,
 	call	func0	#
 	movq	%rax, %rdx	#, _15
+# problem159.c:54:     assert(strcmp(func0(words8, 4), "this") == 0);
 	leaq	.LC17(%rip), %rax	#, tmp169
 	movq	%rax, %rsi	# tmp169,
 	movq	%rdx, %rdi	# _15,
 	call	strcmp@PLT	#
+# problem159.c:54:     assert(strcmp(func0(words8, 4), "this") == 0);
 	testl	%eax, %eax	# _16
 	je	.L19	#,
 # problem159.c:54:     assert(strcmp(func0(words8, 4), "this") == 0);
@@ -552,10 +568,12 @@ main:
 	movq	%rax, %rdi	# tmp174,
 	call	func0	#
 	movq	%rax, %rdx	#, _17
+# problem159.c:57:     assert(strcmp(func0(words9, 1), "b") == 0);
 	leaq	.LC32(%rip), %rax	#, tmp175
 	movq	%rax, %rsi	# tmp175,
 	movq	%rdx, %rdi	# _17,
 	call	strcmp@PLT	#
+# problem159.c:57:     assert(strcmp(func0(words9, 1), "b") == 0);
 	testl	%eax, %eax	# _18
 	je	.L20	#,
 # problem159.c:57:     assert(strcmp(func0(words9, 1), "b") == 0);
@@ -581,10 +599,12 @@ main:
 	movq	%rax, %rdi	# tmp182,
 	call	func0	#
 	movq	%rax, %rdx	#, _19
+# problem159.c:60:     assert(strcmp(func0(words10, 3), "play") == 0);
 	leaq	.LC16(%rip), %rax	#, tmp183
 	movq	%rax, %rsi	# tmp183,
 	movq	%rdx, %rdi	# _19,
 	call	strcmp@PLT	#
+# problem159.c:60:     assert(strcmp(func0(words10, 3), "play") == 0);
 	testl	%eax, %eax	# _20
 	je	.L21	#,
 # problem159.c:60:     assert(strcmp(func0(words10, 3), "play") == 0);
@@ -600,7 +620,7 @@ main:
 # problem159.c:62:     return 0;
 	movl	$0, %eax	#, _75
 # problem159.c:63: }
-	movq	-8(%rbp), %rdx	# D.2626, tmp189
+	movq	-8(%rbp), %rdx	# D.3483, tmp189
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp189
 	je	.L23	#,
 	call	__stack_chk_fail@PLT	#
@@ -616,7 +636,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

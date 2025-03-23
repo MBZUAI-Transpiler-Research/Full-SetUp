@@ -42,13 +42,13 @@ func0:
 	shrl	$31, %edx
 	addl	%edx, %eax
 	sarl	%eax
-	movl	%eax, %edx
+	movl	%eax, %ecx
 	movl	-12(%rbp), %eax
 	cltq
-	leaq	0(,%rax,4), %rcx
+	leaq	0(,%rax,4), %rdx
 	movq	-8(%rbp), %rax
-	addq	%rcx, %rax
-	addl	$1, %edx
+	addq	%rdx, %rax
+	leal	1(%rcx), %edx
 	movl	%edx, (%rax)
 	jmp	.L6
 .L5:
@@ -96,7 +96,7 @@ func0:
 	.cfi_endproc
 .LFE6:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

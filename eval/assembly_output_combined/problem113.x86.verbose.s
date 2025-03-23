@@ -1,6 +1,6 @@
 	.file	"problem113.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -286,7 +286,7 @@ main:
 	addq	$-128, %rsp	#,
 # problem113.c:46: int main() {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp200
-	movq	%rax, -8(%rbp)	# tmp200, D.3157
+	movq	%rax, -8(%rbp)	# tmp200, D.4021
 	xorl	%eax, %eax	# tmp200
 # problem113.c:50:     func0("abcde", "ae", result, palindrome);
 	leaq	-118(%rbp), %rdx	#, tmp104
@@ -304,9 +304,9 @@ main:
 	movq	%rdx, %rsi	# tmp109,
 	movq	%rax, %rdi	# tmp108,
 	call	strcmp@PLT	#
+# problem113.c:51:     assert(strcmp(result, "bcd") == 0 && strcmp(palindrome, "False") == 0);
 	testl	%eax, %eax	# _1
 	jne	.L16	#,
-# problem113.c:51:     assert(strcmp(result, "bcd") == 0 && strcmp(palindrome, "False") == 0);
 	leaq	-118(%rbp), %rax	#, tmp110
 	leaq	.LC1(%rip), %rdx	#, tmp111
 	movq	%rdx, %rsi	# tmp111,
@@ -341,9 +341,9 @@ main:
 	movq	%rdx, %rsi	# tmp120,
 	movq	%rax, %rdi	# tmp119,
 	call	strcmp@PLT	#
+# problem113.c:54:     assert(strcmp(result, "acdef") == 0 && strcmp(palindrome, "False") == 0);
 	testl	%eax, %eax	# _3
 	jne	.L18	#,
-# problem113.c:54:     assert(strcmp(result, "acdef") == 0 && strcmp(palindrome, "False") == 0);
 	leaq	-118(%rbp), %rax	#, tmp121
 	leaq	.LC1(%rip), %rdx	#, tmp122
 	movq	%rdx, %rsi	# tmp122,
@@ -378,9 +378,9 @@ main:
 	movq	%rdx, %rsi	# tmp131,
 	movq	%rax, %rdi	# tmp130,
 	call	strcmp@PLT	#
+# problem113.c:57:     assert(strcmp(result, "cdedc") == 0 && strcmp(palindrome, "True") == 0);
 	testl	%eax, %eax	# _5
 	jne	.L20	#,
-# problem113.c:57:     assert(strcmp(result, "cdedc") == 0 && strcmp(palindrome, "True") == 0);
 	leaq	-118(%rbp), %rax	#, tmp132
 	leaq	.LC0(%rip), %rdx	#, tmp133
 	movq	%rdx, %rsi	# tmp133,
@@ -415,9 +415,9 @@ main:
 	movq	%rdx, %rsi	# tmp142,
 	movq	%rax, %rdi	# tmp141,
 	call	strcmp@PLT	#
+# problem113.c:60:     assert(strcmp(result, "dik") == 0 && strcmp(palindrome, "False") == 0);
 	testl	%eax, %eax	# _7
 	jne	.L22	#,
-# problem113.c:60:     assert(strcmp(result, "dik") == 0 && strcmp(palindrome, "False") == 0);
 	leaq	-118(%rbp), %rax	#, tmp143
 	leaq	.LC1(%rip), %rdx	#, tmp144
 	movq	%rdx, %rsi	# tmp144,
@@ -486,9 +486,9 @@ main:
 	movq	%rdx, %rsi	# tmp162,
 	movq	%rax, %rdi	# tmp161,
 	call	strcmp@PLT	#
+# problem113.c:66:     assert(strcmp(result, "abcdedcba") == 0 && strcmp(palindrome, "True") == 0);
 	testl	%eax, %eax	# _11
 	jne	.L26	#,
-# problem113.c:66:     assert(strcmp(result, "abcdedcba") == 0 && strcmp(palindrome, "True") == 0);
 	leaq	-118(%rbp), %rax	#, tmp163
 	leaq	.LC0(%rip), %rdx	#, tmp164
 	movq	%rdx, %rsi	# tmp164,
@@ -523,9 +523,9 @@ main:
 	movq	%rdx, %rsi	# tmp173,
 	movq	%rax, %rdi	# tmp172,
 	call	strcmp@PLT	#
+# problem113.c:69:     assert(strcmp(result, "abcdedcba") == 0 && strcmp(palindrome, "True") == 0);
 	testl	%eax, %eax	# _13
 	jne	.L28	#,
-# problem113.c:69:     assert(strcmp(result, "abcdedcba") == 0 && strcmp(palindrome, "True") == 0);
 	leaq	-118(%rbp), %rax	#, tmp174
 	leaq	.LC0(%rip), %rdx	#, tmp175
 	movq	%rdx, %rsi	# tmp175,
@@ -560,9 +560,9 @@ main:
 	movq	%rdx, %rsi	# tmp184,
 	movq	%rax, %rdi	# tmp183,
 	call	strcmp@PLT	#
+# problem113.c:72:     assert(strcmp(result, "abba") == 0 && strcmp(palindrome, "True") == 0);
 	testl	%eax, %eax	# _15
 	jne	.L30	#,
-# problem113.c:72:     assert(strcmp(result, "abba") == 0 && strcmp(palindrome, "True") == 0);
 	leaq	-118(%rbp), %rax	#, tmp185
 	leaq	.LC0(%rip), %rdx	#, tmp186
 	movq	%rdx, %rsi	# tmp186,
@@ -618,7 +618,7 @@ main:
 # problem113.c:77:     return 0;
 	movl	$0, %eax	#, _31
 # problem113.c:78: }
-	movq	-8(%rbp), %rdx	# D.3157, tmp201
+	movq	-8(%rbp), %rdx	# D.4021, tmp201
 	subq	%fs:40, %rdx	# MEM[(<address-space-1> long unsigned int *)40B], tmp201
 	je	.L35	#,
 	call	__stack_chk_fail@PLT	#
@@ -634,7 +634,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

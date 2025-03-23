@@ -1,6 +1,6 @@
 	.file	"problem93.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -35,6 +35,7 @@ func0:
 .L14:
 # problem93.c:5:     if (roundf(a) != a) return 0;
 	movl	$0, %eax	#, _7
+# problem93.c:5:     if (roundf(a) != a) return 0;
 	jmp	.L4	#
 .L2:
 # problem93.c:6:     if (roundf(b) != b) return 0;
@@ -52,6 +53,7 @@ func0:
 .L15:
 # problem93.c:6:     if (roundf(b) != b) return 0;
 	movl	$0, %eax	#, _7
+# problem93.c:6:     if (roundf(b) != b) return 0;
 	jmp	.L4	#
 .L5:
 # problem93.c:7:     if (roundf(c) != c) return 0;
@@ -69,6 +71,7 @@ func0:
 .L16:
 # problem93.c:7:     if (roundf(c) != c) return 0;
 	movl	$0, %eax	#, _7
+# problem93.c:7:     if (roundf(c) != c) return 0;
 	jmp	.L4	#
 .L7:
 # problem93.c:8:     if ((a + b == c) || (a + c == b) || (b + c == a)) return 1;
@@ -100,6 +103,7 @@ func0:
 .L9:
 # problem93.c:8:     if ((a + b == c) || (a + c == b) || (b + c == a)) return 1;
 	movl	$1, %eax	#, _7
+# problem93.c:8:     if ((a + b == c) || (a + c == b) || (b + c == a)) return 1;
 	jmp	.L4	#
 .L12:
 # problem93.c:9:     return 0;
@@ -153,9 +157,9 @@ main:
 	movl	.LC2(%rip), %eax	#, tmp94
 	movd	%eax, %xmm0	# tmp94,
 	call	func0	#
+# problem93.c:17:     assert(func0(2, 3, 1) == 1);
 	cmpl	$1, %eax	#, _1
 	je	.L20	#,
-# problem93.c:17:     assert(func0(2, 3, 1) == 1);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp95
 	movq	%rax, %rcx	# tmp95,
 	movl	$17, %edx	#,
@@ -171,9 +175,9 @@ main:
 	movl	.LC5(%rip), %eax	#, tmp98
 	movd	%eax, %xmm0	# tmp98,
 	call	func0	#
+# problem93.c:18:     assert(func0(2.5, 2, 3) == 0);
 	testl	%eax, %eax	# _2
 	je	.L21	#,
-# problem93.c:18:     assert(func0(2.5, 2, 3) == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp99
 	movq	%rax, %rcx	# tmp99,
 	movl	$18, %edx	#,
@@ -189,9 +193,9 @@ main:
 	movl	.LC9(%rip), %eax	#, tmp102
 	movd	%eax, %xmm0	# tmp102,
 	call	func0	#
+# problem93.c:19:     assert(func0(1.5, 5, 3.5) == 0);
 	testl	%eax, %eax	# _3
 	je	.L22	#,
-# problem93.c:19:     assert(func0(1.5, 5, 3.5) == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp103
 	movq	%rax, %rcx	# tmp103,
 	movl	$19, %edx	#,
@@ -207,9 +211,9 @@ main:
 	movl	.LC2(%rip), %eax	#, tmp106
 	movd	%eax, %xmm0	# tmp106,
 	call	func0	#
+# problem93.c:20:     assert(func0(2, 6, 2) == 0);
 	testl	%eax, %eax	# _4
 	je	.L23	#,
-# problem93.c:20:     assert(func0(2, 6, 2) == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp107
 	movq	%rax, %rcx	# tmp107,
 	movl	$20, %edx	#,
@@ -225,9 +229,9 @@ main:
 	movl	.LC13(%rip), %eax	#, tmp110
 	movd	%eax, %xmm0	# tmp110,
 	call	func0	#
+# problem93.c:21:     assert(func0(4, 2, 2) == 1);
 	cmpl	$1, %eax	#, _5
 	je	.L24	#,
-# problem93.c:21:     assert(func0(4, 2, 2) == 1);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp111
 	movq	%rax, %rcx	# tmp111,
 	movl	$21, %edx	#,
@@ -243,9 +247,9 @@ main:
 	movl	.LC15(%rip), %eax	#, tmp114
 	movd	%eax, %xmm0	# tmp114,
 	call	func0	#
+# problem93.c:22:     assert(func0(2.2, 2.2, 2.2) == 0);
 	testl	%eax, %eax	# _6
 	je	.L25	#,
-# problem93.c:22:     assert(func0(2.2, 2.2, 2.2) == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp115
 	movq	%rax, %rcx	# tmp115,
 	movl	$22, %edx	#,
@@ -261,9 +265,9 @@ main:
 	movl	.LC17(%rip), %eax	#, tmp118
 	movd	%eax, %xmm0	# tmp118,
 	call	func0	#
+# problem93.c:23:     assert(func0(-4, 6, 2) == 1);
 	cmpl	$1, %eax	#, _7
 	je	.L26	#,
-# problem93.c:23:     assert(func0(-4, 6, 2) == 1);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp119
 	movq	%rax, %rcx	# tmp119,
 	movl	$23, %edx	#,
@@ -279,9 +283,9 @@ main:
 	movl	.LC2(%rip), %eax	#, tmp122
 	movd	%eax, %xmm0	# tmp122,
 	call	func0	#
+# problem93.c:24:     assert(func0(2, 1, 1) == 1);
 	cmpl	$1, %eax	#, _8
 	je	.L27	#,
-# problem93.c:24:     assert(func0(2, 1, 1) == 1);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp123
 	movq	%rax, %rcx	# tmp123,
 	movl	$24, %edx	#,
@@ -297,9 +301,9 @@ main:
 	movl	.LC1(%rip), %eax	#, tmp126
 	movd	%eax, %xmm0	# tmp126,
 	call	func0	#
+# problem93.c:25:     assert(func0(3, 4, 7) == 1);
 	cmpl	$1, %eax	#, _9
 	je	.L28	#,
-# problem93.c:25:     assert(func0(3, 4, 7) == 1);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp127
 	movq	%rax, %rcx	# tmp127,
 	movl	$25, %edx	#,
@@ -315,9 +319,9 @@ main:
 	movl	.LC22(%rip), %eax	#, tmp130
 	movd	%eax, %xmm0	# tmp130,
 	call	func0	#
+# problem93.c:26:     assert(func0(3.01, 4, 7) == 0);
 	testl	%eax, %eax	# _10
 	je	.L29	#,
-# problem93.c:26:     assert(func0(3.01, 4, 7) == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp131
 	movq	%rax, %rcx	# tmp131,
 	movl	$26, %edx	#,
@@ -380,7 +384,7 @@ __PRETTY_FUNCTION__.0:
 	.align 4
 .LC22:
 	.long	1077978071
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

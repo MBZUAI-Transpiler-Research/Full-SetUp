@@ -20,14 +20,14 @@ func0:
 	jmp	.L2
 .L9:
 	call	__ctype_b_loc@PLT
-	movq	(%rax), %rdx
-	movl	-4(%rbp), %eax
-	movslq	%eax, %rcx
-	movq	-24(%rbp), %rax
-	addq	%rcx, %rax
-	movzbl	(%rax), %eax
-	movsbq	%al, %rax
-	addq	%rax, %rax
+	movq	(%rax), %rax
+	movl	-4(%rbp), %edx
+	movslq	%edx, %rcx
+	movq	-24(%rbp), %rdx
+	addq	%rcx, %rdx
+	movzbl	(%rdx), %edx
+	movsbq	%dl, %rdx
+	addq	%rdx, %rdx
 	addq	%rdx, %rax
 	movzwl	(%rax), %eax
 	movzwl	%ax, %eax
@@ -52,14 +52,14 @@ func0:
 	jmp	.L5
 .L4:
 	call	__ctype_b_loc@PLT
-	movq	(%rax), %rdx
-	movl	-4(%rbp), %eax
-	movslq	%eax, %rcx
-	movq	-24(%rbp), %rax
-	addq	%rcx, %rax
-	movzbl	(%rax), %eax
-	movsbq	%al, %rax
-	addq	%rax, %rax
+	movq	(%rax), %rax
+	movl	-4(%rbp), %edx
+	movslq	%edx, %rcx
+	movq	-24(%rbp), %rdx
+	addq	%rcx, %rdx
+	movzbl	(%rdx), %edx
+	movsbq	%dl, %rdx
+	addq	%rdx, %rdx
 	addq	%rdx, %rax
 	movzwl	(%rax), %eax
 	movzwl	%ax, %eax
@@ -69,14 +69,14 @@ func0:
 	movl	$0, -12(%rbp)
 .L5:
 	call	__ctype_b_loc@PLT
-	movq	(%rax), %rdx
-	movl	-4(%rbp), %eax
-	movslq	%eax, %rcx
-	movq	-24(%rbp), %rax
-	addq	%rcx, %rax
-	movzbl	(%rax), %eax
-	movsbq	%al, %rax
-	addq	%rax, %rax
+	movq	(%rax), %rax
+	movl	-4(%rbp), %edx
+	movslq	%edx, %rcx
+	movq	-24(%rbp), %rdx
+	addq	%rcx, %rdx
+	movzbl	(%rdx), %edx
+	movsbq	%dl, %rdx
+	addq	%rdx, %rdx
 	addq	%rdx, %rax
 	movzwl	(%rax), %eax
 	movzwl	%ax, %eax
@@ -265,7 +265,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

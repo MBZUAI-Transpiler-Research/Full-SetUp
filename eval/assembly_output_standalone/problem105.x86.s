@@ -52,11 +52,11 @@ func0:
 	movslq	%eax, %rdx
 	imulq	$1717986919, %rdx, %rdx
 	shrq	$32, %rdx
-	sarl	$2, %edx
-	sarl	$31, %eax
-	movl	%eax, %ecx
-	movl	%edx, %eax
-	subl	%ecx, %eax
+	movl	%edx, %ecx
+	sarl	$2, %ecx
+	cltd
+	movl	%ecx, %eax
+	subl	%edx, %eax
 	movl	%eax, -16(%rbp)
 .L4:
 	cmpl	$0, -16(%rbp)
@@ -102,51 +102,51 @@ func0:
 	jmp	.L11
 .L13:
 	movq	-56(%rbp), %rax
-	movq	(%rax), %rdx
-	movl	-8(%rbp), %eax
-	cltq
-	salq	$2, %rax
+	movq	(%rax), %rax
+	movl	-8(%rbp), %edx
+	movslq	%edx, %rdx
+	salq	$2, %rdx
 	addq	%rdx, %rax
 	movl	(%rax), %edx
 	movq	-56(%rbp), %rax
-	movq	(%rax), %rcx
-	movl	-8(%rbp), %eax
-	cltq
-	addq	$1, %rax
-	salq	$2, %rax
+	movq	(%rax), %rax
+	movl	-8(%rbp), %ecx
+	movslq	%ecx, %rcx
+	addq	$1, %rcx
+	salq	$2, %rcx
 	addq	%rcx, %rax
 	movl	(%rax), %eax
 	cmpl	%eax, %edx
 	jle	.L12
 	movq	-56(%rbp), %rax
-	movq	(%rax), %rdx
-	movl	-8(%rbp), %eax
-	cltq
-	salq	$2, %rax
+	movq	(%rax), %rax
+	movl	-8(%rbp), %edx
+	movslq	%edx, %rdx
+	salq	$2, %rdx
 	addq	%rdx, %rax
 	movl	(%rax), %eax
 	movl	%eax, -4(%rbp)
 	movq	-56(%rbp), %rax
-	movq	(%rax), %rdx
-	movl	-8(%rbp), %eax
-	cltq
-	addq	$1, %rax
-	salq	$2, %rax
-	leaq	(%rdx,%rax), %rcx
+	movq	(%rax), %rax
+	movl	-8(%rbp), %edx
+	movslq	%edx, %rdx
+	addq	$1, %rdx
+	salq	$2, %rdx
+	leaq	(%rax,%rdx), %rcx
 	movq	-56(%rbp), %rax
-	movq	(%rax), %rdx
-	movl	-8(%rbp), %eax
-	cltq
-	salq	$2, %rax
+	movq	(%rax), %rax
+	movl	-8(%rbp), %edx
+	movslq	%edx, %rdx
+	salq	$2, %rdx
 	addq	%rax, %rdx
 	movl	(%rcx), %eax
 	movl	%eax, (%rdx)
 	movq	-56(%rbp), %rax
-	movq	(%rax), %rdx
-	movl	-8(%rbp), %eax
-	cltq
-	addq	$1, %rax
-	salq	$2, %rax
+	movq	(%rax), %rax
+	movl	-8(%rbp), %edx
+	movslq	%edx, %rdx
+	addq	$1, %rdx
+	salq	$2, %rdx
 	addq	%rax, %rdx
 	movl	-4(%rbp), %eax
 	movl	%eax, (%rdx)
@@ -174,7 +174,7 @@ func0:
 	.cfi_endproc
 .LFE6:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

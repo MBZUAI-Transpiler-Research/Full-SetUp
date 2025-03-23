@@ -1,6 +1,6 @@
 	.file	"problem155.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -64,14 +64,13 @@ func0:
 	movslq	%eax, %rdx	# tmp109, _10
 # problem155.c:13:         strncpy(temp + len_b - i, b, i);
 	movl	-12(%rbp), %eax	# len_b, tmp110
+	movslq	%eax, %rcx	# tmp110, _11
+	movl	-20(%rbp), %eax	# i, tmp111
 	cltq
-	movl	-20(%rbp), %ecx	# i, tmp111
-	movslq	%ecx, %rcx	# tmp111, _12
-	subq	%rcx, %rax	# _12, _11
-	movq	%rax, %rsi	# _11, _13
+	subq	%rax, %rcx	# _12, _13
 # problem155.c:13:         strncpy(temp + len_b - i, b, i);
 	movq	-8(%rbp), %rax	# temp, tmp112
-	leaq	(%rsi,%rax), %rcx	#, _14
+	addq	%rax, %rcx	# tmp112, _14
 	movq	-48(%rbp), %rax	# b, tmp113
 	movq	%rax, %rsi	# tmp113,
 	movq	%rcx, %rdi	# _14,
@@ -181,10 +180,10 @@ main:
 	leaq	.LC1(%rip), %rax	#, tmp94
 	movq	%rax, %rdi	# tmp94,
 	call	func0	#
+# problem155.c:31:     assert(func0("xyzw", "xyw") == false);
 	xorl	$1, %eax	#, _2
 	testb	%al, %al	# _2
 	jne	.L7	#,
-# problem155.c:31:     assert(func0("xyzw", "xyw") == false);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp95
 	movq	%rax, %rcx	# tmp95,
 	movl	$31, %edx	#,
@@ -200,9 +199,9 @@ main:
 	leaq	.LC5(%rip), %rax	#, tmp99
 	movq	%rax, %rdi	# tmp99,
 	call	func0	#
+# problem155.c:32:     assert(func0("yello", "ell") == true);
 	testb	%al, %al	# _3
 	jne	.L8	#,
-# problem155.c:32:     assert(func0("yello", "ell") == true);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp100
 	movq	%rax, %rcx	# tmp100,
 	movl	$32, %edx	#,
@@ -218,10 +217,10 @@ main:
 	leaq	.LC8(%rip), %rax	#, tmp104
 	movq	%rax, %rdi	# tmp104,
 	call	func0	#
+# problem155.c:33:     assert(func0("whattup", "ptut") == false);
 	xorl	$1, %eax	#, _5
 	testb	%al, %al	# _5
 	jne	.L9	#,
-# problem155.c:33:     assert(func0("whattup", "ptut") == false);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp105
 	movq	%rax, %rcx	# tmp105,
 	movl	$33, %edx	#,
@@ -237,9 +236,9 @@ main:
 	leaq	.LC11(%rip), %rax	#, tmp109
 	movq	%rax, %rdi	# tmp109,
 	call	func0	#
+# problem155.c:34:     assert(func0("efef", "fee") == true);
 	testb	%al, %al	# _6
 	jne	.L10	#,
-# problem155.c:34:     assert(func0("efef", "fee") == true);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp110
 	movq	%rax, %rcx	# tmp110,
 	movl	$34, %edx	#,
@@ -255,10 +254,10 @@ main:
 	leaq	.LC14(%rip), %rax	#, tmp114
 	movq	%rax, %rdi	# tmp114,
 	call	func0	#
+# problem155.c:35:     assert(func0("abab", "aabb") == false);
 	xorl	$1, %eax	#, _8
 	testb	%al, %al	# _8
 	jne	.L11	#,
-# problem155.c:35:     assert(func0("abab", "aabb") == false);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp115
 	movq	%rax, %rcx	# tmp115,
 	movl	$35, %edx	#,
@@ -274,9 +273,9 @@ main:
 	leaq	.LC17(%rip), %rax	#, tmp119
 	movq	%rax, %rdi	# tmp119,
 	call	func0	#
+# problem155.c:36:     assert(func0("winemtt", "tinem") == true);
 	testb	%al, %al	# _9
 	jne	.L12	#,
-# problem155.c:36:     assert(func0("winemtt", "tinem") == true);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp120
 	movq	%rax, %rcx	# tmp120,
 	movl	$36, %edx	#,
@@ -300,7 +299,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

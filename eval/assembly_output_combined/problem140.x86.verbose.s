@@ -1,6 +1,6 @@
 	.file	"problem140.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -79,9 +79,9 @@ main:
 # problem140.c:17:     assert(func0(4) == 288);
 	movl	$4, %edi	#,
 	call	func0	#
+# problem140.c:17:     assert(func0(4) == 288);
 	cmpq	$288, %rax	#, _1
 	je	.L6	#,
-# problem140.c:17:     assert(func0(4) == 288);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp88
 	movq	%rax, %rcx	# tmp88,
 	movl	$17, %edx	#,
@@ -94,9 +94,9 @@ main:
 # problem140.c:18:     assert(func0(5) == 34560);
 	movl	$5, %edi	#,
 	call	func0	#
+# problem140.c:18:     assert(func0(5) == 34560);
 	cmpq	$34560, %rax	#, _2
 	je	.L7	#,
-# problem140.c:18:     assert(func0(5) == 34560);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp91
 	movq	%rax, %rcx	# tmp91,
 	movl	$18, %edx	#,
@@ -109,10 +109,10 @@ main:
 # problem140.c:19:     assert(func0(7) == 125411328000);
 	movl	$7, %edi	#,
 	call	func0	#
+# problem140.c:19:     assert(func0(7) == 125411328000);
 	movabsq	$125411328000, %rdx	#, tmp94
 	cmpq	%rdx, %rax	# tmp94, _3
 	je	.L8	#,
-# problem140.c:19:     assert(func0(7) == 125411328000);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp95
 	movq	%rax, %rcx	# tmp95,
 	movl	$19, %edx	#,
@@ -125,9 +125,9 @@ main:
 # problem140.c:20:     assert(func0(1) == 1);
 	movl	$1, %edi	#,
 	call	func0	#
+# problem140.c:20:     assert(func0(1) == 1);
 	cmpq	$1, %rax	#, _4
 	je	.L9	#,
-# problem140.c:20:     assert(func0(1) == 1);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp98
 	movq	%rax, %rcx	# tmp98,
 	movl	$20, %edx	#,
@@ -151,7 +151,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

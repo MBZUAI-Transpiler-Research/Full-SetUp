@@ -1,7 +1,7 @@
 	.arch armv8-a
 	.file	"problem11.c"
-// GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (aarch64-linux-gnu)
-//	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+// GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (aarch64-linux-gnu)
+//	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 // GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 // options passed: -mlittle-endian -mabi=lp64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection
@@ -318,9 +318,9 @@ main:
 	add	x1, x0, :lo12:.LC3	//, tmp106,
 	ldr	x0, [sp, 24]	//, palindrome
 	bl	strcmp		//
+// problem11.c:54:     assert(strcmp(palindrome, "x") == 0);
 	cmp	w0, 0	// _2,
 	beq	.L17		//,
-// problem11.c:54:     assert(strcmp(palindrome, "x") == 0);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp107,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp107,
 	mov	w2, 54	//,
@@ -343,9 +343,9 @@ main:
 	add	x1, x0, :lo12:.LC6	//, tmp111,
 	ldr	x0, [sp, 24]	//, palindrome
 	bl	strcmp		//
+// problem11.c:59:     assert(strcmp(palindrome, "xyzyx") == 0);
 	cmp	w0, 0	// _3,
 	beq	.L18		//,
-// problem11.c:59:     assert(strcmp(palindrome, "xyzyx") == 0);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp112,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp112,
 	mov	w2, 59	//,
@@ -368,9 +368,9 @@ main:
 	add	x1, x0, :lo12:.LC8	//, tmp116,
 	ldr	x0, [sp, 24]	//, palindrome
 	bl	strcmp		//
+// problem11.c:64:     assert(strcmp(palindrome, "xyx") == 0);
 	cmp	w0, 0	// _4,
 	beq	.L19		//,
-// problem11.c:64:     assert(strcmp(palindrome, "xyx") == 0);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp117,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp117,
 	mov	w2, 64	//,
@@ -393,9 +393,9 @@ main:
 	add	x1, x0, :lo12:.LC11	//, tmp121,
 	ldr	x0, [sp, 24]	//, palindrome
 	bl	strcmp		//
+// problem11.c:69:     assert(strcmp(palindrome, "jerryrrej") == 0);
 	cmp	w0, 0	// _5,
 	beq	.L20		//,
-// problem11.c:69:     assert(strcmp(palindrome, "jerryrrej") == 0);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp122,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp122,
 	mov	w2, 69	//,
@@ -425,5 +425,5 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits

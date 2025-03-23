@@ -115,9 +115,8 @@ main:
 .L6:
 	movabsq	$7424859521335648865, %rax
 	movq	%rax, -23(%rbp)
-	movl	$1802135912, -15(%rbp)
-	movw	$28012, -11(%rbp)
-	movb	$0, -9(%rbp)
+	movabsq	$30799981064054887, %rax
+	movq	%rax, -16(%rbp)
 	leaq	-23(%rbp), %rax
 	movq	%rax, %rdi
 	call	func0
@@ -138,8 +137,7 @@ main:
 	call	__assert_fail@PLT
 .L7:
 	movl	$1667523942, -30(%rbp)
-	movw	$24930, -26(%rbp)
-	movb	$0, -24(%rbp)
+	movl	$6382179, -27(%rbp)
 	leaq	-30(%rbp), %rax
 	movq	%rax, %rdi
 	call	func0
@@ -257,7 +255,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

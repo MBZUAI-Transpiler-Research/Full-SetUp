@@ -1,6 +1,6 @@
 	.file	"problem80.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -52,12 +52,14 @@ func0:
 	jmp	.L5	#
 .L7:
 # problem80.c:17:             out[index--] = '0' + (decimal % 2);
-	movl	-36(%rbp), %eax	# decimal, tmp111
-	cltd
-	shrl	$31, %edx	#, tmp113
-	addl	%edx, %eax	# tmp113, tmp114
-	andl	$1, %eax	#, tmp115
-	subl	%edx, %eax	# tmp113, tmp116
+	movl	-36(%rbp), %edx	# decimal, tmp111
+	movl	%edx, %eax	# tmp111, tmp112
+	sarl	$31, %eax	#, tmp112
+	shrl	$31, %eax	#, tmp113
+	addl	%eax, %edx	# tmp113, tmp114
+	andl	$1, %edx	#, tmp115
+	subl	%eax, %edx	# tmp113, tmp116
+	movl	%edx, %eax	# tmp116, _5
 # problem80.c:17:             out[index--] = '0' + (decimal % 2);
 	leal	48(%rax), %ecx	#, _7
 # problem80.c:17:             out[index--] = '0' + (decimal % 2);
@@ -147,6 +149,7 @@ func0:
 	movq	%rax, %rdi	# tmp143,
 	call	strlen@PLT	#
 	movq	%rax, %rdx	# tmp145, _49
+# problem80.c:35:     strcat(formatted_out, "db");
 	movq	-8(%rbp), %rax	# formatted_out, tmp146
 	addq	%rdx, %rax	# _49, _50
 	movw	$25188, (%rax)	#, MEM <char[1:3]> [(void *)_50]
@@ -210,9 +213,9 @@ main:
 	movq	%rdx, %rsi	# tmp90,
 	movq	%rax, %rdi	# tmp89,
 	call	strcmp@PLT	#
+# problem80.c:52:     assert(strcmp(binary, "db0db") == 0);
 	testl	%eax, %eax	# _1
 	je	.L10	#,
-# problem80.c:52:     assert(strcmp(binary, "db0db") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp91
 	movq	%rax, %rcx	# tmp91,
 	movl	$52, %edx	#,
@@ -236,9 +239,9 @@ main:
 	movq	%rdx, %rsi	# tmp97,
 	movq	%rax, %rdi	# tmp96,
 	call	strcmp@PLT	#
+# problem80.c:56:     assert(strcmp(binary, "db100000db") == 0);
 	testl	%eax, %eax	# _2
 	je	.L11	#,
-# problem80.c:56:     assert(strcmp(binary, "db100000db") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp98
 	movq	%rax, %rcx	# tmp98,
 	movl	$56, %edx	#,
@@ -262,9 +265,9 @@ main:
 	movq	%rdx, %rsi	# tmp104,
 	movq	%rax, %rdi	# tmp103,
 	call	strcmp@PLT	#
+# problem80.c:60:     assert(strcmp(binary, "db1100111db") == 0);
 	testl	%eax, %eax	# _3
 	je	.L12	#,
-# problem80.c:60:     assert(strcmp(binary, "db1100111db") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp105
 	movq	%rax, %rcx	# tmp105,
 	movl	$60, %edx	#,
@@ -288,9 +291,9 @@ main:
 	movq	%rdx, %rsi	# tmp111,
 	movq	%rax, %rdi	# tmp110,
 	call	strcmp@PLT	#
+# problem80.c:64:     assert(strcmp(binary, "db1111db") == 0);
 	testl	%eax, %eax	# _4
 	je	.L13	#,
-# problem80.c:64:     assert(strcmp(binary, "db1111db") == 0);
 	leaq	__PRETTY_FUNCTION__.0(%rip), %rax	#, tmp112
 	movq	%rax, %rcx	# tmp112,
 	movl	$64, %edx	#,
@@ -318,7 +321,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

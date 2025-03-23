@@ -39,9 +39,9 @@ main:
 	jne	.L2
 	movq	-8240(%rbp), %rax
 	addq	$8, %rax
-	movq	(%rax), %rax
-	leaq	.LC0(%rip), %rdx
-	cmpq	%rdx, %rax
+	movq	(%rax), %rdx
+	leaq	.LC0(%rip), %rax
+	cmpq	%rax, %rdx
 	jne	.L3
 .L2:
 	leaq	.LC1(%rip), %rax
@@ -83,7 +83,7 @@ main:
 	call	open@PLT
 	movl	%eax, -8216(%rbp)
 	cmpl	$-1, -8216(%rbp)
-	jne	.L6
+	jne	.L7
 	call	__errno_location@PLT
 	movl	(%rax), %edx
 	movq	-8240(%rbp), %rax
@@ -96,7 +96,7 @@ main:
 	call	printf@PLT
 	movl	$1, %edi
 	call	exit@PLT
-.L7:
+.L8:
 	movl	-8212(%rbp), %eax
 	movslq	%eax, %rdx
 	leaq	-8208(%rbp), %rcx
@@ -104,14 +104,15 @@ main:
 	movq	%rcx, %rsi
 	movl	%eax, %edi
 	call	write@PLT
-	movl	-8212(%rbp), %edx
-	movslq	%edx, %rdx
-	cmpq	%rdx, %rax
-	je	.L6
+	movq	%rax, %rdx
+	movl	-8212(%rbp), %eax
+	cltq
+	cmpq	%rax, %rdx
+	je	.L7
 	leaq	.LC3(%rip), %rax
 	movq	%rax, %rdi
 	call	puts@PLT
-.L6:
+.L7:
 	leaq	-8208(%rbp), %rcx
 	movl	-8220(%rbp), %eax
 	movl	$1024, %edx
@@ -120,17 +121,8 @@ main:
 	call	read@PLT
 	movl	%eax, -8212(%rbp)
 	cmpl	$0, -8212(%rbp)
-	jg	.L7
+	jg	.L8
 	movl	-8220(%rbp), %eax
-	movl	%eax, %edi
-	call	close@PLT
-	cmpl	$-1, %eax
-	jne	.L8
-	leaq	.LC4(%rip), %rax
-	movq	%rax, %rdi
-	call	puts@PLT
-.L8:
-	movl	-8216(%rbp), %eax
 	movl	%eax, %edi
 	call	close@PLT
 	cmpl	$-1, %eax
@@ -139,19 +131,28 @@ main:
 	movq	%rax, %rdi
 	call	puts@PLT
 .L9:
+	movl	-8216(%rbp), %eax
+	movl	%eax, %edi
+	call	close@PLT
+	cmpl	$-1, %eax
+	jne	.L10
+	leaq	.LC4(%rip), %rax
+	movq	%rax, %rdi
+	call	puts@PLT
+.L10:
 	movl	$0, %eax
 	movq	-8(%rbp), %rdx
 	subq	%fs:40, %rdx
-	je	.L11
+	je	.L12
 	call	__stack_chk_fail@PLT
-.L11:
+.L12:
 	leave
 	.cfi_def_cfa 7, 8
 	ret
 	.cfi_endproc
 .LFE6:
 	.size	main, .-main
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

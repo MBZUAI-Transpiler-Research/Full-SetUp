@@ -1,6 +1,6 @@
 	.file	"code.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -23,7 +23,7 @@ func0:
 	movq	%rcx, -176(%rbp)	# letters, letters
 # eval/problem112//code.c:4: void func0(const char* test, int* freq, int* max_count, char* letters) {
 	movq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp132
-	movq	%rax, -8(%rbp)	# tmp132, D.2555
+	movq	%rax, -8(%rbp)	# tmp132, D.3412
 	xorl	%eax, %eax	# tmp132
 # eval/problem112//code.c:5:     int local_freq[26] = {0}; // for 'a' to 'z'
 	leaq	-112(%rbp), %rdx	#, tmp102
@@ -143,7 +143,7 @@ func0:
 	movb	$0, (%rax)	#, *_20
 # eval/problem112//code.c:30: }
 	nop	
-	movq	-8(%rbp), %rax	# D.2555, tmp133
+	movq	-8(%rbp), %rax	# D.3412, tmp133
 	subq	%fs:40, %rax	# MEM[(<address-space-1> long unsigned int *)40B], tmp133
 	je	.L8	#,
 	call	__stack_chk_fail@PLT	#
@@ -154,7 +154,7 @@ func0:
 	.cfi_endproc
 .LFE0:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

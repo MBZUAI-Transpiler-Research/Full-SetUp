@@ -99,10 +99,11 @@ is_triangle:
 	movq	%rax, -8(%rbp)
 	movq	-8(%rbp), %rax
 	imulq	%rax, %rax
-	movq	-24(%rbp), %rdx
-	salq	$3, %rdx
-	addq	$1, %rdx
-	cmpq	%rdx, %rax
+	movq	%rax, %rdx
+	movq	-24(%rbp), %rax
+	salq	$3, %rax
+	addq	$1, %rax
+	cmpq	%rax, %rdx
 	jne	.L10
 	movq	-8(%rbp), %rax
 	subq	$1, %rax
@@ -235,7 +236,7 @@ hexagonal:
 .LC1:
 	.long	0
 	.long	1138753536
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

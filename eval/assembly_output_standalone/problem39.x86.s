@@ -25,11 +25,11 @@ func0:
 	addl	$2, %eax
 	movslq	%eax, %rdx
 	imulq	$1431655766, %rdx, %rdx
-	shrq	$32, %rdx
-	sarl	$31, %eax
-	movl	%eax, %ecx
-	movl	%edx, %eax
-	subl	%ecx, %eax
+	movq	%rdx, %rcx
+	shrq	$32, %rcx
+	cltd
+	movl	%ecx, %eax
+	subl	%edx, %eax
 	movl	%eax, -20(%rbp)
 	movl	$0, -28(%rbp)
 	jmp	.L2
@@ -53,16 +53,16 @@ func0:
 .L4:
 	movl	%eax, -16(%rbp)
 	movl	-16(%rbp), %eax
-	movslq	%eax, %rdx
-	movl	-28(%rbp), %ecx
-	movl	%ecx, %eax
-	addl	%eax, %eax
-	addl	%ecx, %eax
 	movslq	%eax, %rcx
+	movl	-28(%rbp), %edx
+	movl	%edx, %eax
+	addl	%eax, %eax
+	addl	%edx, %eax
+	movslq	%eax, %rdx
 	movq	-40(%rbp), %rax
-	addq	%rax, %rcx
+	leaq	(%rdx,%rax), %rsi
 	leaq	-12(%rbp), %rax
-	movq	%rcx, %rsi
+	movq	%rcx, %rdx
 	movq	%rax, %rdi
 	call	strncpy@PLT
 	movl	-16(%rbp), %eax
@@ -92,17 +92,17 @@ func0:
 	movb	%al, -10(%rbp)
 .L5:
 	movl	-16(%rbp), %eax
-	movslq	%eax, %rdx
-	movl	-28(%rbp), %ecx
-	movl	%ecx, %eax
-	addl	%eax, %eax
-	addl	%ecx, %eax
 	movslq	%eax, %rcx
+	movl	-28(%rbp), %edx
+	movl	%edx, %eax
+	addl	%eax, %eax
+	addl	%edx, %eax
+	movslq	%eax, %rdx
 	movq	-40(%rbp), %rax
-	addq	%rax, %rcx
+	leaq	(%rdx,%rax), %rdi
 	leaq	-12(%rbp), %rax
+	movq	%rcx, %rdx
 	movq	%rax, %rsi
-	movq	%rcx, %rdi
 	call	strncpy@PLT
 	addl	$1, -28(%rbp)
 .L2:
@@ -121,7 +121,7 @@ func0:
 	.cfi_endproc
 .LFE0:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

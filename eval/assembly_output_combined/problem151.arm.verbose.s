@@ -1,7 +1,7 @@
 	.arch armv8-a
 	.file	"problem151.c"
-// GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (aarch64-linux-gnu)
-//	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+// GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (aarch64-linux-gnu)
+//	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 // GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 // options passed: -mlittle-endian -mabi=lp64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection
@@ -64,6 +64,7 @@ func0:
 	beq	.L6		//,
 // problem151.c:9:     if (isp) return x;
 	ldr	w0, [sp, 8]	// _7, x
+// problem151.c:9:     if (isp) return x;
 	b	.L7		//
 .L6:
 // problem151.c:10:     return y;
@@ -127,9 +128,9 @@ main:
 	mov	w1, 34	//,
 	mov	w0, 7	//,
 	bl	func0		//
+// problem151.c:18:     assert(func0(7, 34, 12) == 34);
 	cmp	w0, 34	// _1,
 	beq	.L9		//,
-// problem151.c:18:     assert(func0(7, 34, 12) == 34);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp104,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp104,
 	mov	w2, 18	//,
@@ -144,9 +145,9 @@ main:
 	mov	w1, 8	//,
 	mov	w0, 15	//,
 	bl	func0		//
+// problem151.c:19:     assert(func0(15, 8, 5) == 5);
 	cmp	w0, 5	// _2,
 	beq	.L10		//,
-// problem151.c:19:     assert(func0(15, 8, 5) == 5);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp107,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp107,
 	mov	w2, 19	//,
@@ -161,9 +162,9 @@ main:
 	mov	w1, 33	//,
 	mov	w0, 3	//,
 	bl	func0		//
+// problem151.c:20:     assert(func0(3, 33, 5212) == 33);
 	cmp	w0, 33	// _3,
 	beq	.L11		//,
-// problem151.c:20:     assert(func0(3, 33, 5212) == 33);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp110,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp110,
 	mov	w2, 20	//,
@@ -178,9 +179,9 @@ main:
 	mov	w1, 3	//,
 	mov	w0, 1259	//,
 	bl	func0		//
+// problem151.c:21:     assert(func0(1259, 3, 52) == 3);
 	cmp	w0, 3	// _4,
 	beq	.L12		//,
-// problem151.c:21:     assert(func0(1259, 3, 52) == 3);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp113,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp113,
 	mov	w2, 21	//,
@@ -195,9 +196,9 @@ main:
 	mov	w1, -1	//,
 	mov	w0, 7919	//,
 	bl	func0		//
+// problem151.c:22:     assert(func0(7919, -1, 12) == -1);
 	cmn	w0, #1	// _5,
 	beq	.L13		//,
-// problem151.c:22:     assert(func0(7919, -1, 12) == -1);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp116,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp116,
 	mov	w2, 22	//,
@@ -212,9 +213,9 @@ main:
 	mov	w1, 1245	//,
 	mov	w0, 3609	//,
 	bl	func0		//
+// problem151.c:23:     assert(func0(3609, 1245, 583) == 583);
 	cmp	w0, 583	// _6,
 	beq	.L14		//,
-// problem151.c:23:     assert(func0(3609, 1245, 583) == 583);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp119,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp119,
 	mov	w2, 23	//,
@@ -229,9 +230,9 @@ main:
 	mov	w1, 56	//,
 	mov	w0, 91	//,
 	bl	func0		//
+// problem151.c:24:     assert(func0(91, 56, 129) == 129);
 	cmp	w0, 129	// _7,
 	beq	.L15		//,
-// problem151.c:24:     assert(func0(91, 56, 129) == 129);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp122,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp122,
 	mov	w2, 24	//,
@@ -246,9 +247,9 @@ main:
 	mov	w1, 34	//,
 	mov	w0, 6	//,
 	bl	func0		//
+// problem151.c:25:     assert(func0(6, 34, 1234) == 1234);
 	cmp	w0, 1234	// _8,
 	beq	.L16		//,
-// problem151.c:25:     assert(func0(6, 34, 1234) == 1234);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp125,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp125,
 	mov	w2, 25	//,
@@ -263,9 +264,9 @@ main:
 	mov	w1, 2	//,
 	mov	w0, 1	//,
 	bl	func0		//
+// problem151.c:26:     assert(func0(1, 2, 0) == 0);
 	cmp	w0, 0	// _9,
 	beq	.L17		//,
-// problem151.c:26:     assert(func0(1, 2, 0) == 0);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp128,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp128,
 	mov	w2, 26	//,
@@ -280,9 +281,9 @@ main:
 	mov	w1, 2	//,
 	mov	w0, 2	//,
 	bl	func0		//
+// problem151.c:27:     assert(func0(2, 2, 0) == 2);
 	cmp	w0, 2	// _10,
 	beq	.L18		//,
-// problem151.c:27:     assert(func0(2, 2, 0) == 2);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp131,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp131,
 	mov	w2, 27	//,
@@ -309,5 +310,5 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits

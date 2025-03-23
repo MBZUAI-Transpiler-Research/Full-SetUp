@@ -46,12 +46,11 @@ fi
 
 # Activate the Conda environment
 echo "Activating Conda environment..."
-source activate crosscompilers || source $HOME/miniconda3/bin/activate crosscompilers
+conda activate crosscompilers || { echo "Error: Could not activate Conda environment!"; exit 1; }
 
 # Install Conda dependencies
 echo "Installing dependencies into Conda environment..."
 if ! conda install -y -c conda-forge \
-    gcc_linux-64 \
     ninja \
     cmake \
     flex \
@@ -93,17 +92,14 @@ if sudo true; then
         exit 1
     fi
 else
-    echo "Warning: sudo is not available. Skipping system dependency installation."
+    echo "Warning: sudo is not available." 
+    exit 1
 fi
-
-# Verify installed packages
-echo "Verifying installed Conda packages..."
-conda list
 
 # Install Python dependencies with pip
 echo "Installing remaining Python dependencies..."
-pip install --upgrade pip
-if ! pip install \
+python -m pip install --upgrade pip
+if ! pip install --no-cache-dir \
     st-annotated-text \
     htbuilder \
     wandb \

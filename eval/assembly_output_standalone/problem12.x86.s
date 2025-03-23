@@ -53,16 +53,16 @@ func0:
 	movzbl	(%rax), %eax
 	cmpb	%al, %dl
 	jne	.L5
-	movl	$48, %edx
+	movl	$48, %ecx
 	jmp	.L6
 .L5:
-	movl	$49, %edx
+	movl	$49, %ecx
 .L6:
 	movl	-24(%rbp), %eax
-	movslq	%eax, %rcx
+	movslq	%eax, %rdx
 	movq	-8(%rbp), %rax
-	addq	%rcx, %rax
-	movb	%dl, (%rax)
+	addq	%rdx, %rax
+	movb	%cl, (%rax)
 	addl	$1, -24(%rbp)
 .L4:
 	movl	-24(%rbp), %eax
@@ -81,7 +81,7 @@ func0:
 	.cfi_endproc
 .LFE6:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

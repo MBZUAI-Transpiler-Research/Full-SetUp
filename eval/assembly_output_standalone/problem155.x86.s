@@ -46,13 +46,12 @@ func0:
 	movl	-20(%rbp), %eax
 	movslq	%eax, %rdx
 	movl	-12(%rbp), %eax
+	movslq	%eax, %rcx
+	movl	-20(%rbp), %eax
 	cltq
-	movl	-20(%rbp), %ecx
-	movslq	%ecx, %rcx
-	subq	%rcx, %rax
-	movq	%rax, %rsi
+	subq	%rax, %rcx
 	movq	-8(%rbp), %rax
-	leaq	(%rsi,%rax), %rcx
+	addq	%rax, %rcx
 	movq	-48(%rbp), %rax
 	movq	%rax, %rsi
 	movq	%rcx, %rdi
@@ -91,7 +90,7 @@ func0:
 	.cfi_endproc
 .LFE6:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

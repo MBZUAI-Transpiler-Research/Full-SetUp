@@ -1,6 +1,6 @@
 	.file	"problem120.c"
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 # options passed: -mtune=generic -march=x86-64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -133,6 +133,7 @@ func0:
 	je	.L12	#,
 # problem120.c:21:     if (count == 0 && can) return "Yes";
 	leaq	.LC0(%rip), %rax	#, _51
+# problem120.c:21:     if (count == 0 && can) return "Yes";
 	jmp	.L13	#
 .L12:
 # problem120.c:23:     count = 0;
@@ -231,6 +232,7 @@ func0:
 	je	.L24	#,
 # problem120.c:36:     if (count == 0 && can) return "Yes";
 	leaq	.LC0(%rip), %rax	#, _51
+# problem120.c:36:     if (count == 0 && can) return "Yes";
 	jmp	.L13	#
 .L24:
 # problem120.c:38:     return "No";
@@ -335,10 +337,12 @@ main:
 	movq	%rax, %rdi	# tmp109,
 	call	func0	#
 	movq	%rax, %rdx	#, _1
+# problem120.c:48:     assert(strcmp(func0("()(", ")"), "Yes") == 0);
 	leaq	.LC0(%rip), %rax	#, tmp110
 	movq	%rax, %rsi	# tmp110,
 	movq	%rdx, %rdi	# _1,
 	call	strcmp@PLT	#
+# problem120.c:48:     assert(strcmp(func0("()(", ")"), "Yes") == 0);
 	testl	%eax, %eax	# _2
 	je	.L26	#,
 # problem120.c:48:     assert(strcmp(func0("()(", ")"), "Yes") == 0);
@@ -358,10 +362,12 @@ main:
 	movq	%rax, %rdi	# tmp115,
 	call	func0	#
 	movq	%rax, %rdx	#, _3
+# problem120.c:49:     assert(strcmp(func0(")", ")"), "No") == 0);
 	leaq	.LC1(%rip), %rax	#, tmp116
 	movq	%rax, %rsi	# tmp116,
 	movq	%rdx, %rdi	# _3,
 	call	strcmp@PLT	#
+# problem120.c:49:     assert(strcmp(func0(")", ")"), "No") == 0);
 	testl	%eax, %eax	# _4
 	je	.L27	#,
 # problem120.c:49:     assert(strcmp(func0(")", ")"), "No") == 0);
@@ -381,10 +387,12 @@ main:
 	movq	%rax, %rdi	# tmp121,
 	call	func0	#
 	movq	%rax, %rdx	#, _5
+# problem120.c:50:     assert(strcmp(func0("(()(())", "())())"), "No") == 0);
 	leaq	.LC1(%rip), %rax	#, tmp122
 	movq	%rax, %rsi	# tmp122,
 	movq	%rdx, %rdi	# _5,
 	call	strcmp@PLT	#
+# problem120.c:50:     assert(strcmp(func0("(()(())", "())())"), "No") == 0);
 	testl	%eax, %eax	# _6
 	je	.L28	#,
 # problem120.c:50:     assert(strcmp(func0("(()(())", "())())"), "No") == 0);
@@ -404,10 +412,12 @@ main:
 	movq	%rax, %rdi	# tmp127,
 	call	func0	#
 	movq	%rax, %rdx	#, _7
+# problem120.c:51:     assert(strcmp(func0(")())", "(()()("), "Yes") == 0);
 	leaq	.LC0(%rip), %rax	#, tmp128
 	movq	%rax, %rsi	# tmp128,
 	movq	%rdx, %rdi	# _7,
 	call	strcmp@PLT	#
+# problem120.c:51:     assert(strcmp(func0(")())", "(()()("), "Yes") == 0);
 	testl	%eax, %eax	# _8
 	je	.L29	#,
 # problem120.c:51:     assert(strcmp(func0(")())", "(()()("), "Yes") == 0);
@@ -427,10 +437,12 @@ main:
 	movq	%rax, %rdi	# tmp133,
 	call	func0	#
 	movq	%rax, %rdx	#, _9
+# problem120.c:52:     assert(strcmp(func0("(())))", "(()())(("), "Yes") == 0);
 	leaq	.LC0(%rip), %rax	#, tmp134
 	movq	%rax, %rsi	# tmp134,
 	movq	%rdx, %rdi	# _9,
 	call	strcmp@PLT	#
+# problem120.c:52:     assert(strcmp(func0("(())))", "(()())(("), "Yes") == 0);
 	testl	%eax, %eax	# _10
 	je	.L30	#,
 # problem120.c:52:     assert(strcmp(func0("(())))", "(()())(("), "Yes") == 0);
@@ -450,10 +462,12 @@ main:
 	movq	%rax, %rdi	# tmp139,
 	call	func0	#
 	movq	%rax, %rdx	#, _11
+# problem120.c:53:     assert(strcmp(func0("()", "())"), "No") == 0);
 	leaq	.LC1(%rip), %rax	#, tmp140
 	movq	%rax, %rsi	# tmp140,
 	movq	%rdx, %rdi	# _11,
 	call	strcmp@PLT	#
+# problem120.c:53:     assert(strcmp(func0("()", "())"), "No") == 0);
 	testl	%eax, %eax	# _12
 	je	.L31	#,
 # problem120.c:53:     assert(strcmp(func0("()", "())"), "No") == 0);
@@ -473,10 +487,12 @@ main:
 	movq	%rax, %rdi	# tmp145,
 	call	func0	#
 	movq	%rax, %rdx	#, _13
+# problem120.c:54:     assert(strcmp(func0("(()(", "()))()"), "Yes") == 0);
 	leaq	.LC0(%rip), %rax	#, tmp146
 	movq	%rax, %rsi	# tmp146,
 	movq	%rdx, %rdi	# _13,
 	call	strcmp@PLT	#
+# problem120.c:54:     assert(strcmp(func0("(()(", "()))()"), "Yes") == 0);
 	testl	%eax, %eax	# _14
 	je	.L32	#,
 # problem120.c:54:     assert(strcmp(func0("(()(", "()))()"), "Yes") == 0);
@@ -496,10 +512,12 @@ main:
 	movq	%rax, %rdi	# tmp151,
 	call	func0	#
 	movq	%rax, %rdx	#, _15
+# problem120.c:55:     assert(strcmp(func0("((((", "((())"), "No") == 0);
 	leaq	.LC1(%rip), %rax	#, tmp152
 	movq	%rax, %rsi	# tmp152,
 	movq	%rdx, %rdi	# _15,
 	call	strcmp@PLT	#
+# problem120.c:55:     assert(strcmp(func0("((((", "((())"), "No") == 0);
 	testl	%eax, %eax	# _16
 	je	.L33	#,
 # problem120.c:55:     assert(strcmp(func0("((((", "((())"), "No") == 0);
@@ -519,10 +537,12 @@ main:
 	movq	%rax, %rdi	# tmp157,
 	call	func0	#
 	movq	%rax, %rdx	#, _17
+# problem120.c:56:     assert(strcmp(func0(")(()", "(()("), "No") == 0);
 	leaq	.LC1(%rip), %rax	#, tmp158
 	movq	%rax, %rsi	# tmp158,
 	movq	%rdx, %rdi	# _17,
 	call	strcmp@PLT	#
+# problem120.c:56:     assert(strcmp(func0(")(()", "(()("), "No") == 0);
 	testl	%eax, %eax	# _18
 	je	.L34	#,
 # problem120.c:56:     assert(strcmp(func0(")(()", "(()("), "No") == 0);
@@ -542,10 +562,12 @@ main:
 	movq	%rax, %rdi	# tmp163,
 	call	func0	#
 	movq	%rax, %rdx	#, _19
+# problem120.c:57:     assert(strcmp(func0(")(", ")("), "No") == 0);
 	leaq	.LC1(%rip), %rax	#, tmp164
 	movq	%rax, %rsi	# tmp164,
 	movq	%rdx, %rdi	# _19,
 	call	strcmp@PLT	#
+# problem120.c:57:     assert(strcmp(func0(")(", ")("), "No") == 0);
 	testl	%eax, %eax	# _20
 	je	.L35	#,
 # problem120.c:57:     assert(strcmp(func0(")(", ")("), "No") == 0);
@@ -565,10 +587,12 @@ main:
 	movq	%rax, %rdi	# tmp169,
 	call	func0	#
 	movq	%rax, %rdx	#, _21
+# problem120.c:58:     assert(strcmp(func0("(", ")"), "Yes") == 0);
 	leaq	.LC0(%rip), %rax	#, tmp170
 	movq	%rax, %rsi	# tmp170,
 	movq	%rdx, %rdi	# _21,
 	call	strcmp@PLT	#
+# problem120.c:58:     assert(strcmp(func0("(", ")"), "Yes") == 0);
 	testl	%eax, %eax	# _22
 	je	.L36	#,
 # problem120.c:58:     assert(strcmp(func0("(", ")"), "Yes") == 0);
@@ -588,10 +612,12 @@ main:
 	movq	%rax, %rdi	# tmp175,
 	call	func0	#
 	movq	%rax, %rdx	#, _23
+# problem120.c:59:     assert(strcmp(func0(")", "("), "Yes") == 0);
 	leaq	.LC0(%rip), %rax	#, tmp176
 	movq	%rax, %rsi	# tmp176,
 	movq	%rdx, %rdi	# _23,
 	call	strcmp@PLT	#
+# problem120.c:59:     assert(strcmp(func0(")", "("), "Yes") == 0);
 	testl	%eax, %eax	# _24
 	je	.L37	#,
 # problem120.c:59:     assert(strcmp(func0(")", "("), "Yes") == 0);
@@ -618,7 +644,7 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

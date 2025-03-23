@@ -82,9 +82,10 @@ main:
 	leaq	0(,%rax,4), %rdx
 	movq	-8(%rbp), %rax
 	addq	%rdx, %rax
-	movl	(%rax), %edx
-	movl	-28(%rbp), %eax
-	subl	%edx, %eax
+	movl	(%rax), %eax
+	movl	-28(%rbp), %edx
+	subl	%eax, %edx
+	movl	%edx, %eax
 	shrl	%eax
 	movl	%eax, -20(%rbp)
 	movl	-20(%rbp), %eax
@@ -231,7 +232,7 @@ is_square:
 	.cfi_endproc
 .LFE8:
 	.size	is_square, .-is_square
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

@@ -1,7 +1,7 @@
 	.arch armv8-a
 	.file	"problem45.c"
-// GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (aarch64-linux-gnu)
-//	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+// GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (aarch64-linux-gnu)
+//	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 // GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 // options passed: -mlittle-endian -mabi=lp64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection
@@ -109,6 +109,7 @@ is_triangle:
 	bne	.L6		//,
 // problem45.c:25:   return sq*sq == 1+8*n && (sq-1) % 2 == 0;
 	mov	w0, 1	// iftmp.0_10,
+// problem45.c:25:   return sq*sq == 1+8*n && (sq-1) % 2 == 0;
 	b	.L8		//
 .L6:
 // problem45.c:25:   return sq*sq == 1+8*n && (sq-1) % 2 == 0;
@@ -181,6 +182,7 @@ is_pentagonal:
 	bne	.L10		//,
 // problem45.c:31:   return sq*sq == 1+24*n && (1+sq) % 6 == 0;
 	mov	w0, 1	// iftmp.1_10,
+// problem45.c:31:   return sq*sq == 1+24*n && (1+sq) % 6 == 0;
 	b	.L12		//
 .L10:
 // problem45.c:31:   return sq*sq == 1+24*n && (1+sq) % 6 == 0;
@@ -219,5 +221,5 @@ hexagonal:
 	.cfi_endproc
 .LFE3:
 	.size	hexagonal, .-hexagonal
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits

@@ -1,21 +1,29 @@
 	.file	"problem95.c"
 	.option pic
-# GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (riscv64-linux-gnu)
-#	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+	.attribute arch, "rv64i2p1_m2p0_a2p1_f2p2_d2p2_c2p0_zicsr2p0_zifencei2p0"
+	.attribute unaligned_access, 0
+	.attribute stack_align, 16
+# GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (riscv64-linux-gnu)
+#	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-# options passed: -mabi=lp64d -misa-spec=2.2 -march=rv64imafdc -fstack-protector-strong
+# options passed: -mabi=lp64d -misa-spec=20191213 -march=rv64imafdc_zicsr_zifencei -fstack-protector-strong
 	.text
 	.align	1
 	.globl	func0
 	.type	func0, @function
 func0:
+.LFB0:
+	.cfi_startproc
 	addi	sp,sp,-64	#,,
+	.cfi_def_cfa_offset 64
 	sd	s0,56(sp)	#,
+	.cfi_offset 8, -8
 	addi	s0,sp,64	#,,
+	.cfi_def_cfa 8, 0
 	sd	a0,-56(s0)	# lst, lst
-	mv	a5,a1	# tmp80, size
-	sw	a5,-60(s0)	# tmp81, size
+	mv	a5,a1	# tmp142, size
+	sw	a5,-60(s0)	# tmp143, size
 # problem95.c:4:     int largest = 0, sum = 0, num, temp;
 	sw	zero,-40(s0)	#, largest
 # problem95.c:4:     int largest = 0, sum = 0, num, temp;
@@ -28,31 +36,31 @@ func0:
 # problem95.c:7:         num = lst[i];
 	lw	a5,-32(s0)		# _1, i
 	slli	a5,a5,2	#, _2, _1
-	ld	a4,-56(s0)		# tmp82, lst
-	add	a5,a4,a5	# _2, _3, tmp82
+	ld	a4,-56(s0)		# tmp144, lst
+	add	a5,a4,a5	# _2, _3, tmp144
 # problem95.c:7:         num = lst[i];
-	lw	a5,0(a5)		# tmp83, *_3
-	sw	a5,-20(s0)	# tmp83, num
+	lw	a5,0(a5)		# tmp145, *_3
+	sw	a5,-20(s0)	# tmp145, num
 # problem95.c:8:         if (num > 1) {
-	lw	a5,-20(s0)		# tmp85, num
-	sext.w	a4,a5	# tmp86, tmp84
-	li	a5,1		# tmp87,
-	ble	a4,a5,.L3	#, tmp86, tmp87,
+	lw	a5,-20(s0)		# tmp147, num
+	sext.w	a4,a5	# tmp148, tmp146
+	li	a5,1		# tmp149,
+	ble	a4,a5,.L3	#, tmp148, tmp149,
 # problem95.c:9:             int prime = 1;
-	li	a5,1		# tmp88,
-	sw	a5,-28(s0)	# tmp88, prime
+	li	a5,1		# tmp150,
+	sw	a5,-28(s0)	# tmp150, prime
 # problem95.c:10:             for (int j = 2; j * j <= num; ++j) {
-	li	a5,2		# tmp89,
-	sw	a5,-24(s0)	# tmp89, j
+	li	a5,2		# tmp151,
+	sw	a5,-24(s0)	# tmp151, j
 # problem95.c:10:             for (int j = 2; j * j <= num; ++j) {
 	j	.L4		#
 .L7:
 # problem95.c:11:                 if (num % j == 0) {
-	lw	a5,-20(s0)		# tmp92, num
-	mv	a4,a5	# tmp91, tmp92
-	lw	a5,-24(s0)		# tmp95, j
-	remw	a5,a4,a5	# tmp94, tmp93, tmp91
-	sext.w	a5,a5	# _4, tmp93
+	lw	a5,-20(s0)		# tmp154, num
+	mv	a4,a5	# tmp153, tmp154
+	lw	a5,-24(s0)		# tmp157, j
+	remw	a5,a4,a5	# tmp156, tmp155, tmp153
+	sext.w	a5,a5	# _4, tmp155
 # problem95.c:11:                 if (num % j == 0) {
 	bne	a5,zero,.L5	#, _4,,
 # problem95.c:12:                     prime = 0;
@@ -61,77 +69,82 @@ func0:
 	j	.L6		#
 .L5:
 # problem95.c:10:             for (int j = 2; j * j <= num; ++j) {
-	lw	a5,-24(s0)		# tmp98, j
-	addiw	a5,a5,1	#, tmp96, tmp97
-	sw	a5,-24(s0)	# tmp96, j
+	lw	a5,-24(s0)		# tmp160, j
+	addiw	a5,a5,1	#, tmp158, tmp159
+	sw	a5,-24(s0)	# tmp158, j
 .L4:
 # problem95.c:10:             for (int j = 2; j * j <= num; ++j) {
-	lw	a5,-24(s0)		# tmp101, j
-	mulw	a5,a5,a5	# tmp99, tmp100, tmp100
-	sext.w	a4,a5	# _5, tmp99
+	lw	a5,-24(s0)		# tmp163, j
+	mulw	a5,a5,a5	# tmp161, tmp162, tmp162
+	sext.w	a4,a5	# _5, tmp161
 # problem95.c:10:             for (int j = 2; j * j <= num; ++j) {
-	lw	a5,-20(s0)		# tmp103, num
-	sext.w	a5,a5	# tmp104, tmp102
-	bge	a5,a4,.L7	#, tmp104, tmp105,
+	lw	a5,-20(s0)		# tmp165, num
+	sext.w	a5,a5	# tmp166, tmp164
+	bge	a5,a4,.L7	#, tmp166, tmp167,
 .L6:
 # problem95.c:16:             if (prime) {
-	lw	a5,-28(s0)		# tmp107, prime
-	sext.w	a5,a5	# tmp108, tmp106
-	beq	a5,zero,.L3	#, tmp108,,
+	lw	a5,-28(s0)		# tmp169, prime
+	sext.w	a5,a5	# tmp170, tmp168
+	beq	a5,zero,.L3	#, tmp170,,
 # problem95.c:17:                 largest = num > largest ? num : largest;
-	lw	a5,-20(s0)		# tmp111, num
-	mv	a2,a5	# tmp110, tmp111
-	lw	a5,-40(s0)		# tmp112, largest
-	sext.w	a3,a5	# tmp113, tmp109
-	sext.w	a4,a2	# tmp114, tmp110
-	bge	a3,a4,.L8	#, tmp113, tmp114,
-	mv	a5,a2	# tmp109, tmp110
+	lw	a5,-20(s0)		# tmp173, num
+	mv	a2,a5	# tmp172, tmp173
+	lw	a5,-40(s0)		# tmp174, largest
+	sext.w	a3,a5	# tmp175, tmp171
+	sext.w	a4,a2	# tmp176, tmp172
+	bge	a3,a4,.L8	#, tmp175, tmp176,
+	mv	a5,a2	# tmp171, tmp172
 .L8:
-	sw	a5,-40(s0)	# tmp109, largest
+	sw	a5,-40(s0)	# tmp171, largest
 .L3:
 # problem95.c:6:     for (int i = 0; i < size; ++i) {
-	lw	a5,-32(s0)		# tmp117, i
-	addiw	a5,a5,1	#, tmp115, tmp116
-	sw	a5,-32(s0)	# tmp115, i
+	lw	a5,-32(s0)		# tmp179, i
+	addiw	a5,a5,1	#, tmp177, tmp178
+	sw	a5,-32(s0)	# tmp177, i
 .L2:
 # problem95.c:6:     for (int i = 0; i < size; ++i) {
-	lw	a5,-32(s0)		# tmp119, i
-	mv	a4,a5	# tmp118, tmp119
-	lw	a5,-60(s0)		# tmp121, size
-	sext.w	a4,a4	# tmp122, tmp118
-	sext.w	a5,a5	# tmp123, tmp120
-	blt	a4,a5,.L9	#, tmp122, tmp123,
+	lw	a5,-32(s0)		# tmp181, i
+	mv	a4,a5	# tmp180, tmp181
+	lw	a5,-60(s0)		# tmp183, size
+	sext.w	a4,a4	# tmp184, tmp180
+	sext.w	a5,a5	# tmp185, tmp182
+	blt	a4,a5,.L9	#, tmp184, tmp185,
 # problem95.c:22:     while (largest > 0) {
 	j	.L10		#
 .L11:
 # problem95.c:23:         sum += largest % 10;
-	lw	a5,-40(s0)		# tmp126, largest
-	mv	a4,a5	# tmp125, tmp126
-	li	a5,10		# tmp128,
-	remw	a5,a4,a5	# tmp128, tmp127, tmp125
-	sext.w	a5,a5	# _6, tmp127
+	lw	a5,-40(s0)		# tmp188, largest
+	mv	a4,a5	# tmp187, tmp188
+	li	a5,10		# tmp190,
+	remw	a5,a4,a5	# tmp190, tmp189, tmp187
+	sext.w	a5,a5	# _6, tmp189
 # problem95.c:23:         sum += largest % 10;
-	lw	a4,-36(s0)		# tmp131, sum
-	addw	a5,a4,a5	# _6, tmp129, tmp130
-	sw	a5,-36(s0)	# tmp129, sum
+	lw	a4,-36(s0)		# tmp193, sum
+	addw	a5,a4,a5	# _6, tmp191, tmp192
+	sw	a5,-36(s0)	# tmp191, sum
 # problem95.c:24:         largest /= 10;
-	lw	a5,-40(s0)		# tmp134, largest
-	mv	a4,a5	# tmp133, tmp134
-	li	a5,10		# tmp136,
-	divw	a5,a4,a5	# tmp136, tmp135, tmp133
-	sw	a5,-40(s0)	# tmp135, largest
+	lw	a5,-40(s0)		# tmp196, largest
+	mv	a4,a5	# tmp195, tmp196
+	li	a5,10		# tmp198,
+	divw	a5,a4,a5	# tmp198, tmp197, tmp195
+	sw	a5,-40(s0)	# tmp197, largest
 .L10:
 # problem95.c:22:     while (largest > 0) {
-	lw	a5,-40(s0)		# tmp138, largest
-	sext.w	a5,a5	# tmp139, tmp137
-	bgt	a5,zero,.L11	#, tmp139,,
+	lw	a5,-40(s0)		# tmp200, largest
+	sext.w	a5,a5	# tmp201, tmp199
+	bgt	a5,zero,.L11	#, tmp201,,
 # problem95.c:27:     return sum;
 	lw	a5,-36(s0)		# _18, sum
 # problem95.c:28: }
 	mv	a0,a5	#, <retval>
 	ld	s0,56(sp)		#,
+	.cfi_restore 8
+	.cfi_def_cfa 2, 64
 	addi	sp,sp,64	#,,
+	.cfi_def_cfa_offset 0
 	jr	ra		#
+	.cfi_endproc
+.LFE0:
 	.size	func0, .-func0
 	.section	.rodata
 	.align	3
@@ -269,49 +282,55 @@ func0:
 	.globl	main
 	.type	main, @function
 main:
+.LFB1:
+	.cfi_startproc
 	addi	sp,sp,-400	#,,
+	.cfi_def_cfa_offset 400
 	sd	ra,392(sp)	#,
 	sd	s0,384(sp)	#,
+	.cfi_offset 1, -8
+	.cfi_offset 8, -16
 	addi	s0,sp,400	#,,
+	.cfi_def_cfa 8, 0
 # problem95.c:34: int main() {
-	la	a5,__stack_chk_guard		# tmp83,
-	ld	a4, 0(a5)	# tmp178, __stack_chk_guard
-	sd	a4, -24(s0)	# tmp178, D.1988
-	li	a4, 0	# tmp178
+	la	a5,__stack_chk_guard		# tmp145,
+	ld	a4, 0(a5)	# tmp240, __stack_chk_guard
+	sd	a4, -24(s0)	# tmp240, D.2806
+	li	a4, 0	# tmp240
 # problem95.c:35:     int lst1[] = {0,3,2,1,3,5,7,4,5,5,5,2,181,32,4,32,3,2,32,324,4,3};
-	lla	a5,.LC0	# tmp84,
-	ld	t4,0(a5)		# tmp85,
-	ld	t3,8(a5)		# tmp86,
-	ld	t1,16(a5)		# tmp87,
-	ld	a7,24(a5)		# tmp88,
-	ld	a6,32(a5)		# tmp89,
-	ld	a0,40(a5)		# tmp90,
-	ld	a1,48(a5)		# tmp91,
-	ld	a2,56(a5)		# tmp92,
-	ld	a3,64(a5)		# tmp93,
-	ld	a4,72(a5)		# tmp94,
-	ld	a5,80(a5)		# tmp95,
-	sd	t4,-112(s0)	# tmp85, lst1
-	sd	t3,-104(s0)	# tmp86, lst1
-	sd	t1,-96(s0)	# tmp87, lst1
-	sd	a7,-88(s0)	# tmp88, lst1
-	sd	a6,-80(s0)	# tmp89, lst1
-	sd	a0,-72(s0)	# tmp90, lst1
-	sd	a1,-64(s0)	# tmp91, lst1
-	sd	a2,-56(s0)	# tmp92, lst1
-	sd	a3,-48(s0)	# tmp93, lst1
-	sd	a4,-40(s0)	# tmp94, lst1
-	sd	a5,-32(s0)	# tmp95, lst1
+	lla	a5,.LC0	# tmp146,
+	ld	t4,0(a5)		# tmp147,
+	ld	t3,8(a5)		# tmp148,
+	ld	t1,16(a5)		# tmp149,
+	ld	a7,24(a5)		# tmp150,
+	ld	a6,32(a5)		# tmp151,
+	ld	a0,40(a5)		# tmp152,
+	ld	a1,48(a5)		# tmp153,
+	ld	a2,56(a5)		# tmp154,
+	ld	a3,64(a5)		# tmp155,
+	ld	a4,72(a5)		# tmp156,
+	ld	a5,80(a5)		# tmp157,
+	sd	t4,-112(s0)	# tmp147, lst1
+	sd	t3,-104(s0)	# tmp148, lst1
+	sd	t1,-96(s0)	# tmp149, lst1
+	sd	a7,-88(s0)	# tmp150, lst1
+	sd	a6,-80(s0)	# tmp151, lst1
+	sd	a0,-72(s0)	# tmp152, lst1
+	sd	a1,-64(s0)	# tmp153, lst1
+	sd	a2,-56(s0)	# tmp154, lst1
+	sd	a3,-48(s0)	# tmp155, lst1
+	sd	a4,-40(s0)	# tmp156, lst1
+	sd	a5,-32(s0)	# tmp157, lst1
 # problem95.c:36:     assert(func0(lst1, sizeof(lst1)/sizeof(lst1[0])) == 10);
-	addi	a5,s0,-112	#, tmp96,
+	addi	a5,s0,-112	#, tmp158,
 	li	a1,22		#,
-	mv	a0,a5	#, tmp96
+	mv	a0,a5	#, tmp158
 	call	func0		#
-	mv	a5,a0	# tmp97,
-	mv	a4,a5	# tmp98, _1
-	li	a5,10		# tmp99,
-	beq	a4,a5,.L14	#, tmp98, tmp99,
+	mv	a5,a0	# tmp159,
 # problem95.c:36:     assert(func0(lst1, sizeof(lst1)/sizeof(lst1[0])) == 10);
+	mv	a4,a5	# tmp160, _1
+	li	a5,10		# tmp161,
+	beq	a4,a5,.L14	#, tmp160, tmp161,
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,36		#,
 	lla	a1,.LC7	#,
@@ -319,35 +338,35 @@ main:
 	call	__assert_fail@plt	#
 .L14:
 # problem95.c:38:     int lst2[] = {1,0,1,8,2,4597,2,1,3,40,1,2,1,2,4,2,5,1};
-	lla	a5,.LC1	# tmp100,
-	ld	t1,0(a5)		# tmp101,
-	ld	a7,8(a5)		# tmp102,
-	ld	a6,16(a5)		# tmp103,
-	ld	a0,24(a5)		# tmp104,
-	ld	a1,32(a5)		# tmp105,
-	ld	a2,40(a5)		# tmp106,
-	ld	a3,48(a5)		# tmp107,
-	ld	a4,56(a5)		# tmp108,
-	ld	a5,64(a5)		# tmp109,
-	sd	t1,-184(s0)	# tmp101, lst2
-	sd	a7,-176(s0)	# tmp102, lst2
-	sd	a6,-168(s0)	# tmp103, lst2
-	sd	a0,-160(s0)	# tmp104, lst2
-	sd	a1,-152(s0)	# tmp105, lst2
-	sd	a2,-144(s0)	# tmp106, lst2
-	sd	a3,-136(s0)	# tmp107, lst2
-	sd	a4,-128(s0)	# tmp108, lst2
-	sd	a5,-120(s0)	# tmp109, lst2
+	lla	a5,.LC1	# tmp162,
+	ld	t1,0(a5)		# tmp163,
+	ld	a7,8(a5)		# tmp164,
+	ld	a6,16(a5)		# tmp165,
+	ld	a0,24(a5)		# tmp166,
+	ld	a1,32(a5)		# tmp167,
+	ld	a2,40(a5)		# tmp168,
+	ld	a3,48(a5)		# tmp169,
+	ld	a4,56(a5)		# tmp170,
+	ld	a5,64(a5)		# tmp171,
+	sd	t1,-184(s0)	# tmp163, lst2
+	sd	a7,-176(s0)	# tmp164, lst2
+	sd	a6,-168(s0)	# tmp165, lst2
+	sd	a0,-160(s0)	# tmp166, lst2
+	sd	a1,-152(s0)	# tmp167, lst2
+	sd	a2,-144(s0)	# tmp168, lst2
+	sd	a3,-136(s0)	# tmp169, lst2
+	sd	a4,-128(s0)	# tmp170, lst2
+	sd	a5,-120(s0)	# tmp171, lst2
 # problem95.c:39:     assert(func0(lst2, sizeof(lst2)/sizeof(lst2[0])) == 25);
-	addi	a5,s0,-184	#, tmp110,
+	addi	a5,s0,-184	#, tmp172,
 	li	a1,18		#,
-	mv	a0,a5	#, tmp110
+	mv	a0,a5	#, tmp172
 	call	func0		#
-	mv	a5,a0	# tmp111,
-	mv	a4,a5	# tmp112, _2
-	li	a5,25		# tmp113,
-	beq	a4,a5,.L15	#, tmp112, tmp113,
+	mv	a5,a0	# tmp173,
 # problem95.c:39:     assert(func0(lst2, sizeof(lst2)/sizeof(lst2[0])) == 25);
+	mv	a4,a5	# tmp174, _2
+	li	a5,25		# tmp175,
+	beq	a4,a5,.L15	#, tmp174, tmp175,
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,39		#,
 	lla	a1,.LC7	#,
@@ -355,33 +374,33 @@ main:
 	call	__assert_fail@plt	#
 .L15:
 # problem95.c:41:     int lst3[] = {1,3,1,32,5107,34,83278,109,163,23,2323,32,30,1,9,3};
-	lla	a5,.LC2	# tmp114,
-	ld	a7,0(a5)		# tmp115,
-	ld	a6,8(a5)		# tmp116,
-	ld	a0,16(a5)		# tmp117,
-	ld	a1,24(a5)		# tmp118,
-	ld	a2,32(a5)		# tmp119,
-	ld	a3,40(a5)		# tmp120,
-	ld	a4,48(a5)		# tmp121,
-	ld	a5,56(a5)		# tmp122,
-	sd	a7,-248(s0)	# tmp115, lst3
-	sd	a6,-240(s0)	# tmp116, lst3
-	sd	a0,-232(s0)	# tmp117, lst3
-	sd	a1,-224(s0)	# tmp118, lst3
-	sd	a2,-216(s0)	# tmp119, lst3
-	sd	a3,-208(s0)	# tmp120, lst3
-	sd	a4,-200(s0)	# tmp121, lst3
-	sd	a5,-192(s0)	# tmp122, lst3
+	lla	a5,.LC2	# tmp176,
+	ld	a7,0(a5)		# tmp177,
+	ld	a6,8(a5)		# tmp178,
+	ld	a0,16(a5)		# tmp179,
+	ld	a1,24(a5)		# tmp180,
+	ld	a2,32(a5)		# tmp181,
+	ld	a3,40(a5)		# tmp182,
+	ld	a4,48(a5)		# tmp183,
+	ld	a5,56(a5)		# tmp184,
+	sd	a7,-248(s0)	# tmp177, lst3
+	sd	a6,-240(s0)	# tmp178, lst3
+	sd	a0,-232(s0)	# tmp179, lst3
+	sd	a1,-224(s0)	# tmp180, lst3
+	sd	a2,-216(s0)	# tmp181, lst3
+	sd	a3,-208(s0)	# tmp182, lst3
+	sd	a4,-200(s0)	# tmp183, lst3
+	sd	a5,-192(s0)	# tmp184, lst3
 # problem95.c:42:     assert(func0(lst3, sizeof(lst3)/sizeof(lst3[0])) == 13);
-	addi	a5,s0,-248	#, tmp123,
+	addi	a5,s0,-248	#, tmp185,
 	li	a1,16		#,
-	mv	a0,a5	#, tmp123
+	mv	a0,a5	#, tmp185
 	call	func0		#
-	mv	a5,a0	# tmp124,
-	mv	a4,a5	# tmp125, _3
-	li	a5,13		# tmp126,
-	beq	a4,a5,.L16	#, tmp125, tmp126,
+	mv	a5,a0	# tmp186,
 # problem95.c:42:     assert(func0(lst3, sizeof(lst3)/sizeof(lst3[0])) == 13);
+	mv	a4,a5	# tmp187, _3
+	li	a5,13		# tmp188,
+	beq	a4,a5,.L16	#, tmp187, tmp188,
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,42		#,
 	lla	a1,.LC7	#,
@@ -389,31 +408,31 @@ main:
 	call	__assert_fail@plt	#
 .L16:
 # problem95.c:44:     int lst4[] = {0,724,32,71,99,32,6,0,5,91,83,0,5,6};
-	lla	a5,.LC3	# tmp127,
-	ld	a6,0(a5)		# tmp128,
-	ld	a0,8(a5)		# tmp129,
-	ld	a1,16(a5)		# tmp130,
-	ld	a2,24(a5)		# tmp131,
-	ld	a3,32(a5)		# tmp132,
-	ld	a4,40(a5)		# tmp133,
-	ld	a5,48(a5)		# tmp134,
-	sd	a6,-304(s0)	# tmp128, lst4
-	sd	a0,-296(s0)	# tmp129, lst4
-	sd	a1,-288(s0)	# tmp130, lst4
-	sd	a2,-280(s0)	# tmp131, lst4
-	sd	a3,-272(s0)	# tmp132, lst4
-	sd	a4,-264(s0)	# tmp133, lst4
-	sd	a5,-256(s0)	# tmp134, lst4
+	lla	a5,.LC3	# tmp189,
+	ld	a6,0(a5)		# tmp190,
+	ld	a0,8(a5)		# tmp191,
+	ld	a1,16(a5)		# tmp192,
+	ld	a2,24(a5)		# tmp193,
+	ld	a3,32(a5)		# tmp194,
+	ld	a4,40(a5)		# tmp195,
+	ld	a5,48(a5)		# tmp196,
+	sd	a6,-304(s0)	# tmp190, lst4
+	sd	a0,-296(s0)	# tmp191, lst4
+	sd	a1,-288(s0)	# tmp192, lst4
+	sd	a2,-280(s0)	# tmp193, lst4
+	sd	a3,-272(s0)	# tmp194, lst4
+	sd	a4,-264(s0)	# tmp195, lst4
+	sd	a5,-256(s0)	# tmp196, lst4
 # problem95.c:45:     assert(func0(lst4, sizeof(lst4)/sizeof(lst4[0])) == 11);
-	addi	a5,s0,-304	#, tmp135,
+	addi	a5,s0,-304	#, tmp197,
 	li	a1,14		#,
-	mv	a0,a5	#, tmp135
+	mv	a0,a5	#, tmp197
 	call	func0		#
-	mv	a5,a0	# tmp136,
-	mv	a4,a5	# tmp137, _4
-	li	a5,11		# tmp138,
-	beq	a4,a5,.L17	#, tmp137, tmp138,
+	mv	a5,a0	# tmp198,
 # problem95.c:45:     assert(func0(lst4, sizeof(lst4)/sizeof(lst4[0])) == 11);
+	mv	a4,a5	# tmp199, _4
+	li	a5,11		# tmp200,
+	beq	a4,a5,.L17	#, tmp199, tmp200,
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,45		#,
 	lla	a1,.LC7	#,
@@ -421,23 +440,23 @@ main:
 	call	__assert_fail@plt	#
 .L17:
 # problem95.c:47:     int lst5[] = {0,81,12,3,1,21};
-	lla	a5,.LC4	# tmp139,
-	ld	a4,0(a5)		# tmp140,
-	sd	a4,-352(s0)	# tmp140, lst5
-	ld	a4,8(a5)		# tmp141,
-	sd	a4,-344(s0)	# tmp141, lst5
-	ld	a5,16(a5)		# tmp142,
-	sd	a5,-336(s0)	# tmp142, lst5
+	lla	a5,.LC4	# tmp201,
+	ld	a4,0(a5)		# tmp202,
+	sd	a4,-352(s0)	# tmp202, lst5
+	ld	a4,8(a5)		# tmp203,
+	sd	a4,-344(s0)	# tmp203, lst5
+	ld	a5,16(a5)		# tmp204,
+	sd	a5,-336(s0)	# tmp204, lst5
 # problem95.c:48:     assert(func0(lst5, sizeof(lst5)/sizeof(lst5[0])) == 3);
-	addi	a5,s0,-352	#, tmp143,
+	addi	a5,s0,-352	#, tmp205,
 	li	a1,6		#,
-	mv	a0,a5	#, tmp143
+	mv	a0,a5	#, tmp205
 	call	func0		#
-	mv	a5,a0	# tmp144,
-	mv	a4,a5	# tmp145, _5
-	li	a5,3		# tmp146,
-	beq	a4,a5,.L18	#, tmp145, tmp146,
+	mv	a5,a0	# tmp206,
 # problem95.c:48:     assert(func0(lst5, sizeof(lst5)/sizeof(lst5[0])) == 3);
+	mv	a4,a5	# tmp207, _5
+	li	a5,3		# tmp208,
+	beq	a4,a5,.L18	#, tmp207, tmp208,
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,48		#,
 	lla	a1,.LC7	#,
@@ -445,23 +464,23 @@ main:
 	call	__assert_fail@plt	#
 .L18:
 # problem95.c:50:     int lst6[] = {0,8,1,2,1,7};
-	lla	a5,.LC5	# tmp147,
-	ld	a4,0(a5)		# tmp148,
-	sd	a4,-328(s0)	# tmp148, lst6
-	ld	a4,8(a5)		# tmp149,
-	sd	a4,-320(s0)	# tmp149, lst6
-	ld	a5,16(a5)		# tmp150,
-	sd	a5,-312(s0)	# tmp150, lst6
+	lla	a5,.LC5	# tmp209,
+	ld	a4,0(a5)		# tmp210,
+	sd	a4,-328(s0)	# tmp210, lst6
+	ld	a4,8(a5)		# tmp211,
+	sd	a4,-320(s0)	# tmp211, lst6
+	ld	a5,16(a5)		# tmp212,
+	sd	a5,-312(s0)	# tmp212, lst6
 # problem95.c:51:     assert(func0(lst6, sizeof(lst6)/sizeof(lst6[0])) == 7);
-	addi	a5,s0,-328	#, tmp151,
+	addi	a5,s0,-328	#, tmp213,
 	li	a1,6		#,
-	mv	a0,a5	#, tmp151
+	mv	a0,a5	#, tmp213
 	call	func0		#
-	mv	a5,a0	# tmp152,
-	mv	a4,a5	# tmp153, _6
-	li	a5,7		# tmp154,
-	beq	a4,a5,.L19	#, tmp153, tmp154,
+	mv	a5,a0	# tmp214,
 # problem95.c:51:     assert(func0(lst6, sizeof(lst6)/sizeof(lst6[0])) == 7);
+	mv	a4,a5	# tmp215, _6
+	li	a5,7		# tmp216,
+	beq	a4,a5,.L19	#, tmp215, tmp216,
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,51		#,
 	lla	a1,.LC7	#,
@@ -469,19 +488,19 @@ main:
 	call	__assert_fail@plt	#
 .L19:
 # problem95.c:53:     int lst7[] = {8191};
-	li	a5,8192		# tmp156,
-	addi	a5,a5,-1	#, tmp155, tmp156
-	sw	a5,-392(s0)	# tmp155, lst7[0]
+	li	a5,8192		# tmp218,
+	addi	a5,a5,-1	#, tmp217, tmp218
+	sw	a5,-392(s0)	# tmp217, lst7[0]
 # problem95.c:54:     assert(func0(lst7, sizeof(lst7)/sizeof(lst7[0])) == 19);
-	addi	a5,s0,-392	#, tmp157,
+	addi	a5,s0,-392	#, tmp219,
 	li	a1,1		#,
-	mv	a0,a5	#, tmp157
+	mv	a0,a5	#, tmp219
 	call	func0		#
-	mv	a5,a0	# tmp158,
-	mv	a4,a5	# tmp159, _7
-	li	a5,19		# tmp160,
-	beq	a4,a5,.L20	#, tmp159, tmp160,
+	mv	a5,a0	# tmp220,
 # problem95.c:54:     assert(func0(lst7, sizeof(lst7)/sizeof(lst7[0])) == 19);
+	mv	a4,a5	# tmp221, _7
+	li	a5,19		# tmp222,
+	beq	a4,a5,.L20	#, tmp221, tmp222,
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,54		#,
 	lla	a1,.LC7	#,
@@ -489,21 +508,21 @@ main:
 	call	__assert_fail@plt	#
 .L20:
 # problem95.c:56:     int lst8[] = {8191, 123456, 127, 7};
-	lla	a5,.LC6	# tmp161,
-	ld	a4,0(a5)		# tmp162,
-	sd	a4,-368(s0)	# tmp162, lst8
-	ld	a5,8(a5)		# tmp163,
-	sd	a5,-360(s0)	# tmp163, lst8
+	lla	a5,.LC6	# tmp223,
+	ld	a4,0(a5)		# tmp224,
+	sd	a4,-368(s0)	# tmp224, lst8
+	ld	a5,8(a5)		# tmp225,
+	sd	a5,-360(s0)	# tmp225, lst8
 # problem95.c:57:     assert(func0(lst8, sizeof(lst8)/sizeof(lst8[0])) == 19);
-	addi	a5,s0,-368	#, tmp164,
+	addi	a5,s0,-368	#, tmp226,
 	li	a1,4		#,
-	mv	a0,a5	#, tmp164
+	mv	a0,a5	#, tmp226
 	call	func0		#
-	mv	a5,a0	# tmp165,
-	mv	a4,a5	# tmp166, _8
-	li	a5,19		# tmp167,
-	beq	a4,a5,.L21	#, tmp166, tmp167,
+	mv	a5,a0	# tmp227,
 # problem95.c:57:     assert(func0(lst8, sizeof(lst8)/sizeof(lst8[0])) == 19);
+	mv	a4,a5	# tmp228, _8
+	li	a5,19		# tmp229,
+	beq	a4,a5,.L21	#, tmp228, tmp229,
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,57		#,
 	lla	a1,.LC7	#,
@@ -511,22 +530,22 @@ main:
 	call	__assert_fail@plt	#
 .L21:
 # problem95.c:59:     int lst9[] = {127, 97, 8192};
-	li	a5,127		# tmp168,
-	sw	a5,-384(s0)	# tmp168, lst9[0]
-	li	a5,97		# tmp169,
-	sw	a5,-380(s0)	# tmp169, lst9[1]
-	li	a5,8192		# tmp170,
-	sw	a5,-376(s0)	# tmp170, lst9[2]
+	li	a5,127		# tmp230,
+	sw	a5,-384(s0)	# tmp230, lst9[0]
+	li	a5,97		# tmp231,
+	sw	a5,-380(s0)	# tmp231, lst9[1]
+	li	a5,8192		# tmp232,
+	sw	a5,-376(s0)	# tmp232, lst9[2]
 # problem95.c:60:     assert(func0(lst9, sizeof(lst9)/sizeof(lst9[0])) == 10);
-	addi	a5,s0,-384	#, tmp171,
+	addi	a5,s0,-384	#, tmp233,
 	li	a1,3		#,
-	mv	a0,a5	#, tmp171
+	mv	a0,a5	#, tmp233
 	call	func0		#
-	mv	a5,a0	# tmp172,
-	mv	a4,a5	# tmp173, _9
-	li	a5,10		# tmp174,
-	beq	a4,a5,.L22	#, tmp173, tmp174,
+	mv	a5,a0	# tmp234,
 # problem95.c:60:     assert(func0(lst9, sizeof(lst9)/sizeof(lst9[0])) == 10);
+	mv	a4,a5	# tmp235, _9
+	li	a5,10		# tmp236,
+	beq	a4,a5,.L22	#, tmp235, tmp236,
 	lla	a3,__PRETTY_FUNCTION__.0	#,
 	li	a2,60		#,
 	lla	a1,.LC7	#,
@@ -537,19 +556,25 @@ main:
 	li	a5,0		# _40,
 # problem95.c:63: }
 	mv	a4,a5	# <retval>, _40
-	la	a5,__stack_chk_guard		# tmp176,
-	ld	a3, -24(s0)	# tmp179, D.1988
-	ld	a5, 0(a5)	# tmp177, __stack_chk_guard
-	xor	a5, a3, a5	# tmp177, tmp179
-	li	a3, 0	# tmp179
-	beq	a5,zero,.L24	#, tmp177,,
+	la	a5,__stack_chk_guard		# tmp238,
+	ld	a3, -24(s0)	# tmp241, D.2806
+	ld	a5, 0(a5)	# tmp239, __stack_chk_guard
+	xor	a5, a3, a5	# tmp239, tmp241
+	li	a3, 0	# tmp241
+	beq	a5,zero,.L24	#, tmp239,,
 	call	__stack_chk_fail@plt	#
 .L24:
 	mv	a0,a4	#, <retval>
 	ld	ra,392(sp)		#,
+	.cfi_restore 1
 	ld	s0,384(sp)		#,
+	.cfi_restore 8
+	.cfi_def_cfa 2, 400
 	addi	sp,sp,400	#,,
+	.cfi_def_cfa_offset 0
 	jr	ra		#
+	.cfi_endproc
+.LFE1:
 	.size	main, .-main
 	.section	.rodata
 	.align	3
@@ -557,5 +582,5 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits

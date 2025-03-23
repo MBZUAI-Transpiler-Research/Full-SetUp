@@ -1,7 +1,7 @@
 	.arch armv8-a
 	.file	"problem80.c"
-// GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (aarch64-linux-gnu)
-//	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+// GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (aarch64-linux-gnu)
+//	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 // GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 // options passed: -mlittle-endian -mabi=lp64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection
@@ -154,6 +154,7 @@ func0:
 	ldr	x0, [sp, 56]	//, formatted_out
 	bl	strlen		//
 	mov	x1, x0	// _48, tmp151
+// problem80.c:35:     strcat(formatted_out, "db");
 	ldr	x0, [sp, 56]	// tmp152, formatted_out
 	add	x2, x0, x1	// _49, tmp152, _48
 	adrp	x0, .LC0	// tmp154,
@@ -227,9 +228,9 @@ main:
 	add	x1, x0, :lo12:.LC1	//, tmp98,
 	ldr	x0, [sp, 24]	//, binary
 	bl	strcmp		//
+// problem80.c:52:     assert(strcmp(binary, "db0db") == 0);
 	cmp	w0, 0	// _1,
 	beq	.L10		//,
-// problem80.c:52:     assert(strcmp(binary, "db0db") == 0);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp99,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp99,
 	mov	w2, 52	//,
@@ -251,9 +252,9 @@ main:
 	add	x1, x0, :lo12:.LC4	//, tmp102,
 	ldr	x0, [sp, 24]	//, binary
 	bl	strcmp		//
+// problem80.c:56:     assert(strcmp(binary, "db100000db") == 0);
 	cmp	w0, 0	// _2,
 	beq	.L11		//,
-// problem80.c:56:     assert(strcmp(binary, "db100000db") == 0);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp103,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp103,
 	mov	w2, 56	//,
@@ -275,9 +276,9 @@ main:
 	add	x1, x0, :lo12:.LC6	//, tmp106,
 	ldr	x0, [sp, 24]	//, binary
 	bl	strcmp		//
+// problem80.c:60:     assert(strcmp(binary, "db1100111db") == 0);
 	cmp	w0, 0	// _3,
 	beq	.L12		//,
-// problem80.c:60:     assert(strcmp(binary, "db1100111db") == 0);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp107,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp107,
 	mov	w2, 60	//,
@@ -299,9 +300,9 @@ main:
 	add	x1, x0, :lo12:.LC8	//, tmp110,
 	ldr	x0, [sp, 24]	//, binary
 	bl	strcmp		//
+// problem80.c:64:     assert(strcmp(binary, "db1111db") == 0);
 	cmp	w0, 0	// _4,
 	beq	.L13		//,
-// problem80.c:64:     assert(strcmp(binary, "db1111db") == 0);
 	adrp	x0, __PRETTY_FUNCTION__.0	// tmp111,
 	add	x3, x0, :lo12:__PRETTY_FUNCTION__.0	//, tmp111,
 	mov	w2, 64	//,
@@ -331,5 +332,5 @@ main:
 	.size	__PRETTY_FUNCTION__.0, 5
 __PRETTY_FUNCTION__.0:
 	.string	"main"
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits

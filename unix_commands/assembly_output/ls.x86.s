@@ -36,19 +36,19 @@ main:
 	movl	%eax, -20(%rbp)
 	jmp	.L3
 .L4:
-	movq	-16(%rbp), %rdx
-	movl	-20(%rbp), %eax
-	cltq
-	salq	$3, %rax
+	movq	-16(%rbp), %rax
+	movl	-20(%rbp), %edx
+	movslq	%edx, %rdx
+	salq	$3, %rdx
 	addq	%rdx, %rax
 	movq	(%rax), %rax
 	addq	$19, %rax
 	movq	%rax, %rdi
 	call	puts@PLT
-	movq	-16(%rbp), %rdx
-	movl	-20(%rbp), %eax
-	cltq
-	salq	$3, %rax
+	movq	-16(%rbp), %rax
+	movl	-20(%rbp), %edx
+	movslq	%edx, %rdx
+	salq	$3, %rdx
 	addq	%rdx, %rax
 	movq	(%rax), %rax
 	movq	%rax, %rdi
@@ -68,9 +68,9 @@ main:
 	je	.L6
 	movq	-48(%rbp), %rax
 	addq	$8, %rax
-	movq	(%rax), %rax
-	leaq	.LC1(%rip), %rdx
-	cmpq	%rdx, %rax
+	movq	(%rax), %rdx
+	leaq	.LC1(%rip), %rax
+	cmpq	%rax, %rdx
 	jne	.L5
 .L6:
 	movl	$0, %esi
@@ -117,9 +117,9 @@ recursive:
 	call	opendir@PLT
 	movq	%rax, -1056(%rbp)
 	cmpq	$0, -1056(%rbp)
-	je	.L17
+	je	.L18
 	jmp	.L11
-.L15:
+.L16:
 	movq	-1048(%rbp), %rax
 	movzbl	18(%rax), %eax
 	cmpb	$4, %al
@@ -131,7 +131,7 @@ recursive:
 	movq	%rax, %rdi
 	call	strcmp@PLT
 	testl	%eax, %eax
-	je	.L11
+	je	.L19
 	movq	-1048(%rbp), %rax
 	addq	$19, %rax
 	leaq	.LC2(%rip), %rdx
@@ -139,9 +139,7 @@ recursive:
 	movq	%rax, %rdi
 	call	strcmp@PLT
 	testl	%eax, %eax
-	jne	.L14
-	jmp	.L11
-.L14:
+	je	.L19
 	movq	-1048(%rbp), %rax
 	leaq	19(%rax), %rdx
 	leaq	-1040(%rbp), %rax
@@ -178,32 +176,35 @@ recursive:
 	movq	%rax, %rdi
 	movl	$0, %eax
 	call	printf@PLT
+	jmp	.L11
+.L19:
+	nop
 .L11:
 	movq	-1056(%rbp), %rax
 	movq	%rax, %rdi
 	call	readdir@PLT
 	movq	%rax, -1048(%rbp)
 	cmpq	$0, -1048(%rbp)
-	jne	.L15
+	jne	.L16
 	movq	-1056(%rbp), %rax
 	movq	%rax, %rdi
 	call	closedir@PLT
 	jmp	.L8
-.L17:
+.L18:
 	nop
 .L8:
 	movq	-8(%rbp), %rax
 	subq	%fs:40, %rax
-	je	.L16
+	je	.L17
 	call	__stack_chk_fail@PLT
-.L16:
+.L17:
 	leave
 	.cfi_def_cfa 7, 8
 	ret
 	.cfi_endproc
 .LFE7:
 	.size	recursive, .-recursive
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

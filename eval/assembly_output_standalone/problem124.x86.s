@@ -21,13 +21,15 @@ func0:
 	movq	-32(%rbp), %rax
 	movl	$1, (%rax)
 	jmp	.L2
-.L5:
-	movl	-20(%rbp), %eax
-	cltd
-	shrl	$31, %edx
-	addl	%edx, %eax
-	andl	$1, %eax
-	subl	%edx, %eax
+.L6:
+	movl	-20(%rbp), %edx
+	movl	%edx, %eax
+	sarl	$31, %eax
+	shrl	$31, %eax
+	addl	%eax, %edx
+	andl	$1, %edx
+	subl	%eax, %edx
+	movl	%edx, %eax
 	cmpl	$1, %eax
 	jne	.L3
 	movq	-40(%rbp), %rax
@@ -71,10 +73,10 @@ func0:
 	movl	%eax, -20(%rbp)
 .L2:
 	cmpl	$1, -20(%rbp)
-	jne	.L5
+	jne	.L6
 	movl	$1, -12(%rbp)
-	jmp	.L6
-.L10:
+	jmp	.L7
+.L11:
 	movl	-12(%rbp), %eax
 	cltq
 	leaq	0(,%rax,4), %rdx
@@ -85,8 +87,8 @@ func0:
 	movl	-12(%rbp), %eax
 	subl	$1, %eax
 	movl	%eax, -8(%rbp)
-	jmp	.L7
-.L9:
+	jmp	.L8
+.L10:
 	movl	-8(%rbp), %eax
 	cltq
 	leaq	0(,%rax,4), %rdx
@@ -101,9 +103,9 @@ func0:
 	movl	(%rax), %eax
 	movl	%eax, (%rdx)
 	subl	$1, -8(%rbp)
-.L7:
+.L8:
 	cmpl	$0, -8(%rbp)
-	js	.L8
+	js	.L9
 	movl	-8(%rbp), %eax
 	cltq
 	leaq	0(,%rax,4), %rdx
@@ -111,8 +113,8 @@ func0:
 	addq	%rdx, %rax
 	movl	(%rax), %eax
 	cmpl	%eax, -4(%rbp)
-	jl	.L9
-.L8:
+	jl	.L10
+.L9:
 	movl	-8(%rbp), %eax
 	cltq
 	addq	$1, %rax
@@ -122,11 +124,11 @@ func0:
 	movl	-4(%rbp), %eax
 	movl	%eax, (%rdx)
 	addl	$1, -12(%rbp)
-.L6:
+.L7:
 	movq	-40(%rbp), %rax
 	movl	(%rax), %eax
 	cmpl	%eax, -12(%rbp)
-	jl	.L10
+	jl	.L11
 	nop
 	nop
 	leave
@@ -135,7 +137,7 @@ func0:
 	.cfi_endproc
 .LFE6:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
 	.section	.note.gnu.property,"a"
 	.align 8

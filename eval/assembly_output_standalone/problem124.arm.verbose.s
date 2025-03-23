@@ -1,7 +1,7 @@
 	.arch armv8-a
 	.file	"code.c"
-// GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (aarch64-linux-gnu)
-//	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+// GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (aarch64-linux-gnu)
+//	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
 
 // GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 // options passed: -mlittle-endian -mabi=lp64 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection
@@ -33,7 +33,7 @@ func0:
 	str	w1, [x0]	// tmp126, *out_47(D)
 // eval/problem124//code.c:9:     while (n != 1) {
 	b	.L2		//
-.L5:
+.L6:
 // eval/problem124//code.c:10:         if (n % 2 == 1) {
 	ldr	w0, [sp, 44]	// tmp127, n
 	cmp	w0, 0	// tmp127,
@@ -96,13 +96,13 @@ func0:
 // eval/problem124//code.c:9:     while (n != 1) {
 	ldr	w0, [sp, 44]	// tmp146, n
 	cmp	w0, 1	// tmp146,
-	bne	.L5		//,
+	bne	.L6		//,
 // eval/problem124//code.c:22:     for (int i = 1; i < *size; i++) {
 	mov	w0, 1	// tmp147,
 	str	w0, [sp, 52]	// tmp147, i
 // eval/problem124//code.c:22:     for (int i = 1; i < *size; i++) {
-	b	.L6		//
-.L10:
+	b	.L7		//
+.L11:
 // eval/problem124//code.c:23:         int key = out[i];
 	ldrsw	x0, [sp, 52]	// _12, i
 	lsl	x0, x0, 2	// _13, _12,
@@ -116,8 +116,8 @@ func0:
 	sub	w0, w0, #1	// tmp150, tmp151,
 	str	w0, [sp, 56]	// tmp150, j
 // eval/problem124//code.c:26:         while (j >= 0 && out[j] > key) {
-	b	.L7		//
-.L9:
+	b	.L8		//
+.L10:
 // eval/problem124//code.c:27:             out[j + 1] = out[j];
 	ldrsw	x0, [sp, 56]	// _15, j
 	lsl	x0, x0, 2	// _16, _15,
@@ -137,11 +137,11 @@ func0:
 	ldr	w0, [sp, 56]	// tmp155, j
 	sub	w0, w0, #1	// tmp154, tmp155,
 	str	w0, [sp, 56]	// tmp154, j
-.L7:
+.L8:
 // eval/problem124//code.c:26:         while (j >= 0 && out[j] > key) {
 	ldr	w0, [sp, 56]	// tmp156, j
 	cmp	w0, 0	// tmp156,
-	blt	.L8		//,
+	blt	.L9		//,
 // eval/problem124//code.c:26:         while (j >= 0 && out[j] > key) {
 	ldrsw	x0, [sp, 56]	// _23, j
 	lsl	x0, x0, 2	// _24, _23,
@@ -151,8 +151,8 @@ func0:
 // eval/problem124//code.c:26:         while (j >= 0 && out[j] > key) {
 	ldr	w1, [sp, 60]	// tmp158, key
 	cmp	w1, w0	// tmp158, _26
-	blt	.L9		//,
-.L8:
+	blt	.L10		//,
+.L9:
 // eval/problem124//code.c:30:         out[j + 1] = key;
 	ldrsw	x0, [sp, 56]	// _27, j
 	add	x0, x0, 1	// _28, _27,
@@ -166,14 +166,14 @@ func0:
 	ldr	w0, [sp, 52]	// tmp162, i
 	add	w0, w0, 1	// tmp161, tmp162,
 	str	w0, [sp, 52]	// tmp161, i
-.L6:
+.L7:
 // eval/problem124//code.c:22:     for (int i = 1; i < *size; i++) {
 	ldr	x0, [sp, 24]	// tmp163, size
 	ldr	w0, [x0]	// _31, *size_45(D)
 // eval/problem124//code.c:22:     for (int i = 1; i < *size; i++) {
 	ldr	w1, [sp, 52]	// tmp164, i
 	cmp	w1, w0	// tmp164, _31
-	blt	.L10		//,
+	blt	.L11		//,
 // eval/problem124//code.c:32: }
 	nop	
 	nop	
@@ -185,5 +185,5 @@ func0:
 	.cfi_endproc
 .LFE6:
 	.size	func0, .-func0
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
 	.section	.note.GNU-stack,"",@progbits
