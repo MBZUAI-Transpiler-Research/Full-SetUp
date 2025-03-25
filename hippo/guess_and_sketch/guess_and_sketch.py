@@ -483,7 +483,7 @@ class GuessAndSketch:
             attentions = pred_outputs.cross_attentions
             (in_start_idx, in_seq_len, out_start_idx, out_seq_len) = (0, input_ids.shape[-1], 0, pred_outputs.sequences.shape[-1])
         elif "qwen" in self.args.model_name_or_path.lower():
-            attentions = pred_outputs.cross_attentions
+            attentions = pred_outputs.attentions
             prompt_len = self.tokenizer(f"Translate the following {self.src_lang} code to {self.tgt_lang}:\n",return_tensors="pt").input_ids.shape[-1]
             (in_start_idx, in_seq_len, out_start_idx, out_seq_len) = (prompt_len, input_ids.shape[-1] - prompt_len, 0, pred_outputs.sequences.shape[-1])
         else:

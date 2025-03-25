@@ -19,8 +19,20 @@ echo "Running getdependencies_vl.sh"
 chmod +x Shell_Scripts/getdependencies_vl.sh
 Shell_Scripts/getdependencies_vl.sh  || { echo "Error running getdependencies_vl.sh"; exit 1; }
 
-# Step 2: Activate the environment
+# Step 2: Initialize Conda (if needed) and activate the environment
 echo "Activating the Conda environment..."
+
+# Ensure Conda is properly set up
+if ! command -v conda &> /dev/null; then
+    echo "Conda command not found. Running conda init..."
+    source "$HOME/miniconda3/bin/conda" init
+    source "$HOME/.bashrc"
+fi
+
+# Ensure Conda is in PATH (needed if running inside a script)
+export PATH="$HOME/miniconda3/bin:$PATH" 
+
+# Activate the Conda environment
 source $HOME/miniconda3/bin/activate crosscompilers
 echo "Environment activated successfully!"
 

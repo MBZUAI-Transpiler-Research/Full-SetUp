@@ -5,6 +5,13 @@ set -e  # Exit immediately if a command exits with a non-zero status.
 echo "Starting GMP Installation..."
 
 # Step 1: Download GMP if not already present
+if [ -d "gmp-6.3.0" ]; then
+    echo "Cleaning previous GMP build..."
+    cd gmp-6.3.0
+    make clean
+    cd ..
+fi
+
 if [ ! -d "gmp-6.3.0" ]; then
     echo "Downloading GMP..."
     wget https://gmplib.org/download/gmp/gmp-6.3.0.tar.xz || { echo "Error: Failed to download GMP."; exit 1; }

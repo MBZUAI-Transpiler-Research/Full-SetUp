@@ -416,3 +416,8 @@ python parse.py "$HOME/transpiler_project/eval" "jsonl_files/eval_standalone.jso
 chmod +x fullsetup.sh
 ./fullsetup.sh
 ```
+
+
+python hippo/main.py --sketch \
+    --source_lang risc --target_lang arm \
+    --predictions_folder unix_commands 
