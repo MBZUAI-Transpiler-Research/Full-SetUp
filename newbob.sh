@@ -4,7 +4,14 @@ set -e  # Exit on error
 
 if [ ! -d "bringup_bench" ]; then
     git clone git@github.com:toddmaustin/bringup-bench.git bringup_bench
+    mv bringup_bench bup_bench
+    git submodule deinit -f bringup_bench
+    rm -rf .git/modules/bringup_bench
+    git rm --cached bringup_bench || true  # Avoid errors if not tracked
+    mv bup_bench bringup_bench
+    rm -rf bringup_bench/.git  # Ensure it's a normal directory
 fi
+
 
 cd bringup_bench || { echo "Error: Failed to enter bringup_bench directory"; exit 1; }
 

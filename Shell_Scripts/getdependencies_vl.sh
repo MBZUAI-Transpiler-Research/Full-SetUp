@@ -75,6 +75,7 @@ if sudo true; then
     sudo apt update
     if ! sudo apt install -y \
         vim \
+        git \
         xz-utils \
         python3-pip \
         python3-virtualenv \

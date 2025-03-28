@@ -442,6 +442,22 @@ mkdir -p eval/assembly_output_standalone/
 mv eval/assembly_output/* eval/assembly_output_standalone/
 rm -rf eval/assembly_output
 
+# 
+
+
+# Bringup-Benchmark
+sleep 3
+echo "And now for bringup-benchmark...."
+echo ""
+sleep 2
+echo "This could be more graceful but it should be accurate. Let me know if you notice otherwise"
+echo ""
+echo "Running newbob.sh to finish the setup...."
+chmod +x ./newbob.sh
+./newbob.sh || { echo "Error with benchmark setup"; exit 1; }
+
+
+
 echo "Now getting rid of old files and folders"
 #rm -rf euler unix_commands
 
