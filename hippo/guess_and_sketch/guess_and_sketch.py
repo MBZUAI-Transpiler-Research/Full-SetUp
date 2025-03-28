@@ -169,6 +169,16 @@ class GuessAndSketch:
             self.make_run_commands["qemu_setup"] = {
                 "problem": {"setup": [], "qemu_args": "", "test": [], "cleanup": []}
             }
+        
+        if "bringup_bench" in args.predictions_folder:
+            # No external libraries are needed for linking, as all required functions 
+            # are contained within the project's source files (libmin, libtarg, etc.).
+            # Setting gcc_flags to an empty string ensures no unnecessary linking flags are added.
+            self.make_run_commands["gcc_flags"] = ""
+
+            # No special setup, arguments, tests, or cleanup are required for QEMU execution.
+            # The default setup is sufficient for running these benchmarks.
+            self.make_run_commands["qemu_setup"] = {"problem": {"setup": [], "qemu_args": "", "test": [], "cleanup": []}}
 
         elif "unix_risc_to_arm" in args.predictions_folder or "unix_commands" in args.predictions_folder:
             self.make_run_commands["gcc_flags"] = ""

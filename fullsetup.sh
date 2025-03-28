@@ -442,8 +442,6 @@ mkdir -p eval/assembly_output_standalone/
 mv eval/assembly_output/* eval/assembly_output_standalone/
 rm -rf eval/assembly_output
 
-# 
-
 
 # Bringup-Benchmark
 sleep 3

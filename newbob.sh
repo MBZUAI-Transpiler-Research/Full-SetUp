@@ -64,7 +64,22 @@ for problem_dir in */; do
 
     # Extract Linking flags
     link_flags=$(grep -oE ' -L[^ ]+| -l[^ ]+' "../$OUTPUT_DIR/$problem_name.makefile_output" | sort -u)
+    
+    # go up a level
+    cd ..
+    
+    # Create bringup_bench_link_flags.json if it doesn't exist
+    if [ ! -f "bringup_bench_link_flags.json" ]; then
+        echo "{}" > "bringup_bench_link_flags.json"
+    fi
 
+    # Update JSON file with problem-specific link flags (even if empty)
+    jq --arg problem "$problem_name" --arg link "$link_flags" \
+   '.[$problem] = $link' "bringup_bench_link_flags.json" > tmp.json && mv tmp.json "bringup_bench_link_flags.json"
+   
+    # Move back into the specific problem directory for further processing
+    cd "$problem_name"
+    
     echo "Required files: ${required_files[*]}"
     echo "Include flags: $include_flags"
     echo "Linking flags: $link_flags"
