@@ -2,7 +2,7 @@
 
 set -e  # Exit on error
 
-cd unix_commands
+cd "$1"
 
 echo "Starting Unix Commands Testing..."
 
