@@ -16,7 +16,7 @@ def extract(inp, file_modifiers=[lambda x: x]):
         l2 = l.strip()
         # if it's a .LC# line or a global function name label line
         # if l2 and l2[0] not in {'.', '_'} and '.' not in l2 and l2[-1] == ":":
-        if l2 and l2[0] not in {'.'} and '.' not in l2 and l2[-1] == ":":
+        if l2 and l2[0] not in {'.'} and '.' not in l2 and l2[-1] == ":" and not l2[:-1].isdigit():
             in_chunk = True
             section = l2[:-1]
             cloze += f"{{{section}}}"
