@@ -154,7 +154,7 @@ class GuessAndSketch:
 
         self.make_run_commands = {
             "as_cmd": "{prefix}-linux-gnu-as",
-            "gcc_cmd": "{prefix}-linux-gnu-gcc -pthread",
+            "gcc_cmd": "{prefix}-linux-gnu-gcc -I/usr/{prefix}-linux-gnu/include",
             "qemu_cmd": "qemu-{prefix} -L /usr/{prefix}-linux-gnu",
         }
 
@@ -277,11 +277,16 @@ class GuessAndSketch:
                     "cleanup": [],
                 },
             }
+            
+    ####### GUESS ##########
+    
     def preprocess_text(self, input_text, tgt_text):
         # is_enc_dec models automatically assign (in_start_idx, in_seq_len) = (0, batch.input_ids.shape[-1])
         # Qwen: Computes prompt_len and adjusts in_start_idx accordingly
         # Other decoder-only models use the actual return values from preprocess_text to explicitly track the indices.
         is_qwen = "qwen" in self.args.model_name_or_path.lower()
+        # model_inputs input_ids and attention_mask automatically created with return_tensors="pt"
+        # not used with other decoder only models due to manual slicing
         if self.is_enc_dec or is_qwen:
             if is_qwen:
                 input_text = f"Translate the following {self.src_lang} code to {self.tgt_lang}:\n{input_text}\n"
